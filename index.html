@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Antokia - Free Image to PDF, QR Tools</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body class="bg-gray-50">
+<header class="bg-white shadow p-4 flex justify-between">
+<h1 class="text-2xl font-bold">Antokia<span class="text-blue-600">.com</span></h1>
+<span class="text-xs bg-green-100 text-green-700 px-3 py-2 rounded-full">100% Free & Private</span>
+</header>
+
+<main class="max-w-5xl mx-auto p-4">
+<h2 class="text-3xl font-bold text-center mt-6">Free Online Tools</h2>
+<p class="text-center text-gray-500 mt-2">No signup, No upload to server. All in browser.</p>
+
+<div class="grid md:grid-cols-2 gap-6 mt-10">
+<!-- Image to PDF -->
+<div class="bg-white rounded-2xl shadow p-6 border">
+<h3 class="text-xl font-bold">📄 Image to PDF</h3>
+<p class="text-sm text-gray-500 mt-1">JPG, PNG to PDF like BHLC App</p>
+<input type="file" id="imgInput" accept="image/*" multiple class="mt-4 w-full border rounded p-2 text-sm">
+<div id="preview" class="flex gap-2 flex-wrap mt-3"></div>
+<button id="toPdfBtn" class="mt-4 w-full bg-blue-600 text-white py-3 rounded-xl font-bold">Convert & Download PDF</button>
+</div>
+
+<!-- QR Generator -->
+<div class="bg-white rounded-2xl shadow p-6 border">
+<h3 class="text-xl font-bold">🔳 QR Generator</h3>
+<p class="text-sm text-gray-500 mt-1">Any link or text to QR</p>
+<input type="text" id="qrText" placeholder="Enter link like https://..." class="w-full border rounded p-3 mt-4">
+<button id="qrBtn" class="mt-3 w-full bg-black text-white py-3 rounded-xl font-bold">Generate QR</button>
+<div id="qrcode" class="mt-4 flex justify-center"></div>
+</div>
+</div>
+
+<div class="bg-white mt-10 rounded-2xl p-6 shadow border">
+<h3 class="font-bold">About Antokia.com</h3>
+<p class="text-sm text-gray-600 mt-2">Antokia gives you free tools - Image to PDF, QR Code and more coming soon. No data leaves your device, so 100% safe. Made for India.</p>
+</div>
+</main>
+<footer class="text-center text-xs text-gray-400 p-8">© 2026 Antokia.com</footer>
+
+<script>
+const imgInput=document.getElementById('imgInput'),preview=document.getElementById('preview');let images=[];
+imgInput.addEventListener('change',e=>{images=[];preview.innerHTML='';for(let f of e.target.files){let u=URL.createObjectURL(f);images.push(f);let im=document.createElement('img');im.src=u;im.className='w-16 h-16 object-cover rounded border';preview.appendChild(im);}});
+document.getElementById('toPdfBtn').addEventListener('click',async()=>{if(!images.length){alert('Select images');return;}const{jsPDF}=window.jspdf;const pdf=new jsPDF();for(let i=0;i<images.length;i++){let d=await new Promise(r=>{let fr=new FileReader();fr.onload=e=>r(e.target.result);fr.readAsDataURL(images[i]);});if(i>0)pdf.addPage();pdf.addImage(d,'JPEG',0,0,210,297);}pdf.save('antokia.pdf');});
+document.getElementById('qrBtn').addEventListener('click',()=>{let t=document.getElementById('qrText').value.trim();if(!t)return;document.getElementById('qrcode').innerHTML='';new QRCode(document.getElementById('qrcode'),{text:t,width:180,height:180});});
+</script>
+</body>
+</html>
