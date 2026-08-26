@@ -3,54 +3,95 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Antokia - Free Image to PDF, QR Tools</title>
+<title>Antokia - All in One Free Tools</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
 </head>
 <body class="bg-gray-50">
-<header class="bg-white shadow p-4 flex justify-between items-center">
+<header class="bg-white shadow p-4 flex justify-between items-center sticky top-0 z-10">
 <h1 class="text-2xl font-bold">Antokia<span class="text-blue-600">.com</span></h1>
-<span class="text-xs bg-green-100 text-green-700 px-3 py-2 rounded-full">100% Free & Private</span>
+<span class="text-[11px] bg-green-100 text-green-700 px-3 py-2 rounded-full font-bold">100% FREE & PRIVATE</span>
 </header>
-
-<main class="max-w-3xl mx-auto p-4">
+<main class="max-w-5xl mx-auto p-4">
+<p class="text-center text-gray-600 mt-4 mb-6">All tools work in your browser. No upload to server. 100% Safe.</p>
+<div class="grid md:grid-cols-2 gap-6">
 <div class="bg-white rounded-2xl p-6 shadow border">
-<h2 class="text-xl font-bold">🖼️ Image to PDF</h2>
-<p class="text-sm text-gray-500 mt-1">Select multiple images to create one PDF</p>
-<input type="file" id="imgInput" multiple accept="image/*" class="w-full border rounded p-3 mt-4">
-<div id="preview" class="mt-4 flex flex-wrap gap-2"></div>
-<button id="toPdfBtn" class="mt-4 w-full bg-blue-600 text-white py-3 rounded-xl font-bold">Convert to PDF & Download</button>
+<h2 class="text-lg font-bold">🖼️ Image to PDF</h2>
+<input type="file" id="imgInput" multiple accept="image/*" class="w-full border rounded p-2 mt-3 text-sm">
+<div id="preview" class="mt-3 flex flex-wrap gap-2"></div>
+<button id="toPdfBtn" class="mt-3 w-full bg-blue-600 text-white py-3 rounded-xl font-bold">Convert to PDF</button>
 </div>
-
-<div class="bg-white mt-6 rounded-2xl p-6 shadow border">
-<h3 class="text-xl font-bold">🔳 QR Generator</h3>
-<p class="text-sm text-gray-500 mt-1">Any link or text to QR</p>
-<input type="text" id="qrText" placeholder="Enter link like https://..." class="w-full border rounded p-3 mt-4">
+<div class="bg-white rounded-2xl p-6 shadow border">
+<h2 class="text-lg font-bold">📄 Word to PDF</h2>
+<input type="file" id="wordInput" accept=".docx" class="w-full border rounded p-2 mt-3 text-sm">
+<button id="wordToPdfBtn" class="mt-3 w-full bg-orange-600 text-white py-3 rounded-xl font-bold">Convert Word to PDF</button>
+</div>
+<div class="bg-white rounded-2xl p-6 shadow border">
+<h2 class="text-lg font-bold">📝 PDF to Word</h2>
+<input type="file" id="pdfToWordInput" accept=".pdf" class="w-full border rounded p-2 mt-3 text-sm">
+<button id="pdfToWordBtn" class="mt-3 w-full bg-green-600 text-white py-3 rounded-xl font-bold">Convert PDF to Word</button>
+</div>
+<div class="bg-white rounded-2xl p-6 shadow border">
+<h2 class="text-lg font-bold">✂️ PDF Page Remover</h2>
+<input type="file" id="pdfPageInput" accept=".pdf" class="w-full border rounded p-2 mt-3 text-sm">
+<input type="text" id="pagesToRemove" placeholder="Ex: 1,2,5" class="w-full border rounded p-2 mt-2 text-sm">
+<button id="removePageBtn" class="mt-3 w-full bg-red-600 text-white py-3 rounded-xl font-bold">Remove & Download</button>
+</div>
+<div class="bg-white rounded-2xl p-6 shadow border">
+<h2 class="text-lg font-bold">🗜️ Image Compressor</h2>
+<input type="file" id="compressInput" accept="image/*" class="w-full border rounded p-2 mt-3 text-sm">
+<input type="range" id="quality" min="0.1" max="1" step="0.1" value="0.6" class="w-full mt-2">
+<button id="compressBtn" class="mt-3 w-full bg-purple-600 text-white py-3 rounded-xl font-bold">Compress & Download</button>
+</div>
+<div class="bg-white rounded-2xl p-6 shadow border">
+<h2 class="text-lg font-bold">🎨 BG Remover</h2>
+<input type="file" id="bgInput" accept="image/*" class="w-full border rounded p-2 mt-3 text-sm">
+<button id="bgBtn" class="mt-3 w-full bg-pink-600 text-white py-3 rounded-xl font-bold">Remove BG</button>
+<canvas id="bgCanvas" class="mt-3 w-full rounded hidden"></canvas>
+</div>
+<div class="bg-white rounded-2xl p-6 shadow border">
+<h2 class="text-lg font-bold">🔳 QR Generator</h2>
+<input type="text" id="qrText" placeholder="Enter link or text" class="w-full border rounded p-2 mt-3 text-sm">
+<div id="qrcode" class="mt-3 flex justify-center"></div>
 <button id="qrBtn" class="mt-3 w-full bg-black text-white py-3 rounded-xl font-bold">Generate QR</button>
-<div id="qrcode" class="mt-4 flex justify-center"></div>
 </div>
-
-<div class="bg-white mt-10 rounded-2xl p-6 shadow border">
-<h3 class="font-bold">About Antokia.com</h3>
-<p class="text-sm text-gray-600 mt-2">Antokia gives you free tools - Image to PDF, QR Code and more coming soon. No data leaves your device, so 100% safe. Made for India.</p>
+<div class="bg-white rounded-2xl p-6 shadow border">
+<h2 class="text-lg font-bold">🎂 Age Calculator</h2>
+<input type="date" id="dob" class="w-full border rounded p-2 mt-3 text-sm">
+<div id="ageResult" class="mt-3 font-bold text-blue-600"></div>
+<button id="ageBtn" class="mt-3 w-full bg-blue-600 text-white py-3 rounded-xl font-bold">Calculate Age</button>
 </div>
+<div class="bg-white rounded-2xl p-6 shadow border">
+<h2 class="text-lg font-bold">% Percentage Calculator</h2>
+<input type="number" id="per1" placeholder="x%" class="w-full border rounded p-2 mt-3 text-sm">
+<input type="number" id="per2" placeholder="y value" class="w-full border rounded p-2 mt-2 text-sm">
+<div id="perResult" class="mt-3 font-bold text-green-600"></div>
+<button id="perBtn" class="mt-3 w-full bg-green-600 text-white py-3 rounded-xl font-bold">Calculate %</button>
+</div>
+<div class="bg-white rounded-2xl p-6 shadow border">
+<h2 class="text-lg font-bold">📄 Resume Maker</h2>
+<textarea id="resumeText" placeholder="Naam, kaam, education likho..." class="w-full border rounded p-2 mt-3 text-sm h-24"></textarea>
+<button id="resumeBtn" class="mt-3 w-full bg-indigo-600 text-white py-3 rounded-xl font-bold">Download Resume PDF</button>
+</div>
+</div>
+<footer class="text-center text-xs text-gray-400 mt-10 pb-10">© 2026 Antokia.com - Made for India</footer>
 </main>
-
-<footer class="bg-white mt-10 p-6 text-center border-t">
-  <div class="flex justify-center gap-6 text-sm text-gray-600">
-    <a href="/about.html" class="hover:text-blue-600 underline">About Us</a>
-    <a href="/privacy.html" class="hover:text-blue-600 underline">Privacy Policy</a>
-    <a href="/contact.html" class="hover:text-blue-600 underline">Contact</a>
-  </div>
-  <p class="text-xs text-gray-400 mt-3">© 2026 Antokia.com - 100% Free & Private</p>
-</footer>
-
 <script>
-const imgInput=document.getElementById('imgInput'),preview=document.getElementById('preview');let images=[];
-imgInput.addEventListener('change',e=>{images=[];preview.innerHTML='';for(let f of e.target.files){let u=URL.createObjectURL(f);images.push(f);let im=document.createElement('img');im.src=u;im.className='w-20 h-20 object-cover rounded border';preview.appendChild(im);}});
-document.getElementById('toPdfBtn').addEventListener('click',async()=>{if(!images.length){alert('Select images');return;}const{jsPDF}=window.jspdf;const pdf=new jsPDF();for(let i=0;i<images.length;i++){let imgData=await new Promise(r=>{let reader=new FileReader();reader.onload=e=>r(e.target.result);reader.readAsDataURL(images[i]);});let props=pdf.getImageProperties(imgData);let w=pdf.internal.pageSize.getWidth();let h=(props.height*w)/props.width;if(i>0)pdf.addPage();pdf.addImage(imgData,'JPEG',0,0,w,h);}pdf.save('Antokia.pdf');});
-document.getElementById('qrBtn').addEventListener('click',()=>{let t=document.getElementById('qrText').value.trim();if(!t)return;document.getElementById('qrcode').innerHTML='';new QRCode(document.getElementById('qrcode'),{text:t,width:180,height:180});});
+let imgs=[];document.getElementById('imgInput').addEventListener('change',e=>{imgs=[...e.target.files];const p=document.getElementById('preview');p.innerHTML='';imgs.forEach(f=>{const r=new FileReader();r.onload=x=>{let i=document.createElement('img');i.src=x.target.result;i.className='w-16 h-16 object-cover rounded border';p.appendChild(i)};r.readAsDataURL(f)})});
+document.getElementById('toPdfBtn').onclick=async()=>{if(!imgs.length)return alert('Image select karo');const{jsPDF}=window.jspdf;const pdf=new jsPDF();let first=true;for(let f of imgs){let d=await new Promise(r=>{let fr=new FileReader();fr.onload=()=>r(fr.result);fr.readAsDataURL(f)});if(!first)pdf.addPage();first=false;pdf.addImage(d,'JPEG',10,10,190,270);}pdf.save('antokia-images.pdf');};
+document.getElementById('wordToPdfBtn').onclick=async()=>{const file=document.getElementById('wordInput').files[0];if(!file)return alert('Word file select karo');const buf=await file.arrayBuffer();const res=await mammoth.extractRawText({arrayBuffer:buf});const{jsPDF}=window.jspdf;const pdf=new jsPDF();const lines=pdf.splitTextToSize(res.value,180);pdf.text(lines,10,10);pdf.save(file.name.replace('.docx','')+'.pdf');};
+document.getElementById('pdfToWordBtn').onclick=async()=>{const file=document.getElementById('pdfToWordInput').files[0];if(!file)return alert('PDF select karo');const buf=await file.arrayBuffer();const pdf=await pdfjsLib.getDocument(buf).promise;let t='';for(let i=1;i<=pdf.numPages;i++){const page=await pdf.getPage(i);const c=await page.getTextContent();t+=c.items.map(it=>it.str).join(' ')+'\n\n';}const blob=new Blob([t],{type:'application/msword'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=file.name.replace('.pdf','')+'.doc';a.click();};
+document.getElementById('removePageBtn').onclick=async()=>{const file=document.getElementById('pdfPageInput').files[0];const str=document.getElementById('pagesToRemove').value;if(!file||!str)return alert('PDF aur pages likho');const toRemove=str.split(',').map(n=>parseInt(n.trim())-1);const buf=await file.arrayBuffer();const pdf=await PDFLib.PDFDocument.load(buf);const newPdf=await PDFLib.PDFDocument.create();const total=pdf.getPageCount();for(let i=0;i<total;i++){if(!toRemove.includes(i)){const[c]=await newPdf.copyPages(pdf,[i]);newPdf.addPage(c);}}const b=await newPdf.save();const blob=new Blob([b],{type:'application/pdf'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='antokia-removed.pdf';a.click();};
+document.getElementById('compressBtn').onclick=async()=>{const file=document.getElementById('compressInput').files[0];if(!file)return alert('Image select karo');const q=parseFloat(document.getElementById('quality').value);const img=new Image();img.src=URL.createObjectURL(file);await img.decode();const canvas=document.createElement('canvas');canvas.width=img.width;canvas.height=img.height;canvas.getContext('2d').drawImage(img,0,0);canvas.toBlob(b=>{const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='compressed.jpg';a.click();},'image/jpeg',q);};
+document.getElementById('bgBtn').onclick=async()=>{const file=document.getElementById('bgInput').files[0];if(!file)return alert('Image select karo');const img=new Image();img.src=URL.createObjectURL(file);await img.decode();const canvas=document.getElementById('bgCanvas');canvas.width=img.width;canvas.height=img.height;const ctx=canvas.getContext('2d');ctx.drawImage(img,0,0);let d=ctx.getImageData(0,0,canvas.width,canvas.height);for(let i=0;i<d.data.length;i+=4){if(d.data[i]>240&&d.data[i+1]>240&&d.data[i+2]>240){d.data[i+3]=0;}}ctx.putImageData(d,0,0);canvas.classList.remove('hidden');const a=document.createElement('a');a.href=canvas.toDataURL();a.download='no-bg.png';a.click();};
+document.getElementById('qrBtn').onclick=()=>{const t=document.getElementById('qrText').value;if(!t)return alert('Link likho');document.getElementById('qrcode').innerHTML='';new QRCode(document.getElementById('qrcode'),{text:t,width:180,height:180});};
+document.getElementById('ageBtn').onclick=()=>{const dob=new Date(document.getElementById('dob').value);if(!dob.getTime())return alert('DOB select karo');const diff=Date.now()-dob.getTime();const age=new Date(diff).getUTCFullYear()-1970;document.getElementById('ageResult').innerText='Age: '+age+' years';};
+document.getElementById('perBtn').onclick=()=>{const x=parseFloat(document.getElementById('per1').value);const y=parseFloat(document.getElementById('per2').value);if(isNaN(x)||isNaN(y))return alert('Number likho');const res=(x*y)/100;document.getElementById('perResult').innerText=x+'% of '+y+' = '+res;};
+document.getElementById('resumeBtn').onclick=()=>{const txt=document.getElementById('resumeText').value;if(!txt)return alert('Details likho');const{jsPDF}=window.jspdf;const pdf=new jsPDF();pdf.setFontSize(16);pdf.text('Resume',10,10);pdf.setFontSize(11);const lines=pdf.splitTextToSize(txt,180);pdf.text(lines,10,20);pdf.save('resume.pdf');};
 </script>
 </body>
 </html>
