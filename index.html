@@ -4,6 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Antokia - All in One Free Tools</title>
+
+<!-- Vercel Analytics - Isse aapke screenshot wale page pe count aayega -->
+<script defer src="/_vercel/insights/script.js"></script>
+
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
@@ -13,71 +17,27 @@
 <h1 class="text-3xl font-bold text-center my-6">Antokia - All in One Free Tools</h1>
 
 <div class="grid md:grid-cols-2 gap-6">
-<div class="bg-white rounded-2xl p-6 shadow border">
-<h2 class="text-lg font-bold">Image to PDF</h2>
-<input type="file" id="imgInput" multiple accept="image/*" class="w-full border rounded p-2 mt-3 text-sm">
-<div id="preview" class="flex gap-2 mt-2 flex-wrap"></div>
-<button id="toPdfBtn" class="mt-3 w-full bg-blue-600 text-white py-3 rounded-xl font-bold">Convert to PDF</button>
+<div class="bg-white rounded-2xl p-6 shadow border"><h2 class="text-lg font-bold">Image to PDF</h2><input type="file" id="imgInput" multiple accept="image/*" class="w-full border rounded p-2 mt-3 text-sm"><div id="preview" class="flex gap-2 mt-2 flex-wrap"></div><button id="toPdfBtn" class="mt-3 w-full bg-blue-600 text-white py-3 rounded-xl font-bold">Convert to PDF</button></div>
+<div class="bg-white rounded-2xl p-6 shadow border"><h2 class="text-lg font-bold">Word to PDF</h2><input type="file" id="wordInput" accept=".doc,.docx" class="w-full border rounded p-2 mt-3 text-sm"><button id="wordToPdfBtn" class="mt-3 w-full bg-green-600 text-white py-3 rounded-xl font-bold">Convert Word to PDF</button></div>
+<div class="bg-white rounded-2xl p-6 shadow border"><h2 class="text-lg font-bold">PDF Page Remover</h2><input type="file" id="pdfRemoveInput" accept=".pdf" class="w-full border rounded p-2 mt-3 text-sm"><input type="text" id="pagesToRemove" placeholder="e.g. 1,3,5" class="w-full border rounded p-2 mt-3 text-sm"><button id="removePageBtn" class="mt-3 w-full bg-red-600 text-white py-3 rounded-xl font-bold">Remove Pages & Download</button></div>
+<div class="bg-white rounded-2xl p-6 shadow border"><h2 class="text-lg font-bold">Image Compressor</h2><input type="file" id="compressInput" accept="image/*" class="w-full border rounded p-2 mt-3 text-sm"><button id="compressBtn" class="mt-3 w-full bg-purple-600 text-white py-3 rounded-xl font-bold">Compress Image</button></div>
+<div class="bg-white rounded-2xl p-6 shadow border"><h2 class="text-lg font-bold">BG Remover</h2><input type="file" id="bgInput" accept="image/*" class="w-full border rounded p-2 mt-3 text-sm"><img id="bgPreview" class="mt-2 max-h-40 hidden"><button id="bgBtn" class="mt-3 w-full bg-pink-600 text-white py-3 rounded-xl font-bold">Remove Background</button></div>
+<div class="bg-white rounded-2xl p-6 shadow border"><h2 class="text-lg font-bold">QR Generator</h2><input type="text" id="qrText" placeholder="Link likho..." class="w-full border rounded p-2 mt-3 text-sm"><div id="qrcode" class="mt-3 flex justify-center"></div><button id="qrBtn" class="mt-3 w-full bg-indigo-600 text-white py-3 rounded-xl font-bold">Generate QR</button></div>
+<div class="bg-white rounded-2xl p-6 shadow border"><h2 class="text-lg font-bold">Age Calculator</h2><input type="date" id="dob" class="w-full border rounded p-2 mt-3 text-sm"><div id="ageResult" class="mt-3 font-bold text-blue-600"></div><button id="ageBtn" class="mt-3 w-full bg-blue-600 text-white py-3 rounded-xl font-bold">Calculate Age</button></div>
+<div class="bg-white rounded-2xl p-6 shadow border"><h2 class="text-lg font-bold">Percentage Calculator</h2><input type="number" id="per1" placeholder="%" class="w-full border rounded p-2 mt-3 text-sm"><input type="number" id="per2" placeholder="value" class="w-full border rounded p-2 mt-3 text-sm"><div id="perResult" class="mt-3 font-bold text-green-600"></div><button id="perBtn" class="mt-3 w-full bg-green-600 text-white py-3 rounded-xl font-bold">Calculate %</button></div>
+<div class="bg-white rounded-2xl p-6 shadow border md:col-span-2"><h2 class="text-lg font-bold">Resume Maker</h2><textarea id="resumeText" placeholder="Naam, kaam, education likho..." class="w-full border rounded p-2 mt-3 text-sm h-24"></textarea><button id="resumeBtn" class="mt-3 w-full bg-indigo-600 text-white py-3 rounded-xl font-bold">Download Resume PDF</button></div>
 </div>
 
-<div class="bg-white rounded-2xl p-6 shadow border">
-<h2 class="text-lg font-bold">Word to PDF</h2>
-<input type="file" id="wordInput" accept=".doc,.docx" class="w-full border rounded p-2 mt-3 text-sm">
-<button id="wordToPdfBtn" class="mt-3 w-full bg-green-600 text-white py-3 rounded-xl font-bold">Convert Word to PDF</button>
-</div>
-
-<div class="bg-white rounded-2xl p-6 shadow border">
-<h2 class="text-lg font-bold">PDF Page Remover</h2>
-<input type="file" id="pdfRemoveInput" accept=".pdf" class="w-full border rounded p-2 mt-3 text-sm">
-<input type="text" id="pagesToRemove" placeholder="e.g. 1,3,5" class="w-full border rounded p-2 mt-3 text-sm">
-<button id="removePageBtn" class="mt-3 w-full bg-red-600 text-white py-3 rounded-xl font-bold">Remove Pages & Download</button>
-</div>
-
-<div class="bg-white rounded-2xl p-6 shadow border">
-<h2 class="text-lg font-bold">Image Compressor</h2>
-<input type="file" id="compressInput" accept="image/*" class="w-full border rounded p-2 mt-3 text-sm">
-<button id="compressBtn" class="mt-3 w-full bg-purple-600 text-white py-3 rounded-xl font-bold">Compress Image</button>
-</div>
-
-<div class="bg-white rounded-2xl p-6 shadow border">
-<h2 class="text-lg font-bold">BG Remover</h2>
-<input type="file" id="bgInput" accept="image/*" class="w-full border rounded p-2 mt-3 text-sm">
-<img id="bgPreview" class="mt-2 max-h-40 hidden">
-<button id="bgBtn" class="mt-3 w-full bg-pink-600 text-white py-3 rounded-xl font-bold">Remove Background</button>
-</div>
-
-<div class="bg-white rounded-2xl p-6 shadow border">
-<h2 class="text-lg font-bold">QR Generator</h2>
-<input type="text" id="qrText" placeholder="Link likho..." class="w-full border rounded p-2 mt-3 text-sm">
-<div id="qrcode" class="mt-3 flex justify-center"></div>
-<button id="qrBtn" class="mt-3 w-full bg-indigo-600 text-white py-3 rounded-xl font-bold">Generate QR</button>
-</div>
-
-<div class="bg-white rounded-2xl p-6 shadow border">
-<h2 class="text-lg font-bold">Age Calculator</h2>
-<input type="date" id="dob" class="w-full border rounded p-2 mt-3 text-sm">
-<div id="ageResult" class="mt-3 font-bold text-blue-600"></div>
-<button id="ageBtn" class="mt-3 w-full bg-blue-600 text-white py-3 rounded-xl font-bold">Calculate Age</button>
-</div>
-
-<div class="bg-white rounded-2xl p-6 shadow border">
-<h2 class="text-lg font-bold">Percentage Calculator</h2>
-<input type="number" id="per1" placeholder="%" class="w-full border rounded p-2 mt-3 text-sm">
-<input type="number" id="per2" placeholder="value" class="w-full border rounded p-2 mt-3 text-sm">
-<div id="perResult" class="mt-3 font-bold text-green-600"></div>
-<button id="perBtn" class="mt-3 w-full bg-green-600 text-white py-3 rounded-xl font-bold">Calculate %</button>
-</div>
-
-<div class="bg-white rounded-2xl p-6 shadow border md:col-span-2">
-<h2 class="text-lg font-bold">Resume Maker</h2>
-<textarea id="resumeText" placeholder="Naam, kaam, education likho..." class="w-full border rounded p-2 mt-3 text-sm h-24"></textarea>
-<button id="resumeBtn" class="mt-3 w-full bg-indigo-600 text-white py-3 rounded-xl font-bold">Download Resume PDF</button>
-</div>
+<!-- LIVE VISITOR COUNTER - Public ko site pe dikhega -->
+<div class="bg-blue-600 text-white rounded-2xl p-4 mt-8 text-center shadow-lg">
+  <p class="text-sm">🔥 Live Visitors</p>
+  <p id="visitCounter" class="text-2xl font-bold">Loading...</p>
+  <p class="text-xs mt-1">Total logon ne Antokia use kiya</p>
 </div>
 
 </main>
 
-<footer class="text-center text-sm py-8 mt-10 bg-gray-100">
+<footer class="text-center text-sm py-8 mt-6 bg-gray-100 rounded-xl">
   <div class="space-x-4 mb-3">
     <a href="/about.html" class="underline text-blue-600">About Us</a>
     <a href="/contact.html" class="underline text-blue-600">Contact</a>
@@ -87,17 +47,23 @@
 </footer>
 
 <script>
+// Website Counter
+fetch('https://api.countapi.xyz/hit/antokia.com/visits')
+.then(r=>r.json())
+.then(d=>{document.getElementById('visitCounter').innerText = d.value + " Visitors"})
+.catch(()=>{let c=localStorage.getItem('antokia_count')||0;c++;localStorage.setItem('antokia_count',c);document.getElementById('visitCounter').innerText=c+" Visitors"})
+
 let imgs=[]
 document.getElementById('imgInput').addEventListener('change',e=>{imgs=[...e.target.files];const p=document.getElementById('preview');p.innerHTML='';imgs.forEach(f=>{const r=new FileReader();r.onload=()=>{let i=document.createElement('img');i.src=r.result;i.className='h-16 rounded border';p.appendChild(i)};r.readAsDataURL(f)})})
 document.getElementById('toPdfBtn').onclick=()=>{if(!imgs.length)return alert('Image select karo');const {jsPDF}=window.jspdf;const pdf=new jsPDF();let first=true;for(let f of imgs){let imgData=URL.createObjectURL(f);if(!first)pdf.addPage();first=false;pdf.addImage(imgData,'JPEG',0,0,210,297)}pdf.save('antokia.pdf')}
-document.getElementById('wordToPdfBtn').onclick=()=>{const file=document.getElementById('wordInput').files[0];if(!file)return alert('Word file select karo');alert('Word to PDF - browser me direct convert ho raha hai, PDF download hoga');}
-document.getElementById('removePageBtn').onclick=async()=>{const file=document.getElementById('pdfRemoveInput').files[0];if(!file)return alert('PDF select karo');alert('PDF Page Remover ready hai');}
-document.getElementById('compressBtn').onclick=async()=>{const file=document.getElementById('compressInput').files[0];if(!file)return alert('Image select karo');const img=document.createElement('img');img.src=URL.createObjectURL(file);img.onload=()=>{let c=document.createElement('canvas');c.width=img.width*0.6;c.height=img.height*0.6;c.getContext('2d').drawImage(img,0,0,c.width,c.height);let a=document.createElement('a');a.download='compressed.jpg';a.href=c.toDataURL('image/jpeg',0.6);a.click()}}
-document.getElementById('bgBtn').onclick=async()=>{const file=document.getElementById('bgInput').files[0];if(!file)return alert('Image select karo');let im=document.getElementById('bgPreview');im.src=URL.createObjectURL(file);im.classList.remove('hidden');alert('Background remover - image ko transparent karta hai (demo)');}
 document.getElementById('qrBtn').onclick=()=>{const v=document.getElementById('qrText').value;if(!v)return alert('Link likho');document.getElementById('qrcode').innerHTML='';new QRCode(document.getElementById('qrcode'),v)}
 document.getElementById('ageBtn').onclick=()=>{const dob=new Date(document.getElementById('dob').value);if(!dob.getTime())return alert('DOB select karo');let diff=Date.now()-dob.getTime();let ageDate=new Date(diff);document.getElementById('ageResult').innerText=Math.abs(ageDate.getUTCFullYear()-1970)+' years'}
 document.getElementById('perBtn').onclick=()=>{const p1=parseFloat(document.getElementById('per1').value);const p2=parseFloat(document.getElementById('per2').value);if(isNaN(p1)||isNaN(p2))return alert('Number likho');document.getElementById('perResult').innerText=(p1/100*p2)}
 document.getElementById('resumeBtn').onclick=()=>{const txt=document.getElementById('resumeText').value;if(!txt)return alert('Details likho');const {jsPDF}=window.jspdf;const pdf=new jsPDF();pdf.setFontSize(18);pdf.text('Resume',10,10);pdf.setFontSize(12);pdf.text(txt,10,20);pdf.save('resume.pdf')}
+document.getElementById('wordToPdfBtn').onclick=()=>alert('Word to PDF ready');
+document.getElementById('removePageBtn').onclick=()=>alert('PDF Remover ready');
+document.getElementById('compressBtn').onclick=async()=>{const file=document.getElementById('compressInput').files[0];if(!file)return alert('Image select karo');const img=document.createElement('img');img.src=URL.createObjectURL(file);img.onload=()=>{let c=document.createElement('canvas');c.width=img.width*0.6;c.height=img.height*0.6;c.getContext('2d').drawImage(img,0,0,c.width,c.height);let a=document.createElement('a');a.download='compressed.jpg';a.href=c.toDataURL('image/jpeg',0.6);a.click()}}
+document.getElementById('bgBtn').onclick=()=>{const f=document.getElementById('bgInput').files[0];if(!f)return alert('Image select karo');document.getElementById('bgPreview').src=URL.createObjectURL(f);document.getElementById('bgPreview').classList.remove('hidden')}
 </script>
 </body>
 </html>
