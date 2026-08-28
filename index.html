@@ -3,68 +3,132 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Antokia - All in One Free Tools</title>
+<title>Antokia - Free PDF, Image & Resume Tools</title>
+<meta name="description" content="Antokia - Free online tools like Image to PDF, BG Remover, Resume Maker, QR Generator, Age Calculator. 100% Free for India.">
 <meta name="google-site-verification" content="L8KkPsyfWGlG0z9LE1dYPJRnzbcuyNrIkXBcKDu8plw" />
-
-<!-- Vercel Analytics - Isse aapke screenshot wale page pe count aayega -->
-<script defer src="/_vercel/insights/script.js"></script>
-
 <script src="https://cdn.tailwindcss.com"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script defer src="/_vercel/insights/script.js"></script>
 </head>
-<body class="bg-gray-50 p-4">
-<main class="max-w-4xl mx-auto">
-<h1 class="text-3xl font-bold text-center my-6">Antokia - All in One Free Tools</h1>
+<body class="bg-[#f5f5fa]">
 
-<div class="grid md:grid-cols-2 gap-6">
-<div class="bg-white rounded-2xl p-6 shadow border"><h2 class="text-lg font-bold">Image to PDF</h2><input type="file" id="imgInput" multiple accept="image/*" class="w-full border rounded p-2 mt-3 text-sm"><div id="preview" class="flex gap-2 mt-2 flex-wrap"></div><button id="toPdfBtn" class="mt-3 w-full bg-blue-600 text-white py-3 rounded-xl font-bold">Convert to PDF</button></div>
-<div class="bg-white rounded-2xl p-6 shadow border"><h2 class="text-lg font-bold">Word to PDF</h2><input type="file" id="wordInput" accept=".doc,.docx" class="w-full border rounded p-2 mt-3 text-sm"><button id="wordToPdfBtn" class="mt-3 w-full bg-green-600 text-white py-3 rounded-xl font-bold">Convert Word to PDF</button></div>
-<div class="bg-white rounded-2xl p-6 shadow border"><h2 class="text-lg font-bold">PDF Page Remover</h2><input type="file" id="pdfRemoveInput" accept=".pdf" class="w-full border rounded p-2 mt-3 text-sm"><input type="text" id="pagesToRemove" placeholder="e.g. 1,3,5" class="w-full border rounded p-2 mt-3 text-sm"><button id="removePageBtn" class="mt-3 w-full bg-red-600 text-white py-3 rounded-xl font-bold">Remove Pages & Download</button></div>
-<div class="bg-white rounded-2xl p-6 shadow border"><h2 class="text-lg font-bold">Image Compressor</h2><input type="file" id="compressInput" accept="image/*" class="w-full border rounded p-2 mt-3 text-sm"><button id="compressBtn" class="mt-3 w-full bg-purple-600 text-white py-3 rounded-xl font-bold">Compress Image</button></div>
-<div class="bg-white rounded-2xl p-6 shadow border"><h2 class="text-lg font-bold">BG Remover</h2><input type="file" id="bgInput" accept="image/*" class="w-full border rounded p-2 mt-3 text-sm"><img id="bgPreview" class="mt-2 max-h-40 hidden"><button id="bgBtn" class="mt-3 w-full bg-pink-600 text-white py-3 rounded-xl font-bold">Remove Background</button></div>
-<div class="bg-white rounded-2xl p-6 shadow border"><h2 class="text-lg font-bold">QR Generator</h2><input type="text" id="qrText" placeholder="Link likho..." class="w-full border rounded p-2 mt-3 text-sm"><div id="qrcode" class="mt-3 flex justify-center"></div><button id="qrBtn" class="mt-3 w-full bg-indigo-600 text-white py-3 rounded-xl font-bold">Generate QR</button></div>
-<div class="bg-white rounded-2xl p-6 shadow border"><h2 class="text-lg font-bold">Age Calculator</h2><input type="date" id="dob" class="w-full border rounded p-2 mt-3 text-sm"><div id="ageResult" class="mt-3 font-bold text-blue-600"></div><button id="ageBtn" class="mt-3 w-full bg-blue-600 text-white py-3 rounded-xl font-bold">Calculate Age</button></div>
-<div class="bg-white rounded-2xl p-6 shadow border"><h2 class="text-lg font-bold">Percentage Calculator</h2><input type="number" id="per1" placeholder="%" class="w-full border rounded p-2 mt-3 text-sm"><input type="number" id="per2" placeholder="value" class="w-full border rounded p-2 mt-3 text-sm"><div id="perResult" class="mt-3 font-bold text-green-600"></div><button id="perBtn" class="mt-3 w-full bg-green-600 text-white py-3 rounded-xl font-bold">Calculate %</button></div>
-<div class="bg-white rounded-2xl p-6 shadow border md:col-span-2"><h2 class="text-lg font-bold">Resume Maker</h2><textarea id="resumeText" placeholder="Naam, kaam, education likho..." class="w-full border rounded p-2 mt-3 text-sm h-24"></textarea><button id="resumeBtn" class="mt-3 w-full bg-indigo-600 text-white py-3 rounded-xl font-bold">Download Resume PDF</button></div>
+<header class="bg-white shadow-sm sticky top-0 z-50">
+<div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+<h1 class="text-2xl font-extrabold text-[#e5322d]">Antokia</h1>
+<div class="hidden md:block">
+<input id="searchTool" type="text" placeholder="Search tools..." class="border rounded-full px-4 py-2 w-72 text-sm focus:outline-none">
+</div>
+</div>
+</header>
+
+<main class="max-w-6xl mx-auto px-4 py-8">
+<h2 class="text-4xl font-bold text-center">Every tool you need</h2>
+<p class="text-center text-gray-600 mt-2">All tools are 100% FREE and easy to use!</p>
+
+<!-- Ad Space Top -->
+<div class="bg-gray-200 rounded-xl h-24 mt-6 flex items-center justify-center text-gray-500 text-sm">Ad Space - Top Banner (AdSense)</div>
+
+<!-- Categories -->
+<div class="mt-10">
+<h3 class="font-bold text-lg mb-4"><i class="fa-solid fa-file-pdf text-red-500"></i> PDF Tools</h3>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+
+<a href="/image-to-pdf.html" class="tool-card bg-white p-6 rounded-2xl shadow hover:shadow-lg border text-center">
+<div class="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center mx-auto text-red-500 text-2xl"><i class="fa-solid fa-image"></i></div>
+<h4 class="font-bold mt-3 text-sm">Image to PDF</h4>
+<p class="text-xs text-gray-500 mt-1">JPG to PDF</p>
+</a>
+
+<a href="/word-to-pdf.html" class="tool-card bg-white p-6 rounded-2xl shadow hover:shadow-lg border text-center">
+<div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mx-auto text-blue-600 text-2xl"><i class="fa-solid fa-file-word"></i></div>
+<h4 class="font-bold mt-3 text-sm">Word to PDF</h4>
+<p class="text-xs text-gray-500 mt-1">Docx to PDF</p>
+</a>
+
+<a href="/pdf-remover.html" class="tool-card bg-white p-6 rounded-2xl shadow hover:shadow-lg border text-center">
+<div class="w-14 h-14 bg-orange-100 rounded-xl flex items-center justify-center mx-auto text-orange-500 text-2xl"><i class="fa-solid fa-file-circle-minus"></i></div>
+<h4 class="font-bold mt-3 text-sm">Remove Pages</h4>
+<p class="text-xs text-gray-500 mt-1">Delete PDF pages</p>
+</a>
+
 </div>
 
-<!-- LIVE VISITOR COUNTER - Public ko site pe dikhega -->
-<div class="bg-blue-600 text-white rounded-2xl p-4 mt-8 text-center shadow-lg">
-  <p class="text-sm">🔥 Live Visitors</p>
-  <p id="visitCounter" class="text-2xl font-bold">Loading...</p>
-  <p class="text-xs mt-1">Total logon ne Antokia use kiya</p>
+<h3 class="font-bold text-lg mb-4 mt-8"><i class="fa-solid fa-wand-magic-sparkles text-purple-500"></i> Image Tools</h3>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+
+<a href="/compress.html" class="tool-card bg-white p-6 rounded-2xl shadow hover:shadow-lg border text-center">
+<div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mx-auto text-purple-600 text-2xl"><i class="fa-solid fa-minimize"></i></div>
+<h4 class="font-bold mt-3 text-sm">Compress Image</h4>
+<p class="text-xs text-gray-500 mt-1">Reduce size</p>
+</a>
+
+<a href="/bg-remover.html" class="tool-card bg-white p-6 rounded-2xl shadow hover:shadow-lg border text-center">
+<div class="w-14 h-14 bg-pink-100 rounded-xl flex items-center justify-center mx-auto text-pink-500 text-2xl"><i class="fa-solid fa-eraser"></i></div>
+<h4 class="font-bold mt-3 text-sm">BG Remover</h4>
+<p class="text-xs text-gray-500 mt-1">Remove background</p>
+</a>
+
+<a href="/qr-generator.html" class="tool-card bg-white p-6 rounded-2xl shadow hover:shadow-lg border text-center">
+<div class="w-14 h-14 bg-indigo-100 rounded-xl flex items-center justify-center mx-auto text-indigo-600 text-2xl"><i class="fa-solid fa-qrcode"></i></div>
+<h4 class="font-bold mt-3 text-sm">QR Generator</h4>
+<p class="text-xs text-gray-500 mt-1">Create QR Code</p>
+</a>
+
+</div>
+
+<h3 class="font-bold text-lg mb-4 mt-8"><i class="fa-solid fa-calculator text-green-500"></i> Other Tools</h3>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+
+<a href="/age-calculator.html" class="tool-card bg-white p-6 rounded-2xl shadow hover:shadow-lg border text-center">
+<div class="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center mx-auto text-green-600 text-2xl"><i class="fa-solid fa-cake-candles"></i></div>
+<h4 class="font-bold mt-3 text-sm">Age Calculator</h4>
+<p class="text-xs text-gray-500 mt-1">Calculate age</p>
+</a>
+
+<a href="/percentage.html" class="tool-card bg-white p-6 rounded-2xl shadow hover:shadow-lg border text-center">
+<div class="w-14 h-14 bg-yellow-100 rounded-xl flex items-center justify-center mx-auto text-yellow-600 text-2xl"><i class="fa-solid fa-percent"></i></div>
+<h4 class="font-bold mt-3 text-sm">% Calculator</h4>
+<p class="text-xs text-gray-500 mt-1">Percent calc</p>
+</a>
+
+<a href="/resume-maker.html" class="tool-card bg-white p-6 rounded-2xl shadow hover:shadow-lg border text-center md:col-span-2">
+<div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mx-auto text-blue-600 text-2xl"><i class="fa-solid fa-file-lines"></i></div>
+<h4 class="font-bold mt-3 text-sm">Resume Maker</h4>
+<p class="text-xs text-gray-500 mt-1">Make professional resume</p>
+</a>
+
+</div>
+</div>
+
+<!-- Visitor Counter -->
+<div class="bg-[#e5322d] text-white rounded-2xl p-4 mt-10 text-center shadow">
+<p class="text-sm">🔥 Live Visitors</p>
+<p id="visitCounter" class="text-2xl font-bold">Loading...</p>
 </div>
 
 </main>
 
-<footer class="text-center text-sm py-8 mt-6 bg-gray-100 rounded-xl">
-  <div class="space-x-4 mb-3">
-    <a href="/about.html" class="underline text-blue-600">About Us</a>
-    <a href="/contact.html" class="underline text-blue-600">Contact</a>
-    <a href="/privacy.html" class="underline text-blue-600">Privacy Policy</a>
-  </div>
-  <p>© 2026 Antokia.com - Made for India</p>
+<footer class="text-center text-sm py-8 mt-6 bg-white border-t">
+<div class="space-x-4 mb-3">
+<a href="/about.html" class="underline text-blue-600">About</a>
+<a href="/contact.html" class="underline text-blue-600">Contact</a>
+<a href="/privacy.html" class="underline text-blue-600">Privacy</a>
+</div>
+<p>© 2026 Antokia.com - Made for India</p>
 </footer>
 
 <script>
-// Website Counter
 fetch('https://api.countapi.xyz/hit/antokia.com/visits')
-.then(r=>r.json())
-.then(d=>{document.getElementById('visitCounter').innerText = d.value + " Visitors"})
+.then(r=>r.json()).then(d=>{document.getElementById('visitCounter').innerText=d.value+" Visitors"})
 .catch(()=>{let c=localStorage.getItem('antokia_count')||0;c++;localStorage.setItem('antokia_count',c);document.getElementById('visitCounter').innerText=c+" Visitors"})
 
-let imgs=[]
-document.getElementById('imgInput').addEventListener('change',e=>{imgs=[...e.target.files];const p=document.getElementById('preview');p.innerHTML='';imgs.forEach(f=>{const r=new FileReader();r.onload=()=>{let i=document.createElement('img');i.src=r.result;i.className='h-16 rounded border';p.appendChild(i)};r.readAsDataURL(f)})})
-document.getElementById('toPdfBtn').onclick=()=>{if(!imgs.length)return alert('Image select karo');const {jsPDF}=window.jspdf;const pdf=new jsPDF();let first=true;for(let f of imgs){let imgData=URL.createObjectURL(f);if(!first)pdf.addPage();first=false;pdf.addImage(imgData,'JPEG',0,0,210,297)}pdf.save('antokia.pdf')}
-document.getElementById('qrBtn').onclick=()=>{const v=document.getElementById('qrText').value;if(!v)return alert('Link likho');document.getElementById('qrcode').innerHTML='';new QRCode(document.getElementById('qrcode'),v)}
-document.getElementById('ageBtn').onclick=()=>{const dob=new Date(document.getElementById('dob').value);if(!dob.getTime())return alert('DOB select karo');let diff=Date.now()-dob.getTime();let ageDate=new Date(diff);document.getElementById('ageResult').innerText=Math.abs(ageDate.getUTCFullYear()-1970)+' years'}
-document.getElementById('perBtn').onclick=()=>{const p1=parseFloat(document.getElementById('per1').value);const p2=parseFloat(document.getElementById('per2').value);if(isNaN(p1)||isNaN(p2))return alert('Number likho');document.getElementById('perResult').innerText=(p1/100*p2)}
-document.getElementById('resumeBtn').onclick=()=>{const txt=document.getElementById('resumeText').value;if(!txt)return alert('Details likho');const {jsPDF}=window.jspdf;const pdf=new jsPDF();pdf.setFontSize(18);pdf.text('Resume',10,10);pdf.setFontSize(12);pdf.text(txt,10,20);pdf.save('resume.pdf')}
-document.getElementById('wordToPdfBtn').onclick=()=>alert('Word to PDF ready');
-document.getElementById('removePageBtn').onclick=()=>alert('PDF Remover ready');
-document.getElementById('compressBtn').onclick=async()=>{const file=document.getElementById('compressInput').files[0];if(!file)return alert('Image select karo');const img=document.createElement('img');img.src=URL.createObjectURL(file);img.onload=()=>{let c=document.createElement('canvas');c.width=img.width*0.6;c.height=img.height*0.6;c.getContext('2d').drawImage(img,0,0,c.width,c.height);let a=document.createElement('a');a.download='compressed.jpg';a.href=c.toDataURL('image/jpeg',0.6);a.click()}}
-document.getElementById('bgBtn').onclick=()=>{const f=document.getElementById('bgInput').files[0];if(!f)return alert('Image select karo');document.getElementById('bgPreview').src=URL.createObjectURL(f);document.getElementById('bgPreview').classList.remove('hidden')}
+document.getElementById('searchTool').addEventListener('input',function(e){
+let val=e.target.value.toLowerCase();
+document.querySelectorAll('.tool-card').forEach(card=>{
+let txt=card.innerText.toLowerCase();
+card.style.display=txt.includes(val)?'block':'none';
+})
+})
 </script>
 </body>
 </html>
