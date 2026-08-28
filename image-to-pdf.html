@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image to PDF - Convert JPG to PDF Free | Antokia</title>
+<meta name="description" content="Free Image to PDF converter. Convert JPG, PNG to PDF in seconds. No watermark.">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body class="bg-[#f5f5fa]">
+<header class="bg-white shadow-sm">
+<div class="max-w-6xl mx-auto px-4 py-3 flex justify-between">
+<a href="/" class="text-2xl font-extrabold text-[#e5322d]">Antokia</a>
+<a href="/" class="text-sm underline">← All Tools</a>
+</div>
+</header>
+
+<main class="max-w-3xl mx-auto px-4 py-8">
+<h1 class="text-3xl font-bold text-center">Image to PDF</h1>
+<p class="text-center text-gray-500 text-sm mt-2">Convert your images to PDF for free</p>
+
+<div class="bg-gray-200 rounded-xl h-20 mt-6 flex items-center justify-center text-gray-500 text-xs">Ad - Top Banner</div>
+
+<div class="bg-white rounded-2xl p-6 shadow border mt-6">
+<input type="file" id="imgInput" multiple accept="image/*" class="w-full border-2 border-dashed rounded-xl p-8 text-center">
+<div id="preview" class="flex gap-2 mt-4 flex-wrap"></div>
+<button id="toPdfBtn" class="mt-4 w-full bg-[#e5322d] text-white py-4 rounded-xl font-bold text-lg">Convert to PDF & Download</button>
+</div>
+
+<div class="bg-gray-200 rounded-xl h-20 mt-6 flex items-center justify-center text-gray-500 text-xs">Ad - Bottom Banner</div>
+
+<div class="bg-white rounded-xl p-4 mt-6 text-sm text-gray-600">
+<h3 class="font-bold">How to use?</h3>
+<p class="mt-2">1. Select images 2. Click Convert 3. PDF download ho jayega. No limit, 100% free!</p>
+</div>
+</main>
+
+<script>
+let imgs=[]
+document.getElementById('imgInput').addEventListener('change',e=>{
+imgs=[...e.target.files];
+const p=document.getElementById('preview');p.innerHTML='';
+imgs.forEach(f=>{const r=new FileReader();r.onload=()=>{let i=document.createElement('img');i.src=r.result;i.className='h-20 rounded border';p.appendChild(i)};r.readAsDataURL(f)})
+})
+document.getElementById('toPdfBtn').onclick=()=>{
+if(!imgs.length)return alert('Image select karo Jane!');
+const {jsPDF}=window.jspdf;const pdf=new jsPDF();let first=true;
+let loaded=0;
+imgs.forEach((f,idx)=>{
+let url=URL.createObjectURL(f);
+let img=new Image();img.src=url;
+img.onload=()=>{
+if(!first)pdf.addPage();first=false;
+pdf.addImage(img,'JPEG',0,0,210,297);
+loaded++;
+if(loaded===imgs.length)pdf.save('antokia-image-to-pdf.pdf');
+}
+})
+}
+</script>
+</body>
+</html>
