@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BG Remover - Remove Background Free | Antokia</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#f5f5fa]">
+<header class="bg-white shadow-sm sticky top-0">
+<div class="max-w-5xl mx-auto px-4 py-3 flex justify-between">
+<a href="/" class="font-extrabold text-[#e5322d] text-xl">Antokia</a>
+<a href="/" class="text-sm underline">← All Tools</a>
+</div>
+</header>
+<main class="max-w-3xl mx-auto px-4 py-8">
+<h1 class="text-3xl font-bold text-center">Background Remover</h1>
+<p class="text-center text-gray-500 text-sm mt-2">Remove image background automatically - Free</p>
+<div class="bg-gray-200 h-20 rounded-xl mt-6 flex items-center justify-center text-xs">Ad Top</div>
+<div class="bg-white rounded-2xl p-6 shadow border mt-6">
+<input type="file" id="bgInput" accept="image/*" class="w-full border-2 border-dashed rounded-xl p-8 bg-[#fafafa]">
+<div class="grid grid-cols-2 gap-3 mt-4">
+<img id="original" class="hidden rounded-xl border w-full">
+<img id="result" class="hidden rounded-xl border w-full">
+</div>
+<canvas id="canvas" class="hidden"></canvas>
+<p id="status" class="text-sm text-center mt-3 font-bold text-purple-600"></p>
+<button id="dl" class="mt-4 w-full bg-purple-600 text-white py-4 rounded-xl font-bold hidden">Download Transparent PNG</button>
+<p class="text-[11px] text-gray-400 mt-3 text-center">Works offline - No upload - Privacy safe</p>
+</div>
+<div class="bg-gray-200 h-20 rounded-xl mt-6 flex items-center justify-center text-xs">Ad Bottom</div>
+</main>
+<script>
+let imgObj=null;
+document.getElementById('bgInput').addEventListener('change',e=>{
+let file=e.target.files[0]; if(!file) return;
+document.getElementById('status').innerText="Processing...";
+let img=new Image();
+img.onload=()=>{
+let c=document.getElementById('canvas');
+c.width=img.width; c.height=img.height;
+let ctx=c.getContext('2d');
+ctx.drawImage(img,0,0);
+// Simple BG removal - make white-ish pixels transparent
+let imgData=ctx.getImageData(0,0,c.width,c.height);
+let data=imgData.data;
+for(let i=0;i<data.length;i+=4){
+if(data[i]>240 && data[i+1]>240 && data[i+2]>240){
+data[i+3]=0;
+}
+}
+ctx.putImageData(imgData,0,0);
+document.getElementById('result').src=c.toDataURL();
+document.getElementById('result').classList.remove('hidden');
+document.getElementById('original').src=URL.createObjectURL(file);
+document.getElementById('original').classList.remove('hidden');
+document.getElementById('dl').classList.remove('hidden');
+document.getElementById('status').innerText="Done! White BG Removed ✓";
+}
+img.src=URL.createObjectURL(file);
+imgObj=file;
+});
+document.getElementById('dl').onclick=()=>{
+let c=document.getElementById('canvas');
+let a=document.createElement('a');a.href=c.toDataURL();a.download="antokia-no-bg.png";a.click();
+}
+</script>
+</body>
+</html>
