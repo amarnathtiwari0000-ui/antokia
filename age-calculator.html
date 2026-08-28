@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Age Calculator - Exact Age Free | Antokia</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#f5f5fa]">
+<header class="bg-white shadow-sm sticky top-0">
+<div class="max-w-5xl mx-auto px-4 py-3 flex justify-between">
+<a href="/" class="font-extrabold text-[#e5322d] text-xl">Antokia</a>
+<a href="/" class="text-sm underline">← All Tools</a>
+</div>
+</header>
+<main class="max-w-3xl mx-auto px-4 py-8">
+<h1 class="text-3xl font-bold text-center">Age Calculator</h1>
+<p class="text-center text-gray-500 text-sm mt-2">Calculate exact age - Years, Months, Days</p>
+<div class="bg-gray-200 h-20 rounded-xl mt-6 flex items-center justify-center text-xs">Ad Top</div>
+<div class="bg-white rounded-2xl p-6 shadow border mt-6">
+<label class="text-sm font-bold">Apna Date of Birth chuno:</label>
+<input type="date" id="dob" class="w-full border rounded-xl p-4 mt-2 text-sm">
+<button id="calcBtn" class="mt-4 w-full bg-[#e5322d] text-white py-4 rounded-xl font-bold">Calculate Age</button>
+<div id="result" class="mt-6 hidden">
+<div class="grid grid-cols-3 gap-3 text-center">
+<div class="bg-[#fff1f0] p-4 rounded-xl"><p id="years" class="text-2xl font-extrabold text-[#e5322d]">0</p><p class="text-xs">Years</p></div>
+<div class="bg-[#fff1f0] p-4 rounded-xl"><p id="months" class="text-2xl font-extrabold text-[#e5322d]">0</p><p class="text-xs">Months</p></div>
+<div class="bg-[#fff1f0] p-4 rounded-xl"><p id="days" class="text-2xl font-extrabold text-[#e5322d]">0</p><p class="text-xs">Days</p></div>
+</div>
+<p id="total" class="text-sm text-center mt-4 text-gray-600 font-medium"></p>
+</div>
+</div>
+<div class="bg-gray-200 h-20 rounded-xl mt-6 flex items-center justify-center text-xs">Ad Bottom</div>
+</main>
+<script>
+document.getElementById('calcBtn').onclick=()=>{
+let dobVal=document.getElementById('dob').value;
+if(!dobVal) return alert('DOB select karo Jane!');
+let dob=new Date(dobVal);
+let now=new Date();
+let diff=now-dob;
+let years=now.getFullYear()-dob.getFullYear();
+let months=now.getMonth()-dob.getMonth();
+let days=now.getDate()-dob.getDate();
+if(days<0){months--;let prevMonth=new Date(now.getFullYear(),now.getMonth(),0).getDate();days+=prevMonth;}
+if(months<0){years--;months+=12;}
+document.getElementById('years').innerText=years;
+document.getElementById('months').innerText=months;
+document.getElementById('days').innerText=days;
+document.getElementById('total').innerText=`Total: ${Math.floor(diff/(1000*60*60*24))} days old | ${Math.floor(diff/(1000*60*60))} hours`;
+document.getElementById('result').classList.remove('hidden');
+}
+</script>
+</body>
+</html>
