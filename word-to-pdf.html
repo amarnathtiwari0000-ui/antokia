@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Word to PDF - Convert Docx to PDF Free | Antokia</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.2/mammoth.browser.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body class="bg-[#f5f5fa]">
+<header class="bg-white shadow-sm">
+<div class="max-w-3xl mx-auto px-4 py-3 flex justify-between">
+<a href="/" class="font-extrabold text-[#e5322d] text-xl">Antokia</a>
+<a href="/" class="text-sm underline">← All Tools</a>
+</div>
+</header>
+<main class="max-w-3xl mx-auto px-4 py-8">
+<h1 class="text-3xl font-bold text-center">Word to PDF</h1>
+<p class="text-center text-gray-500 text-sm mt-2">Convert DOCX to PDF - 100% Free</p>
+<div class="bg-gray-200 h-20 rounded-xl mt-6 flex items-center justify-center text-xs text-gray-500">Ad - Top</div>
+<div class="bg-white rounded-2xl p-6 shadow border mt-6">
+<input type="file" id="wordInput" accept=".doc,.docx" class="w-full border-2 border-dashed rounded-xl p-8">
+<div id="status" class="mt-3 text-sm text-blue-600 font-bold"></div>
+<button id="convertBtn" class="mt-4 w-full bg-blue-600 text-white py-4 rounded-xl font-bold">Convert to PDF & Download</button>
+</div>
+<div class="bg-gray-200 h-20 rounded-xl mt-6 flex items-center justify-center text-xs text-gray-500">Ad - Bottom</div>
+</main>
+<script>
+let docText="";
+document.getElementById('wordInput').addEventListener('change',e=>{
+let file=e.target.files[0];
+if(!file) return;
+document.getElementById('status').innerText="Reading Word file...";
+let reader=new FileReader();
+reader.onload=function(ev){
+mammoth.extractRawText({arrayBuffer:ev.target.result}).then(r=>{
+docText=r.value;
+document.getElementById('status').innerText="Ready! Click Convert";
+})
+}
+reader.readAsArrayBuffer(file);
+})
+document.getElementById('convertBtn').onclick=()=>{
+if(!docText) return alert('Pehle Word file select karo Jane!');
+const {jsPDF}=window.jspdf;
+const pdf=new jsPDF();
+pdf.text(docText.substring(0,5000),10,10);
+pdf.save('antokia-word-to-pdf.pdf');
+}
+</script>
+</body>
+</html>
