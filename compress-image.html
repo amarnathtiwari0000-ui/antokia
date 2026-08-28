@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compress Image - Reduce Size Free | Antokia</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#f5f5fa]">
+<header class="bg-white shadow-sm sticky top-0">
+<div class="max-w-5xl mx-auto px-4 py-3 flex justify-between items-center">
+<a href="/" class="font-extrabold text-[#e5322d] text-xl">Antokia</a>
+<a href="/" class="text-sm underline">← All Tools</a>
+</div>
+</header>
+
+<main class="max-w-3xl mx-auto px-4 py-8">
+<h1 class="text-3xl md:text-4xl font-bold text-center">Compress IMAGE</h1>
+<p class="text-center text-gray-500 text-sm mt-2">Reduce image size - JPG, PNG, WEBP - 100% Free</p>
+
+<div class="bg-gray-200 h-[90px] rounded-xl mt-6 flex items-center justify-center text-xs text-gray-500">Ad Slot - Top</div>
+
+<div class="bg-white rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.08)] border border-gray-100 p-6 md:p-8 mt-6">
+<input type="file" id="imgInput" accept="image/*" class="w-full border-2 border-dashed border-gray-300 rounded-xl p-10 text-sm bg-[#fafafa] hover:border-[#e5322d] cursor-pointer">
+
+<div class="mt-6 grid grid-cols-2 gap-4 items-center">
+<div>
+<label class="text-sm font-bold">Quality: <span id="qVal" class="text-[#e5322d]">70%</span></label>
+<input type="range" id="quality" min="10" max="100" value="70" class="w-full accent-[#e5322d]">
+</div>
+<div class="text-right">
+<p id="stats" class="text-xs font-bold text-green-600"></p>
+</div>
+</div>
+
+<img id="preview" class="mt-6 max-h-80 mx-auto hidden rounded-xl border shadow">
+
+<div class="grid grid-cols-2 gap-3 mt-6">
+<button id="compressBtn" class="bg-[#e5322d] text-white py-4 rounded-xl font-bold">Compress Now</button>
+<button id="downloadBtn" class="bg-black text-white py-4 rounded-xl font-bold hidden">Download</button>
+</div>
+
+<p class="text-[11px] text-gray-400 mt-4 text-center">✓ No upload to server ✓ Works offline ✓ Secure</p>
+</div>
+
+<div class="bg-gray-200 h-[90px] rounded-xl mt-6 flex items-center justify-center text-xs text-gray-500">Ad Slot - Bottom</div>
+</main>
+
+<script>
+let originalFile=null, compressedBlob=null;
+document.getElementById('quality').addEventListener('input',e=>{document.getElementById('qVal').innerText=e.target.value+"%"})
+document.getElementById('imgInput').addEventListener('change',e=>{
+originalFile=e.target.files[0];
+if(!originalFile) return;
+document.getElementById('stats').innerText=`Original: ${(originalFile.size/1024).toFixed(1)} KB`;
+let r=new FileReader();
+r.onload=ev=>{
+document.getElementById('preview').src=ev.target.result;
+document.getElementById('preview').classList.remove('hidden');
+};
+r.readAsDataURL(originalFile);
+});
+document.getElementById('compressBtn').onclick=()=>{
+if(!originalFile) return alert('Pehle image select karo Jane!');
+let img=new Image();
+img.onload=()=>{
+let canvas=document.createElement('canvas');
+canvas.width=img.width; canvas.height=img.height;
+canvas.getContext('2d').drawImage(img,0,0);
+let q=document.getElementById('quality').value/100;
+canvas.toBlob(b=>{
+compressedBlob=b;
+document.getElementById('preview').src=URL.createObjectURL(b);
+document.getElementById('downloadBtn').classList.remove('hidden');
+document.getElementById('stats').innerText=`${(originalFile.size/1024).toFixed(1)}KB → ${(b.size/1024).toFixed(1)}KB | Saved ${ (100 - (b.size/originalFile.size*100)).toFixed(0)}%`;
+},'image/jpeg',q);
+};
+img.src=URL.createObjectURL(originalFile);
+};
+document.getElementById('downloadBtn').onclick=()=>{
+let a=document.createElement('a');a.href=URL.createObjectURL(compressedBlob);a.download="antokia-compressed.jpg";a.click();
+}
+</script>
+</body>
+</html>
