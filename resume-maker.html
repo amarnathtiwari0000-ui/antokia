@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resume Maker - Free Builder | Antokia</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body class="bg-[#f5f5fa]">
+<header class="bg-white shadow-sm sticky top-0 z-10">
+<div class="max-w-6xl mx-auto px-4 py-3 flex justify-between">
+<a href="/" class="font-extrabold text-[#e5322d] text-xl">Antokia</a>
+<a href="/" class="text-sm underline">← All Tools</a>
+</div>
+</header>
+
+<main class="max-w-6xl mx-auto px-4 py-6 grid md:grid-cols-2 gap-6">
+<!-- FORM -->
+<div class="bg-white rounded-2xl p-6 shadow border h-fit">
+<h2 class="font-bold text-lg">Fill Your Details</h2>
+<input id="name" placeholder="Full Name - Jane Doe" class="w-full border rounded-xl p-3 mt-3 text-sm">
+<input id="role" placeholder="Role - e.g. Graphic Designer" class="w-full border rounded-xl p-3 mt-3 text-sm">
+<input id="email" placeholder="Email" class="w-full border rounded-xl p-3 mt-3 text-sm">
+<input id="phone" placeholder="Phone" class="w-full border rounded-xl p-3 mt-3 text-sm">
+<textarea id="about" placeholder="About you..." class="w-full border rounded-xl p-3 mt-3 text-sm h-20"></textarea>
+<textarea id="education" placeholder="Education - e.g. B.Com 2022 Mumbai University" class="w-full border rounded-xl p-3 mt-3 text-sm h-20"></textarea>
+<textarea id="experience" placeholder="Experience - e.g. 2 years at XYZ Company" class="w-full border rounded-xl p-3 mt-3 text-sm h-20"></textarea>
+<textarea id="skills" placeholder="Skills - e.g. Photoshop, Canva, Excel" class="w-full border rounded-xl p-3 mt-3 text-sm h-20"></textarea>
+<button id="updateBtn" class="mt-4 w-full bg-black text-white py-3 rounded-xl font-bold">Update Preview</button>
+<button id="downloadBtn" class="mt-2 w-full bg-[#e5322d] text-white py-4 rounded-xl font-bold">Download PDF Resume</button>
+</div>
+
+<!-- PREVIEW -->
+<div class="bg-white rounded-2xl p-8 shadow border">
+<div id="resume">
+<h1 id="pName" class="text-3xl font-extrabold">Your Name</h1>
+<p id="pRole" class="text-[#e5322d] font-bold mt-1">Your Role</p>
+<div class="flex gap-4 text-xs text-gray-600 mt-2"><span id="pEmail">email@example.com</span><span id="pPhone">+91 00000 00000</span></div>
+<hr class="my-4">
+<h3 class="font-bold text-sm">ABOUT ME</h3>
+<p id="pAbout" class="text-sm text-gray-600 mt-1">Write about yourself...</p>
+<h3 class="font-bold text-sm mt-5">EDUCATION</h3>
+<p id="pEdu" class="text-sm text-gray-600 mt-1 whitespace-pre-line">Your education...</p>
+<h3 class="font-bold text-sm mt-5">EXPERIENCE</h3>
+<p id="pExp" class="text-sm text-gray-600 mt-1 whitespace-pre-line">Your experience...</p>
+<h3 class="font-bold text-sm mt-5">SKILLS</h3>
+<p id="pSkills" class="text-sm text-gray-600 mt-1 whitespace-pre-line">Your skills...</p>
+</div>
+</div>
+</main>
+
+<script>
+function update(){
+document.getElementById('pName').innerText=document.getElementById('name').value||'Your Name';
+document.getElementById('pRole').innerText=document.getElementById('role').value||'Your Role';
+document.getElementById('pEmail').innerText=document.getElementById('email').value||'email@example.com';
+document.getElementById('pPhone').innerText=document.getElementById('phone').value||'+91 00000 00000';
+document.getElementById('pAbout').innerText=document.getElementById('about').value||'Write about yourself...';
+document.getElementById('pEdu').innerText=document.getElementById('education').value||'Your education...';
+document.getElementById('pExp').innerText=document.getElementById('experience').value||'Your experience...';
+document.getElementById('pSkills').innerText=document.getElementById('skills').value||'Your skills...';
+}
+document.getElementById('updateBtn').onclick=update;
+document.getElementById('downloadBtn').onclick=()=>{
+update();
+let el=document.getElementById('resume');
+let opt={margin:0.5,filename:'Antokia-Resume.pdf',image:{type:'jpeg',quality:0.98},html2canvas:{scale:2},jsPDF:{unit:'in',format:'letter',orientation:'portrait'}};
+html2pdf().set(opt).from(el).save();
+}
+</script>
+</body>
+</html>
