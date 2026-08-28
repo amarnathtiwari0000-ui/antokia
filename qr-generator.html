@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QR Generator - Free QR Maker | Antokia</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body class="bg-[#f5f5fa]">
+<header class="bg-white shadow-sm sticky top-0">
+<div class="max-w-5xl mx-auto px-4 py-3 flex justify-between">
+<a href="/" class="font-extrabold text-[#e5322d] text-xl">Antokia</a>
+<a href="/" class="text-sm underline">← All Tools</a>
+</div>
+</header>
+<main class="max-w-3xl mx-auto px-4 py-8">
+<h1 class="text-3xl font-bold text-center">QR Code Generator</h1>
+<p class="text-center text-gray-500 text-sm mt-2">Create QR for link, text, wifi - Free</p>
+<div class="bg-gray-200 h-20 rounded-xl mt-6 flex items-center justify-center text-xs">Ad Top</div>
+<div class="bg-white rounded-2xl p-6 shadow border mt-6">
+<input type="text" id="qrText" placeholder="Yaha link ya text daalo Jane..." class="w-full border rounded-xl p-4 text-sm focus:border-[#e5322d] outline-none">
+<div class="grid grid-cols-2 gap-3 mt-4">
+<button id="genBtn" class="bg-[#e5322d] text-white py-4 rounded-xl font-bold">Generate QR</button>
+<button id="dlQr" class="bg-black text-white py-4 rounded-xl font-bold hidden">Download PNG</button>
+</div>
+<div id="qrcode" class="mt-8 flex justify-center bg-white p-4 rounded-xl border"></div>
+<p class="text-[11px] text-gray-400 mt-4 text-center">✓ No ads in QR ✓ Lifetime valid ✓ High quality</p>
+</div>
+<div class="bg-gray-200 h-20 rounded-xl mt-6 flex items-center justify-center text-xs">Ad Bottom</div>
+</main>
+<script>
+document.getElementById('genBtn').onclick=()=>{
+let text=document.getElementById('qrText').value.trim();
+if(!text) return alert('Kuch likho Jane!');
+document.getElementById('qrcode').innerHTML="";
+new QRCode(document.getElementById('qrcode'),{text:text,width:220,height:220,colorDark:"#000",colorLight:"#fff",correctLevel:QRCode.CorrectLevel.H});
+document.getElementById('dlQr').classList.remove('hidden');
+}
+document.getElementById('dlQr').onclick=()=>{
+let img=document.querySelector('#qrcode img');
+if(img){let a=document.createElement('a');a.href=img.src;a.download="antokia-qr.png";a.click();}
+else{
+let canvas=document.querySelector('#qrcode canvas');
+let a=document.createElement('a');a.href=canvas.toDataURL();a.download="antokia-qr.png";a.click();
+}
+}
+</script>
+</body>
+</html>
