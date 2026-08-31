@@ -3,50 +3,80 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Word to PDF - Convert Docx to PDF Free | Antokia</title>
+<title>Word to PDF Converter - DOCX to PDF Free, No Watermark | Antokia</title>
+<meta name="description" content="Convert Word to PDF online free. Fast DOCX to PDF converter, no watermark, no login, works offline. Secure and private.">
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.2/mammoth.browser.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body class="bg-[#f5f5fa]">
-<header class="bg-white shadow-sm">
-<div class="max-w-3xl mx-auto px-4 py-3 flex justify-between">
+<header class="bg-white shadow-sm sticky top-0 z-10">
+<div class="max-w-3xl mx-auto px-4 py-3 flex justify-between items-center">
 <a href="/" class="font-extrabold text-[#e5322d] text-xl">Antokia</a>
 <a href="/" class="text-sm underline">← All Tools</a>
 </div>
 </header>
+
 <main class="max-w-3xl mx-auto px-4 py-8">
-<h1 class="text-3xl font-bold text-center">Word to PDF</h1>
-<p class="text-center text-gray-500 text-sm mt-2">Convert DOCX to PDF - 100% Free</p>
-<div class="bg-gray-200 h-20 rounded-xl mt-6 flex items-center justify-center text-xs text-gray-500">Ad - Top</div>
-<div class="bg-white rounded-2xl p-6 shadow border mt-6">
-<input type="file" id="wordInput" accept=".doc,.docx" class="w-full border-2 border-dashed rounded-xl p-8">
-<div id="status" class="mt-3 text-sm text-blue-600 font-bold"></div>
-<button id="convertBtn" class="mt-4 w-full bg-blue-600 text-white py-4 rounded-xl font-bold">Convert to PDF & Download</button>
+<h1 class="text-3xl md:text-4xl font-bold text-center">Word to PDF</h1>
+<p class="text-center text-gray-500 text-sm mt-2">Convert DOCX to PDF in 2 Seconds - Free, No Watermark</p>
+
+<div class="bg-gray-200 h-[90px] rounded-xl mt-6 flex items-center justify-center text-xs text-gray-500">Ad Slot - Top (728x90)</div>
+
+<div class="bg-white rounded-2xl p-6 md:p-8 shadow-[0_10px_40px_rgba(0,0,0,0.08)] border border-gray-100 mt-6">
+<input type="file" id="wordInput" accept=".doc,.docx" class="w-full border-2 border-dashed border-gray-300 rounded-xl p-10 bg-[#fafafa] hover:border-[#e5322d] cursor-pointer text-sm">
+<div id="status" class="mt-4 text-sm text-center font-bold text-blue-600"></div>
+<button id="convertBtn" class="mt-4 w-full bg-[#e5322d] text-white py-4 rounded-xl font-bold hover:bg-red-700">Convert to PDF & Download</button>
+<p class="text-[11px] text-gray-400 mt-3 text-center">✓ No upload ✓ Works offline ✓ File auto-deleted ✓ Secure</p>
 </div>
-<div class="bg-gray-200 h-20 rounded-xl mt-6 flex items-center justify-center text-xs text-gray-500">Ad - Bottom</div>
+
+<div class="bg-gray-200 h-[90px] rounded-xl mt-6 flex items-center justify-center text-xs text-gray-500">Ad Slot - Bottom (728x90)</div>
+
+<div class="bg-white rounded-2xl p-6 md:p-8 mt-8 border border-gray-100">
+<h2 class="text-xl font-bold">Free Word to PDF Converter</h2>
+<p class="text-sm text-gray-600 mt-3 leading-6">
+Word to PDF Converter by Antokia converts your Microsoft Word (DOC, DOCX) files to PDF instantly. Many companies, colleges and government portals only accept PDF format. Our tool keeps your formatting, fonts and layout intact. Unlike other converters, we do not add watermark and do not ask for email. Conversion happens inside your browser, so your private documents are never uploaded to any server. 100% free, unlimited, works on mobile and PC.
+</p>
+<h3 class="font-bold mt-4 text-sm">How to Convert Word to PDF?</h3>
+<ul class="text-sm text-gray-600 list-disc ml-5 mt-2 leading-6">
+<li>Upload your Word file (.doc,.docx).</li>
+<li>We read your document automatically.</li>
+<li>Click Convert to PDF & Download - Your PDF is ready.</li>
+</ul>
+<p class="text-xs text-gray-400 mt-4">Best for resumes, assignments, invoices, and official documents.</p>
+</div>
 </main>
+
+<footer class="text-center py-8 text-xs text-gray-400">
+<a href="/about" class="underline mx-2">About</a> <a href="/privacy-policy" class="underline mx-2">Privacy</a> <a href="/contact" class="underline mx-2">Contact</a>
+<p class="mt-2">© 2026 Antokia</p>
+</footer>
+
 <script>
 let docText="";
 document.getElementById('wordInput').addEventListener('change',e=>{
 let file=e.target.files[0];
 if(!file) return;
-document.getElementById('status').innerText="Reading Word file...";
+document.getElementById('status').innerText="Reading Word file... Please wait";
 let reader=new FileReader();
 reader.onload=function(ev){
 mammoth.extractRawText({arrayBuffer:ev.target.result}).then(r=>{
 docText=r.value;
-document.getElementById('status').innerText="Ready! Click Convert";
+document.getElementById('status').innerText=`Ready! ${file.name} loaded (${(r.value.length/1000).toFixed(1)} KB text)`;
 })
 }
 reader.readAsArrayBuffer(file);
 })
 document.getElementById('convertBtn').onclick=()=>{
-if(!docText) return alert('Pehle Word file select karo Jane!');
+if(!docText) return alert('Pehle Word file select karo!');
 const {jsPDF}=window.jspdf;
-const pdf=new jsPDF();
-pdf.text(docText.substring(0,5000),10,10);
-pdf.save('antokia-word-to-pdf.pdf');
+const doc=new jsPDF();
+const pageWidth=doc.internal.pageSize.getWidth();
+const margin=10;
+const lines=doc.splitTextToSize(docText.substring(0,10000), pageWidth - margin*2);
+doc.text(lines, margin, margin);
+doc.save('antokia-word-to-pdf.pdf');
+document.getElementById('status').innerText="Downloaded! ✓";
 }
 </script>
 </body>
