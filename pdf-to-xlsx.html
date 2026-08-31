@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PDF to Excel Converter - Free Online | Antokia</title>
+<meta name="description" content="Convert PDF to Excel XLSX free, extract tables from PDF online.">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<style>
+body{font-family:Inter,system-ui;background:#f8fafc;margin:0;padding:20px}
+.container{max-width:700px;margin:30px auto;background:#fff;padding:30px;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.08)}
+h1{text-align:center}
+.drop{border:2px dashed #10b981;padding:40px;text-align:center;border-radius:12px;cursor:pointer;background:#ecfdf5}
+#status{margin-top:20px;text-align:center;font-weight:600}
+button{background:#10b981;color:#fff;border:0;padding:12px 20px;border-radius:8px;cursor:pointer;width:100%;margin-top:15px;font-size:16px}
+table{width:100%;margin-top:15px;border-collapse:collapse;font-size:13px}
+td,th{border:1px solid #ddd;padding:6px}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>PDF to Excel Converter</h1>
+<p style="text-align:center;color:#666">Extract Tables & Text from PDF to Excel</p>
+<div class="drop" id="drop">
+<span>📊 Click or Drag PDF Here</span>
+<input type="file" id="file" accept=".pdf" hidden>
+</div>
+<div id="status"></div>
+<div id="preview"></div>
+<button id="download" style="display:none">Download Excel File (.xlsx)</button>
+</div>
+<script>
+const fileInput=document.getElementById('file');
+const drop=document.getElementById('drop');
+const status=document.getElementById('status');
+const preview=document.getElementById('preview');
+const dlBtn=document.getElementById('download');
+let workbook=null;
+
+drop.onclick=()=>fileInput.click();
+drop.ondragover=e=>{e.preventDefault();drop.style.background='#d1fae5'}
+drop.ondrop=e=>{e.preventDefault();fileInput.files=e.dataTransfer.files;handleFile();}
+fileInput.onchange=handleFile;
+
+async function handleFile(){
+ const file=fileInput.files[0];
+ if(!file) return;
+ status.textContent="Reading PDF...";
+ const reader=new FileReader();
+ reader.onload=async function(){
+   const typedarray=new Uint8Array(this.result);
+   const pdf=await pdfjsLib.getDocument(typedarray).promise;
+   let allRows=[];
+   for(let i=1;i<=pdf.numPages;i++){
+     status.textContent=`Extracting Page ${i}/${pdf.numPages}...`;
+     const page=await pdf.getPage(i);
+     const content=await page.getTextContent();
+     // Simple line grouping
+     let lines={};
+     content.items.forEach(item=>{
+       let y=Math.round(item.transform[5]);
+       if(!lines[y]) lines[y]=[];
+       lines[y].push(item.str);
+     });
+     Object.values(lines).forEach(line=>{
+       allRows.push(line);
+     });
+     allRows.push([]); // empty row for page break
+   }
+   // Create Excel
+   const ws=XLSX.utils.aoa_to_sheet(allRows);
+   workbook=XLSX.utils.book_new();
+   XLSX.utils.book_append_sheet(workbook, ws, "Sheet1");
+
+   // Preview first 10 rows
+   let html="<table><tr><th>Extracted Data (Preview)</th></tr>";
+   allRows.slice(0,10).forEach(r=>{html+=`<tr><td>${r.join(" | ")}</td></tr>`});
+   html+="</table>";
+   preview.innerHTML=html;
+   status.textContent=`Done! ${pdf.numPages} pages extracted to Excel.`;
+   dlBtn.style.display="block";
+ }
+ reader.readAsArrayBuffer(file);
+}
+dlBtn.onclick=()=>{
+ if(!workbook) return;
+ XLSX.writeFile(workbook, "converted.xlsx");
+}
+pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+</script>
+</body>
+</html>
