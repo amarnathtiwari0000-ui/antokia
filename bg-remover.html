@@ -3,59 +3,56 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Background Remover - Person BG Remover Free | Antokia</title>
+<title>BG Remover - Antokia</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.10.0"></script>
-<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/body-pix@2.2.1"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation/selfie_segmentation.js"></script>
 </head>
 <body class="bg-[#f5f5fa]">
-<header class="bg-white shadow-sm p-4 flex justify-between"><a href="/" class="font-bold text-[#e5322d] text-xl">Antokia</a><a href="/" class="text-sm underline">← All Tools</a></header>
-<main class="max-w-3xl mx-auto px-4 py-6">
-<h1 class="text-center text-2xl font-bold">Background Remover (Person)</h1>
-<p class="text-center text-xs text-gray-500 mt-1">Upload Person Photo - Auto BG Remove</p>
-<div class="bg-white rounded-2xl p-6 shadow border mt-6 text-center">
-<input type="file" id="file" accept="image/*" class="block w-full text-sm file:mr-4 file:py-2 file:px-6 file:rounded-full file:border-0 file:bg-[#e5322d] file:text-white file:font-bold">
-<p id="status" class="mt-4 font-bold text-[#e5322d] text-sm">Loading AI... 5 sec</p>
-<div id="box" class="hidden mt-6">
-<div class="grid grid-cols-2 gap-4">
-<div><p class="text-xs font-bold mb-1">Original</p><img id="orig" class="rounded-xl border w-full"></div>
-<div><p class="text-xs font-bold mb-1">Transparent</p><canvas id="canvas" class="rounded-xl border w-full bg-[url('https://i.imgur.com/8Km9tLL.png')]"></canvas></div>
+<header class="bg-white p-4 flex justify-between shadow-sm"><a href="/" class="font-bold text-[#e5322d]">Antokia</a><a href="/" class="text-sm underline">← All Tools</a></header>
+<main class="max-w-3xl mx-auto p-4">
+<h1 class="text-center text-2xl font-bold mt-4">Background Remover (Person)</h1>
+<div class="bg-white rounded-2xl p-6 shadow mt-6 border text-center">
+<input type="file" id="file" accept="image/*" class="w-full text-sm file:mr-4 file:py-2 file:px-6 file:rounded-full file:border-0 file:bg-[#e5322d] file:text-white file:font-bold">
+<p id="status" class="mt-4 text-sm font-bold text-[#e5322d]">Loading AI... 3 sec</p>
+<div id="box" class="hidden grid grid-cols-2 gap-4 mt-4">
+<div><p class="text-xs font-bold">Original</p><img id="orig" class="rounded-xl border w-full"></div>
+<div><p class="text-xs font-bold">Transparent</p><canvas id="canvas" class="rounded-xl border w-full bg-[url('https://i.imgur.com/8Km9tLL.png')]"></canvas></div>
 </div>
-<button id="dl" class="w-full mt-4 bg-black text-white py-3 rounded-xl font-bold">Download Transparent PNG</button>
-</div>
+<button id="dl" class="hidden w-full mt-4 bg-black text-white py-3 rounded-xl font-bold">Download Transparent PNG</button>
 </div>
 </main>
 <script>
-let net;
-async function load(){ net = await bodyPix.load({architecture:'MobileNetV1', outputStride:16, multiplier:0.75, quantBytes:2}); document.getElementById('status').innerText='AI Ready! Upload Now'; }
-load();
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+const status = document.getElementById('status');
+const orig = document.getElementById('orig');
+
+const selfie = new SelfieSegmentation({locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation/${file}`});
+selfie.setOptions({modelSelection: 1});
+selfie.onResults((results) => {
+  canvas.width = results.image.width;
+  canvas.height = results.image.height;
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.drawImage(results.segmentationMask, 0, 0, canvas.width, canvas.height);
+  ctx.globalCompositeOperation = 'source-in';
+  ctx.drawImage(results.image, 0, 0, canvas.width, canvas.height);
+  ctx.globalCompositeOperation = 'source-over';
+  status.innerText = 'Done! ✓';
+  document.getElementById('dl').classList.remove('hidden');
+});
+
+selfie.initialize().then(()=>{ status.innerText='AI Ready! Upload Photo'; });
 
 document.getElementById('file').addEventListener('change', async (e)=>{
   const file=e.target.files[0]; if(!file) return;
-  const orig=document.getElementById('orig');
-  orig.src=URL.createObjectURL(file);
-  await new Promise(r=>orig.onload=r);
   document.getElementById('box').classList.remove('hidden');
-  document.getElementById('status').innerText='Removing Background...';
-  const canvas=document.getElementById('canvas');
-  const segmentation = await net.segmentPerson(orig, {internalResolution:'medium', segmentationThreshold:0.7});
-  const foregroundColor = {r:0,g:0,b:0,a:0};
-  const backgroundColor = {r:0,g:0,b:0,a:255};
-  const backgroundDarkeningMask = bodyPix.toMask(segmentation, foregroundColor, backgroundColor);
-  canvas.width=orig.naturalWidth; canvas.height=orig.naturalHeight;
-  bodyPix.drawMask(canvas, orig, backgroundDarkeningMask, 1, 0, false);
-  // Make background transparent
-  const ctx=canvas.getContext('2d');
-  const imgData=ctx.getImageData(0,0,canvas.width,canvas.height);
-  for(let i=0;i<imgData.data.length;i+=4){
-    if(imgData.data[i]==0 && imgData.data[i+1]==0 && imgData.data[i+2]==0 && imgData.data[i+3]==255){
-      imgData.data[i+3]=0;
-    }
-  }
-  ctx.putImageData(imgData,0,0);
-  document.getElementById('status').innerText='Done! ✓ Background Removed';
-  document.getElementById('dl').onclick=()=>{ const a=document.createElement('a'); a.href=canvas.toDataURL('image/png'); a.download='antokia-no-bg.png'; a.click(); }
+  orig.src = URL.createObjectURL(file);
+  await new Promise(r=>orig.onload=r);
+  status.innerText='Removing Background...';
+  await selfie.send({image: orig});
 });
+
+document.getElementById('dl').onclick=()=>{ const a=document.createElement('a'); a.href=canvas.toDataURL('image/png'); a.download='antokia-no-bg.png'; a.click(); }
 </script>
 </body>
 </html>
