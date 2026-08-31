@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compress PDF - Reduce PDF Size Free | Antokia</title>
+<script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+<style>
+body{font-family:system-ui;background:#f8fafc;margin:0;padding:20px}
+.container{max-width:700px;margin:30px auto;background:#fff;padding:30px;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.08)}
+.drop{border:2px dashed #ef4444;padding:40px;text-align:center;border-radius:12px;background:#fef2f2;cursor:pointer}
+button{background:#ef4444;color:#fff;border:0;padding:12px 20px;border-radius:8px;width:100%;margin-top:15px;font-size:16px;cursor:pointer}
+#stats{display:flex;justify-content:space-around;margin-top:20px;text-align:center}
+</style>
+</head>
+<body>
+<div class="container">
+<h1 style="text-align:center">Compress PDF</h1>
+<p style="text-align:center;color:#666">Reduce PDF size without losing quality</p>
+<div class="drop" id="drop">🗜️ Click or Drop PDF Here<input type="file" id="file" accept=".pdf" hidden></div>
+<div id="stats"></div>
+<div id="status" style="text-align:center;margin-top:15px;font-weight:600"></div>
+<button id="dl" style="display:none">Download Compressed PDF</button>
+</div>
+<script>
+const fileInput=document.getElementById('file'), drop=document.getElementById('drop'), status=document.getElementById('status'), dl=document.getElementById('dl'), stats=document.getElementById('stats');
+let compressedBlob=null, originalSize=0;
+drop.onclick=()=>fileInput.click();
+fileInput.onchange=handle;
+drop.ondragover=e=>e.preventDefault();
+drop.ondrop=e=>{e.preventDefault(); fileInput.files=e.dataTransfer.files; handle();};
+async function handle(){
+ const file=fileInput.files[0]; if(!file) return;
+ originalSize=file.size;
+ status.textContent="Compressing... Please wait";
+ const bytes=await file.arrayBuffer();
+ const pdfDoc=await PDFLib.PDFDocument.load(bytes);
+ // Remove metadata & compress
+ pdfDoc.setTitle(""); pdfDoc.setAuthor(""); pdfDoc.setSubject("");
+ const compressedBytes=await pdfDoc.save({useObjectStreams:true});
+ compressedBlob=new Blob([compressedBytes],{type:"application/pdf"});
+ const newSize=compressedBytes.length;
+ const saved=((originalSize-newSize)/originalSize*100).toFixed(1);
+ stats.innerHTML=`<div><b>Original</b><br>${(originalSize/1024).toFixed(1)} KB</div><div><b>Compressed</b><br>${(newSize/1024).toFixed(1)} KB</div><div><b>Saved</b><br>${saved}%</div>`;
+ status.textContent=saved>0?`Compressed! ${saved}% size reduced`:`Optimized! Ready to download`;
+ dl.style.display="block";
+}
+dl.onclick=()=>{
+ const a=document.createElement('a'); a.href=URL.createObjectURL(compressedBlob); a.download="compressed-antokia.pdf"; a.click();
+}
+</script>
+</body>
+</html>
