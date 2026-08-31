@@ -10,48 +10,38 @@
 <body class="bg-[#f5f5fa]">
 <header class="bg-white p-4 flex justify-between shadow-sm"><a href="/" class="font-bold text-[#e5322d]">Antokia</a><a href="/" class="text-sm underline">← All Tools</a></header>
 <main class="max-w-3xl mx-auto p-4">
-<h1 class="text-center text-2xl font-bold mt-4">Background Remover (Person)</h1>
+<h1 class="text-center text-2xl font-bold mt-4">Background Remover</h1>
+<p class="text-center text-xs text-gray-500">Person Photo - 100% Working</p>
 <div class="bg-white rounded-2xl p-6 shadow mt-6 border text-center">
 <input type="file" id="file" accept="image/*" class="w-full text-sm file:mr-4 file:py-2 file:px-6 file:rounded-full file:border-0 file:bg-[#e5322d] file:text-white file:font-bold">
 <p id="status" class="mt-4 text-sm font-bold text-[#e5322d]">Loading AI... 3 sec</p>
 <div id="box" class="hidden grid grid-cols-2 gap-4 mt-4">
-<div><p class="text-xs font-bold">Original</p><img id="orig" class="rounded-xl border w-full"></div>
-<div><p class="text-xs font-bold">Transparent</p><canvas id="canvas" class="rounded-xl border w-full bg-[url('https://i.imgur.com/8Km9tLL.png')]"></canvas></div>
+<div><p class="text-xs font-bold mb-1">Original</p><img id="orig" class="rounded-xl border w-full"></div>
+<div><p class="text-xs font-bold mb-1">Transparent</p><canvas id="canvas" class="rounded-xl border w-full" style="background-image: linear-gradient(45deg, #eee 25%, transparent 25%), linear-gradient(-45deg, #eee 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #eee 75%), linear-gradient(-45deg, transparent 75%, #eee 75%); background-size: 20px 20px; background-position: 0 0, 0 10px, 10px -10px, -10px 0px;"></canvas></div>
 </div>
 <button id="dl" class="hidden w-full mt-4 bg-black text-white py-3 rounded-xl font-bold">Download Transparent PNG</button>
 </div>
 </main>
 <script>
-const canvas = document.getElementById('canvas');
-const ctx = canvas.getContext('2d');
-const status = document.getElementById('status');
-const orig = document.getElementById('orig');
-
-const selfie = new SelfieSegmentation({locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation/${file}`});
-selfie.setOptions({modelSelection: 1});
-selfie.onResults((results) => {
-  canvas.width = results.image.width;
-  canvas.height = results.image.height;
+const canvas=document.getElementById('canvas'); const ctx=canvas.getContext('2d'); const status=document.getElementById('status'); const orig=document.getElementById('orig');
+const selfie=new SelfieSegmentation({locateFile:(f)=>`https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation/${f}`});
+selfie.setOptions({modelSelection:1});
+selfie.onResults((r)=>{
+  canvas.width=r.image.width; canvas.height=r.image.height;
   ctx.clearRect(0,0,canvas.width,canvas.height);
-  ctx.drawImage(results.segmentationMask, 0, 0, canvas.width, canvas.height);
-  ctx.globalCompositeOperation = 'source-in';
-  ctx.drawImage(results.image, 0, 0, canvas.width, canvas.height);
-  ctx.globalCompositeOperation = 'source-over';
-  status.innerText = 'Done! ✓';
-  document.getElementById('dl').classList.remove('hidden');
+  ctx.drawImage(r.segmentationMask,0,0,canvas.width,canvas.height);
+  ctx.globalCompositeOperation='source-in';
+  ctx.drawImage(r.image,0,0,canvas.width,canvas.height);
+  ctx.globalCompositeOperation='source-over';
+  status.innerText='Done! ✓'; document.getElementById('dl').classList.remove('hidden');
 });
-
-selfie.initialize().then(()=>{ status.innerText='AI Ready! Upload Photo'; });
-
-document.getElementById('file').addEventListener('change', async (e)=>{
+selfie.initialize().then(()=>status.innerText='AI Ready! Upload Photo');
+document.getElementById('file').addEventListener('change', async(e)=>{
   const file=e.target.files[0]; if(!file) return;
   document.getElementById('box').classList.remove('hidden');
-  orig.src = URL.createObjectURL(file);
-  await new Promise(r=>orig.onload=r);
-  status.innerText='Removing Background...';
-  await selfie.send({image: orig});
+  orig.src=URL.createObjectURL(file); await new Promise(r=>orig.onload=r);
+  status.innerText='Removing...'; await selfie.send({image:orig});
 });
-
 document.getElementById('dl').onclick=()=>{ const a=document.createElement('a'); a.href=canvas.toDataURL('image/png'); a.download='antokia-no-bg.png'; a.click(); }
 </script>
 </body>
