@@ -3,112 +3,52 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Background Remover - Free AI No Watermark | Antokia</title>
+<title>Background Remover - Person BG Remover Free | Antokia</title>
 <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.10.0/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/body-pix@2.2.1/dist/body-pix.min.js"></script>
 </head>
 <body class="bg-[#f5f5fa]">
-<header class="bg-white shadow-sm sticky top-0 z-10">
-<div class="max-w-5xl mx-auto px-4 py-3 flex justify-between items-center">
-<a href="/" class="font-extrabold text-[#e5322d] text-xl">Antokia</a>
-<a href="/" class="text-sm underline">← All Tools</a>
-</div>
-</header>
-
-<main class="max-w-3xl mx-auto px-4 py-8">
-<h1 class="text-3xl font-bold text-center">Background Remover</h1>
-<p class="text-center text-gray-500 text-sm mt-2">AI removes background in 2 sec - Transparent PNG - Free</p>
-<div class="bg-gray-200 h-[90px] rounded-xl mt-6 flex items-center justify-center text-xs text-gray-500">Ad - Top</div>
-
+<header class="bg-white shadow-sm p-4 flex justify-between"><a href="/" class="font-extrabold text-[#e5322d] text-xl">Antokia</a><a href="/" class="text-sm underline">← All Tools</a></header>
+<main class="max-w-3xl mx-auto px-4 py-6">
+<h1 class="text-center text-2xl font-bold">Background Remover (Person)</h1>
+<p class="text-center text-xs text-gray-500 mt-1">Best for Person Photos - 2 Sec - Free</p>
 <div class="bg-white rounded-2xl p-6 shadow border mt-6">
-<label for="bgInput" class="block w-full border-2 border-dashed rounded-xl p-10 bg-[#fafafa] hover:border-[#e5322d] cursor-pointer text-center">
-<span class="font-bold text-sm">Click to Upload Image</span><br><span class="text-xs text-gray-400">JPG, PNG, WEBP - Max 10MB</span>
-<input type="file" id="bgInput" accept="image/*" class="hidden">
-</label>
-
-<div id="previewBox" class="hidden mt-6">
-<div class="grid grid-cols-2 gap-4">
-<div><p class="text-xs font-bold mb-2">Original</p><img id="original" class="rounded-xl border w-full max-h-80 object-contain"></div>
-<div><p class="text-xs font-bold mb-2">Result</p><div class="rounded-xl border w-full bg-[url('https://i.imgur.com/8Km9tLL.png')] bg-repeat"><img id="result" class="w-full max-h-80 object-contain"></div></div>
+<input type="file" id="file" accept="image/*" class="block w-full text-sm file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:bg-[#e5322d] file:text-white file:font-bold">
+<p id="status" class="text-center text-sm mt-4 font-bold text-[#e5322d]">Loading AI... 5 sec wait</p>
+<div id="box" class="hidden grid grid-cols-2 gap-4 mt-4">
+<div><p class="text-xs font-bold">Original</p><img id="orig" class="rounded-xl border w-full"></div>
+<div><p class="text-xs font-bold">Transparent</p><canvas id="canvas" class="rounded-xl border w-full bg-[url('https://i.imgur.com/8Km9tLL.png')]"></canvas></div>
 </div>
-<p id="status" class="text-center mt-4 font-bold text-[#e5322d] text-sm"></p>
-<button id="dl" class="hidden w-full mt-4 bg-black text-white py-4 rounded-xl font-bold">Download Transparent PNG</button>
+<button id="dl" class="hidden w-full mt-4 bg-black text-white py-3 rounded-xl font-bold">Download Transparent PNG</button>
 </div>
-</div>
-<div class="bg-gray-200 h-[90px] rounded-xl mt-6 flex items-center justify-center text-xs text-gray-500">Ad - Bottom</div>
 </main>
+<script>
+let net;
+async function load(){ net = await bodyPix.load({architecture:'MobileNetV1', outputStride:16, multiplier:0.75}); document.getElementById('status').innerText='AI Ready! Upload Photo Now'; }
+load();
 
-<script type="module">
-import { AutoModel, AutoProcessor, env } from 'https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.0.0/+esm';
-env.allowLocalModels = false;
-env.useBrowserCache = true;
-
-const input = document.getElementById('bgInput');
-const status = document.getElementById('status');
-const original = document.getElementById('original');
-const result = document.getElementById('result');
-const previewBox = document.getElementById('previewBox');
-const dlBtn = document.getElementById('dl');
-let finalBlob = null;
-
-let model, processor;
-status.innerText = "Loading AI... First time takes 15 sec";
-
-(async () => {
-  try {
-    processor = await AutoProcessor.from_pretrained('Xenova/modnet');
-    model = await AutoModel.from_pretrained('Xenova/modnet');
-    status.innerText = "AI Ready! Upload image now";
-  } catch(e){ status.innerText = "AI Load Failed: " + e.message; }
-})();
-
-input.addEventListener('change', async (e) => {
-  const file = e.target.files[0]; if(!file) return;
-  previewBox.classList.remove('hidden');
-  original.src = URL.createObjectURL(file);
-  status.innerText = "Removing background...";
-  dlBtn.classList.add('hidden');
-
-  try {
-    const img = new Image();
-    img.src = URL.createObjectURL(file);
-    await new Promise(r => img.onload = r);
-
-    const { pixel_values } = await processor(img);
-    const { output } = await model({ input: pixel_values });
-
-    // Convert mask to transparent PNG
-    const canvas = document.createElement('canvas');
-    canvas.width = img.width;
-    canvas.height = img.height;
-    const ctx = canvas.getContext('2d');
-    ctx.drawImage(img, 0, 0);
-    const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-    const mask = output[0].data;
-
-    for(let i=0; i < mask.length; i++){
-      imgData.data[i*4 + 3] = mask[i] * 255;
-    }
-    ctx.putImageData(imgData, 0, 0);
-
-    canvas.toBlob((blob)=>{
-      finalBlob = blob;
-      result.src = URL.createObjectURL(blob);
-      status.innerText = "Done! ✓";
-      dlBtn.classList.remove('hidden');
-    }, 'image/png');
-
-  } catch(err){
-    console.error(err);
-    status.innerText = "Error: Try smaller image (less than 2MB) in Chrome";
+document.getElementById('file').addEventListener('change', async (e)=>{
+  const file=e.target.files[0]; if(!file) return;
+  document.getElementById('box').classList.remove('hidden');
+  document.getElementById('orig').src=URL.createObjectURL(file);
+  document.getElementById('status').innerText='Removing Background...';
+  const img=document.getElementById('orig');
+  await new Promise(r=>img.onload=r);
+  const seg=await net.segmentPerson(img, {internalResolution:'medium', segmentationThreshold:0.7});
+  const canvas=document.getElementById('canvas');
+  canvas.width=img.naturalWidth; canvas.height=img.naturalHeight;
+  const ctx=canvas.getContext('2d');
+  ctx.drawImage(img,0,0);
+  const imgData=ctx.getImageData(0,0,canvas.width,canvas.height);
+  for(let i=0;i<seg.data.length;i++){
+    if(seg.data[i]==0) imgData.data[i*4+3]=0;
   }
+  ctx.putImageData(imgData,0,0);
+  document.getElementById('status').innerText='Done! ✓';
+  document.getElementById('dl').classList.remove('hidden');
+  document.getElementById('dl').onclick=()=>{ const a=document.createElement('a'); a.href=canvas.toDataURL('image/png'); a.download='antokia-no-bg.png'; a.click(); }
 });
-
-dlBtn.onclick = () => {
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(finalBlob);
-  a.download = 'antokia-no-bg.png';
-  a.click();
-}
 </script>
 </body>
 </html>
