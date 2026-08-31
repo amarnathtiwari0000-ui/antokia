@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Merge PDF - Combine PDF Files Free | Antokia</title>
+<script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+<style>
+body{font-family:system-ui;background:#f8fafc;margin:0;padding:20px}
+.container{max-width:700px;margin:30px auto;background:#fff;padding:30px;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.08)}
+.drop{border:2px dashed #6366f1;padding:40px;text-align:center;border-radius:12px;background:#f5f3ff;cursor:pointer}
+.file-list{margin-top:15px}
+.file-item{background:#f1f5f9;padding:8px 12px;border-radius:8px;margin:5px 0;display:flex;justify-content:space-between}
+button{background:#6366f1;color:#fff;border:0;padding:12px 20px;border-radius:8px;width:100%;margin-top:15px;font-size:16px;cursor:pointer}
+</style>
+</head>
+<body>
+<div class="container">
+<h1 style="text-align:center">Merge PDF</h1>
+<p style="text-align:center;color:#666">Combine multiple PDFs into one</p>
+<div class="drop" id="drop">📑 Click to Select Multiple PDFs<input type="file" id="file" accept=".pdf" multiple hidden></div>
+<div class="file-list" id="list"></div>
+<button id="mergeBtn" style="display:none">Merge & Download PDF</button>
+<div id="status" style="text-align:center;margin-top:15px;font-weight:600"></div>
+</div>
+<script>
+const fileInput=document.getElementById('file'), drop=document.getElementById('drop'), list=document.getElementById('list'), mergeBtn=document.getElementById('mergeBtn'), status=document.getElementById('status');
+let files=[];
+drop.onclick=()=>fileInput.click();
+fileInput.onchange=e=>{files=Array.from(e.target.files); render();};
+function render(){
+ list.innerHTML=""; files.forEach((f,i)=>{list.innerHTML+=`<div class="file-item"><span>${i+1}. ${f.name}</span><span>${(f.size/1024/1024).toFixed(2)} MB</span></div>`});
+ if(files.length>1) mergeBtn.style.display="block";
+}
+mergeBtn.onclick=async()=>{
+ status.textContent="Merging...";
+ const mergedPdf=await PDFLib.PDFDocument.create();
+ for(let file of files){
+   const bytes=await file.arrayBuffer();
+   const pdf=await PDFLib.PDFDocument.load(bytes);
+   const pages=await mergedPdf.copyPages(pdf, pdf.getPageIndices());
+   pages.forEach(p=>mergedPdf.addPage(p));
+ }
+ const mergedBytes=await mergedPdf.save();
+ const blob=new Blob([mergedBytes],{type:"application/pdf"});
+ const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download="merged-antokia.pdf"; a.click();
+ status.textContent=`Done! ${files.length} PDFs merged.`;
+}
+</script>
+</body>
+</html>
