@@ -6,13 +6,6 @@
 <title>Background Remover - Remove BG Free, No Watermark | Antokia</title>
 <meta name="description" content="Remove background from image for free using AI. Get transparent PNG in 2 seconds. No watermark, works offline, 100% private.">
 <script src="https://cdn.tailwindcss.com"></script>
-<script type="importmap">
-{
-  "imports": {
-    "@imgly/background-removal": "https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.4.5/dist/background-removal.mjs"
-  }
-}
-</script>
 </head>
 <body class="bg-[#f5f5fa]">
 <header class="bg-white shadow-sm sticky top-0 z-10">
@@ -29,14 +22,19 @@
 <div class="bg-gray-200 h-[90px] rounded-xl mt-6 flex items-center justify-center text-xs text-gray-500">Ad Slot - Top (728x90)</div>
 
 <div class="bg-white rounded-2xl p-6 md:p-8 shadow-[0_10px_40px_rgba(0,0,0,0.08)] border border-gray-100 mt-6">
-<input type="file" id="bgInput" accept="image/*" class="w-full border-2 border-dashed border-gray-300 rounded-xl p-10 bg-[#fafafa] hover:border-[#e5322d] cursor-pointer text-sm">
+<label for="bgInput" class="block w-full border-2 border-dashed border-gray-300 rounded-xl p-10 bg-[#fafafa] hover:border-[#e5322d] cursor-pointer text-center text-sm">
+<span class="font-bold">Click to Upload Image</span><br><span class="text-xs text-gray-400">JPG, PNG, WEBP</span>
+<input type="file" id="bgInput" accept="image/*" class="hidden">
+</label>
 
-<div id="previewBox" class="grid grid-cols-2 gap-4 mt-6 hidden">
-<div><p class="text-xs font-bold mb-2">Original</p><img id="original" class="rounded-xl border w-full"></div>
-<div><p class="text-xs font-bold mb-2">Transparent</p><img id="result" class="rounded-xl border w-full bg-[url('https://i.imgur.com/8Km9tLL.png')]"></div>
+<div id="previewBox" class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6 hidden">
+<div><p class="text-xs font-bold mb-2">Original</p><img id="original" class="rounded-xl border w-full max-h-80 object-contain bg-gray-50"></div>
+<div><p class="text-xs font-bold mb-2">Transparent</p><div class="rounded-xl border w-full bg-[url('https://i.imgur.com/8Km9tLL.png')]"><img id="result" class="w-full max-h-80 object-contain"></div></div>
 </div>
 
 <p id="status" class="text-sm text-center mt-4 font-bold text-[#e5322d]"></p>
+<div class="w-full bg-gray-100 rounded-full h-2 mt-3 hidden" id="progressWrap"><div id="progressBar" class="bg-[#e5322d] h-2 rounded-full" style="width:0%"></div></div>
+
 <button id="dl" class="mt-4 w-full bg-black text-white py-4 rounded-xl font-bold hidden">Download Transparent PNG</button>
 <p class="text-[11px] text-gray-400 mt-3 text-center">✓ No upload to server ✓ Works offline after first load ✓ Secure</p>
 </div>
@@ -45,45 +43,43 @@
 
 <div class="bg-white rounded-2xl p-6 md:p-8 mt-8 border border-gray-100">
 <h2 class="text-xl font-bold">Free AI Background Remover by Antokia</h2>
-<p class="text-sm text-gray-600 mt-3 leading-6">
-Our AI Background Remover automatically removes background from any photo in 2 seconds. Unlike old tools that only remove white color, our AI detects person, product, hair and clothes perfectly. Get a clean transparent background (PNG) for free. No watermark, no email login, unlimited use. All processing happens inside your phone/browser, so your photos never leave your device. 100% private.
-</p>
-<h3 class="font-bold mt-4 text-sm">How to Use?</h3>
-<ul class="text-sm text-gray-600 list-disc ml-5 mt-2 leading-6">
-<li>Upload any JPG, PNG, WEBP image.</li>
-<li>Wait 3-5 seconds (First time AI model downloads ~30MB).</li>
-<li>Download your transparent PNG image.</li>
-</ul>
+<p class="text-sm text-gray-600 mt-3 leading-6">Our AI automatically removes background from any photo in 2 seconds. Unlike old tools that only remove white color, our AI detects person, product, hair and clothes perfectly. Get a clean transparent background (PNG) for free. No watermark, no email login, unlimited use. All processing happens inside your phone/browser, so your photos never leave your device.</p>
 </div>
 </main>
 
 <script type="module">
-import { removeBackground } from "@imgly/background-removal";
+import { removeBackground } from "https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.4.5/dist/index.mjs";
 
 let resultBlob = null;
 const bgInput = document.getElementById('bgInput');
 const status = document.getElementById('status');
+const progressWrap = document.getElementById('progressWrap');
+const progressBar = document.getElementById('progressBar');
 
 bgInput.addEventListener('change', async (e) => {
-  let file = e.target.files[0]; if(!file) return;
+  const file = e.target.files[0]; if(!file) return;
   document.getElementById('previewBox').classList.remove('hidden');
   document.getElementById('original').src = URL.createObjectURL(file);
-  status.innerText = "AI Loading... First time 3-5 sec lagega...";
+  status.innerText = "AI Loading... Pehli baar 20-30MB download hoga";
+  progressWrap.classList.remove('hidden');
   document.getElementById('dl').classList.add('hidden');
 
   try {
     const blob = await removeBackground(file, {
-      progress: (key, current, total) => {
-        if(key === 'fetch:model') status.innerText = `Downloading AI Model ${Math.round(current/total*100)}%...`;
-        else status.innerText = `Removing Background... ${Math.round(current/total*100)}%`;
+      progress: (k, c, t) => {
+        let pct = Math.round((c/t)*100);
+        progressBar.style.width = pct + '%';
+        if(k.includes('model')) status.innerText = `Downloading AI Model ${pct}%...`;
+        else status.innerText = `Removing Background ${pct}%...`;
       }
     });
     resultBlob = blob;
     document.getElementById('result').src = URL.createObjectURL(blob);
     document.getElementById('dl').classList.remove('hidden');
     status.innerText = "Done! Background Removed ✓";
+    progressWrap.classList.add('hidden');
   } catch(err){
-    status.innerText = "Error! Badi image try karo ya dobara upload karo.";
+    status.innerText = "Error! Dusri photo try karo.";
     console.error(err);
   }
 });
