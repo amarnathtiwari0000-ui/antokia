@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Background Remover - Remove BG Free, No Watermark | Antokia</title>
-<meta name="description" content="Remove background from image for free using AI. Get transparent PNG in 2 seconds. No watermark, works offline, 100% private.">
+<title>Background Remover - Free AI No Watermark | Antokia</title>
 <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-[#f5f5fa]">
@@ -16,76 +15,99 @@
 </header>
 
 <main class="max-w-3xl mx-auto px-4 py-8">
-<h1 class="text-3xl md:text-4xl font-bold text-center">Background Remover</h1>
+<h1 class="text-3xl font-bold text-center">Background Remover</h1>
 <p class="text-center text-gray-500 text-sm mt-2">AI removes background in 2 sec - Transparent PNG - Free</p>
+<div class="bg-gray-200 h-[90px] rounded-xl mt-6 flex items-center justify-center text-xs text-gray-500">Ad - Top</div>
 
-<div class="bg-gray-200 h-[90px] rounded-xl mt-6 flex items-center justify-center text-xs text-gray-500">Ad Slot - Top (728x90)</div>
-
-<div class="bg-white rounded-2xl p-6 md:p-8 shadow-[0_10px_40px_rgba(0,0,0,0.08)] border border-gray-100 mt-6">
-<label for="bgInput" class="block w-full border-2 border-dashed border-gray-300 rounded-xl p-10 bg-[#fafafa] hover:border-[#e5322d] cursor-pointer text-center text-sm">
-<span class="font-bold">Click to Upload Image</span><br><span class="text-xs text-gray-400">JPG, PNG, WEBP</span>
+<div class="bg-white rounded-2xl p-6 shadow border mt-6">
+<label for="bgInput" class="block w-full border-2 border-dashed rounded-xl p-10 bg-[#fafafa] hover:border-[#e5322d] cursor-pointer text-center">
+<span class="font-bold text-sm">Click to Upload Image</span><br><span class="text-xs text-gray-400">JPG, PNG, WEBP - Max 10MB</span>
 <input type="file" id="bgInput" accept="image/*" class="hidden">
 </label>
 
-<div id="previewBox" class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6 hidden">
-<div><p class="text-xs font-bold mb-2">Original</p><img id="original" class="rounded-xl border w-full max-h-80 object-contain bg-gray-50"></div>
-<div><p class="text-xs font-bold mb-2">Transparent</p><div class="rounded-xl border w-full bg-[url('https://i.imgur.com/8Km9tLL.png')]"><img id="result" class="w-full max-h-80 object-contain"></div></div>
+<div id="previewBox" class="hidden mt-6">
+<div class="grid grid-cols-2 gap-4">
+<div><p class="text-xs font-bold mb-2">Original</p><img id="original" class="rounded-xl border w-full max-h-80 object-contain"></div>
+<div><p class="text-xs font-bold mb-2">Result</p><div class="rounded-xl border w-full bg-[url('https://i.imgur.com/8Km9tLL.png')] bg-repeat"><img id="result" class="w-full max-h-80 object-contain"></div></div>
 </div>
-
-<p id="status" class="text-sm text-center mt-4 font-bold text-[#e5322d]"></p>
-<div class="w-full bg-gray-100 rounded-full h-2 mt-3 hidden" id="progressWrap"><div id="progressBar" class="bg-[#e5322d] h-2 rounded-full" style="width:0%"></div></div>
-
-<button id="dl" class="mt-4 w-full bg-black text-white py-4 rounded-xl font-bold hidden">Download Transparent PNG</button>
-<p class="text-[11px] text-gray-400 mt-3 text-center">✓ No upload to server ✓ Works offline after first load ✓ Secure</p>
+<p id="status" class="text-center mt-4 font-bold text-[#e5322d] text-sm"></p>
+<button id="dl" class="hidden w-full mt-4 bg-black text-white py-4 rounded-xl font-bold">Download Transparent PNG</button>
 </div>
-
-<div class="bg-gray-200 h-[90px] rounded-xl mt-6 flex items-center justify-center text-xs text-gray-500">Ad Slot - Bottom (728x90)</div>
-
-<div class="bg-white rounded-2xl p-6 md:p-8 mt-8 border border-gray-100">
-<h2 class="text-xl font-bold">Free AI Background Remover by Antokia</h2>
-<p class="text-sm text-gray-600 mt-3 leading-6">Our AI automatically removes background from any photo in 2 seconds. Unlike old tools that only remove white color, our AI detects person, product, hair and clothes perfectly. Get a clean transparent background (PNG) for free. No watermark, no email login, unlimited use. All processing happens inside your phone/browser, so your photos never leave your device.</p>
 </div>
+<div class="bg-gray-200 h-[90px] rounded-xl mt-6 flex items-center justify-center text-xs text-gray-500">Ad - Bottom</div>
 </main>
 
 <script type="module">
-import { removeBackground } from "https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.4.5/dist/index.mjs";
+import { AutoModel, AutoProcessor, env } from 'https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.0.0/+esm';
+env.allowLocalModels = false;
+env.useBrowserCache = true;
 
-let resultBlob = null;
-const bgInput = document.getElementById('bgInput');
+const input = document.getElementById('bgInput');
 const status = document.getElementById('status');
-const progressWrap = document.getElementById('progressWrap');
-const progressBar = document.getElementById('progressBar');
+const original = document.getElementById('original');
+const result = document.getElementById('result');
+const previewBox = document.getElementById('previewBox');
+const dlBtn = document.getElementById('dl');
+let finalBlob = null;
 
-bgInput.addEventListener('change', async (e) => {
+let model, processor;
+status.innerText = "Loading AI... First time takes 15 sec";
+
+(async () => {
+  try {
+    processor = await AutoProcessor.from_pretrained('Xenova/modnet');
+    model = await AutoModel.from_pretrained('Xenova/modnet');
+    status.innerText = "AI Ready! Upload image now";
+  } catch(e){ status.innerText = "AI Load Failed: " + e.message; }
+})();
+
+input.addEventListener('change', async (e) => {
   const file = e.target.files[0]; if(!file) return;
-  document.getElementById('previewBox').classList.remove('hidden');
-  document.getElementById('original').src = URL.createObjectURL(file);
-  status.innerText = "AI Loading... Pehli baar 20-30MB download hoga";
-  progressWrap.classList.remove('hidden');
-  document.getElementById('dl').classList.add('hidden');
+  previewBox.classList.remove('hidden');
+  original.src = URL.createObjectURL(file);
+  status.innerText = "Removing background...";
+  dlBtn.classList.add('hidden');
 
   try {
-    const blob = await removeBackground(file, {
-      progress: (k, c, t) => {
-        let pct = Math.round((c/t)*100);
-        progressBar.style.width = pct + '%';
-        if(k.includes('model')) status.innerText = `Downloading AI Model ${pct}%...`;
-        else status.innerText = `Removing Background ${pct}%...`;
-      }
-    });
-    resultBlob = blob;
-    document.getElementById('result').src = URL.createObjectURL(blob);
-    document.getElementById('dl').classList.remove('hidden');
-    status.innerText = "Done! Background Removed ✓";
-    progressWrap.classList.add('hidden');
+    const img = new Image();
+    img.src = URL.createObjectURL(file);
+    await new Promise(r => img.onload = r);
+
+    const { pixel_values } = await processor(img);
+    const { output } = await model({ input: pixel_values });
+
+    // Convert mask to transparent PNG
+    const canvas = document.createElement('canvas');
+    canvas.width = img.width;
+    canvas.height = img.height;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(img, 0, 0);
+    const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    const mask = output[0].data;
+
+    for(let i=0; i < mask.length; i++){
+      imgData.data[i*4 + 3] = mask[i] * 255;
+    }
+    ctx.putImageData(imgData, 0, 0);
+
+    canvas.toBlob((blob)=>{
+      finalBlob = blob;
+      result.src = URL.createObjectURL(blob);
+      status.innerText = "Done! ✓";
+      dlBtn.classList.remove('hidden');
+    }, 'image/png');
+
   } catch(err){
-    status.innerText = "Error! Dusri photo try karo.";
     console.error(err);
+    status.innerText = "Error: Try smaller image (less than 2MB) in Chrome";
   }
 });
 
-document.getElementById('dl').onclick=()=>{
-  let a=document.createElement('a');a.href=URL.createObjectURL(resultBlob);a.download="antokia-no-bg.png";a.click();
+dlBtn.onclick = () => {
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(finalBlob);
+  a.download = 'antokia-no-bg.png';
+  a.click();
 }
 </script>
 </body>
