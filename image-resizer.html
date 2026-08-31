@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Resizer - Resize Photo Online Free | Antokia</title>
+<style>
+body{font-family:system-ui;background:#f8fafc;margin:0;padding:20px}
+.container{max-width:800px;margin:20px auto;background:#fff;padding:30px;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.08)}
+.drop{border:2px dashed #8b5cf6;padding:40px;text-align:center;border-radius:12px;background:#f5f3ff;cursor:pointer}
+.controls{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:20px}
+input,select{padding:10px;border:1px solid #ddd;border-radius:8px;width:100%}
+button{background:#8b5cf6;color:#fff;border:0;padding:12px;border-radius:8px;width:100%;margin-top:15px;font-size:16px;cursor:pointer}
+#preview{margin-top:20px;text-align:center}
+#preview img{max-width:100%;max-height:300px;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.1)}
+label{font-weight:600;font-size:14px}
+</style>
+</head>
+<body>
+<div class="container">
+<h1 style="text-align:center">Image Resizer</h1>
+<p style="text-align:center;color:#666">Resize image by pixels, %, KB - No quality loss</p>
+
+<div class="drop" id="drop">🖼️ Click or Drop Image Here<input type="file" id="file" accept="image/*" hidden></div>
+
+<div class="controls">
+<div><label>Width (px)</label><input type="number" id="width" placeholder="Auto"></div>
+<div><label>Height (px)</label><input type="number" id="height" placeholder="Auto"></div>
+<div><label>Lock Aspect Ratio</label><select id="lock"><option value="yes">Yes - Keep Ratio</option><option value="no">No - Free Resize</option></select></div>
+<div><label>Format</label><select id="format"><option value="original">Original</option><option value="image/jpeg">JPG</option><option value="image/png">PNG</option><option value="image/webp">WEBP</option></select></div>
+<div><label>Quality</label><select id="quality"><option value="0.9">High (90%)</option><option value="0.8">Medium (80%)</option><option value="0.6">Low (60%)</option></select></div>
+<div><label>Resize by %</label><select id="percent"><option value="100">100% Original</option><option value="75">75%</option><option value="50">50% Half</option><option value="25">25%</option><option value="150">150% Bigger</option><option value="200">200% 2X</option></select></div>
+</div>
+
+<button id="resizeBtn">Resize & Download</button>
+<div id="preview"></div>
+<div id="info" style="text-align:center;margin-top:10px;color:#666"></div>
+</div>
+
+<script>
+let img=new Image(), originalW=0, originalH=0, fileName="resized-antokia";
+const fileInput=document.getElementById('file'), drop=document.getElementById('drop'), wInput=document.getElementById('width'), hInput=document.getElementById('height'), preview=document.getElementById('preview'), info=document.getElementById('info');
+
+drop.onclick=()=>fileInput.click();
+fileInput.onchange=e=>{
+ const file=e.target.files[0]; if(!file) return;
+ fileName=file.name.split('.')[0];
+ const reader=new FileReader();
+ reader.onload=ev=>{
+   img.src=ev.target.result;
+   img.onload=()=>{
+     originalW=img.width; originalH=img.height;
+     wInput.value=originalW; hInput.value=originalH;
+     preview.innerHTML=`<img src="${img.src}"><p>Original: ${originalW} x ${originalH}</p>`;
+     info.textContent=`Loaded: ${fileName}`;
+   }
+ }
+ reader.readAsDataURL(file);
+};
+
+wInput.oninput=()=>{
+ if(document.getElementById('lock').value=='yes' && originalW){
+   hInput.value=Math.round((wInput.value/originalW)*originalH);
+ }
+}
+hInput.oninput=()=>{
+ if(document.getElementById('lock').value=='yes' && originalH){
+   wInput.value=Math.round((hInput.value/originalH)*originalW);
+ }
+}
+document.getElementById('percent').onchange=e=>{
+ const p=parseInt(e.target.value);
+ wInput.value=Math.round(originalW*p/100);
+ hInput.value=Math.round(originalH*p/100);
+};
+
+document.getElementById('resizeBtn').onclick=()=>{
+ if(!originalW){alert("Pehle image select karo!"); return;}
+ const w=parseInt(wInput.value), h=parseInt(hInput.value);
+ const format=document.getElementById('format').value;
+ const quality=parseFloat(document.getElementById('quality').value);
+ const canvas=document.createElement('canvas');
+ canvas.width=w; canvas.height=h;
+ const ctx=canvas.getContext('2d');
+ ctx.drawImage(img,0,0,w,h);
+ let outType=format=='original'? 'image/png' : format;
+ let dataUrl=canvas.toDataURL(outType, quality);
+ const a=document.createElement('a'); a.href=dataUrl; a.download=`${fileName}-${w}x${h}.png`; a.click();
+ info.textContent=`Resized to ${w} x ${h} - Downloaded!`;
+}
+</script>
+</body>
+</html>
