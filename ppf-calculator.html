@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PPF Calculator - Public Provident Fund Calculator 2026 | Antokia</title>
+<meta name="description" content="PPF Calculator with 7.1% interest rate. Calculate PPF maturity amount, total interest and investment for 15 years.">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-[#f5f5fa]">
+<header class="bg-white shadow-sm"><div class="max-w-4xl mx-auto px-4 py-3 flex justify-between"><a href="/" class="text-2xl font-extrabold text-[#e5322d]">Antokia</a><a href="/" class="text-sm bg-gray-100 px-3 py-1 rounded-full">← Home</a></div></header>
+<main class="max-w-4xl mx-auto px-4 py-6">
+<div class="bg-white rounded-2xl shadow p-6 md:p-8">
+<h1 class="text-2xl font-bold text-center"><i class="fa-solid fa-piggy-bank text-yellow-600"></i> PPF Calculator</h1>
+<p class="text-center text-sm text-gray-500">Current Interest Rate 7.1% (2026)</p>
+<div class="grid md:grid-cols-2 gap-8 mt-8">
+<div>
+<label class="font-semibold text-sm">Yearly Investment (₹)</label><input id="ppfAmt" type="number" value="150000" class="border rounded-lg px-3 py-2 w-full mt-2">
+<label class="font-semibold text-sm mt-4 block">Interest Rate (%)</label><input id="ppfRate" type="number" value="7.1" step="0.1" class="border rounded-lg px-3 py-2 w-full mt-2">
+<label class="font-semibold text-sm mt-4 block">Time Period (Years)</label><input id="ppfYear" type="number" value="15" class="border rounded-lg px-3 py-2 w-full mt-2">
+<button onclick="calcPPF()" class="w-full bg-yellow-500 text-white py-3 rounded-xl font-bold mt-6">Calculate PPF</button>
+</div>
+<div class="bg-[#f8fafc] rounded-xl p-6 text-center">
+<p class="text-sm text-gray-500">Maturity Value</p><h2 id="ppfTotal" class="text-3xl font-extrabold text-yellow-600 mt-2">₹0</h2>
+<div class="grid grid-cols-2 gap-3 mt-6"><div class="bg-white border rounded-xl p-3"><small class="text-gray-500">Total Invested</small><b id="ppfInv" class="block">₹0</b></div><div class="bg-white border rounded-xl p-3"><small class="text-gray-500">Interest Earned</small><b id="ppfInt" class="block text-green-600">₹0</b></div></div>
+</div>
+</div>
+</div>
+</main>
+<script>
+function calcPPF(){let P=parseFloat(document.getElementById('ppfAmt').value), r=parseFloat(document.getElementById('ppfRate').value)/100, n=parseFloat(document.getElementById('ppfYear').value), bal=0; for(let i=0;i<n;i++){bal=(bal+P)*(1+r);} let inv=P*n; document.getElementById('ppfInv').innerText='₹'+inv.toLocaleString('en-IN'); document.getElementById('ppfInt').innerText='₹'+Math.round(bal-inv).toLocaleString('en-IN'); document.getElementById('ppfTotal').innerText='₹'+Math.round(bal).toLocaleString('en-IN');}
+calcPPF();
+</script>
+</body>
+</html>
