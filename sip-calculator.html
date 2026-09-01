@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SIP Calculator - Mutual Fund SIP Return Calculator | Antokia</title>
+<meta name="description" content="Calculate your mutual fund SIP returns instantly. Enter monthly SIP amount, expected return rate & tenure to get maturity value.">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-[#f5f5fa]">
+<header class="bg-white shadow-sm"><div class="max-w-4xl mx-auto px-4 py-3 flex justify-between"><a href="/" class="text-2xl font-extrabold text-[#e5322d]">Antokia</a><a href="/" class="text-sm bg-gray-100 px-3 py-1 rounded-full">← Home</a></div></header>
+<main class="max-w-4xl mx-auto px-4 py-6">
+<div class="bg-white rounded-2xl shadow p-6 md:p-8">
+<h1 class="text-2xl font-bold text-center"><i class="fa-solid fa-chart-line text-green-600"></i> SIP Calculator</h1>
+<p class="text-center text-gray-500 text-sm mt-1">Calculate your Mutual Fund SIP returns</p>
+<div class="grid md:grid-cols-2 gap-8 mt-8">
+<div>
+<label class="font-semibold text-sm">Monthly Investment (₹)</label><input id="sipAmt" type="range" min="500" max="100000" step="500" value="5000" class="w-full mt-2"><div class="flex justify-between"><input id="sipAmtInput" type="number" value="5000" class="border rounded-lg px-3 py-2 w-32 mt-2"><span class="text-sm text-gray-500 mt-3">₹500 - ₹1L</span></div>
+<label class="font-semibold text-sm mt-4 block">Expected Return Rate (% p.a)</label><input id="sipRate" type="range" min="1" max="30" value="12" class="w-full mt-2"><input id="sipRateInput" type="number" value="12" class="border rounded-lg px-3 py-2 w-32 mt-2">
+<label class="font-semibold text-sm mt-4 block">Time Period (Years)</label><input id="sipYears" type="range" min="1" max="40" value="10" class="w-full mt-2"><input id="sipYearsInput" type="number" value="10" class="border rounded-lg px-3 py-2 w-32 mt-2">
+</div>
+<div class="bg-[#f8fafc] rounded-xl p-6 text-center">
+<p class="text-sm text-gray-500">Maturity Value</p><h2 id="totalVal" class="text-3xl font-extrabold text-green-600 mt-2">₹0</h2>
+<div class="grid grid-cols-2 gap-3 mt-6"><div class="bg-white border rounded-xl p-3"><small class="text-gray-500">Invested Amount</small><b id="invAmt" class="block">₹0</b></div><div class="bg-white border rounded-xl p-3"><small class="text-gray-500">Est. Returns</small><b id="retAmt" class="block text-green-600">₹0</b></div></div>
+<div class="mt-6 text-xs text-gray-500 text-left">SIP is a great way to build wealth with small monthly investments. This calculator uses compounding formula.</div>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-2xl shadow p-6 mt-6"><h3 class="font-bold">What is SIP Calculator?</h3><p class="text-sm text-gray-600 mt-2">SIP (Systematic Investment Plan) calculator helps you estimate the future value of your monthly mutual fund investments. It shows how much wealth you can create with regular investing.</p></div>
+</div>
+</main>
+<script>
+const amt=document.getElementById('sipAmt'), amtI=document.getElementById('sipAmtInput'), rate=document.getElementById('sipRate'), rateI=document.getElementById('sipRateInput'), yrs=document.getElementById('sipYears'), yrsI=document.getElementById('sipYearsInput');
+function calc(){let P=parseFloat(amt.value), r=parseFloat(rate.value)/12/100, n=parseFloat(yrs.value)*12, fv=P*((Math.pow(1+r,n)-1)/r)*(1+r), inv=P*n; document.getElementById('totalVal').innerText='₹'+Math.round(fv).toLocaleString('en-IN'); document.getElementById('invAmt').innerText='₹'+inv.toLocaleString('en-IN'); document.getElementById('retAmt').innerText='₹'+Math.round(fv-inv).toLocaleString('en-IN');}
+[amt,rate,yrs].forEach(e=>e.addEventListener('input',()=>{amtI.value=amt.value; rateI.value=rate.value; yrsI.value=yrs.value; calc();})); [amtI,rateI,yrsI].forEach(e=>e.addEventListener('input',()=>{amt.value=amtI.value; rate.value=rateI.value; yrs.value=yrsI.value; calc();})); calc();
+</script>
+</body>
+</html>
