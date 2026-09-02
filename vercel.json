@@ -2,11 +2,6 @@
   "cleanUrls": true,
   "rewrites": [
     { "source": "/pdf-to-excel", "destination": "/pdf-to-xlsx.html" },
-    { "source": "/pdf-to-xlsx", "destination": "/pdf-to-xlsx.html" },
-    { "source": "/pdf-to-word", "destination": "/pdf-to-word.html" },
-    { "source": "/image-to-pdf", "destination": "/image-to-pdf.html" },
-    { "source": "/merge-pdf", "destination": "/merge-pdf.html" },
-    { "source": "/compress-pdf", "destination": "/compress-pdf.html" },
-    { "source": "/pdf-remover", "destination": "/pdf-remover.html" }
+    { "source": "/pdf-to-xlsx", "destination": "/pdf-to-xlsx.html" }
   ]
 }
