@@ -1,7 +1,1 @@
-{
-  "cleanUrls": true,
-  "rewrites": [
-    { "source": "/pdf-to-excel", "destination": "/pdf-to-xlsx.html" },
-    { "source": "/pdf-to-xlsx", "destination": "/pdf-to-xlsx.html" }
-  ]
-}
+{}
