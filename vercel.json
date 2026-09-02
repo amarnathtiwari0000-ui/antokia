@@ -1,6 +1,10 @@
 {
   "cleanUrls": true,
   "rewrites": [
+    { "source": "/about", "destination": "/about.html" },
+    { "source": "/contact", "destination": "/contact.html" },
+    { "source": "/privacy", "destination": "/privacy.html" },
+    { "source": "/terms", "destination": "/terms.html" },
     { "source": "/image-to-pdf", "destination": "/image-to-pdf.html" },
     { "source": "/word-to-pdf", "destination": "/word-to-pdf.html" },
     { "source": "/pdf-remover", "destination": "/pdf-remover.html" },
@@ -18,10 +22,7 @@
     { "source": "/ppf-calculator", "destination": "/ppf-calculator.html" },
     { "source": "/age-calculator", "destination": "/age-calculator.html" },
     { "source": "/percentage", "destination": "/percentage-calculator.html" },
-    { "source": "/resume-maker", "destination": "/resume-maker.html" },
-    { "source": "/about", "destination": "/about.html" },
-    { "source": "/contact", "destination": "/contact.html" },
-    { "source": "/privacy", "destination": "/privacy.html" },
-    { "source": "/terms", "destination": "/terms.html" }
+    { "source": "/percentage-calculator", "destination": "/percentage-calculator.html" },
+    { "source": "/resume-maker", "destination": "/resume-maker.html" }
   ]
 }
