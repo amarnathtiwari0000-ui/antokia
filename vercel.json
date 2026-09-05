@@ -25,6 +25,6 @@
     { "source": "/blog", "destination": "/blog.html" },
     { "source": "/blog-what-is-emi", "destination": "/blog-what-is-emi.html" },
     { "source": "/blog-what-is-sip", "destination": "/blog-what-is-sip.html" },
-    { "source": "/blog-what-is-ppf", "destination": "/blog-what-is-ppf.html" }
+    { "source": "/blog-what-is-pdf", "destination": "/blog-what-is-pdf.html" }
   ]
 }
