@@ -21,10 +21,6 @@
     { "source": "/emi-calculator", "destination": "/emi-calculator.html" },
     { "source": "/ppf-calculator", "destination": "/ppf-calculator.html" },
     { "source": "/age-calculator", "destination": "/age-calculator.html" },
-    { "source": "/resume-maker", "destination": "/resume-maker.html" },
-    { "source": "/blog", "destination": "/blog.html" },
-    { "source": "/blog-what-is-emi", "destination": "/blog-what-is-emi.html" },
-    { "source": "/blog-what-is-sip", "destination": "/blog-what-is-sip.html" },
-    { "source": "/blog-what-is-pdf", "destination": "/blog-what-is-pdf.html" }
+    { "source": "/resume-maker", "destination": "/resume-maker.html" }
   ]
 }
