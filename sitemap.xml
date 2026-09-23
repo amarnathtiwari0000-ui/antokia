@@ -4,4 +4,37 @@
   <url><loc>https://www.antokia.com/about.html</loc><priority>0.8</priority></url>
   <url><loc>https://www.antokia.com/contact.html</loc><priority>0.8</priority></url>
   <url><loc>https://www.antokia.com/privacy.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.antokia.com/blog/</loc><priority>0.9</priority></url>
+  
+  <!-- All Tools -->
+  <url><loc>https://www.antokia.com/pdf-to-word.html</loc><priority>0.9</priority></url>
+  <url><loc>https://www.antokia.com/compress-image.html</loc><priority>0.9</priority></url>
+  <url><loc>https://www.antokia.com/merge-pdf.html</loc><priority>0.9</priority></url>
+  <url><loc>https://www.antokia.com/compress-pdf.html</loc><priority>0.9</priority></url>
+  <url><loc>https://www.antokia.com/image-to-pdf.html</loc><priority>0.9</priority></url>
+  <url><loc>https://www.antokia.com/qr-generator.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.antokia.com/ppf-calculator.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.antokia.com/sip-calculator.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.antokia.com/emi-calculator.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.antokia.com/percentage-calculator.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.antokia.com/age-calculator.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.antokia.com/resize-image.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.antokia.com/remove-background.html</loc><priority>0.8</priority></url>
+
+  <!-- All 15 Blogs -->
+  <url><loc>https://www.antokia.com/blog/how-to-pdf-to-word.html</loc><priority>0.7</priority></url>
+  <url><loc>https://www.antokia.com/blog/how-to-compress-image.html</loc><priority>0.7</priority></url>
+  <url><loc>https://www.antokia.com/blog/how-to-merge-pdf.html</loc><priority>0.7</priority></url>
+  <url><loc>https://www.antokia.com/blog/how-to-compress-pdf.html</loc><priority>0.7</priority></url>
+  <url><loc>https://www.antokia.com/blog/how-to-calculate-ppf.html</loc><priority>0.7</priority></url>
+  <url><loc>https://www.antokia.com/blog/how-to-calculate-sip.html</loc><priority>0.7</priority></url>
+  <url><loc>https://www.antokia.com/blog/how-to-calculate-emi.html</loc><priority>0.7</priority></url>
+  <url><loc>https://www.antokia.com/blog/how-to-calculate-percentage.html</loc><priority>0.7</priority></url>
+  <url><loc>https://www.antokia.com/blog/how-to-calculate-age.html</loc><priority>0.7</priority></url>
+  <url><loc>https://www.antokia.com/blog/how-to-image-to-pdf.html</loc><priority>0.7</priority></url>
+  <url><loc>https://www.antokia.com/blog/how-to-generate-qr-code.html</loc><priority>0.7</priority></url>
+  <url><loc>https://www.antokia.com/blog/how-to-resize-image.html</loc><priority>0.7</priority></url>
+  <url><loc>https://www.antokia.com/blog/how-to-remove-background.html</loc><priority>0.7</priority></url>
+  <url><loc>https://www.antokia.com/blog/how-to-make-resume.html</loc><priority>0.7</priority></url>
+  <url><loc>https://www.antokia.com/blog/how-to-remove-pdf.html</loc><priority>0.7</priority></url>
 </urlset>
