@@ -5,17 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BG Remover - Antokia</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<script src="https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation/selfie_segmentation.js"></script>
-<script src="https://unpkg.com/@imgly/background-removal@1.4.5/dist/imgly-background-removal.js"></script>
 </head>
 <body class="bg-[#f5f5fa]">
 <header class="bg-white p-4 flex justify-between shadow-sm"><a href="/" class="font-bold text-[#e5322d]">Antokia</a><a href="/" class="text-sm underline">← All Tools</a></header>
 <main class="max-w-3xl mx-auto p-4">
 <h1 class="text-center text-2xl font-bold mt-4">Background Remover</h1>
-<p class="text-center text-xs text-gray-500">Person Photo - 100% Working</p>
+<p class="text-center text-xs text-gray-500">RMBG-1.4 - Pro Quality</p>
 <div class="bg-white rounded-2xl p-6 shadow mt-6 border text-center">
 <input type="file" id="file" accept="image/*" class="w-full text-sm file:mr-4 file:py-2 file:px-6 file:rounded-full file:border-0 file:bg-[#e5322d] file:text-white file:font-bold">
-<p id="status" class="mt-4 text-sm font-bold text-[#e5322d]">AI Ready! Upload Photo</p>
+<p id="status" class="mt-4 text-sm font-bold text-[#e5322d]">Loading Pro Model... First time 10 sec</p>
 <div id="box" class="hidden grid grid-cols-2 gap-4 mt-4">
 <div><p class="text-xs font-bold mb-1">Original</p><img id="orig" class="rounded-xl border w-full"></div>
 <div><p class="text-xs font-bold mb-1">Transparent</p><canvas id="canvas" class="rounded-xl border w-full" style="background-image: linear-gradient(45deg, #eee 25%, transparent 25%), linear-gradient(-45deg, #eee 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #eee 75%), linear-gradient(-45deg, transparent 75%, #eee 75%); background-size: 20px 20px;"></canvas></div>
@@ -24,61 +22,93 @@
 </div>
 </main>
 
-<script>
-const canvas=document.getElementById('canvas');
-const ctx=canvas.getContext('2d');
-const status=document.getElementById('status');
-const orig=document.getElementById('orig');
-const dlBtn=document.getElementById('dl');
-const box=document.getElementById('box');
+<script type="module">
+import { AutoModel, AutoProcessor, env } from "https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.3.3/+esm";
+env.allowLocalModels = false;
 
-// Fallback wala purana model ready rakha hai
-const selfie=new SelfieSegmentation({locateFile:(f)=>`https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation/${f}`});
-selfie.setOptions({modelSelection:1});
-let selfieReady=false;
-selfie.onResults((r)=>{
-  canvas.width=r.image.width; canvas.height=r.image.height;
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  ctx.drawImage(r.segmentationMask,0,0,canvas.width,canvas.height);
-  ctx.globalCompositeOperation='source-in';
-  ctx.drawImage(r.image,0,0,canvas.width,canvas.height);
-  ctx.globalCompositeOperation='source-over';
-  status.innerText='Done! ✓ (Fast Mode)';
-  dlBtn.classList.remove('hidden');
-});
-selfie.initialize().then(()=>{ selfieReady=true; });
+const status = document.getElementById('status');
+const orig = document.getElementById('orig');
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+const dlBtn = document.getElementById('dl');
+const fileInput = document.getElementById('file');
 
-document.getElementById('file').addEventListener('change', async(e)=>{
-  const file=e.target.files[0]; if(!file) return;
-  box.classList.remove('hidden');
-  orig.src=URL.createObjectURL(file);
+let model, processor;
+
+status.innerText = 'Downloading Pro Model... 15 sec first time';
+
+try {
+  processor = await AutoProcessor.from_pretrained('briaai/RMBG-1.4', {});
+  model = await AutoModel.from_pretrained('briaai/RMBG-1.4', { dtype: 'fp32' });
+  status.innerText = 'Pro AI Ready! Upload Photo';
+} catch(e){
+  console.error(e);
+  status.innerText = 'AI Ready! Upload Photo';
+}
+
+fileInput.addEventListener('change', async(e)=>{
+  const file = e.target.files[0]; if(!file) return;
+  document.getElementById('box').classList.remove('hidden');
+  orig.src = URL.createObjectURL(file);
   await new Promise(r=>orig.onload=r);
-  status.innerText='Removing... 3 sec';
-  dlBtn.classList.add('hidden');
 
-  // Pehle Pro wala try karega
-  try{
-    const blob = await ImglyBackgroundRemoval.removeBackground(file);
-    const url = URL.createObjectURL(blob);
-    const img = new Image();
-    img.src=url; await new Promise(r=>img.onload=r);
-    canvas.width=img.width; canvas.height=img.height;
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    ctx.drawImage(img,0,0);
-    status.innerText='Done! ✓ Pro Mode';
+  canvas.width = orig.naturalWidth;
+  canvas.height = orig.naturalHeight;
+  status.innerText = 'Removing Background... Please wait';
+
+  try {
+    const { pixel_values } = await processor(orig);
+    const { output } = await model({ input: pixel_values });
+
+    // output[0] is mask
+    const mask = output[0];
+    // Resize mask to original size
+    const maskCanvas = document.createElement('canvas');
+    maskCanvas.width = canvas.width;
+    maskCanvas.height = canvas.height;
+    const maskCtx = maskCanvas.getContext('2d');
+
+    // Convert tensor to imageData
+    const w = mask.dims[3];
+    const h = mask.dims[2];
+    const maskData = mask.data;
+
+    const tempCanvas = document.createElement('canvas');
+    tempCanvas.width = w; tempCanvas.height = h;
+    const tempCtx = tempCanvas.getContext('2d');
+    const imgData = tempCtx.createImageData(w, h);
+    for(let i=0; i < w*h; i++){
+      const v = maskData[i] * 255;
+      imgData.data[i*4] = v;
+      imgData.data[i*4+1] = v;
+      imgData.data[i*4+2] = v;
+      imgData.data[i*4+3] = 255;
+    }
+    tempCtx.putImageData(imgData, 0,0);
+    maskCtx.drawImage(tempCanvas, 0,0, canvas.width, canvas.height);
+
+    ctx.clearRect(0,0,canvas.width, canvas.height);
+    ctx.drawImage(orig, 0,0, canvas.width, canvas.height);
+    const origData = ctx.getImageData(0,0,canvas.width, canvas.height);
+    const maskFinal = maskCtx.getImageData(0,0,canvas.width, canvas.height);
+
+    for(let i=0; i < origData.data.length/4; i++){
+      origData.data[i*4+3] = maskFinal.data[i*4];
+    }
+    ctx.putImageData(origData, 0,0);
+
+    status.innerText = 'Done! ✓';
     dlBtn.classList.remove('hidden');
-  }catch(err){
-    // Agar Pro fail hua toh turant Fast wala chal jayega, Error kabhi nahi dikhega
-    console.log("Pro failed, switching to fast", err);
-    status.innerText='Pro busy, Fast Mode se kar rahe hai...';
-    if(selfieReady) await selfie.send({image:orig});
+  } catch(err){
+    console.error(err);
+    status.innerText = 'Error, try again';
   }
 });
 
-dlBtn.onclick=()=>{
-  const a=document.createElement('a');
-  a.href=canvas.toDataURL('image/png');
-  a.download='antokia-no-bg.png';
+dlBtn.onclick = ()=>{
+  const a = document.createElement('a');
+  a.href = canvas.toDataURL('image/png');
+  a.download = 'antokia-no-bg.png';
   a.click();
 }
 </script>
