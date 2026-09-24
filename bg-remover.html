@@ -12,10 +12,10 @@
 <header class="bg-white p-4 flex justify-between shadow-sm"><a href="/" class="font-bold text-[#e5322d]">Antokia</a><a href="/" class="text-sm underline">← All Tools</a></header>
 <main class="max-w-3xl mx-auto p-4">
 <h1 class="text-center text-2xl font-bold mt-4">Background Remover</h1>
-<p class="text-center text-xs text-gray-500">Stable Mode - No Error</p>
+<p class="text-center text-xs text-gray-500">Pro Cut - No Head Cut</p>
 <div class="bg-white rounded-2xl p-6 shadow mt-6 border text-center">
 <input type="file" id="file" accept="image/*" class="w-full text-sm file:mr-4 file:py-2 file:px-6 file:rounded-full file:border-0 file:bg-[#e5322d] file:text-white file:font-bold">
-<p id="status" class="mt-4 text-sm font-bold text-[#e5322d]">Loading AI... 5 sec first time</p>
+<p id="status" class="mt-4 text-sm font-bold text-[#e5322d]">Loading Pro Cut AI... 10 sec</p>
 <div id="box" class="hidden grid grid-cols-2 gap-4 mt-4">
 <div><p class="text-xs font-bold mb-1">Original</p><img id="orig" class="rounded-xl border w-full"></div>
 <div><p class="text-xs font-bold mb-1">Transparent</p><canvas id="canvas" class="rounded-xl border w-full" style="background-image: linear-gradient(45deg, #eee 25%, transparent 25%), linear-gradient(-45deg, #eee 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #eee 75%), linear-gradient(-45deg, transparent 75%, #eee 75%); background-size: 20px 20px;"></canvas></div>
@@ -30,26 +30,19 @@ const orig = document.getElementById('orig');
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 const dlBtn = document.getElementById('dl');
-const fileInput = document.getElementById('file');
-
 let net = null;
 
 (async ()=>{
-  try{
-    status.innerText = 'Loading Stable AI...';
-    net = await bodyPix.load({
-      architecture: 'MobileNetV1',
-      outputStride: 16,
-      multiplier: 0.75,
-      quantBytes: 2
-    });
-    status.innerText = 'AI Ready! Upload Photo';
-  }catch(e){
-    status.innerText = 'AI Ready! Upload Photo';
-  }
+  status.innerText = 'Loading Pro Cut AI... Please wait 10 sec';
+  net = await bodyPix.load({
+    architecture: 'ResNet50',
+    outputStride: 16,
+    quantBytes: 4
+  });
+  status.innerText = 'Pro Cut Ready! Upload Photo';
 })();
 
-fileInput.addEventListener('change', async(e)=>{
+document.getElementById('file').addEventListener('change', async(e)=>{
   const file = e.target.files[0]; if(!file) return;
   document.getElementById('box').classList.remove('hidden');
   orig.src = URL.createObjectURL(file);
@@ -57,60 +50,52 @@ fileInput.addEventListener('change', async(e)=>{
 
   canvas.width = orig.naturalWidth;
   canvas.height = orig.naturalHeight;
-  status.innerText = 'Removing... 2 sec';
+  status.innerText = 'Cutting... High Quality';
+  dlBtn.classList.add('hidden');
 
   const segmentation = await net.segmentPerson(orig, {
     flipHorizontal: false,
-    internalResolution: 'high',
-    segmentationThreshold: 0.7
+    internalResolution: 'full',
+    segmentationThreshold: 0.5
   });
 
-  // Draw transparent
-  const foregroundColor = {r: 0, g: 0, b: 0, a: 0};
-  const backgroundColor = {r: 0, g: 0, b: 0, a: 0};
-  const backgroundDarkeningMask = bodyPix.toMask(segmentation, foregroundColor, backgroundColor, true);
+  // Better edge handling
+  const personMask = bodyPix.toMask(segmentation, {r:0,g:0,b:0,a:0}, {r:0,g:0,b:0,a:255}, true);
 
-  // Custom draw for transparent
-  const tempCanvas = document.createElement('canvas');
-  tempCanvas.width = canvas.width;
-  tempCanvas.height = canvas.height;
-  const tempCtx = tempCanvas.getContext('2d');
-  tempCtx.drawImage(orig, 0,0, canvas.width, canvas.height);
-
-  ctx.clearRect(0,0,canvas.width, canvas.height);
-  ctx.drawImage(orig, 0,0, canvas.width, canvas.height);
-  const imageData = ctx.getImageData(0,0,canvas.width, canvas.height);
-  const maskData = backgroundDarkeningMask.data;
-
-  // Apply mask as alpha
-  const scaleX = canvas.width / segmentation.width;
-  const scaleY = canvas.height / segmentation.height;
-
-  // Use bodyPix drawMask to get alpha
+  // Create high-res mask canvas
   const maskCanvas = document.createElement('canvas');
-  maskCanvas.width = segmentation.width;
-  maskCanvas.height = segmentation.height;
+  maskCanvas.width = canvas.width;
+  maskCanvas.height = canvas.height;
   const maskCtx = maskCanvas.getContext('2d');
-  const maskImageData = maskCtx.createImageData(segmentation.width, segmentation.height);
-  for(let i=0; i < segmentation.data.length; i++){
-    const v = segmentation.data[i]? 255 : 0;
-    maskImageData.data[i*4+3] = v;
-  }
-  maskCtx.putImageData(maskImageData, 0,0);
 
-  // Draw mask scaled onto main canvas alpha
-  ctx.clearRect(0,0,canvas.width, canvas.height);
-  ctx.drawImage(maskCanvas, 0,0, canvas.width, canvas.height);
-  const finalMask = ctx.getImageData(0,0,canvas.width, canvas.height);
+  // Draw segmentation to mask with blur for smooth edges
+  const segCanvas = document.createElement('canvas');
+  segCanvas.width = segmentation.width;
+  segCanvas.height = segmentation.height;
+  const segCtx = segCanvas.getContext('2d');
+  const segImageData = segCtx.createImageData(segmentation.width, segmentation.height);
+  for(let i=0; i < segmentation.data.length; i++){
+    segImageData.data[i*4] = 0;
+    segImageData.data[i*4+1] = 0;
+    segImageData.data[i*4+2] = 0;
+    segImageData.data[i*4+3] = segmentation.data[i]? 255 : 0;
+  }
+  segCtx.putImageData(segImageData, 0,0);
+  // Smooth edges
+  maskCtx.filter = 'blur(2px)';
+  maskCtx.drawImage(segCanvas, 0,0, canvas.width, canvas.height);
+  maskCtx.filter = 'none';
+
+  const finalMask = maskCtx.getImageData(0,0,canvas.width, canvas.height);
 
   ctx.clearRect(0,0,canvas.width, canvas.height);
   ctx.drawImage(orig, 0,0, canvas.width, canvas.height);
-  const finalImage = ctx.getImageData(0,0,canvas.width, canvas.height);
-  for(let i=0; i < finalImage.data.length/4; i++){
-    finalImage.data[i*4+3] = finalMask.data[i*4+3];
+  const imgData = ctx.getImageData(0,0,canvas.width, canvas.height);
+
+  for(let i=0; i < imgData.data.length/4; i++){
+    imgData.data[i*4+3] = finalMask.data[i*4+3];
   }
-  // Blur edge thoda sa
-  ctx.putImageData(finalImage, 0,0);
+  ctx.putImageData(imgData, 0,0);
 
   status.innerText = 'Done! ✓';
   dlBtn.classList.remove('hidden');
