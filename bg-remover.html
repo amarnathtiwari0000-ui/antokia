@@ -13,10 +13,10 @@
 <p class="text-center text-xs text-gray-500">Person Photo - 100% Working</p>
 <div class="bg-white rounded-2xl p-6 shadow mt-6 border text-center">
 <input type="file" id="file" accept="image/*" class="w-full text-sm file:mr-4 file:py-2 file:px-6 file:rounded-full file:border-0 file:bg-[#e5322d] file:text-white file:font-bold">
-<p id="status" class="mt-4 text-sm font-bold text-[#e5322d]">Loading Pro AI... 5 sec</p>
+<p id="status" class="mt-4 text-sm font-bold text-[#e5322d]">Loading Pro AI... Please wait</p>
 <div id="box" class="hidden grid grid-cols-2 gap-4 mt-4">
 <div><p class="text-xs font-bold mb-1">Original</p><img id="orig" class="rounded-xl border w-full"></div>
-<div><p class="text-xs font-bold mb-1">Transparent</p><img id="result" class="rounded-xl border w-full hidden" style="background-image: linear-gradient(45deg, #eee 25%, transparent 25%), linear-gradient(-45deg, #eee 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #eee 75%), linear-gradient(-45deg, transparent 75%, #eee 75%); background-size: 20px 20px; background-position: 0 0, 0 10px, 10px -10px, -10px 0px;"><canvas id="canvas" class="hidden"></canvas></div>
+<div><p class="text-xs font-bold mb-1">Transparent</p><img id="result" class="rounded-xl border w-full hidden" style="background-image: linear-gradient(45deg, #eee 25%, transparent 25%), linear-gradient(-45deg, #eee 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #eee 75%), linear-gradient(-45deg, transparent 75%, #eee 75%); background-size: 20px 20px; background-position: 0 0, 0 10px, 10px -10px, -10px 0px;"></div>
 </div>
 <button id="dl" class="hidden w-full mt-4 bg-black text-white py-3 rounded-xl font-bold">Download Transparent PNG</button>
 </div>
@@ -28,25 +28,32 @@ import { removeBackground } from "https://cdn.jsdelivr.net/npm/@imgly/background
 const status = document.getElementById('status');
 const orig = document.getElementById('orig');
 const resultImg = document.getElementById('result');
-const canvas = document.getElementById('canvas');
 const dlBtn = document.getElementById('dl');
 const fileInput = document.getElementById('file');
 let finalBlob = null;
 
 status.innerText = 'Pro AI Ready! Upload Photo';
 
+const config = {
+  publicPath: "https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.4.5/dist/",
+  progress: (key, current, total) => {
+    if(total > 0){
+      const percent = Math.round((current/total)*100);
+      status.innerText = `Downloading Pro AI... ${percent}%`;
+    }
+  }
+};
+
 fileInput.addEventListener('change', async(e)=>{
   const file = e.target.files[0];
   if(!file) return;
-
   document.getElementById('box').classList.remove('hidden');
   orig.src = URL.createObjectURL(file);
-  status.innerText = 'Removing Background... Please wait 3-5 sec';
+  status.innerText = 'Removing Background... 3-5 sec';
   dlBtn.classList.add('hidden');
   resultImg.classList.add('hidden');
-
   try {
-    finalBlob = await removeBackground(file);
+    finalBlob = await removeBackground(file, config);
     const url = URL.createObjectURL(finalBlob);
     resultImg.src = url;
     resultImg.classList.remove('hidden');
@@ -54,7 +61,7 @@ fileInput.addEventListener('change', async(e)=>{
     dlBtn.classList.remove('hidden');
   } catch(err){
     status.innerText = 'Failed! Try another photo';
-    console.log(err);
+    console.error(err);
   }
 });
 
