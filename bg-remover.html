@@ -11,16 +11,38 @@
 <body class="bg-[#f5f5fa]">
 <header class="bg-white p-4 flex justify-between shadow-sm"><a href="/" class="font-bold text-[#e5322d]">Antokia</a><a href="/" class="text-sm underline">← All Tools</a></header>
 <main class="max-w-3xl mx-auto p-4">
-<h1 class="text-center text-2xl font-bold mt-4">Background Remover</h1>
-<p class="text-center text-xs text-gray-500">Pro Cut - No Head Cut</p>
+<h1 class="text-center text-2xl font-bold mt-4">BG Remover + Changer</h1>
+<p class="text-center text-xs text-gray-500">Remove + Change Background</p>
+
 <div class="bg-white rounded-2xl p-6 shadow mt-6 border text-center">
 <input type="file" id="file" accept="image/*" class="w-full text-sm file:mr-4 file:py-2 file:px-6 file:rounded-full file:border-0 file:bg-[#e5322d] file:text-white file:font-bold">
-<p id="status" class="mt-4 text-sm font-bold text-[#e5322d]">Loading Pro Cut AI... 10 sec</p>
-<div id="box" class="hidden grid grid-cols-2 gap-4 mt-4">
+<p id="status" class="mt-4 text-sm font-bold text-[#e5322d]">Loading AI... 10 sec first time</p>
+
+<div id="box" class="hidden mt-4">
+<div class="grid grid-cols-2 gap-4">
 <div><p class="text-xs font-bold mb-1">Original</p><img id="orig" class="rounded-xl border w-full"></div>
-<div><p class="text-xs font-bold mb-1">Transparent</p><canvas id="canvas" class="rounded-xl border w-full" style="background-image: linear-gradient(45deg, #eee 25%, transparent 25%), linear-gradient(-45deg, #eee 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #eee 75%), linear-gradient(-45deg, transparent 75%, #eee 75%); background-size: 20px 20px;"></canvas></div>
+<div><p class="text-xs font-bold mb-1">Result</p><canvas id="canvas" class="rounded-xl border w-full" style="background-image: linear-gradient(45deg, #eee 25%, transparent 25%), linear-gradient(-45deg, #eee 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #eee 75%), linear-gradient(-45deg, transparent 75%, #eee 75%); background-size: 20px 20px;"></canvas></div>
 </div>
-<button id="dl" class="hidden w-full mt-4 bg-black text-white py-3 rounded-xl font-bold">Download Transparent PNG</button>
+
+<!-- Background Changer Options -->
+<div id="bgControls" class="hidden mt-6 text-left bg-gray-50 p-4 rounded-xl border">
+<p class="font-bold text-sm mb-3">Change Background:</p>
+<div class="flex gap-2 flex-wrap mb-3">
+<button onclick="changeBg('transparent')" class="px-4 py-2 bg-white border rounded-full text-xs font-bold">Transparent</button>
+<button onclick="changeBg('white')" class="px-4 py-2 bg-white border rounded-full text-xs font-bold">White</button>
+<button onclick="changeBg('black')" class="px-4 py-2 bg-black text-white rounded-full text-xs font-bold">Black</button>
+<button onclick="changeBg('blur')" class="px-4 py-2 bg-blue-100 border rounded-full text-xs font-bold">Blur</button>
+<label class="px-4 py-2 bg-[#e5322d] text-white rounded-full text-xs font-bold cursor-pointer">Color <input type="color" id="colorPicker" class="hidden" onchange="changeBg('color', this.value)"></label>
+<label class="px-4 py-2 bg-green-600 text-white rounded-full text-xs font-bold cursor-pointer">Image <input type="file" id="bgFile" accept="image/*" class="hidden"></label>
+</div>
+</div>
+
+<div class="grid grid-cols-2 gap-3 mt-4">
+<button id="dlTrans" class="hidden w-full bg-white border-2 border-black text-black py-3 rounded-xl font-bold text-sm">Download Transparent PNG</button>
+<button id="dl" class="hidden w-full bg-black text-white py-3 rounded-xl font-bold text-sm">Download With Background JPG</button>
+</div>
+</div>
+</div>
 </div>
 </main>
 
@@ -30,83 +52,130 @@ const orig = document.getElementById('orig');
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 const dlBtn = document.getElementById('dl');
+const dlTransBtn = document.getElementById('dlTrans');
 let net = null;
+let personCut = null; // store cut person
+let originalBgImage = null;
+let currentBg = 'transparent';
 
 (async ()=>{
-  status.innerText = 'Loading Pro Cut AI... Please wait 10 sec';
-  net = await bodyPix.load({
-    architecture: 'ResNet50',
-    outputStride: 16,
-    quantBytes: 4
-  });
-  status.innerText = 'Pro Cut Ready! Upload Photo';
+  status.innerText = 'Loading Pro AI... 10 sec';
+  net = await bodyPix.load({ architecture: 'ResNet50', outputStride: 16, quantBytes: 4 });
+  status.innerText = 'Pro Ready! Upload Photo';
 })();
 
 document.getElementById('file').addEventListener('change', async(e)=>{
   const file = e.target.files[0]; if(!file) return;
   document.getElementById('box').classList.remove('hidden');
   orig.src = URL.createObjectURL(file);
+  originalBgImage = new Image();
+  originalBgImage.src = orig.src;
   await new Promise(r=>orig.onload=r);
+  originalBgImage.onload = ()=>{};
 
   canvas.width = orig.naturalWidth;
   canvas.height = orig.naturalHeight;
-  status.innerText = 'Cutting... High Quality';
-  dlBtn.classList.add('hidden');
+  status.innerText = 'Removing Background...';
 
-  const segmentation = await net.segmentPerson(orig, {
-    flipHorizontal: false,
-    internalResolution: 'full',
-    segmentationThreshold: 0.5
-  });
+  const segmentation = await net.segmentPerson(orig, { internalResolution: 'full', segmentationThreshold: 0.5 });
 
-  // Better edge handling
-  const personMask = bodyPix.toMask(segmentation, {r:0,g:0,b:0,a:0}, {r:0,g:0,b:0,a:255}, true);
-
-  // Create high-res mask canvas
-  const maskCanvas = document.createElement('canvas');
-  maskCanvas.width = canvas.width;
-  maskCanvas.height = canvas.height;
-  const maskCtx = maskCanvas.getContext('2d');
-
-  // Draw segmentation to mask with blur for smooth edges
+  // Create mask
   const segCanvas = document.createElement('canvas');
   segCanvas.width = segmentation.width;
   segCanvas.height = segmentation.height;
   const segCtx = segCanvas.getContext('2d');
   const segImageData = segCtx.createImageData(segmentation.width, segmentation.height);
   for(let i=0; i < segmentation.data.length; i++){
-    segImageData.data[i*4] = 0;
-    segImageData.data[i*4+1] = 0;
-    segImageData.data[i*4+2] = 0;
     segImageData.data[i*4+3] = segmentation.data[i]? 255 : 0;
   }
   segCtx.putImageData(segImageData, 0,0);
-  // Smooth edges
-  maskCtx.filter = 'blur(2px)';
+
+  const maskCanvas = document.createElement('canvas');
+  maskCanvas.width = canvas.width;
+  maskCanvas.height = canvas.height;
+  const maskCtx = maskCanvas.getContext('2d');
+  maskCtx.filter = 'blur(3px)';
   maskCtx.drawImage(segCanvas, 0,0, canvas.width, canvas.height);
   maskCtx.filter = 'none';
-
   const finalMask = maskCtx.getImageData(0,0,canvas.width, canvas.height);
 
+  // Cut person
   ctx.clearRect(0,0,canvas.width, canvas.height);
   ctx.drawImage(orig, 0,0, canvas.width, canvas.height);
   const imgData = ctx.getImageData(0,0,canvas.width, canvas.height);
-
   for(let i=0; i < imgData.data.length/4; i++){
     imgData.data[i*4+3] = finalMask.data[i*4+3];
   }
   ctx.putImageData(imgData, 0,0);
+  personCut = new Image();
+  personCut.src = canvas.toDataURL();
 
-  status.innerText = 'Done! ✓';
+  status.innerText = 'Done! ✓ Now Change Background';
+  document.getElementById('bgControls').classList.remove('hidden');
   dlBtn.classList.remove('hidden');
+  dlTransBtn.classList.remove('hidden');
+  currentBg = 'transparent';
 });
+
+function changeBg(type, value){
+  currentBg = type;
+  if(!personCut) return;
+
+  ctx.clearRect(0,0,canvas.width, canvas.height);
+
+  if(type === 'white'){
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0,0,canvas.width, canvas.height);
+  } else if(type === 'black'){
+    ctx.fillStyle = '#000000';
+    ctx.fillRect(0,0,canvas.width, canvas.height);
+  } else if(type === 'color'){
+    ctx.fillStyle = value;
+    ctx.fillRect(0,0,canvas.width, canvas.height);
+  } else if(type === 'blur'){
+    ctx.filter = 'blur(15px)';
+    ctx.drawImage(originalBgImage, 0,0, canvas.width, canvas.height);
+    ctx.filter = 'none';
+  } else if(type === 'imageBg'){
+    ctx.drawImage(value, 0,0, canvas.width, canvas.height);
+  }
+  // Draw person on top
+  if(type!== 'transparent'){
+    ctx.drawImage(personCut, 0,0, canvas.width, canvas.height);
+  } else {
+    ctx.clearRect(0,0,canvas.width, canvas.height);
+    ctx.drawImage(personCut, 0,0, canvas.width, canvas.height);
+  }
+}
+
+document.getElementById('bgFile').addEventListener('change', (e)=>{
+  const file = e.target.files[0]; if(!file) return;
+  const img = new Image();
+  img.src = URL.createObjectURL(file);
+  img.onload = ()=>{ changeBg('imageBg', img); };
+});
+
+dlTransBtn.onclick = ()=>{
+  const temp = document.createElement('canvas');
+  temp.width = canvas.width; temp.height = canvas.height;
+  const tCtx = temp.getContext('2d');
+  tCtx.drawImage(personCut, 0,0);
+  const a = document.createElement('a');
+  a.href = temp.toDataURL('image/png');
+  a.download = 'antokia-transparent.png';
+  a.click();
+};
 
 dlBtn.onclick = ()=>{
   const a = document.createElement('a');
-  a.href = canvas.toDataURL('image/png');
-  a.download = 'antokia-no-bg.png';
+  a.href = canvas.toDataURL('image/jpeg', 0.9);
+  a.download = 'antokia-bg-change.jpg';
   a.click();
-}
+};
+
+// Color picker click
+document.getElementById('colorPicker').addEventListener('click', e=> e.stopPropagation());
+document.querySelector('label').addEventListener('click', ()=> document.getElementById('colorPicker').click());
 </script>
 </body>
 </html>
