@@ -5,8 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BG Remover - Antokia</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.17.0/dist/tf.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/body-pix@2.2.0/dist/body-pix.min.js"></script>
 </head>
 <body class="bg-[#f5f5fa]">
 <header class="bg-white p-4 flex justify-between shadow-sm"><b class="text-[#e5322d]">Antokia</b><a href="/" class="text-sm underline">← All Tools</a></header>
@@ -14,12 +12,12 @@
 <h1 class="text-center text-2xl font-bold mt-4">BG Remover Pro</h1>
 <div class="bg-white rounded-2xl p-6 shadow mt-6 border text-center">
 <input type="file" id="file" accept="image/*" class="w-full text-sm file:mr-4 file:py-2 file:px-6 file:rounded-full file:border-0 file:bg-[#e5322d] file:text-white file:font-bold">
-<p id="status" class="mt-4 text-sm font-bold text-[#e5322d]">Loading AI... 10 sec</p>
+<p id="status" class="mt-4 text-sm font-bold text-[#e5322d]">Loading Pro Model... 15 sec first time</p>
 
 <div id="box" class="hidden mt-4">
 <div class="grid grid-cols-2 gap-4">
 <div><p class="text-xs font-bold mb-1">Original</p><img id="orig" class="rounded-xl border w-full"></div>
-<div><p class="text-xs font-bold mb-1">Result</p><canvas id="canvas" class="rounded-xl border w-full cursor-crosshair"></canvas></div>
+<div><p class="text-xs font-bold mb-1">Result</p><canvas id="canvas" class="rounded-xl border w-full bg-[linear-gradient(45deg,#eee_25%,transparent_25%),linear-gradient(-45deg,#eee_25%,transparent_25%),linear-gradient(45deg,transparent_75%,#eee_75%),linear-gradient(-45deg,transparent_75%,#eee_75%)] bg-[length:20px_20px]"></canvas></div>
 </div>
 
 <div id="bgControls" class="hidden mt-6 text-left bg-gray-50 p-4 rounded-xl border">
@@ -29,50 +27,51 @@
 <button onclick="changeBg('white')" class="px-4 py-2 bg-white border rounded-full text-xs font-bold">White</button>
 <button onclick="changeBg('black')" class="px-4 py-2 bg-black text-white rounded-full text-xs font-bold">Black</button>
 <button onclick="changeBg('blur')" class="px-4 py-2 bg-blue-600 text-white rounded-full text-xs font-bold">Blur</button>
-<label class="px-4 py-2 bg-[#e5322d] text-white rounded-full text-xs font-bold cursor-pointer">Color <input type="color" id="colorPicker" value="#e5322d" class="hidden"></label>
-<label class="px-4 py-2 bg-green-600 text-white rounded-full text-xs font-bold cursor-pointer">Image <input type="file" id="bgFile" accept="image/*" class="hidden"></label>
+<label class="px-4 py-2 bg-[#e5322d] text-white rounded-full text-xs font-bold cursor-pointer">Color <input type="color" id="colorPicker" value="#ff0000" class="hidden"></label>
+<label class="px-4 py-2 bg-green-600 text-white rounded-full text-xs font-bold cursor-pointer">Image BG <input type="file" id="bgFile" accept="image/*" class="hidden"></label>
 </div>
 
-<!-- Blur Slider - NEW -->
-<div id="blurControl" class="hidden mb-4">
-<label class="text-xs font-bold">Blur Level: <span id="blurVal">5</span>px (Halka se Tez)</label>
-<input type="range" id="blurSlider" min="0" max="20" value="5" class="w-full">
+<div id="blurControl" class="hidden mb-4 bg-white p-3 rounded-lg border">
+<label class="text-xs font-bold">Blur Level: <span id="blurVal">6</span>px</label>
+<input type="range" id="blurSlider" min="0" max="20" value="6" class="w-full accent-blue-600">
+<p class="text-[10px] text-gray-500">0 = Halka blur, 20 = Full blur</p>
 </div>
 
-<!-- Manual Eraser - NEW -->
 <div class="border-t pt-3">
-<p class="text-xs font-bold mb-2">Manual Edit (Brush se sahi karo):</p>
-<div class="flex gap-2">
-<button id="eraseBtn" onclick="setMode('erase')" class="px-3 py-1.5 bg-orange-500 text-white rounded-full text-xs">🧹 Erase Bacha Hua BG</button>
-<button id="restoreBtn" onclick="setMode('restore')" class="px-3 py-1.5 bg-white border rounded-full text-xs">✏️ Restore Body</button>
-<button onclick="setMode('none')" class="px-3 py-1.5 bg-gray-200 rounded-full text-xs">View Mode</button>
-<input type="range" id="brushSize" min="5" max="50" value="20" class="ml-2"><span class="text-xs">Brush</span>
+<p class="text-xs font-bold mb-2">Manual Edit + Undo System:</p>
+<div class="flex gap-2 flex-wrap items-center">
+<button onclick="undo()" class="px-3 py-1.5 bg-yellow-400 rounded-full text-xs font-bold">↩️ Undo / Back</button>
+<button onclick="redo()" class="px-3 py-1.5 bg-white border rounded-full text-xs font-bold">↪️ Redo</button>
+<button onclick="resetCut()" class="px-3 py-1.5 bg-gray-200 rounded-full text-xs font-bold">Reset Cut</button>
 </div>
-<p class="text-[10px] text-gray-500 mt-1">Result photo pe mouse se ghumao toh extra background mit jayega</p>
+<div class="flex gap-2 mt-3 flex-wrap items-center">
+<button id="eraseBtn" onclick="setMode('erase')" class="px-3 py-1.5 bg-orange-500 text-white rounded-full text-xs">🧹 Erase</button>
+<button id="restoreBtn" onclick="setMode('restore')" class="px-3 py-1.5 bg-white border rounded-full text-xs">✏️ Restore</button>
+<button onclick="setMode('none')" class="px-3 py-1.5 bg-gray-200 rounded-full text-xs">👁️ View</button>
+<input type="range" id="brushSize" min="5" max="60" value="25" class="ml-2"><span class="text-xs">Brush</span>
+</div>
 </div>
 </div>
 
 <div class="grid grid-cols-2 gap-3 mt-4">
-<button id="dlTrans" class="hidden w-full bg-white border-2 border-black py-3 rounded-xl font-bold text-sm">Download Transparent PNG</button>
+<button id="dlTrans" class="hidden w-full bg-white border-2 border-black py-3 rounded-xl font-bold text-sm">Download PNG</button>
 <button id="dl" class="hidden w-full bg-black text-white py-3 rounded-xl font-bold text-sm">Download JPG</button>
 </div>
 </div>
 </div>
 </main>
 
-<script>
-let net, orig, canvas, ctx, personCut, originalBgImage, currentBg='transparent', maskData, imgDataOriginal, editMode='none', isDrawing=false;
+<script type="module">
+import { removeBackground } from "https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.6.0/dist/index.mjs";
 
-orig=document.getElementById('orig');
-canvas=document.getElementById('canvas');
-ctx=canvas.getContext('2d');
 const status=document.getElementById('status');
+const orig=document.getElementById('orig');
+const canvas=document.getElementById('canvas');
+const ctx=canvas.getContext('2d');
+let originalBgImage=null, personCutImg=null, bgCustomImg=null, currentBg='transparent';
+let history=[], redoHistory=[], editMode='none', isDrawing=false;
 
-(async()=>{
-  status.innerText='Loading Pro AI... 10 sec';
-  net=await bodyPix.load({architecture:'ResNet50', outputStride:16, quantBytes:4});
-  status.innerText='Pro Ready! Upload Photo';
-})();
+status.innerText='Pro Ready! Photo Upload Karo';
 
 document.getElementById('file').addEventListener('change', async(e)=>{
   const file=e.target.files[0]; if(!file) return;
@@ -80,79 +79,104 @@ document.getElementById('file').addEventListener('change', async(e)=>{
   orig.src=URL.createObjectURL(file);
   originalBgImage=new Image(); originalBgImage.src=orig.src;
   await new Promise(r=>orig.onload=r);
-  canvas.width=orig.naturalWidth; canvas.height=orig.naturalHeight;
-  status.innerText='Removing...';
 
-  const seg=await net.segmentPerson(orig,{internalResolution:'full', segmentationThreshold:0.5});
-  const segCanvas=document.createElement('canvas'); segCanvas.width=seg.width; segCanvas.height=seg.height;
-  const segCtx=segCanvas.getContext('2d');
-  const segImg=segCtx.createImageData(seg.width, seg.height);
-  for(let i=0;i<seg.data.length;i++) segImg.data[i*4+3]=seg.data[i]?255:0;
-  segCtx.putImageData(segImg,0,0);
+  status.innerText='Pro Cutting... 5 sec';
+  try{
+    const blob=await removeBackground(file, { publicPath: "https://staticimgly.com/@imgly/background-removal-data/1.6.0/dist/" });
+    const cutUrl=URL.createObjectURL(blob);
+    const cutImg=new Image(); cutImg.src=cutUrl;
+    await new Promise(r=>cutImg.onload=r);
 
-  const maskCanvas=document.createElement('canvas'); maskCanvas.width=canvas.width; maskCanvas.height=canvas.height;
-  const maskCtx=maskCanvas.getContext('2d');
-  maskCtx.filter='blur(3px)'; maskCtx.drawImage(segCanvas,0,0,canvas.width,canvas.height); maskCtx.filter='none';
-  maskData=maskCtx.getImageData(0,0,canvas.width,canvas.height);
+    canvas.width=cutImg.width; canvas.height=cutImg.height;
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.drawImage(cutImg,0,0);
 
-  ctx.clearRect(0,0,canvas.width,canvas.height); ctx.drawImage(orig,0,0,canvas.width,canvas.height);
-  imgDataOriginal=ctx.getImageData(0,0,canvas.width,canvas.height);
-  const finalData=ctx.getImageData(0,0,canvas.width,canvas.height);
-  for(let i=0;i<finalData.data.length/4;i++) finalData.data[i*4+3]=maskData.data[i*4+3];
-  ctx.putImageData(finalData,0,0);
-
-  personCut=new Image(); personCut.src=canvas.toDataURL();
-  personCut.onload=()=>{ status.innerText='Done! ✓'; };
-  document.getElementById('bgControls').classList.remove('hidden');
-  document.getElementById('dl').classList.remove('hidden');
-  document.getElementById('dlTrans').classList.remove('hidden');
+    personCutImg=cutImg;
+    saveHistory();
+    document.getElementById('bgControls').classList.remove('hidden');
+    document.getElementById('dl').classList.remove('hidden');
+    document.getElementById('dlTrans').classList.remove('hidden');
+    status.innerText='Done! ✓ Ab BG change karo';
+    changeBg('transparent');
+  }catch(err){
+    console.error(err);
+    status.innerText='Error, dusri photo try karo';
+  }
 });
 
-function changeBg(type, val){
-  currentBg=type;
-  if(!personCut) return;
-  ctx.clearRect(0,0,canvas.width,canvas.height);
+window.saveHistory=()=>{
+  history.push(canvas.toDataURL());
+  if(history.length>20) history.shift();
+  redoHistory=[];
+}
+window.undo=()=>{
+  if(history.length<=1) return;
+  redoHistory.push(history.pop());
+  const img=new Image(); img.src=history[history.length-1];
+  img.onload=()=>{ ctx.clearRect(0,0,canvas.width,canvas.height); ctx.drawImage(img,0,0,canvas.width,canvas.height); personCutImg=img; if(currentBg!=='transparent') changeBg(currentBg); };
+}
+window.redo=()=>{
+  if(!redoHistory.length) return;
+  const data=redoHistory.pop(); history.push(data);
+  const img=new Image(); img.src=data;
+  img.onload=()=>{ ctx.clearRect(0,0,canvas.width,canvas.height); ctx.drawImage(img,0,0,canvas.width,canvas.height); personCutImg=img; };
+}
+window.resetCut=()=>{
+  if(history.length>0){
+    const img=new Image(); img.src=history[0];
+    img.onload=()=>{ ctx.clearRect(0,0,canvas.width,canvas.height); ctx.drawImage(img,0,0,canvas.width,canvas.height); personCutImg=img; saveHistory(); changeBg('transparent'); };
+  }
+}
+
+window.changeBg=(type,val)=>{
+  currentBg=type; if(!personCutImg) return;
   const blurPx=document.getElementById('blurSlider').value;
+  ctx.clearRect(0,0,canvas.width,canvas.height);
 
   if(type==='white'){ ctx.fillStyle='#fff'; ctx.fillRect(0,0,canvas.width,canvas.height); }
   else if(type==='black'){ ctx.fillStyle='#000'; ctx.fillRect(0,0,canvas.width,canvas.height); }
-  else if(type==='color'){ ctx.fillStyle=val; ctx.fillRect(0,0,canvas.width,canvas.height); }
+  else if(type==='color'){ ctx.fillStyle=val||document.getElementById('colorPicker').value; ctx.fillRect(0,0,canvas.width,canvas.height); }
   else if(type==='blur'){
     document.getElementById('blurControl').classList.remove('hidden');
     ctx.filter=`blur(${blurPx}px)`; ctx.drawImage(originalBgImage,0,0,canvas.width,canvas.height); ctx.filter='none';
-  } else if(type==='imageBg'){ ctx.drawImage(val,0,0,canvas.width,canvas.height); }
+  } else if(type==='imageBg'){
+    bgCustomImg=val; ctx.drawImage(val,0,0,canvas.width,canvas.height);
+  }
 
-  if(type!=='transparent') ctx.drawImage(personCut,0,0,canvas.width,canvas.height);
-  else { ctx.clearRect(0,0,canvas.width,canvas.height); ctx.drawImage(personCut,0,0,canvas.width,canvas.height); }
+  if(type!=='transparent') ctx.drawImage(personCutImg,0,0,canvas.width,canvas.height);
+  else { ctx.clearRect(0,0,canvas.width,canvas.height); ctx.drawImage(personCutImg,0,0,canvas.width,canvas.height); }
+
   if(type!=='blur') document.getElementById('blurControl').classList.add('hidden');
+  if(type!=='transparent' && type!=='blur' && type!=='imageBg' && type!=='color' && type!=='white' && type!=='black'){
+     // keep transparent
+  }
 }
 
-document.getElementById('blurSlider').addEventListener('input', (e)=>{
+document.getElementById('blurSlider').addEventListener('input', e=>{
   document.getElementById('blurVal').innerText=e.target.value;
   if(currentBg==='blur') changeBg('blur');
 });
-
 document.getElementById('colorPicker').addEventListener('input', e=> changeBg('color', e.target.value));
 document.getElementById('bgFile').addEventListener('change', e=>{
   const img=new Image(); img.src=URL.createObjectURL(e.target.files[0]); img.onload=()=> changeBg('imageBg', img);
 });
 
-// Manual Brush Logic
-function setMode(m){ editMode=m; document.getElementById('eraseBtn').classList.toggle('ring-2', m==='erase'); document.getElementById('restoreBtn').classList.toggle('ring-2', m==='restore'); canvas.style.cursor = m==='none'? 'default' : 'crosshair'; }
-
+window.setMode=(m)=>{
+  editMode=m;
+  document.getElementById('eraseBtn').classList.toggle('ring-2', m==='erase');
+  document.getElementById('restoreBtn').classList.toggle('ring-2', m==='restore');
+}
 function getPos(e){
-  const rect=canvas.getBoundingClientRect();
-  const scaleX=canvas.width/rect.width; const scaleY=canvas.height/rect.height;
+  const rect=canvas.getBoundingClientRect(); const scaleX=canvas.width/rect.width; const scaleY=canvas.height/rect.height;
   const x=(e.touches?e.touches[0].clientX:e.clientX)-rect.left; const y=(e.touches?e.touches[0].clientY:e.clientY)-rect.top;
   return {x:x*scaleX, y:y*scaleY};
 }
-
 canvas.addEventListener('mousedown', e=>{ if(editMode==='none') return; isDrawing=true; draw(e); });
 canvas.addEventListener('mousemove', e=>{ if(isDrawing) draw(e); });
-window.addEventListener('mouseup', ()=> isDrawing=false);
-canvas.addEventListener('touchstart', e=>{ if(editMode==='none') return; isDrawing=true; draw(e); e.preventDefault(); });
-canvas.addEventListener('touchmove', e=>{ if(isDrawing) draw(e); e.preventDefault(); });
-window.addEventListener('touchend', ()=> isDrawing=false);
+window.addEventListener('mouseup', ()=>{ if(isDrawing){ isDrawing=false; saveHistory(); } });
+canvas.addEventListener('touchstart', e=>{ if(editMode==='none') return; isDrawing=true; draw(e); e.preventDefault(); }, {passive:false});
+canvas.addEventListener('touchmove', e=>{ if(isDrawing) draw(e); e.preventDefault(); }, {passive:false});
+window.addEventListener('touchend', ()=>{ if(isDrawing){ isDrawing=false; saveHistory(); } });
 
 function draw(e){
   const pos=getPos(e); const size=document.getElementById('brushSize').value;
@@ -161,27 +185,17 @@ function draw(e){
     ctx.beginPath(); ctx.arc(pos.x,pos.y,size,0,Math.PI*2); ctx.fill();
     ctx.globalCompositeOperation='source-over';
   } else if(editMode==='restore'){
-    const sx=Math.max(0,pos.x-size); const sy=Math.max(0,pos.y-size);
-    ctx.drawImage(orig, sx,sy,size*2,size*2, sx,sy,size*2,size*2);
-    // restore mask
-    const imageSlice=ctx.getImageData(sx,sy,size*2,size*2);
-    for(let i=0;i<imageSlice.data.length/4;i++){
-      const mx=Math.floor(sx+i% (size*2)); const my=Math.floor(sy+ i/(size*2));
-      if(mx<maskData.width && my<maskData.height){
-        const idx=(my*maskData.width+mx)*4;
-        if(maskData.data[idx+3]>0) imageSlice.data[i*4+3]=255;
-      }
-    }
-    ctx.putImageData(imageSlice,sx,sy);
+    ctx.drawImage(orig, pos.x-size, pos.y-size, size*2, size*2, pos.x-size, pos.y-size, size*2, size*2);
   }
-  personCut.src=canvas.toDataURL();
 }
 
 document.getElementById('dlTrans').onclick=()=>{
-  const a=document.createElement('a'); a.href=personCut.src; a.download='transparent.png'; a.click();
+  const c=document.createElement('canvas'); c.width=personCutImg.width; c.height=personCutImg.height;
+  c.getContext('2d').drawImage(personCutImg,0,0);
+  const a=document.createElement('a'); a.href=c.toDataURL('image/png'); a.download='antokia-transparent.png'; a.click();
 };
 document.getElementById('dl').onclick=()=>{
-  const a=document.createElement('a'); a.href=canvas.toDataURL('image/jpeg',0.92); a.download='background-change.jpg'; a.click();
+  const a=document.createElement('a'); a.href=canvas.toDataURL('image/jpeg',0.92); a.download='antokia-bg.jpg'; a.click();
 };
 </script>
 </body>
