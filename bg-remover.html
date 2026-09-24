@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BG Remover - Antokia</title>
 <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation/selfie_segmentation.js"></script>
 <script src="https://unpkg.com/@imgly/background-removal@1.4.5/dist/imgly-background-removal.js"></script>
 </head>
 <body class="bg-[#f5f5fa]">
@@ -17,53 +18,67 @@
 <p id="status" class="mt-4 text-sm font-bold text-[#e5322d]">AI Ready! Upload Photo</p>
 <div id="box" class="hidden grid grid-cols-2 gap-4 mt-4">
 <div><p class="text-xs font-bold mb-1">Original</p><img id="orig" class="rounded-xl border w-full"></div>
-<div><p class="text-xs font-bold mb-1">Transparent</p><img id="result" class="rounded-xl border w-full hidden" style="background-image: linear-gradient(45deg, #eee 25%, transparent 25%), linear-gradient(-45deg, #eee 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #eee 75%), linear-gradient(-45deg, transparent 75%, #eee 75%); background-size: 20px 20px;"></div>
+<div><p class="text-xs font-bold mb-1">Transparent</p><canvas id="canvas" class="rounded-xl border w-full" style="background-image: linear-gradient(45deg, #eee 25%, transparent 25%), linear-gradient(-45deg, #eee 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #eee 75%), linear-gradient(-45deg, transparent 75%, #eee 75%); background-size: 20px 20px;"></canvas></div>
 </div>
 <button id="dl" class="hidden w-full mt-4 bg-black text-white py-3 rounded-xl font-bold">Download Transparent PNG</button>
 </div>
 </main>
 
 <script>
-const status = document.getElementById('status');
-const orig = document.getElementById('orig');
-const resultImg = document.getElementById('result');
-const dlBtn = document.getElementById('dl');
-let finalBlob = null;
+const canvas=document.getElementById('canvas');
+const ctx=canvas.getContext('2d');
+const status=document.getElementById('status');
+const orig=document.getElementById('orig');
+const dlBtn=document.getElementById('dl');
+const box=document.getElementById('box');
+
+// Fallback wala purana model ready rakha hai
+const selfie=new SelfieSegmentation({locateFile:(f)=>`https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation/${f}`});
+selfie.setOptions({modelSelection:1});
+let selfieReady=false;
+selfie.onResults((r)=>{
+  canvas.width=r.image.width; canvas.height=r.image.height;
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.drawImage(r.segmentationMask,0,0,canvas.width,canvas.height);
+  ctx.globalCompositeOperation='source-in';
+  ctx.drawImage(r.image,0,0,canvas.width,canvas.height);
+  ctx.globalCompositeOperation='source-over';
+  status.innerText='Done! ✓ (Fast Mode)';
+  dlBtn.classList.remove('hidden');
+});
+selfie.initialize().then(()=>{ selfieReady=true; });
 
 document.getElementById('file').addEventListener('change', async(e)=>{
-  const file = e.target.files[0];
-  if(!file) return;
-  document.getElementById('box').classList.remove('hidden');
-  orig.src = URL.createObjectURL(file);
+  const file=e.target.files[0]; if(!file) return;
+  box.classList.remove('hidden');
+  orig.src=URL.createObjectURL(file);
   await new Promise(r=>orig.onload=r);
-
-  status.innerText = 'Removing... 3 sec wait';
-  resultImg.classList.add('hidden');
+  status.innerText='Removing... 3 sec';
   dlBtn.classList.add('hidden');
 
+  // Pehle Pro wala try karega
   try{
-    // Yahi main function hai - ab module nahi hai toh hang nahi hoga
-    finalBlob = await ImglyBackgroundRemoval.removeBackground(file, {
-      progress: (k,c,t) => {
-        if(t>0) status.innerText = `Downloading AI... ${Math.round(c/t*100)}%`;
-      }
-    });
-    const url = URL.createObjectURL(finalBlob);
-    resultImg.src = url;
-    resultImg.classList.remove('hidden');
-    status.innerText = 'Done! ✓';
+    const blob = await ImglyBackgroundRemoval.removeBackground(file);
+    const url = URL.createObjectURL(blob);
+    const img = new Image();
+    img.src=url; await new Promise(r=>img.onload=r);
+    canvas.width=img.width; canvas.height=img.height;
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.drawImage(img,0,0);
+    status.innerText='Done! ✓ Pro Mode';
     dlBtn.classList.remove('hidden');
   }catch(err){
-    console.error(err);
-    status.innerText = 'Error! Dusri photo try karo';
+    // Agar Pro fail hua toh turant Fast wala chal jayega, Error kabhi nahi dikhega
+    console.log("Pro failed, switching to fast", err);
+    status.innerText='Pro busy, Fast Mode se kar rahe hai...';
+    if(selfieReady) await selfie.send({image:orig});
   }
 });
 
-dlBtn.onclick = ()=>{
-  if(!finalBlob) return;
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(finalBlob);
-  a.download = 'antokia-no-bg.png';
+dlBtn.onclick=()=>{
+  const a=document.createElement('a');
+  a.href=canvas.toDataURL('image/png');
+  a.download='antokia-no-bg.png';
   a.click();
 }
 </script>
