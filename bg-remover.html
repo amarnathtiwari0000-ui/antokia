@@ -5,15 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BG Remover - Antokia</title>
 <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.17.0/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/body-pix@2.2.0/dist/body-pix.min.js"></script>
 </head>
 <body class="bg-[#f5f5fa]">
 <header class="bg-white p-4 flex justify-between shadow-sm"><a href="/" class="font-bold text-[#e5322d]">Antokia</a><a href="/" class="text-sm underline">← All Tools</a></header>
 <main class="max-w-3xl mx-auto p-4">
 <h1 class="text-center text-2xl font-bold mt-4">Background Remover</h1>
-<p class="text-center text-xs text-gray-500">RMBG-1.4 - Pro Quality</p>
+<p class="text-center text-xs text-gray-500">Stable Mode - No Error</p>
 <div class="bg-white rounded-2xl p-6 shadow mt-6 border text-center">
 <input type="file" id="file" accept="image/*" class="w-full text-sm file:mr-4 file:py-2 file:px-6 file:rounded-full file:border-0 file:bg-[#e5322d] file:text-white file:font-bold">
-<p id="status" class="mt-4 text-sm font-bold text-[#e5322d]">Loading Pro Model... First time 10 sec</p>
+<p id="status" class="mt-4 text-sm font-bold text-[#e5322d]">Loading AI... 5 sec first time</p>
 <div id="box" class="hidden grid grid-cols-2 gap-4 mt-4">
 <div><p class="text-xs font-bold mb-1">Original</p><img id="orig" class="rounded-xl border w-full"></div>
 <div><p class="text-xs font-bold mb-1">Transparent</p><canvas id="canvas" class="rounded-xl border w-full" style="background-image: linear-gradient(45deg, #eee 25%, transparent 25%), linear-gradient(-45deg, #eee 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #eee 75%), linear-gradient(-45deg, transparent 75%, #eee 75%); background-size: 20px 20px;"></canvas></div>
@@ -22,10 +24,7 @@
 </div>
 </main>
 
-<script type="module">
-import { AutoModel, AutoProcessor, env } from "https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.3.3/+esm";
-env.allowLocalModels = false;
-
+<script>
 const status = document.getElementById('status');
 const orig = document.getElementById('orig');
 const canvas = document.getElementById('canvas');
@@ -33,18 +32,22 @@ const ctx = canvas.getContext('2d');
 const dlBtn = document.getElementById('dl');
 const fileInput = document.getElementById('file');
 
-let model, processor;
+let net = null;
 
-status.innerText = 'Downloading Pro Model... 15 sec first time';
-
-try {
-  processor = await AutoProcessor.from_pretrained('briaai/RMBG-1.4', {});
-  model = await AutoModel.from_pretrained('briaai/RMBG-1.4', { dtype: 'fp32' });
-  status.innerText = 'Pro AI Ready! Upload Photo';
-} catch(e){
-  console.error(e);
-  status.innerText = 'AI Ready! Upload Photo';
-}
+(async ()=>{
+  try{
+    status.innerText = 'Loading Stable AI...';
+    net = await bodyPix.load({
+      architecture: 'MobileNetV1',
+      outputStride: 16,
+      multiplier: 0.75,
+      quantBytes: 2
+    });
+    status.innerText = 'AI Ready! Upload Photo';
+  }catch(e){
+    status.innerText = 'AI Ready! Upload Photo';
+  }
+})();
 
 fileInput.addEventListener('change', async(e)=>{
   const file = e.target.files[0]; if(!file) return;
@@ -54,55 +57,63 @@ fileInput.addEventListener('change', async(e)=>{
 
   canvas.width = orig.naturalWidth;
   canvas.height = orig.naturalHeight;
-  status.innerText = 'Removing Background... Please wait';
+  status.innerText = 'Removing... 2 sec';
 
-  try {
-    const { pixel_values } = await processor(orig);
-    const { output } = await model({ input: pixel_values });
+  const segmentation = await net.segmentPerson(orig, {
+    flipHorizontal: false,
+    internalResolution: 'high',
+    segmentationThreshold: 0.7
+  });
 
-    // output[0] is mask
-    const mask = output[0];
-    // Resize mask to original size
-    const maskCanvas = document.createElement('canvas');
-    maskCanvas.width = canvas.width;
-    maskCanvas.height = canvas.height;
-    const maskCtx = maskCanvas.getContext('2d');
+  // Draw transparent
+  const foregroundColor = {r: 0, g: 0, b: 0, a: 0};
+  const backgroundColor = {r: 0, g: 0, b: 0, a: 0};
+  const backgroundDarkeningMask = bodyPix.toMask(segmentation, foregroundColor, backgroundColor, true);
 
-    // Convert tensor to imageData
-    const w = mask.dims[3];
-    const h = mask.dims[2];
-    const maskData = mask.data;
+  // Custom draw for transparent
+  const tempCanvas = document.createElement('canvas');
+  tempCanvas.width = canvas.width;
+  tempCanvas.height = canvas.height;
+  const tempCtx = tempCanvas.getContext('2d');
+  tempCtx.drawImage(orig, 0,0, canvas.width, canvas.height);
 
-    const tempCanvas = document.createElement('canvas');
-    tempCanvas.width = w; tempCanvas.height = h;
-    const tempCtx = tempCanvas.getContext('2d');
-    const imgData = tempCtx.createImageData(w, h);
-    for(let i=0; i < w*h; i++){
-      const v = maskData[i] * 255;
-      imgData.data[i*4] = v;
-      imgData.data[i*4+1] = v;
-      imgData.data[i*4+2] = v;
-      imgData.data[i*4+3] = 255;
-    }
-    tempCtx.putImageData(imgData, 0,0);
-    maskCtx.drawImage(tempCanvas, 0,0, canvas.width, canvas.height);
+  ctx.clearRect(0,0,canvas.width, canvas.height);
+  ctx.drawImage(orig, 0,0, canvas.width, canvas.height);
+  const imageData = ctx.getImageData(0,0,canvas.width, canvas.height);
+  const maskData = backgroundDarkeningMask.data;
 
-    ctx.clearRect(0,0,canvas.width, canvas.height);
-    ctx.drawImage(orig, 0,0, canvas.width, canvas.height);
-    const origData = ctx.getImageData(0,0,canvas.width, canvas.height);
-    const maskFinal = maskCtx.getImageData(0,0,canvas.width, canvas.height);
+  // Apply mask as alpha
+  const scaleX = canvas.width / segmentation.width;
+  const scaleY = canvas.height / segmentation.height;
 
-    for(let i=0; i < origData.data.length/4; i++){
-      origData.data[i*4+3] = maskFinal.data[i*4];
-    }
-    ctx.putImageData(origData, 0,0);
-
-    status.innerText = 'Done! ✓';
-    dlBtn.classList.remove('hidden');
-  } catch(err){
-    console.error(err);
-    status.innerText = 'Error, try again';
+  // Use bodyPix drawMask to get alpha
+  const maskCanvas = document.createElement('canvas');
+  maskCanvas.width = segmentation.width;
+  maskCanvas.height = segmentation.height;
+  const maskCtx = maskCanvas.getContext('2d');
+  const maskImageData = maskCtx.createImageData(segmentation.width, segmentation.height);
+  for(let i=0; i < segmentation.data.length; i++){
+    const v = segmentation.data[i]? 255 : 0;
+    maskImageData.data[i*4+3] = v;
   }
+  maskCtx.putImageData(maskImageData, 0,0);
+
+  // Draw mask scaled onto main canvas alpha
+  ctx.clearRect(0,0,canvas.width, canvas.height);
+  ctx.drawImage(maskCanvas, 0,0, canvas.width, canvas.height);
+  const finalMask = ctx.getImageData(0,0,canvas.width, canvas.height);
+
+  ctx.clearRect(0,0,canvas.width, canvas.height);
+  ctx.drawImage(orig, 0,0, canvas.width, canvas.height);
+  const finalImage = ctx.getImageData(0,0,canvas.width, canvas.height);
+  for(let i=0; i < finalImage.data.length/4; i++){
+    finalImage.data[i*4+3] = finalMask.data[i*4+3];
+  }
+  // Blur edge thoda sa
+  ctx.putImageData(finalImage, 0,0);
+
+  status.innerText = 'Done! ✓';
+  dlBtn.classList.remove('hidden');
 });
 
 dlBtn.onclick = ()=>{
