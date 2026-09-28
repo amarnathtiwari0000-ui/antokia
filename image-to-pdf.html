@@ -1,63 +1,542 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Image to PDF - Convert JPG to PDF Free | Antokia</title>
-<meta name="description" content="Free Image to PDF converter. Convert JPG, PNG to PDF in seconds. No watermark.">
+
+<title>Image to PDF Converter – JPG & PNG to PDF Free | Antokia</title>
+
+<meta name="description" content="Convert JPG, JPEG and PNG images to PDF online for free with Antokia. Combine multiple images into one PDF, no watermark, no signup required.">
+
+<meta name="robots" content="index, follow, max-image-preview:large">
+
+<link rel="canonical" href="https://antokia.com/image-to-pdf.html">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Image to PDF Converter – Free Online | Antokia">
+<meta property="og:description" content="Convert JPG and PNG images to PDF for free. Combine multiple images into one PDF without watermark or signup.">
+<meta property="og:url" content="https://antokia.com/image-to-pdf.html">
+<meta property="og:site_name" content="Antokia">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Image to PDF Converter – Free Online | Antokia">
+<meta name="twitter:description" content="Free online JPG and PNG to PDF converter by Antokia.">
+
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<!-- FAQ Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Antokia Image to PDF Converter",
+  "url": "https://antokia.com/image-to-pdf.html",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "description": "Free online tool to convert JPG, JPEG and PNG images into PDF files.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": [
+    "JPG to PDF",
+    "JPEG to PDF",
+    "PNG to PDF",
+    "Multiple images to one PDF",
+    "Free PDF conversion",
+    "No watermark"
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How can I convert images to PDF?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Select one or more JPG, JPEG or PNG images, then click the Convert to PDF button. Your PDF will be generated and downloaded."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I convert multiple images into one PDF?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. You can select multiple images and combine them into a single PDF document."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the Image to PDF converter free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Antokia provides this Image to PDF conversion tool free of charge."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to install software?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The converter works directly in your web browser, so no additional software installation is required."
+      }
+    }
+  ]
+}
+</script>
 </head>
-<body class="bg-[#f5f5fa]">
+
+<body class="bg-[#f5f5fa] text-gray-800">
+
 <header class="bg-white shadow-sm">
-<div class="max-w-6xl mx-auto px-4 py-3 flex justify-between">
-<a href="/" class="text-2xl font-extrabold text-[#e5322d]">Antokia</a>
-<a href="/" class="text-sm underline">← All Tools</a>
-</div>
+  <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+
+    <a href="/" class="text-2xl font-extrabold text-[#e5322d]" aria-label="Antokia Home">
+      Antokia
+    </a>
+
+    <a href="/" class="text-sm underline text-gray-700">
+      ← All Tools
+    </a>
+
+  </div>
 </header>
 
 <main class="max-w-3xl mx-auto px-4 py-8">
-<h1 class="text-3xl font-bold text-center">Image to PDF</h1>
-<p class="text-center text-gray-500 text-sm mt-2">Convert your images to PDF for free</p>
 
-<div class="bg-gray-200 rounded-xl h-20 mt-6 flex items-center justify-center text-gray-500 text-xs">Ad - Top Banner</div>
+  <!-- Main Heading -->
+  <section>
+    <h1 class="text-3xl md:text-4xl font-bold text-center">
+      Image to PDF Converter
+    </h1>
 
-<div class="bg-white rounded-2xl p-6 shadow border mt-6">
-<input type="file" id="imgInput" multiple accept="image/*" class="w-full border-2 border-dashed rounded-xl p-8 text-center">
-<div id="preview" class="flex gap-2 mt-4 flex-wrap"></div>
-<button id="toPdfBtn" class="mt-4 w-full bg-[#e5322d] text-white py-4 rounded-xl font-bold text-lg">Convert to PDF & Download</button>
-</div>
+    <p class="text-center text-gray-600 mt-3">
+      Convert JPG, JPEG and PNG images to PDF online for free.
+    </p>
 
-<div class="bg-gray-200 rounded-xl h-20 mt-6 flex items-center justify-center text-gray-500 text-xs">Ad - Bottom Banner</div>
+    <p class="text-center text-sm text-gray-500 mt-2">
+      Combine multiple images into one PDF without watermark or signup.
+    </p>
+  </section>
 
-<div class="bg-white rounded-xl p-4 mt-6 text-sm text-gray-600">
-<h3 class="font-bold">How to use?</h3>
-<p class="mt-2">1. Select images 2. Click Convert 3. PDF download ho jayega. No limit, 100% free!</p>
-</div>
+  <!-- Ad Space -->
+  <div class="bg-gray-200 rounded-xl h-20 mt-6 flex items-center justify-center text-gray-500 text-xs"
+       aria-label="Advertisement">
+    Advertisement
+  </div>
+
+  <!-- Tool -->
+  <section class="bg-white rounded-2xl p-6 shadow border mt-6">
+
+    <h2 class="text-xl font-bold mb-4">
+      Convert Images to PDF
+    </h2>
+
+    <label for="imgInput"
+           class="block text-sm font-medium text-gray-700 mb-2">
+      Select your images
+    </label>
+
+    <input
+      type="file"
+      id="imgInput"
+      multiple
+      accept="image/jpeg,image/png,image/webp"
+      class="w-full border-2 border-dashed border-gray-300 rounded-xl p-6 cursor-pointer"
+      aria-label="Select images to convert to PDF"
+    >
+
+    <p class="text-xs text-gray-500 mt-2">
+      Supported formats: JPG, JPEG, PNG and WEBP
+    </p>
+
+    <div id="preview"
+         class="flex gap-3 mt-5 flex-wrap"
+         aria-live="polite">
+    </div>
+
+    <button
+      id="toPdfBtn"
+      type="button"
+      class="mt-6 w-full bg-[#e5322d] hover:bg-red-700 text-white py-4 rounded-xl font-bold text-lg transition">
+      Convert to PDF & Download
+    </button>
+
+    <p id="status"
+       class="text-center text-sm text-gray-500 mt-3"
+       aria-live="polite">
+    </p>
+
+  </section>
+
+  <!-- Ad Space -->
+  <div class="bg-gray-200 rounded-xl h-20 mt-6 flex items-center justify-center text-gray-500 text-xs"
+       aria-label="Advertisement">
+    Advertisement
+  </div>
+
+  <!-- How to use -->
+  <section class="bg-white rounded-xl p-6 mt-6 shadow-sm">
+
+    <h2 class="text-2xl font-bold">
+      How to Convert Image to PDF
+    </h2>
+
+    <ol class="list-decimal ml-5 mt-4 space-y-2 text-gray-600">
+      <li>Select one or more JPG, JPEG or PNG images.</li>
+      <li>Check the image previews before conversion.</li>
+      <li>Click the <strong>Convert to PDF & Download</strong> button.</li>
+      <li>Your PDF file will be generated and downloaded automatically.</li>
+    </ol>
+
+  </section>
+
+  <!-- About Tool -->
+  <section class="bg-white rounded-xl p-6 mt-6 shadow-sm">
+
+    <h2 class="text-2xl font-bold">
+      Free Image to PDF Converter
+    </h2>
+
+    <p class="mt-3 text-gray-600 leading-7">
+      Antokia's Image to PDF converter lets you quickly convert
+      JPG, JPEG and PNG images into a PDF document directly from
+      your browser. You can select multiple images and combine
+      them into a single PDF file.
+    </p>
+
+    <p class="mt-3 text-gray-600 leading-7">
+      This tool can be useful for creating PDF documents from
+      scanned documents, photographs, forms, certificates,
+      receipts and other images.
+    </p>
+
+    <p class="mt-3 text-gray-600 leading-7">
+      The tool is designed to be simple and easy to use. Select
+      your images, convert them and download your PDF without
+      installing additional software.
+    </p>
+
+  </section>
+
+  <!-- Features -->
+  <section class="bg-white rounded-xl p-6 mt-6 shadow-sm">
+
+    <h2 class="text-2xl font-bold">
+      Image to PDF Converter Features
+    </h2>
+
+    <ul class="list-disc ml-5 mt-4 space-y-2 text-gray-600">
+      <li>Convert JPG to PDF</li>
+      <li>Convert JPEG to PDF</li>
+      <li>Convert PNG to PDF</li>
+      <li>Combine multiple images into one PDF</li>
+      <li>Free online PDF conversion</li>
+      <li>No watermark</li>
+      <li>No software installation required</li>
+      <li>Works on desktop and mobile browsers</li>
+    </ul>
+
+  </section>
+
+  <!-- FAQ -->
+  <section class="bg-white rounded-xl p-6 mt-6 shadow-sm">
+
+    <h2 class="text-2xl font-bold">
+      Frequently Asked Questions
+    </h2>
+
+    <div class="mt-5 space-y-5">
+
+      <div>
+        <h3 class="font-bold">
+          How can I convert images to PDF?
+        </h3>
+        <p class="text-gray-600 mt-2">
+          Select your JPG, JPEG or PNG images and click the
+          Convert to PDF button. The PDF will be generated and
+          downloaded automatically.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="font-bold">
+          Can I convert multiple images into one PDF?
+        </h3>
+        <p class="text-gray-600 mt-2">
+          Yes. Select multiple images and they will be combined
+          into a single PDF document.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="font-bold">
+          Is this Image to PDF converter free?
+        </h3>
+        <p class="text-gray-600 mt-2">
+          Yes. The Antokia Image to PDF converter is available
+          free of charge.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="font-bold">
+          Do I need to install any software?
+        </h3>
+        <p class="text-gray-600 mt-2">
+          No. The tool works directly in your browser.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Related Tools -->
+  <section class="bg-white rounded-xl p-6 mt-6 shadow-sm">
+
+    <h2 class="text-2xl font-bold">
+      More Free Tools
+    </h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
+
+      <a href="/pdf-to-image.html"
+         class="border rounded-lg p-4 hover:bg-gray-50">
+        PDF to Image
+      </a>
+
+      <a href="/merge-pdf.html"
+         class="border rounded-lg p-4 hover:bg-gray-50">
+        Merge PDF
+      </a>
+
+      <a href="/image-compressor.html"
+         class="border rounded-lg p-4 hover:bg-gray-50">
+        Image Compressor
+      </a>
+
+      <a href="/"
+         class="border rounded-lg p-4 hover:bg-gray-50">
+        View All Free Tools
+      </a>
+
+    </div>
+
+  </section>
+
 </main>
 
+<footer class="bg-white border-t mt-10">
+
+  <div class="max-w-6xl mx-auto px-4 py-8 text-sm text-gray-600">
+
+    <div class="flex flex-wrap gap-4 justify-center mb-4">
+
+      <a href="/about.html" class="hover:underline">
+        About
+      </a>
+
+      <a href="/privacy-policy.html" class="hover:underline">
+        Privacy Policy
+      </a>
+
+      <a href="/terms.html" class="hover:underline">
+        Terms
+      </a>
+
+      <a href="/contact.html" class="hover:underline">
+        Contact
+      </a>
+
+    </div>
+
+    <p class="text-center">
+      © 2026 Antokia. Free online tools for everyday use.
+    </p>
+
+  </div>
+
+</footer>
+
+
 <script>
-let imgs=[]
-document.getElementById('imgInput').addEventListener('change',e=>{
-imgs=[...e.target.files];
-const p=document.getElementById('preview');p.innerHTML='';
-imgs.forEach(f=>{const r=new FileReader();r.onload=()=>{let i=document.createElement('img');i.src=r.result;i.className='h-20 rounded border';p.appendChild(i)};r.readAsDataURL(f)})
-})
-document.getElementById('toPdfBtn').onclick=()=>{
-if(!imgs.length)return alert('Image select karo Jane!');
-const {jsPDF}=window.jspdf;const pdf=new jsPDF();let first=true;
-let loaded=0;
-imgs.forEach((f,idx)=>{
-let url=URL.createObjectURL(f);
-let img=new Image();img.src=url;
-img.onload=()=>{
-if(!first)pdf.addPage();first=false;
-pdf.addImage(img,'JPEG',0,0,210,297);
-loaded++;
-if(loaded===imgs.length)pdf.save('antokia-image-to-pdf.pdf');
+
+let imgs = [];
+
+const input = document.getElementById('imgInput');
+const preview = document.getElementById('preview');
+const button = document.getElementById('toPdfBtn');
+const status = document.getElementById('status');
+
+input.addEventListener('change', function(e) {
+
+  imgs = [...e.target.files];
+
+  preview.innerHTML = '';
+
+  if (!imgs.length) {
+    status.textContent = '';
+    return;
+  }
+
+  imgs.forEach((file, index) => {
+
+    const reader = new FileReader();
+
+    reader.onload = function(event) {
+
+      const wrapper = document.createElement('div');
+      wrapper.className = 'relative';
+
+      const image = document.createElement('img');
+
+      image.src = event.target.result;
+      image.alt = `Selected image ${index + 1}`;
+      image.className = 'h-20 w-20 object-cover rounded border';
+
+      wrapper.appendChild(image);
+      preview.appendChild(wrapper);
+
+    };
+
+    reader.readAsDataURL(file);
+
+  });
+
+  status.textContent = `${imgs.length} image${imgs.length > 1 ? 's' : ''} selected.`;
+
+});
+
+
+button.addEventListener('click', async function() {
+
+  if (!imgs.length) {
+    alert('Please select at least one image.');
+    return;
+  }
+
+  const { jsPDF } = window.jspdf;
+
+  button.disabled = true;
+  button.textContent = 'Creating PDF...';
+  status.textContent = 'Please wait while your PDF is being created.';
+
+  const pdf = new jsPDF('p', 'mm', 'a4');
+
+  try {
+
+    for (let i = 0; i < imgs.length; i++) {
+
+      const file = imgs[i];
+
+      const imageData = await readFile(file);
+
+      const img = await loadImage(imageData);
+
+      if (i > 0) {
+        pdf.addPage();
+      }
+
+      const pageWidth = 210;
+      const pageHeight = 297;
+
+      const margin = 10;
+
+      const maxWidth = pageWidth - (margin * 2);
+      const maxHeight = pageHeight - (margin * 2);
+
+      const ratio = Math.min(
+        maxWidth / img.width,
+        maxHeight / img.height
+      );
+
+      const width = img.width * ratio;
+      const height = img.height * ratio;
+
+      const x = (pageWidth - width) / 2;
+      const y = (pageHeight - height) / 2;
+
+      let format = 'JPEG';
+
+      if (file.type === 'image/png') {
+        format = 'PNG';
+      }
+
+      pdf.addImage(
+        imageData,
+        format,
+        x,
+        y,
+        width,
+        height
+      );
+
+    }
+
+    pdf.save('antokia-image-to-pdf.pdf');
+
+    status.textContent = 'PDF created successfully.';
+
+  } catch (error) {
+
+    console.error(error);
+
+    status.textContent = 'Something went wrong. Please try again.';
+    alert('Unable to create PDF. Please try another image.');
+
+  } finally {
+
+    button.disabled = false;
+    button.textContent = 'Convert to PDF & Download';
+
+  }
+
+});
+
+
+function readFile(file) {
+
+  return new Promise((resolve, reject) => {
+
+    const reader = new FileReader();
+
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = reject;
+
+    reader.readAsDataURL(file);
+
+  });
+
 }
-})
+
+
+function loadImage(src) {
+
+  return new Promise((resolve, reject) => {
+
+    const img = new Image();
+
+    img.onload = () => resolve(img);
+    img.onerror = reject;
+
+    img.src = src;
+
+  });
+
 }
+
 </script>
+
 </body>
 </html>
+```
