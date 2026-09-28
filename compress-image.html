@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Image Compressor - Reduce Image Size in KB without Server Upload</title>
     <meta name="description" content="Compress JPG, PNG, and WebP images directly in your browser. Reduce file size to 20KB, 50KB, or 100KB for online forms while maintaining visual clarity. Fast, free, and 100% private.">
-    
-    <!-- CSS / Framework Link (Add your stylesheet here) -->
     <style>
         :root {
             --primary-color: #2563eb;
@@ -20,106 +18,49 @@
             line-height: 1.6;
             color: var(--text-color);
             background-color: var(--bg-color);
-            margin: 0;
-            padding: 0;
+            margin: 0; padding: 0;
         }
-        header, footer {
-            background: #0f172a;
-            color: #fff;
-            padding: 1rem 2rem;
-        }
+        header, footer { background: #0f172a; color: #fff; padding: 1rem 2rem; }
         header a, footer a { color: #93c5fd; text-decoration: none; }
-        .container { max-width: 1000px; margin: 0 auto; padding: 2rem 1rem; }
-        
-        /* Tool Section */
-        .tool-card {
-            background: var(--card-bg);
-            border: 2px dashed var(--primary-color);
-            border-radius: 12px;
-            padding: 2rem;
-            text-align: center;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+       .container { max-width: 1000px; margin: 0 auto; padding: 2rem 1rem; }
+       .tool-card {
+            background: var(--card-bg); border: 2px dashed var(--primary-color);
+            border-radius: 12px; padding: 2rem; text-align: center;
+            margin-bottom: 2rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
         }
-        .btn {
-            background: var(--primary-color);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border: none;
-            border-radius: 6px;
-            font-size: 1rem;
-            cursor: pointer;
-            margin-top: 1rem;
+       .btn {
+            background: var(--primary-color); color: white; padding: 0.75rem 1.5rem;
+            border: none; border-radius: 6px; font-size: 1rem; cursor: pointer; margin-top: 1rem;
         }
-        .btn:hover { background: #1d4ed8; }
-        .controls { margin: 1.5rem 0; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-        .control-group { text-align: left; }
-        
-        /* Ad Slots */
-        .ad-slot {
-            background: #e2e8f0;
-            text-align: center;
-            padding: 1rem;
-            margin: 1.5rem 0;
-            font-size: 0.85rem;
-            color: #64748b;
-            border-radius: 6px;
-        }
-
-        /* Content Sections */
-        .content-section {
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 8px;
-            margin-bottom: 2rem;
-            border: 1px solid var(--border-color);
-        }
+       .btn:hover { background: #1d4ed8; }
+       .controls { margin: 1.5rem 0; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+       .ad-slot { background: #e2e8f0; text-align: center; padding: 1rem; margin: 1.5rem 0; font-size: 0.85rem; color: #64748b; border-radius: 6px; }
+       .content-section { background: var(--card-bg); padding: 2rem; border-radius: 8px; margin-bottom: 2rem; border: 1px solid var(--border-color); }
         h1 { font-size: 2rem; margin-bottom: 0.5rem; }
         h2 { font-size: 1.4rem; color: #0f172a; border-bottom: 2px solid var(--bg-color); padding-bottom: 0.5rem; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-        
-        /* Internal Links & FAQ */
-        .faq-item { margin-bottom: 1.5rem; }
-        .faq-q { font-weight: bold; margin-bottom: 0.25rem; }
-        .related-tools { list-style: none; padding: 0; display: flex; gap: 1rem; flex-wrap: wrap; }
-        .related-tools li a {
-            display: inline-block;
-            background: #eff6ff;
-            color: var(--primary-color);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            text-decoration: none;
-            font-weight: 500;
-        }
+       .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+       .faq-item { margin-bottom: 1.5rem; }
+       .faq-q { font-weight: bold; margin-bottom: 0.25rem; }
     </style>
 </head>
 <body>
-
     <header>
         <nav>
-            <strong>Image Tools</strong> | 
-            <a href="/">Home</a> | 
+            <strong>Antokia - Image Tools</strong> |
+            <a href="/">Home</a> |
             <a href="/compress-image.html">Compressor</a>
         </nav>
     </header>
-
     <main class="container">
-        
-        <!-- Header Content -->
         <section style="text-align: center; margin-bottom: 2rem;">
             <h1>Browser-Based Image Compressor</h1>
             <p>Reduce file size of JPG, PNG, and WebP images instantly without uploading your files to any external server.</p>
         </section>
-
-        <!-- Top Ad Placeholder -->
-        <div class="ad-slot"><!-- AdSense Header Unit --> Advertisement</div>
-
-        <!-- Working Tool Box -->
+        <div class="ad-slot">Advertisement</div>
         <section class="tool-card">
             <input type="file" id="imageInput" accept="image/jpeg, image/png, image/webp" style="display: none;">
             <button class="btn" onclick="document.getElementById('imageInput').click()">Select Image</button>
             <p id="fileName" style="margin-top: 0.5rem; font-size: 0.9rem; color: #64748b;">Supported: JPG, PNG, WebP</p>
-
             <div class="controls">
                 <div class="control-group">
                     <label for="qualityRange">Compression Level (Quality): <span id="qualityVal">80</span>%</label><br>
@@ -134,100 +75,52 @@
                     </select>
                 </div>
             </div>
-
             <button class="btn" id="compressBtn" onclick="processCompression()">Compress Image</button>
-
-            <!-- Results Preview -->
             <div id="resultContainer" style="display: none; margin-top: 2rem; border-top: 1px solid #e2e8f0; padding-top: 1rem;">
                 <p><strong>Original Size:</strong> <span id="origSize">0 KB</span> | <strong>Compressed Size:</strong> <span id="newSize">0 KB</span></p>
                 <a id="downloadBtn" class="btn" style="background: #10b981; text-decoration: none; display: inline-block;" download="compressed-image.jpg">Download Image</a>
             </div>
         </section>
-
-        <!-- Mid Ad Placeholder -->
-        <div class="ad-slot"><!-- AdSense In-Content Unit --> Advertisement</div>
-
-        <!-- Comprehensive Article & Value Proposition -->
+        <div class="ad-slot">Advertisement</div>
         <article class="content-section">
             <h2>How to Compress Your Images Step-by-Step</h2>
             <ol>
                 <li>Click <strong>Select Image</strong> to choose a file from your device.</li>
-                <li>Adjust the <strong>Compression Level</strong> slider (80% recommended for optimal balance between quality and file size).</li>
-                <li>Select your desired <strong>Output Format</strong> (JPG is ideal for maximum reduction).</li>
-                <li>Click <strong>Compress Image</strong> and download your optimized image instantly.</li>
+                <li>Adjust the <strong>Compression Level</strong> slider (80% recommended).</li>
+                <li>Select your desired <strong>Output Format</strong>.</li>
+                <li>Click <strong>Compress Image</strong> and download instantly.</li>
             </ol>
         </article>
-
         <article class="content-section">
             <div class="grid">
                 <div>
                     <h2>100% Secure & Private Processing</h2>
-                    <p>Unlike conventional online compressors, our tool processes images entirely inside your web browser using JavaScript HTML5 Canvas APIs. Your photos are <strong>never uploaded to our servers</strong>, ensuring total privacy and data confidentiality.</p>
+                    <p>Unlike conventional online compressors, our tool processes images entirely inside your web browser using JavaScript HTML5 Canvas APIs. Your photos are <strong>never uploaded to our servers</strong>.</p>
                 </div>
                 <div>
                     <h2>Targeting Specific File Sizes (20KB, 50KB, 100KB)</h2>
-                    <p>Many government portals, job applications, and university forms require uploaded images to fit below strict limits like 20KB or 50KB. While setting lower quality percentage reduces file size, large high-resolution photos may also require scaling dimensions down to strictly hit smaller target KB thresholds.</p>
+                    <p>Many government portals require images below strict limits like 20KB or 50KB. Lowering quality percentage reduces file size significantly.</p>
                 </div>
             </div>
         </article>
-
-        <article class="content-section">
-            <h2>Format Conversion & Technical Limitations</h2>
-            <p>Understanding how different file extensions behave helps in choosing the right output settings:</p>
-            <ul>
-                <li><strong>PNG to JPG Conversion:</strong> PNG files are uncompressed/lossless and larger in file size. Converting PNGs to JPG significantly shrinks size but removes background transparency.</li>
-                <li><strong>WebP Format:</strong> WebP offers superior compression compared to JPG at similar quality, though older legacy devices may not support it.</li>
-                <li><strong>Quality Loss Expectation:</strong> Lossy compression (JPG/WebP) removes imperceptible pixel data to reduce file weight. Fine-tuning the quality slider ensures your image remains visually sharp to the naked eye.</li>
-            </ul>
-        </article>
-
-        <!-- FAQ Section for AdSense Schema & Unique Value -->
         <article class="content-section">
             <h2>Frequently Asked Questions (FAQ)</h2>
-            
             <div class="faq-item">
                 <div class="faq-q">Q: Will reducing image size compromise visual quality?</div>
-                <div class="faq-a">A: Lossy compression removes minor photographic details that the human eye rarely notices. Setting quality between 75% and 85% usually reduces file size drastically with no visible loss in sharpness.</div>
+                <div>A: 75% to 85% quality reduces size drastically with no visible loss.</div>
             </div>
-
-            <div class="faq-item">
-                <div class="faq-q">Q: Why did my PNG image change to JPG upon downloading?</div>
-                <div class="faq-a">A: PNGs use lossless compression which keeps file sizes large. Defaulting compression to JPG allows the tool to achieve maximum file size reduction. You can manually re-select PNG output from our settings if needed.</div>
-            </div>
-
             <div class="faq-item">
                 <div class="faq-q">Q: Can I use this tool offline?</div>
-                <div class="faq-a">A: Yes! Once the webpage is loaded, the entire compression script runs client-side inside your browser memory without requiring an active internet connection to process images.</div>
+                <div>A: Yes! Once loaded, it runs client-side without internet.</div>
             </div>
         </article>
-
-        <!-- Internal Cross-Linking Section -->
-        <section class="content-section">
-            <h2>Related Image Editing Tools</h2>
-            <ul class="related-tools">
-                <li><a href="/image-resizer.html">Image Resizer</a></li>
-                <li><a href="/image-to-pdf.html">Image to PDF Converter</a></li>
-                <li><a href="/bg-remover.html">Background Remover</a></li>
-                <li><a href="/pdf-tools.html">All PDF Tools</a></li>
-            </ul>
-        </section>
-
     </main>
-
     <footer>
-        <p>&copy; 2026 Image Tools. All rights reserved.</p>
-        <p>
-            <a href="/">Home</a> | 
-            <a href="/privacy">Privacy Policy</a> | 
-            <a href="/terms">Terms of Service</a> | 
-            <a href="/contact">Contact Us</a>
-        </p>
+        <p>&copy; 2026 Antokia.com All rights reserved.</p>
+        <p><a href="/">Home</a> | <a href="/privacy.html">Privacy Policy</a> | <a href="/terms.html">Terms</a> | <a href="/contact.html">Contact</a></p>
     </footer>
-
-    <!-- JavaScript Tool Execution Logic -->
     <script>
         let loadedImage = null;
-
         document.getElementById('imageInput').addEventListener('change', function(e) {
             const file = e.target.files[0];
             if (file) {
@@ -235,49 +128,27 @@
                 const reader = new FileReader();
                 reader.onload = function(event) {
                     loadedImage = new Image();
-                    loadedImage.onload = function() {
-                        document.getElementById('resultContainer').style.display = 'none';
-                    };
+                    loadedImage.onload = function() { document.getElementById('resultContainer').style.display = 'none'; };
                     loadedImage.src = event.target.result;
                 };
                 reader.readAsDataURL(file);
             }
         });
-
         function processCompression() {
-            if (!loadedImage) {
-                alert("Please select an image first!");
-                return;
-            }
-
+            if (!loadedImage) { alert("Please select an image first!"); return; }
             const canvas = document.createElement('canvas');
             const ctx = canvas.getContext('2d');
-
-            canvas.width = loadedImage.width;
-            canvas.height = loadedImage.height;
+            canvas.width = loadedImage.width; canvas.height = loadedImage.height;
             ctx.drawImage(loadedImage, 0, 0);
-
             const quality = parseFloat(document.getElementById('qualityRange').value) / 100;
             const format = document.getElementById('formatSelect').value;
-
             canvas.toBlob(function(blob) {
                 if (!blob) return;
-
-                const newSizeKB = (blob.size / 1024).toFixed(1);
-                const originalFile = document.getElementById('imageInput').files[0];
-                const origSizeKB = (originalFile.size / 1024).toFixed(1);
-
-                document.getElementById('origSize').innerText = origSizeKB + " KB";
-                document.getElementById('newSize').innerText = newSizeKB + " KB";
-
+                document.getElementById('origSize').innerText = (document.getElementById('imageInput').files[0].size / 1024).toFixed(1) + " KB";
+                document.getElementById('newSize').innerText = (blob.size / 1024).toFixed(1) + " KB";
                 const downloadBtn = document.getElementById('downloadBtn');
                 downloadBtn.href = URL.createObjectURL(blob);
-                
-                // Extension selection
-                let ext = "jpg";
-                if (format === "image/webp") ext = "webp";
-                if (format === "image/png") ext = "png";
-                
+                let ext = "jpg"; if (format === "image/webp") ext = "webp"; if (format === "image/png") ext = "png";
                 downloadBtn.download = `compressed-image.${ext}`;
                 document.getElementById('resultContainer').style.display = 'block';
             }, format, quality);
