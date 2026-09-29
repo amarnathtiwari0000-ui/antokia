@@ -1,8 +1,1006 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>How to Calculate SIP Returns | Antokia</title></head><body style="font-family:Arial;max-width:800px;margin:auto;padding:20px;line-height:1.7;">
-<a href="/blog/">← Blog</a> | <a href="/">Home</a>
-<h1>How to Calculate SIP Returns</h1>
-<p>Investing Rs 5000 monthly in Mutual Fund? Know final amount after 10 years.</p>
-<h2>Formula</h2><p>M = P x ({[1+i]^n -1}/i) x (1+i). Use our tool easy.</p>
-<h2>Example</h2><p>Rs 5000/month for 15 years at 12% = ~ Rs 25 Lakhs.</p>
-<h2>Steps</h2><ol><li>Open Antokia SIP Calculator</li><li>Enter Monthly Amount, Years, Return %</li><li>Get Total Invested, Gain, Maturity instantly</li></ol>
-<p><a href="/sip-calculator.html">Calculate SIP Now →</a></p></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>How to Calculate SIP Returns? Formula, Examples & Calculator | Antokia</title>
+
+<meta name="description" content="Learn how to calculate SIP returns with a simple formula, examples and step-by-step guide. Calculate monthly investment, total invested amount, estimated returns and future value using Antokia's free SIP Calculator.">
+
+<meta name="keywords" content="SIP calculator, SIP returns calculator, how to calculate SIP returns, SIP formula, SIP maturity calculator, mutual fund SIP calculator, monthly SIP calculator">
+
+<meta name="robots" content="index, follow">
+
+<link rel="canonical" href="https://antokia.com/how-to-calculate-sip.html">
+
+<meta property="og:title" content="How to Calculate SIP Returns? Formula, Examples & Calculator | Antokia">
+<meta property="og:description" content="Understand SIP return calculation with simple formulas, examples and a free SIP calculator.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://antokia.com/how-to-calculate-sip.html">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Calculate SIP Returns? Formula, Examples & Calculator",
+  "description": "A simple guide explaining SIP return calculation, formula, examples and how to estimate future SIP value.",
+  "author": {
+    "@type": "Organization",
+    "name": "Antokia"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Antokia"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://antokia.com/how-to-calculate-sip.html"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is SIP?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "SIP stands for Systematic Investment Plan. It allows an investor to invest a fixed amount at regular intervals, commonly monthly, into a mutual fund scheme."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is SIP return calculated?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A commonly used SIP future-value formula estimates the value of regular investments using the monthly investment amount, expected annual return and investment period."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much will a Rs 5,000 monthly SIP become in 15 years?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "At an assumed annual return of 12%, a Rs 5,000 monthly SIP for 15 years can grow to approximately Rs 25 lakh, depending on the calculation convention and actual investment performance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is SIP return guaranteed?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Mutual fund returns are market-linked and are not guaranteed. SIP calculators provide estimates based on an assumed rate of return."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f5f5fa;
+  color: #242424;
+}
+
+.soft-card {
+  background: #ffffff;
+  border: 1px solid #e7e7ef;
+  border-radius: 18px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+}
+
+.article-content h2 {
+  font-size: 1.65rem;
+  font-weight: 800;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: #242424;
+}
+
+.article-content h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-top: 1.5rem;
+  margin-bottom: .6rem;
+}
+
+.article-content p {
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  color: #444;
+}
+
+.article-content li {
+  margin-bottom: .55rem;
+  line-height: 1.7;
+  color: #444;
+}
+
+.formula-box {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 14px;
+  padding: 22px;
+  text-align: center;
+  margin: 20px 0;
+  overflow-x: auto;
+}
+
+.info-box {
+  background: #f0fdf4;
+  border-left: 5px solid #16a34a;
+  padding: 18px;
+  border-radius: 10px;
+  margin: 20px 0;
+}
+
+.warning-box {
+  background: #fffbeb;
+  border-left: 5px solid #f59e0b;
+  padding: 18px;
+  border-radius: 10px;
+  margin: 20px 0;
+}
+
+.faq-item {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.faq-question {
+  cursor: pointer;
+  padding: 18px 0;
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.faq-answer {
+  display: none;
+  padding: 0 0 18px;
+  color: #555;
+  line-height: 1.7;
+}
+
+.ad-box {
+  min-height: 90px;
+  border: 1px dashed #d1d5db;
+  border-radius: 12px;
+  background: #fafafa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9ca3af;
+  font-size: 13px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="sticky top-0 z-50 bg-white border-b border-gray-200">
+  <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+
+    <a href="/" class="text-2xl font-extrabold tracking-tight" style="color:#e5322d;">
+      Antokia
+    </a>
+
+    <nav class="hidden md:flex items-center gap-6 text-sm font-semibold">
+      <a href="/" class="hover:text-red-600">Home</a>
+      <a href="/blog.html" class="hover:text-red-600">Blog</a>
+      <a href="/about.html" class="hover:text-red-600">About</a>
+      <a href="/contact.html" class="hover:text-red-600">Contact</a>
+
+      <a href="/"
+         class="text-white px-5 py-2 rounded-full"
+         style="background:#e5322d;">
+        Home
+      </a>
+    </nav>
+
+    <a href="/"
+       class="md:hidden text-white px-4 py-2 rounded-full text-sm font-bold"
+       style="background:#e5322d;">
+      Home
+    </a>
+
+  </div>
+</header>
+
+
+<main class="max-w-6xl mx-auto px-4 py-6">
+
+  <!-- TOP AD -->
+  <div class="ad-box mb-6">
+    Advertisement
+  </div>
+
+
+  <!-- BREADCRUMB -->
+  <div class="text-sm text-gray-500 mb-5">
+    <a href="/" class="hover:text-red-600">Home</a>
+    <span class="mx-2">/</span>
+    <a href="/blog.html" class="hover:text-red-600">Blog</a>
+    <span class="mx-2">/</span>
+    <span>SIP Returns</span>
+  </div>
+
+
+  <!-- ARTICLE -->
+  <article class="soft-card p-5 md:p-10 article-content">
+
+    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-bold mb-4"
+         style="background:#eff6ff;color:#2563eb;">
+      <i class="fa-solid fa-chart-line"></i>
+      Investment Guide
+    </div>
+
+
+    <h1 class="text-3xl md:text-5xl font-extrabold leading-tight mb-4">
+      How to Calculate SIP Returns? Formula, Examples & Calculator
+    </h1>
+
+
+    <p class="text-lg text-gray-600 mb-5">
+      Want to know how much your monthly SIP investment could grow over time?
+      Learn the <strong>SIP return formula, calculation method, examples</strong>
+      and how to estimate your future investment value using a SIP calculator.
+    </p>
+
+
+    <div class="flex flex-wrap gap-4 text-sm text-gray-500 border-b pb-5 mb-6">
+      <span>
+        <i class="fa-regular fa-clock mr-1"></i>
+        5 min read
+      </span>
+
+      <span>
+        <i class="fa-solid fa-calculator mr-1"></i>
+        SIP Calculator Guide
+      </span>
+
+      <span>
+        <i class="fa-solid fa-chart-line mr-1"></i>
+        Mutual Fund Basics
+      </span>
+    </div>
+
+
+    <!-- CTA -->
+    <div class="rounded-2xl p-6 md:p-8 text-center mb-8"
+         style="background:linear-gradient(135deg,#eff6ff,#f0f9ff);border:1px solid #bfdbfe;">
+
+      <div class="text-4xl mb-3">📈</div>
+
+      <h2 class="!mt-0 text-2xl md:text-3xl font-extrabold">
+        Calculate Your SIP Returns
+      </h2>
+
+      <p>
+        Enter your monthly investment, expected return and investment period
+        to estimate your total investment and future value.
+      </p>
+
+      <a href="/sip-calculator.html"
+         class="inline-flex items-center gap-2 mt-3 text-white px-7 py-3 rounded-xl font-bold shadow-md"
+         style="background:#2563eb;">
+        <i class="fa-solid fa-calculator"></i>
+        Open SIP Calculator
+      </a>
+
+      <p class="text-xs !mb-0 !mt-3 text-gray-500">
+        Free to use • No signup required
+      </p>
+
+    </div>
+
+
+    <h2>What is SIP?</h2>
+
+    <p>
+      SIP stands for <strong>Systematic Investment Plan</strong>. It is a
+      method of investing a fixed amount at regular intervals, commonly
+      every month, into a mutual fund scheme.
+    </p>
+
+    <p>
+      Instead of investing one large amount at once, an investor can
+      contribute smaller amounts regularly. The future value of a SIP
+      depends on the investment amount, duration and the return assumed
+      for the calculation.
+    </p>
+
+
+    <h2>How to Calculate SIP Returns?</h2>
+
+    <p>
+      A commonly used SIP future-value formula can be used to estimate
+      the value of regular monthly investments.
+    </p>
+
+
+    <div class="formula-box">
+
+      <div class="text-xl md:text-2xl font-extrabold text-gray-800 whitespace-nowrap">
+        M = P × [((1 + i)<sup>n</sup> − 1) ÷ i] × (1 + i)
+      </div>
+
+      <p class="!mb-0 !mt-4 text-sm">
+        This is a commonly used monthly SIP estimation formula.
+      </p>
+
+    </div>
+
+
+    <h3>Meaning of the Formula</h3>
+
+    <ul>
+      <li><strong>M</strong> = Estimated maturity or future value</li>
+      <li><strong>P</strong> = Monthly SIP investment</li>
+      <li><strong>i</strong> = Monthly rate of return</li>
+      <li><strong>n</strong> = Total number of monthly investments</li>
+    </ul>
+
+
+    <div class="info-box">
+
+      <strong>How to convert annual return into monthly rate:</strong>
+
+      <p class="!mb-0 !mt-2">
+        If the assumed annual return is 12%, a simple monthly-rate
+        calculation uses <strong>12% ÷ 12 = 1% per month</strong>.
+        Different calculators may use different return conventions,
+        so results can vary slightly.
+      </p>
+
+    </div>
+
+
+    <h2>Example: ₹5,000 Monthly SIP for 15 Years</h2>
+
+    <p>
+      Suppose you invest <strong>₹5,000 every month</strong> for
+      <strong>15 years</strong> and assume an annual return of
+      <strong>12%</strong> for illustration.
+    </p>
+
+
+    <div class="overflow-x-auto rounded-xl border border-gray-200 mb-5">
+
+      <table class="w-full text-left">
+
+        <tr class="bg-gray-50">
+          <th class="p-4 border-b">Particular</th>
+          <th class="p-4 border-b">Example</th>
+        </tr>
+
+        <tr>
+          <td class="p-4 border-b">Monthly SIP</td>
+          <td class="p-4 border-b font-semibold">₹5,000</td>
+        </tr>
+
+        <tr>
+          <td class="p-4 border-b">Investment Period</td>
+          <td class="p-4 border-b font-semibold">15 Years</td>
+        </tr>
+
+        <tr>
+          <td class="p-4 border-b">Assumed Annual Return</td>
+          <td class="p-4 border-b font-semibold">12%</td>
+        </tr>
+
+        <tr>
+          <td class="p-4 border-b">Total Amount Invested</td>
+          <td class="p-4 border-b font-semibold">₹9,00,000</td>
+        </tr>
+
+        <tr class="bg-blue-50">
+          <td class="p-4 font-bold">Estimated Future Value</td>
+          <td class="p-4 font-bold text-blue-700">
+            Approx. ₹25 Lakh
+          </td>
+        </tr>
+
+      </table>
+
+    </div>
+
+
+    <p class="text-sm">
+      This example is an estimate based on an assumed 12% annual return.
+      Actual mutual fund returns can be higher or lower and are not
+      guaranteed.
+    </p>
+
+
+    <h2>How to Calculate SIP Step-by-Step</h2>
+
+    <ol class="list-decimal pl-6">
+
+      <li>
+        Decide your monthly SIP investment amount.
+      </li>
+
+      <li>
+        Select the investment period in years.
+      </li>
+
+      <li>
+        Enter an assumed annual return for estimation.
+      </li>
+
+      <li>
+        Convert the annual rate into the monthly rate where required.
+      </li>
+
+      <li>
+        Apply the SIP formula or use an online calculator.
+      </li>
+
+      <li>
+        Compare your total investment with the estimated future value.
+      </li>
+
+    </ol>
+
+
+    <h2>How to Use Antokia SIP Calculator</h2>
+
+    <p>
+      Antokia's SIP Calculator makes the calculation easier by doing the
+      mathematical work automatically.
+    </p>
+
+    <ol class="list-decimal pl-6">
+
+      <li>Open the Antokia SIP Calculator.</li>
+
+      <li>Enter your monthly investment amount.</li>
+
+      <li>Enter the expected annual return.</li>
+
+      <li>Enter the investment duration.</li>
+
+      <li>Click the calculate button.</li>
+
+      <li>
+        Review your total investment, estimated gains and future value.
+      </li>
+
+    </ol>
+
+
+    <div class="text-center my-7">
+
+      <a href="/sip-calculator.html"
+         class="inline-flex items-center gap-2 text-white px-7 py-3 rounded-xl font-bold"
+         style="background:#e5322d;">
+
+        <i class="fa-solid fa-calculator"></i>
+        Calculate SIP Returns
+
+      </a>
+
+    </div>
+
+
+    <h2>SIP Investment: Total Investment vs Estimated Gain</h2>
+
+    <p>
+      One useful way to understand SIP results is to separate the amount
+      you actually invest from the estimated growth.
+    </p>
+
+
+    <div class="grid md:grid-cols-2 gap-5 my-6">
+
+      <div class="border rounded-xl p-6 bg-gray-50">
+
+        <div class="text-3xl mb-3">💵</div>
+
+        <h3 class="!mt-0">
+          Total Investment
+        </h3>
+
+        <p class="!mb-0">
+          This is the total amount contributed through your monthly SIP
+          over the selected period.
+        </p>
+
+      </div>
+
+
+      <div class="border rounded-xl p-6 bg-gray-50">
+
+        <div class="text-3xl mb-3">📈</div>
+
+        <h3 class="!mt-0">
+          Estimated Gain
+        </h3>
+
+        <p class="!mb-0">
+          This represents the estimated growth above your total
+          contributions based on the assumed return.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- MIDDLE AD -->
+    <div class="ad-box my-8">
+      Advertisement
+    </div>
+
+
+    <h2>Factors That Affect SIP Returns</h2>
+
+    <ul>
+
+      <li>
+        <strong>Monthly investment:</strong>
+        A higher monthly contribution can increase the potential future value.
+      </li>
+
+      <li>
+        <strong>Investment duration:</strong>
+        A longer investment period gives more time for compounding.
+      </li>
+
+      <li>
+        <strong>Rate of return:</strong>
+        A higher assumed return produces a higher estimated future value.
+      </li>
+
+      <li>
+        <strong>Market performance:</strong>
+        Actual mutual fund returns fluctuate with market conditions.
+      </li>
+
+      <li>
+        <strong>Investment timing:</strong>
+        The timing of investments can affect actual results.
+      </li>
+
+    </ul>
+
+
+    <div class="warning-box">
+
+      <strong>Important:</strong>
+
+      <p class="!mb-0 !mt-2">
+        SIP calculators provide estimates based on an assumed rate of return.
+        Mutual fund investments are market-linked and actual returns are not
+        guaranteed. Past performance does not guarantee future results.
+      </p>
+
+    </div>
+
+
+    <h2>Why Use a SIP Calculator?</h2>
+
+    <div class="grid md:grid-cols-2 gap-4">
+
+      <div class="border rounded-xl p-5 bg-gray-50">
+
+        <div class="text-2xl mb-2">🧮</div>
+
+        <h3 class="!mt-0">
+          Quick Calculation
+        </h3>
+
+        <p class="!mb-0">
+          Calculate estimated SIP growth without manually applying the formula.
+        </p>
+
+      </div>
+
+
+      <div class="border rounded-xl p-5 bg-gray-50">
+
+        <div class="text-2xl mb-2">📊</div>
+
+        <h3 class="!mt-0">
+          Easy Comparison
+        </h3>
+
+        <p class="!mb-0">
+          Try different investment amounts, durations and assumed returns.
+        </p>
+
+      </div>
+
+
+      <div class="border rounded-xl p-5 bg-gray-50">
+
+        <div class="text-2xl mb-2">📱</div>
+
+        <h3 class="!mt-0">
+          Mobile Friendly
+        </h3>
+
+        <p class="!mb-0">
+          Calculate estimated SIP returns from your phone or computer.
+        </p>
+
+      </div>
+
+
+      <div class="border rounded-xl p-5 bg-gray-50">
+
+        <div class="text-2xl mb-2">⚡</div>
+
+        <h3 class="!mt-0">
+          Simple to Use
+        </h3>
+
+        <p class="!mb-0">
+          Enter a few details and get an estimated result instantly.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="border rounded-xl px-5">
+
+      <div class="faq-item">
+
+        <div class="faq-question">
+          <span>What is SIP?</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+
+        <div class="faq-answer">
+          SIP stands for Systematic Investment Plan. It is a method of
+          investing a fixed amount at regular intervals, commonly every month,
+          into a mutual fund scheme.
+        </div>
+
+      </div>
+
+
+      <div class="faq-item">
+
+        <div class="faq-question">
+          <span>How is SIP return calculated?</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+
+        <div class="faq-answer">
+          SIP future value can be estimated using a commonly used SIP
+          formula based on monthly investment, monthly rate of return and
+          total number of investments.
+        </div>
+
+      </div>
+
+
+      <div class="faq-item">
+
+        <div class="faq-question">
+          <span>How much can ₹5,000 monthly SIP become in 15 years?</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+
+        <div class="faq-answer">
+          At an assumed annual return of 12%, a ₹5,000 monthly SIP for
+          15 years can grow to approximately ₹25 lakh. This is only an
+          estimate and actual mutual fund returns are not guaranteed.
+        </div>
+
+      </div>
+
+
+      <div class="faq-item">
+
+        <div class="faq-question">
+          <span>Is SIP return guaranteed?</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+
+        <div class="faq-answer">
+          No. Mutual fund returns are market-linked. A SIP calculator uses
+          an assumed rate of return to provide an estimate and does not
+          guarantee future performance.
+        </div>
+
+      </div>
+
+
+      <div class="faq-item">
+
+        <div class="faq-question">
+          <span>Can I calculate SIP returns online?</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+
+        <div class="faq-answer">
+          Yes. You can use the free Antokia SIP Calculator to estimate
+          total investment, estimated gains and future value.
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <h2>Conclusion</h2>
+
+    <p>
+      Calculating SIP returns helps you understand how regular investments
+      may grow over a long period. The result depends on your monthly
+      contribution, investment duration and assumed rate of return.
+    </p>
+
+    <p>
+      Because mutual fund returns are market-linked, calculator results
+      should be treated as estimates rather than guaranteed returns.
+    </p>
+
+
+    <!-- FINAL CTA -->
+    <div class="rounded-2xl p-7 text-center mt-8"
+         style="background:#eff6ff;border:1px solid #bfdbfe;">
+
+      <h2 class="!mt-0 text-2xl font-extrabold">
+        Calculate Your SIP Returns
+      </h2>
+
+      <p>
+        Try the free Antokia SIP Calculator and see your estimated
+        investment growth.
+      </p>
+
+      <a href="/sip-calculator.html"
+         class="inline-flex items-center gap-2 text-white px-7 py-3 rounded-xl font-bold"
+         style="background:#2563eb;">
+
+        <i class="fa-solid fa-calculator"></i>
+        Open SIP Calculator
+
+      </a>
+
+    </div>
+
+  </article>
+
+
+  <!-- RELATED TOOLS -->
+  <section class="mt-8">
+
+    <h2 class="text-2xl font-extrabold mb-5">
+      Explore More Free Tools
+    </h2>
+
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-5">
+
+      <a href="/sip-calculator.html"
+         class="soft-card p-6 hover:shadow-lg transition">
+
+        <div class="text-3xl mb-3">📈</div>
+
+        <h3 class="font-bold text-lg mb-2">
+          SIP Calculator
+        </h3>
+
+        <p class="text-sm text-gray-600">
+          Estimate SIP investment, gains and future value.
+        </p>
+
+      </a>
+
+
+      <a href="/ppf-calculator.html"
+         class="soft-card p-6 hover:shadow-lg transition">
+
+        <div class="text-3xl mb-3">💰</div>
+
+        <h3 class="font-bold text-lg mb-2">
+          PPF Calculator
+        </h3>
+
+        <p class="text-sm text-gray-600">
+          Estimate PPF investment, interest and maturity amount.
+        </p>
+
+      </a>
+
+
+      <a href="/emi-calculator.html"
+         class="soft-card p-6 hover:shadow-lg transition">
+
+        <div class="text-3xl mb-3">🏦</div>
+
+        <h3 class="font-bold text-lg mb-2">
+          EMI Calculator
+        </h3>
+
+        <p class="text-sm text-gray-600">
+          Calculate loan EMI and estimated total interest.
+        </p>
+
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- NAVIGATION -->
+  <div class="flex flex-wrap justify-center gap-4 mt-8">
+
+    <a href="/blog.html"
+       class="px-6 py-3 rounded-xl border border-gray-300 bg-white font-bold hover:bg-gray-50">
+      ← Back to Blog
+    </a>
+
+    <a href="/"
+       class="px-6 py-3 rounded-xl text-white font-bold"
+       style="background:#e5322d;">
+      <i class="fa-solid fa-house mr-2"></i>
+      Antokia Home
+    </a>
+
+  </div>
+
+
+  <!-- BOTTOM AD -->
+  <div class="ad-box my-8">
+    Advertisement
+  </div>
+
+</main>
+
+
+<!-- FOOTER -->
+<footer style="background:#242424;color:white;">
+
+  <div class="max-w-6xl mx-auto px-4 py-10">
+
+    <div class="grid md:grid-cols-3 gap-8">
+
+      <div>
+
+        <div class="text-xl font-extrabold mb-4">
+          Antokia
+        </div>
+
+        <p class="text-gray-400 text-sm leading-7">
+          Free online tools, useful calculators and practical resources
+          designed to make everyday digital tasks easier.
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <h3 class="font-bold text-lg mb-4">
+          Explore
+        </h3>
+
+        <div class="space-y-2 text-sm">
+
+          <a href="/" class="block text-gray-400 hover:text-white">
+            Home
+          </a>
+
+          <a href="/blog.html" class="block text-gray-400 hover:text-white">
+            Blog
+          </a>
+
+          <a href="/about.html" class="block text-gray-400 hover:text-white">
+            About
+          </a>
+
+          <a href="/contact.html" class="block text-gray-400 hover:text-white">
+            Contact
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div>
+
+        <h3 class="font-bold text-lg mb-4">
+          Legal & Follow
+        </h3>
+
+        <div class="space-y-2 text-sm">
+
+          <a href="/privacy.html"
+             class="block text-gray-400 hover:text-white">
+            Privacy Policy
+          </a>
+
+          <a href="/terms.html"
+             class="block text-gray-400 hover:text-white">
+            Terms & Conditions
+          </a>
+
+          <a href="https://www.instagram.com/antokia.insta"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="block text-gray-400 hover:text-white">
+            <i class="fa-brands fa-instagram mr-2"></i>
+            Instagram
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="border-t border-gray-700 mt-8 pt-6 text-center text-sm text-gray-500">
+      © 2026 Antokia. All rights reserved.
+    </div>
+
+  </div>
+
+</footer>
+
+
+<script>
+document.querySelectorAll(".faq-question").forEach(question => {
+
+  question.addEventListener("click", () => {
+
+    const answer = question.nextElementSibling;
+    const icon = question.querySelector("i");
+
+    document.querySelectorAll(".faq-answer").forEach(item => {
+      if (item !== answer) {
+        item.style.display = "none";
+      }
+    });
+
+    document.querySelectorAll(".faq-question i").forEach(item => {
+      if (item !== icon) {
+        item.classList.remove("fa-chevron-up");
+        item.classList.add("fa-chevron-down");
+      }
+    });
+
+    if (answer.style.display === "block") {
+
+      answer.style.display = "none";
+
+      icon.classList.remove("fa-chevron-up");
+      icon.classList.add("fa-chevron-down");
+
+    } else {
+
+      answer.style.display = "block";
+
+      icon.classList.remove("fa-chevron-down");
+      icon.classList.add("fa-chevron-up");
+
+    }
+
+  });
+
+});
+</script>
+
+</body>
+</html>
