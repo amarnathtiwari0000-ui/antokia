@@ -7,13 +7,14 @@
 
 <title>Merge PDF Online – Combine Multiple PDF Files Free | Antokia</title>
 
-<meta name="description" content="Merge multiple PDF files online for free with Antokia. Combine PDF documents into one file directly in your browser without uploading files to a server.">
+<meta name="description" content="Merge multiple PDF files online for free with Antokia. Combine PDF documents into one file directly in your browser. Simple, fast and free PDF merger.">
+
 <meta name="robots" content="index, follow, max-image-preview:large">
 
 <link rel="canonical" href="https://antokia.com/merge-pdf.html">
 
 <meta property="og:title" content="Merge PDF Online – Combine Multiple PDF Files Free | Antokia">
-<meta property="og:description" content="Combine multiple PDF files into one PDF online for free with Antokia. Fast, simple and browser-based.">
+<meta property="og:description" content="Combine multiple PDF files into one PDF online for free with Antokia.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://antokia.com/merge-pdf.html">
 
@@ -82,7 +83,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
       "name":"How can I merge PDF files online?",
       "acceptedAnswer":{
         "@type":"Answer",
-        "text":"Select or drag multiple PDF files into the Merge PDF tool, arrange them in the required order and click Merge & Download PDF."
+        "text":"Select multiple PDF files, arrange them in the required order and click Merge & Download PDF."
       }
     },
     {
@@ -98,7 +99,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
       "name":"Are my PDF files uploaded to a server?",
       "acceptedAnswer":{
         "@type":"Answer",
-        "text":"The merging process is performed in your browser using JavaScript and PDF-LIB. The tool is designed to process the selected files locally in the browser."
+        "text":"The PDF merging process is performed directly in your browser using JavaScript and PDF-LIB."
       }
     },
     {
@@ -107,13 +108,14 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
       "acceptedAnswer":{
         "@type":"Answer",
         "text":"Yes. You can move PDF files up or down before merging them."
-      },
+      }
+    },
     {
       "@type":"Question",
       "name":"How many PDF files can I merge?",
       "acceptedAnswer":{
         "@type":"Answer",
-        "text":"You can select multiple PDF files. The practical limit depends on the available memory and processing capacity of your device and browser."
+        "text":"You can select multiple PDF files. The practical limit depends on your device memory and browser capacity."
       }
     }
   ]
@@ -146,22 +148,6 @@ body{
   box-shadow:0 8px 30px rgba(15,23,42,.08);
 }
 
-.faq-answer{
-  display:none;
-}
-
-.faq-item.active .faq-answer{
-  display:block;
-}
-
-.faq-icon{
-  transition:transform .2s ease;
-}
-
-.faq-item.active .faq-icon{
-  transform:rotate(45deg);
-}
-
 .drop-zone{
   border:2px dashed #e5322d;
   background:#fff7f7;
@@ -183,10 +169,6 @@ body{
   border-color:#fecaca;
 }
 
-.action-btn{
-  transition:.2s ease;
-}
-
 .primary-btn{
   background:#e5322d;
 }
@@ -195,12 +177,20 @@ body{
   background:#c92722;
 }
 
-.secondary-btn{
-  background:#f3f4f6;
+.faq-answer{
+  display:none;
 }
 
-.secondary-btn:hover{
-  background:#e5e7eb;
+.faq-item.active .faq-answer{
+  display:block;
+}
+
+.faq-icon{
+  transition:transform .2s ease;
+}
+
+.faq-item.active .faq-icon{
+  transform:rotate(45deg);
 }
 
 .progress-bar{
@@ -211,7 +201,6 @@ body{
 
 </head>
 
-
 <body>
 
 
@@ -221,7 +210,9 @@ body{
 
   <div class="max-w-6xl mx-auto px-4 py-3">
 
-    <div class="flex items-center justify-end gap-4">
+    <div class="flex items-center justify-between gap-4">
+
+      <!-- NAVIGATION -->
 
       <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
 
@@ -243,13 +234,25 @@ body{
 
       </nav>
 
-      <a href="/"
-         class="text-sm bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-full transition">
 
-        <i class="fa-solid fa-arrow-left mr-1"></i>
-        Home
+      <!-- RIGHT SIDE -->
 
-      </a>
+      <div class="flex items-center gap-4 ml-auto">
+
+        <a href="/"
+           class="text-2xl font-extrabold antokia-red">
+          Antokia
+        </a>
+
+        <a href="/"
+           class="text-sm bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-full transition">
+
+          <i class="fa-solid fa-arrow-left mr-1"></i>
+          Home
+
+        </a>
+
+      </div>
 
     </div>
 
@@ -300,7 +303,9 @@ body{
     <div class="text-center mb-6">
 
       <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-red-50 text-red-600 text-2xl mb-3">
+
         <i class="fa-solid fa-file-pdf"></i>
+
       </div>
 
       <h2 class="text-2xl font-bold text-gray-900">
@@ -334,7 +339,7 @@ body{
 
       <button type="button"
               id="selectBtn"
-              class="primary-btn text-white px-6 py-3 rounded-xl font-semibold mt-5 action-btn">
+              class="primary-btn text-white px-6 py-3 rounded-xl font-semibold mt-5">
 
         <i class="fa-solid fa-folder-open mr-2"></i>
         Choose PDF Files
@@ -346,14 +351,13 @@ body{
         id="fileInput"
         accept="application/pdf,.pdf"
         multiple
-        hidden
-      >
+        hidden>
 
     </div>
 
 
 
-    <!-- FILE SUMMARY -->
+    <!-- SUMMARY -->
 
     <div id="summary"
          class="hidden mt-6 grid grid-cols-2 md:grid-cols-3 gap-3">
@@ -417,7 +421,7 @@ body{
       <button
         type="button"
         id="addMoreBtn"
-        class="secondary-btn text-gray-800 px-5 py-3 rounded-xl font-semibold flex-1 action-btn">
+        class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-5 py-3 rounded-xl font-semibold flex-1">
 
         <i class="fa-solid fa-plus mr-2"></i>
         Add More
@@ -428,7 +432,7 @@ body{
       <button
         type="button"
         id="clearBtn"
-        class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-5 py-3 rounded-xl font-semibold flex-1 action-btn">
+        class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-5 py-3 rounded-xl font-semibold flex-1">
 
         <i class="fa-solid fa-trash mr-2"></i>
         Clear All
@@ -439,12 +443,12 @@ body{
 
 
 
-    <!-- MERGE BUTTON -->
+    <!-- MERGE -->
 
     <button
       type="button"
       id="mergeBtn"
-      class="hidden w-full primary-btn hover:bg-red-700 text-white font-bold py-4 px-6 rounded-xl mt-5 text-lg action-btn">
+      class="hidden w-full primary-btn text-white font-bold py-4 px-6 rounded-xl mt-5 text-lg">
 
       <i class="fa-solid fa-layer-group mr-2"></i>
       Merge & Download PDF
@@ -490,7 +494,7 @@ body{
 
 
 
-    <!-- PRIVACY NOTE -->
+    <!-- PRIVACY -->
 
     <div class="mt-6 bg-green-50 border border-green-100 rounded-xl p-4 text-sm text-green-800">
 
@@ -515,10 +519,11 @@ body{
 
     <p class="text-gray-600 leading-7">
       Antokia's free Merge PDF tool helps you combine multiple PDF
-      documents into a single PDF file. It can be useful when you need
-      to combine reports, invoices, forms, scanned documents,
-      certificates or other PDF files into one document.
+      documents into a single PDF file. It can be useful for combining
+      reports, invoices, forms, scanned documents, certificates and
+      other PDF files into one document.
     </p>
+
 
     <h3 class="text-xl font-bold text-gray-900 mt-7 mb-3">
       How to Merge PDF Files
@@ -764,14 +769,14 @@ body{
 
 <!-- ================= FOOTER ================= -->
 
-<footer class="bg-gray-900 text-gray-300 mt-12">
+<footer class="bg-gray-900 text-gray-300">
 
   <div class="max-w-6xl mx-auto px-4 py-10">
 
     <div class="grid md:grid-cols-3 gap-8">
 
 
-      <!-- EXPLORE -->
+      <!-- TOOLS -->
 
       <div>
 
@@ -802,7 +807,6 @@ body{
       </div>
 
 
-
       <!-- LEGAL -->
 
       <div>
@@ -824,7 +828,6 @@ body{
         </div>
 
       </div>
-
 
 
       <!-- SOCIAL -->
@@ -901,9 +904,9 @@ let filePages = [];
 
 
 
-/* ================= FILE SELECTION ================= */
+/* FILE SELECT */
 
-selectBtn.addEventListener("click", function(e){
+selectBtn.addEventListener("click",function(e){
 
   e.stopPropagation();
 
@@ -912,9 +915,9 @@ selectBtn.addEventListener("click", function(e){
 });
 
 
-dropZone.addEventListener("click", function(e){
+dropZone.addEventListener("click",function(e){
 
-  if(e.target === selectBtn){
+  if(e.target.closest("#selectBtn")){
     return;
   }
 
@@ -923,19 +926,19 @@ dropZone.addEventListener("click", function(e){
 });
 
 
-fileInput.addEventListener("change", function(){
+fileInput.addEventListener("change",function(){
 
   addFiles(Array.from(fileInput.files));
 
-  fileInput.value = "";
+  fileInput.value="";
 
 });
 
 
 
-/* ================= DRAG DROP ================= */
+/* DRAG & DROP */
 
-dropZone.addEventListener("dragover", function(e){
+dropZone.addEventListener("dragover",function(e){
 
   e.preventDefault();
 
@@ -944,42 +947,40 @@ dropZone.addEventListener("dragover", function(e){
 });
 
 
-dropZone.addEventListener("dragleave", function(){
+dropZone.addEventListener("dragleave",function(){
 
   dropZone.classList.remove("dragover");
 
 });
 
 
-dropZone.addEventListener("drop", function(e){
+dropZone.addEventListener("drop",function(e){
 
   e.preventDefault();
 
   dropZone.classList.remove("dragover");
 
-  const droppedFiles = Array.from(e.dataTransfer.files);
-
-  addFiles(droppedFiles);
+  addFiles(Array.from(e.dataTransfer.files));
 
 });
 
 
 
-/* ================= ADD FILES ================= */
+/* ADD FILES */
 
 function addFiles(newFiles){
 
-  const pdfFiles = newFiles.filter(function(file){
+  const pdfFiles=newFiles.filter(function(file){
 
-    return file.type === "application/pdf" ||
+    return file.type==="application/pdf" ||
            file.name.toLowerCase().endsWith(".pdf");
 
   });
 
 
-  if(pdfFiles.length === 0){
+  if(pdfFiles.length===0){
 
-    showStatus("Please select valid PDF files.", "error");
+    showStatus("Please select valid PDF files.","error");
 
     return;
 
@@ -988,11 +989,11 @@ function addFiles(newFiles){
 
   pdfFiles.forEach(function(file){
 
-    const duplicate = files.some(function(existing){
+    const duplicate=files.some(function(existing){
 
-      return existing.name === file.name &&
-             existing.size === file.size &&
-             existing.lastModified === file.lastModified;
+      return existing.name===file.name &&
+             existing.size===file.size &&
+             existing.lastModified===file.lastModified;
 
     });
 
@@ -1000,6 +1001,7 @@ function addFiles(newFiles){
     if(!duplicate){
 
       files.push(file);
+
       filePages.push(null);
 
     }
@@ -1017,22 +1019,22 @@ function addFiles(newFiles){
 
 
 
-/* ================= RENDER ================= */
+/* RENDER FILES */
 
 function renderFiles(){
 
-  fileList.innerHTML = "";
+  fileList.innerHTML="";
 
 
   files.forEach(function(file,index){
 
-    const row = document.createElement("div");
+    const row=document.createElement("div");
 
-    row.className =
+    row.className=
       "file-row rounded-xl p-3 md:p-4 flex items-center gap-3";
 
 
-    row.innerHTML = `
+    row.innerHTML=`
 
       <div class="w-10 h-10 rounded-lg bg-red-50 text-red-600 flex items-center justify-center flex-shrink-0">
 
@@ -1044,12 +1046,21 @@ function renderFiles(){
       <div class="min-w-0 flex-1">
 
         <div class="font-semibold text-gray-800 truncate">
+
           ${escapeHtml(file.name)}
+
         </div>
 
         <div class="text-xs text-gray-500 mt-1">
+
           ${formatSize(file.size)}
-          ${filePages[index] !== null ? " • " + filePages[index] + " pages" : ""}
+
+          ${
+            filePages[index]!==null
+            ? " • "+filePages[index]+" pages"
+            : ""
+          }
+
         </div>
 
       </div>
@@ -1062,7 +1073,7 @@ function renderFiles(){
           title="Move Up"
           class="w-9 h-9 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700"
           onclick="moveFile(${index},-1)"
-          ${index === 0 ? "disabled" : ""}>
+          ${index===0?"disabled":""}>
 
           <i class="fa-solid fa-arrow-up"></i>
 
@@ -1074,7 +1085,7 @@ function renderFiles(){
           title="Move Down"
           class="w-9 h-9 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700"
           onclick="moveFile(${index},1)"
-          ${index === files.length - 1 ? "disabled" : ""}>
+          ${index===files.length-1?"disabled":""}>
 
           <i class="fa-solid fa-arrow-down"></i>
 
@@ -1101,39 +1112,36 @@ function renderFiles(){
   });
 
 
-  const hasFiles = files.length > 0;
+  const hasFiles=files.length>0;
 
-  summary.classList.toggle("hidden", !hasFiles);
-  controls.classList.toggle("hidden", !hasFiles);
+  summary.classList.toggle("hidden",!hasFiles);
 
-  mergeBtn.classList.toggle("hidden", files.length < 2);
+  controls.classList.toggle("hidden",!hasFiles);
+
+  mergeBtn.classList.toggle("hidden",files.length<2);
 
 }
 
 
 
-/* ================= MOVE ================= */
+/* MOVE FILE */
 
 function moveFile(index,direction){
 
-  const newIndex = index + direction;
+  const newIndex=index+direction;
 
 
-  if(newIndex < 0 || newIndex >= files.length){
+  if(newIndex<0 || newIndex>=files.length){
     return;
   }
 
 
-  const tempFile = files[index];
-
-  files[index] = files[newIndex];
-  files[newIndex] = tempFile;
+  [files[index],files[newIndex]]=
+  [files[newIndex],files[index]];
 
 
-  const tempPages = filePages[index];
-
-  filePages[index] = filePages[newIndex];
-  filePages[newIndex] = tempPages;
+  [filePages[index],filePages[newIndex]]=
+  [filePages[newIndex],filePages[index]];
 
 
   renderFiles();
@@ -1144,7 +1152,7 @@ function moveFile(index,direction){
 
 
 
-/* ================= REMOVE ================= */
+/* REMOVE */
 
 function removeFile(index){
 
@@ -1162,13 +1170,13 @@ function removeFile(index){
 
 
 
-/* ================= CLEAR ================= */
+/* CLEAR */
 
-clearBtn.addEventListener("click", function(){
+clearBtn.addEventListener("click",function(){
 
-  files = [];
+  files=[];
 
-  filePages = [];
+  filePages=[];
 
   renderFiles();
 
@@ -1182,9 +1190,9 @@ clearBtn.addEventListener("click", function(){
 
 
 
-/* ================= ADD MORE ================= */
+/* ADD MORE */
 
-addMoreBtn.addEventListener("click", function(){
+addMoreBtn.addEventListener("click",function(){
 
   fileInput.click();
 
@@ -1192,31 +1200,31 @@ addMoreBtn.addEventListener("click", function(){
 
 
 
-/* ================= PAGE COUNT ================= */
+/* PAGE COUNT */
 
 async function loadPageCounts(){
 
-  for(let i = 0; i < files.length; i++){
+  for(let i=0;i<files.length;i++){
 
-    if(filePages[i] !== null){
+    if(filePages[i]!==null){
       continue;
     }
 
 
     try{
 
-      const bytes = await files[i].arrayBuffer();
+      const bytes=await files[i].arrayBuffer();
 
-      const pdf = await PDFLib.PDFDocument.load(bytes, {
+      const pdf=await PDFLib.PDFDocument.load(bytes,{
         ignoreEncryption:true
       });
 
-      filePages[i] = pdf.getPageCount();
+      filePages[i]=pdf.getPageCount();
 
     }
     catch(error){
 
-      filePages[i] = 0;
+      filePages[i]=0;
 
     }
 
@@ -1231,51 +1239,61 @@ async function loadPageCounts(){
 
 
 
-/* ================= SUMMARY ================= */
+/* SUMMARY */
 
 function updateSummary(){
 
-  let totalBytes = 0;
-  let pages = 0;
+  let totalBytes=0;
+
+  let pages=0;
 
 
   files.forEach(function(file,index){
 
-    totalBytes += file.size;
+    totalBytes+=file.size;
 
-    if(filePages[index] !== null){
-      pages += filePages[index];
+    if(filePages[index]!==null){
+
+      pages+=filePages[index];
+
     }
 
   });
 
 
-  fileCount.textContent = files.length;
+  fileCount.textContent=files.length;
 
-  pageCount.textContent = pages;
+  pageCount.textContent=pages;
 
-  totalSize.textContent = formatSize(totalBytes);
+  totalSize.textContent=formatSize(totalBytes);
 
 }
 
 
 
-/* ================= MERGE ================= */
+/* MERGE */
 
-mergeBtn.addEventListener("click", async function(){
+mergeBtn.addEventListener("click",async function(){
 
-  if(files.length < 2){
+  if(files.length<2){
 
-    showStatus("Please select at least two PDF files.", "error");
+    showStatus(
+      "Please select at least two PDF files.",
+      "error"
+    );
 
     return;
 
   }
 
 
-  mergeBtn.disabled = true;
+  mergeBtn.disabled=true;
 
-  mergeBtn.classList.add("opacity-70","cursor-not-allowed");
+  mergeBtn.classList.add(
+    "opacity-70",
+    "cursor-not-allowed"
+  );
+
 
   progressBox.classList.remove("hidden");
 
@@ -1284,34 +1302,39 @@ mergeBtn.addEventListener("click", async function(){
 
   try{
 
-    const mergedPdf = await PDFLib.PDFDocument.create();
+    const mergedPdf=
+      await PDFLib.PDFDocument.create();
 
 
-    for(let i = 0; i < files.length; i++){
+    for(let i=0;i<files.length;i++){
 
-      const percent = Math.round(
-        10 + ((i / files.length) * 75)
+      const percent=Math.round(
+        10+(i/files.length)*75
       );
 
 
       setProgress(
         percent,
-        "Processing " + (i + 1) + " of " + files.length + "..."
+        "Processing "+(i+1)+" of "+files.length+"..."
       );
 
 
-      const bytes = await files[i].arrayBuffer();
+      const bytes=
+        await files[i].arrayBuffer();
 
 
-      const pdf = await PDFLib.PDFDocument.load(bytes, {
-        ignoreEncryption:true
-      });
+      const pdf=
+        await PDFLib.PDFDocument.load(
+          bytes,
+          {ignoreEncryption:true}
+        );
 
 
-      const copiedPages = await mergedPdf.copyPages(
-        pdf,
-        pdf.getPageIndices()
-      );
+      const copiedPages=
+        await mergedPdf.copyPages(
+          pdf,
+          pdf.getPageIndices()
+        );
 
 
       copiedPages.forEach(function(page){
@@ -1323,34 +1346,44 @@ mergeBtn.addEventListener("click", async function(){
     }
 
 
-    setProgress(90,"Creating merged PDF...");
+    setProgress(
+      90,
+      "Creating merged PDF..."
+    );
 
 
-    const mergedBytes = await mergedPdf.save();
+    const mergedBytes=
+      await mergedPdf.save();
 
 
-    setProgress(100,"Download ready");
+    setProgress(
+      100,
+      "Download ready"
+    );
 
 
-    const blob = new Blob(
+    const blob=new Blob(
       [mergedBytes],
       {type:"application/pdf"}
     );
 
 
-    const url = URL.createObjectURL(blob);
+    const url=
+      URL.createObjectURL(blob);
 
-    const a = document.createElement("a");
 
-    a.href = url;
+    const a=document.createElement("a");
 
-    a.download = "merged-antokia.pdf";
+    a.href=url;
+
+    a.download="merged-antokia.pdf";
 
     document.body.appendChild(a);
 
     a.click();
 
     a.remove();
+
 
     setTimeout(function(){
 
@@ -1360,10 +1393,10 @@ mergeBtn.addEventListener("click", async function(){
 
 
     showStatus(
-      files.length + " PDF files merged successfully.",
+      files.length+
+      " PDF files merged successfully.",
       "success"
     );
-
 
   }
   catch(error){
@@ -1375,12 +1408,15 @@ mergeBtn.addEventListener("click", async function(){
       "error"
     );
 
-    setProgress(0,"Merge failed");
+    setProgress(
+      0,
+      "Merge failed"
+    );
 
   }
 
 
-  mergeBtn.disabled = false;
+  mergeBtn.disabled=false;
 
   mergeBtn.classList.remove(
     "opacity-70",
@@ -1391,43 +1427,51 @@ mergeBtn.addEventListener("click", async function(){
 
 
 
-/* ================= PROGRESS ================= */
+/* PROGRESS */
 
 function setProgress(percent,text){
 
-  progressBar.style.width = percent + "%";
+  progressBar.style.width=
+    percent+"%";
 
-  progressPercent.textContent = percent + "%";
+  progressPercent.textContent=
+    percent+"%";
 
-  statusText.textContent = text;
+  statusText.textContent=text;
 
 }
 
 
 
-/* ================= STATUS ================= */
+/* STATUS */
 
 function showStatus(message,type){
 
-  status.textContent = message;
+  status.textContent=message;
 
-  status.className =
+  status.className=
     "text-center text-sm font-semibold mt-5 min-h-[22px]";
 
 
-  if(type === "success"){
+  if(type==="success"){
 
-    status.classList.add("text-green-600");
+    status.classList.add(
+      "text-green-600"
+    );
 
   }
-  else if(type === "error"){
+  else if(type==="error"){
 
-    status.classList.add("text-red-600");
+    status.classList.add(
+      "text-red-600"
+    );
 
   }
   else{
 
-    status.classList.add("text-gray-600");
+    status.classList.add(
+      "text-gray-600"
+    );
 
   }
 
@@ -1435,31 +1479,33 @@ function showStatus(message,type){
 
 
 
-/* ================= FORMAT SIZE ================= */
+/* FORMAT SIZE */
 
 function formatSize(bytes){
 
-  if(bytes < 1024){
+  if(bytes<1024){
 
-    return bytes + " B";
-
-  }
-
-
-  if(bytes < 1024 * 1024){
-
-    return (bytes / 1024).toFixed(1) + " KB";
+    return bytes+" B";
 
   }
 
 
-  return (bytes / (1024 * 1024)).toFixed(2) + " MB";
+  if(bytes<1024*1024){
+
+    return (bytes/1024).toFixed(1)+" KB";
+
+  }
+
+
+  return (
+    bytes/(1024*1024)
+  ).toFixed(2)+" MB";
 
 }
 
 
 
-/* ================= ESCAPE HTML ================= */
+/* ESCAPE */
 
 function escapeHtml(value){
 
@@ -1474,17 +1520,41 @@ function escapeHtml(value){
 
 
 
-/* ================= FAQ ================= */
+/* FAQ */
 
-document.querySelectorAll(".faq-question").forEach(function(button){
+document
+.querySelectorAll(".faq-question")
+.forEach(function(button){
 
-  button.addEventListener("click",function(){
+  button.addEventListener(
+    "click",
+    function(){
 
-    const item = button.closest(".faq-item");
+      const item=
+        this.closest(".faq-item");
 
-    item.classList.toggle("active");
 
-  });
+      document
+      .querySelectorAll(".faq-item")
+      .forEach(function(other){
+
+        if(other!==item){
+
+          other.classList.remove(
+            "active"
+          );
+
+        }
+
+      });
+
+
+      item.classList.toggle(
+        "active"
+      );
+
+    }
+  );
 
 });
 
