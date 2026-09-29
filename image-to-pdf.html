@@ -1,1182 +1,80 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Image to PDF Converter – JPG & PNG to PDF Free | Antokia</title>
+<title>Image to PDF Converter – JPG, PNG & WEBP to PDF Free | Antokia</title>
 
-<meta name="description" content="Convert JPG, JPEG, PNG and WEBP images to PDF online for free with Antokia. Combine multiple images into one PDF quickly and easily.">
+<meta name="description" content="Convert JPG, JPEG, PNG and WEBP images to PDF online for free with Antokia. Combine multiple images into one PDF quickly, securely and easily. No registration or software installation required.">
 
 <meta name="robots" content="index, follow, max-image-preview:large">
 
 <link rel="canonical" href="https://antokia.com/image-to-pdf.html">
 
+<!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="Image to PDF Converter – Free Online | Antokia">
-<meta property="og:description" content="Convert JPG, PNG and WEBP images to PDF for free with Antokia. Combine multiple images into one PDF.">
+<meta property="og:description" content="Convert JPG, PNG and WEBP images into PDF files online for free. Combine multiple images into one PDF with Antokia.">
 <meta property="og:url" content="https://antokia.com/image-to-pdf.html">
 <meta property="og:site_name" content="Antokia">
 
+<!-- Twitter -->
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Image to PDF Converter – Free Online | Antokia">
-<meta name="twitter:description" content="Free online Image to PDF converter by Antokia.">
+<meta name="twitter:title" content="Image to PDF Converter | Antokia">
+<meta name="twitter:description" content="Free online Image to PDF converter. Convert and combine JPG, PNG and WEBP images into PDF files.">
 
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Font Awesome -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<!-- jsPDF -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
-<style>
-*{
-    box-sizing:border-box;
+<!-- WebApplication Schema -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebApplication",
+  "name":"Antokia Image to PDF Converter",
+  "url":"https://antokia.com/image-to-pdf.html",
+  "applicationCategory":"UtilitiesApplication",
+  "operatingSystem":"All",
+  "description":"Free online tool to convert JPG, JPEG, PNG and WEBP images into PDF files.",
+  "offers":{
+    "@type":"Offer",
+    "price":"0",
+    "priceCurrency":"INR"
+  }
 }
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    margin:0;
-    font-family:Arial,Helvetica,sans-serif;
-    color:#1f2937;
-    background:#f6f7fb;
-}
-
-a{
-    text-decoration:none;
-    color:inherit;
-}
-
-.container{
-    width:min(100% - 32px,1000px);
-    margin:auto;
-}
-
-/* HEADER */
-
-.header{
-    background:#ffffff;
-    border-bottom:1px solid #e5e7eb;
-    position:sticky;
-    top:0;
-    z-index:100;
-}
-
-.header-inner{
-    min-height:68px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-}
-
-.logo{
-    font-size:27px;
-    font-weight:800;
-    background:linear-gradient(90deg,#e5322d,#7c3aed,#2563eb);
-    -webkit-background-clip:text;
-    background-clip:text;
-    color:transparent;
-}
-
-.home-btn{
-    background:#f3f4f6;
-    padding:10px 16px;
-    border-radius:999px;
-    font-size:14px;
-    font-weight:600;
-}
-
-.home-btn:hover{
-    background:#e5e7eb;
-}
-
-/* HERO */
-
-.hero{
-    text-align:center;
-    padding:48px 0 25px;
-}
-
-.badge{
-    display:inline-block;
-    background:#fff0f0;
-    color:#dc2626;
-    padding:8px 15px;
-    border-radius:30px;
-    font-size:13px;
-    font-weight:700;
-    margin-bottom:15px;
-}
-
-h1{
-    font-size:clamp(34px,6vw,52px);
-    line-height:1.1;
-    margin:0;
-    color:#111827;
-}
-
-.gradient{
-    background:linear-gradient(90deg,#e5322d,#7c3aed,#2563eb);
-    -webkit-background-clip:text;
-    background-clip:text;
-    color:transparent;
-}
-
-.hero-text{
-    max-width:680px;
-    margin:18px auto 0;
-    color:#6b7280;
-    line-height:1.7;
-    font-size:17px;
-}
-
-.tags{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:9px;
-    margin-top:20px;
-}
-
-.tag{
-    background:#ffffff;
-    border:1px solid #e5e7eb;
-    border-radius:30px;
-    padding:8px 13px;
-    font-size:12px;
-    color:#4b5563;
-}
-
-/* ADS */
-
-.ad{
-    height:80px;
-    border:1px solid #e5e7eb;
-    background:#f1f3f6;
-    border-radius:14px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:#9ca3af;
-    font-size:11px;
-    margin:22px 0;
-}
-
-/* TOOL */
-
-.tool{
-    background:#ffffff;
-    border-radius:24px;
-    padding:28px;
-    box-shadow:0 15px 45px rgba(15,23,42,.10);
-    border:1px solid #eef0f4;
-}
-
-.tool-title{
-    text-align:center;
-    margin-bottom:24px;
-}
-
-.tool-icon{
-    width:58px;
-    height:58px;
-    margin:auto;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border-radius:17px;
-    background:#fff1f2;
-    font-size:30px;
-}
-
-.tool-title h2{
-    margin:12px 0 5px;
-    font-size:25px;
-}
-
-.tool-title p{
-    margin:0;
-    color:#6b7280;
-    font-size:14px;
-}
-
-/* UPLOAD */
-
-.upload{
-    display:block;
-    border:2px dashed #d1d5db;
-    border-radius:20px;
-    padding:40px 20px;
-    text-align:center;
-    cursor:pointer;
-    transition:.2s;
-}
-
-.upload:hover{
-    border-color:#e5322d;
-    background:#fff8f8;
-}
-
-.upload-icon{
-    font-size:48px;
-}
-
-.upload-title{
-    font-size:18px;
-    font-weight:700;
-    margin-top:10px;
-}
-
-.upload-text{
-    color:#6b7280;
-    font-size:14px;
-    margin-top:7px;
-}
-
-.upload-small{
-    color:#9ca3af;
-    font-size:12px;
-    margin-top:10px;
-}
-
-#imgInput{
-    display:none;
-}
-
-/* PREVIEW */
-
-.preview{
-    display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(90px,1fr));
-    gap:12px;
-    margin-top:20px;
-}
-
-.preview-box{
-    position:relative;
-}
-
-.preview-box img{
-    width:100%;
-    height:95px;
-    object-fit:cover;
-    border-radius:12px;
-    border:1px solid #e5e7eb;
-    display:block;
-}
-
-/* BUTTON */
-
-.convert{
-    width:100%;
-    border:0;
-    border-radius:16px;
-    padding:17px;
-    margin-top:22px;
-    background:linear-gradient(90deg,#e5322d,#f43f5e);
-    color:white;
-    font-size:17px;
-    font-weight:700;
-    cursor:pointer;
-    box-shadow:0 8px 20px rgba(229,50,45,.25);
-    transition:.2s;
-}
-
-.convert:hover{
-    transform:translateY(-2px);
-}
-
-.convert:disabled{
-    opacity:.65;
-    cursor:not-allowed;
-    transform:none;
-}
-
-.status{
-    text-align:center;
-    color:#6b7280;
-    font-size:13px;
-    margin-top:12px;
-    min-height:18px;
-}
-
-/* CARDS */
-
-.cards{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:12px;
-    margin:25px 0;
-}
-
-.card{
-    background:#ffffff;
-    border:1px solid #eef0f4;
-    border-radius:17px;
-    padding:18px 10px;
-    text-align:center;
-}
-
-.card-icon{
-    font-size:25px;
-}
-
-.card h3{
-    margin:8px 0 4px;
-    font-size:14px;
-}
-
-.card p{
-    margin:0;
-    color:#6b7280;
-    font-size:11px;
-}
-
-/* CONTENT */
-
-.content{
-    background:#ffffff;
-    border-radius:20px;
-    padding:28px;
-    margin-top:20px;
-    border:1px solid #eef0f4;
-}
-
-.content h2{
-    margin:0 0 15px;
-    font-size:25px;
-    color:#111827;
-}
-
-.content h3{
-    margin:22px 0 8px;
-    font-size:17px;
-}
-
-.content p{
-    color:#5b6472;
-    line-height:1.8;
-    font-size:15px;
-    margin:10px 0;
-}
-
-.content ul,
-.content ol{
-    color:#5b6472;
-    line-height:1.9;
-    padding-left:22px;
-}
-
-/* FAQ */
-
-.faq{
-    border:1px solid #e5e7eb;
-    border-radius:13px;
-    margin-top:10px;
-    padding:16px;
-}
-
-.faq summary{
-    cursor:pointer;
-    font-weight:700;
-}
-
-.faq p{
-    margin:12px 0 0;
-}
-
-/* MORE TOOLS */
-
-.more-tools{
-    text-align:center;
-    background:linear-gradient(135deg,#fff1f2,#f5f3ff,#eff6ff);
-}
-
-.all-tools{
-    display:inline-block;
-    margin-top:10px;
-    background:#111827;
-    color:white;
-    padding:13px 22px;
-    border-radius:12px;
-    font-weight:700;
-}
-
-.all-tools:hover{
-    background:#374151;
-}
-
-/* FOOTER */
-
-.footer{
-    background:#111827;
-    color:#d1d5db;
-    margin-top:45px;
-}
-
-.footer-inner{
-    padding:38px 0 25px;
-}
-
-.footer-brand{
-    color:#ffffff;
-    font-size:24px;
-    font-weight:800;
-}
-
-.footer-text{
-    max-width:500px;
-    color:#9ca3af;
-    line-height:1.7;
-    font-size:13px;
-    margin-top:10px;
-}
-
-.footer-links{
-    margin-top:22px;
-    display:flex;
-    flex-wrap:wrap;
-    gap:20px;
-}
-
-.footer-links a{
-    font-size:13px;
-    color:#d1d5db;
-}
-
-.footer-links a:hover{
-    color:#ffffff;
-}
-
-.copyright{
-    border-top:1px solid #374151;
-    margin-top:25px;
-    padding-top:20px;
-    text-align:center;
-    color:#6b7280;
-    font-size:12px;
-}
-
-/* MOBILE */
-
-@media(max-width:700px){
-
-    .container{
-        width:min(100% - 22px,1000px);
-    }
-
-    .header-inner{
-        min-height:60px;
-    }
-
-    .logo{
-        font-size:24px;
-    }
-
-    .home-btn{
-        padding:8px 12px;
-        font-size:12px;
-    }
-
-    .hero{
-        padding:35px 0 20px;
-    }
-
-    .hero-text{
-        font-size:15px;
-    }
-
-    .tool{
-        padding:18px;
-        border-radius:19px;
-    }
-
-    .upload{
-        padding:32px 12px;
-    }
-
-    .cards{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .content{
-        padding:20px;
-    }
-
-    .content h2{
-        font-size:22px;
-    }
-
-    .ad{
-        height:65px;
-    }
-}
-
-</style>
-</head>
-
-<body>
-
-<!-- HEADER -->
-<header class="header">
-    <div class="container header-inner">
-
-        <a href="/" class="logo">
-            Antokia
-        </a>
-
-        <a href="/" class="home-btn">
-            ← All Tools
-        </a>
-
-    </div>
-</header>
-
-
-<main class="container">
-
-    <!-- HERO -->
-    <section class="hero">
-
-        <div class="badge">
-            📄 Free Online PDF Tool
-        </div>
-
-        <h1>
-            Image to PDF
-            <span class="gradient">Converter</span>
-        </h1>
-
-        <p class="hero-text">
-            Convert JPG, JPEG, PNG and WEBP images into PDF files
-            quickly and easily. Combine multiple images into one PDF
-            with Antokia's free online converter.
-        </p>
-
-        <div class="tags">
-
-            <span class="tag">✓ Free</span>
-            <span class="tag">✓ No Watermark</span>
-            <span class="tag">✓ Multiple Images</span>
-            <span class="tag">✓ Easy to Use</span>
-
-        </div>
-
-    </section>
-
-
-    <!-- TOP AD -->
-    <div class="ad">
-        Advertisement
-    </div>
-
-
-    <!-- TOOL -->
-    <section class="tool">
-
-        <div class="tool-title">
-
-            <div class="tool-icon">
-                📄
-            </div>
-
-            <h2>
-                Convert Images to PDF
-            </h2>
-
-            <p>
-                Select one or more images to create your PDF
-            </p>
-
-        </div>
-
-
-        <!-- UPLOAD -->
-        <label for="imgInput" class="upload">
-
-            <div class="upload-icon">
-                🖼️
-            </div>
-
-            <div class="upload-title">
-                Choose Images
-            </div>
-
-            <div class="upload-text">
-                Click here to select JPG, JPEG, PNG or WEBP files
-            </div>
-
-            <div class="upload-small">
-                Multiple images can be selected
-            </div>
-
-            <input
-                type="file"
-                id="imgInput"
-                multiple
-                accept="image/jpeg,image/png,image/webp"
-            >
-
-        </label>
-
-
-        <!-- PREVIEW -->
-        <div id="preview" class="preview"></div>
-
-
-        <!-- STATUS -->
-        <div id="status" class="status"></div>
-
-
-        <!-- BUTTON -->
-        <button id="toPdfBtn" class="convert" type="button">
-            Convert to PDF & Download
-        </button>
-
-    </section>
-
-
-    <!-- FEATURES -->
-    <section class="cards">
-
-        <div class="card">
-            <div class="card-icon">⚡</div>
-            <h3>Fast</h3>
-            <p>Quick PDF creation</p>
-        </div>
-
-        <div class="card">
-            <div class="card-icon">🆓</div>
-            <h3>Free</h3>
-            <p>No payment required</p>
-        </div>
-
-        <div class="card">
-            <div class="card-icon">📑</div>
-            <h3>Multiple Images</h3>
-            <p>Combine into one PDF</p>
-        </div>
-
-        <div class="card">
-            <div class="card-icon">💻</div>
-            <h3>Browser Based</h3>
-            <p>No software required</p>
-        </div>
-
-    </section>
-
-
-    <!-- BOTTOM AD -->
-    <div class="ad">
-        Advertisement
-    </div>
-
-
-    <!-- HOW TO -->
-    <section class="content">
-
-        <h2>
-            How to Convert Image to PDF
-        </h2>
-
-        <ol>
-
-            <li>
-                Select one or more JPG, JPEG, PNG or WEBP images.
-            </li>
-
-            <li>
-                Check the image previews.
-            </li>
-
-            <li>
-                Click the "Convert to PDF & Download" button.
-            </li>
-
-            <li>
-                Your PDF will be generated and downloaded automatically.
-            </li>
-
-        </ol>
-
-    </section>
-
-
-    <!-- ABOUT -->
-    <section class="content">
-
-        <h2>
-            Free Image to PDF Converter
-        </h2>
-
-        <p>
-            Antokia's Image to PDF Converter is a simple online tool
-            that helps you convert images into PDF documents. It
-            supports JPG, JPEG, PNG and WEBP image formats.
-        </p>
-
-        <p>
-            You can select multiple images and combine them into a
-            single PDF file. This can be useful for scanned documents,
-            forms, certificates, receipts, photographs and other
-            image-based documents.
-        </p>
-
-        <p>
-            The tool is designed to be simple and easy to use.
-            Select your images, convert them and download your PDF
-            directly from your browser.
-        </p>
-
-    </section>
-
-
-    <!-- FEATURES CONTENT -->
-    <section class="content">
-
-        <h2>
-            Image to PDF Converter Features
-        </h2>
-
-        <ul>
-
-            <li>Convert JPG to PDF</li>
-            <li>Convert JPEG to PDF</li>
-            <li>Convert PNG to PDF</li>
-            <li>Convert WEBP to PDF</li>
-            <li>Combine multiple images into one PDF</li>
-            <li>No watermark added to the PDF</li>
-            <li>No software installation required</li>
-            <li>Works on desktop and mobile browsers</li>
-
-        </ul>
-
-    </section>
-
-
-    <!-- FAQ -->
-    <section class="content">
-
-        <h2>
-            Frequently Asked Questions
-        </h2>
-
-
-        <details class="faq">
-
-            <summary>
-                How can I convert an image to PDF?
-            </summary>
-
-            <p>
-                Select one or more JPG, JPEG, PNG or WEBP images
-                and click the Convert to PDF button. The PDF will
-                be generated and downloaded automatically.
-            </p>
-
-        </details>
-
-
-        <details class="faq">
-
-            <summary>
-                Can I convert multiple images into one PDF?
-            </summary>
-
-            <p>
-                Yes. You can select multiple images and combine
-                them into a single PDF document.
-            </p>
-
-        </details>
-
-
-        <details class="faq">
-
-            <summary>
-                Is the Image to PDF converter free?
-            </summary>
-
-            <p>
-                Yes. Antokia's Image to PDF converter is free to use.
-            </p>
-
-        </details>
-
-
-        <details class="faq">
-
-            <summary>
-                Do I need to install any software?
-            </summary>
-
-            <p>
-                No. The converter works directly in your browser,
-                so no additional software installation is required.
-            </p>
-
-        </details>
-
-    </section>
-
-
-    <!-- MORE TOOLS -->
-    <section class="content more-tools">
-
-        <h2>
-            Explore Antokia Free Tools
-        </h2>
-
-        <p>
-            Find more free online tools for your everyday digital tasks.
-        </p>
-
-        <a href="/" class="all-tools">
-            🛠️ View All Free Tools
-        </a>
-
-    </section>
-
-</main>
-
-
-<!-- FOOTER -->
-<footer class="footer">
-
-    <div class="container footer-inner">
-
-        <div class="footer-brand">
-            Antokia
-        </div>
-
-        <p class="footer-text">
-            Free online tools designed to make everyday digital
-            tasks simple, convenient and accessible.
-        </p>
-
-
-        <div class="footer-links">
-
-            <a href="/">
-                Home
-            </a>
-
-            <a href="/">
-                All Tools
-            </a>
-
-            <a href="/privacy.html">
-                Privacy Policy
-            </a>
-
-        </div>
-
-
-        <div class="copyright">
-            © 2026 Antokia. All rights reserved.
-        </div>
-
-    </div>
-
-</footer>
-
-
-<script>
-
-/* =========================
-   IMAGE TO PDF CONVERTER
-   ========================= */
-
-const input = document.getElementById("imgInput");
-const preview = document.getElementById("preview");
-const button = document.getElementById("toPdfBtn");
-const status = document.getElementById("status");
-
-let selectedFiles = [];
-
-
-/* IMAGE SELECTION */
-
-input.addEventListener("change", function(event) {
-
-    selectedFiles = Array.from(event.target.files);
-
-    preview.innerHTML = "";
-
-    if (selectedFiles.length === 0) {
-
-        status.textContent = "";
-
-        return;
-    }
-
-
-    selectedFiles.forEach(function(file, index) {
-
-        const reader = new FileReader();
-
-        reader.onload = function(e) {
-
-            const box = document.createElement("div");
-
-            box.className = "preview-box";
-
-
-            const img = document.createElement("img");
-
-            img.src = e.target.result;
-
-            img.alt = "Selected image " + (index + 1);
-
-
-            box.appendChild(img);
-
-            preview.appendChild(box);
-
-        };
-
-        reader.readAsDataURL(file);
-
-    });
-
-
-    status.textContent =
-        selectedFiles.length +
-        (selectedFiles.length === 1
-            ? " image selected."
-            : " images selected.");
-
-});
-
-
-/* CONVERT BUTTON */
-
-button.addEventListener("click", async function() {
-
-    if (selectedFiles.length === 0) {
-
-        alert("Please select at least one image.");
-
-        return;
-    }
-
-
-    if (!window.jspdf || !window.jspdf.jsPDF) {
-
-        alert(
-            "PDF library could not be loaded. Please refresh the page and try again."
-        );
-
-        return;
-    }
-
-
-    const jsPDF = window.jspdf.jsPDF;
-
-
-    button.disabled = true;
-
-    button.textContent = "Creating PDF...";
-
-    status.textContent =
-        "Please wait while your PDF is being created.";
-
-
-    try {
-
-        const pdf = new jsPDF("p", "mm", "a4");
-
-
-        for (let i = 0; i < selectedFiles.length; i++) {
-
-            const file = selectedFiles[i];
-
-            const imageData = await readFile(file);
-
-            const image = await loadImage(imageData);
-
-
-            if (i > 0) {
-
-                pdf.addPage();
-
-            }
-
-
-            const pageWidth = 210;
-            const pageHeight = 297;
-
-            const margin = 10;
-
-            const maxWidth = pageWidth - (margin * 2);
-            const maxHeight = pageHeight - (margin * 2);
-
-
-            const scale = Math.min(
-                maxWidth / image.width,
-                maxHeight / image.height
-            );
-
-
-            const width = image.width * scale;
-            const height = image.height * scale;
-
-
-            const x = (pageWidth - width) / 2;
-            const y = (pageHeight - height) / 2;
-
-
-            let format = "JPEG";
-
-
-            if (file.type === "image/png") {
-
-                format = "PNG";
-
-            }
-
-
-            /*
-             * WEBP is converted to JPEG through canvas
-             * for better jsPDF compatibility.
-             */
-
-            let finalData = imageData;
-
-
-            if (file.type === "image/webp") {
-
-                finalData = convertWebPToJPEG(image);
-
-                format = "JPEG";
-
-            }
-
-
-            pdf.addImage(
-                finalData,
-                format,
-                x,
-                y,
-                width,
-                height
-            );
-
-        }
-
-
-        pdf.save("antokia-image-to-pdf.pdf");
-
-
-        status.textContent =
-            "✓ PDF created successfully. Download started.";
-
-
-    } catch (error) {
-
-        console.error(error);
-
-        status.textContent =
-            "Unable to create PDF. Please try again.";
-
-        alert(
-            "Something went wrong while creating the PDF. Please try again."
-        );
-
-    }
-
-
-    button.disabled = false;
-
-    button.textContent =
-        "Convert to PDF & Download";
-
-});
-
-
-/* READ FILE */
-
-function readFile(file) {
-
-    return new Promise(function(resolve, reject) {
-
-        const reader = new FileReader();
-
-
-        reader.onload = function() {
-
-            resolve(reader.result);
-
-        };
-
-
-        reader.onerror = function() {
-
-            reject(new Error("Unable to read image."));
-
-        };
-
-
-        reader.readAsDataURL(file);
-
-    });
-
-}
-
-
-/* LOAD IMAGE */
-
-function loadImage(src) {
-
-    return new Promise(function(resolve, reject) {
-
-        const image = new Image();
-
-
-        image.onload = function() {
-
-            resolve(image);
-
-        };
-
-
-        image.onerror = function() {
-
-            reject(new Error("Unable to load image."));
-
-        };
-
-
-        image.src = src;
-
-    });
-
-}
-
-
-/* WEBP TO JPEG */
-
-function convertWebPToJPEG(image) {
-
-    const canvas = document.createElement("canvas");
-
-    canvas.width = image.width;
-
-    canvas.height = image.height;
-
-
-    const ctx = canvas.getContext("2d");
-
-    ctx.drawImage(image, 0, 0);
-
-
-    return canvas.toDataURL("image/jpeg", 0.95);
-
-}
-
 </script>
 
+<!-- Breadcrumb Schema -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {
+      "@type":"ListItem",
+      "position":1,
+      "name":"Home",
+      "item":"https://antokia.com/"
+    },
+    {
+      "@type":"ListItem",
+      "position":2,
+      "name":"Image to PDF Converter",
+      "item":"https://antokia.com/image-to-pdf.html"
+    }
+  ]
+}
+</script>
 
-<!-- FAQ STRUCTURED DATA -->
+<!-- FAQ Schema -->
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -1187,15 +85,15 @@ function convertWebPToJPEG(image) {
       "name":"How can I convert an image to PDF?",
       "acceptedAnswer":{
         "@type":"Answer",
-        "text":"Select one or more JPG, JPEG, PNG or WEBP images and click the Convert to PDF button. The PDF will be generated and downloaded automatically."
+        "text":"Select one or more JPG, JPEG, PNG or WEBP images, review the previews and click the Convert to PDF button. The PDF will be generated and downloaded in your browser."
       }
     },
     {
       "@type":"Question",
-      "name":"Can I convert multiple images into one PDF?",
+      "name":"Can I combine multiple images into one PDF?",
       "acceptedAnswer":{
         "@type":"Answer",
-        "text":"Yes. You can select multiple images and combine them into a single PDF document."
+        "text":"Yes. You can select multiple supported images and combine them into a single PDF document."
       }
     },
     {
@@ -1203,7 +101,15 @@ function convertWebPToJPEG(image) {
       "name":"Is the Image to PDF converter free?",
       "acceptedAnswer":{
         "@type":"Answer",
-        "text":"Yes. Antokia's Image to PDF converter is free to use."
+        "text":"Yes. Antokia's Image to PDF Converter is free to use without registration."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"Does the Image to PDF converter add a watermark?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"No. The converter does not intentionally add an Antokia watermark to the generated PDF."
       }
     },
     {
@@ -1211,32 +117,1764 @@ function convertWebPToJPEG(image) {
       "name":"Do I need to install software?",
       "acceptedAnswer":{
         "@type":"Answer",
-        "text":"No. The converter works directly in your browser and does not require additional software."
+        "text":"No. The tool works directly in a modern web browser and does not require additional software installation."
       }
     }
   ]
 }
 </script>
 
+<style>
+*{
+  box-sizing:border-box;
+}
 
-<!-- WEB APPLICATION STRUCTURED DATA -->
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"WebApplication",
-  "name":"Antokia Image to PDF Converter",
-  "url":"https://antokia.com/image-to-pdf.html",
-  "applicationCategory":"UtilitiesApplication",
-  "operatingSystem":"Any",
-  "description":"Free online tool to convert JPG, JPEG, PNG and WEBP images into PDF files.",
-  "offers":{
-    "@type":"Offer",
-    "price":"0",
-    "priceCurrency":"USD"
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  background:#f5f5fa;
+  color:#1f2937;
+  font-family:Arial,Helvetica,sans-serif;
+}
+
+.antokia-red{
+  color:#e5322d;
+}
+
+.calculator-card{
+  box-shadow:0 8px 30px rgba(15,23,42,.08);
+}
+
+/* Upload area */
+
+.upload-area{
+  border:2px dashed #d1d5db;
+  transition:.2s ease;
+}
+
+.upload-area:hover,
+.upload-area.drag-active{
+  border-color:#e5322d;
+  background:#fff8f8;
+}
+
+.upload-area.drag-active{
+  transform:scale(1.01);
+}
+
+/* Preview */
+
+.preview-card{
+  position:relative;
+  overflow:hidden;
+  transition:.2s ease;
+}
+
+.preview-card:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 20px rgba(15,23,42,.08);
+}
+
+.preview-image{
+  width:100%;
+  height:120px;
+  object-fit:contain;
+  background:#f8fafc;
+  display:block;
+}
+
+.remove-image{
+  position:absolute;
+  top:6px;
+  right:6px;
+  width:30px;
+  height:30px;
+  border-radius:50%;
+  border:0;
+  background:#111827;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  opacity:.9;
+  transition:.2s ease;
+}
+
+.remove-image:hover{
+  background:#dc2626;
+  transform:scale(1.05);
+}
+
+.file-number{
+  position:absolute;
+  left:7px;
+  top:7px;
+  background:#e5322d;
+  color:#fff;
+  font-size:11px;
+  font-weight:700;
+  padding:4px 7px;
+  border-radius:999px;
+}
+
+/* Buttons */
+
+.primary-btn{
+  background:#e5322d;
+  transition:.2s ease;
+}
+
+.primary-btn:hover{
+  background:#c9211d;
+  transform:translateY(-1px);
+}
+
+.primary-btn:disabled{
+  opacity:.6;
+  cursor:not-allowed;
+  transform:none;
+}
+
+.secondary-btn{
+  transition:.2s ease;
+}
+
+.secondary-btn:hover{
+  background:#f3f4f6;
+}
+
+/* Progress */
+
+.progress-track{
+  width:100%;
+  height:8px;
+  background:#e5e7eb;
+  border-radius:999px;
+  overflow:hidden;
+}
+
+.progress-bar{
+  width:0%;
+  height:100%;
+  background:#e5322d;
+  border-radius:999px;
+  transition:width .2s ease;
+}
+
+/* FAQ */
+
+.faq-answer{
+  display:none;
+}
+
+.faq-item.active .faq-answer{
+  display:block;
+}
+
+.faq-icon{
+  transition:transform .2s ease;
+}
+
+.faq-item.active .faq-icon{
+  transform:rotate(45deg);
+}
+
+/* Info */
+
+.info-card{
+  box-shadow:0 5px 25px rgba(15,23,42,.05);
+}
+
+/* Mobile */
+
+@media(max-width:700px){
+
+  .preview-image{
+    height:100px;
+  }
+
+  .remove-image{
+    width:28px;
+    height:28px;
   }
 }
+</style>
+
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header class="bg-white shadow-sm sticky top-0 z-50">
+
+  <div class="max-w-6xl mx-auto px-4 py-3">
+
+    <div class="flex items-center justify-between gap-4">
+
+      <!-- Logo -->
+      <a href="/" class="text-2xl font-extrabold antokia-red">
+        Antokia
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+
+        <a href="/" class="hover:text-red-600 transition">
+          Home
+        </a>
+
+        <a href="/blog/" class="hover:text-red-600 transition">
+          Blog
+        </a>
+
+        <a href="/about.html" class="hover:text-red-600 transition">
+          About
+        </a>
+
+        <a href="/contact.html" class="hover:text-red-600 transition">
+          Contact
+        </a>
+
+      </nav>
+
+      <!-- Home Button -->
+      <a href="/"
+         class="text-sm bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-full transition whitespace-nowrap">
+
+        <i class="fa-solid fa-arrow-left mr-1"></i>
+        Home
+
+      </a>
+
+    </div>
+
+  </div>
+
+</header>
+
+
+<!-- ================= MAIN ================= -->
+
+<main class="max-w-5xl mx-auto px-4 py-8">
+
+  <!-- ================= HERO ================= -->
+
+  <section class="text-center">
+
+    <div class="inline-block bg-red-50 text-red-600 text-xs font-bold px-4 py-2 rounded-full mb-4">
+      FREE PDF TOOL
+    </div>
+
+    <h1 class="text-3xl md:text-5xl font-extrabold text-gray-900">
+      Image to PDF
+      <span class="text-red-600">Converter</span>
+    </h1>
+
+    <p class="text-gray-600 mt-3 max-w-2xl mx-auto leading-7">
+      Convert JPG, JPEG, PNG and WEBP images into PDF files online.
+      Combine multiple images into one PDF quickly and easily with
+      Antokia's free Image to PDF Converter.
+    </p>
+
+  </section>
+
+
+  <!-- ================= TOP AD ================= -->
+
+  <div class="bg-gray-200 rounded-xl min-h-[90px] mt-7 flex items-center justify-center text-gray-500 text-sm">
+    Advertisement
+  </div>
+
+
+  <!-- ================= TOOL ================= -->
+
+  <section class="calculator-card bg-white rounded-2xl p-6 md:p-8 mt-7">
+
+    <div class="text-center mb-7">
+
+      <div class="w-14 h-14 mx-auto rounded-2xl bg-red-50 flex items-center justify-center text-red-600 text-2xl">
+        <i class="fa-solid fa-file-pdf"></i>
+      </div>
+
+      <h2 class="text-xl md:text-2xl font-bold text-gray-900 mt-4">
+        Convert Images to PDF
+      </h2>
+
+      <p class="text-gray-500 text-sm mt-2">
+        Select one or more images and create a single PDF document.
+      </p>
+
+    </div>
+
+
+    <!-- ================= UPLOAD AREA ================= -->
+
+    <label
+      for="imgInput"
+      id="uploadArea"
+      class="upload-area block rounded-2xl p-8 md:p-12 text-center cursor-pointer">
+
+      <div class="text-5xl mb-4">
+        🖼️
+      </div>
+
+      <h3 class="text-lg md:text-xl font-bold text-gray-900">
+        Choose Images
+      </h3>
+
+      <p class="text-gray-600 text-sm mt-2">
+        Click here or drag & drop your images
+      </p>
+
+      <p class="text-gray-400 text-xs mt-3">
+        JPG, JPEG, PNG or WEBP • Multiple images supported
+      </p>
+
+      <input
+        type="file"
+        id="imgInput"
+        multiple
+        accept="image/jpeg,image/png,image/webp"
+        class="hidden"
+      >
+
+    </label>
+
+
+    <!-- ================= FILE SUMMARY ================= -->
+
+    <div
+      id="fileSummary"
+      class="hidden mt-5 bg-gray-50 border border-gray-200 rounded-xl px-4 py-3">
+
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+
+        <div class="text-sm text-gray-700">
+          <i class="fa-solid fa-images text-red-600 mr-2"></i>
+          <span id="fileCount">0 images</span>
+          <span class="mx-1">•</span>
+          <span id="fileSize">0 KB</span>
+        </div>
+
+        <button
+          id="clearBtn"
+          type="button"
+          class="text-sm font-semibold text-red-600 hover:text-red-700">
+
+          <i class="fa-solid fa-trash-can mr-1"></i>
+          Clear All
+
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- ================= PREVIEW ================= -->
+
+    <div
+      id="preview"
+      class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mt-5">
+    </div>
+
+
+    <!-- ================= PROGRESS ================= -->
+
+    <div id="progressArea" class="hidden mt-6">
+
+      <div class="flex justify-between text-xs text-gray-500 mb-2">
+        <span id="progressText">
+          Preparing PDF...
+        </span>
+
+        <span id="progressPercent">
+          0%
+        </span>
+      </div>
+
+      <div class="progress-track">
+        <div id="progressBar" class="progress-bar"></div>
+      </div>
+
+    </div>
+
+
+    <!-- ================= STATUS ================= -->
+
+    <div
+      id="status"
+      class="text-center text-sm text-gray-500 mt-4 min-h-[22px]">
+    </div>
+
+
+    <!-- ================= ACTIONS ================= -->
+
+    <div class="grid sm:grid-cols-2 gap-3 mt-5">
+
+      <button
+        id="toPdfBtn"
+        type="button"
+        disabled
+        class="primary-btn text-white font-bold py-3.5 rounded-xl">
+
+        <i class="fa-solid fa-file-pdf mr-2"></i>
+        Convert to PDF
+
+      </button>
+
+      <button
+        id="chooseMoreBtn"
+        type="button"
+        class="secondary-btn border border-gray-300 text-gray-700 font-bold py-3.5 rounded-xl">
+
+        <i class="fa-solid fa-plus mr-2"></i>
+        Add More Images
+
+      </button>
+
+    </div>
+
+
+    <!-- Privacy Note -->
+
+    <div class="mt-5 bg-green-50 border border-green-100 rounded-xl p-4 text-sm text-green-800">
+
+      <i class="fa-solid fa-shield-halved mr-2"></i>
+
+      <strong>Privacy:</strong>
+      Your selected images are processed directly in your browser.
+      They are not intentionally uploaded to an Antokia server.
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= FEATURES ================= -->
+
+  <section class="mt-8">
+
+    <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
+
+      <div class="bg-white border rounded-xl p-5 text-center">
+
+        <div class="text-red-600 text-2xl">
+          <i class="fa-solid fa-bolt"></i>
+        </div>
+
+        <h3 class="font-bold mt-3">
+          Fast
+        </h3>
+
+        <p class="text-sm text-gray-500 mt-2">
+          Create PDFs directly in your browser.
+        </p>
+
+      </div>
+
+
+      <div class="bg-white border rounded-xl p-5 text-center">
+
+        <div class="text-red-600 text-2xl">
+          <i class="fa-solid fa-images"></i>
+        </div>
+
+        <h3 class="font-bold mt-3">
+          Multiple Images
+        </h3>
+
+        <p class="text-sm text-gray-500 mt-2">
+          Combine multiple images into one PDF.
+        </p>
+
+      </div>
+
+
+      <div class="bg-white border rounded-xl p-5 text-center">
+
+        <div class="text-red-600 text-2xl">
+          <i class="fa-solid fa-mobile-screen-button"></i>
+        </div>
+
+        <h3 class="font-bold mt-3">
+          Mobile Friendly
+        </h3>
+
+        <p class="text-sm text-gray-500 mt-2">
+          Works on modern desktop and mobile browsers.
+        </p>
+
+      </div>
+
+
+      <div class="bg-white border rounded-xl p-5 text-center">
+
+        <div class="text-red-600 text-2xl">
+          <i class="fa-solid fa-ban"></i>
+        </div>
+
+        <h3 class="font-bold mt-3">
+          No Watermark
+        </h3>
+
+        <p class="text-sm text-gray-500 mt-2">
+          No Antokia watermark is added to your PDF.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= BOTTOM AD ================= -->
+
+  <div class="bg-gray-200 rounded-xl min-h-[90px] mt-10 flex items-center justify-center text-gray-500 text-sm">
+    Advertisement
+  </div>
+
+
+  <!-- ================= WHAT IS ================= -->
+
+  <section class="mt-10 bg-white rounded-2xl p-6 md:p-8 info-card">
+
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+      What is an Image to PDF Converter?
+    </h2>
+
+    <p class="text-gray-600 leading-8">
+      An Image to PDF Converter is an online tool that converts image files
+      such as JPG, JPEG, PNG and WEBP into PDF documents. It can also combine
+      multiple images into a single PDF file.
+    </p>
+
+    <p class="text-gray-600 leading-8 mt-4">
+      This can be useful when you need to combine scanned pages, photographs,
+      receipts, certificates, forms or other image-based documents into one
+      convenient PDF file.
+    </p>
+
+    <p class="text-gray-600 leading-8 mt-4">
+      Antokia's Image to PDF Converter is designed for simple browser-based
+      conversion without requiring additional software or registration.
+    </p>
+
+  </section>
+
+
+  <!-- ================= HOW TO USE ================= -->
+
+  <section class="mt-10">
+
+    <h2 class="text-2xl md:text-3xl font-bold text-center mb-7">
+      How to Convert Images to PDF
+    </h2>
+
+    <div class="grid md:grid-cols-4 gap-5">
+
+      <div class="bg-white rounded-xl border p-6">
+
+        <div class="text-2xl font-bold text-red-600 mb-3">
+          01
+        </div>
+
+        <h3 class="font-bold text-lg">
+          Select Images
+        </h3>
+
+        <p class="text-gray-600 text-sm leading-6 mt-2">
+          Choose JPG, JPEG, PNG or WEBP images from your device.
+        </p>
+
+      </div>
+
+
+      <div class="bg-white rounded-xl border p-6">
+
+        <div class="text-2xl font-bold text-red-600 mb-3">
+          02
+        </div>
+
+        <h3 class="font-bold text-lg">
+          Review Files
+        </h3>
+
+        <p class="text-gray-600 text-sm leading-6 mt-2">
+          Review the image previews and remove any unwanted files.
+        </p>
+
+      </div>
+
+
+      <div class="bg-white rounded-xl border p-6">
+
+        <div class="text-2xl font-bold text-red-600 mb-3">
+          03
+        </div>
+
+        <h3 class="font-bold text-lg">
+          Convert
+        </h3>
+
+        <p class="text-gray-600 text-sm leading-6 mt-2">
+          Click Convert to PDF to create your document.
+        </p>
+
+      </div>
+
+
+      <div class="bg-white rounded-xl border p-6">
+
+        <div class="text-2xl font-bold text-red-600 mb-3">
+          04
+        </div>
+
+        <h3 class="font-bold text-lg">
+          Download
+        </h3>
+
+        <p class="text-gray-600 text-sm leading-6 mt-2">
+          Your generated PDF will be downloaded automatically.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= FEATURES CONTENT ================= -->
+
+  <section class="mt-10 bg-white rounded-2xl p-6 md:p-8">
+
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-5">
+      Image to PDF Converter Features
+    </h2>
+
+    <div class="grid md:grid-cols-2 gap-x-10">
+
+      <ul class="text-gray-600 leading-8 list-disc pl-5">
+
+        <li>Convert JPG images to PDF</li>
+        <li>Convert JPEG images to PDF</li>
+        <li>Convert PNG images to PDF</li>
+        <li>Convert WEBP images to PDF</li>
+
+      </ul>
+
+      <ul class="text-gray-600 leading-8 list-disc pl-5">
+
+        <li>Combine multiple images into one PDF</li>
+        <li>Remove unwanted images before conversion</li>
+        <li>No software installation required</li>
+        <li>Works directly in a modern web browser</li>
+
+      </ul>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= FAQ ================= -->
+
+  <section class="mt-10">
+
+    <h2 class="text-2xl md:text-3xl font-bold text-center mb-7">
+      Frequently Asked Questions
+    </h2>
+
+
+    <div class="space-y-4">
+
+
+      <div class="faq-item bg-white border rounded-xl overflow-hidden">
+
+        <button
+          type="button"
+          class="faq-question w-full text-left px-5 py-4 flex justify-between items-center font-semibold">
+
+          <span>
+            How can I convert an image to PDF?
+          </span>
+
+          <span class="faq-icon text-xl">
+            +
+          </span>
+
+        </button>
+
+        <div class="faq-answer px-5 pb-5 text-gray-600 text-sm leading-7">
+
+          Select one or more JPG, JPEG, PNG or WEBP images, review the
+          previews and click the Convert to PDF button. The PDF will be
+          generated and downloaded in your browser.
+
+        </div>
+
+      </div>
+
+
+      <div class="faq-item bg-white border rounded-xl overflow-hidden">
+
+        <button
+          type="button"
+          class="faq-question w-full text-left px-5 py-4 flex justify-between items-center font-semibold">
+
+          <span>
+            Can I combine multiple images into one PDF?
+          </span>
+
+          <span class="faq-icon text-xl">
+            +
+          </span>
+
+        </button>
+
+        <div class="faq-answer px-5 pb-5 text-gray-600 text-sm leading-7">
+
+          Yes. You can select multiple supported images and combine them
+          into a single PDF document.
+
+        </div>
+
+      </div>
+
+
+      <div class="faq-item bg-white border rounded-xl overflow-hidden">
+
+        <button
+          type="button"
+          class="faq-question w-full text-left px-5 py-4 flex justify-between items-center font-semibold">
+
+          <span>
+            Is the Image to PDF converter free?
+          </span>
+
+          <span class="faq-icon text-xl">
+            +
+          </span>
+
+        </button>
+
+        <div class="faq-answer px-5 pb-5 text-gray-600 text-sm leading-7">
+
+          Yes. Antokia's Image to PDF Converter is free to use without
+          registration.
+
+        </div>
+
+      </div>
+
+
+      <div class="faq-item bg-white border rounded-xl overflow-hidden">
+
+        <button
+          type="button"
+          class="faq-question w-full text-left px-5 py-4 flex justify-between items-center font-semibold">
+
+          <span>
+            Does the converter add a watermark?
+          </span>
+
+          <span class="faq-icon text-xl">
+            +
+          </span>
+
+        </button>
+
+        <div class="faq-answer px-5 pb-5 text-gray-600 text-sm leading-7">
+
+          No. The converter does not intentionally add an Antokia watermark
+          to the generated PDF.
+
+        </div>
+
+      </div>
+
+
+      <div class="faq-item bg-white border rounded-xl overflow-hidden">
+
+        <button
+          type="button"
+          class="faq-question w-full text-left px-5 py-4 flex justify-between items-center font-semibold">
+
+          <span>
+            Do I need to install any software?
+          </span>
+
+          <span class="faq-icon text-xl">
+            +
+          </span>
+
+        </button>
+
+        <div class="faq-answer px-5 pb-5 text-gray-600 text-sm leading-7">
+
+          No. The converter works directly in a modern web browser and
+          does not require additional software installation.
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= RELATED TOOLS ================= -->
+
+  <section class="mt-10">
+
+    <h2 class="text-2xl md:text-3xl font-bold mb-6">
+      Related Free Tools
+    </h2>
+
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+
+      <a
+        href="/"
+        class="bg-white border rounded-xl p-5 hover:border-red-400 transition">
+
+        <i class="fa-solid fa-toolbox text-red-600 text-xl"></i>
+
+        <h3 class="font-bold mt-3">
+          All Free Tools
+        </h3>
+
+        <p class="text-sm text-gray-500 mt-2">
+          Explore more free online tools available on Antokia.
+        </p>
+
+      </a>
+
+
+      <a
+        href="/pdf-to-word.html"
+        class="bg-white border rounded-xl p-5 hover:border-red-400 transition">
+
+        <i class="fa-solid fa-file-word text-red-600 text-xl"></i>
+
+        <h3 class="font-bold mt-3">
+          PDF to Word
+        </h3>
+
+        <p class="text-sm text-gray-500 mt-2">
+          Convert PDF documents into editable Word files.
+        </p>
+
+      </a>
+
+
+      <a
+        href="/word-to-pdf.html"
+        class="bg-white border rounded-xl p-5 hover:border-red-400 transition">
+
+        <i class="fa-solid fa-file-pdf text-red-600 text-xl"></i>
+
+        <h3 class="font-bold mt-3">
+          Word to PDF
+        </h3>
+
+        <p class="text-sm text-gray-500 mt-2">
+          Convert Word documents into PDF files online.
+        </p>
+
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= DISCLAIMER ================= -->
+
+  <section class="mt-8 mb-10">
+
+    <div class="bg-gray-100 border border-gray-200 rounded-xl p-5 text-sm text-gray-600 leading-7">
+
+      <strong>Note:</strong>
+      This tool is provided for general document conversion purposes.
+      PDF output may vary depending on the image format, dimensions and
+      quality of the selected files.
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="bg-gray-900 text-gray-300">
+
+  <div class="max-w-6xl mx-auto px-4 py-10">
+
+    <div class="grid md:grid-cols-4 gap-8">
+
+
+      <!-- BRAND -->
+
+      <div>
+
+        <h2 class="text-2xl font-extrabold text-white">
+          Antokia
+        </h2>
+
+        <p class="text-sm leading-6 mt-3">
+          Free online tools for everyday tasks including PDF, image,
+          finance and utility tools.
+        </p>
+
+      </div>
+
+
+      <!-- EXPLORE -->
+
+      <div>
+
+        <h3 class="text-white font-bold mb-4">
+          Explore
+        </h3>
+
+        <div class="space-y-2 text-sm">
+
+          <a href="/" class="block hover:text-white">
+            Home
+          </a>
+
+          <a href="/blog/" class="block hover:text-white">
+            Blog
+          </a>
+
+          <a href="/about.html" class="block hover:text-white">
+            About
+          </a>
+
+          <a href="/contact.html" class="block hover:text-white">
+            Contact
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- LEGAL -->
+
+      <div>
+
+        <h3 class="text-white font-bold mb-4">
+          Legal
+        </h3>
+
+        <div class="space-y-2 text-sm">
+
+          <a href="/privacy.html" class="block hover:text-white">
+            Privacy Policy
+          </a>
+
+          <a href="/terms.html" class="block hover:text-white">
+            Terms & Conditions
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- SOCIAL -->
+
+      <div>
+
+        <h3 class="text-white font-bold mb-4">
+          Follow Antokia
+        </h3>
+
+        <div class="flex gap-3">
+
+          <a
+            href="https://www.instagram.com/antokia.insta"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Antokia on Instagram"
+            class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-gray-700">
+
+            <i class="fa-brands fa-instagram"></i>
+
+          </a>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+    <div class="border-t border-gray-700 mt-8 pt-6 text-center text-sm text-gray-400">
+
+      © 2026 Antokia. All rights reserved.
+
+    </div>
+
+  </div>
+
+</footer>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+(function(){
+
+  const input = document.getElementById("imgInput");
+  const uploadArea = document.getElementById("uploadArea");
+
+  const preview = document.getElementById("preview");
+
+  const button = document.getElementById("toPdfBtn");
+  const chooseMoreBtn = document.getElementById("chooseMoreBtn");
+  const clearBtn = document.getElementById("clearBtn");
+
+  const status = document.getElementById("status");
+
+  const fileSummary = document.getElementById("fileSummary");
+  const fileCount = document.getElementById("fileCount");
+  const fileSize = document.getElementById("fileSize");
+
+  const progressArea = document.getElementById("progressArea");
+  const progressBar = document.getElementById("progressBar");
+  const progressText = document.getElementById("progressText");
+  const progressPercent = document.getElementById("progressPercent");
+
+  let selectedFiles = [];
+
+
+  /* =========================
+     FORMAT FILE SIZE
+     ========================= */
+
+  function formatFileSize(bytes){
+
+    if(bytes < 1024){
+      return bytes + " B";
+    }
+
+    if(bytes < 1024 * 1024){
+      return (bytes / 1024).toFixed(1) + " KB";
+    }
+
+    return (bytes / (1024 * 1024)).toFixed(2) + " MB";
+  }
+
+
+  /* =========================
+     UPDATE SUMMARY
+     ========================= */
+
+  function updateSummary(){
+
+    if(selectedFiles.length === 0){
+
+      fileSummary.classList.add("hidden");
+
+      button.disabled = true;
+
+      return;
+    }
+
+    const totalBytes = selectedFiles.reduce(
+      function(total,file){
+        return total + file.size;
+      },
+      0
+    );
+
+    fileSummary.classList.remove("hidden");
+
+    fileCount.textContent =
+      selectedFiles.length +
+      (selectedFiles.length === 1 ? " image" : " images");
+
+    fileSize.textContent = formatFileSize(totalBytes);
+
+    button.disabled = false;
+
+  }
+
+
+  /* =========================
+     RENDER PREVIEW
+     ========================= */
+
+  function renderPreview(){
+
+    preview.innerHTML = "";
+
+    selectedFiles.forEach(function(file,index){
+
+      const reader = new FileReader();
+
+      reader.onload = function(event){
+
+        const card = document.createElement("div");
+
+        card.className =
+          "preview-card bg-white border border-gray-200 rounded-xl p-2";
+
+        card.innerHTML = `
+
+          <div class="relative">
+
+            <span class="file-number">
+              ${index + 1}
+            </span>
+
+            <img
+              src="${event.target.result}"
+              alt="Selected image ${index + 1}"
+              class="preview-image rounded-lg"
+            >
+
+            <button
+              type="button"
+              class="remove-image"
+              aria-label="Remove image ${index + 1}"
+              data-index="${index}">
+
+              <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+          </div>
+
+          <div
+            class="text-xs text-gray-500 mt-2 px-1 truncate"
+            title="${file.name}">
+
+            ${file.name}
+
+          </div>
+
+        `;
+
+        preview.appendChild(card);
+
+      };
+
+      reader.readAsDataURL(file);
+
+    });
+
+    updateSummary();
+
+  }
+
+
+  /* =========================
+     ADD FILES
+     ========================= */
+
+  function addFiles(files){
+
+    const incoming = Array.from(files);
+
+    const validFiles = incoming.filter(function(file){
+
+      return [
+        "image/jpeg",
+        "image/png",
+        "image/webp"
+      ].includes(file.type);
+
+    });
+
+
+    if(validFiles.length === 0){
+
+      status.textContent =
+        "Please select JPG, JPEG, PNG or WEBP images.";
+
+      return;
+    }
+
+
+    const duplicateSafeFiles = validFiles.filter(function(newFile){
+
+      return !selectedFiles.some(function(existingFile){
+
+        return (
+          existingFile.name === newFile.name &&
+          existingFile.size === newFile.size &&
+          existingFile.lastModified === newFile.lastModified
+        );
+
+      });
+
+    });
+
+
+    selectedFiles = selectedFiles.concat(duplicateSafeFiles);
+
+
+    if(duplicateSafeFiles.length === 0){
+
+      status.textContent =
+        "The selected images are already in the list.";
+
+      return;
+    }
+
+
+    status.textContent =
+      selectedFiles.length +
+      (selectedFiles.length === 1
+        ? " image selected."
+        : " images selected.");
+
+    renderPreview();
+
+  }
+
+
+  /* =========================
+     FILE INPUT
+     ========================= */
+
+  input.addEventListener("change",function(event){
+
+    addFiles(event.target.files);
+
+    input.value = "";
+
+  });
+
+
+  /* =========================
+     DRAG & DROP
+     ========================= */
+
+  ["dragenter","dragover"].forEach(function(eventName){
+
+    uploadArea.addEventListener(eventName,function(event){
+
+      event.preventDefault();
+      event.stopPropagation();
+
+      uploadArea.classList.add("drag-active");
+
+    });
+
+  });
+
+
+  ["dragleave","drop"].forEach(function(eventName){
+
+    uploadArea.addEventListener(eventName,function(event){
+
+      event.preventDefault();
+      event.stopPropagation();
+
+      uploadArea.classList.remove("drag-active");
+
+    });
+
+  });
+
+
+  uploadArea.addEventListener("drop",function(event){
+
+    const files = event.dataTransfer.files;
+
+    addFiles(files);
+
+  });
+
+
+  /* =========================
+     REMOVE IMAGE
+     ========================= */
+
+  preview.addEventListener("click",function(event){
+
+    const removeButton =
+      event.target.closest(".remove-image");
+
+    if(!removeButton){
+      return;
+    }
+
+    const index =
+      Number(removeButton.dataset.index);
+
+    selectedFiles.splice(index,1);
+
+    renderPreview();
+
+    if(selectedFiles.length === 0){
+
+      status.textContent =
+        "All images removed. Select images to continue.";
+
+    }else{
+
+      status.textContent =
+        selectedFiles.length +
+        (selectedFiles.length === 1
+          ? " image selected."
+          : " images selected.");
+
+    }
+
+  });
+
+
+  /* =========================
+     CLEAR ALL
+     ========================= */
+
+  clearBtn.addEventListener("click",function(){
+
+    selectedFiles = [];
+
+    preview.innerHTML = "";
+
+    updateSummary();
+
+    status.textContent =
+      "All selected images have been removed.";
+
+    progressArea.classList.add("hidden");
+
+  });
+
+
+  /* =========================
+     ADD MORE
+     ========================= */
+
+  chooseMoreBtn.addEventListener("click",function(){
+
+    input.click();
+
+  });
+
+
+  /* =========================
+     LOAD IMAGE
+     ========================= */
+
+  function loadImage(file){
+
+    return new Promise(function(resolve,reject){
+
+      const reader = new FileReader();
+
+      reader.onload = function(event){
+
+        const image = new Image();
+
+        image.onload = function(){
+
+          resolve({
+            image:image,
+            data:event.target.result
+          });
+
+        };
+
+        image.onerror = function(){
+
+          reject(
+            new Error("Unable to load image.")
+          );
+
+        };
+
+        image.src = event.target.result;
+
+      };
+
+      reader.onerror = function(){
+
+        reject(
+          new Error("Unable to read image.")
+        );
+
+      };
+
+      reader.readAsDataURL(file);
+
+    });
+
+  }
+
+
+  /* =========================
+     PREPARE IMAGE
+     ========================= */
+
+  function prepareImage(image,file){
+
+    const maxDimension = 2200;
+
+    const originalWidth = image.width;
+    const originalHeight = image.height;
+
+    let width = originalWidth;
+    let height = originalHeight;
+
+
+    if(
+      originalWidth > maxDimension ||
+      originalHeight > maxDimension
+    ){
+
+      const scale =
+        Math.min(
+          maxDimension / originalWidth,
+          maxDimension / originalHeight
+        );
+
+      width =
+        Math.round(originalWidth * scale);
+
+      height =
+        Math.round(originalHeight * scale);
+
+    }
+
+
+    const canvas =
+      document.createElement("canvas");
+
+    canvas.width = width;
+    canvas.height = height;
+
+
+    const ctx =
+      canvas.getContext("2d",{
+        alpha:false
+      });
+
+
+    ctx.fillStyle = "#ffffff";
+
+    ctx.fillRect(
+      0,
+      0,
+      width,
+      height
+    );
+
+
+    ctx.drawImage(
+      image,
+      0,
+      0,
+      width,
+      height
+    );
+
+
+    return canvas.toDataURL(
+      "image/jpeg",
+      0.92
+    );
+
+  }
+
+
+  /* =========================
+     PROGRESS
+     ========================= */
+
+  function setProgress(percent,text){
+
+    const safePercent =
+      Math.max(
+        0,
+        Math.min(100,percent)
+      );
+
+    progressBar.style.width =
+      safePercent + "%";
+
+    progressPercent.textContent =
+      Math.round(safePercent) + "%";
+
+    progressText.textContent =
+      text;
+
+  }
+
+
+  /* =========================
+     CONVERT TO PDF
+     ========================= */
+
+  button.addEventListener("click",async function(){
+
+    if(selectedFiles.length === 0){
+
+      status.textContent =
+        "Please select at least one image.";
+
+      return;
+    }
+
+
+    if(
+      !window.jspdf ||
+      !window.jspdf.jsPDF
+    ){
+
+      status.textContent =
+        "PDF library could not be loaded. Please refresh the page and try again.";
+
+      return;
+    }
+
+
+    button.disabled = true;
+    chooseMoreBtn.disabled = true;
+    clearBtn.disabled = true;
+
+
+    progressArea.classList.remove("hidden");
+
+    setProgress(
+      0,
+      "Preparing your PDF..."
+    );
+
+
+    status.textContent =
+      "Please wait while your PDF is being created.";
+
+
+    try{
+
+      const jsPDF =
+        window.jspdf.jsPDF;
+
+
+      const pdf =
+        new jsPDF(
+          "p",
+          "mm",
+          "a4"
+        );
+
+
+      const pageWidth = 210;
+      const pageHeight = 297;
+
+      const margin = 10;
+
+      const maxWidth =
+        pageWidth - (margin * 2);
+
+      const maxHeight =
+        pageHeight - (margin * 2);
+
+
+      for(
+        let i = 0;
+        i < selectedFiles.length;
+        i++
+      ){
+
+        const file =
+          selectedFiles[i];
+
+
+        setProgress(
+          (i / selectedFiles.length) * 90,
+          "Processing image " +
+          (i + 1) +
+          " of " +
+          selectedFiles.length +
+          "..."
+        );
+
+
+        const loaded =
+          await loadImage(file);
+
+
+        const image =
+          loaded.image;
+
+
+        if(i > 0){
+
+          pdf.addPage();
+
+        }
+
+
+        const imageRatio =
+          image.width / image.height;
+
+
+        let width =
+          maxWidth;
+
+        let height =
+          width / imageRatio;
+
+
+        if(height > maxHeight){
+
+          height =
+            maxHeight;
+
+          width =
+            height * imageRatio;
+
+        }
+
+
+        const x =
+          (pageWidth - width) / 2;
+
+        const y =
+          (pageHeight - height) / 2;
+
+
+        const finalData =
+          prepareImage(
+            image,
+            file
+          );
+
+
+        pdf.addImage(
+          finalData,
+          "JPEG",
+          x,
+          y,
+          width,
+          height,
+          undefined,
+          "FAST"
+        );
+
+
+        setProgress(
+          ((i + 1) / selectedFiles.length) * 90,
+          "Added image " +
+          (i + 1) +
+          " of " +
+          selectedFiles.length
+        );
+
+      }
+
+
+      setProgress(
+        95,
+        "Finalizing PDF..."
+      );
+
+
+      pdf.save(
+        "antokia-image-to-pdf.pdf"
+      );
+
+
+      setProgress(
+        100,
+        "PDF created successfully."
+      );
+
+
+      status.innerHTML =
+        '<span class="text-green-600 font-semibold">' +
+        '<i class="fa-solid fa-circle-check mr-1"></i>' +
+        'PDF created successfully. Download started.' +
+        '</span>';
+
+
+    }catch(error){
+
+      console.error(error);
+
+
+      status.innerHTML =
+        '<span class="text-red-600 font-semibold">' +
+        '<i class="fa-solid fa-circle-exclamation mr-1"></i>' +
+        'Unable to create PDF. Please try again.' +
+        '</span>';
+
+    }
+
+
+    button.disabled = false;
+    chooseMoreBtn.disabled = false;
+    clearBtn.disabled = false;
+
+  });
+
+
+  /* =========================
+     FAQ
+     ========================= */
+
+  document
+    .querySelectorAll(".faq-question")
+    .forEach(function(button){
+
+      button.addEventListener(
+        "click",
+        function(){
+
+          const item =
+            this.closest(".faq-item");
+
+
+          document
+            .querySelectorAll(".faq-item")
+            .forEach(function(other){
+
+              if(other !== item){
+
+                other.classList.remove(
+                  "active"
+                );
+
+              }
+
+            });
+
+
+          item.classList.toggle(
+            "active"
+          );
+
+        }
+      );
+
+    });
+
+
+})();
 </script>
+
 
 </body>
 </html>
-```
