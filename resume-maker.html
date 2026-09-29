@@ -4,42 +4,406 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Free ATS Resume Maker 2026 – Create & Download Resume PDF | Antokia</title>
+<title>Free Resume Maker 2026 – ATS-Friendly Resume Builder | Antokia</title>
 
-<meta name="description" content="Create a professional ATS-friendly resume online for free with Antokia Resume Maker. Add your education, experience and skills, preview your resume and download it as a PDF. No signup required.">
+<meta name="description" content="Create a professional ATS-friendly resume online for free with Antokia Resume Maker. Add your experience, education, skills, projects and certifications, preview your resume and print or save it as PDF. No signup required.">
 
-<meta name="keywords" content="resume maker, free resume maker, ATS resume maker, ATS friendly resume builder, resume builder online, free CV maker, resume PDF maker, professional resume builder">
+<meta name="keywords" content="resume maker, free resume maker, free resume builder, ATS resume maker, ATS friendly resume builder, CV maker, free CV builder, online resume builder, resume PDF maker, professional resume builder">
 
 <meta name="robots" content="index, follow">
-<meta name="author" content="Antokia">
-
 <link rel="canonical" href="https://antokia.com/resume-maker.html">
 
+<meta property="og:title" content="Free Resume Maker 2026 – ATS-Friendly Resume Builder | Antokia">
+<meta property="og:description" content="Create a clean, professional and ATS-friendly resume online for free with Antokia Resume Maker.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Free ATS Resume Maker 2026 | Antokia">
-<meta property="og:description" content="Create a clean ATS-friendly resume online for free and download it as a PDF with Antokia Resume Maker.">
 <meta property="og:url" content="https://antokia.com/resume-maker.html">
 <meta property="og:site_name" content="Antokia">
 
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Free ATS Resume Maker | Antokia">
-<meta name="twitter:description" content="Create and download a professional ATS-friendly resume online for free.">
+<meta name="twitter:title" content="Free Resume Maker – ATS-Friendly Resume Builder">
+<meta name="twitter:description" content="Build a professional ATS-friendly resume online for free with Antokia.">
 
 <script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    background:#f5f5fa;
+    font-family:Arial,Helvetica,sans-serif;
+    color:#222;
+}
+
+input,
+textarea{
+    width:100%;
+    border:1px solid #d7d7df;
+    border-radius:10px;
+    padding:11px 13px;
+    outline:none;
+    background:#fff;
+    font-size:14px;
+    transition:.2s;
+}
+
+input:focus,
+textarea:focus{
+    border-color:#e5322d;
+    box-shadow:0 0 0 3px rgba(229,50,45,.08);
+}
+
+textarea{
+    min-height:100px;
+    resize:vertical;
+}
+
+label{
+    display:block;
+    font-size:13px;
+    font-weight:700;
+    margin-bottom:6px;
+    color:#333;
+}
+
+.section-title{
+    font-size:17px;
+    font-weight:800;
+    color:#222;
+    margin-bottom:15px;
+    display:flex;
+    align-items:center;
+    gap:9px;
+}
+
+.section-title i{
+    color:#e5322d;
+}
+
+.form-section{
+    border-top:1px solid #eee;
+    padding-top:20px;
+    margin-top:20px;
+}
+
+.entry-card{
+    border:1px solid #e4e4e8;
+    border-radius:12px;
+    padding:15px;
+    background:#fafafd;
+    margin-bottom:12px;
+}
+
+.entry-card-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:12px;
+}
+
+.entry-number{
+    font-size:13px;
+    font-weight:800;
+    color:#555;
+}
+
+.remove-entry{
+    color:#dc2626;
+    background:#fff;
+    border:1px solid #fecaca;
+    border-radius:7px;
+    padding:5px 9px;
+    font-size:12px;
+    cursor:pointer;
+}
+
+.add-btn{
+    width:100%;
+    border:1px dashed #e5322d;
+    color:#e5322d;
+    background:#fff;
+    border-radius:9px;
+    padding:10px;
+    font-size:13px;
+    font-weight:700;
+    cursor:pointer;
+}
+
+.add-btn:hover{
+    background:#fff5f5;
+}
+
+.primary-btn{
+    background:#e5322d;
+    color:#fff;
+    border:none;
+    border-radius:10px;
+    padding:12px 18px;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.primary-btn:hover{
+    background:#c92521;
+}
+
+.secondary-btn{
+    background:#fff;
+    color:#333;
+    border:1px solid #d8d8df;
+    border-radius:10px;
+    padding:12px 18px;
+    font-weight:700;
+    cursor:pointer;
+}
+
+.secondary-btn:hover{
+    background:#f8f8fa;
+}
+
+.progress-wrap{
+    background:#f0f0f4;
+    height:7px;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress-bar{
+    height:100%;
+    background:#e5322d;
+    width:0%;
+    transition:.3s;
+}
+
+.resume-paper{
+    background:#fff;
+    color:#111;
+    padding:42px 45px;
+    min-height:1050px;
+    box-shadow:0 3px 18px rgba(0,0,0,.08);
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+.resume-name{
+    font-size:31px;
+    line-height:1.15;
+    font-weight:800;
+    margin:0;
+    color:#111;
+}
+
+.resume-title{
+    font-size:16px;
+    font-weight:600;
+    color:#555;
+    margin-top:5px;
+}
+
+.resume-contact{
+    margin-top:10px;
+    font-size:12px;
+    line-height:1.7;
+    color:#333;
+}
+
+.resume-contact a{
+    color:#333;
+    text-decoration:none;
+}
+
+.resume-section{
+    margin-top:22px;
+    page-break-inside:auto;
+}
+
+.resume-section h2{
+    font-size:13px;
+    text-transform:uppercase;
+    letter-spacing:.6px;
+    font-weight:800;
+    border-bottom:1.5px solid #222;
+    padding-bottom:5px;
+    margin:0 0 11px;
+}
+
+.resume-entry{
+    margin-bottom:15px;
+    page-break-inside:avoid;
+}
+
+.resume-entry-title{
+    font-size:14px;
+    font-weight:800;
+}
+
+.resume-company{
+    font-size:13px;
+    font-weight:600;
+    margin-top:2px;
+}
+
+.resume-date{
+    font-size:12px;
+    color:#555;
+    margin-top:2px;
+}
+
+.resume-entry ul{
+    margin:6px 0 0 18px;
+    padding:0;
+}
+
+.resume-entry li{
+    font-size:12px;
+    line-height:1.55;
+    margin-bottom:3px;
+}
+
+.resume-text{
+    font-size:12px;
+    line-height:1.6;
+}
+
+.resume-skills{
+    font-size:12px;
+    line-height:1.7;
+}
+
+.empty-preview{
+    color:#888;
+    font-style:italic;
+}
+
+.tip-box{
+    background:#fff8f7;
+    border-left:4px solid #e5322d;
+    border-radius:8px;
+    padding:12px 14px;
+    font-size:13px;
+    line-height:1.6;
+}
+
+.tool-card{
+    display:block;
+    background:#fff;
+    border:1px solid #e5e5ea;
+    border-radius:12px;
+    padding:15px;
+    transition:.2s;
+    text-decoration:none;
+    color:#222;
+}
+
+.tool-card:hover{
+    border-color:#e5322d;
+    transform:translateY(-2px);
+    box-shadow:0 5px 15px rgba(0,0,0,.06);
+}
+
+.tool-icon{
+    width:38px;
+    height:38px;
+    border-radius:10px;
+    background:#fff0ef;
+    color:#e5322d;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:9px;
+}
+
+.faq-item{
+    border-bottom:1px solid #e7e7eb;
+    padding:15px 0;
+}
+
+.faq-item:last-child{
+    border-bottom:0;
+}
+
+.faq-question{
+    font-weight:800;
+    font-size:15px;
+    margin-bottom:7px;
+}
+
+.faq-answer{
+    color:#555;
+    font-size:14px;
+    line-height:1.7;
+}
+
+@media(max-width:767px){
+    .resume-paper{
+        padding:28px 24px;
+    }
+
+    .resume-name{
+        font-size:26px;
+    }
+}
+
+@media print{
+
+    @page{
+        size:A4;
+        margin:12mm;
+    }
+
+    html,
+    body{
+        background:#fff !important;
+        margin:0 !important;
+        padding:0 !important;
+    }
+
+    body *{
+        visibility:hidden !important;
+    }
+
+    #resume,
+    #resume *{
+        visibility:visible !important;
+    }
+
+    #resume{
+        position:absolute !important;
+        left:0 !important;
+        top:0 !important;
+        width:100% !important;
+        min-height:0 !important;
+        margin:0 !important;
+        padding:0 !important;
+        box-shadow:none !important;
+        border:none !important;
+        background:#fff !important;
+    }
+
+    .resume-section{
+        page-break-inside:auto;
+    }
+
+    .resume-entry{
+        page-break-inside:avoid;
+    }
+}
+</style>
+
+<!-- Font Awesome -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
-
-<!-- WebApplication Schema -->
+<!-- Structured Data -->
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
   "@type":"WebApplication",
-  "name":"Antokia Resume Maker",
+  "name":"Antokia Free Resume Maker",
   "url":"https://antokia.com/resume-maker.html",
+  "description":"Free online ATS-friendly resume maker for creating professional resumes.",
   "applicationCategory":"BusinessApplication",
   "operatingSystem":"Web Browser",
-  "description":"Free online ATS-friendly resume maker for creating and downloading professional resumes as PDF.",
   "offers":{
     "@type":"Offer",
     "price":"0",
@@ -48,8 +412,6 @@
 }
 </script>
 
-
-<!-- Breadcrumb Schema -->
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -71,8 +433,6 @@
 }
 </script>
 
-
-<!-- FAQ Schema -->
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -80,1879 +440,1641 @@
   "mainEntity":[
     {
       "@type":"Question",
-      "name":"What is an ATS-friendly resume?",
+      "name":"Is Antokia Resume Maker free?",
       "acceptedAnswer":{
         "@type":"Answer",
-        "text":"An ATS-friendly resume uses clear headings, readable text and a simple structure that can be easier for applicant tracking systems to parse."
+        "text":"Yes. Antokia Resume Maker is available as a free browser-based resume builder and does not require a signup to create a resume."
       }
     },
     {
       "@type":"Question",
-      "name":"Is the Antokia Resume Maker free?",
+      "name":"Is this resume maker ATS-friendly?",
       "acceptedAnswer":{
         "@type":"Answer",
-        "text":"Yes. Antokia Resume Maker is available as a free online tool for creating and downloading a resume."
+        "text":"The resume uses a simple one-column structure, standard section headings, readable text and avoids tables, graphics and unnecessary design elements. This structure is designed to be ATS-friendly."
       }
     },
     {
       "@type":"Question",
-      "name":"Can I download my resume as a PDF?",
+      "name":"Can I save my resume as PDF?",
       "acceptedAnswer":{
         "@type":"Answer",
-        "text":"Yes. After completing your resume, you can download it as a PDF using the Download Resume PDF button."
+        "text":"Yes. Use the Print or Save as PDF button and select Save as PDF in your browser's print dialog."
       }
     },
     {
       "@type":"Question",
-      "name":"Do I need an account to create a resume?",
+      "name":"Is my resume data uploaded to a server?",
       "acceptedAnswer":{
         "@type":"Answer",
-        "text":"No account or signup is required to use the basic Antokia Resume Maker."
+        "text":"The resume is created in your browser. The page does not require a backend account or signup to create the resume."
       }
     },
     {
       "@type":"Question",
-      "name":"What should I include in my resume?",
+      "name":"Can I create a resume without an account?",
       "acceptedAnswer":{
         "@type":"Answer",
-        "text":"A professional resume commonly includes contact information, a professional summary, work experience, education and relevant skills."
-      }
-    },
-    {
-      "@type":"Question",
-      "name":"Can I make an ATS-friendly resume with this tool?",
-      "acceptedAnswer":{
-        "@type":"Answer",
-        "text":"The generated resume uses a simple text-based structure with standard section headings and minimal visual elements, which is intended to support ATS readability. No tool can guarantee acceptance by every ATS."
+        "text":"Yes. No account or signup is required to use the Resume Maker."
       }
     }
   ]
 }
 </script>
 
-
-<style>
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:#f5f5fa;
-  color:#222;
-}
-
-.antokia-red{
-  color:#e5322d;
-}
-
-.primary-btn{
-  background:#e5322d;
-  color:#fff;
-  transition:.2s ease;
-}
-
-.primary-btn:hover{
-  background:#c92824;
-}
-
-.secondary-btn{
-  background:#f1f1f4;
-  color:#333;
-  transition:.2s ease;
-}
-
-.secondary-btn:hover{
-  background:#e5e5e9;
-}
-
-.tool-card{
-  background:#fff;
-  border:1px solid #e9e9ee;
-  border-radius:18px;
-  box-shadow:0 8px 25px rgba(0,0,0,.06);
-}
-
-.info-card{
-  background:#fff;
-  border:1px solid #e9e9ee;
-  border-radius:16px;
-  box-shadow:0 5px 20px rgba(0,0,0,.04);
-}
-
-.input-box{
-  transition:.2s ease;
-}
-
-.input-box:focus{
-  border-color:#e5322d;
-  box-shadow:0 0 0 3px rgba(229,50,45,.08);
-}
-
-.resume-preview{
-  background:#fff;
-  color:#111;
-}
-
-.resume-preview h2,
-.resume-preview h3,
-.resume-preview p{
-  font-family:Arial,Helvetica,sans-serif;
-}
-
-.resume-section{
-  page-break-inside:avoid;
-  break-inside:avoid;
-}
-
-.footer-link{
-  color:#cfcfcf;
-  transition:.2s ease;
-}
-
-.footer-link:hover{
-  color:#fff;
-}
-
-@media(max-width:768px){
-
-  .desktop-nav{
-    display:none;
-  }
-
-}
-
-@media print{
-
-  body{
-    background:#fff !important;
-  }
-
-  header,
-  .form-panel,
-  .top-ad,
-  .middle-ad,
-  .bottom-ad,
-  .website-content,
-  footer{
-    display:none !important;
-  }
-
-  main{
-    max-width:none !important;
-    padding:0 !important;
-    margin:0 !important;
-  }
-
-  .preview-wrapper{
-    display:block !important;
-  }
-
-  .preview-card{
-    border:none !important;
-    box-shadow:none !important;
-    padding:0 !important;
-  }
-
-  #resume{
-    border:none !important;
-    box-shadow:none !important;
-  }
-
-}
-
-</style>
-
 </head>
-
 
 <body>
 
-
 <!-- HEADER -->
+<header class="bg-white shadow-sm sticky top-0 z-40">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
 
-<header class="bg-white sticky top-0 z-50 shadow-sm">
+        <div class="flex items-center gap-7">
+            <a href="/" class="font-extrabold text-[#e5322d] text-2xl">
+                Antokia
+            </a>
 
-  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <nav class="hidden md:flex items-center gap-6 text-sm font-semibold">
+                <a href="/" class="hover:text-[#e5322d]">Home</a>
+                <a href="/blog/" class="hover:text-[#e5322d]">Blog</a>
+                <a href="/about.html" class="hover:text-[#e5322d]">About</a>
+                <a href="/contact.html" class="hover:text-[#e5322d]">Contact</a>
+            </nav>
+        </div>
 
-    <div class="h-16 flex items-center justify-between">
-
-      <nav class="desktop-nav flex items-center gap-6 text-sm font-medium">
-
-        <a href="/" class="hover:text-red-600">
-          Home
+        <a href="/" class="bg-[#e5322d] text-white rounded-full px-4 py-2 text-sm font-bold">
+            ← Home
         </a>
-
-        <a href="/blog/" class="hover:text-red-600">
-          Blog
-        </a>
-
-        <a href="/about.html" class="hover:text-red-600">
-          About
-        </a>
-
-        <a href="/contact.html" class="hover:text-red-600">
-          Contact
-        </a>
-
-      </nav>
-
-
-      <div class="flex items-center gap-3 ml-auto">
-
-        <span class="text-xl font-extrabold antokia-red tracking-tight">
-          Antokia
-        </span>
-
-        <a href="/"
-           class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm font-semibold transition">
-
-          <i class="fa-solid fa-arrow-left mr-1"></i>
-          Home
-
-        </a>
-
-      </div>
 
     </div>
-
-  </div>
-
 </header>
 
 
-<!-- MAIN -->
+<main class="max-w-6xl mx-auto px-4 py-6">
 
-<main class="max-w-5xl mx-auto px-4 sm:px-6 py-10">
-
-
-  <!-- TOP AD -->
-
-  <div class="top-ad mb-8">
-
-    <div class="max-w-3xl mx-auto min-h-[90px] flex items-center justify-center">
-      <!-- AdSense ad unit can be placed here after approval -->
-    </div>
-
-  </div>
-
-
-  <!-- INTRO -->
-
-  <section class="text-center mb-8">
-
-    <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-red-50 mb-4">
-
-      <i class="fa-solid fa-file-lines text-3xl antokia-red"></i>
-
+    <!-- TOP AD PLACEHOLDER -->
+    <div class="w-full min-h-[90px] mb-5">
+        <!-- Google AdSense ad unit can be placed here after approval -->
     </div>
 
 
-    <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-3">
-      Free ATS Resume Maker
-    </h1>
+    <!-- INTRO -->
+    <section class="text-center mb-7">
 
+        <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-red-50 text-[#e5322d] mb-3">
+            <i class="fa-solid fa-file-lines text-2xl"></i>
+        </div>
 
-    <p class="text-gray-600 max-w-2xl mx-auto leading-relaxed">
-      Create a clean, professional and ATS-friendly resume online.
-      Add your experience, education and skills, preview your resume
-      and download it as a PDF for free.
-    </p>
+        <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900">
+            Free Resume Maker
+        </h1>
 
-
-    <div class="inline-flex flex-wrap items-center justify-center gap-2 mt-4">
-
-      <span class="bg-red-50 text-red-700 px-4 py-2 rounded-full text-sm font-semibold">
-
-        <i class="fa-solid fa-check mr-1"></i>
-        Free Resume Maker
-
-      </span>
-
-      <span class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm font-semibold">
-
-        <i class="fa-solid fa-user-shield mr-1"></i>
-        No Signup Required
-
-      </span>
-
-    </div>
-
-  </section>
-
-
-  <!-- RESUME TOOL -->
-
-  <section class="tool-card p-5 sm:p-8 max-w-4xl mx-auto">
-
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-
-
-      <!-- INPUT SIDE -->
-
-      <div class="form-panel">
-
-        <h2 class="text-xl font-bold text-gray-900 mb-2">
-          Enter Your Resume Details
-        </h2>
-
-        <p class="text-sm text-gray-500 mb-6">
-          Add accurate information to create your professional resume.
+        <p class="max-w-2xl mx-auto mt-3 text-gray-600 leading-7">
+            Create a clean, professional and ATS-friendly resume online for free.
+            Add your experience, education, skills, projects and certifications,
+            preview your resume and print or save it as PDF.
         </p>
 
-
-        <!-- PERSONAL DETAILS -->
-
-        <div>
-
-          <h3 class="text-sm font-bold text-gray-800 mb-4">
-            Personal Information
-          </h3>
-
-
-          <!-- NAME -->
-
-          <div>
-
-            <label for="name"
-                   class="block text-sm font-bold text-gray-800 mb-2">
-
-              Full Name
-
-            </label>
-
-            <input
-              id="name"
-              type="text"
-              maxlength="80"
-              autocomplete="name"
-              placeholder="e.g. Rahul Sharma"
-              class="input-box w-full border border-gray-300 rounded-xl py-3 px-4 outline-none"
-            >
-
-          </div>
-
-
-          <!-- ROLE -->
-
-          <div class="mt-5">
-
-            <label for="role"
-                   class="block text-sm font-bold text-gray-800 mb-2">
-
-              Professional Title
-
-            </label>
-
-            <input
-              id="role"
-              type="text"
-              maxlength="100"
-              autocomplete="organization-title"
-              placeholder="e.g. Safety Manager"
-              class="input-box w-full border border-gray-300 rounded-xl py-3 px-4 outline-none"
-            >
-
-            <p class="text-xs text-gray-500 mt-2">
-              Use the job title that best matches the position you want.
-            </p>
-
-          </div>
-
-
-          <!-- EMAIL -->
-
-          <div class="mt-5">
-
-            <label for="email"
-                   class="block text-sm font-bold text-gray-800 mb-2">
-
-              Email Address
-
-            </label>
-
-            <input
-              id="email"
-              type="email"
-              maxlength="120"
-              autocomplete="email"
-              placeholder="e.g. rahul@email.com"
-              class="input-box w-full border border-gray-300 rounded-xl py-3 px-4 outline-none"
-            >
-
-          </div>
-
-
-          <!-- PHONE -->
-
-          <div class="mt-5">
-
-            <label for="phone"
-                   class="block text-sm font-bold text-gray-800 mb-2">
-
-              Phone Number
-
-            </label>
-
-            <input
-              id="phone"
-              type="tel"
-              maxlength="30"
-              autocomplete="tel"
-              placeholder="e.g. +91 98765 43210"
-              class="input-box w-full border border-gray-300 rounded-xl py-3 px-4 outline-none"
-            >
-
-          </div>
-
-        </div>
-
-
-        <!-- SUMMARY -->
-
-        <div class="mt-7">
-
-          <h3 class="text-sm font-bold text-gray-800 mb-4">
-            Professional Summary
-          </h3>
-
-
-          <label for="about"
-                 class="block text-sm font-bold text-gray-800 mb-2">
-
-            About You
-
-          </label>
-
-
-          <textarea
-            id="about"
-            rows="5"
-            maxlength="900"
-            placeholder="Example: Experienced professional with 5 years of experience in project coordination, safety management and team leadership."
-            class="input-box w-full border border-gray-300 rounded-xl py-3 px-4 outline-none resize-y"
-          ></textarea>
-
-
-          <p class="text-xs text-gray-500 mt-2">
-            Keep your summary concise and highlight relevant experience,
-            strengths and professional expertise.
-          </p>
-
-        </div>
-
-
-        <!-- EXPERIENCE -->
-
-        <div class="mt-7">
-
-          <h3 class="text-sm font-bold text-gray-800 mb-4">
-            Work Experience
-          </h3>
-
-
-          <label for="experience"
-                 class="block text-sm font-bold text-gray-800 mb-2">
-
-            Experience Details
-
-          </label>
-
-
-          <textarea
-            id="experience"
-            rows="7"
-            maxlength="1800"
-            placeholder="Example:
-
-HSE Manager - ABC Construction
-2022 - Present
-Managed site safety operations, inspections, training and compliance.
-
-Safety Officer - XYZ Projects
-2019 - 2022
-Conducted safety inspections, toolbox talks and incident investigations."
-            class="input-box w-full border border-gray-300 rounded-xl py-3 px-4 outline-none resize-y"
-          ></textarea>
-
-
-          <p class="text-xs text-gray-500 mt-2">
-            Mention job title, company, dates and key responsibilities or achievements.
-          </p>
-
-        </div>
-
-
-        <!-- EDUCATION -->
-
-        <div class="mt-7">
-
-          <h3 class="text-sm font-bold text-gray-800 mb-4">
-            Education
-          </h3>
-
-
-          <label for="education"
-                 class="block text-sm font-bold text-gray-800 mb-2">
-
-            Education Details
-
-          </label>
-
-
-          <textarea
-            id="education"
-            rows="5"
-            maxlength="1000"
-            placeholder="Example:
-
-B.Tech - Mumbai University - 2021
-Higher Secondary - Maharashtra Board - 2017"
-            class="input-box w-full border border-gray-300 rounded-xl py-3 px-4 outline-none resize-y"
-          ></textarea>
-
-
-          <p class="text-xs text-gray-500 mt-2">
-            Add your qualification, institution and year.
-          </p>
-
-        </div>
-
-
-        <!-- SKILLS -->
-
-        <div class="mt-7">
-
-          <h3 class="text-sm font-bold text-gray-800 mb-4">
-            Skills
-          </h3>
-
-
-          <label for="skills"
-                 class="block text-sm font-bold text-gray-800 mb-2">
-
-            Professional Skills
-
-          </label>
-
-
-          <textarea
-            id="skills"
-            rows="5"
-            maxlength="900"
-            placeholder="Example:
-Safety Management, Risk Assessment, Team Leadership, Excel, Communication, Project Coordination"
-            class="input-box w-full border border-gray-300 rounded-xl py-3 px-4 outline-none resize-y"
-          ></textarea>
-
-
-          <p class="text-xs text-gray-500 mt-2">
-            Add skills relevant to the job you are applying for.
-          </p>
-
-        </div>
-
-
-        <!-- BUTTONS -->
-
-        <button
-          type="button"
-          id="updateBtn"
-          class="primary-btn w-full py-3.5 rounded-xl font-bold mt-7">
-
-          <i class="fa-solid fa-eye mr-2"></i>
-          Update Resume Preview
-
-        </button>
-
-
-        <button
-          type="button"
-          id="downloadBtn"
-          class="secondary-btn w-full py-3.5 rounded-xl font-bold mt-3">
-
-          <i class="fa-solid fa-file-pdf mr-2"></i>
-          Download Resume PDF
-
-        </button>
-
-
-        <button
-          type="button"
-          id="resetBtn"
-          class="w-full text-sm text-gray-500 hover:text-red-600 font-semibold mt-4">
-
-          <i class="fa-solid fa-rotate-left mr-1"></i>
-          Reset Resume
-
-        </button>
-
-
-        <!-- ERROR -->
-
-        <div id="errorBox"
-             class="hidden mt-4 bg-red-50 border border-red-100 text-red-700 rounded-xl p-4 text-sm">
-
-        </div>
-
-
-        <!-- PRIVACY -->
-
-        <div class="mt-6 p-4 bg-green-50 border border-green-100 rounded-xl">
-
-          <div class="flex gap-3">
-
-            <i class="fa-solid fa-shield-halved text-green-600 mt-0.5"></i>
-
-            <div>
-
-              <h3 class="font-semibold text-green-800 text-sm">
-                Browser-Based Resume Maker
-              </h3>
-
-              <p class="text-xs text-green-700 mt-1 leading-relaxed">
-                Your entered information is used in your browser to create
-                the preview and PDF. No account or document upload is required.
-              </p>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <!-- PREVIEW SIDE -->
-
-      <div class="preview-wrapper">
-
-        <div class="preview-card bg-gray-50 border border-gray-200 rounded-2xl p-4 sm:p-5 lg:sticky lg:top-24">
-
-          <div class="flex items-center justify-between mb-4">
-
-            <div>
-
-              <h2 class="text-lg font-bold text-gray-900">
-                Resume Preview
-              </h2>
-
-              <p class="text-xs text-gray-500 mt-1">
-                Simple structure designed for readability.
-              </p>
-
-            </div>
-
-
-            <span class="bg-red-50 text-red-700 px-3 py-1.5 rounded-full text-xs font-bold">
-              ATS Friendly
+        <div class="flex flex-wrap justify-center gap-2 mt-4">
+            <span class="bg-white border rounded-full px-4 py-1.5 text-xs font-bold">
+                ✓ Free
             </span>
 
-          </div>
+            <span class="bg-white border rounded-full px-4 py-1.5 text-xs font-bold">
+                ✓ ATS-Friendly
+            </span>
+
+            <span class="bg-white border rounded-full px-4 py-1.5 text-xs font-bold">
+                ✓ No Signup
+            </span>
+
+            <span class="bg-white border rounded-full px-4 py-1.5 text-xs font-bold">
+                ✓ Browser Based
+            </span>
+        </div>
+
+    </section>
 
 
-          <!-- RESUME -->
+    <!-- BUILDER -->
+    <section class="grid lg:grid-cols-2 gap-6 items-start">
 
-          <article
-            id="resume"
-            class="resume-preview bg-white border border-gray-200 rounded-lg p-6 sm:p-8 shadow-sm"
-          >
+        <!-- FORM -->
+        <div class="bg-white rounded-2xl p-5 md:p-6 shadow border">
 
+            <div class="flex justify-between items-center gap-4 mb-3">
+                <div>
+                    <h2 class="text-xl font-extrabold">
+                        Build Your Resume
+                    </h2>
+                    <p class="text-xs text-gray-500 mt-1">
+                        Enter your information below.
+                    </p>
+                </div>
 
-            <!-- HEADER -->
-
-            <div class="resume-section">
-
-              <h2
-                id="pName"
-                class="text-3xl font-extrabold text-gray-900 break-words"
-              >
-                Your Name
-              </h2>
-
-
-              <p
-                id="pRole"
-                class="text-base font-bold antokia-red mt-1 break-words"
-              >
-                Professional Title
-              </p>
-
-
-              <div class="flex flex-wrap gap-x-4 gap-y-1 text-xs text-gray-600 mt-3">
-
-                <span id="pEmail">
-                  email@example.com
-                </span>
-
-                <span id="pPhone">
-                  +91 00000 00000
-                </span>
-
-              </div>
-
+                <div class="text-right min-w-[95px]">
+                    <div class="text-xs font-bold text-gray-500 mb-1">
+                        Completion
+                    </div>
+                    <div class="progress-wrap">
+                        <div id="progressBar" class="progress-bar"></div>
+                    </div>
+                    <div id="progressText" class="text-xs font-bold mt-1">
+                        0%
+                    </div>
+                </div>
             </div>
 
 
-            <hr class="my-5 border-gray-300">
+            <!-- BASIC INFORMATION -->
+            <div class="form-section !border-t-0 !pt-0">
+
+                <h3 class="section-title">
+                    <i class="fa-solid fa-user"></i>
+                    Personal Information
+                </h3>
+
+                <div class="grid md:grid-cols-2 gap-4">
+
+                    <div class="md:col-span-2">
+                        <label for="name">Full Name *</label>
+                        <input id="name" type="text" placeholder="e.g. Jane Doe">
+                    </div>
+
+                    <div>
+                        <label for="title">Professional Title</label>
+                        <input id="title" type="text" placeholder="e.g. Project Manager">
+                    </div>
+
+                    <div>
+                        <label for="email">Email</label>
+                        <input id="email" type="email" placeholder="e.g. jane@email.com">
+                    </div>
+
+                    <div>
+                        <label for="phone">Phone</label>
+                        <input id="phone" type="text" placeholder="e.g. +91 98765 43210">
+                    </div>
+
+                    <div>
+                        <label for="location">Location</label>
+                        <input id="location" type="text" placeholder="e.g. Mumbai, India">
+                    </div>
+
+                    <div>
+                        <label for="linkedin">LinkedIn</label>
+                        <input id="linkedin" type="text" placeholder="linkedin.com/in/yourname">
+                    </div>
+
+                    <div>
+                        <label for="website">Website / Portfolio</label>
+                        <input id="website" type="text" placeholder="yourwebsite.com">
+                    </div>
+
+                </div>
+            </div>
 
 
             <!-- SUMMARY -->
+            <div class="form-section">
 
-            <section class="resume-section">
+                <h3 class="section-title">
+                    <i class="fa-solid fa-align-left"></i>
+                    Professional Summary
+                </h3>
 
-              <h3 class="text-sm font-extrabold text-gray-900 uppercase tracking-wide">
-                Professional Summary
-              </h3>
+                <textarea
+                    id="summary"
+                    placeholder="Write 2–4 concise sentences describing your experience, strengths and career focus."
+                ></textarea>
 
+                <p class="text-xs text-gray-500 mt-2">
+                    Tip: Focus on your experience, key strengths and the type of role you are targeting.
+                </p>
 
-              <p
-                id="pAbout"
-                class="text-sm text-gray-700 leading-6 mt-2 whitespace-pre-line"
-              >
-                Write a concise professional summary about yourself.
-              </p>
-
-            </section>
-
-
-            <!-- EXPERIENCE -->
-
-            <section class="resume-section mt-6">
-
-              <h3 class="text-sm font-extrabold text-gray-900 uppercase tracking-wide">
-                Work Experience
-              </h3>
-
-
-              <p
-                id="pExp"
-                class="text-sm text-gray-700 leading-6 mt-2 whitespace-pre-line"
-              >
-                Your work experience will appear here.
-              </p>
-
-            </section>
-
-
-            <!-- EDUCATION -->
-
-            <section class="resume-section mt-6">
-
-              <h3 class="text-sm font-extrabold text-gray-900 uppercase tracking-wide">
-                Education
-              </h3>
-
-
-              <p
-                id="pEdu"
-                class="text-sm text-gray-700 leading-6 mt-2 whitespace-pre-line"
-              >
-                Your education details will appear here.
-              </p>
-
-            </section>
+            </div>
 
 
             <!-- SKILLS -->
+            <div class="form-section">
 
-            <section class="resume-section mt-6">
+                <h3 class="section-title">
+                    <i class="fa-solid fa-list-check"></i>
+                    Skills
+                </h3>
 
-              <h3 class="text-sm font-extrabold text-gray-900 uppercase tracking-wide">
-                Skills
-              </h3>
+                <textarea
+                    id="skills"
+                    placeholder="Example: Project Management, Team Leadership, MS Excel, Risk Management, AutoCAD"
+                    style="min-height:80px;"
+                ></textarea>
+
+                <p class="text-xs text-gray-500 mt-2">
+                    Separate skills with commas.
+                </p>
+
+            </div>
 
 
-              <p
-                id="pSkills"
-                class="text-sm text-gray-700 leading-6 mt-2 whitespace-pre-line"
-              >
-                Your professional skills will appear here.
-              </p>
+            <!-- EXPERIENCE -->
+            <div class="form-section">
 
-            </section>
+                <div class="flex justify-between items-center mb-3 gap-3">
+                    <h3 class="section-title !mb-0">
+                        <i class="fa-solid fa-briefcase"></i>
+                        Work Experience
+                    </h3>
+                </div>
+
+                <div id="experienceContainer"></div>
+
+                <button type="button" id="addExperience" class="add-btn">
+                    + Add Work Experience
+                </button>
+
+                <p class="text-xs text-gray-500 mt-2">
+                    Add one achievement or responsibility per line. Each line will become a bullet point.
+                </p>
+
+            </div>
 
 
-          </article>
+            <!-- EDUCATION -->
+            <div class="form-section">
+
+                <h3 class="section-title">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    Education
+                </h3>
+
+                <div id="educationContainer"></div>
+
+                <button type="button" id="addEducation" class="add-btn">
+                    + Add Education
+                </button>
+
+            </div>
+
+
+            <!-- PROJECTS -->
+            <div class="form-section">
+
+                <h3 class="section-title">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    Projects
+                    <span class="text-xs font-normal text-gray-400">
+                        (Optional)
+                    </span>
+                </h3>
+
+                <div id="projectContainer"></div>
+
+                <button type="button" id="addProject" class="add-btn">
+                    + Add Project
+                </button>
+
+            </div>
+
+
+            <!-- CERTIFICATIONS -->
+            <div class="form-section">
+
+                <h3 class="section-title">
+                    <i class="fa-solid fa-certificate"></i>
+                    Certifications
+                    <span class="text-xs font-normal text-gray-400">
+                        (Optional)
+                    </span>
+                </h3>
+
+                <textarea
+                    id="certifications"
+                    placeholder="Example:
+NEBOSH International General Certificate
+IOSH Managing Safely
+PMP Certification"
+                    style="min-height:100px;"
+                ></textarea>
+
+                <p class="text-xs text-gray-500 mt-2">
+                    Enter one certification per line.
+                </p>
+
+            </div>
+
+
+            <!-- ACTIONS -->
+            <div class="border-t mt-6 pt-5">
+
+                <div id="errorMessage"
+                     class="hidden mb-4 bg-red-50 text-red-700 border border-red-200 rounded-lg px-4 py-3 text-sm font-semibold">
+                </div>
+
+                <div class="grid sm:grid-cols-3 gap-3">
+
+                    <button type="button"
+                            id="updateBtn"
+                            class="primary-btn">
+                        <i class="fa-solid fa-arrows-rotate mr-1"></i>
+                        Update Preview
+                    </button>
+
+                    <button type="button"
+                            id="printBtn"
+                            class="secondary-btn">
+                        <i class="fa-solid fa-file-pdf mr-1"></i>
+                        Print / Save PDF
+                    </button>
+
+                    <button type="button"
+                            id="resetBtn"
+                            class="secondary-btn">
+                        <i class="fa-solid fa-rotate-left mr-1"></i>
+                        Reset
+                    </button>
+
+                </div>
+
+                <div class="tip-box mt-4">
+                    <strong>Privacy:</strong>
+                    Your resume is prepared in your browser. No account or signup is required to create your resume.
+                </div>
+
+            </div>
 
         </div>
 
-      </div>
 
+        <!-- PREVIEW -->
+        <div class="lg:sticky lg:top-24">
+
+            <div class="flex justify-between items-center mb-3">
+                <div>
+                    <h2 class="text-xl font-extrabold">
+                        Resume Preview
+                    </h2>
+                    <p class="text-xs text-gray-500">
+                        Simple one-column ATS-friendly layout
+                    </p>
+                </div>
+            </div>
+
+            <div class="bg-gray-200 rounded-2xl p-3 md:p-5 border">
+
+                <div id="resume" class="resume-paper">
+
+                    <header>
+
+                        <h1 id="previewName" class="resume-name">
+                            Your Name
+                        </h1>
+
+                        <div id="previewTitle" class="resume-title">
+                            Professional Title
+                        </div>
+
+                        <div id="previewContact" class="resume-contact">
+                            Email · Phone · Location
+                        </div>
+
+                    </header>
+
+
+                    <section id="summarySection" class="resume-section">
+
+                        <h2>Professional Summary</h2>
+
+                        <div id="previewSummary" class="resume-text empty-preview">
+                            Add a professional summary from the form.
+                        </div>
+
+                    </section>
+
+
+                    <section id="skillsSection" class="resume-section">
+
+                        <h2>Skills</h2>
+
+                        <div id="previewSkills" class="resume-skills empty-preview">
+                            Add your skills from the form.
+                        </div>
+
+                    </section>
+
+
+                    <section id="experienceSection" class="resume-section">
+
+                        <h2>Work Experience</h2>
+
+                        <div id="previewExperience">
+                            <div class="empty-preview resume-text">
+                                Add your work experience from the form.
+                            </div>
+                        </div>
+
+                    </section>
+
+
+                    <section id="educationSection" class="resume-section">
+
+                        <h2>Education</h2>
+
+                        <div id="previewEducation">
+                            <div class="empty-preview resume-text">
+                                Add your education from the form.
+                            </div>
+                        </div>
+
+                    </section>
+
+
+                    <section id="projectSection" class="resume-section">
+
+                        <h2>Projects</h2>
+
+                        <div id="previewProjects">
+                            <div class="empty-preview resume-text">
+                                Optional project information.
+                            </div>
+                        </div>
+
+                    </section>
+
+
+                    <section id="certificationSection" class="resume-section">
+
+                        <h2>Certifications</h2>
+
+                        <div id="previewCertifications" class="resume-text empty-preview">
+                            Optional certifications.
+                        </div>
+
+                    </section>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- MIDDLE AD -->
+    <div class="w-full min-h-[90px] my-8">
+        <!-- Google AdSense ad unit can be placed here after approval -->
     </div>
 
 
-    <!-- ATS INFORMATION -->
+    <!-- SEO CONTENT -->
+    <section class="bg-white rounded-2xl border shadow-sm p-6 md:p-8">
 
-    <div class="mt-7 p-4 bg-red-50 border border-red-100 rounded-xl">
+        <h2 class="text-2xl font-extrabold mb-3">
+            Free ATS-Friendly Resume Maker
+        </h2>
 
-      <div class="flex gap-3">
-
-        <i class="fa-solid fa-circle-check antokia-red mt-0.5"></i>
-
-        <div>
-
-          <h3 class="font-semibold text-gray-800 text-sm">
-            Simple ATS-Friendly Format
-          </h3>
-
-          <p class="text-xs text-gray-600 mt-1 leading-relaxed">
-            The resume preview uses standard section headings, selectable text
-            and a simple layout. This can make the content easier for many
-            applicant tracking systems to parse. ATS compatibility can vary
-            between employers and software.
-          </p>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
+        <p class="text-gray-600 leading-7 mb-5">
+            Antokia Resume Maker helps you create a simple and professional resume
+            directly in your browser. You can enter your personal information,
+            professional summary, skills, work experience, education, projects
+            and certifications, then preview the finished resume before saving it.
+        </p>
 
 
-  <!-- MIDDLE AD -->
+        <h2 class="text-xl font-extrabold mt-7 mb-3">
+            What is an ATS-Friendly Resume?
+        </h2>
 
-  <div class="middle-ad my-10">
-
-    <div class="max-w-3xl mx-auto min-h-[100px] flex items-center justify-center">
-      <!-- AdSense ad unit can be placed here after approval -->
-    </div>
-
-  </div>
-
-
-  <!-- ABOUT RESUME MAKER -->
-
-  <div class="website-content">
+        <p class="text-gray-600 leading-7">
+            An Applicant Tracking System (ATS) is software commonly used by
+            employers to organize and screen job applications. A straightforward
+            resume structure can make important information easier for automated
+            systems and recruiters to identify. This resume maker uses a
+            one-column layout, standard headings, readable text and avoids
+            unnecessary tables, graphics and decorative elements.
+        </p>
 
 
-    <section class="info-card p-6 sm:p-8 mb-6">
+        <h2 class="text-xl font-extrabold mt-7 mb-3">
+            How to Use Antokia Resume Maker
+        </h2>
 
-      <h2 class="text-2xl font-bold text-gray-900 mb-4">
-        What is an ATS-Friendly Resume?
-      </h2>
+        <ol class="list-decimal pl-6 text-gray-600 leading-8">
+
+            <li>Enter your full name and contact information.</li>
+
+            <li>Add a concise professional summary.</li>
+
+            <li>List relevant skills using clear keywords.</li>
+
+            <li>Add your work experience and achievements.</li>
+
+            <li>Add education, projects and certifications if relevant.</li>
+
+            <li>Review the live resume preview.</li>
+
+            <li>Click <strong>Print / Save PDF</strong> and select PDF in your browser's print options.</li>
+
+        </ol>
 
 
-      <p class="text-gray-600 leading-7 mb-4">
-        An Applicant Tracking System (ATS) is software that employers may use
-        to collect, organize and search information from job applications.
-        An ATS-friendly resume generally uses clear headings, readable text
-        and a straightforward structure.
-      </p>
+        <h2 class="text-xl font-extrabold mt-7 mb-3">
+            Tips for Creating a Better Resume
+        </h2>
 
+        <ul class="list-disc pl-6 text-gray-600 leading-8">
 
-      <p class="text-gray-600 leading-7">
-        Antokia Resume Maker uses a simple text-based resume structure with
-        standard sections such as Professional Summary, Work Experience,
-        Education and Skills. This design is intended to keep important
-        resume information easy to read and identify.
-      </p>
+            <li>Keep your resume clear and easy to scan.</li>
+
+            <li>Use standard section headings such as Work Experience, Education and Skills.</li>
+
+            <li>Use measurable achievements where possible.</li>
+
+            <li>Use keywords that are relevant to the job description.</li>
+
+            <li>Avoid unnecessary graphics, photos, charts and decorative elements for ATS-focused applications.</li>
+
+            <li>Check spelling, dates, job titles and contact information before applying.</li>
+
+            <li>Keep your resume focused on relevant professional information.</li>
+
+        </ul>
 
     </section>
 
 
-    <!-- HOW TO CREATE -->
+    <!-- EXPLORE MORE TOOLS -->
+    <section class="mt-8">
 
-    <section class="info-card p-6 sm:p-8 mb-6">
+        <div class="text-center mb-5">
 
-      <h2 class="text-2xl font-bold text-gray-900 mb-5">
-        How to Create a Resume with Antokia
-      </h2>
+            <h2 class="text-2xl font-extrabold">
+                Explore More Free Tools
+            </h2>
 
-
-      <div class="space-y-5">
-
-
-        <div class="flex gap-4">
-
-          <div class="w-9 h-9 rounded-full bg-red-100 antokia-red flex items-center justify-center font-bold flex-shrink-0">
-            1
-          </div>
-
-          <div>
-
-            <h3 class="font-semibold text-gray-800">
-              Enter your personal information
-            </h3>
-
-            <p class="text-gray-600 text-sm mt-1 leading-6">
-              Add your full name, professional title, email address and
-              phone number.
+            <p class="text-gray-600 mt-2">
+                Explore other useful free tools available on Antokia.
             </p>
 
-          </div>
-
         </div>
 
 
-        <div class="flex gap-4">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
 
-          <div class="w-9 h-9 rounded-full bg-red-100 antokia-red flex items-center justify-center font-bold flex-shrink-0">
-            2
-          </div>
-
-          <div>
-
-            <h3 class="font-semibold text-gray-800">
-              Write a professional summary
-            </h3>
-
-            <p class="text-gray-600 text-sm mt-1 leading-6">
-              Briefly describe your experience, professional strengths
-              and relevant expertise.
-            </p>
-
-          </div>
-
-        </div>
+            <a href="/image-to-pdf.html" class="tool-card">
+                <div class="tool-icon">
+                    <i class="fa-solid fa-file-pdf"></i>
+                </div>
+                <h3 class="font-extrabold text-sm">
+                    Image to PDF
+                </h3>
+                <p class="text-xs text-gray-500 mt-1">
+                    Convert images into PDF files.
+                </p>
+            </a>
 
 
-        <div class="flex gap-4">
-
-          <div class="w-9 h-9 rounded-full bg-red-100 antokia-red flex items-center justify-center font-bold flex-shrink-0">
-            3
-          </div>
-
-          <div>
-
-            <h3 class="font-semibold text-gray-800">
-              Add experience and education
-            </h3>
-
-            <p class="text-gray-600 text-sm mt-1 leading-6">
-              Include your job titles, companies, dates, responsibilities,
-              qualifications and institutions.
-            </p>
-
-          </div>
-
-        </div>
+            <a href="/pdf-to-word.html" class="tool-card">
+                <div class="tool-icon">
+                    <i class="fa-solid fa-file-word"></i>
+                </div>
+                <h3 class="font-extrabold text-sm">
+                    PDF to Word
+                </h3>
+                <p class="text-xs text-gray-500 mt-1">
+                    Convert PDF documents to Word.
+                </p>
+            </a>
 
 
-        <div class="flex gap-4">
-
-          <div class="w-9 h-9 rounded-full bg-red-100 antokia-red flex items-center justify-center font-bold flex-shrink-0">
-            4
-          </div>
-
-          <div>
-
-            <h3 class="font-semibold text-gray-800">
-              Add relevant skills
-            </h3>
-
-            <p class="text-gray-600 text-sm mt-1 leading-6">
-              Include skills that match the type of job you are applying for.
-            </p>
-
-          </div>
-
-        </div>
+            <a href="/word-to-pdf.html" class="tool-card">
+                <div class="tool-icon">
+                    <i class="fa-solid fa-file-lines"></i>
+                </div>
+                <h3 class="font-extrabold text-sm">
+                    Word to PDF
+                </h3>
+                <p class="text-xs text-gray-500 mt-1">
+                    Convert Word files to PDF.
+                </p>
+            </a>
 
 
-        <div class="flex gap-4">
-
-          <div class="w-9 h-9 rounded-full bg-red-100 antokia-red flex items-center justify-center font-bold flex-shrink-0">
-            5
-          </div>
-
-          <div>
-
-            <h3 class="font-semibold text-gray-800">
-              Review and download
-            </h3>
-
-            <p class="text-gray-600 text-sm mt-1 leading-6">
-              Review your information carefully and download your completed
-              resume as a PDF.
-            </p>
-
-          </div>
-
-        </div>
+            <a href="/merge-pdf.html" class="tool-card">
+                <div class="tool-icon">
+                    <i class="fa-solid fa-object-group"></i>
+                </div>
+                <h3 class="font-extrabold text-sm">
+                    Merge PDF
+                </h3>
+                <p class="text-xs text-gray-500 mt-1">
+                    Combine multiple PDF files.
+                </p>
+            </a>
 
 
-      </div>
-
-    </section>
-
-
-    <!-- ATS TIPS -->
-
-    <section class="info-card p-6 sm:p-8 mb-6">
-
-      <h2 class="text-2xl font-bold text-gray-900 mb-5">
-        ATS-Friendly Resume Tips
-      </h2>
-
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <a href="/compress-pdf.html" class="tool-card">
+                <div class="tool-icon">
+                    <i class="fa-solid fa-compress"></i>
+                </div>
+                <h3 class="font-extrabold text-sm">
+                    Compress PDF
+                </h3>
+                <p class="text-xs text-gray-500 mt-1">
+                    Reduce PDF file size.
+                </p>
+            </a>
 
 
-        <div class="border border-gray-200 rounded-xl p-5">
-
-          <div class="w-11 h-11 rounded-lg bg-red-50 flex items-center justify-center mb-3">
-
-            <i class="fa-solid fa-heading antokia-red"></i>
-
-          </div>
-
-          <h3 class="font-bold text-gray-800">
-            Use clear headings
-          </h3>
-
-          <p class="text-sm text-gray-500 mt-1">
-            Use recognizable sections such as Work Experience,
-            Education and Skills.
-          </p>
-
-        </div>
+            <a href="/compress-image.html" class="tool-card">
+                <div class="tool-icon">
+                    <i class="fa-solid fa-image"></i>
+                </div>
+                <h3 class="font-extrabold text-sm">
+                    Compress Image
+                </h3>
+                <p class="text-xs text-gray-500 mt-1">
+                    Reduce image file size.
+                </p>
+            </a>
 
 
-        <div class="border border-gray-200 rounded-xl p-5">
+            <a href="/sip-calculator.html" class="tool-card">
+                <div class="tool-icon">
+                    <i class="fa-solid fa-chart-line"></i>
+                </div>
+                <h3 class="font-extrabold text-sm">
+                    SIP Calculator
+                </h3>
+                <p class="text-xs text-gray-500 mt-1">
+                    Calculate your SIP investment.
+                </p>
+            </a>
 
-          <div class="w-11 h-11 rounded-lg bg-red-50 flex items-center justify-center mb-3">
 
-            <i class="fa-solid fa-key antokia-red"></i>
+            <a href="/emi-calculator.html" class="tool-card">
+                <div class="tool-icon">
+                    <i class="fa-solid fa-calculator"></i>
+                </div>
+                <h3 class="font-extrabold text-sm">
+                    EMI Calculator
+                </h3>
+                <p class="text-xs text-gray-500 mt-1">
+                    Calculate loan EMI and interest.
+                </p>
+            </a>
 
-          </div>
 
-          <h3 class="font-bold text-gray-800">
-            Use relevant keywords
-          </h3>
+            <a href="/ppf-calculator.html" class="tool-card">
+                <div class="tool-icon">
+                    <i class="fa-solid fa-piggy-bank"></i>
+                </div>
+                <h3 class="font-extrabold text-sm">
+                    PPF Calculator
+                </h3>
+                <p class="text-xs text-gray-500 mt-1">
+                    Estimate PPF maturity value.
+                </p>
+            </a>
 
-          <p class="text-sm text-gray-500 mt-1">
-            Review the job description and use relevant skills and
-            terminology when they accurately describe your experience.
-          </p>
+
+            <a href="/age-calculator.html" class="tool-card">
+                <div class="tool-icon">
+                    <i class="fa-solid fa-cake-candles"></i>
+                </div>
+                <h3 class="font-extrabold text-sm">
+                    Age Calculator
+                </h3>
+                <p class="text-xs text-gray-500 mt-1">
+                    Calculate your exact age.
+                </p>
+            </a>
 
         </div>
-
-
-        <div class="border border-gray-200 rounded-xl p-5">
-
-          <div class="w-11 h-11 rounded-lg bg-red-50 flex items-center justify-center mb-3">
-
-            <i class="fa-solid fa-font antokia-red"></i>
-
-          </div>
-
-          <h3 class="font-bold text-gray-800">
-            Keep formatting simple
-          </h3>
-
-          <p class="text-sm text-gray-500 mt-1">
-            Avoid unnecessary graphics, decorative elements and complex
-            layouts when preparing an ATS-focused resume.
-          </p>
-
-        </div>
-
-
-        <div class="border border-gray-200 rounded-xl p-5">
-
-          <div class="w-11 h-11 rounded-lg bg-red-50 flex items-center justify-center mb-3">
-
-            <i class="fa-solid fa-spell-check antokia-red"></i>
-
-          </div>
-
-          <h3 class="font-bold text-gray-800">
-            Check for errors
-          </h3>
-
-          <p class="text-sm text-gray-500 mt-1">
-            Review spelling, dates, company names, job titles and
-            contact information before submitting your resume.
-          </p>
-
-        </div>
-
-
-      </div>
-
-    </section>
-
-
-    <!-- WHAT TO INCLUDE -->
-
-    <section class="info-card p-6 sm:p-8 mb-6">
-
-      <h2 class="text-2xl font-bold text-gray-900 mb-5">
-        What Should a Resume Include?
-      </h2>
-
-
-      <div class="space-y-4">
-
-
-        <div class="flex gap-3">
-
-          <i class="fa-solid fa-check antokia-red mt-1"></i>
-
-          <p class="text-gray-600 text-sm leading-6">
-            <strong class="text-gray-800">
-              Contact Information:
-            </strong>
-            Include your name, professional title, email and phone number.
-          </p>
-
-        </div>
-
-
-        <div class="flex gap-3">
-
-          <i class="fa-solid fa-check antokia-red mt-1"></i>
-
-          <p class="text-gray-600 text-sm leading-6">
-            <strong class="text-gray-800">
-              Professional Summary:
-            </strong>
-            Provide a short overview of your experience and professional strengths.
-          </p>
-
-        </div>
-
-
-        <div class="flex gap-3">
-
-          <i class="fa-solid fa-check antokia-red mt-1"></i>
-
-          <p class="text-gray-600 text-sm leading-6">
-            <strong class="text-gray-800">
-              Work Experience:
-            </strong>
-            List relevant roles, employers, dates and responsibilities or achievements.
-          </p>
-
-        </div>
-
-
-        <div class="flex gap-3">
-
-          <i class="fa-solid fa-check antokia-red mt-1"></i>
-
-          <p class="text-gray-600 text-sm leading-6">
-            <strong class="text-gray-800">
-              Education:
-            </strong>
-            Add relevant qualifications, institutions and years.
-          </p>
-
-        </div>
-
-
-        <div class="flex gap-3">
-
-          <i class="fa-solid fa-check antokia-red mt-1"></i>
-
-          <p class="text-gray-600 text-sm leading-6">
-            <strong class="text-gray-800">
-              Skills:
-            </strong>
-            Include relevant technical and professional skills.
-          </p>
-
-        </div>
-
-
-      </div>
-
-    </section>
-
-
-    <!-- PRIVACY -->
-
-    <section class="info-card p-6 sm:p-8 mb-6">
-
-      <h2 class="text-2xl font-bold text-gray-900 mb-4">
-        Privacy and Resume Information
-      </h2>
-
-
-      <div class="bg-green-50 border border-green-100 rounded-xl p-4">
-
-        <div class="flex gap-3">
-
-          <i class="fa-solid fa-shield-halved text-green-600 mt-1"></i>
-
-          <p class="text-sm text-green-800 leading-6">
-            The Resume Maker uses the information entered into the page
-            to generate the preview and PDF in your browser. No account
-            or resume upload is required for the basic tool. Avoid entering
-            passwords, financial information or other sensitive information
-            that is not necessary for your resume.
-          </p>
-
-        </div>
-
-      </div>
-
-
-      <p class="text-sm text-gray-600 leading-6 mt-4">
-
-        For more information about how Antokia handles information,
-        please read the
-
-        <a href="/privacy.html"
-           class="antokia-red font-semibold underline">
-          Privacy Policy
-        </a>.
-
-      </p>
-
-    </section>
-
-
-    <!-- DISCLAIMER -->
-
-    <section class="info-card p-6 sm:p-8 mb-6">
-
-      <h2 class="text-2xl font-bold text-gray-900 mb-4">
-        Resume Maker Disclaimer
-      </h2>
-
-
-      <div class="bg-yellow-50 border border-yellow-100 rounded-xl p-4">
-
-        <div class="flex gap-3">
-
-          <i class="fa-solid fa-circle-info text-yellow-600 mt-1"></i>
-
-          <p class="text-sm text-yellow-800 leading-6">
-            This tool provides a resume format and document-generation
-            functionality for general use. ATS compatibility can vary
-            depending on the employer, recruitment process and software
-            being used. Using this tool does not guarantee an interview,
-            selection or employment.
-          </p>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- RELATED TOOLS -->
-
-    <section class="info-card p-6 sm:p-8 mb-6">
-
-      <h2 class="text-2xl font-bold text-gray-900 mb-5">
-        Explore More Free Tools
-      </h2>
-
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-
-
-        <a href="/image-to-pdf.html"
-           class="border border-gray-200 rounded-xl p-5 hover:border-red-300 hover:shadow-sm transition">
-
-          <div class="w-11 h-11 rounded-lg bg-red-50 flex items-center justify-center mb-3">
-
-            <i class="fa-solid fa-file-pdf antokia-red text-xl"></i>
-
-          </div>
-
-          <h3 class="font-bold text-gray-800">
-            Image to PDF
-          </h3>
-
-          <p class="text-sm text-gray-500 mt-1">
-            Convert images into PDF files online.
-          </p>
-
-        </a>
-
-
-        <a href="/pdf-to-image.html"
-           class="border border-gray-200 rounded-xl p-5 hover:border-red-300 hover:shadow-sm transition">
-
-          <div class="w-11 h-11 rounded-lg bg-red-50 flex items-center justify-center mb-3">
-
-            <i class="fa-solid fa-images antokia-red text-xl"></i>
-
-          </div>
-
-          <h3 class="font-bold text-gray-800">
-            PDF to Image
-          </h3>
-
-          <p class="text-sm text-gray-500 mt-1">
-            Convert PDF pages into image files.
-          </p>
-
-        </a>
-
-
-      </div>
 
     </section>
 
 
     <!-- FAQ -->
+    <section class="bg-white rounded-2xl border shadow-sm p-6 md:p-8 mt-8">
 
-    <section class="info-card p-6 sm:p-8 mb-10">
+        <h2 class="text-2xl font-extrabold mb-3">
+            Frequently Asked Questions
+        </h2>
 
-      <h2 class="text-2xl font-bold text-gray-900 mb-6">
-        Frequently Asked Questions
-      </h2>
+        <div class="faq-item">
 
+            <div class="faq-question">
+                Is Antokia Resume Maker free?
+            </div>
 
-      <div class="space-y-5">
-
-
-        <div>
-
-          <h3 class="font-semibold text-gray-800">
-            What is an ATS-friendly resume?
-          </h3>
-
-          <p class="text-gray-600 text-sm leading-6 mt-2">
-            An ATS-friendly resume generally uses clear headings, readable
-            text and a straightforward structure that can be easier for
-            applicant tracking systems to process.
-          </p>
+            <div class="faq-answer">
+                Yes. Antokia Resume Maker is available for free and does not require
+                an account or signup to create a resume.
+            </div>
 
         </div>
 
 
-        <div>
+        <div class="faq-item">
 
-          <h3 class="font-semibold text-gray-800">
-            Is the Antokia Resume Maker free?
-          </h3>
+            <div class="faq-question">
+                Is this resume maker ATS-friendly?
+            </div>
 
-          <p class="text-gray-600 text-sm leading-6 mt-2">
-            Yes. Antokia Resume Maker is available as a free online tool
-            for creating and downloading a resume.
-          </p>
-
-        </div>
-
-
-        <div>
-
-          <h3 class="font-semibold text-gray-800">
-            Can I download my resume as a PDF?
-          </h3>
-
-          <p class="text-gray-600 text-sm leading-6 mt-2">
-            Yes. Complete your resume and click the Download Resume PDF
-            button to generate a PDF file.
-          </p>
+            <div class="faq-answer">
+                The resume uses a simple one-column layout with standard headings,
+                readable text and no unnecessary tables or graphics. This structure
+                is designed to be ATS-friendly.
+            </div>
 
         </div>
 
 
-        <div>
+        <div class="faq-item">
 
-          <h3 class="font-semibold text-gray-800">
-            Do I need an account to create a resume?
-          </h3>
+            <div class="faq-question">
+                Can I save my resume as PDF?
+            </div>
 
-          <p class="text-gray-600 text-sm leading-6 mt-2">
-            No. An account or signup is not required to use the basic
-            Resume Maker.
-          </p>
-
-        </div>
-
-
-        <div>
-
-          <h3 class="font-semibold text-gray-800">
-            What information should I include in my resume?
-          </h3>
-
-          <p class="text-gray-600 text-sm leading-6 mt-2">
-            A professional resume commonly includes contact information,
-            professional summary, work experience, education and relevant skills.
-          </p>
+            <div class="faq-answer">
+                Yes. Click Print / Save PDF and select the PDF option in your
+                browser's print dialog.
+            </div>
 
         </div>
 
 
-        <div>
+        <div class="faq-item">
 
-          <h3 class="font-semibold text-gray-800">
-            Does this tool guarantee ATS compatibility?
-          </h3>
+            <div class="faq-question">
+                Is my resume data uploaded?
+            </div>
 
-          <p class="text-gray-600 text-sm leading-6 mt-2">
-            No. The tool uses a simple, text-focused format intended to
-            support readability, but ATS systems differ between employers
-            and software providers.
-          </p>
+            <div class="faq-answer">
+                The resume is generated in your browser and no signup is required.
+                The page does not require a backend account to create the resume.
+            </div>
 
         </div>
 
 
-      </div>
+        <div class="faq-item">
+
+            <div class="faq-question">
+                Can I create a resume without an account?
+            </div>
+
+            <div class="faq-answer">
+                Yes. You can create and print your resume without creating an account.
+            </div>
+
+        </div>
 
     </section>
 
 
-  </div>
+    <!-- DISCLAIMER -->
+    <section class="mt-8 bg-gray-50 border rounded-xl p-5 text-sm text-gray-600 leading-7">
+
+        <strong class="text-gray-800">
+            Disclaimer:
+        </strong>
+
+        Antokia provides this resume maker as a free productivity tool.
+        The tool does not guarantee interviews, employment or ATS selection.
+        Resume requirements can vary between employers, industries and
+        applicant tracking systems. Always review your final resume before
+        submitting a job application.
+
+    </section>
 
 
-  <!-- BOTTOM AD -->
-
-  <div class="bottom-ad mb-8">
-
-    <div class="max-w-3xl mx-auto min-h-[90px] flex items-center justify-center">
-      <!-- AdSense ad unit can be placed here after approval -->
+    <!-- BOTTOM AD -->
+    <div class="w-full min-h-[90px] mt-8">
+        <!-- Google AdSense ad unit can be placed here after approval -->
     </div>
-
-  </div>
-
 
 </main>
 
 
 <!-- FOOTER -->
+<footer class="bg-[#242424] text-gray-300 mt-10">
 
-<footer class="bg-[#242424] text-white mt-10">
+    <div class="max-w-6xl mx-auto px-4 py-10">
 
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+        <div class="grid md:grid-cols-3 gap-8">
 
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-10">
+            <div>
+
+                <h3 class="text-white font-extrabold text-lg mb-3">
+                    Explore
+                </h3>
+
+                <div class="space-y-2 text-sm">
+
+                    <a href="/" class="block hover:text-white">
+                        Home
+                    </a>
+
+                    <a href="/blog/" class="block hover:text-white">
+                        Blog
+                    </a>
+
+                    <a href="/about.html" class="block hover:text-white">
+                        About
+                    </a>
+
+                    <a href="/contact.html" class="block hover:text-white">
+                        Contact
+                    </a>
+
+                </div>
+
+            </div>
 
 
-      <!-- EXPLORE -->
+            <div>
 
-      <div>
+                <h3 class="text-white font-extrabold text-lg mb-3">
+                    Legal
+                </h3>
 
-        <h3 class="text-lg font-bold mb-4">
-          Explore
-        </h3>
+                <div class="space-y-2 text-sm">
 
-        <div class="space-y-3 text-sm">
+                    <a href="/privacy.html" class="block hover:text-white">
+                        Privacy Policy
+                    </a>
 
-          <a href="/" class="footer-link block">
-            Home
-          </a>
+                    <a href="/terms.html" class="block hover:text-white">
+                        Terms & Conditions
+                    </a>
 
-          <a href="/blog/" class="footer-link block">
-            Blog
-          </a>
+                </div>
 
-          <a href="/about.html" class="footer-link block">
-            About
-          </a>
+            </div>
 
-          <a href="/contact.html" class="footer-link block">
-            Contact
-          </a>
+
+            <div>
+
+                <h3 class="text-white font-extrabold text-lg mb-3">
+                    Follow Antokia
+                </h3>
+
+                <a href="https://www.instagram.com/antokia.insta"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="inline-flex items-center gap-2 text-sm hover:text-white">
+
+                    <i class="fa-brands fa-instagram"></i>
+                    Instagram
+
+                </a>
+
+            </div>
 
         </div>
 
-      </div>
 
+        <div class="border-t border-gray-700 mt-8 pt-5 text-center text-xs text-gray-500">
 
-      <!-- LEGAL -->
-
-      <div>
-
-        <h3 class="text-lg font-bold mb-4">
-          Legal
-        </h3>
-
-        <div class="space-y-3 text-sm">
-
-          <a href="/privacy.html" class="footer-link block">
-            Privacy Policy
-          </a>
-
-          <a href="/terms.html" class="footer-link block">
-            Terms &amp; Conditions
-          </a>
+            © 2026 Antokia. All rights reserved.
 
         </div>
 
-      </div>
-
-
-      <!-- SOCIAL -->
-
-      <div>
-
-        <h3 class="text-lg font-bold mb-4">
-          Follow Antokia
-        </h3>
-
-
-        <a href="https://www.instagram.com/antokia.insta"
-           target="_blank"
-           rel="noopener noreferrer"
-           class="footer-link inline-flex items-center gap-2 text-sm">
-
-          <i class="fa-brands fa-instagram"></i>
-          Instagram
-
-        </a>
-
-      </div>
-
-
     </div>
-
-
-    <div class="border-t border-gray-700 mt-10 pt-6 text-center text-sm text-gray-400">
-
-      © 2026 Antokia. All rights reserved.
-
-    </div>
-
-  </div>
 
 </footer>
 
 
 <script>
 
+const experienceContainer =
+    document.getElementById("experienceContainer");
 
-/* ================================
-   ELEMENTS
-================================ */
+const educationContainer =
+    document.getElementById("educationContainer");
 
-const fields = {
+const projectContainer =
+    document.getElementById("projectContainer");
 
-  name: document.getElementById("name"),
-
-  role: document.getElementById("role"),
-
-  email: document.getElementById("email"),
-
-  phone: document.getElementById("phone"),
-
-  about: document.getElementById("about"),
-
-  experience: document.getElementById("experience"),
-
-  education: document.getElementById("education"),
-
-  skills: document.getElementById("skills")
-
-};
+let experienceCount = 0;
+let educationCount = 0;
+let projectCount = 0;
 
 
-const preview = {
+/* Escape HTML */
+function escapeHTML(value){
 
-  name: document.getElementById("pName"),
-
-  role: document.getElementById("pRole"),
-
-  email: document.getElementById("pEmail"),
-
-  phone: document.getElementById("pPhone"),
-
-  about: document.getElementById("pAbout"),
-
-  experience: document.getElementById("pExp"),
-
-  education: document.getElementById("pEdu"),
-
-  skills: document.getElementById("pSkills")
-
-};
-
-
-const errorBox = document.getElementById("errorBox");
-
-
-/* ================================
-   UPDATE PREVIEW
-================================ */
-
-function updatePreview(){
-
-  preview.name.textContent =
-    fields.name.value.trim() || "Your Name";
-
-
-  preview.role.textContent =
-    fields.role.value.trim() || "Professional Title";
-
-
-  preview.email.textContent =
-    fields.email.value.trim() || "email@example.com";
-
-
-  preview.phone.textContent =
-    fields.phone.value.trim() || "+91 00000 00000";
-
-
-  preview.about.textContent =
-    fields.about.value.trim() ||
-    "Write a concise professional summary about yourself.";
-
-
-  preview.experience.textContent =
-    fields.experience.value.trim() ||
-    "Your work experience will appear here.";
-
-
-  preview.education.textContent =
-    fields.education.value.trim() ||
-    "Your education details will appear here.";
-
-
-  preview.skills.textContent =
-    fields.skills.value.trim() ||
-    "Your professional skills will appear here.";
+    return String(value || "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
 
 }
 
 
-/* ================================
-   ERROR
-================================ */
+/* Convert lines into bullets */
+function makeBullets(text){
 
-function showError(message){
+    const lines = String(text || "")
+        .split("\n")
+        .map(x => x.trim())
+        .filter(Boolean);
 
-  errorBox.textContent = message;
-
-  errorBox.classList.remove("hidden");
-
-}
-
-
-function hideError(){
-
-  errorBox.textContent = "";
-
-  errorBox.classList.add("hidden");
-
-}
-
-
-/* ================================
-   VALIDATION
-================================ */
-
-function validateResume(){
-
-  hideError();
-
-
-  const name =
-    fields.name.value.trim();
-
-  const email =
-    fields.email.value.trim();
-
-
-  if(!name){
-
-    showError("Please enter your full name.");
-
-    fields.name.focus();
-
-    return false;
-
-  }
-
-
-  if(email){
-
-    const emailPattern =
-      /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-
-    if(!emailPattern.test(email)){
-
-      showError("Please enter a valid email address.");
-
-      fields.email.focus();
-
-      return false;
-
+    if(!lines.length){
+        return "";
     }
 
-  }
-
-
-  return true;
+    return `
+        <ul>
+            ${lines.map(line =>
+                `<li>${escapeHTML(line.replace(/^[-•]\s*/,""))}</li>`
+            ).join("")}
+        </ul>
+    `;
 
 }
 
 
-/* ================================
-   LIVE PREVIEW
-================================ */
+/* Experience */
+function addExperience(){
 
-Object.values(fields).forEach(function(field){
+    experienceCount++;
 
-  field.addEventListener("input",function(){
+    const id = experienceCount;
+
+    const div = document.createElement("div");
+
+    div.className = "entry-card experience-entry";
+
+    div.innerHTML = `
+
+        <div class="entry-card-header">
+
+            <span class="entry-number">
+                Experience ${id}
+            </span>
+
+            <button type="button"
+                    class="remove-entry"
+                    onclick="this.closest('.entry-card').remove(); updatePreview();">
+                Remove
+            </button>
+
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-3">
+
+            <div>
+                <label>Job Title</label>
+                <input class="exp-title"
+                       placeholder="e.g. Project Manager">
+            </div>
+
+            <div>
+                <label>Company</label>
+                <input class="exp-company"
+                       placeholder="e.g. ABC Company">
+            </div>
+
+            <div>
+                <label>Location</label>
+                <input class="exp-location"
+                       placeholder="e.g. Mumbai, India">
+            </div>
+
+            <div>
+                <label>Dates</label>
+                <input class="exp-date"
+                       placeholder="e.g. Jan 2022 – Present">
+            </div>
+
+            <div class="md:col-span-2">
+
+                <label>
+                    Responsibilities / Achievements
+                </label>
+
+                <textarea class="exp-description"
+                          placeholder="Led a team of 20 employees
+Reduced project delays by 15%
+Managed project planning and reporting"></textarea>
+
+            </div>
+
+        </div>
+
+    `;
+
+    experienceContainer.appendChild(div);
+
+    div.querySelectorAll("input,textarea")
+        .forEach(el => el.addEventListener("input", updatePreview));
 
     updatePreview();
 
-    hideError();
-
-  });
-
-});
+}
 
 
-/* ================================
-   UPDATE BUTTON
-================================ */
+/* Education */
+function addEducation(){
 
-document.getElementById("updateBtn")
-.addEventListener("click",function(){
+    educationCount++;
 
-  if(!validateResume()){
+    const id = educationCount;
 
-    return;
+    const div = document.createElement("div");
 
-  }
+    div.className = "entry-card education-entry";
+
+    div.innerHTML = `
+
+        <div class="entry-card-header">
+
+            <span class="entry-number">
+                Education ${id}
+            </span>
+
+            <button type="button"
+                    class="remove-entry"
+                    onclick="this.closest('.entry-card').remove(); updatePreview();">
+                Remove
+            </button>
+
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-3">
+
+            <div>
+                <label>Degree / Qualification</label>
+                <input class="edu-degree"
+                       placeholder="e.g. Bachelor of Engineering">
+            </div>
+
+            <div>
+                <label>Institution</label>
+                <input class="edu-school"
+                       placeholder="e.g. XYZ University">
+            </div>
+
+            <div>
+                <label>Location</label>
+                <input class="edu-location"
+                       placeholder="e.g. Mumbai, India">
+            </div>
+
+            <div>
+                <label>Year / Dates</label>
+                <input class="edu-date"
+                       placeholder="e.g. 2018 – 2022">
+            </div>
+
+        </div>
+
+    `;
+
+    educationContainer.appendChild(div);
+
+    div.querySelectorAll("input,textarea")
+        .forEach(el => el.addEventListener("input", updatePreview));
+
+    updatePreview();
+
+}
 
 
-  updatePreview();
+/* Projects */
+function addProject(){
+
+    projectCount++;
+
+    const id = projectCount;
+
+    const div = document.createElement("div");
+
+    div.className = "entry-card project-entry";
+
+    div.innerHTML = `
+
+        <div class="entry-card-header">
+
+            <span class="entry-number">
+                Project ${id}
+            </span>
+
+            <button type="button"
+                    class="remove-entry"
+                    onclick="this.closest('.entry-card').remove(); updatePreview();">
+                Remove
+            </button>
+
+        </div>
+
+        <div class="grid gap-3">
+
+            <div>
+                <label>Project Name</label>
+                <input class="project-name"
+                       placeholder="e.g. Safety Management Dashboard">
+            </div>
+
+            <div>
+                <label>Project Link (Optional)</label>
+                <input class="project-link"
+                       placeholder="example.com/project">
+            </div>
+
+            <div>
+                <label>Project Description</label>
+                <textarea class="project-description"
+                          placeholder="Describe your role, contribution and results."></textarea>
+            </div>
+
+        </div>
+
+    `;
+
+    projectContainer.appendChild(div);
+
+    div.querySelectorAll("input,textarea")
+        .forEach(el => el.addEventListener("input", updatePreview));
+
+    updatePreview();
+
+}
 
 
-  document.getElementById("resume")
-  .scrollIntoView({
+/* Read basic input */
+function value(id){
 
-    behavior:"smooth",
+    return document.getElementById(id)?.value.trim() || "";
 
-    block:"start"
-
-  });
-
-});
+}
 
 
-/* ================================
-   DOWNLOAD PDF
-================================ */
+/* Update Preview */
+function updatePreview(){
 
-document.getElementById("downloadBtn")
-.addEventListener("click",function(){
-
-  if(!validateResume()){
-
-    return;
-
-  }
-
-
-  updatePreview();
+    const name = value("name");
+    const title = value("title");
+    const email = value("email");
+    const phone = value("phone");
+    const location = value("location");
+    const linkedin = value("linkedin");
+    const website = value("website");
+    const summary = value("summary");
+    const skills = value("skills");
+    const certifications = value("certifications");
 
 
-  const resume =
-    document.getElementById("resume");
+    document.getElementById("previewName").textContent =
+        name || "Your Name";
+
+    document.getElementById("previewTitle").textContent =
+        title || "Professional Title";
 
 
-  const cleanName =
-    fields.name.value
-    .trim()
-    .replace(/[^a-z0-9]+/gi,"-")
-    .replace(/^-+|-+$/g,"");
+    const contacts = [];
 
+    if(email){
 
-  const filename =
-    "Antokia-" +
-    (cleanName || "Resume") +
-    "-Resume.pdf";
+        contacts.push(
+            `<a href="mailto:${escapeHTML(email)}">${escapeHTML(email)}</a>`
+        );
 
-
-  const options = {
-
-    margin:0.35,
-
-    filename:filename,
-
-    image:{
-      type:"jpeg",
-      quality:0.98
-    },
-
-    html2canvas:{
-      scale:2,
-      useCORS:true,
-      backgroundColor:"#ffffff"
-    },
-
-    jsPDF:{
-      unit:"in",
-      format:"a4",
-      orientation:"portrait"
-    },
-
-    pagebreak:{
-      mode:["avoid-all","css","legacy"]
     }
 
-  };
+    if(phone){
+
+        contacts.push(
+            `<a href="tel:${escapeHTML(phone)}">${escapeHTML(phone)}</a>`
+        );
+
+    }
+
+    if(location){
+        contacts.push(escapeHTML(location));
+    }
+
+    if(linkedin){
+        contacts.push(escapeHTML(linkedin));
+    }
+
+    if(website){
+        contacts.push(escapeHTML(website));
+    }
 
 
-  html2pdf()
-
-    .set(options)
-
-    .from(resume)
-
-    .save();
-
-});
+    document.getElementById("previewContact").innerHTML =
+        contacts.length
+        ? contacts.join(" &nbsp;·&nbsp; ")
+        : "Email · Phone · Location";
 
 
-/* ================================
-   RESET
-================================ */
+    /* Summary */
+
+    const summaryBox =
+        document.getElementById("previewSummary");
+
+    if(summary){
+
+        summaryBox.classList.remove("empty-preview");
+
+        summaryBox.innerHTML =
+            escapeHTML(summary).replace(/\n/g,"<br>");
+
+    }else{
+
+        summaryBox.classList.add("empty-preview");
+
+        summaryBox.textContent =
+            "Add a professional summary from the form.";
+
+    }
+
+
+    /* Skills */
+
+    const skillsBox =
+        document.getElementById("previewSkills");
+
+    if(skills){
+
+        skillsBox.classList.remove("empty-preview");
+
+        skillsBox.textContent = skills;
+
+    }else{
+
+        skillsBox.classList.add("empty-preview");
+
+        skillsBox.textContent =
+            "Add your skills from the form.";
+
+    }
+
+
+    /* Experience */
+
+    const experienceEntries =
+        document.querySelectorAll(".experience-entry");
+
+    let experienceHTML = "";
+
+    experienceEntries.forEach(entry => {
+
+        const job =
+            entry.querySelector(".exp-title")?.value.trim() || "";
+
+        const company =
+            entry.querySelector(".exp-company")?.value.trim() || "";
+
+        const loc =
+            entry.querySelector(".exp-location")?.value.trim() || "";
+
+        const date =
+            entry.querySelector(".exp-date")?.value.trim() || "";
+
+        const desc =
+            entry.querySelector(".exp-description")?.value.trim() || "";
+
+        if(!job && !company && !loc && !date && !desc){
+            return;
+        }
+
+        const companyLine = [company,loc]
+            .filter(Boolean)
+            .map(escapeHTML)
+            .join(" · ");
+
+        experienceHTML += `
+
+            <div class="resume-entry">
+
+                ${job ? `<div class="resume-entry-title">${escapeHTML(job)}</div>` : ""}
+
+                ${companyLine ? `<div class="resume-company">${companyLine}</div>` : ""}
+
+                ${date ? `<div class="resume-date">${escapeHTML(date)}</div>` : ""}
+
+                ${makeBullets(desc)}
+
+            </div>
+
+        `;
+
+    });
+
+
+    document.getElementById("previewExperience").innerHTML =
+        experienceHTML ||
+        `<div class="empty-preview resume-text">
+            Add your work experience from the form.
+        </div>`;
+
+
+    /* Education */
+
+    const educationEntries =
+        document.querySelectorAll(".education-entry");
+
+    let educationHTML = "";
+
+    educationEntries.forEach(entry => {
+
+        const degree =
+            entry.querySelector(".edu-degree")?.value.trim() || "";
+
+        const school =
+            entry.querySelector(".edu-school")?.value.trim() || "";
+
+        const loc =
+            entry.querySelector(".edu-location")?.value.trim() || "";
+
+        const date =
+            entry.querySelector(".edu-date")?.value.trim() || "";
+
+        if(!degree && !school && !loc && !date){
+            return;
+        }
+
+        const schoolLine = [school,loc]
+            .filter(Boolean)
+            .map(escapeHTML)
+            .join(" · ");
+
+        educationHTML += `
+
+            <div class="resume-entry">
+
+                ${degree ? `<div class="resume-entry-title">${escapeHTML(degree)}</div>` : ""}
+
+                ${schoolLine ? `<div class="resume-company">${schoolLine}</div>` : ""}
+
+                ${date ? `<div class="resume-date">${escapeHTML(date)}</div>` : ""}
+
+            </div>
+
+        `;
+
+    });
+
+
+    document.getElementById("previewEducation").innerHTML =
+        educationHTML ||
+        `<div class="empty-preview resume-text">
+            Add your education from the form.
+        </div>`;
+
+
+    /* Projects */
+
+    const projectEntries =
+        document.querySelectorAll(".project-entry");
+
+    let projectHTML = "";
+
+    projectEntries.forEach(entry => {
+
+        const projectName =
+            entry.querySelector(".project-name")?.value.trim() || "";
+
+        const projectLink =
+            entry.querySelector(".project-link")?.value.trim() || "";
+
+        const projectDescription =
+            entry.querySelector(".project-description")?.value.trim() || "";
+
+        if(!projectName && !projectLink && !projectDescription){
+            return;
+        }
+
+        projectHTML += `
+
+            <div class="resume-entry">
+
+                ${projectName
+                    ? `<div class="resume-entry-title">${escapeHTML(projectName)}</div>`
+                    : ""
+                }
+
+                ${projectLink
+                    ? `<div class="resume-date">${escapeHTML(projectLink)}</div>`
+                    : ""
+                }
+
+                ${projectDescription
+                    ? `<div class="resume-text mt-1">
+                        ${escapeHTML(projectDescription).replace(/\n/g,"<br>")}
+                       </div>`
+                    : ""
+                }
+
+            </div>
+
+        `;
+
+    });
+
+
+    document.getElementById("previewProjects").innerHTML =
+        projectHTML ||
+        `<div class="empty-preview resume-text">
+            Optional project information.
+        </div>`;
+
+
+    /* Certifications */
+
+    const certificationBox =
+        document.getElementById("previewCertifications");
+
+    if(certifications){
+
+        certificationBox.classList.remove("empty-preview");
+
+        certificationBox.innerHTML =
+            makeBullets(certifications);
+
+    }else{
+
+        certificationBox.classList.add("empty-preview");
+
+        certificationBox.textContent =
+            "Optional certifications.";
+
+    }
+
+
+    /* Hide empty sections */
+
+    document.getElementById("summarySection").style.display =
+        summary ? "" : "none";
+
+    document.getElementById("skillsSection").style.display =
+        skills ? "" : "none";
+
+    document.getElementById("experienceSection").style.display =
+        experienceHTML ? "" : "none";
+
+    document.getElementById("educationSection").style.display =
+        educationHTML ? "" : "none";
+
+    document.getElementById("projectSection").style.display =
+        projectHTML ? "" : "none";
+
+    document.getElementById("certificationSection").style.display =
+        certifications ? "" : "none";
+
+
+    updateProgress();
+
+}
+
+
+/* Progress */
+function updateProgress(){
+
+    let total = 6;
+    let completed = 0;
+
+    if(value("name")) completed++;
+    if(value("title")) completed++;
+    if(value("email")) completed++;
+    if(value("summary")) completed++;
+    if(value("skills")) completed++;
+
+    const hasExperience =
+        document.querySelectorAll(".experience-entry").length > 0 &&
+        [...document.querySelectorAll(".experience-entry")]
+        .some(entry =>
+            entry.querySelector(".exp-title")?.value.trim() ||
+            entry.querySelector(".exp-company")?.value.trim()
+        );
+
+    if(hasExperience) completed++;
+
+    const percent =
+        Math.round((completed / total) * 100);
+
+    document.getElementById("progressBar").style.width =
+        percent + "%";
+
+    document.getElementById("progressText").textContent =
+        percent + "%";
+
+}
+
+
+/* Buttons */
+
+document.getElementById("addExperience")
+    .addEventListener("click", addExperience);
+
+document.getElementById("addEducation")
+    .addEventListener("click", addEducation);
+
+document.getElementById("addProject")
+    .addEventListener("click", addProject);
+
+document.getElementById("updateBtn")
+    .addEventListener("click", updatePreview);
+
+
+/* Print / Save PDF */
+
+document.getElementById("printBtn")
+    .addEventListener("click", function(){
+
+        const name = value("name");
+
+        const error =
+            document.getElementById("errorMessage");
+
+        if(!name){
+
+            error.textContent =
+                "Please enter your Full Name before saving the resume.";
+
+            error.classList.remove("hidden");
+
+            document.getElementById("name").focus();
+
+            return;
+        }
+
+        error.classList.add("hidden");
+
+        updatePreview();
+
+        setTimeout(function(){
+
+            window.print();
+
+        },150);
+
+    });
+
+
+/* Reset */
 
 document.getElementById("resetBtn")
-.addEventListener("click",function(){
+    .addEventListener("click", function(){
 
-  fields.name.value = "";
+        if(!confirm("Are you sure you want to reset the resume?")){
+            return;
+        }
 
-  fields.role.value = "";
+        document.querySelectorAll(
+            "input, textarea"
+        ).forEach(el => {
 
-  fields.email.value = "";
+            el.value = "";
 
-  fields.phone.value = "";
+        });
 
-  fields.about.value = "";
+        experienceContainer.innerHTML = "";
+        educationContainer.innerHTML = "";
+        projectContainer.innerHTML = "";
 
-  fields.experience.value = "";
+        experienceCount = 0;
+        educationCount = 0;
+        projectCount = 0;
 
-  fields.education.value = "";
+        addExperience();
+        addEducation();
 
-  fields.skills.value = "";
+        updatePreview();
+
+        document.getElementById("errorMessage")
+            .classList.add("hidden");
+
+    });
 
 
-  hideError();
+/* Live update */
 
-  updatePreview();
+document.querySelectorAll(
+    "input, textarea"
+).forEach(el => {
 
-
-  window.scrollTo({
-
-    top:0,
-
-    behavior:"smooth"
-
-  });
+    el.addEventListener("input", updatePreview);
 
 });
 
 
-/* ================================
-   INITIAL PREVIEW
-================================ */
+/* Initial entries */
+
+addExperience();
+addEducation();
 
 updatePreview();
 
-
 </script>
-
 
 </body>
 </html>
