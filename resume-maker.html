@@ -3,73 +3,937 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Resume Maker - Free Builder | Antokia</title>
-<link rel="canonical" href="https://www.antokia.com/resume-maker.html" />
-<meta name="robots" content="index, follow" />
+
+<title>Free Resume Maker Online - Create & Download Resume PDF | Antokia</title>
+
+<meta name="description" content="Create a professional resume online for free with Antokia Resume Maker. Enter your details, preview your resume instantly and download it as a PDF. No signup required.">
+
+<meta name="keywords" content="free resume maker, resume builder online, create resume online, CV maker, free CV builder, resume PDF maker, professional resume builder">
+
+<meta name="author" content="Antokia">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#e5322d">
+
+<link rel="canonical" href="https://www.antokia.com/resume-maker.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Free Resume Maker Online | Antokia">
+<meta property="og:description" content="Create and download a professional resume PDF online for free with Antokia Resume Maker.">
+<meta property="og:url" content="https://www.antokia.com/resume-maker.html">
+<meta property="og:site_name" content="Antokia">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Free Resume Maker Online | Antokia">
+<meta name="twitter:description" content="Create a professional resume online and download it as a PDF for free.">
+
+<!-- Tailwind -->
 <script src="https://cdn.tailwindcss.com"></script>
+
+<!-- PDF Library -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-</head>
-<body class="bg-[#f5f5fa]">
-<header class="bg-white shadow-sm sticky top-0 z-10">
-<div class="max-w-6xl mx-auto px-4 py-3 flex justify-between">
-<a href="/" class="font-extrabold text-[#e5322d] text-xl">Antokia</a>
-<a href="/" class="text-sm underline">← All Tools</a>
-</div>
-</header>
 
-<main class="max-w-6xl mx-auto px-4 py-6 grid md:grid-cols-2 gap-6">
-<!-- FORM -->
-<div class="bg-white rounded-2xl p-6 shadow border h-fit">
-<h2 class="font-bold text-lg">Fill Your Details</h2>
-<input id="name" placeholder="Full Name - Jane Doe" class="w-full border rounded-xl p-3 mt-3 text-sm">
-<input id="role" placeholder="Role - e.g. Graphic Designer" class="w-full border rounded-xl p-3 mt-3 text-sm">
-<input id="email" placeholder="Email" class="w-full border rounded-xl p-3 mt-3 text-sm">
-<input id="phone" placeholder="Phone" class="w-full border rounded-xl p-3 mt-3 text-sm">
-<textarea id="about" placeholder="About you..." class="w-full border rounded-xl p-3 mt-3 text-sm h-20"></textarea>
-<textarea id="education" placeholder="Education - e.g. B.Com 2022 Mumbai University" class="w-full border rounded-xl p-3 mt-3 text-sm h-20"></textarea>
-<textarea id="experience" placeholder="Experience - e.g. 2 years at XYZ Company" class="w-full border rounded-xl p-3 mt-3 text-sm h-20"></textarea>
-<textarea id="skills" placeholder="Skills - e.g. Photoshop, Canva, Excel" class="w-full border rounded-xl p-3 mt-3 text-sm h-20"></textarea>
-<button id="updateBtn" class="mt-4 w-full bg-black text-white py-3 rounded-xl font-bold">Update Preview</button>
-<button id="downloadBtn" class="mt-2 w-full bg-[#e5322d] text-white py-4 rounded-xl font-bold">Download PDF Resume</button>
-</div>
-
-<!-- PREVIEW -->
-<div class="bg-white rounded-2xl p-8 shadow border">
-<div id="resume">
-<h1 id="pName" class="text-3xl font-extrabold">Your Name</h1>
-<p id="pRole" class="text-[#e5322d] font-bold mt-1">Your Role</p>
-<div class="flex gap-4 text-xs text-gray-600 mt-2"><span id="pEmail">email@example.com</span><span id="pPhone">+91 00000 00000</span></div>
-<hr class="my-4">
-<h3 class="font-bold text-sm">ABOUT ME</h3>
-<p id="pAbout" class="text-sm text-gray-600 mt-1">Write about yourself...</p>
-<h3 class="font-bold text-sm mt-5">EDUCATION</h3>
-<p id="pEdu" class="text-sm text-gray-600 mt-1 whitespace-pre-line">Your education...</p>
-<h3 class="font-bold text-sm mt-5">EXPERIENCE</h3>
-<p id="pExp" class="text-sm text-gray-600 mt-1 whitespace-pre-line">Your experience...</p>
-<h3 class="font-bold text-sm mt-5">SKILLS</h3>
-<p id="pSkills" class="text-sm text-gray-600 mt-1 whitespace-pre-line">Your skills...</p>
-</div>
-</div>
-</main>
-
-<script>
-function update(){
-document.getElementById('pName').innerText=document.getElementById('name').value||'Your Name';
-document.getElementById('pRole').innerText=document.getElementById('role').value||'Your Role';
-document.getElementById('pEmail').innerText=document.getElementById('email').value||'email@example.com';
-document.getElementById('pPhone').innerText=document.getElementById('phone').value||'+91 00000 00000';
-document.getElementById('pAbout').innerText=document.getElementById('about').value||'Write about yourself...';
-document.getElementById('pEdu').innerText=document.getElementById('education').value||'Your education...';
-document.getElementById('pExp').innerText=document.getElementById('experience').value||'Your experience...';
-document.getElementById('pSkills').innerText=document.getElementById('skills').value||'Your skills...';
+<style>
+html {
+    scroll-behavior: smooth;
 }
-document.getElementById('updateBtn').onclick=update;
-document.getElementById('downloadBtn').onclick=()=>{
-update();
-let el=document.getElementById('resume');
-let opt={margin:0.5,filename:'Antokia-Resume.pdf',image:{type:'jpeg',quality:0.98},html2canvas:{scale:2},jsPDF:{unit:'in',format:'letter',orientation:'portrait'}};
-html2pdf().set(opt).from(el).save();
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.input-field {
+    width: 100%;
+    border: 1px solid #d1d5db;
+    border-radius: 12px;
+    padding: 12px 14px;
+    font-size: 14px;
+    outline: none;
+    transition: 0.2s;
+    background: #fff;
+}
+
+.input-field:focus {
+    border-color: #e5322d;
+    box-shadow: 0 0 0 3px rgba(229, 50, 45, 0.10);
+}
+
+.section-title {
+    font-size: 14px;
+    font-weight: 800;
+    color: #111827;
+    letter-spacing: 0.04em;
+}
+
+.resume-section {
+    page-break-inside: avoid;
+}
+
+@media print {
+    body {
+        background: white !important;
+    }
+
+    header,
+    .form-panel,
+    .info-section,
+    footer {
+        display: none !important;
+    }
+
+    main {
+        display: block !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .preview-panel {
+        box-shadow: none !important;
+        border: none !important;
+        padding: 0 !important;
+    }
+}
+</style>
+
+<!-- FAQ Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is the Antokia Resume Maker free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Antokia Resume Maker is available as a free online tool for creating and downloading a resume."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I download my resume as a PDF?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. After entering your details, you can download your resume as a PDF using the Download PDF Resume button."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to create an account?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No account or signup is required to use the basic Antokia Resume Maker."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What information should I include in my resume?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A useful resume generally includes your name, professional role, contact details, profile summary, education, experience and relevant skills."
+      }
+    }
+  ]
 }
 </script>
+</head>
+
+<body class="bg-[#f5f5fa] text-gray-800">
+
+<!-- HEADER -->
+<header class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+
+        <a href="/" class="font-extrabold text-[#e5322d] text-xl tracking-tight">
+            Antokia
+        </a>
+
+        <a href="/"
+           class="text-sm font-semibold text-gray-700 hover:text-[#e5322d] transition">
+            ← All Tools
+        </a>
+
+    </div>
+</header>
+
+
+<!-- MAIN -->
+<main class="max-w-6xl mx-auto px-4 py-6 md:py-8">
+
+    <!-- HERO -->
+    <section class="text-center mb-7">
+
+        <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900">
+            Free Resume Maker Online
+        </h1>
+
+        <p class="max-w-2xl mx-auto mt-3 text-sm md:text-base text-gray-600 leading-6">
+            Create a clean and professional resume in minutes. Enter your details,
+            preview your resume instantly and download it as a PDF — free and easy to use.
+        </p>
+
+        <div class="flex flex-wrap justify-center gap-2 mt-4 text-xs">
+            <span class="bg-white border rounded-full px-3 py-1.5">
+                ✓ Free to Use
+            </span>
+            <span class="bg-white border rounded-full px-3 py-1.5">
+                ✓ No Signup Required
+            </span>
+            <span class="bg-white border rounded-full px-3 py-1.5">
+                ✓ PDF Download
+            </span>
+        </div>
+
+    </section>
+
+
+    <!-- TOOL AREA -->
+    <section class="grid lg:grid-cols-2 gap-6 items-start">
+
+        <!-- FORM -->
+        <div class="form-panel bg-white rounded-2xl p-5 md:p-6 shadow-sm border">
+
+            <div class="flex items-start justify-between gap-3 mb-5">
+
+                <div>
+                    <h2 class="text-xl font-extrabold text-gray-900">
+                        Build Your Resume
+                    </h2>
+
+                    <p class="text-xs text-gray-500 mt-1">
+                        Fill in your information below.
+                    </p>
+                </div>
+
+                <span class="text-xs font-bold bg-red-50 text-[#e5322d] px-3 py-1.5 rounded-full">
+                    Free
+                </span>
+
+            </div>
+
+
+            <!-- PERSONAL INFORMATION -->
+            <div class="mb-6">
+
+                <h3 class="section-title mb-3">
+                    PERSONAL INFORMATION
+                </h3>
+
+                <div class="grid md:grid-cols-2 gap-3">
+
+                    <div class="md:col-span-2">
+                        <label for="name" class="block text-xs font-semibold mb-1.5">
+                            Full Name
+                        </label>
+
+                        <input
+                            id="name"
+                            type="text"
+                            autocomplete="name"
+                            placeholder="e.g. Jane Doe"
+                            class="input-field"
+                        >
+                    </div>
+
+                    <div class="md:col-span-2">
+                        <label for="role" class="block text-xs font-semibold mb-1.5">
+                            Professional Role
+                        </label>
+
+                        <input
+                            id="role"
+                            type="text"
+                            autocomplete="organization-title"
+                            placeholder="e.g. Graphic Designer"
+                            class="input-field"
+                        >
+                    </div>
+
+                    <div>
+                        <label for="email" class="block text-xs font-semibold mb-1.5">
+                            Email
+                        </label>
+
+                        <input
+                            id="email"
+                            type="email"
+                            autocomplete="email"
+                            placeholder="e.g. jane@email.com"
+                            class="input-field"
+                        >
+                    </div>
+
+                    <div>
+                        <label for="phone" class="block text-xs font-semibold mb-1.5">
+                            Phone
+                        </label>
+
+                        <input
+                            id="phone"
+                            type="tel"
+                            autocomplete="tel"
+                            placeholder="e.g. +91 98765 43210"
+                            class="input-field"
+                        >
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PROFILE -->
+            <div class="mb-6">
+
+                <h3 class="section-title mb-3">
+                    PROFESSIONAL SUMMARY
+                </h3>
+
+                <label for="about" class="block text-xs font-semibold mb-1.5">
+                    About You
+                </label>
+
+                <textarea
+                    id="about"
+                    rows="4"
+                    maxlength="600"
+                    placeholder="Example: Creative graphic designer with 3 years of experience in branding, social media design and digital content..."
+                    class="input-field resize-y"
+                ></textarea>
+
+                <p class="text-[11px] text-gray-400 mt-1">
+                    Keep it short and focused on your experience and strengths.
+                </p>
+
+            </div>
+
+
+            <!-- EDUCATION -->
+            <div class="mb-6">
+
+                <h3 class="section-title mb-3">
+                    EDUCATION
+                </h3>
+
+                <textarea
+                    id="education"
+                    rows="4"
+                    maxlength="800"
+                    placeholder="Example:
+B.Com - Mumbai University - 2022
+Higher Secondary - Maharashtra Board - 2019"
+                    class="input-field resize-y"
+                ></textarea>
+
+            </div>
+
+
+            <!-- EXPERIENCE -->
+            <div class="mb-6">
+
+                <h3 class="section-title mb-3">
+                    WORK EXPERIENCE
+                </h3>
+
+                <textarea
+                    id="experience"
+                    rows="5"
+                    maxlength="1200"
+                    placeholder="Example:
+Graphic Designer - XYZ Company
+2022 - Present
+Created social media graphics, marketing materials and brand designs."
+                    class="input-field resize-y"
+                ></textarea>
+
+            </div>
+
+
+            <!-- SKILLS -->
+            <div class="mb-5">
+
+                <h3 class="section-title mb-3">
+                    SKILLS
+                </h3>
+
+                <textarea
+                    id="skills"
+                    rows="4"
+                    maxlength="600"
+                    placeholder="Example: Photoshop, Canva, Excel, Communication, Teamwork, Project Management"
+                    class="input-field resize-y"
+                ></textarea>
+
+            </div>
+
+
+            <!-- BUTTONS -->
+            <div class="pt-2">
+
+                <button
+                    id="updateBtn"
+                    type="button"
+                    class="w-full bg-black hover:bg-gray-800 text-white py-3.5 rounded-xl font-bold transition"
+                >
+                    Update Preview
+                </button>
+
+                <button
+                    id="downloadBtn"
+                    type="button"
+                    class="mt-3 w-full bg-[#e5322d] hover:bg-[#c92520] text-white py-4 rounded-xl font-bold transition shadow-sm"
+                >
+                    Download PDF Resume
+                </button>
+
+                <p class="text-center text-[11px] text-gray-400 mt-3">
+                    Tip: Review your information before downloading your resume.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- PREVIEW -->
+        <div class="preview-panel bg-white rounded-2xl p-5 md:p-8 shadow-sm border lg:sticky lg:top-20">
+
+            <div class="flex justify-between items-center mb-4">
+
+                <div>
+                    <h2 class="text-lg font-extrabold text-gray-900">
+                        Resume Preview
+                    </h2>
+
+                    <p class="text-xs text-gray-500">
+                        Your resume will appear here.
+                    </p>
+                </div>
+
+                <span class="text-xs bg-gray-100 px-3 py-1.5 rounded-full font-semibold">
+                    Preview
+                </span>
+
+            </div>
+
+
+            <!-- RESUME -->
+            <article
+                id="resume"
+                class="bg-white border rounded-lg p-6 md:p-8 text-gray-800"
+            >
+
+                <!-- NAME -->
+                <div class="resume-section">
+
+                    <h2
+                        id="pName"
+                        class="text-3xl md:text-4xl font-extrabold text-gray-900 break-words"
+                    >
+                        Your Name
+                    </h2>
+
+                    <p
+                        id="pRole"
+                        class="text-[#e5322d] font-bold mt-1 text-base"
+                    >
+                        Your Professional Role
+                    </p>
+
+                    <div class="flex flex-wrap gap-x-4 gap-y-1 text-xs text-gray-500 mt-3">
+
+                        <span id="pEmail">
+                            email@example.com
+                        </span>
+
+                        <span id="pPhone">
+                            +91 00000 00000
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <hr class="my-5">
+
+
+                <!-- ABOUT -->
+                <section class="resume-section">
+
+                    <h3 class="font-extrabold text-xs tracking-wider text-gray-900">
+                        PROFESSIONAL SUMMARY
+                    </h3>
+
+                    <p
+                        id="pAbout"
+                        class="text-sm text-gray-600 mt-2 leading-6 whitespace-pre-line"
+                    >
+                        Write a short professional summary about yourself...
+                    </p>
+
+                </section>
+
+
+                <!-- EDUCATION -->
+                <section class="resume-section mt-6">
+
+                    <h3 class="font-extrabold text-xs tracking-wider text-gray-900">
+                        EDUCATION
+                    </h3>
+
+                    <p
+                        id="pEdu"
+                        class="text-sm text-gray-600 mt-2 leading-6 whitespace-pre-line"
+                    >
+                        Your education details...
+                    </p>
+
+                </section>
+
+
+                <!-- EXPERIENCE -->
+                <section class="resume-section mt-6">
+
+                    <h3 class="font-extrabold text-xs tracking-wider text-gray-900">
+                        WORK EXPERIENCE
+                    </h3>
+
+                    <p
+                        id="pExp"
+                        class="text-sm text-gray-600 mt-2 leading-6 whitespace-pre-line"
+                    >
+                        Your work experience...
+                    </p>
+
+                </section>
+
+
+                <!-- SKILLS -->
+                <section class="resume-section mt-6">
+
+                    <h3 class="font-extrabold text-xs tracking-wider text-gray-900">
+                        SKILLS
+                    </h3>
+
+                    <p
+                        id="pSkills"
+                        class="text-sm text-gray-600 mt-2 leading-6 whitespace-pre-line"
+                    >
+                        Your professional skills...
+                    </p>
+
+                </section>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- INFORMATION SECTION -->
+    <section class="info-section mt-10 bg-white rounded-2xl border shadow-sm p-6 md:p-8">
+
+        <h2 class="text-2xl font-extrabold text-gray-900">
+            How to Create a Resume with Antokia
+        </h2>
+
+        <p class="text-sm text-gray-600 leading-6 mt-3">
+            Creating a resume does not have to be complicated. Use the Antokia
+            Resume Maker to enter your basic information, professional summary,
+            education, work experience and skills. The preview helps you review
+            the content before downloading your resume as a PDF.
+        </p>
+
+
+        <div class="grid md:grid-cols-3 gap-4 mt-6">
+
+            <div class="bg-[#f8f8fc] rounded-xl p-4">
+                <div class="font-extrabold text-gray-900">
+                    1. Enter Details
+                </div>
+
+                <p class="text-xs text-gray-500 mt-2 leading-5">
+                    Add your name, role, contact information, education,
+                    experience and skills.
+                </p>
+            </div>
+
+
+            <div class="bg-[#f8f8fc] rounded-xl p-4">
+                <div class="font-extrabold text-gray-900">
+                    2. Review Resume
+                </div>
+
+                <p class="text-xs text-gray-500 mt-2 leading-5">
+                    Check the live preview and make sure your information
+                    is accurate and complete.
+                </p>
+            </div>
+
+
+            <div class="bg-[#f8f8fc] rounded-xl p-4">
+                <div class="font-extrabold text-gray-900">
+                    3. Download PDF
+                </div>
+
+                <p class="text-xs text-gray-500 mt-2 leading-5">
+                    Download your completed resume as a PDF and use it for
+                    job applications or professional purposes.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- RESUME TIPS -->
+    <section class="info-section mt-6 bg-white rounded-2xl border shadow-sm p-6 md:p-8">
+
+        <h2 class="text-2xl font-extrabold text-gray-900">
+            Tips for Creating a Better Resume
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-4 mt-5">
+
+            <div>
+                <h3 class="font-bold text-gray-900 text-sm">
+                    Keep your summary concise
+                </h3>
+
+                <p class="text-xs text-gray-600 mt-1 leading-5">
+                    Highlight your professional background, key strengths and
+                    relevant experience instead of writing a long paragraph.
+                </p>
+            </div>
+
+
+            <div>
+                <h3 class="font-bold text-gray-900 text-sm">
+                    Add relevant skills
+                </h3>
+
+                <p class="text-xs text-gray-600 mt-1 leading-5">
+                    Include skills that are relevant to the type of position
+                    you are applying for.
+                </p>
+            </div>
+
+
+            <div>
+                <h3 class="font-bold text-gray-900 text-sm">
+                    Check your contact details
+                </h3>
+
+                <p class="text-xs text-gray-600 mt-1 leading-5">
+                    Make sure your email address and phone number are correct
+                    before sending your resume.
+                </p>
+            </div>
+
+
+            <div>
+                <h3 class="font-bold text-gray-900 text-sm">
+                    Review before downloading
+                </h3>
+
+                <p class="text-xs text-gray-600 mt-1 leading-5">
+                    Check spelling, dates, job titles and formatting before
+                    using your resume for applications.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FAQ -->
+    <section class="info-section mt-6 bg-white rounded-2xl border shadow-sm p-6 md:p-8">
+
+        <h2 class="text-2xl font-extrabold text-gray-900">
+            Frequently Asked Questions
+        </h2>
+
+
+        <div class="mt-5 space-y-4">
+
+            <details class="border rounded-xl p-4">
+                <summary class="font-bold text-sm cursor-pointer">
+                    Is the Antokia Resume Maker free?
+                </summary>
+
+                <p class="text-sm text-gray-600 leading-6 mt-3">
+                    Yes. The Antokia Resume Maker is available as a free online
+                    tool for creating and downloading a resume.
+                </p>
+            </details>
+
+
+            <details class="border rounded-xl p-4">
+                <summary class="font-bold text-sm cursor-pointer">
+                    Can I download my resume as a PDF?
+                </summary>
+
+                <p class="text-sm text-gray-600 leading-6 mt-3">
+                    Yes. After entering your information, click the
+                    “Download PDF Resume” button to save your resume as a PDF.
+                </p>
+            </details>
+
+
+            <details class="border rounded-xl p-4">
+                <summary class="font-bold text-sm cursor-pointer">
+                    Do I need to create an account?
+                </summary>
+
+                <p class="text-sm text-gray-600 leading-6 mt-3">
+                    No account or signup is required to use the basic
+                    Resume Maker.
+                </p>
+            </details>
+
+
+            <details class="border rounded-xl p-4">
+                <summary class="font-bold text-sm cursor-pointer">
+                    What information should I include in a resume?
+                </summary>
+
+                <p class="text-sm text-gray-600 leading-6 mt-3">
+                    A useful resume generally includes your name, professional
+                    role, contact information, professional summary, education,
+                    work experience and relevant skills.
+                </p>
+            </details>
+
+        </div>
+
+    </section>
+
+
+    <!-- PRIVACY NOTE -->
+    <section class="info-section mt-6 bg-red-50 border border-red-100 rounded-2xl p-5">
+
+        <h2 class="font-extrabold text-gray-900 text-base">
+            Privacy & Your Information
+        </h2>
+
+        <p class="text-xs text-gray-600 leading-5 mt-2">
+            Your resume information is used to generate the resume preview and
+            PDF in your browser. Avoid entering passwords, financial information
+            or other sensitive information that is not required for a resume.
+            For more information, please review our
+            <a href="/privacy.html"
+               class="text-[#e5322d] font-bold underline">
+                Privacy Policy
+            </a>.
+        </p>
+
+    </section>
+
+</main>
+
+
+<!-- FOOTER -->
+<footer class="bg-white border-t mt-10">
+
+    <div class="max-w-6xl mx-auto px-4 py-6 text-center">
+
+        <p class="text-sm font-bold text-gray-900">
+            Antokia - Free Online Tools
+        </p>
+
+        <p class="text-xs text-gray-500 mt-1">
+            Simple, useful and free tools for everyday needs.
+        </p>
+
+        <div class="flex flex-wrap justify-center gap-4 mt-4 text-xs">
+
+            <a href="/" class="hover:text-[#e5322d]">
+                All Tools
+            </a>
+
+            <a href="/privacy.html" class="hover:text-[#e5322d]">
+                Privacy Policy
+            </a>
+
+        </div>
+
+        <p class="text-[11px] text-gray-400 mt-4">
+            © <span id="year"></span> Antokia. All rights reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+/* ================================
+   ELEMENTS
+================================ */
+
+const fields = {
+    name: document.getElementById("name"),
+    role: document.getElementById("role"),
+    email: document.getElementById("email"),
+    phone: document.getElementById("phone"),
+    about: document.getElementById("about"),
+    education: document.getElementById("education"),
+    experience: document.getElementById("experience"),
+    skills: document.getElementById("skills")
+};
+
+const preview = {
+    name: document.getElementById("pName"),
+    role: document.getElementById("pRole"),
+    email: document.getElementById("pEmail"),
+    phone: document.getElementById("pPhone"),
+    about: document.getElementById("pAbout"),
+    education: document.getElementById("pEdu"),
+    experience: document.getElementById("pExp"),
+    skills: document.getElementById("pSkills")
+};
+
+
+/* ================================
+   UPDATE PREVIEW
+================================ */
+
+function updatePreview() {
+
+    preview.name.textContent =
+        fields.name.value.trim() || "Your Name";
+
+    preview.role.textContent =
+        fields.role.value.trim() || "Your Professional Role";
+
+    preview.email.textContent =
+        fields.email.value.trim() || "email@example.com";
+
+    preview.phone.textContent =
+        fields.phone.value.trim() || "+91 00000 00000";
+
+    preview.about.textContent =
+        fields.about.value.trim() ||
+        "Write a short professional summary about yourself...";
+
+    preview.education.textContent =
+        fields.education.value.trim() ||
+        "Your education details...";
+
+    preview.experience.textContent =
+        fields.experience.value.trim() ||
+        "Your work experience...";
+
+    preview.skills.textContent =
+        fields.skills.value.trim() ||
+        "Your professional skills...";
+}
+
+
+/* ================================
+   LIVE PREVIEW
+================================ */
+
+Object.values(fields).forEach(function(field) {
+
+    field.addEventListener("input", function() {
+        updatePreview();
+    });
+
+});
+
+
+/* ================================
+   UPDATE BUTTON
+================================ */
+
+document.getElementById("updateBtn").addEventListener("click", function() {
+
+    updatePreview();
+
+    document.getElementById("resume").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+
+});
+
+
+/* ================================
+   DOWNLOAD PDF
+================================ */
+
+document.getElementById("downloadBtn").addEventListener("click", function() {
+
+    updatePreview();
+
+    const resumeElement = document.getElementById("resume");
+
+    const userName =
+        fields.name.value.trim()
+            .replace(/[^a-z0-9]+/gi, "-")
+            .replace(/^-+|-+$/g, "")
+        || "Resume";
+
+    const options = {
+
+        margin: 0.35,
+
+        filename: "Antokia-" + userName + "-Resume.pdf",
+
+        image: {
+            type: "jpeg",
+            quality: 0.98
+        },
+
+        html2canvas: {
+            scale: 2,
+            useCORS: true,
+            backgroundColor: "#ffffff"
+        },
+
+        jsPDF: {
+            unit: "in",
+            format: "a4",
+            orientation: "portrait"
+        },
+
+        pagebreak: {
+            mode: ["avoid-all", "css", "legacy"]
+        }
+
+    };
+
+
+    html2pdf()
+        .set(options)
+        .from(resumeElement)
+        .save();
+
+});
+
+
+/* ================================
+   CURRENT YEAR
+================================ */
+
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+
+/* ================================
+   INITIAL PREVIEW
+================================ */
+
+updatePreview();
+
+</script>
+
 </body>
 </html>
