@@ -1,43 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Free Image Resizer Online – Resize JPG, PNG & WEBP | Antokia</title>
-<meta name="description" content="Resize JPG, PNG and WEBP images online for free. Set custom width and height, maintain aspect ratio, reduce image size and download your resized image directly in your browser.">
-<meta name="robots" content="index, follow, max-image-preview:large">
-<link rel="canonical" href="https://antokia.com/image-resizer.html">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Free Image Resizer Online | Antokia">
-<meta property="og:url" content="https://antokia.com/image-resizer.html">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src="https://cdn.tailwindcss.com"></script>
-<style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f8fafc;color:#172033}
-.gradient-text{background:linear-gradient(90deg,#2563eb,#7c3aed,#db2777);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.drop-zone{border:2px dashed #94a3b8;transition:.2s}
-.drop-zone:hover,.drop-zone.dragover{border-color:#2563eb;background:#eff6ff}
-.tool-card{box-shadow:0 10px 35px rgba(15,23,42,.08)}
-.preview-box{background-image:linear-gradient(45deg,#e5e7eb 25%,transparent 25%),linear-gradient(-45deg,#e5e7eb 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#e5e7eb 75%),linear-gradient(-45deg,transparent 75%,#e5e7eb 75%);background-size:20px 20px;background-position:0 0,0 10px,10px -10px,-10px 0}
-.faq-answer{display:none}.faq-answer.open{display:block}
-input[type="range"]{accent-color:#2563eb}
-</style>
+  <meta charset="UTF-8">
+  <title>Free Image Resizer Online – Resize JPG, PNG & WEBP | Antokia</title>
+  <meta name="description" content="Resize JPG, PNG and WEBP images online for free. Set custom width and height, maintain aspect ratio, reduce image size and download your resized image directly in your browser.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://antokia.com/image-resizer.html">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    *{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f8fafc;color:#172033}
+   .gradient-text{background:linear-gradient(90deg,#2563eb,#7c3aed,#db2777);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+   .drop-zone{border:2px dashed #94a3b8;transition:.2s}.drop-zone:hover,.drop-zone.dragover{border-color:#2563eb;background:#eff6ff}
+   .tool-card{box-shadow:0 10px 35px rgba(15,23,42,.08)}
+   .preview-box{background-image:linear-gradient(45deg,#e5e7eb 25%,transparent 25%),linear-gradient(-45deg,#e5e7eb 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#e5e7eb 75%),linear-gradient(-45deg,transparent 75%,#e5e7eb 75%);background-size:20px 20px;background-position:0 0,0 10px,10px -10px,-10px 0}
+   .faq-answer{display:none}.faq-answer.open{display:block}
+    input[type="range"]{accent-color:#2563eb}
+  </style>
 </head>
 <body>
-<header class="bg-white border-b sticky top-0 z-50"><div class="max-w-7xl mx-auto px-4 py-4 flex justify-between"><a href="/" class="text-2xl font-extrabold gradient-text">Antokia</a><nav class="hidden md:flex gap-6 text-sm font-medium"><a href="/">Home</a><a href="/blog/">Blog</a></nav></div></header>
-<section class="bg-white"><div class="max-w-5xl mx-auto px-4 pt-12 pb-8 text-center"><h1 class="text-4xl md:text-5xl font-extrabold">Free Image Resizer Online</h1><p class="mt-5 text-lg text-gray-600 max-w-3xl mx-auto">Resize JPG, PNG and WEBP images quickly with custom width and height. Keep aspect ratio and download directly from your browser.</p></div></section>
+<header class="bg-white border-b sticky top-0 z-50"><div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between"><a href="/" class="text-2xl font-extrabold gradient-text">Antokia</a><nav class="hidden md:flex gap-6 text-sm font-medium"><a href="/" class="hover:text-blue-600">Home</a><a href="/blog/" class="hover:text-blue-600">Blog</a><a href="/about" class="hover:text-blue-600">About</a><a href="/contact" class="hover:text-blue-600">Contact</a></nav></div></header>
+
+<section class="bg-white"><div class="max-w-5xl mx-auto px-4 pt-12 pb-8 text-center"><div class="inline-block px-4 py-2 rounded-full bg-blue-50 text-blue-700 text-sm font-semibold mb-4">🖼️ Free Online Image Tool</div><h1 class="text-4xl md:text-5xl font-extrabold">Free Image Resizer Online</h1><p class="mt-5 text-lg text-gray-600 max-w-3xl mx-auto">Resize JPG, PNG and WEBP images quickly with custom width and height. Keep the original aspect ratio, choose your output format and download the resized image directly from your browser.</p></div></section>
+
 <div class="max-w-5xl mx-auto px-4 py-4"><div class="min-h-[90px] rounded-xl bg-gray-100 flex items-center justify-center text-gray-400 text-sm">Advertisement</div></div>
+
 <main class="max-w-5xl mx-auto px-4 py-8">
 <section class="bg-white rounded-3xl tool-card p-5 md:p-8">
-<div id="dropZone" class="drop-zone rounded-2xl p-8 md:p-12 text-center cursor-pointer"><div class="text-5xl mb-4">🖼️</div><h2 class="text-2xl font-bold">Upload an Image</h2><p class="text-gray-500 mt-2">Drag & drop or click to browse</p><p class="text-sm text-gray-400 mt-3">JPG, PNG, WEBP • Max 20 MB</p><input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp" class="hidden"><button id="browseBtn" type="button" class="mt-6 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-7 py-3 rounded-xl">Choose Image</button></div>
-<div id="editor" class="hidden mt-8"><div class="grid lg:grid-cols-2 gap-8"><div><h3 class="font-bold text-lg mb-3">Image Preview</h3><div class="preview-box rounded-2xl p-4 flex items-center justify-center min-h-[300px] border"><img id="previewImage" class="max-h-[450px] object-contain rounded-lg" alt="preview"></div><div id="imageInfo" class="mt-4 text-sm text-gray-600 bg-gray-50 rounded-xl p-4"></div></div><div><h3 class="font-bold text-lg mb-4">Resize Settings</h3><div class="mb-5"><label class="block font-semibold text-sm mb-2">Quick Presets</label><div class="flex flex-wrap gap-2"><button class="preset bg-gray-100 hover:bg-blue-100 px-3 py-2 rounded-lg text-sm" data-width="1920" data-height="1080">1920×1080</button><button class="preset bg-gray-100 hover:bg-blue-100 px-3 py-2 rounded-lg text-sm" data-width="1280" data-height="720">1280×720</button><button class="preset bg-gray-100 hover:bg-blue-100 px-3 py-2 rounded-lg text-sm" data-width="1080" data-height="1080">1080×1080</button><button class="preset bg-gray-100 hover:bg-blue-100 px-3 py-2 rounded-lg text-sm" data-width="1080" data-height="1350">1080×1350</button><button class="preset bg-gray-100 hover:bg-blue-100 px-3 py-2 rounded-lg text-sm" data-width="1080" data-height="1920">1080×1920</button></div></div><div class="grid grid-cols-2 gap-4"><div><label class="block text-sm font-semibold mb-2">Width (px)</label><input id="widthInput" type="number" min="1" max="10000" class="w-full border rounded-xl px-4 py-3"></div><div><label class="block text-sm font-semibold mb-2">Height (px)</label><input id="heightInput" type="number" min="1" max="10000" class="w-full border rounded-xl px-4 py-3"></div></div><label class="flex items-center gap-3 mt-5 cursor-pointer"><input type="checkbox" id="lockRatio" checked class="w-5 h-5"><span class="text-sm font-medium">Lock aspect ratio</span></label><div class="mt-6"><label class="block text-sm font-semibold mb-2">Resize by Percentage</label><div class="flex items-center gap-3"><input id="percentage" type="range" min="10" max="200" value="100" class="flex-1"><span id="percentageValue" class="font-bold w-16 text-center">100%</span></div></div><div class="mt-6"><label class="block text-sm font-semibold mb-2">Output Format</label><select id="format" class="w-full border rounded-xl px-4 py-3"><option value="image/jpeg">JPG</option><option value="image/png">PNG</option><option value="image/webp">WEBP</option></select></div><div id="qualityBox" class="mt-6"><div class="flex justify-between mb-2"><label class="text-sm font-semibold">Image Quality</label><span id="qualityValue" class="text-sm font-bold">90%</span></div><input id="quality" type="range" min="40" max="100" value="90" class="w-full"></div><button id="resizeBtn" type="button" class="w-full mt-7 bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl">Resize Image</button><button id="downloadBtn" type="button" class="hidden w-full mt-3 bg-green-600 hover:bg-green-700 text-white font-bold py-4 rounded-xl">Download Resized Image</button><button id="newImageBtn" type="button" class="w-full mt-3 bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold py-3 rounded-xl">Resize Another Image</button><div id="status" class="text-center text-sm mt-4"></div></div></div></div>
+<div id="dropZone" class="drop-zone rounded-2xl p-8 md:p-12 text-center cursor-pointer"><div class="text-5xl mb-4">🖼️</div><h2 class="text-2xl font-bold">Upload an Image</h2><p class="text-gray-500 mt-2">Drag & drop your image here or click to browse</p><p class="text-sm text-gray-400 mt-3">Supported: JPG, JPEG, PNG, WEBP • Max: 20 MB</p><input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp" class="hidden"><button id="browseBtn" type="button" class="mt-6 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-7 py-3 rounded-xl">Choose Image</button></div>
+<div id="editor" class="hidden mt-8"><div class="grid lg:grid-cols-2 gap-8"><div><h3 class="font-bold text-lg mb-3">Image Preview</h3><div class="preview-box rounded-2xl p-4 flex items-center justify-center min-h-[300px] border"><img id="previewImage" class="max-h-[450px] object-contain rounded-lg" alt="preview"></div><div id="imageInfo" class="mt-4 text-sm text-gray-600 bg-gray-50 rounded-xl p-4"></div></div><div><h3 class="font-bold text-lg mb-4">Resize Settings</h3><div class="mb-5"><label class="block font-semibold text-sm mb-2">Quick Presets</label><div class="flex flex-wrap gap-2"><button class="preset bg-gray-100 hover:bg-blue-100 px-3 py-2 rounded-lg text-sm" data-width="1920" data-height="1080">1920×1080</button><button class="preset bg-gray-100 hover:bg-blue-100 px-3 py-2 rounded-lg text-sm" data-width="1280" data-height="720">1280×720</button><button class="preset bg-gray-100 hover:bg-blue-100 px-3 py-2 rounded-lg text-sm" data-width="1080" data-height="1080">1080×1080</button><button class="preset bg-gray-100 hover:bg-blue-100 px-3 py-2 rounded-lg text-sm" data-width="1080" data-height="1350">1080×1350</button><button class="preset bg-gray-100 hover:bg-blue-100 px-3 py-2 rounded-lg text-sm" data-width="1080" data-height="1920">1080×1920</button></div></div><div class="grid grid-cols-2 gap-4"><div><label class="block text-sm font-semibold mb-2">Width (px)</label><input id="widthInput" type="number" min="1" max="10000" class="w-full border border-gray-300 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500"></div><div><label class="block text-sm font-semibold mb-2">Height (px)</label><input id="heightInput" type="number" min="1" max="10000" class="w-full border border-gray-300 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500"></div></div><label class="flex items-center gap-3 mt-5 cursor-pointer"><input type="checkbox" id="lockRatio" checked class="w-5 h-5"><span class="text-sm font-medium">Lock aspect ratio</span></label><div class="mt-6"><label class="block text-sm font-semibold mb-2">Resize by Percentage</label><div class="flex items-center gap-3"><input id="percentage" type="range" min="10" max="200" value="100" class="flex-1"><span id="percentageValue" class="font-bold w-16 text-center">100%</span></div></div><div class="mt-6"><label class="block text-sm font-semibold mb-2">Output Format</label><select id="format" class="w-full border border-gray-300 rounded-xl px-4 py-3"><option value="image/jpeg">JPG</option><option value="image/png">PNG</option><option value="image/webp">WEBP</option></select></div><div id="qualityBox" class="mt-6"><div class="flex justify-between mb-2"><label class="text-sm font-semibold">Image Quality</label><span id="qualityValue" class="text-sm font-bold">90%</span></div><input id="quality" type="range" min="40" max="100" value="90" class="w-full"></div><button id="resizeBtn" type="button" class="w-full mt-7 bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl">Resize Image</button><button id="downloadBtn" type="button" class="hidden w-full mt-3 bg-green-600 hover:bg-green-700 text-white font-bold py-4 rounded-xl">Download Resized Image</button><button id="newImageBtn" type="button" class="w-full mt-3 bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold py-3 rounded-xl">Resize Another Image</button><div id="status" class="text-center text-sm mt-4"></div></div></div></div>
 </section>
-<section class="mt-8 bg-green-50 border border-green-100 rounded-2xl p-5"><h2 class="font-bold text-green-800">🔒 Your Image Privacy</h2><p class="text-green-900/80 mt-2 text-sm">Resizing is performed in your browser using client-side processing. No server upload.</p></section>
+
+<section class="mt-8 bg-green-50 border border-green-100 rounded-2xl p-5"><h2 class="font-bold text-green-800 text-lg">🔒 Your Image Privacy</h2><p class="text-green-900/80 mt-2 text-sm leading-6">Image resizing is performed directly in your browser using client-side processing. Your image is not uploaded to an Antokia server.</p></section>
+
+<section class="mt-12 bg-white rounded-3xl p-6 md:p-10 shadow-sm">
+<h2 class="text-3xl font-bold">Resize Images Online for Free</h2><p class="mt-4 text-gray-600 leading-7">Antokia's free image resizer helps you change the dimensions of your photos without installing software. You can enter custom width and height, maintain aspect ratio, resize by percentage and download the result.</p>
+<h2 class="text-2xl font-bold mt-10">How to Resize an Image</h2><ol class="mt-4 space-y-3 text-gray-600 leading-7 list-decimal pl-6"><li>Upload a JPG, PNG or WEBP image.</li><li>Enter width and height.</li><li>Keep Lock aspect ratio enabled to preserve proportions.</li><li>Select output format and quality.</li><li>Click Resize and download.</li></ol>
+</section>
+
+<section class="mt-12"><h2 class="text-2xl font-bold text-center">Related Free Tools</h2><div class="grid md:grid-cols-3 gap-5 mt-7"><a href="/compress-image.html" class="bg-white p-6 rounded-2xl shadow-sm">🗜️<h3 class="font-bold mt-3">Image Compressor</h3></a><a href="/bg-remover.html" class="bg-white p-6 rounded-2xl shadow-sm">✂️<h3 class="font-bold mt-3">Background Remover</h3></a><a href="/image-to-pdf.html" class="bg-white p-6 rounded-2xl shadow-sm">📄<h3 class="font-bold mt-3">Image to PDF</h3></a></div></section>
+
+<section class="mt-12 bg-white rounded-3xl p-6 md:p-10 shadow-sm"><h2 class="text-3xl font-bold text-center">Frequently Asked Questions</h2><div class="max-w-3xl mx-auto mt-8 space-y-3"><div class="faq border rounded-xl overflow-hidden"><button class="faq-question w-full text-left p-5 font-semibold flex justify-between">How can I resize an image online? <span>+</span></button><div class="faq-answer px-5 pb-5 text-gray-600">Upload your image, enter width and height, choose format and download.</div></div><div class="faq border rounded-xl overflow-hidden"><button class="faq-question w-full text-left p-5 font-semibold flex justify-between">Is this free? <span>+</span></button><div class="faq-answer px-5 pb-5 text-gray-600">Yes, free and no registration required.</div></div></div></section>
+
+<div class="mt-12 min-h-[90px] rounded-xl bg-gray-100 flex items-center justify-center text-gray-400 text-sm">Advertisement</div>
 </main>
-<footer class="bg-gray-900 text-gray-300 mt-16"><div class="max-w-7xl mx-auto px-4 py-12 text-center text-sm text-gray-500">© <span id="year"></span> Antokia</div></footer>
+
+<!-- FINAL FOOTER AS PER YOUR SCREENSHOT -->
+<footer class="bg-white border-t mt-16">
+  <div class="max-w-5xl mx-auto px-4 py-8">
+    <div class="flex flex-wrap justify-center gap-6 text-[15px] text-gray-500">
+      <a href="/" class="hover:text-blue-600">Home</a>
+      <a href="/about" class="hover:text-blue-600">About</a>
+      <a href="/contact" class="hover:text-blue-600">Contact</a>
+      <a href="/privacy" class="hover:text-blue-600">Privacy</a>
+      <a href="/terms" class="hover:text-blue-600">Terms</a>
+      <a href="/blog/" class="hover:text-blue-600">Blog</a>
+    </div>
+    <div class="text-center text-[13px] text-gray-400 mt-4">
+      © 2026 Antokia. Free online tools for everyday tasks.
+    </div>
+  </div>
+</footer>
+
 <script>
 const fileInput=document.getElementById("fileInput"),browseBtn=document.getElementById("browseBtn"),dropZone=document.getElementById("dropZone"),editor=document.getElementById("editor"),previewImage=document.getElementById("previewImage"),imageInfo=document.getElementById("imageInfo"),widthInput=document.getElementById("widthInput"),heightInput=document.getElementById("heightInput"),lockRatio=document.getElementById("lockRatio"),percentage=document.getElementById("percentage"),percentageValue=document.getElementById("percentageValue"),format=document.getElementById("format"),quality=document.getElementById("quality"),qualityValue=document.getElementById("qualityValue"),qualityBox=document.getElementById("qualityBox"),resizeBtn=document.getElementById("resizeBtn"),downloadBtn=document.getElementById("downloadBtn"),newImageBtn=document.getElementById("newImageBtn"),status=document.getElementById("status");
 let originalImage=new Image(),originalFile=null,originalWidth=0,originalHeight=0,ratio=1,outputBlob=null,currentObjectURL=null;
-document.getElementById("year").textContent=new Date().getFullYear();
 browseBtn.addEventListener("click",()=>fileInput.click());
 dropZone.addEventListener("click",(e)=>{if(e.target!==browseBtn&&!e.target.closest("#browseBtn")) fileInput.click();});
 fileInput.addEventListener("change",function(){if(this.files&&this.files[0]) loadImage(this.files[0]);});
@@ -68,9 +94,8 @@ document.querySelectorAll(".preset").forEach(b=>b.addEventListener("click",funct
 quality.addEventListener("input",function(){qualityValue.textContent=this.value+"%";});
 format.addEventListener("change",function(){if(this.value==="image/png"){qualityBox.style.opacity="0.5";quality.disabled=true;}else{qualityBox.style.opacity="1";quality.disabled=false;}});
 resizeBtn.addEventListener("click",function(){
-if(!originalImage.src){status.textContent="Please upload an image first.";status.className="text-center text-sm mt-4 text-red-600";return;}
+if(!originalImage.src){status.textContent="Please upload an image first.";return;}
 const tw=parseInt(widthInput.value),th=parseInt(heightInput.value);
-if(!tw||!th){status.textContent="Enter valid dimensions.";return;}
 status.textContent="Resizing...";status.className="text-center text-sm mt-4 text-blue-600";
 setTimeout(()=>{
 const canvas=document.createElement("canvas");canvas.width=tw;canvas.height=th;
@@ -79,7 +104,6 @@ if(format.value==="image/jpeg"){ctx.fillStyle="#ffffff";ctx.fillRect(0,0,tw,th);
 ctx.drawImage(originalImage,0,0,tw,th);
 const q=parseInt(quality.value)/100;
 canvas.toBlob((blob)=>{
-if(!blob){status.textContent="Unable to create image.";return;}
 outputBlob=blob;status.innerHTML=`<div class="bg-green-50 border border-green-200 text-green-800 rounded-xl p-4 mt-3"><strong>Resized: ${tw} × ${th}px • ${formatBytes(blob.size)}</strong></div>`;
 downloadBtn.classList.remove("hidden");
 const url=URL.createObjectURL(blob);previewImage.src=url;setTimeout(()=>URL.revokeObjectURL(url),2000);
@@ -94,6 +118,7 @@ newImageBtn.addEventListener("click",function(){
 fileInput.value="";editor.classList.add("hidden");downloadBtn.classList.add("hidden");status.textContent="";previewImage.removeAttribute("src");outputBlob=null;originalFile=null;
 if(currentObjectURL){URL.revokeObjectURL(currentObjectURL);currentObjectURL=null;}
 });
+document.querySelectorAll(".faq-question").forEach(btn=>{btn.addEventListener("click",function(){const ans=this.nextElementSibling;const open=ans.classList.contains("open");document.querySelectorAll(".faq-answer").forEach(a=>a.classList.remove("open"));document.querySelectorAll(".faq-question span").forEach(s=>s.textContent="+");if(!open){ans.classList.add("open");this.querySelector("span").textContent="−";}});});
 function formatBytes(b){if(b===0) return "0 Bytes";const u=["Bytes","KB","MB","GB"];const i=Math.floor(Math.log(b)/Math.log(1024));return parseFloat((b/Math.pow(1024,i)).toFixed(2))+" "+u[i];}
 </script>
 </body>
