@@ -1,6 +1,1001 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>How to Calculate EMI for Home Loan | Antokia</title></head><body style="font-family:Arial;max-width:800px;margin:auto;padding:20px;line-height:1.7;">
-<a href="/blog/">← Blog</a> | <a href="/">Home</a>
-<h1>How to Calculate EMI for Loan</h1><p>EMI = [P x R x (1+R)^N] / [(1+R)^N-1]. Difficult? Use our free calculator.</p>
-<h2>Example</h2><p>Loan 5 Lakh, 9% interest, 5 years = EMI ~ Rs 10,379</p>
-<h2>Steps</h2><ol><li>Open Antokia EMI Calculator</li><li>Enter Loan Amount, Rate, Years</li><li>Get monthly EMI + Total Interest instantly</li></ol>
-<p><a href="/emi-calculator.html">Calculate EMI Now →</a></p></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>How to Calculate EMI for Loan | EMI Formula & Example | Antokia</title>
+
+<meta name="description" content="Learn how to calculate loan EMI using the EMI formula with a simple example. Understand principal, interest rate, tenure and monthly EMI. Use Antokia's free EMI Calculator.">
+
+<meta name="keywords" content="how to calculate EMI, EMI calculator, loan EMI calculator, EMI formula, home loan EMI, personal loan EMI, calculate loan EMI">
+
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://antokia.com/how-to-calculate-emi.html">
+
+<meta property="og:title" content="How to Calculate EMI for Loan | Antokia">
+<meta property="og:description" content="Learn how loan EMI is calculated with a simple formula, example and step-by-step guide.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://antokia.com/how-to-calculate-emi.html">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #f5f5fa;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #222;
+}
+
+.antokia-red {
+    color: #e5322d;
+}
+
+.btn-red {
+    background: #e5322d;
+    color: #fff;
+}
+
+.btn-red:hover {
+    background: #c92521;
+}
+
+.soft-card {
+    background: #fff;
+    border: 1px solid #e7e7ed;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0,0,0,.05);
+}
+
+.ad-box {
+    min-height: 90px;
+    border: 1px dashed #d5d5dd;
+    border-radius: 12px;
+    background: #fafafd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-size: 13px;
+}
+
+.article-content {
+    color: #444;
+    line-height: 1.85;
+    font-size: 16px;
+}
+
+.article-content h2 {
+    color: #222;
+    font-size: 25px;
+    font-weight: 700;
+    margin-top: 34px;
+    margin-bottom: 14px;
+}
+
+.article-content h3 {
+    color: #222;
+    font-size: 21px;
+    font-weight: 700;
+    margin-top: 28px;
+    margin-bottom: 12px;
+}
+
+.article-content p {
+    margin-bottom: 17px;
+}
+
+.article-content ul,
+.article-content ol {
+    margin: 12px 0 20px 24px;
+}
+
+.article-content li {
+    margin-bottom: 9px;
+}
+
+.formula-box {
+    background: #fff5f5;
+    border-left: 4px solid #e5322d;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px 0;
+    overflow-x: auto;
+}
+
+.formula {
+    font-size: 18px;
+    font-weight: 700;
+    color: #e5322d;
+    margin-top: 10px;
+    white-space: nowrap;
+}
+
+.example-box {
+    background: #f5f8ff;
+    border: 1px solid #dce6ff;
+    border-radius: 14px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.result-box {
+    background: #fff7ed;
+    border: 1px solid #fed7aa;
+    border-radius: 14px;
+    padding: 20px;
+    margin-top: 18px;
+}
+
+.info-box {
+    background: #f0f9ff;
+    border: 1px solid #d7efff;
+    border-radius: 14px;
+    padding: 18px;
+    margin: 20px 0;
+}
+
+.faq-item {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.faq-question {
+    width: 100%;
+    padding: 18px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.faq-answer {
+    display: none;
+    padding: 0 0 18px;
+    color: #555;
+    line-height: 1.7;
+}
+
+.faq-item.open .faq-answer {
+    display: block;
+}
+
+.faq-item.open .faq-icon {
+    transform: rotate(45deg);
+}
+
+.tool-card {
+    transition: .2s ease;
+}
+
+.tool-card:hover {
+    transform: translateY(-3px);
+    border-color: #e5322d;
+    box-shadow: 0 8px 20px rgba(0,0,0,.07);
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="sticky top-0 z-50 bg-white border-b border-gray-200">
+
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+
+        <a href="/" class="flex items-center gap-2">
+
+            <div class="w-10 h-10 rounded-xl bg-red-600 text-white flex items-center justify-center font-bold text-lg">
+                A
+            </div>
+
+            <div>
+                <div class="text-xl font-bold antokia-red">
+                    Antokia
+                </div>
+
+                <div class="text-[11px] text-gray-500">
+                    Free Online Tools
+                </div>
+            </div>
+
+        </a>
+
+        <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+
+            <a href="/" class="hover:text-red-600">
+                Home
+            </a>
+
+            <a href="/blog.html" class="text-red-600">
+                Blog
+            </a>
+
+            <a href="/about.html" class="hover:text-red-600">
+                About
+            </a>
+
+            <a href="/contact.html" class="hover:text-red-600">
+                Contact
+            </a>
+
+        </nav>
+
+        <a href="/" class="btn-red px-4 py-2 rounded-full text-sm font-semibold">
+            <i class="fa-solid fa-house mr-1"></i>
+            Home
+        </a>
+
+    </div>
+
+</header>
+
+
+<main class="max-w-6xl mx-auto px-4 py-6">
+
+    <!-- TOP AD -->
+    <div class="ad-box mb-6">
+        Advertisement
+    </div>
+
+
+    <!-- BREADCRUMB -->
+    <div class="text-sm text-gray-500 mb-5">
+
+        <a href="/" class="hover:text-red-600">
+            Home
+        </a>
+
+        <span class="mx-2">›</span>
+
+        <a href="/blog.html" class="hover:text-red-600">
+            Blog
+        </a>
+
+        <span class="mx-2">›</span>
+
+        <span>
+            EMI Calculator Guide
+        </span>
+
+    </div>
+
+
+    <!-- ARTICLE -->
+    <article class="soft-card overflow-hidden">
+
+        <!-- ARTICLE HEADER -->
+        <div class="p-6 md:p-10 border-b border-gray-100">
+
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 text-red-600 text-xs font-semibold mb-4">
+
+                <i class="fa-solid fa-calculator"></i>
+
+                Loan EMI Guide
+
+            </div>
+
+            <h1 class="text-3xl md:text-4xl font-bold leading-tight mb-4">
+                How to Calculate EMI for a Loan
+            </h1>
+
+            <p class="text-lg text-gray-600 leading-7 max-w-3xl">
+                Learn how monthly loan EMI is calculated, understand the EMI
+                formula and see a simple example using loan amount, interest
+                rate and tenure.
+            </p>
+
+            <div class="flex flex-wrap items-center gap-4 mt-5 text-sm text-gray-500">
+
+                <span>
+                    <i class="fa-regular fa-clock mr-1"></i>
+                    Easy Guide
+                </span>
+
+                <span>
+                    <i class="fa-solid fa-money-bill-wave mr-1"></i>
+                    Loan EMI
+                </span>
+
+                <span>
+                    <i class="fa-solid fa-globe mr-1"></i>
+                    Antokia.com
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- ARTICLE CONTENT -->
+        <div class="p-6 md:p-10 article-content">
+
+            <p>
+                EMI stands for <strong>Equated Monthly Instalment</strong>.
+                It is the amount a borrower generally pays every month toward
+                a loan. An EMI usually includes both the principal amount and
+                the interest charged on the outstanding loan balance.
+            </p>
+
+            <p>
+                Whether you are checking a home loan, personal loan, car loan
+                or another fixed-rate loan, understanding EMI can help you
+                estimate your monthly repayment before applying for a loan.
+            </p>
+
+
+            <h2>
+                What Is EMI?
+            </h2>
+
+            <p>
+                EMI is a fixed periodic payment used to repay a loan over a
+                specified period. The exact amount depends mainly on the loan
+                principal, interest rate and loan tenure.
+            </p>
+
+            <div class="info-box">
+
+                <div class="flex gap-3">
+
+                    <div class="text-blue-600 text-xl">
+                        <i class="fa-solid fa-circle-info"></i>
+                    </div>
+
+                    <div>
+
+                        <strong class="text-gray-900">
+                            In simple words:
+                        </strong>
+
+                        <p class="mb-0 mt-1">
+                            A higher loan amount or interest rate generally
+                            increases the EMI, while a longer repayment period
+                            generally reduces the monthly EMI but can increase
+                            the total interest paid.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <h2>
+                EMI Calculation Formula
+            </h2>
+
+            <p>
+                The commonly used mathematical formula for calculating EMI is:
+            </p>
+
+
+            <div class="formula-box">
+
+                <strong class="text-gray-900">
+                    EMI Formula
+                </strong>
+
+                <div class="formula">
+                    EMI = [P × R × (1 + R)<sup>N</sup>] ÷ [(1 + R)<sup>N</sup> − 1]
+                </div>
+
+                <div class="mt-4 text-sm text-gray-600">
+
+                    <p class="mb-2">
+                        <strong>P</strong> = Principal loan amount
+                    </p>
+
+                    <p class="mb-2">
+                        <strong>R</strong> = Monthly interest rate
+                    </p>
+
+                    <p class="mb-0">
+                        <strong>N</strong> = Number of monthly instalments
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <h2>
+                How to Calculate EMI Step by Step
+            </h2>
+
+            <ol>
+
+                <li>
+                    Enter the total loan amount.
+                </li>
+
+                <li>
+                    Convert the annual interest rate into a monthly rate.
+                </li>
+
+                <li>
+                    Convert the loan tenure from years into the total number
+                    of monthly instalments.
+                </li>
+
+                <li>
+                    Apply the EMI formula.
+                </li>
+
+                <li>
+                    The result gives the approximate monthly EMI for the
+                    entered loan details.
+                </li>
+
+            </ol>
+
+
+            <h2>
+                Example: Calculate EMI for a ₹5 Lakh Loan
+            </h2>
+
+            <div class="example-box">
+
+                <div class="grid sm:grid-cols-3 gap-5">
+
+                    <div>
+
+                        <div class="text-sm text-gray-500 mb-1">
+                            Loan Amount
+                        </div>
+
+                        <div class="font-bold text-lg">
+                            ₹5,00,000
+                        </div>
+
+                    </div>
+
+
+                    <div>
+
+                        <div class="text-sm text-gray-500 mb-1">
+                            Interest Rate
+                        </div>
+
+                        <div class="font-bold text-lg">
+                            9% per year
+                        </div>
+
+                    </div>
+
+
+                    <div>
+
+                        <div class="text-sm text-gray-500 mb-1">
+                            Loan Tenure
+                        </div>
+
+                        <div class="font-bold text-lg">
+                            5 Years
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="result-box">
+
+                    <div class="text-sm text-gray-500 mb-1">
+                        Approximate Monthly EMI
+                    </div>
+
+                    <div class="text-2xl font-bold text-red-600">
+                        ₹10,379
+                    </div>
+
+                    <p class="text-sm text-gray-500 mt-2 mb-0">
+                        The exact amount may vary slightly depending on the
+                        calculation method and lender terms.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <h2>
+                Factors That Affect Your EMI
+            </h2>
+
+            <ul>
+
+                <li>
+                    <strong>Loan Amount:</strong> A larger principal generally
+                    results in a higher EMI.
+                </li>
+
+                <li>
+                    <strong>Interest Rate:</strong> A higher interest rate
+                    generally increases the EMI and total interest cost.
+                </li>
+
+                <li>
+                    <strong>Loan Tenure:</strong> A longer tenure generally
+                    reduces the monthly EMI but may increase total interest
+                    paid over the loan period.
+                </li>
+
+            </ul>
+
+
+            <h2>
+                EMI vs Total Interest
+            </h2>
+
+            <p>
+                The monthly EMI is not the same as the total cost of borrowing.
+                Over the complete loan tenure, the borrower may pay more than
+                the original principal because of interest.
+            </p>
+
+            <p>
+                Therefore, while comparing loan options, it can be useful to
+                look at both the monthly EMI and the total interest payable,
+                rather than considering the EMI alone.
+            </p>
+
+
+            <h2>
+                Easy Method: Use Antokia EMI Calculator
+            </h2>
+
+            <p>
+                Manual EMI calculations can be time-consuming. You can use the
+                free Antokia EMI Calculator to quickly estimate your monthly
+                payment.
+            </p>
+
+            <ol>
+
+                <li>
+                    Open the
+                    <a href="/emi-calculator.html"
+                       class="text-red-600 font-semibold hover:underline">
+                        Antokia EMI Calculator
+                    </a>.
+                </li>
+
+                <li>
+                    Enter the loan amount.
+                </li>
+
+                <li>
+                    Enter the applicable interest rate.
+                </li>
+
+                <li>
+                    Enter the loan tenure.
+                </li>
+
+                <li>
+                    Calculate your estimated monthly EMI and review the result.
+                </li>
+
+            </ol>
+
+
+            <div class="text-center my-8">
+
+                <a href="/emi-calculator.html"
+                   class="inline-flex items-center gap-2 btn-red px-6 py-3 rounded-full font-semibold shadow-sm">
+
+                    <i class="fa-solid fa-calculator"></i>
+
+                    Calculate EMI Now
+
+                </a>
+
+            </div>
+
+
+            <h2>
+                Frequently Asked Questions
+            </h2>
+
+
+            <div class="mt-4">
+
+                <div class="faq-item">
+
+                    <button class="faq-question">
+
+                        <span>
+                            What is EMI?
+                        </span>
+
+                        <span class="faq-icon transition-transform">
+                            +
+                        </span>
+
+                    </button>
+
+                    <div class="faq-answer">
+                        EMI stands for Equated Monthly Instalment. It is a
+                        periodic payment made toward repayment of a loan,
+                        generally consisting of principal and interest.
+                    </div>
+
+                </div>
+
+
+                <div class="faq-item">
+
+                    <button class="faq-question">
+
+                        <span>
+                            What is the formula for calculating EMI?
+                        </span>
+
+                        <span class="faq-icon transition-transform">
+                            +
+                        </span>
+
+                    </button>
+
+                    <div class="faq-answer">
+                        The commonly used formula is EMI = [P × R ×
+                        (1 + R)<sup>N</sup>] ÷ [(1 + R)<sup>N</sup> − 1],
+                        where P is the principal, R is the monthly interest
+                        rate and N is the number of monthly instalments.
+                    </div>
+
+                </div>
+
+
+                <div class="faq-item">
+
+                    <button class="faq-question">
+
+                        <span>
+                            Does a longer loan tenure reduce EMI?
+                        </span>
+
+                        <span class="faq-icon transition-transform">
+                            +
+                        </span>
+
+                    </button>
+
+                    <div class="faq-answer">
+                        Generally, a longer repayment tenure reduces the
+                        monthly EMI for the same loan amount and interest rate.
+                        However, the total interest paid over the full tenure
+                        can be higher.
+                    </div>
+
+                </div>
+
+
+                <div class="faq-item">
+
+                    <button class="faq-question">
+
+                        <span>
+                            Is EMI the same for every loan?
+                        </span>
+
+                        <span class="faq-icon transition-transform">
+                            +
+                        </span>
+
+                    </button>
+
+                    <div class="faq-answer">
+                        No. EMI depends on factors such as loan amount,
+                        interest rate, tenure and the repayment structure
+                        applicable to the loan.
+                    </div>
+
+                </div>
+
+
+                <div class="faq-item">
+
+                    <button class="faq-question">
+
+                        <span>
+                            Can I calculate EMI online?
+                        </span>
+
+                        <span class="faq-icon transition-transform">
+                            +
+                        </span>
+
+                    </button>
+
+                    <div class="faq-answer">
+                        Yes. You can use the Antokia EMI Calculator to estimate
+                        the monthly EMI by entering the loan amount, interest
+                        rate and tenure.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <h2>
+                Conclusion
+            </h2>
+
+            <p>
+                EMI calculation becomes easier when you understand the three
+                main inputs: loan amount, interest rate and repayment tenure.
+                The EMI formula can be used for manual calculations, while an
+                online calculator can provide a quicker estimate.
+            </p>
+
+            <p>
+                To calculate your loan EMI quickly, try the
+                <a href="/emi-calculator.html"
+                   class="text-red-600 font-semibold hover:underline">
+                    free Antokia EMI Calculator
+                </a>.
+            </p>
+
+        </div>
+
+    </article>
+
+
+    <!-- MIDDLE AD -->
+    <div class="ad-box my-7">
+        Advertisement
+    </div>
+
+
+    <!-- RELATED TOOLS -->
+    <section class="soft-card p-6 md:p-8 mb-7">
+
+        <h2 class="text-2xl font-bold mb-5">
+            Explore More Free Tools
+        </h2>
+
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+
+
+            <!-- EMI -->
+            <a href="/emi-calculator.html"
+               class="tool-card border rounded-xl p-5">
+
+                <div class="w-11 h-11 rounded-xl bg-red-50 text-red-600 flex items-center justify-center mb-3">
+                    <i class="fa-solid fa-calculator text-lg"></i>
+                </div>
+
+                <h3 class="font-bold">
+                    EMI Calculator
+                </h3>
+
+                <p class="text-sm text-gray-500 mt-1">
+                    Calculate estimated monthly loan EMI easily.
+                </p>
+
+                <div class="text-red-600 text-sm font-semibold mt-3">
+                    Open Tool →
+                </div>
+
+            </a>
+
+
+            <!-- AGE CALCULATOR -->
+            <a href="/age-calculator.html"
+               class="tool-card border rounded-xl p-5">
+
+                <div class="w-11 h-11 rounded-xl bg-red-50 text-red-600 flex items-center justify-center mb-3">
+                    <i class="fa-solid fa-calendar-days text-lg"></i>
+                </div>
+
+                <h3 class="font-bold">
+                    Age Calculator
+                </h3>
+
+                <p class="text-sm text-gray-500 mt-1">
+                    Calculate exact age from your date of birth.
+                </p>
+
+                <div class="text-red-600 text-sm font-semibold mt-3">
+                    Open Tool →
+                </div>
+
+            </a>
+
+
+            <!-- IMAGE COMPRESSOR -->
+            <a href="/compress-image.html"
+               class="tool-card border rounded-xl p-5">
+
+                <div class="w-11 h-11 rounded-xl bg-red-50 text-red-600 flex items-center justify-center mb-3">
+                    <i class="fa-solid fa-compress text-lg"></i>
+                </div>
+
+                <h3 class="font-bold">
+                    Image Compressor
+                </h3>
+
+                <p class="text-sm text-gray-500 mt-1">
+                    Reduce image file size for forms and websites.
+                </p>
+
+                <div class="text-red-600 text-sm font-semibold mt-3">
+                    Open Tool →
+                </div>
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- NAVIGATION -->
+    <div class="flex flex-wrap justify-center gap-3 mb-7">
+
+        <a href="/blog.html"
+           class="px-5 py-2.5 rounded-full border border-gray-300 bg-white text-sm font-semibold hover:border-red-500 hover:text-red-600">
+
+            <i class="fa-solid fa-arrow-left mr-1"></i>
+            Back to Blog
+
+        </a>
+
+        <a href="/"
+           class="px-5 py-2.5 rounded-full btn-red text-sm font-semibold">
+
+            <i class="fa-solid fa-house mr-1"></i>
+            Antokia Home
+
+        </a>
+
+    </div>
+
+
+    <!-- BOTTOM AD -->
+    <div class="ad-box mb-7">
+        Advertisement
+    </div>
+
+</main>
+
+
+<!-- FOOTER -->
+<footer class="bg-[#242424] text-gray-300 mt-10">
+
+    <div class="max-w-6xl mx-auto px-4 py-10">
+
+        <div class="grid md:grid-cols-4 gap-8">
+
+
+            <!-- BRAND -->
+            <div>
+
+                <div class="text-2xl font-bold text-white mb-2">
+                    Antokia
+                </div>
+
+                <p class="text-sm text-gray-400 leading-6">
+                    Free online tools for images, PDFs, documents,
+                    calculators and everyday digital tasks.
+                </p>
+
+            </div>
+
+
+            <!-- EXPLORE -->
+            <div>
+
+                <h3 class="text-white font-bold mb-3">
+                    Explore
+                </h3>
+
+                <div class="space-y-2 text-sm">
+
+                    <a href="/" class="block hover:text-white">
+                        Home
+                    </a>
+
+                    <a href="/blog.html" class="block hover:text-white">
+                        Blog
+                    </a>
+
+                    <a href="/about.html" class="block hover:text-white">
+                        About
+                    </a>
+
+                    <a href="/contact.html" class="block hover:text-white">
+                        Contact
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- LEGAL -->
+            <div>
+
+                <h3 class="text-white font-bold mb-3">
+                    Legal
+                </h3>
+
+                <div class="space-y-2 text-sm">
+
+                    <a href="/privacy.html" class="block hover:text-white">
+                        Privacy Policy
+                    </a>
+
+                    <a href="/terms.html" class="block hover:text-white">
+                        Terms & Conditions
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- SOCIAL -->
+            <div>
+
+                <h3 class="text-white font-bold mb-3">
+                    Follow Antokia
+                </h3>
+
+                <a
+                    href="https://www.instagram.com/antokia.insta"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 text-sm hover:text-white"
+                >
+
+                    <i class="fa-brands fa-instagram text-lg"></i>
+                    Instagram
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="border-t border-gray-700 mt-8 pt-5 text-center text-xs text-gray-500">
+
+            © 2026 Antokia. All rights reserved.
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+document.querySelectorAll(".faq-question").forEach(question => {
+
+    question.addEventListener("click", function() {
+
+        const item = this.parentElement;
+
+        item.classList.toggle("open");
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
