@@ -6,52 +6,41 @@
 
 <title>PDF to Word Converter - Free Online PDF to DOCX | Antokia</title>
 
-<meta name="description" content="Convert PDF to editable Word DOCX online for free with Antokia. Fast browser-based PDF to Word converter with drag and drop support.">
-<meta name="keywords" content="PDF to Word converter, PDF to DOCX, convert PDF to Word, free PDF converter, PDF Word converter online, PDF to editable Word">
+<meta name="description" content="Convert PDF to Word DOCX online for free with Antokia. Fast, secure and browser-based PDF to Word converter with no upload to server.">
+<meta name="keywords" content="PDF to Word, PDF to DOCX, PDF converter, convert PDF to Word, free PDF to Word converter, online PDF converter, Antokia">
 <meta name="robots" content="index, follow">
-
 <link rel="canonical" href="https://antokia.com/pdf-to-word.html">
 
-<meta property="og:type" content="website">
 <meta property="og:title" content="PDF to Word Converter - Free Online | Antokia">
-<meta property="og:description" content="Convert PDF files to editable Word DOCX files directly in your browser with Antokia.">
+<meta property="og:description" content="Convert PDF files to editable Word DOCX files online for free with Antokia.">
+<meta property="og:type" content="website">
 <meta property="og:url" content="https://antokia.com/pdf-to-word.html">
-<meta property="og:site_name" content="Antokia">
 
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="PDF to Word Converter - Free Online | Antokia">
-<meta name="twitter:description" content="Free browser-based PDF to Word converter with drag and drop support.">
+<meta name="twitter:title" content="PDF to Word Converter - Free | Antokia">
+<meta name="twitter:description" content="Free online PDF to Word converter by Antokia.">
 
 <script src="https://cdn.tailwindcss.com"></script>
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-
 <script src="https://unpkg.com/docx@7.8.2/build/index.js"></script>
 
-
-<!-- WebApplication Schema -->
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
   "@type":"WebApplication",
-  "name":"Antokia PDF to Word Converter",
+  "name":"PDF to Word Converter",
   "url":"https://antokia.com/pdf-to-word.html",
-  "description":"Free browser-based PDF to Word DOCX converter.",
   "applicationCategory":"UtilitiesApplication",
-  "operatingSystem":"Any",
+  "operatingSystem":"Web Browser",
+  "description":"Free online PDF to Word DOCX converter.",
   "offers":{
     "@type":"Offer",
     "price":"0",
-    "priceCurrency":"INR"
+    "priceCurrency":"USD"
   }
 }
 </script>
 
-
-<!-- Breadcrumb Schema -->
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -61,20 +50,18 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
       "@type":"ListItem",
       "position":1,
       "name":"Home",
-      "item":"https://antokia.com/"
+      "item":"https://antokia.com/index.html"
     },
     {
       "@type":"ListItem",
       "position":2,
-      "name":"PDF to Word Converter",
+      "name":"PDF to Word",
       "item":"https://antokia.com/pdf-to-word.html"
     }
   ]
 }
 </script>
 
-
-<!-- FAQ Schema -->
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -82,18 +69,10 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
   "mainEntity":[
     {
       "@type":"Question",
-      "name":"How do I convert PDF to Word?",
+      "name":"Is PDF to Word converter free?",
       "acceptedAnswer":{
         "@type":"Answer",
-        "text":"Select a PDF file, click Convert PDF to Word, and download the generated DOCX file."
-      }
-    },
-    {
-      "@type":"Question",
-      "name":"Is the PDF to Word converter free?",
-      "acceptedAnswer":{
-        "@type":"Answer",
-        "text":"Yes. Antokia PDF to Word Converter is free to use online."
+        "text":"Yes. Antokia PDF to Word converter is available free online."
       }
     },
     {
@@ -101,1788 +80,952 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
       "name":"Are my PDF files uploaded to a server?",
       "acceptedAnswer":{
         "@type":"Answer",
-        "text":"The PDF conversion is performed in the browser and the selected file is not intentionally uploaded to an Antokia server."
+        "text":"The conversion is performed in your browser using client-side processing."
       }
     },
     {
       "@type":"Question",
-      "name":"Can scanned PDFs be converted?",
+      "name":"Can scanned PDFs be converted to editable Word files?",
       "acceptedAnswer":{
         "@type":"Answer",
-        "text":"Scanned or image-only PDFs may not produce editable text because OCR is required to recognize text from images."
+        "text":"Image-only scanned PDFs may require OCR and may not convert into editable text accurately."
       }
     }
   ]
 }
 </script>
 
-
 <style>
+html{
+  scroll-behavior:smooth;
+}
 
 body{
-  background:#f5f5fa;
+  background:#f5f7fb;
 }
 
-.antokia-red{
-  color:#e5322d;
+.tool-card{
+  transition:all .2s ease;
 }
 
-.converter-card{
-  box-shadow:0 12px 35px rgba(0,0,0,.07);
+.tool-card:hover{
+  transform:translateY(-2px);
 }
 
 .drop-zone{
-  border:2px dashed #d1d5db;
-  transition:.25s;
+  transition:all .2s ease;
 }
 
-.drop-zone:hover,
-.drop-zone.drag-active{
-  border-color:#e5322d;
-  background:#fff5f4;
-}
-
-.feature-card{
-  transition:.2s;
-}
-
-.feature-card:hover{
-  transform:translateY(-3px);
+.drop-zone.dragover{
+  background:#eef2ff;
+  border-color:#4f46e5;
 }
 
 .progress-bar{
   transition:width .3s ease;
 }
-
-.faq-answer{
-  display:none;
-}
-
-.faq-item.active .faq-answer{
-  display:block;
-}
-
-.faq-item.active .faq-icon{
-  transform:rotate(180deg);
-}
-
-.faq-icon{
-  transition:.2s;
-}
-
 </style>
-
 </head>
-
 
 <body class="text-gray-800">
 
-
 <!-- HEADER -->
 <header class="bg-white shadow-sm sticky top-0 z-50">
+  <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between gap-4">
 
-<div class="max-w-6xl mx-auto px-4 py-3">
+    <a href="index.html" class="text-2xl font-extrabold text-red-600">
+      Antokia
+    </a>
 
-<div class="flex items-center justify-between">
+    <nav class="hidden md:flex items-center gap-5 text-sm font-medium">
+      <a href="index.html" class="hover:text-red-600">Home</a>
+      <a href="blog.html" class="hover:text-red-600">Blog</a>
+      <a href="about.html" class="hover:text-red-600">About</a>
+      <a href="contact.html" class="hover:text-red-600">Contact</a>
+    </nav>
 
-<a href="index.html"
-class="text-2xl font-extrabold text-[#e5322d]">
-Antokia
-</a>
+    <a href="index.html"
+       class="text-sm font-semibold border border-gray-300 px-4 py-2 rounded-lg hover:bg-gray-50">
+      ← All Tools
+    </a>
 
-
-<nav class="hidden md:flex items-center gap-6 text-sm font-medium">
-
-<a href="index.html" class="hover:text-[#e5322d]">
-Home
-</a>
-
-<a href="blog.html" class="hover:text-[#e5322d]">
-Blog
-</a>
-
-<a href="about.html" class="hover:text-[#e5322d]">
-About
-</a>
-
-<a href="contact.html" class="hover:text-[#e5322d]">
-Contact
-</a>
-
-</nav>
-
-
-<a href="index.html"
-class="bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-full text-sm font-semibold">
-
-<i class="fa-solid fa-arrow-left mr-1"></i>
-All Tools
-
-</a>
-
-</div>
-
-</div>
-
+  </div>
 </header>
 
 
-
-<!-- MAIN -->
-<main class="max-w-5xl mx-auto px-4 py-8">
-
-
 <!-- HERO -->
-<section class="text-center">
+<section class="max-w-5xl mx-auto px-4 pt-10 pb-5 text-center">
 
-<div class="inline-flex items-center gap-2 bg-red-50 text-[#e5322d] px-4 py-2 rounded-full text-xs font-bold mb-4">
+  <span class="inline-block bg-red-50 text-red-600 px-4 py-2 rounded-full text-xs font-bold mb-4">
+    FREE ONLINE PDF TOOL
+  </span>
 
-<i class="fa-solid fa-file-word"></i>
+  <h1 class="text-3xl md:text-5xl font-extrabold text-gray-900">
+    PDF to Word Converter
+  </h1>
 
-FREE PDF TO WORD TOOL
-
-</div>
-
-
-<h1 class="text-3xl md:text-4xl font-extrabold text-gray-900">
-
-PDF to Word Converter
-
-</h1>
-
-
-<p class="text-gray-500 mt-2 max-w-2xl mx-auto">
-
-Convert PDF files into editable Word DOCX documents quickly
-and easily. Free, browser-based and no registration required.
-
-</p>
+  <p class="mt-4 text-gray-600 max-w-2xl mx-auto">
+    Convert PDF files to editable Word DOCX files quickly and easily.
+    Free, simple and browser-based.
+  </p>
 
 </section>
-
 
 
 <!-- TOP AD -->
-<div class="bg-gray-200 rounded-xl h-24 mt-7 flex items-center justify-center text-gray-500 text-sm">
-
-Advertisement
-
+<div class="max-w-5xl mx-auto px-4">
+  <div class="h-24 bg-gray-200 rounded-2xl flex items-center justify-center text-xs text-gray-500">
+    Advertisement
+  </div>
 </div>
 
 
+<!-- MAIN TOOL -->
+<main class="max-w-4xl mx-auto px-4 py-8">
 
-<!-- CONVERTER -->
-<section class="bg-white rounded-3xl converter-card p-6 md:p-9 mt-7 border border-gray-100">
+  <div class="bg-white rounded-3xl shadow-lg border border-gray-100 p-5 md:p-8 tool-card">
 
+    <div class="text-center mb-6">
+      <h2 class="text-xl md:text-2xl font-bold">
+        Convert PDF to Word
+      </h2>
 
-<div class="text-center mb-7">
+      <p class="text-sm text-gray-500 mt-2">
+        Select or drag & drop your PDF file below
+      </p>
+    </div>
 
-<div class="w-16 h-16 mx-auto bg-red-50 text-[#e5322d] rounded-2xl flex items-center justify-center text-3xl">
 
-<i class="fa-solid fa-file-pdf"></i>
+    <!-- DROP ZONE -->
+    <div id="dropZone"
+         class="drop-zone border-2 border-dashed border-indigo-300 bg-indigo-50 rounded-2xl p-8 md:p-12 text-center cursor-pointer">
 
-</div>
+      <div class="text-5xl mb-4">📄</div>
 
+      <h3 class="font-bold text-lg">
+        Drag & Drop PDF Here
+      </h3>
 
-<h2 class="text-2xl font-extrabold mt-4">
+      <p class="text-sm text-gray-500 mt-2">
+        or click below to choose a PDF file
+      </p>
 
-Convert PDF to DOCX
+      <button type="button"
+              id="chooseBtn"
+              class="mt-5 bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-xl font-bold">
+        Choose PDF File
+      </button>
 
-</h2>
+      <input
+        type="file"
+        id="fileInput"
+        accept=".pdf,application/pdf"
+        class="hidden"
+      >
 
+    </div>
 
-<p class="text-sm text-gray-500 mt-1">
 
-Select your PDF file or drag and drop it below.
+    <!-- FILE INFO -->
+    <div id="fileBox"
+         class="hidden mt-5 bg-gray-50 border rounded-xl p-4">
 
-</p>
+      <div class="flex items-center justify-between gap-3">
 
-</div>
+        <div class="min-w-0">
+          <p class="font-bold text-sm">Selected File</p>
 
+          <p id="fileName"
+             class="text-sm text-gray-600 truncate mt-1"></p>
 
+          <p id="fileSize"
+             class="text-xs text-gray-400 mt-1"></p>
+        </div>
 
-<!-- DROP ZONE -->
-<div id="dropZone"
-class="drop-zone rounded-2xl p-8 md:p-12 text-center cursor-pointer bg-gray-50">
+        <button type="button"
+                id="removeBtn"
+                class="text-red-600 text-sm font-bold">
+          Remove
+        </button>
 
+      </div>
 
-<input
-type="file"
-id="fileInput"
-accept=".pdf,application/pdf"
-hidden
->
+    </div>
 
 
-<div class="w-16 h-16 mx-auto bg-white border rounded-2xl flex items-center justify-center text-2xl text-[#e5322d]">
+    <!-- CONVERT BUTTON -->
+    <button type="button"
+            id="convertBtn"
+            class="hidden w-full mt-5 bg-red-600 hover:bg-red-700 text-white py-4 rounded-xl font-bold text-lg">
+      Convert PDF to Word
+    </button>
 
-<i class="fa-solid fa-cloud-arrow-up"></i>
 
-</div>
+    <!-- STATUS -->
+    <div id="status"
+         class="text-center text-sm font-semibold mt-5 text-gray-600">
+    </div>
 
 
-<h3 class="font-extrabold text-lg mt-5">
+    <!-- PROGRESS -->
+    <div id="progressBox" class="hidden mt-4">
 
-Drop your PDF here
+      <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+        <div id="progressBar"
+             class="progress-bar bg-indigo-600 h-3 rounded-full"
+             style="width:0%">
+        </div>
+      </div>
 
-</h3>
+      <p id="progressText"
+         class="text-xs text-center text-gray-500 mt-2">
+        0%
+      </p>
 
+    </div>
 
-<p class="text-sm text-gray-500 mt-2">
 
-or click to choose a PDF file
+    <!-- ERROR -->
+    <div id="errorBox"
+         class="hidden mt-5 bg-red-50 border border-red-200 text-red-700 rounded-xl p-4 text-sm">
+    </div>
 
-</p>
 
+    <!-- DOWNLOAD -->
+    <div id="downloadBox"
+         class="hidden mt-6 bg-green-50 border border-green-200 rounded-2xl p-5 text-center">
 
-<p class="text-xs text-gray-400 mt-3">
+      <div class="text-4xl mb-2">✅</div>
 
-Supported format: PDF
+      <h3 class="font-bold text-green-700">
+        Conversion Completed
+      </h3>
 
-</p>
+      <p id="doneText"
+         class="text-sm text-gray-600 mt-1">
+      </p>
 
+      <button type="button"
+              id="downloadBtn"
+              class="mt-4 bg-green-600 hover:bg-green-700 text-white px-7 py-3 rounded-xl font-bold">
+        Download Word File
+      </button>
 
-<button
-type="button"
-id="chooseBtn"
-class="mt-5 bg-[#e5322d] hover:bg-red-700 text-white px-6 py-3 rounded-xl font-bold">
+    </div>
 
-<i class="fa-solid fa-folder-open mr-2"></i>
 
-Choose PDF
+    <!-- PRIVACY NOTE -->
+    <div class="mt-6 bg-blue-50 border border-blue-100 rounded-xl p-4 text-sm text-blue-800">
+      <strong>Privacy:</strong> PDF processing is performed in your browser.
+      Your selected file is not intentionally uploaded to an Antokia server.
+    </div>
 
-</button>
+  </div>
 
-</div>
 
+  <!-- FEATURES -->
+  <section class="mt-10">
 
+    <h2 class="text-2xl font-bold text-center">
+      PDF to Word Converter Features
+    </h2>
 
-<!-- FILE INFO -->
-<div id="fileInfo"
-class="hidden mt-5 bg-gray-50 border rounded-xl p-4">
+    <div class="grid md:grid-cols-3 gap-5 mt-6">
 
-<div class="flex items-center gap-3">
+      <div class="bg-white rounded-2xl p-5 shadow-sm border">
+        <div class="text-2xl">⚡</div>
+        <h3 class="font-bold mt-3">Fast Conversion</h3>
+        <p class="text-sm text-gray-600 mt-2">
+          Convert PDF text into a Word document directly in your browser.
+        </p>
+      </div>
 
-<div class="w-11 h-11 bg-red-100 text-[#e5322d] rounded-xl flex items-center justify-center">
+      <div class="bg-white rounded-2xl p-5 shadow-sm border">
+        <div class="text-2xl">🔒</div>
+        <h3 class="font-bold mt-3">Browser Based</h3>
+        <p class="text-sm text-gray-600 mt-2">
+          The conversion process runs on your device.
+        </p>
+      </div>
 
-<i class="fa-solid fa-file-pdf"></i>
+      <div class="bg-white rounded-2xl p-5 shadow-sm border">
+        <div class="text-2xl">🆓</div>
+        <h3 class="font-bold mt-3">Free to Use</h3>
+        <p class="text-sm text-gray-600 mt-2">
+          No subscription is required for this basic PDF conversion tool.
+        </p>
+      </div>
 
-</div>
+    </div>
 
+  </section>
 
-<div class="min-w-0 flex-1">
 
-<p id="fileName"
-class="font-bold text-sm truncate"></p>
+  <!-- CONTENT -->
+  <section class="mt-12 bg-white rounded-2xl p-6 md:p-8 border shadow-sm">
 
-<p id="fileSize"
-class="text-xs text-gray-500 mt-1"></p>
+    <h2 class="text-2xl font-bold">
+      What is a PDF to Word Converter?
+    </h2>
 
-</div>
+    <p class="mt-4 text-gray-600 leading-7">
+      A PDF to Word converter changes readable text from a PDF document
+      into a Microsoft Word DOCX file. This can make text easier to edit,
+      reuse and format.
+    </p>
 
+    <h2 class="text-2xl font-bold mt-8">
+      How to Convert PDF to Word
+    </h2>
 
-<button
-type="button"
-id="removeBtn"
-class="text-gray-400 hover:text-red-600"
-title="Remove file">
+    <ol class="list-decimal ml-6 mt-4 space-y-2 text-gray-600">
+      <li>Click the Choose PDF File button.</li>
+      <li>Select your PDF document.</li>
+      <li>Click Convert PDF to Word.</li>
+      <li>Wait for the conversion to finish.</li>
+      <li>Click Download Word File.</li>
+    </ol>
 
-<i class="fa-solid fa-xmark"></i>
+    <h2 class="text-2xl font-bold mt-8">
+      Important Limitation
+    </h2>
 
-</button>
+    <p class="mt-4 text-gray-600 leading-7">
+      This tool extracts selectable text from PDF files. Image-only
+      scanned PDFs may require OCR and may not produce fully editable
+      text. Complex layouts, tables, images and advanced PDF formatting
+      may also not be reproduced exactly in the Word document.
+    </p>
 
-</div>
+  </section>
 
-</div>
 
+  <!-- FAQ -->
+  <section class="mt-10">
 
+    <h2 class="text-2xl font-bold text-center">
+      Frequently Asked Questions
+    </h2>
 
-<!-- CONVERT BUTTON -->
-<button
-id="convertBtn"
-type="button"
-disabled
-class="hidden w-full mt-5 bg-[#e5322d] hover:bg-red-700 disabled:bg-gray-300 disabled:cursor-not-allowed text-white py-4 rounded-xl font-extrabold text-base">
+    <div class="space-y-3 mt-6">
 
-<i class="fa-solid fa-file-arrow-down mr-2"></i>
+      <details class="bg-white border rounded-xl p-4">
+        <summary class="font-bold cursor-pointer">
+          Is this PDF to Word converter free?
+        </summary>
 
-Convert PDF to Word
+        <p class="text-sm text-gray-600 mt-3">
+          Yes. The tool is available free online.
+        </p>
+      </details>
 
-</button>
 
+      <details class="bg-white border rounded-xl p-4">
+        <summary class="font-bold cursor-pointer">
+          Do I need to install software?
+        </summary>
 
+        <p class="text-sm text-gray-600 mt-3">
+          No. The converter works directly in a modern web browser.
+        </p>
+      </details>
 
-<!-- STATUS -->
-<div id="statusBox"
-class="hidden mt-5">
 
-<div class="flex justify-between text-sm mb-2">
+      <details class="bg-white border rounded-xl p-4">
+        <summary class="font-bold cursor-pointer">
+          Can I convert scanned PDFs?
+        </summary>
 
-<span id="statusText"
-class="font-semibold">
-Preparing...
-</span>
+        <p class="text-sm text-gray-600 mt-3">
+          Scanned image-only PDFs may require OCR and may not convert
+          into editable text accurately.
+        </p>
+      </details>
 
-<span id="progressText"
-class="text-gray-500">
-0%
-</span>
+    </div>
 
-</div>
+  </section>
 
 
-<div class="w-full h-3 bg-gray-200 rounded-full overflow-hidden">
+  <!-- RELATED TOOLS -->
+  <section class="mt-12">
 
-<div id="progressBar"
-class="progress-bar h-full bg-[#e5322d] rounded-full"
-style="width:0%">
-</div>
+    <h2 class="text-2xl font-bold text-center">
+      Related Free Tools
+    </h2>
 
-</div>
+    <div class="grid md:grid-cols-3 gap-5 mt-6">
 
-</div>
+      <a href="pdf-to-image.html"
+         class="bg-white border rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-red-300 transition">
 
+        <div class="text-3xl">🖼️</div>
 
+        <h3 class="font-bold mt-3">
+          PDF to Image
+        </h3>
 
-<!-- ERROR -->
-<div id="errorBox"
-class="hidden mt-5 bg-red-50 border border-red-200 text-red-700 rounded-xl p-4 text-sm">
-</div>
+        <p class="text-sm text-gray-500 mt-2">
+          Convert PDF pages into image files.
+        </p>
 
+        <span class="inline-block mt-3 text-red-600 text-sm font-bold">
+          Open Tool →
+        </span>
 
+      </a>
 
-<!-- DOWNLOAD -->
-<div id="downloadBox"
-class="hidden mt-6">
 
-<div class="bg-green-50 border border-green-200 rounded-2xl p-5 text-center">
+      <a href="word-to-pdf.html"
+         class="bg-white border rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-red-300 transition">
 
-<div class="w-12 h-12 mx-auto bg-green-100 text-green-600 rounded-full flex items-center justify-center text-xl">
+        <div class="text-3xl">📝</div>
 
-<i class="fa-solid fa-check"></i>
+        <h3 class="font-bold mt-3">
+          Word to PDF
+        </h3>
 
-</div>
+        <p class="text-sm text-gray-500 mt-2">
+          Convert Word documents to PDF.
+        </p>
 
+        <span class="inline-block mt-3 text-red-600 text-sm font-bold">
+          Open Tool →
+        </span>
 
-<h3 class="font-extrabold text-lg mt-3">
+      </a>
 
-PDF Converted Successfully
 
-</h3>
+      <a href="index.html"
+         class="bg-white border rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-red-300 transition">
 
+        <div class="text-3xl">🧰</div>
 
-<p id="resultInfo"
-class="text-sm text-gray-600 mt-1">
-</p>
+        <h3 class="font-bold mt-3">
+          All Free Tools
+        </h3>
 
+        <p class="text-sm text-gray-500 mt-2">
+          Explore all Antokia online tools.
+        </p>
 
-<button
-id="downloadBtn"
-type="button"
-class="mt-4 bg-green-600 hover:bg-green-700 text-white px-7 py-3 rounded-xl font-bold">
+        <span class="inline-block mt-3 text-red-600 text-sm font-bold">
+          View All Tools →
+        </span>
 
-<i class="fa-solid fa-download mr-2"></i>
+      </a>
 
-Download Word File
+    </div>
 
-</button>
+  </section>
 
-</div>
 
-</div>
-
-
-
-<!-- PRIVACY -->
-<div class="mt-6 bg-blue-50 border border-blue-100 rounded-xl p-4">
-
-<div class="flex gap-3">
-
-<i class="fa-solid fa-shield-halved text-blue-600 mt-1"></i>
-
-<div>
-
-<p class="font-bold text-sm">
-Browser-Based Processing
-</p>
-
-<p class="text-xs text-gray-600 mt-1 leading-5">
-
-Your selected PDF is processed in your browser.
-The file is not intentionally uploaded to an Antokia server.
-
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- FEATURES -->
-<section class="grid md:grid-cols-3 gap-5 mt-7">
-
-
-<div class="feature-card bg-white border rounded-2xl p-5">
-
-<div class="w-11 h-11 bg-red-50 text-[#e5322d] rounded-xl flex items-center justify-center">
-
-<i class="fa-solid fa-bolt"></i>
-
-</div>
-
-<h3 class="font-extrabold mt-4">
-Fast Conversion
-</h3>
-
-<p class="text-sm text-gray-500 mt-2">
-
-Convert supported PDF documents directly in your browser.
-
-</p>
-
-</div>
-
-
-
-<div class="feature-card bg-white border rounded-2xl p-5">
-
-<div class="w-11 h-11 bg-green-50 text-green-600 rounded-xl flex items-center justify-center">
-
-<i class="fa-solid fa-lock"></i>
-
-</div>
-
-<h3 class="font-extrabold mt-4">
-Private Processing
-</h3>
-
-<p class="text-sm text-gray-500 mt-2">
-
-The selected document is processed locally by the tool.
-
-</p>
-
-</div>
-
-
-
-<div class="feature-card bg-white border rounded-2xl p-5">
-
-<div class="w-11 h-11 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center">
-
-<i class="fa-solid fa-file-word"></i>
-
-</div>
-
-<h3 class="font-extrabold mt-4">
-DOCX Output
-</h3>
-
-<p class="text-sm text-gray-500 mt-2">
-
-Download the converted document in Microsoft Word DOCX format.
-
-</p>
-
-</div>
-
-</section>
-
-
-
-<!-- INFORMATION -->
-<section class="bg-white rounded-2xl shadow-sm border p-6 md:p-8 mt-7">
-
-<h2 class="text-2xl font-extrabold">
-What is a PDF to Word Converter?
-</h2>
-
-<p class="text-gray-600 leading-7 mt-3">
-
-A PDF to Word Converter extracts available text from a PDF
-document and creates a Word DOCX file. This makes supported
-PDF content easier to edit, reuse and format.
-
-</p>
-
-<p class="text-gray-600 leading-7 mt-3">
-
-Antokia's PDF to Word Converter works directly in your browser
-and is designed for text-based PDF documents.
-
-</p>
-
-</section>
-
-
-
-<!-- HOW TO -->
-<section class="bg-white rounded-2xl shadow-sm border p-6 md:p-8 mt-6">
-
-<h2 class="text-2xl font-extrabold">
-How to Convert PDF to Word
-</h2>
-
-
-<div class="grid md:grid-cols-4 gap-4 mt-6">
-
-
-<div class="bg-gray-50 rounded-xl p-5">
-
-<div class="w-10 h-10 bg-red-100 text-[#e5322d] rounded-lg flex items-center justify-center font-bold">
-1
-</div>
-
-<h3 class="font-bold mt-4">
-Select PDF
-</h3>
-
-<p class="text-sm text-gray-600 mt-2">
-Choose a PDF from your device.
-</p>
-
-</div>
-
-
-
-<div class="bg-gray-50 rounded-xl p-5">
-
-<div class="w-10 h-10 bg-red-100 text-[#e5322d] rounded-lg flex items-center justify-center font-bold">
-2
-</div>
-
-<h3 class="font-bold mt-4">
-Click Convert
-</h3>
-
-<p class="text-sm text-gray-600 mt-2">
-Start the PDF to Word conversion.
-</p>
-
-</div>
-
-
-
-<div class="bg-gray-50 rounded-xl p-5">
-
-<div class="w-10 h-10 bg-red-100 text-[#e5322d] rounded-lg flex items-center justify-center font-bold">
-3
-</div>
-
-<h3 class="font-bold mt-4">
-Create DOCX
-</h3>
-
-<p class="text-sm text-gray-600 mt-2">
-The Word document is generated automatically.
-</p>
-
-</div>
-
-
-
-<div class="bg-gray-50 rounded-xl p-5">
-
-<div class="w-10 h-10 bg-red-100 text-[#e5322d] rounded-lg flex items-center justify-center font-bold">
-4
-</div>
-
-<h3 class="font-bold mt-4">
-Download
-</h3>
-
-<p class="text-sm text-gray-600 mt-2">
-Download your converted DOCX file.
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- ADVANCED -->
-<section class="bg-white rounded-2xl shadow-sm border p-6 md:p-8 mt-6">
-
-<h2 class="text-2xl font-extrabold">
-Advanced PDF to Word Features
-</h2>
-
-
-<div class="grid md:grid-cols-2 gap-5 mt-6">
-
-
-<div class="flex gap-4">
-
-<div class="w-10 h-10 bg-red-50 text-[#e5322d] rounded-lg flex items-center justify-center shrink-0">
-
-<i class="fa-solid fa-arrows-up-down-left-right"></i>
-
-</div>
-
-<div>
-
-<h3 class="font-bold">
-Drag & Drop Support
-</h3>
-
-<p class="text-sm text-gray-600 mt-1">
-Quickly add your PDF using drag and drop.
-</p>
-
-</div>
-
-</div>
-
-
-
-<div class="flex gap-4">
-
-<div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center shrink-0">
-
-<i class="fa-solid fa-file-lines"></i>
-
-</div>
-
-<div>
-
-<h3 class="font-bold">
-Multi-Page Support
-</h3>
-
-<p class="text-sm text-gray-600 mt-1">
-Process available text from multiple PDF pages.
-</p>
-
-</div>
-
-</div>
-
-
-
-<div class="flex gap-4">
-
-<div class="w-10 h-10 bg-green-50 text-green-600 rounded-lg flex items-center justify-center shrink-0">
-
-<i class="fa-solid fa-shield-halved"></i>
-
-</div>
-
-<div>
-
-<h3 class="font-bold">
-Browser Processing
-</h3>
-
-<p class="text-sm text-gray-600 mt-1">
-The selected file is processed locally in the browser.
-</p>
-
-</div>
-
-</div>
-
-
-
-<div class="flex gap-4">
-
-<div class="w-10 h-10 bg-purple-50 text-purple-600 rounded-lg flex items-center justify-center shrink-0">
-
-<i class="fa-solid fa-download"></i>
-
-</div>
-
-<div>
-
-<h3 class="font-bold">
-Instant DOCX Download
-</h3>
-
-<p class="text-sm text-gray-600 mt-1">
-Download the generated Word document after conversion.
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- IMPORTANT NOTE -->
-<section class="bg-amber-50 border border-amber-200 rounded-2xl p-6 mt-6">
-
-<div class="flex gap-3">
-
-<i class="fa-solid fa-triangle-exclamation text-amber-600 text-xl mt-1"></i>
-
-<div>
-
-<h2 class="font-extrabold">
-Important Note
-</h2>
-
-<p class="text-sm text-gray-700 leading-6 mt-2">
-
-This converter extracts text from PDF files and creates a DOCX
-document. Scanned or image-only PDFs may require OCR.
-Complex layouts, images, tables, fonts and exact formatting
-may not be reproduced exactly.
-
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- FAQ -->
-<section class="bg-white rounded-2xl shadow-sm border p-6 md:p-8 mt-6">
-
-<h2 class="text-2xl font-extrabold">
-Frequently Asked Questions
-</h2>
-
-
-<div class="mt-5 space-y-3">
-
-
-<div class="faq-item border rounded-xl overflow-hidden">
-
-<button class="faq-question w-full flex justify-between items-center text-left p-4 font-semibold">
-
-<span>How do I convert PDF to Word?</span>
-
-<i class="fa-solid fa-chevron-down faq-icon text-gray-500"></i>
-
-</button>
-
-<div class="faq-answer px-4 pb-4 text-sm text-gray-600 leading-6">
-
-Select a PDF file, click Convert PDF to Word and then
-download the generated DOCX file.
-
-</div>
-
-</div>
-
-
-
-<div class="faq-item border rounded-xl overflow-hidden">
-
-<button class="faq-question w-full flex justify-between items-center text-left p-4 font-semibold">
-
-<span>Is this PDF to Word converter free?</span>
-
-<i class="fa-solid fa-chevron-down faq-icon text-gray-500"></i>
-
-</button>
-
-<div class="faq-answer px-4 pb-4 text-sm text-gray-600 leading-6">
-
-Yes. Antokia PDF to Word Converter is free to use online.
-
-</div>
-
-</div>
-
-
-
-<div class="faq-item border rounded-xl overflow-hidden">
-
-<button class="faq-question w-full flex justify-between items-center text-left p-4 font-semibold">
-
-<span>Are my PDF files uploaded to a server?</span>
-
-<i class="fa-solid fa-chevron-down faq-icon text-gray-500"></i>
-
-</button>
-
-<div class="faq-answer px-4 pb-4 text-sm text-gray-600 leading-6">
-
-The conversion runs in your browser. The selected PDF is not
-intentionally uploaded to an Antokia server for conversion.
-
-</div>
-
-</div>
-
-
-
-<div class="faq-item border rounded-xl overflow-hidden">
-
-<button class="faq-question w-full flex justify-between items-center text-left p-4 font-semibold">
-
-<span>Can scanned PDFs be converted?</span>
-
-<i class="fa-solid fa-chevron-down faq-icon text-gray-500"></i>
-
-</button>
-
-<div class="faq-answer px-4 pb-4 text-sm text-gray-600 leading-6">
-
-Scanned or image-only PDFs may not produce editable text.
-OCR is required to recognize text from images.
-
-</div>
-
-</div>
-
-
-
-<div class="faq-item border rounded-xl overflow-hidden">
-
-<button class="faq-question w-full flex justify-between items-center text-left p-4 font-semibold">
-
-<span>Will the original PDF formatting remain exactly the same?</span>
-
-<i class="fa-solid fa-chevron-down faq-icon text-gray-500"></i>
-
-</button>
-
-<div class="faq-answer px-4 pb-4 text-sm text-gray-600 leading-6">
-
-Not necessarily. Complex layouts, images, tables, fonts and
-exact formatting may change during conversion.
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- RELATED TOOLS -->
-<section class="bg-white rounded-2xl shadow-sm border p-6 md:p-8 mt-6">
-
-<h2 class="text-2xl font-extrabold">
-Related Free Tools
-</h2>
-
-<div class="grid sm:grid-cols-3 gap-4 mt-5">
-
-
-<a href="word-to-pdf.html"
-class="border rounded-xl p-5 hover:border-red-300 hover:shadow-sm transition">
-
-<i class="fa-solid fa-file-pdf text-[#e5322d] text-xl"></i>
-
-<h3 class="font-bold mt-3">
-Word to PDF
-</h3>
-
-<p class="text-sm text-gray-500 mt-1">
-Convert Word documents to PDF.
-</p>
-
-</a>
-
-
-
-<a href="pdf-to-image.html"
-class="border rounded-xl p-5 hover:border-red-300 hover:shadow-sm transition">
-
-<i class="fa-solid fa-file-image text-[#e5322d] text-xl"></i>
-
-<h3 class="font-bold mt-3">
-PDF to Image
-</h3>
-
-<p class="text-sm text-gray-500 mt-1">
-Convert PDF pages into images.
-</p>
-
-</a>
-
-
-
-<a href="index.html"
-class="border rounded-xl p-5 hover:border-red-300 hover:shadow-sm transition">
-
-<i class="fa-solid fa-toolbox text-[#e5322d] text-xl"></i>
-
-<h3 class="font-bold mt-3">
-All Free Tools
-</h3>
-
-<p class="text-sm text-gray-500 mt-1">
-Explore all Antokia tools.
-</p>
-
-</a>
-
-</div>
-
-</section>
-
-
-
-<!-- BOTTOM AD -->
-<div class="bg-gray-200 rounded-xl h-24 mt-7 flex items-center justify-center text-gray-500 text-sm">
-
-Advertisement
-
-</div>
-
-
-
-<!-- DISCLAIMER -->
-<section class="bg-gray-50 border rounded-xl p-5 mt-7 text-sm text-gray-500">
-
-<h3 class="font-bold text-gray-700 mb-2">
-Disclaimer
-</h3>
-
-<p>
-
-This PDF to Word Converter is provided for general document
-conversion purposes. Conversion results may vary depending on
-PDF structure, text encoding, fonts, images, tables and layout.
-Users should review converted documents before using them for
-important or official purposes.
-
-</p>
-
-</section>
+  <!-- BOTTOM AD -->
+  <div class="h-24 bg-gray-200 rounded-2xl flex items-center justify-center text-xs text-gray-500 mt-12">
+    Advertisement
+  </div>
 
 </main>
 
 
-
 <!-- FOOTER -->
-<footer class="bg-[#1f2937] text-white mt-12">
+<footer class="bg-gray-900 text-gray-300 mt-14">
 
-<div class="max-w-6xl mx-auto px-4 py-10">
+  <div class="max-w-6xl mx-auto px-4 py-10">
 
-<div class="grid md:grid-cols-3 gap-8">
+    <div class="grid md:grid-cols-3 gap-8">
 
+      <div>
+        <a href="index.html"
+           class="text-2xl font-extrabold text-white">
+          Antokia
+        </a>
 
-<!-- BRAND -->
-<div>
-
-<a href="index.html"
-class="text-2xl font-extrabold text-white">
-Antokia
-</a>
-
-<p class="text-sm text-gray-300 mt-3 leading-6">
-
-Free online tools designed to make everyday calculations
-and document tasks simple, fast and easy.
-
-</p>
-
-</div>
+        <p class="text-sm text-gray-400 mt-3 leading-6">
+          Free online tools for PDF conversion, calculators and everyday
+          digital tasks.
+        </p>
+      </div>
 
 
+      <div>
 
-<!-- EXPLORE -->
-<div>
+        <h3 class="font-bold text-white">
+          Explore
+        </h3>
 
-<h3 class="font-bold text-white">
-Explore
-</h3>
+        <div class="mt-3 space-y-2 text-sm">
 
-<div class="flex flex-col gap-2 mt-3 text-sm text-gray-300">
+          <a href="index.html"
+             class="block hover:text-white">
+            All Tools
+          </a>
 
-<a href="index.html"
-class="hover:text-white">
-All Tools
-</a>
+          <a href="pdf-to-image.html"
+             class="block hover:text-white">
+            PDF to Image
+          </a>
 
-<a href="pdf-to-image.html"
-class="hover:text-white">
-PDF to Image
-</a>
+          <a href="word-to-pdf.html"
+             class="block hover:text-white">
+            Word to PDF
+          </a>
 
-<a href="word-to-pdf.html"
-class="hover:text-white">
-Word to PDF
-</a>
+          <a href="pdf-to-word.html"
+             class="block hover:text-white">
+            PDF to Word
+          </a>
 
-<a href="pdf-to-word.html"
-class="hover:text-white">
-PDF to Word
-</a>
+        </div>
 
-</div>
-
-</div>
+      </div>
 
 
+      <div>
 
-<!-- LEGAL -->
-<div>
+        <h3 class="font-bold text-white">
+          Legal & Social
+        </h3>
 
-<h3 class="font-bold text-white">
-Legal & Social
-</h3>
+        <div class="mt-3 space-y-2 text-sm">
 
-<div class="flex flex-col gap-2 mt-3 text-sm text-gray-300">
+          <a href="privacy.html"
+             class="block hover:text-white">
+            Privacy Policy
+          </a>
 
-<a href="privacy.html"
-class="hover:text-white">
-Privacy Policy
-</a>
+          <a href="terms.html"
+             class="block hover:text-white">
+            Terms & Conditions
+          </a>
 
-<a href="terms.html"
-class="hover:text-white">
-Terms & Conditions
-</a>
+          <a href="https://www.instagram.com/antokia.insta"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="block hover:text-white">
+            Instagram
+          </a>
 
-<a href="https://www.instagram.com/antokia.insta"
-target="_blank"
-rel="noopener noreferrer"
-class="hover:text-white">
+        </div>
 
-<i class="fa-brands fa-instagram mr-1"></i>
-Instagram
+      </div>
 
-</a>
-
-</div>
-
-</div>
-
-</div>
+    </div>
 
 
+    <div class="border-t border-gray-700 mt-8 pt-5 text-center text-xs text-gray-500">
+      © 2026 Antokia. All rights reserved.
+    </div>
 
-<div class="border-t border-gray-600 mt-8 pt-5 text-center text-xs text-gray-400">
-
-© 2026 Antokia. All Rights Reserved.
-
-</div>
-
-</div>
+  </div>
 
 </footer>
 
 
-
 <script>
-
-/* PDF.js Worker */
 
 pdfjsLib.GlobalWorkerOptions.workerSrc =
 "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
 
 
-/* Elements */
+const fileInput = document.getElementById("fileInput");
+const chooseBtn = document.getElementById("chooseBtn");
+const dropZone = document.getElementById("dropZone");
 
-const fileInput =
-document.getElementById("fileInput");
+const fileBox = document.getElementById("fileBox");
+const fileName = document.getElementById("fileName");
+const fileSize = document.getElementById("fileSize");
+const removeBtn = document.getElementById("removeBtn");
 
-const dropZone =
-document.getElementById("dropZone");
+const convertBtn = document.getElementById("convertBtn");
 
-const chooseBtn =
-document.getElementById("chooseBtn");
+const status = document.getElementById("status");
 
-const convertBtn =
-document.getElementById("convertBtn");
+const progressBox = document.getElementById("progressBox");
+const progressBar = document.getElementById("progressBar");
+const progressText = document.getElementById("progressText");
 
-const fileInfo =
-document.getElementById("fileInfo");
+const errorBox = document.getElementById("errorBox");
 
-const fileName =
-document.getElementById("fileName");
-
-const fileSize =
-document.getElementById("fileSize");
-
-const removeBtn =
-document.getElementById("removeBtn");
-
-const statusBox =
-document.getElementById("statusBox");
-
-const statusText =
-document.getElementById("statusText");
-
-const progressText =
-document.getElementById("progressText");
-
-const progressBar =
-document.getElementById("progressBar");
-
-const errorBox =
-document.getElementById("errorBox");
-
-const downloadBox =
-document.getElementById("downloadBox");
-
-const downloadBtn =
-document.getElementById("downloadBtn");
-
-const resultInfo =
-document.getElementById("resultInfo");
+const downloadBox = document.getElementById("downloadBox");
+const downloadBtn = document.getElementById("downloadBtn");
+const doneText = document.getElementById("doneText");
 
 
 let selectedFile = null;
-let docxBlob = null;
-let isConverting = false;
+let convertedBlob = null;
 
 
-
-/* Choose PDF */
-
-chooseBtn.addEventListener("click", function(event){
-
-event.stopPropagation();
-
-fileInput.click();
-
+chooseBtn.addEventListener("click", function(e){
+  e.stopPropagation();
+  fileInput.click();
 });
 
 
-
-/* Drop Zone Click */
-
-dropZone.addEventListener("click", function(event){
-
-if(event.target.closest("#chooseBtn")) return;
-
-fileInput.click();
-
+dropZone.addEventListener("click", function(){
+  fileInput.click();
 });
 
-
-
-/* File Selection */
 
 fileInput.addEventListener("change", function(){
 
-if(this.files && this.files.length){
-
-handleSelectedFile(this.files[0]);
-
-}
+  if(this.files && this.files.length > 0){
+    selectFile(this.files[0]);
+  }
 
 });
 
 
+dropZone.addEventListener("dragover", function(e){
 
-/* Drag Over */
+  e.preventDefault();
 
-dropZone.addEventListener("dragover", function(event){
-
-event.preventDefault();
-
-dropZone.classList.add("drag-active");
+  dropZone.classList.add("dragover");
 
 });
 
-
-
-/* Drag Leave */
 
 dropZone.addEventListener("dragleave", function(){
 
-dropZone.classList.remove("drag-active");
+  dropZone.classList.remove("dragover");
 
 });
 
 
+dropZone.addEventListener("drop", function(e){
 
-/* Drop */
+  e.preventDefault();
 
-dropZone.addEventListener("drop", function(event){
+  dropZone.classList.remove("dragover");
 
-event.preventDefault();
+  if(e.dataTransfer.files && e.dataTransfer.files.length > 0){
 
-dropZone.classList.remove("drag-active");
+    selectFile(e.dataTransfer.files[0]);
 
-const files = event.dataTransfer.files;
-
-if(files && files.length){
-
-handleSelectedFile(files[0]);
-
-}
+  }
 
 });
 
 
+function selectFile(file){
 
-/* Handle File */
+  resetMessages();
 
-function handleSelectedFile(file){
+  if(file.type !== "application/pdf" &&
+     !file.name.toLowerCase().endsWith(".pdf")){
 
-clearError();
+    showError("Please select a valid PDF file.");
 
-resetConversion();
-
-if(!file) return;
-
-
-const isPDF =
-file.type === "application/pdf" ||
-file.name.toLowerCase().endsWith(".pdf");
+    return;
+  }
 
 
-if(!isPDF){
+  selectedFile = file;
 
-showError("Please select a valid PDF file.");
+  fileName.textContent = file.name;
 
-return;
+  fileSize.textContent = formatFileSize(file.size);
 
-}
+  fileBox.classList.remove("hidden");
 
+  convertBtn.classList.remove("hidden");
 
-if(file.size === 0){
-
-showError("The selected PDF file is empty.");
-
-return;
+  status.textContent = "PDF selected. Ready to convert.";
 
 }
 
-
-selectedFile = file;
-
-fileName.textContent = file.name;
-
-fileSize.textContent = formatFileSize(file.size);
-
-fileInfo.classList.remove("hidden");
-
-convertBtn.classList.remove("hidden");
-
-convertBtn.disabled = false;
-
-}
-
-
-
-/* Remove */
 
 removeBtn.addEventListener("click", function(){
 
-selectedFile = null;
+  selectedFile = null;
+  convertedBlob = null;
 
-docxBlob = null;
+  fileInput.value = "";
 
-fileInput.value = "";
+  fileBox.classList.add("hidden");
+  convertBtn.classList.add("hidden");
+  progressBox.classList.add("hidden");
+  downloadBox.classList.add("hidden");
 
-fileInfo.classList.add("hidden");
+  status.textContent = "";
 
-convertBtn.classList.add("hidden");
-
-downloadBox.classList.add("hidden");
-
-statusBox.classList.add("hidden");
-
-clearError();
-
-setProgress(0,"Ready");
+  resetMessages();
 
 });
 
 
+convertBtn.addEventListener("click", async function(){
 
-/* Convert Button */
+  if(!selectedFile){
+    showError("Please select a PDF file first.");
+    return;
+  }
 
-convertBtn.addEventListener("click", function(){
-
-if(!isConverting){
-
-convertPDF();
-
-}
+  await convertPDF();
 
 });
 
-
-
-/* Convert PDF */
 
 async function convertPDF(){
 
-if(!selectedFile){
+  try{
 
-showError("Please select a PDF file first.");
+    convertBtn.disabled = true;
+    chooseBtn.disabled = true;
 
-return;
+    downloadBox.classList.add("hidden");
+    errorBox.classList.add("hidden");
+
+    progressBox.classList.remove("hidden");
+
+    progressBar.style.width = "5%";
+    progressText.textContent = "5%";
+
+    status.textContent = "Reading PDF...";
+
+
+    const arrayBuffer = await selectedFile.arrayBuffer();
+
+    progressBar.style.width = "15%";
+    progressText.textContent = "15%";
+
+
+    const pdf = await pdfjsLib
+      .getDocument({
+        data: new Uint8Array(arrayBuffer)
+      })
+      .promise;
+
+
+    let paragraphs = [];
+
+
+    for(let pageNumber = 1; pageNumber <= pdf.numPages; pageNumber++){
+
+      status.textContent =
+        "Reading page " +
+        pageNumber +
+        " of " +
+        pdf.numPages +
+        "...";
+
+
+      const page = await pdf.getPage(pageNumber);
+
+      const content = await page.getTextContent();
+
+
+      let lines = {};
+      let lastY = null;
+      let currentLine = "";
+
+
+      content.items.forEach(function(item){
+
+        const text = item.str || "";
+
+        if(!text.trim()) return;
+
+
+        const y = Math.round(item.transform[5]);
+
+
+        if(lastY !== null && Math.abs(y - lastY) > 3){
+
+          if(currentLine.trim()){
+            paragraphs.push(currentLine.trim());
+          }
+
+          currentLine = text;
+
+        }else{
+
+          if(currentLine){
+            currentLine += " " + text;
+          }else{
+            currentLine = text;
+          }
+
+        }
+
+
+        lastY = y;
+
+      });
+
+
+      if(currentLine.trim()){
+        paragraphs.push(currentLine.trim());
+      }
+
+
+      const percent =
+        15 +
+        Math.round((pageNumber / pdf.numPages) * 55);
+
+
+      progressBar.style.width = percent + "%";
+      progressText.textContent = percent + "%";
+
+    }
+
+
+    status.textContent = "Creating Word document...";
+
+    progressBar.style.width = "80%";
+    progressText.textContent = "80%";
+
+
+    const children = [];
+
+
+    if(paragraphs.length === 0){
+
+      children.push(
+        new docx.Paragraph({
+          children:[
+            new docx.TextRun(
+              "No selectable text was found in this PDF."
+            )
+          ]
+        })
+      );
+
+    }else{
+
+      paragraphs.forEach(function(text){
+
+        children.push(
+          new docx.Paragraph({
+            children:[
+              new docx.TextRun(text)
+            ]
+          })
+        );
+
+      });
+
+    }
+
+
+    const documentObject = new docx.Document({
+
+      sections:[
+        {
+          properties:{},
+
+          children:children
+        }
+      ]
+
+    });
+
+
+    convertedBlob =
+      await docx.Packer.toBlob(documentObject);
+
+
+    progressBar.style.width = "100%";
+    progressText.textContent = "100%";
+
+
+    status.textContent = "Conversion completed successfully.";
+
+    doneText.textContent =
+      pdf.numPages +
+      " page(s) converted successfully.";
+
+
+    downloadBox.classList.remove("hidden");
+
+
+  }catch(error){
+
+    console.error(error);
+
+    showError(
+      "Unable to convert this PDF. Please try another PDF file or a smaller file."
+    );
+
+    status.textContent = "";
+
+  }finally{
+
+    convertBtn.disabled = false;
+    chooseBtn.disabled = false;
+
+  }
 
 }
 
-
-if(isConverting) return;
-
-isConverting = true;
-
-convertBtn.disabled = true;
-
-convertBtn.innerHTML =
-'<i class="fa-solid fa-spinner fa-spin mr-2"></i> Converting...';
-
-clearError();
-
-downloadBox.classList.add("hidden");
-
-statusBox.classList.remove("hidden");
-
-setProgress(5,"Preparing PDF...");
-
-
-try{
-
-
-const arrayBuffer =
-await selectedFile.arrayBuffer();
-
-
-setProgress(10,"Reading PDF...");
-
-
-const pdf =
-await pdfjsLib.getDocument({
-data:new Uint8Array(arrayBuffer)
-}).promise;
-
-
-const paragraphs = [];
-
-const totalPages = pdf.numPages;
-
-
-for(
-let pageNumber = 1;
-pageNumber <= totalPages;
-pageNumber++
-){
-
-
-const percentage =
-10 + Math.round(
-(pageNumber / totalPages) * 65
-);
-
-
-setProgress(
-percentage,
-"Reading page " +
-pageNumber +
-" of " +
-totalPages +
-"..."
-);
-
-
-const page =
-await pdf.getPage(pageNumber);
-
-
-const content =
-await page.getTextContent();
-
-
-let lastY = null;
-
-let currentLine = "";
-
-
-for(const item of content.items){
-
-
-const text =
-item.str || "";
-
-
-if(!text.trim()) continue;
-
-
-const y =
-item.transform ?
-item.transform[5] :
-null;
-
-
-if(
-lastY !== null &&
-y !== null &&
-Math.abs(y-lastY) > 5
-){
-
-
-if(currentLine.trim()){
-
-paragraphs.push(
-currentLine.trim()
-);
-
-}
-
-
-currentLine = text;
-
-
-}else{
-
-
-if(currentLine){
-
-currentLine +=
-" " + text;
-
-}else{
-
-currentLine = text;
-
-}
-
-}
-
-
-lastY = y;
-
-}
-
-
-if(currentLine.trim()){
-
-paragraphs.push(
-currentLine.trim()
-);
-
-}
-
-
-/* Page separator */
-
-paragraphs.push("");
-
-}
-
-
-
-/* No Text */
-
-if(!paragraphs.join("").trim()){
-
-throw new Error(
-"No selectable text was found. This PDF may be scanned or image-only."
-);
-
-}
-
-
-
-/* Create DOCX */
-
-setProgress(
-80,
-"Creating Word document..."
-);
-
-
-const children =
-paragraphs.map(function(text){
-
-if(!text.trim()){
-
-return new docx.Paragraph({
-children:[
-new docx.TextRun({
-text:""
-})
-]
-});
-
-}
-
-
-return new docx.Paragraph({
-
-children:[
-
-new docx.TextRun({
-text:text
-})
-
-]
-
-});
-
-});
-
-
-const document =
-new docx.Document({
-
-sections:[
-
-{
-
-properties:{},
-
-children:children
-
-}
-
-]
-
-});
-
-
-/* Generate */
-
-setProgress(
-90,
-"Generating DOCX file..."
-);
-
-
-docxBlob =
-await docx.Packer.toBlob(document);
-
-
-setProgress(
-100,
-"Conversion complete"
-);
-
-
-resultInfo.textContent =
-totalPages +
-(totalPages === 1 ? " page" : " pages") +
-" converted successfully.";
-
-
-downloadBox.classList.remove("hidden");
-
-
-}catch(error){
-
-
-console.error(error);
-
-statusBox.classList.add("hidden");
-
-showError(
-error.message ||
-"Unable to convert this PDF. Please try another PDF."
-);
-
-
-}finally{
-
-
-isConverting = false;
-
-convertBtn.disabled = false;
-
-convertBtn.innerHTML =
-'<i class="fa-solid fa-file-arrow-down mr-2"></i> Convert PDF to Word';
-
-}
-
-}
-
-
-
-/* Download */
 
 downloadBtn.addEventListener("click", function(){
 
-if(!docxBlob){
-
-showError(
-"No converted Word file is available."
-);
-
-return;
-
-}
+  if(!convertedBlob){
+    return;
+  }
 
 
-const url =
-URL.createObjectURL(docxBlob);
+  const url = URL.createObjectURL(convertedBlob);
+
+  const link = document.createElement("a");
+
+  link.href = url;
+
+  link.download =
+    selectedFile
+      ? selectedFile.name.replace(/\.pdf$/i, "") + ".docx"
+      : "converted.docx";
 
 
-const link =
-document.createElement("a");
+  document.body.appendChild(link);
 
+  link.click();
 
-link.href = url;
+  document.body.removeChild(link);
 
-link.download =
-getWordFileName(
-selectedFile ?
-selectedFile.name :
-"converted.pdf"
-);
+  setTimeout(function(){
 
+    URL.revokeObjectURL(url);
 
-document.body.appendChild(link);
-
-link.click();
-
-document.body.removeChild(link);
-
-
-setTimeout(function(){
-
-URL.revokeObjectURL(url);
-
-},1000);
+  },1000);
 
 });
 
-
-
-/* Filename */
-
-function getWordFileName(name){
-
-if(!name){
-
-return "converted.docx";
-
-}
-
-return name.replace(
-/\.pdf$/i,
-""
-) + ".docx";
-
-}
-
-
-
-/* Progress */
-
-function setProgress(percent,message){
-
-progressBar.style.width =
-percent + "%";
-
-progressText.textContent =
-percent + "%";
-
-statusText.textContent =
-message;
-
-}
-
-
-
-/* File Size */
 
 function formatFileSize(bytes){
 
-if(bytes < 1024){
+  if(bytes < 1024){
+    return bytes + " B";
+  }
 
-return bytes + " Bytes";
+  if(bytes < 1024 * 1024){
+    return (bytes / 1024).toFixed(1) + " KB";
+  }
 
-}
-
-if(bytes < 1024 * 1024){
-
-return (bytes/1024).toFixed(1) + " KB";
-
-}
-
-if(bytes < 1024 * 1024 * 1024){
-
-return (bytes/(1024*1024)).toFixed(2) + " MB";
+  return (bytes / (1024 * 1024)).toFixed(2) + " MB";
 
 }
 
-return (bytes/(1024*1024*1024)).toFixed(2) + " GB";
-
-}
-
-
-
-/* Error */
 
 function showError(message){
 
-errorBox.textContent = message;
+  errorBox.textContent = message;
 
-errorBox.classList.remove("hidden");
-
-}
-
-
-
-/* Clear Error */
-
-function clearError(){
-
-errorBox.textContent = "";
-
-errorBox.classList.add("hidden");
+  errorBox.classList.remove("hidden");
 
 }
 
 
+function resetMessages(){
 
-/* Reset Conversion */
+  errorBox.classList.add("hidden");
 
-function resetConversion(){
-
-docxBlob = null;
-
-downloadBox.classList.add("hidden");
-
-statusBox.classList.add("hidden");
-
-setProgress(0,"Ready");
+  errorBox.textContent = "";
 
 }
-
-
-
-/* FAQ */
-
-document.querySelectorAll(".faq-question")
-.forEach(function(button){
-
-button.addEventListener("click",function(){
-
-const item =
-this.parentElement;
-
-
-document.querySelectorAll(".faq-item")
-.forEach(function(otherItem){
-
-if(otherItem !== item){
-
-otherItem.classList.remove("active");
-
-}
-
-});
-
-
-item.classList.toggle("active");
-
-});
-
-});
 
 </script>
-
 
 </body>
 </html>
