@@ -3,53 +3,947 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Age Calculator - Exact Age Free | Antokia</title>
+
+<title>Age Calculator - Calculate Exact Age in Years, Months & Days | Antokia</title>
+
+<meta name="description" content="Free Age Calculator by Antokia. Calculate your exact age in years, months and days from your date of birth. Get total days and hours lived instantly.">
+
+<meta name="keywords" content="age calculator, exact age calculator, calculate age, date of birth calculator, age in years months days, free age calculator">
+
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://antokia.com/age-calculator.html">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Age Calculator - Calculate Exact Age | Antokia">
+<meta property="og:description" content="Calculate your exact age in years, months and days using Antokia's free Age Calculator.">
+<meta property="og:url" content="https://antokia.com/age-calculator.html">
+<meta property="og:site_name" content="Antokia">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Age Calculator - Exact Age | Antokia">
+<meta name="twitter:description" content="Free online age calculator to calculate exact age in years, months and days.">
+
 <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-[#f5f5fa]">
-<header class="bg-white shadow-sm sticky top-0">
-<div class="max-w-5xl mx-auto px-4 py-3 flex justify-between">
-<a href="/" class="font-extrabold text-[#e5322d] text-xl">Antokia</a>
-<a href="/" class="text-sm underline">← All Tools</a>
-</div>
-</header>
-<main class="max-w-3xl mx-auto px-4 py-8">
-<h1 class="text-3xl font-bold text-center">Age Calculator</h1>
-<p class="text-center text-gray-500 text-sm mt-2">Calculate exact age - Years, Months, Days</p>
-<div class="bg-gray-200 h-20 rounded-xl mt-6 flex items-center justify-center text-xs">Ad Top</div>
-<div class="bg-white rounded-2xl p-6 shadow border mt-6">
-<label class="text-sm font-bold">Apna Date of Birth chuno:</label>
-<input type="date" id="dob" class="w-full border rounded-xl p-4 mt-2 text-sm">
-<button id="calcBtn" class="mt-4 w-full bg-[#e5322d] text-white py-4 rounded-xl font-bold">Calculate Age</button>
-<div id="result" class="mt-6 hidden">
-<div class="grid grid-cols-3 gap-3 text-center">
-<div class="bg-[#fff1f0] p-4 rounded-xl"><p id="years" class="text-2xl font-extrabold text-[#e5322d]">0</p><p class="text-xs">Years</p></div>
-<div class="bg-[#fff1f0] p-4 rounded-xl"><p id="months" class="text-2xl font-extrabold text-[#e5322d]">0</p><p class="text-xs">Months</p></div>
-<div class="bg-[#fff1f0] p-4 rounded-xl"><p id="days" class="text-2xl font-extrabold text-[#e5322d]">0</p><p class="text-xs">Days</p></div>
-</div>
-<p id="total" class="text-sm text-center mt-4 text-gray-600 font-medium"></p>
-</div>
-</div>
-<div class="bg-gray-200 h-20 rounded-xl mt-6 flex items-center justify-center text-xs">Ad Bottom</div>
-</main>
-<script>
-document.getElementById('calcBtn').onclick=()=>{
-let dobVal=document.getElementById('dob').value;
-if(!dobVal) return alert('DOB select karo Jane!');
-let dob=new Date(dobVal);
-let now=new Date();
-let diff=now-dob;
-let years=now.getFullYear()-dob.getFullYear();
-let months=now.getMonth()-dob.getMonth();
-let days=now.getDate()-dob.getDate();
-if(days<0){months--;let prevMonth=new Date(now.getFullYear(),now.getMonth(),0).getDate();days+=prevMonth;}
-if(months<0){years--;months+=12;}
-document.getElementById('years').innerText=years;
-document.getElementById('months').innerText=months;
-document.getElementById('days').innerText=days;
-document.getElementById('total').innerText=`Total: ${Math.floor(diff/(1000*60*60*24))} days old | ${Math.floor(diff/(1000*60*60))} hours`;
-document.getElementById('result').classList.remove('hidden');
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<!-- WebApplication Schema -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebApplication",
+  "name":"Antokia Age Calculator",
+  "url":"https://antokia.com/age-calculator.html",
+  "description":"Free online age calculator to calculate exact age in years, months and days.",
+  "applicationCategory":"UtilityApplication",
+  "operatingSystem":"Any",
+  "offers":{
+    "@type":"Offer",
+    "price":"0",
+    "priceCurrency":"INR"
+  }
 }
 </script>
+
+<!-- Breadcrumb Schema -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {
+      "@type":"ListItem",
+      "position":1,
+      "name":"Home",
+      "item":"https://antokia.com/"
+    },
+    {
+      "@type":"ListItem",
+      "position":2,
+      "name":"Age Calculator",
+      "item":"https://antokia.com/age-calculator.html"
+    }
+  ]
+}
+</script>
+
+<!-- FAQ Schema -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {
+      "@type":"Question",
+      "name":"How does the Age Calculator work?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"Enter your date of birth and click Calculate Age. The calculator determines your completed years, months and days based on the current date."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"Can I calculate my exact age in days?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"Yes. Antokia Age Calculator also displays the approximate total number of days and hours since your date of birth."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"Is the Age Calculator free?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"Yes. Antokia Age Calculator is completely free to use online."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"Does the calculator require registration?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"No. You can use the Age Calculator directly without creating an account."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+.antokia-red {
+  color:#e5322d;
+}
+
+.calculator-card {
+  box-shadow:0 12px 35px rgba(0,0,0,0.07);
+}
+
+.result-box {
+  background:linear-gradient(135deg,#fff5f4,#ffffff);
+}
+
+.age-number {
+  font-size:2.2rem;
+  line-height:1;
+}
+
+.faq-answer {
+  display:none;
+}
+
+.faq-item.active .faq-answer {
+  display:block;
+}
+
+.faq-item.active .faq-icon {
+  transform:rotate(180deg);
+}
+
+.faq-icon {
+  transition:0.2s;
+}
+</style>
+
+</head>
+
+<body class="bg-[#f5f5fa] text-gray-800">
+
+<!-- Header -->
+<header class="bg-white shadow-sm sticky top-0 z-50">
+  <div class="max-w-6xl mx-auto px-4 py-3">
+
+    <div class="flex items-center justify-between">
+
+      <a href="/" class="text-2xl font-extrabold text-[#e5322d]">
+        Antokia
+      </a>
+
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+        <a href="/" class="hover:text-[#e5322d]">Home</a>
+        <a href="/blog.html" class="hover:text-[#e5322d]">Blog</a>
+        <a href="/about.html" class="hover:text-[#e5322d]">About</a>
+        <a href="/contact.html" class="hover:text-[#e5322d]">Contact</a>
+      </nav>
+
+      <a href="/" class="bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-full text-sm font-semibold">
+        <i class="fa-solid fa-arrow-left mr-1"></i> All Tools
+      </a>
+
+    </div>
+
+  </div>
+</header>
+
+
+<!-- Main -->
+<main class="max-w-5xl mx-auto px-4 py-8">
+
+  <!-- Hero -->
+  <section class="text-center">
+
+    <div class="inline-flex items-center gap-2 bg-red-50 text-[#e5322d] px-4 py-2 rounded-full text-xs font-bold mb-4">
+      <i class="fa-solid fa-cake-candles"></i>
+      FREE AGE CALCULATOR
+    </div>
+
+    <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900">
+      Age Calculator
+    </h1>
+
+    <p class="text-gray-500 mt-2 max-w-2xl mx-auto">
+      Calculate your exact age in years, months and days from your date of birth.
+      Get your total days and hours instantly.
+    </p>
+
+  </section>
+
+
+  <!-- Top Ad -->
+  <div class="bg-gray-200 rounded-xl h-24 mt-7 flex items-center justify-center text-gray-500 text-sm">
+    Advertisement
+  </div>
+
+
+  <!-- Calculator -->
+  <section class="bg-white rounded-3xl calculator-card p-6 md:p-9 mt-7 border border-gray-100">
+
+    <div class="text-center mb-7">
+
+      <div class="w-14 h-14 mx-auto bg-red-50 text-[#e5322d] rounded-2xl flex items-center justify-center text-2xl">
+        <i class="fa-solid fa-calendar-days"></i>
+      </div>
+
+      <h2 class="text-2xl font-extrabold mt-4">
+        Calculate Your Exact Age
+      </h2>
+
+      <p class="text-sm text-gray-500 mt-1">
+        Enter your date of birth below
+      </p>
+
+    </div>
+
+
+    <div class="max-w-xl mx-auto">
+
+      <label for="dob" class="block text-sm font-bold text-gray-700 mb-2">
+        Date of Birth
+      </label>
+
+      <div class="relative">
+
+        <i class="fa-solid fa-calendar absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+
+        <input
+          type="date"
+          id="dob"
+          class="w-full border border-gray-300 rounded-xl px-11 py-4 text-sm outline-none focus:ring-2 focus:ring-red-200 focus:border-[#e5322d]"
+        >
+
+      </div>
+
+      <button
+        id="calcBtn"
+        class="w-full bg-[#e5322d] hover:bg-red-700 text-white py-4 rounded-xl font-bold mt-5 transition"
+      >
+        <i class="fa-solid fa-calculator mr-2"></i>
+        Calculate Age
+      </button>
+
+      <p id="errorMsg" class="hidden text-red-600 text-sm text-center mt-3"></p>
+
+    </div>
+
+
+    <!-- Result -->
+    <div id="result" class="hidden mt-8">
+
+      <div class="text-center mb-5">
+
+        <p class="text-sm text-gray-500">
+          Your Exact Age
+        </p>
+
+        <h3 class="text-xl font-extrabold text-gray-900 mt-1">
+          Age as of today
+        </h3>
+
+      </div>
+
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+
+        <div class="result-box border border-red-100 rounded-2xl p-6 text-center">
+
+          <div class="w-11 h-11 mx-auto bg-red-100 text-[#e5322d] rounded-xl flex items-center justify-center">
+            <i class="fa-solid fa-calendar-check"></i>
+          </div>
+
+          <p id="years" class="age-number font-extrabold text-[#e5322d] mt-4">
+            0
+          </p>
+
+          <p class="text-sm font-semibold text-gray-600 mt-2">
+            Years
+          </p>
+
+        </div>
+
+
+        <div class="result-box border border-red-100 rounded-2xl p-6 text-center">
+
+          <div class="w-11 h-11 mx-auto bg-red-100 text-[#e5322d] rounded-xl flex items-center justify-center">
+            <i class="fa-solid fa-calendar"></i>
+          </div>
+
+          <p id="months" class="age-number font-extrabold text-[#e5322d] mt-4">
+            0
+          </p>
+
+          <p class="text-sm font-semibold text-gray-600 mt-2">
+            Months
+          </p>
+
+        </div>
+
+
+        <div class="result-box border border-red-100 rounded-2xl p-6 text-center">
+
+          <div class="w-11 h-11 mx-auto bg-red-100 text-[#e5322d] rounded-xl flex items-center justify-center">
+            <i class="fa-solid fa-calendar-day"></i>
+          </div>
+
+          <p id="days" class="age-number font-extrabold text-[#e5322d] mt-4">
+            0
+          </p>
+
+          <p class="text-sm font-semibold text-gray-600 mt-2">
+            Days
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- Total Age -->
+      <div class="mt-5 bg-gray-50 border rounded-2xl p-5 text-center">
+
+        <p class="text-sm text-gray-500">
+          Approximate total time lived
+        </p>
+
+        <p id="totalDays" class="text-lg font-extrabold text-gray-900 mt-2">
+          0 days
+        </p>
+
+        <p id="totalHours" class="text-sm text-gray-500 mt-1">
+          0 hours
+        </p>
+
+      </div>
+
+
+      <p id="birthInfo" class="text-center text-xs text-gray-500 mt-4"></p>
+
+    </div>
+
+  </section>
+
+
+  <!-- Information -->
+  <section class="bg-white rounded-2xl shadow-sm border p-6 md:p-8 mt-7">
+
+    <h2 class="text-2xl font-extrabold">
+      What is an Age Calculator?
+    </h2>
+
+    <p class="text-gray-600 leading-7 mt-3">
+      An Age Calculator is an online tool that calculates a person's age
+      from their date of birth. Antokia's free Age Calculator shows the
+      completed years, months and days between the date of birth and the
+      current date.
+    </p>
+
+    <p class="text-gray-600 leading-7 mt-3">
+      It can be useful for checking age for birthdays, school or admission
+      forms, applications, documents, eligibility checks and other everyday
+      calculations.
+    </p>
+
+  </section>
+
+
+  <!-- How to Use -->
+  <section class="bg-white rounded-2xl shadow-sm border p-6 md:p-8 mt-6">
+
+    <h2 class="text-2xl font-extrabold">
+      How to Use the Age Calculator
+    </h2>
+
+    <div class="grid md:grid-cols-3 gap-5 mt-6">
+
+      <div class="bg-gray-50 rounded-xl p-5">
+
+        <div class="w-10 h-10 bg-red-100 text-[#e5322d] rounded-lg flex items-center justify-center font-bold">
+          1
+        </div>
+
+        <h3 class="font-bold mt-4">
+          Select Date of Birth
+        </h3>
+
+        <p class="text-sm text-gray-600 mt-2">
+          Enter your correct date of birth using the calendar field.
+        </p>
+
+      </div>
+
+
+      <div class="bg-gray-50 rounded-xl p-5">
+
+        <div class="w-10 h-10 bg-red-100 text-[#e5322d] rounded-lg flex items-center justify-center font-bold">
+          2
+        </div>
+
+        <h3 class="font-bold mt-4">
+          Click Calculate
+        </h3>
+
+        <p class="text-sm text-gray-600 mt-2">
+          Click the Calculate Age button to process your date of birth.
+        </p>
+
+      </div>
+
+
+      <div class="bg-gray-50 rounded-xl p-5">
+
+        <div class="w-10 h-10 bg-red-100 text-[#e5322d] rounded-lg flex items-center justify-center font-bold">
+          3
+        </div>
+
+        <h3 class="font-bold mt-4">
+          View Your Age
+        </h3>
+
+        <p class="text-sm text-gray-600 mt-2">
+          Your age will be displayed in years, months and days.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- Calculation -->
+  <section class="bg-white rounded-2xl shadow-sm border p-6 md:p-8 mt-6">
+
+    <h2 class="text-2xl font-extrabold">
+      How is Age Calculated?
+    </h2>
+
+    <p class="text-gray-600 leading-7 mt-3">
+      Age is calculated by comparing the date of birth with the current date.
+      The calculator first determines the completed years, then calculates
+      the remaining months and days.
+    </p>
+
+    <div class="bg-red-50 border border-red-100 rounded-xl p-5 mt-5">
+
+      <p class="font-bold text-gray-800">
+        Age = Current Date − Date of Birth
+      </p>
+
+      <p class="text-sm text-gray-600 mt-2">
+        The result is adjusted according to the number of days in each month
+        and the calendar year.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- Benefits -->
+  <section class="bg-white rounded-2xl shadow-sm border p-6 md:p-8 mt-6">
+
+    <h2 class="text-2xl font-extrabold">
+      Benefits of Using an Online Age Calculator
+    </h2>
+
+    <div class="grid md:grid-cols-2 gap-4 mt-5">
+
+      <div class="flex gap-3">
+        <i class="fa-solid fa-check text-green-600 mt-1"></i>
+        <p class="text-gray-600">Quickly calculate exact age.</p>
+      </div>
+
+      <div class="flex gap-3">
+        <i class="fa-solid fa-check text-green-600 mt-1"></i>
+        <p class="text-gray-600">Shows years, months and days.</p>
+      </div>
+
+      <div class="flex gap-3">
+        <i class="fa-solid fa-check text-green-600 mt-1"></i>
+        <p class="text-gray-600">No registration required.</p>
+      </div>
+
+      <div class="flex gap-3">
+        <i class="fa-solid fa-check text-green-600 mt-1"></i>
+        <p class="text-gray-600">Works on mobile, tablet and desktop.</p>
+      </div>
+
+      <div class="flex gap-3">
+        <i class="fa-solid fa-check text-green-600 mt-1"></i>
+        <p class="text-gray-600">Completely free to use.</p>
+      </div>
+
+      <div class="flex gap-3">
+        <i class="fa-solid fa-check text-green-600 mt-1"></i>
+        <p class="text-gray-600">Instant calculation in your browser.</p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FAQ -->
+  <section class="bg-white rounded-2xl shadow-sm border p-6 md:p-8 mt-6">
+
+    <h2 class="text-2xl font-extrabold">
+      Frequently Asked Questions
+    </h2>
+
+
+    <div class="mt-5 space-y-3">
+
+
+      <div class="faq-item border rounded-xl overflow-hidden">
+
+        <button class="faq-question w-full flex justify-between items-center text-left p-4 font-semibold">
+
+          <span>How does the Age Calculator work?</span>
+
+          <i class="fa-solid fa-chevron-down faq-icon text-gray-500"></i>
+
+        </button>
+
+        <div class="faq-answer px-4 pb-4 text-sm text-gray-600 leading-6">
+
+          Enter your date of birth and click Calculate Age.
+          The calculator compares it with the current date and displays
+          your completed years, months and days.
+
+        </div>
+
+      </div>
+
+
+      <div class="faq-item border rounded-xl overflow-hidden">
+
+        <button class="faq-question w-full flex justify-between items-center text-left p-4 font-semibold">
+
+          <span>Can I calculate my age in total days?</span>
+
+          <i class="fa-solid fa-chevron-down faq-icon text-gray-500"></i>
+
+        </button>
+
+        <div class="faq-answer px-4 pb-4 text-sm text-gray-600 leading-6">
+
+          Yes. The calculator also displays the approximate total number
+          of days and hours from your date of birth to the current date.
+
+        </div>
+
+      </div>
+
+
+      <div class="faq-item border rounded-xl overflow-hidden">
+
+        <button class="faq-question w-full flex justify-between items-center text-left p-4 font-semibold">
+
+          <span>Is this Age Calculator free?</span>
+
+          <i class="fa-solid fa-chevron-down faq-icon text-gray-500"></i>
+
+        </button>
+
+        <div class="faq-answer px-4 pb-4 text-sm text-gray-600 leading-6">
+
+          Yes. Antokia's Age Calculator is free to use and does not require
+          registration.
+
+        </div>
+
+      </div>
+
+
+      <div class="faq-item border rounded-xl overflow-hidden">
+
+        <button class="faq-question w-full flex justify-between items-center text-left p-4 font-semibold">
+
+          <span>Does it work on mobile devices?</span>
+
+          <i class="fa-solid fa-chevron-down faq-icon text-gray-500"></i>
+
+        </button>
+
+        <div class="faq-answer px-4 pb-4 text-sm text-gray-600 leading-6">
+
+          Yes. The calculator is responsive and can be used on smartphones,
+          tablets and desktop computers.
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- Related Tools -->
+  <section class="bg-white rounded-2xl shadow-sm border p-6 md:p-8 mt-6">
+
+    <h2 class="text-2xl font-extrabold">
+      Related Free Tools
+    </h2>
+
+    <div class="grid sm:grid-cols-3 gap-4 mt-5">
+
+      <a href="/emi-calculator.html"
+         class="border rounded-xl p-5 hover:border-red-300 hover:shadow-sm transition">
+
+        <i class="fa-solid fa-money-bill-transfer text-[#e5322d] text-xl"></i>
+
+        <h3 class="font-bold mt-3">
+          EMI Calculator
+        </h3>
+
+        <p class="text-sm text-gray-500 mt-1">
+          Calculate monthly loan EMI.
+        </p>
+
+      </a>
+
+
+      <a href="/sip-calculator.html"
+         class="border rounded-xl p-5 hover:border-red-300 hover:shadow-sm transition">
+
+        <i class="fa-solid fa-chart-line text-[#e5322d] text-xl"></i>
+
+        <h3 class="font-bold mt-3">
+          SIP Calculator
+        </h3>
+
+        <p class="text-sm text-gray-500 mt-1">
+          Calculate estimated SIP returns.
+        </p>
+
+      </a>
+
+
+      <a href="/"
+         class="border rounded-xl p-5 hover:border-red-300 hover:shadow-sm transition">
+
+        <i class="fa-solid fa-toolbox text-[#e5322d] text-xl"></i>
+
+        <h3 class="font-bold mt-3">
+          All Free Tools
+        </h3>
+
+        <p class="text-sm text-gray-500 mt-1">
+          Explore all Antokia tools.
+        </p>
+
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- Bottom Ad -->
+  <div class="bg-gray-200 rounded-xl h-24 mt-7 flex items-center justify-center text-gray-500 text-sm">
+    Advertisement
+  </div>
+
+
+  <!-- Disclaimer -->
+  <section class="bg-gray-50 border rounded-xl p-5 mt-7 text-sm text-gray-500">
+
+    <h3 class="font-bold text-gray-700 mb-2">
+      Disclaimer
+    </h3>
+
+    <p>
+      This Age Calculator is provided for general informational and
+      calculation purposes only. Results may depend on the date and time
+      used by your device. Antokia does not guarantee suitability for
+      official legal, government or eligibility purposes.
+    </p>
+
+  </section>
+
+</main>
+
+
+<!-- Footer -->
+<footer class="bg-white border-t mt-10">
+
+  <div class="max-w-6xl mx-auto px-4 py-8">
+
+    <div class="grid md:grid-cols-3 gap-8">
+
+      <div>
+
+        <a href="/" class="text-2xl font-extrabold text-[#e5322d]">
+          Antokia
+        </a>
+
+        <p class="text-sm text-gray-500 mt-3 leading-6">
+          Free online tools designed to make everyday calculations
+          and document tasks simple and easy.
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <h3 class="font-bold">
+          Explore
+        </h3>
+
+        <div class="flex flex-col gap-2 mt-3 text-sm text-gray-600">
+
+          <a href="/" class="hover:text-[#e5322d]">
+            All Tools
+          </a>
+
+          <a href="/emi-calculator.html" class="hover:text-[#e5322d]">
+            EMI Calculator
+          </a>
+
+          <a href="/sip-calculator.html" class="hover:text-[#e5322d]">
+            SIP Calculator
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div>
+
+        <h3 class="font-bold">
+          Legal & Social
+        </h3>
+
+        <div class="flex flex-col gap-2 mt-3 text-sm text-gray-600">
+
+          <a href="/privacy.html" class="hover:text-[#e5322d]">
+            Privacy Policy
+          </a>
+
+          <a href="/terms.html" class="hover:text-[#e5322d]">
+            Terms & Conditions
+          </a>
+
+          <a href="https://www.instagram.com/antokia.insta"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="hover:text-[#e5322d]">
+
+            <i class="fa-brands fa-instagram mr-1"></i>
+            Instagram
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="border-t mt-7 pt-5 text-center text-xs text-gray-500">
+
+      © 2026 Antokia. All Rights Reserved.
+
+    </div>
+
+  </div>
+
+</footer>
+
+
+<script>
+
+const dobInput = document.getElementById("dob");
+const calcBtn = document.getElementById("calcBtn");
+const result = document.getElementById("result");
+const errorMsg = document.getElementById("errorMsg");
+
+/* Prevent future dates */
+const today = new Date();
+const todayString =
+  today.getFullYear() + "-" +
+  String(today.getMonth() + 1).padStart(2, "0") + "-" +
+  String(today.getDate()).padStart(2, "0");
+
+dobInput.max = todayString;
+
+
+/* Calculate Age */
+calcBtn.addEventListener("click", function() {
+
+  const dobValue = dobInput.value;
+
+  errorMsg.classList.add("hidden");
+  errorMsg.innerText = "";
+
+  if (!dobValue) {
+
+    errorMsg.innerText = "Please select your date of birth.";
+    errorMsg.classList.remove("hidden");
+
+    return;
+  }
+
+
+  const parts = dobValue.split("-");
+
+  const birthYear = Number(parts[0]);
+  const birthMonth = Number(parts[1]) - 1;
+  const birthDay = Number(parts[2]);
+
+  const dob = new Date(
+    birthYear,
+    birthMonth,
+    birthDay
+  );
+
+
+  const now = new Date();
+
+
+  if (dob > now) {
+
+    errorMsg.innerText = "Date of birth cannot be in the future.";
+    errorMsg.classList.remove("hidden");
+
+    return;
+  }
+
+
+  let years = now.getFullYear() - birthYear;
+
+  let months = now.getMonth() - birthMonth;
+
+  let days = now.getDate() - birthDay;
+
+
+  if (days < 0) {
+
+    months--;
+
+    const previousMonthDays =
+      new Date(
+        now.getFullYear(),
+        now.getMonth(),
+        0
+      ).getDate();
+
+    days += previousMonthDays;
+  }
+
+
+  if (months < 0) {
+
+    years--;
+    months += 12;
+
+  }
+
+
+  /* Total elapsed days */
+  const startDate = new Date(
+    birthYear,
+    birthMonth,
+    birthDay
+  );
+
+  const endDate = new Date(
+    now.getFullYear(),
+    now.getMonth(),
+    now.getDate()
+  );
+
+  const milliseconds =
+    endDate.getTime() - startDate.getTime();
+
+  const totalDays =
+    Math.floor(milliseconds / (1000 * 60 * 60 * 24));
+
+  const totalHours =
+    totalDays * 24;
+
+
+  document.getElementById("years").innerText = years;
+
+  document.getElementById("months").innerText = months;
+
+  document.getElementById("days").innerText = days;
+
+  document.getElementById("totalDays").innerText =
+    totalDays.toLocaleString("en-IN") + " days";
+
+  document.getElementById("totalHours").innerText =
+    totalHours.toLocaleString("en-IN") + " hours";
+
+  document.getElementById("birthInfo").innerText =
+    "Date of Birth: " +
+    String(birthDay).padStart(2, "0") +
+    "/" +
+    String(birthMonth + 1).padStart(2, "0") +
+    "/" +
+    birthYear;
+
+
+  result.classList.remove("hidden");
+
+});
+
+
+/* FAQ Accordion */
+
+document.querySelectorAll(".faq-question").forEach(function(button) {
+
+  button.addEventListener("click", function() {
+
+    const item = this.parentElement;
+
+    document.querySelectorAll(".faq-item").forEach(function(otherItem) {
+
+      if (otherItem !== item) {
+        otherItem.classList.remove("active");
+      }
+
+    });
+
+    item.classList.toggle("active");
+
+  });
+
+});
+
+
+</script>
+
 </body>
 </html>
