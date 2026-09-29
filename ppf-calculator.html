@@ -1,40 +1,1354 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PPF Calculator - Public Provident Fund Calculator 2026 | Antokia</title>
-<meta name="description" content="PPF Calculator with 7.1% interest rate.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PPF Calculator 2026 – Public Provident Fund Calculator | Antokia</title>
+
+<meta name="description" content="Use Antokia's free PPF Calculator to estimate Public Provident Fund maturity value, total investment and interest earned based on annual contribution, interest rate and investment period.">
+<meta name="keywords" content="PPF calculator, PPF calculator 2026, Public Provident Fund calculator, PPF maturity calculator, PPF interest calculator, PPF investment calculator">
+<meta name="robots" content="index, follow">
+
+<link rel="canonical" href="https://antokia.com/ppf-calculator.html">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="PPF Calculator 2026 – Public Provident Fund Calculator | Antokia">
+<meta property="og:description" content="Calculate estimated PPF maturity value, investment amount and interest earned with Antokia's free PPF Calculator.">
+<meta property="og:url" content="https://antokia.com/ppf-calculator.html">
+<meta property="og:site_name" content="Antokia">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PPF Calculator 2026 | Antokia">
+<meta name="twitter:description" content="Calculate estimated Public Provident Fund maturity value and interest online for free.">
+
 <script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body class="bg-[#f5f5fa]">
-<header class="bg-white shadow-sm"><div class="max-w-4xl mx-auto px-4 py-3 flex justify-between"><a href="/" class="text-2xl font-extrabold text-[#e5322d]">Antokia</a><a href="/" class="text-sm bg-gray-100 px-3 py-1 rounded-full">← Home</a></div></header>
-<main class="max-w-4xl mx-auto px-4 py-6">
-<h1 class="text-3xl font-bold text-center">PPF Calculator</h1>
-<p class="text-center text-gray-500 text-sm mt-1">Current Rate 7.1% - 2026</p>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
 
-<div class="bg-gray-200 rounded-xl h-24 mt-6 flex items-center justify-center text-gray-500 text-sm">Ad Top</div>
-
-<div class="bg-white rounded-2xl shadow p-6 md:p-8 mt-6">
-<div class="grid md:grid-cols-2 gap-8">
-<div>
-<label class="font-semibold text-sm">Yearly Investment (₹)</label><input id="ppfAmt" type="number" value="150000" class="border rounded-lg px-3 py-2 w-full mt-2">
-<label class="font-semibold text-sm mt-4 block">Interest Rate (%)</label><input id="ppfRate" type="number" value="7.1" step="0.1" class="border rounded-lg px-3 py-2 w-full mt-2">
-<label class="font-semibold text-sm mt-4 block">Time Period (Years)</label><input id="ppfYear" type="number" value="15" class="border rounded-lg px-3 py-2 w-full mt-2">
-<button onclick="calcPPF()" class="w-full bg-yellow-500 text-white py-3 rounded-xl font-bold mt-6">Calculate PPF</button>
-</div>
-<div class="bg-[#f8fafc] rounded-xl p-6 text-center">
-<p class="text-sm text-gray-500">Maturity Value</p><h2 id="ppfTotal" class="text-3xl font-extrabold text-yellow-600 mt-2">₹0</h2>
-<div class="grid grid-cols-2 gap-3 mt-6"><div class="bg-white border rounded-xl p-3"><small class="text-gray-500">Total Invested</small><b id="ppfInv" class="block">₹0</b></div><div class="bg-white border rounded-xl p-3"><small class="text-gray-500">Interest Earned</small><b id="ppfInt" class="block text-green-600">₹0</b></div></div>
-</div>
-</div>
-</div>
-
-<div class="bg-gray-200 rounded-xl h-24 mt-6 flex items-center justify-center text-gray-500 text-sm">Ad Bottom</div>
-</main>
-<script>
-function calcPPF(){let P=parseFloat(document.getElementById('ppfAmt').value), r=parseFloat(document.getElementById('ppfRate').value)/100, n=parseFloat(document.getElementById('ppfYear').value), bal=0; for(let i=0;i<n;i++){bal=(bal+P)*(1+r);} let inv=P*n; document.getElementById('ppfInv').innerText='₹'+inv.toLocaleString('en-IN'); document.getElementById('ppfInt').innerText='₹'+Math.round(bal-inv).toLocaleString('en-IN'); document.getElementById('ppfTotal').innerText='₹'+Math.round(bal).toLocaleString('en-IN');}
-calcPPF();
+<!-- WebApplication Schema -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebApplication",
+  "name":"Antokia PPF Calculator",
+  "url":"https://antokia.com/ppf-calculator.html",
+  "applicationCategory":"FinanceApplication",
+  "operatingSystem":"Web Browser",
+  "description":"Free online PPF calculator for estimating Public Provident Fund maturity value, total investment and interest earned.",
+  "offers":{
+    "@type":"Offer",
+    "price":"0",
+    "priceCurrency":"USD"
+  }
+}
 </script>
+
+<!-- Breadcrumb Schema -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {
+      "@type":"ListItem",
+      "position":1,
+      "name":"Home",
+      "item":"https://antokia.com/"
+    },
+    {
+      "@type":"ListItem",
+      "position":2,
+      "name":"PPF Calculator",
+      "item":"https://antokia.com/ppf-calculator.html"
+    }
+  ]
+}
+</script>
+
+<!-- FAQ Schema -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {
+      "@type":"Question",
+      "name":"What is the current PPF interest rate?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"The PPF interest rate shown by this calculator is 7.1%. Small savings interest rates are subject to government notification and may change for different periods."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"What is the maximum PPF investment in a financial year?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"The maximum PPF deposit is ₹1,50,000 in a financial year."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"What is the maturity period of PPF?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"A PPF account matures after completion of fifteen complete financial years from the end of the financial year in which the account was opened."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"Is the PPF calculator result exact?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"The calculator provides an estimate based on the annual contribution, selected interest rate and investment period. Actual PPF interest depends on the timing and pattern of deposits and the applicable government-notified rate."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"Is PPF interest compounded?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"PPF interest is credited annually. The actual interest calculation is subject to the applicable PPF scheme rules and deposit timing."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f5f5fa;
+  color:#222;
+}
+
+.antokia-red{
+  color:#e5322d;
+}
+
+.primary-btn{
+  background:#e5322d;
+  color:#fff;
+  transition:.2s ease;
+}
+
+.primary-btn:hover{
+  background:#c92824;
+}
+
+.secondary-btn{
+  background:#f1f1f4;
+  color:#333;
+  transition:.2s ease;
+}
+
+.secondary-btn:hover{
+  background:#e5e5e9;
+}
+
+.tool-card{
+  background:#fff;
+  border:1px solid #e9e9ee;
+  border-radius:18px;
+  box-shadow:0 8px 25px rgba(0,0,0,.06);
+}
+
+.info-card{
+  background:#fff;
+  border:1px solid #e9e9ee;
+  border-radius:16px;
+  box-shadow:0 5px 20px rgba(0,0,0,.04);
+}
+
+.input-box{
+  transition:.2s ease;
+}
+
+.input-box:focus{
+  border-color:#e5322d;
+  box-shadow:0 0 0 3px rgba(229,50,45,.08);
+}
+
+.result-card{
+  background:#fafafa;
+  border:1px solid #e8e8e8;
+  border-radius:16px;
+}
+
+.result-small{
+  background:#fff;
+  border:1px solid #e5e5e5;
+  border-radius:14px;
+}
+
+.footer-link{
+  color:#cfcfcf;
+  transition:.2s ease;
+}
+
+.footer-link:hover{
+  color:#fff;
+}
+
+@media(max-width:768px){
+  .desktop-nav{
+    display:none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="bg-white sticky top-0 z-50 shadow-sm">
+
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+
+    <div class="h-16 flex items-center justify-between">
+
+      <nav class="desktop-nav flex items-center gap-6 text-sm font-medium">
+
+        <a href="/" class="hover:text-red-600">
+          Home
+        </a>
+
+        <a href="/blog/" class="hover:text-red-600">
+          Blog
+        </a>
+
+        <a href="/about.html" class="hover:text-red-600">
+          About
+        </a>
+
+        <a href="/contact.html" class="hover:text-red-600">
+          Contact
+        </a>
+
+      </nav>
+
+
+      <div class="flex items-center gap-3 ml-auto">
+
+        <span class="text-xl font-extrabold antokia-red tracking-tight">
+          Antokia
+        </span>
+
+        <a href="/"
+           class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm font-semibold transition">
+
+          <i class="fa-solid fa-arrow-left mr-1"></i>
+          Home
+
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</header>
+
+
+<!-- MAIN -->
+<main class="max-w-5xl mx-auto px-4 sm:px-6 py-10">
+
+
+  <!-- TOP AD -->
+  <div class="mb-8">
+
+    <div class="max-w-3xl mx-auto min-h-[90px] flex items-center justify-center">
+      <!-- AdSense ad unit can be placed here after approval -->
+    </div>
+
+  </div>
+
+
+  <!-- INTRO -->
+  <section class="text-center mb-8">
+
+    <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-red-50 mb-4">
+
+      <i class="fa-solid fa-piggy-bank text-3xl antokia-red"></i>
+
+    </div>
+
+
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-3">
+      PPF Calculator
+    </h1>
+
+
+    <p class="text-gray-600 max-w-2xl mx-auto leading-relaxed">
+      Estimate your Public Provident Fund maturity value, total investment
+      and interest earned using your annual contribution, interest rate and
+      investment period.
+    </p>
+
+
+    <div class="inline-flex items-center gap-2 mt-4 bg-red-50 text-red-700 px-4 py-2 rounded-full text-sm font-semibold">
+
+      <i class="fa-solid fa-percent"></i>
+
+      Current calculator rate: 7.1%
+
+    </div>
+
+  </section>
+
+
+  <!-- CALCULATOR -->
+  <section class="tool-card p-5 sm:p-8 max-w-4xl mx-auto">
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+
+      <!-- INPUT SIDE -->
+      <div>
+
+        <h2 class="text-xl font-bold text-gray-900 mb-5">
+          Enter Your PPF Details
+        </h2>
+
+
+        <!-- ANNUAL CONTRIBUTION -->
+        <div>
+
+          <label for="ppfAmount"
+                 class="block text-sm font-bold text-gray-800 mb-2">
+
+            Annual Investment
+
+          </label>
+
+
+          <div class="relative">
+
+            <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 font-semibold">
+              ₹
+            </span>
+
+            <input
+              id="ppfAmount"
+              type="number"
+              value="150000"
+              min="500"
+              max="150000"
+              step="500"
+              inputmode="numeric"
+              class="input-box w-full border border-gray-300 rounded-xl py-3 pl-9 pr-4 outline-none"
+            >
+
+          </div>
+
+
+          <p class="text-xs text-gray-500 mt-2">
+            Enter ₹500 to ₹1,50,000 per financial year.
+          </p>
+
+        </div>
+
+
+        <!-- RATE -->
+        <div class="mt-5">
+
+          <label for="ppfRate"
+                 class="block text-sm font-bold text-gray-800 mb-2">
+
+            Interest Rate (% per year)
+
+          </label>
+
+
+          <div class="relative">
+
+            <input
+              id="ppfRate"
+              type="number"
+              value="7.1"
+              min="0"
+              max="30"
+              step="0.1"
+              inputmode="decimal"
+              class="input-box w-full border border-gray-300 rounded-xl py-3 px-4 pr-10 outline-none"
+            >
+
+            <span class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 font-semibold">
+              %
+            </span>
+
+          </div>
+
+
+          <p class="text-xs text-gray-500 mt-2">
+            The default rate is 7.1%. You can change it for comparison.
+          </p>
+
+        </div>
+
+
+        <!-- YEARS -->
+        <div class="mt-5">
+
+          <label for="ppfYears"
+                 class="block text-sm font-bold text-gray-800 mb-2">
+
+            Investment Period
+
+          </label>
+
+
+          <div class="relative">
+
+            <input
+              id="ppfYears"
+              type="number"
+              value="15"
+              min="1"
+              max="50"
+              step="1"
+              inputmode="numeric"
+              class="input-box w-full border border-gray-300 rounded-xl py-3 px-4 pr-16 outline-none"
+            >
+
+            <span class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 font-semibold">
+              Years
+            </span>
+
+          </div>
+
+
+          <p class="text-xs text-gray-500 mt-2">
+            Standard PPF maturity period is 15 complete financial years.
+          </p>
+
+        </div>
+
+
+        <!-- CALCULATE -->
+        <button
+          type="button"
+          id="calculateBtn"
+          class="primary-btn w-full py-3.5 rounded-xl font-bold mt-7">
+
+          <i class="fa-solid fa-calculator mr-2"></i>
+          Calculate PPF
+
+        </button>
+
+
+        <!-- RESET -->
+        <button
+          type="button"
+          id="resetBtn"
+          class="secondary-btn w-full py-3 rounded-xl font-semibold mt-3">
+
+          <i class="fa-solid fa-rotate-left mr-2"></i>
+          Reset Calculator
+
+        </button>
+
+
+        <!-- ERROR -->
+        <div id="errorBox"
+             class="hidden mt-4 bg-red-50 border border-red-100 text-red-700 rounded-xl p-4 text-sm">
+
+        </div>
+
+      </div>
+
+
+      <!-- RESULT SIDE -->
+      <div class="result-card p-6">
+
+        <div class="text-center">
+
+          <div class="w-14 h-14 mx-auto bg-red-50 rounded-full flex items-center justify-center">
+
+            <i class="fa-solid fa-indian-rupee-sign text-xl antokia-red"></i>
+
+          </div>
+
+
+          <p class="text-sm text-gray-500 mt-4">
+            Estimated Maturity Value
+          </p>
+
+
+          <h2 id="maturityValue"
+              class="text-3xl sm:text-4xl font-extrabold antokia-red mt-2 break-words">
+
+            ₹0
+
+          </h2>
+
+        </div>
+
+
+        <!-- BREAKDOWN -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-7">
+
+          <div class="result-small p-4 text-center">
+
+            <p class="text-xs text-gray-500">
+              Total Investment
+            </p>
+
+            <p id="totalInvestment"
+               class="font-bold text-gray-800 mt-2">
+
+              ₹0
+
+            </p>
+
+          </div>
+
+
+          <div class="result-small p-4 text-center">
+
+            <p class="text-xs text-gray-500">
+              Interest Earned
+            </p>
+
+            <p id="interestEarned"
+               class="font-bold text-green-600 mt-2">
+
+              ₹0
+
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- SUMMARY -->
+        <div class="mt-5 bg-white border border-gray-200 rounded-xl p-4">
+
+          <div class="flex justify-between text-sm py-2 border-b">
+
+            <span class="text-gray-500">
+              Annual contribution
+            </span>
+
+            <strong id="summaryAmount">
+              ₹1,50,000
+            </strong>
+
+          </div>
+
+
+          <div class="flex justify-between text-sm py-2 border-b">
+
+            <span class="text-gray-500">
+              Interest rate
+            </span>
+
+            <strong id="summaryRate">
+              7.1%
+            </strong>
+
+          </div>
+
+
+          <div class="flex justify-between text-sm py-2">
+
+            <span class="text-gray-500">
+              Period
+            </span>
+
+            <strong id="summaryYears">
+              15 years
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <p class="text-xs text-gray-400 leading-5 mt-5">
+          This is an illustrative estimate. Actual PPF interest depends on
+          deposit timing, applicable PPF rules and the government-notified
+          interest rate.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- PRIVACY / LOCAL PROCESSING -->
+    <div class="mt-7 p-4 bg-green-50 border border-green-100 rounded-xl">
+
+      <div class="flex gap-3">
+
+        <i class="fa-solid fa-shield-halved text-green-600 mt-0.5"></i>
+
+        <div>
+
+          <h3 class="font-semibold text-green-800 text-sm">
+            Simple &amp; Browser-Based Calculator
+          </h3>
+
+          <p class="text-xs text-green-700 mt-1 leading-relaxed">
+            Your calculation is performed directly in your browser.
+            No account or document upload is required.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- MIDDLE AD -->
+  <div class="my-10">
+
+    <div class="max-w-3xl mx-auto min-h-[100px] flex items-center justify-center">
+      <!-- AdSense ad unit can be placed here after approval -->
+    </div>
+
+  </div>
+
+
+  <!-- ABOUT PPF -->
+  <section class="info-card p-6 sm:p-8 mb-6">
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">
+      What is PPF?
+    </h2>
+
+
+    <p class="text-gray-600 leading-7 mb-4">
+      Public Provident Fund (PPF) is a long-term savings scheme. The National
+      Savings Institute states that a PPF account has a minimum deposit of
+      ₹500 and a maximum deposit of ₹1,50,000 in a financial year.
+    </p>
+
+
+    <p class="text-gray-600 leading-7">
+      The standard maturity period is fifteen complete financial years from
+      the end of the financial year in which the account is opened. The
+      applicable interest rate is subject to government notification.
+    </p>
+
+  </section>
+
+
+  <!-- HOW CALCULATION WORKS -->
+  <section class="info-card p-6 sm:p-8 mb-6">
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-5">
+      How Does the PPF Calculator Work?
+    </h2>
+
+
+    <div class="space-y-5">
+
+
+      <div class="flex gap-4">
+
+        <div class="w-9 h-9 rounded-full bg-red-100 antokia-red flex items-center justify-center font-bold flex-shrink-0">
+          1
+        </div>
+
+        <div>
+
+          <h3 class="font-semibold text-gray-800">
+            Enter your annual investment
+          </h3>
+
+          <p class="text-gray-600 text-sm mt-1 leading-6">
+            Enter the amount you plan to contribute to your PPF account
+            each financial year.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="flex gap-4">
+
+        <div class="w-9 h-9 rounded-full bg-red-100 antokia-red flex items-center justify-center font-bold flex-shrink-0">
+          2
+        </div>
+
+        <div>
+
+          <h3 class="font-semibold text-gray-800">
+            Check the interest rate
+          </h3>
+
+          <p class="text-gray-600 text-sm mt-1 leading-6">
+            The calculator starts with the currently displayed 7.1% rate.
+            You can change the rate when comparing different assumptions.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="flex gap-4">
+
+        <div class="w-9 h-9 rounded-full bg-red-100 antokia-red flex items-center justify-center font-bold flex-shrink-0">
+          3
+        </div>
+
+        <div>
+
+          <h3 class="font-semibold text-gray-800">
+            Select the investment period
+          </h3>
+
+          <p class="text-gray-600 text-sm mt-1 leading-6">
+            Enter the number of years for which you want to estimate
+            the accumulated value.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="flex gap-4">
+
+        <div class="w-9 h-9 rounded-full bg-red-100 antokia-red flex items-center justify-center font-bold flex-shrink-0">
+          4
+        </div>
+
+        <div>
+
+          <h3 class="font-semibold text-gray-800">
+            Review the estimate
+          </h3>
+
+          <p class="text-gray-600 text-sm mt-1 leading-6">
+            The calculator displays estimated maturity value, total
+            contributions and estimated interest earned.
+          </p>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+  <!-- IMPORTANT PPF FACTS -->
+  <section class="info-card p-6 sm:p-8 mb-6">
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-5">
+      Important PPF Facts
+    </h2>
+
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+
+      <div class="border border-gray-200 rounded-xl p-5">
+
+        <div class="w-11 h-11 rounded-lg bg-red-50 flex items-center justify-center mb-3">
+
+          <i class="fa-solid fa-indian-rupee-sign antokia-red"></i>
+
+        </div>
+
+        <h3 class="font-bold text-gray-800">
+          Annual Deposit Limit
+        </h3>
+
+        <p class="text-sm text-gray-500 mt-1">
+          PPF allows deposits from ₹500 up to ₹1,50,000 in a financial year.
+        </p>
+
+      </div>
+
+
+      <div class="border border-gray-200 rounded-xl p-5">
+
+        <div class="w-11 h-11 rounded-lg bg-red-50 flex items-center justify-center mb-3">
+
+          <i class="fa-solid fa-calendar-days antokia-red"></i>
+
+        </div>
+
+        <h3 class="font-bold text-gray-800">
+          Standard Maturity
+        </h3>
+
+        <p class="text-sm text-gray-500 mt-1">
+          The standard PPF maturity period is 15 complete financial years.
+        </p>
+
+      </div>
+
+
+      <div class="border border-gray-200 rounded-xl p-5">
+
+        <div class="w-11 h-11 rounded-lg bg-red-50 flex items-center justify-center mb-3">
+
+          <i class="fa-solid fa-percent antokia-red"></i>
+
+        </div>
+
+        <h3 class="font-bold text-gray-800">
+          Interest Rate
+        </h3>
+
+        <p class="text-sm text-gray-500 mt-1">
+          The calculator currently uses 7.1% as the default rate.
+        </p>
+
+      </div>
+
+
+      <div class="border border-gray-200 rounded-xl p-5">
+
+        <div class="w-11 h-11 rounded-lg bg-red-50 flex items-center justify-center mb-3">
+
+          <i class="fa-solid fa-clock-rotate-left antokia-red"></i>
+
+        </div>
+
+        <h3 class="font-bold text-gray-800">
+          Long-Term Savings
+        </h3>
+
+        <p class="text-sm text-gray-500 mt-1">
+          PPF is designed as a long-term savings scheme.
+        </p>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+  <!-- DISCLAIMER -->
+  <section class="info-card p-6 sm:p-8 mb-6">
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">
+      PPF Calculator Disclaimer
+    </h2>
+
+
+    <div class="bg-yellow-50 border border-yellow-100 rounded-xl p-4">
+
+      <div class="flex gap-3">
+
+        <i class="fa-solid fa-circle-info text-yellow-600 mt-1"></i>
+
+        <p class="text-sm text-yellow-800 leading-6">
+          This calculator is intended for estimation and educational purposes.
+          It does not constitute financial, tax or investment advice.
+          Actual PPF returns can differ because the applicable interest rate,
+          deposit timing and scheme rules may change. Please verify the
+          applicable rules and rate from official sources before making
+          financial decisions.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- RELATED TOOLS -->
+  <section class="info-card p-6 sm:p-8 mb-6">
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-5">
+      Related Financial Tools
+    </h2>
+
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+
+      <a href="/sip-calculator.html"
+         class="border border-gray-200 rounded-xl p-5 hover:border-red-300 hover:shadow-sm transition">
+
+        <div class="w-11 h-11 rounded-lg bg-red-50 flex items-center justify-center mb-3">
+
+          <i class="fa-solid fa-chart-line antokia-red text-xl"></i>
+
+        </div>
+
+        <h3 class="font-bold text-gray-800">
+          SIP Calculator
+        </h3>
+
+        <p class="text-sm text-gray-500 mt-1">
+          Estimate SIP investment growth and future value.
+        </p>
+
+      </a>
+
+
+      <a href="/emi-calculator.html"
+         class="border border-gray-200 rounded-xl p-5 hover:border-red-300 hover:shadow-sm transition">
+
+        <div class="w-11 h-11 rounded-lg bg-red-50 flex items-center justify-center mb-3">
+
+          <i class="fa-solid fa-calculator antokia-red text-xl"></i>
+
+        </div>
+
+        <h3 class="font-bold text-gray-800">
+          EMI Calculator
+        </h3>
+
+        <p class="text-sm text-gray-500 mt-1">
+          Calculate estimated monthly loan EMI and interest.
+        </p>
+
+      </a>
+
+
+    </div>
+
+  </section>
+
+
+  <!-- FAQ -->
+  <section class="info-card p-6 sm:p-8 mb-10">
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-6">
+      Frequently Asked Questions
+    </h2>
+
+
+    <div class="space-y-5">
+
+
+      <div>
+
+        <h3 class="font-semibold text-gray-800">
+          What is the current PPF interest rate?
+        </h3>
+
+        <p class="text-gray-600 text-sm leading-6 mt-2">
+          The default rate used on this page is 7.1%. PPF interest rates
+          are government-notified and may change for different periods.
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <h3 class="font-semibold text-gray-800">
+          What is the maximum amount I can deposit in PPF?
+        </h3>
+
+        <p class="text-gray-600 text-sm leading-6 mt-2">
+          The maximum PPF deposit is ₹1,50,000 in a financial year.
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <h3 class="font-semibold text-gray-800">
+          What is the minimum PPF deposit?
+        </h3>
+
+        <p class="text-gray-600 text-sm leading-6 mt-2">
+          The minimum deposit is ₹500 in a financial year.
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <h3 class="font-semibold text-gray-800">
+          What is the standard PPF maturity period?
+        </h3>
+
+        <p class="text-gray-600 text-sm leading-6 mt-2">
+          A PPF account matures after completion of fifteen complete
+          financial years from the end of the financial year in which
+          the account was opened.
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <h3 class="font-semibold text-gray-800">
+          Is the PPF calculator result exact?
+        </h3>
+
+        <p class="text-gray-600 text-sm leading-6 mt-2">
+          No. It is an estimate. Actual PPF interest depends on the timing
+          and pattern of deposits, applicable interest rates and scheme rules.
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <h3 class="font-semibold text-gray-800">
+          Can I change the interest rate?
+        </h3>
+
+        <p class="text-gray-600 text-sm leading-6 mt-2">
+          Yes. The interest rate field is editable so you can use the
+          calculator for comparison or different assumptions.
+        </p>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+  <!-- BOTTOM AD -->
+  <div class="mb-8">
+
+    <div class="max-w-3xl mx-auto min-h-[90px] flex items-center justify-center">
+      <!-- AdSense ad unit can be placed here after approval -->
+    </div>
+
+  </div>
+
+
+</main>
+
+
+<!-- FOOTER -->
+<footer class="bg-[#242424] text-white mt-10">
+
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-10">
+
+
+      <!-- EXPLORE -->
+      <div>
+
+        <h3 class="text-lg font-bold mb-4">
+          Explore
+        </h3>
+
+        <div class="space-y-3 text-sm">
+
+          <a href="/" class="footer-link block">
+            Home
+          </a>
+
+          <a href="/blog/" class="footer-link block">
+            Blog
+          </a>
+
+          <a href="/about.html" class="footer-link block">
+            About
+          </a>
+
+          <a href="/contact.html" class="footer-link block">
+            Contact
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- LEGAL -->
+      <div>
+
+        <h3 class="text-lg font-bold mb-4">
+          Legal
+        </h3>
+
+        <div class="space-y-3 text-sm">
+
+          <a href="/privacy.html" class="footer-link block">
+            Privacy Policy
+          </a>
+
+          <a href="/terms.html" class="footer-link block">
+            Terms &amp; Conditions
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- SOCIAL -->
+      <div>
+
+        <h3 class="text-lg font-bold mb-4">
+          Follow Antokia
+        </h3>
+
+        <a href="https://www.instagram.com/antokia.insta"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="footer-link inline-flex items-center gap-2 text-sm">
+
+          <i class="fa-brands fa-instagram"></i>
+          Instagram
+
+        </a>
+
+      </div>
+
+
+    </div>
+
+
+    <div class="border-t border-gray-700 mt-10 pt-6 text-center text-sm text-gray-400">
+
+      © 2026 Antokia. All rights reserved.
+
+    </div>
+
+  </div>
+
+</footer>
+
+
+<script>
+
+const amountInput = document.getElementById("ppfAmount");
+const rateInput = document.getElementById("ppfRate");
+const yearsInput = document.getElementById("ppfYears");
+
+const calculateBtn = document.getElementById("calculateBtn");
+const resetBtn = document.getElementById("resetBtn");
+
+const maturityValue = document.getElementById("maturityValue");
+const totalInvestment = document.getElementById("totalInvestment");
+const interestEarned = document.getElementById("interestEarned");
+
+const summaryAmount = document.getElementById("summaryAmount");
+const summaryRate = document.getElementById("summaryRate");
+const summaryYears = document.getElementById("summaryYears");
+
+const errorBox = document.getElementById("errorBox");
+
+
+function formatCurrency(value){
+
+  return "₹" + Math.round(value).toLocaleString("en-IN");
+
+}
+
+
+function showError(message){
+
+  errorBox.textContent = message;
+  errorBox.classList.remove("hidden");
+
+}
+
+
+function hideError(){
+
+  errorBox.classList.add("hidden");
+  errorBox.textContent = "";
+
+}
+
+
+function calculatePPF(){
+
+  hideError();
+
+
+  const annualAmount = parseFloat(amountInput.value);
+  const rate = parseFloat(rateInput.value);
+  const years = parseInt(yearsInput.value);
+
+
+  /* Validation */
+
+  if(
+    isNaN(annualAmount) ||
+    annualAmount < 500 ||
+    annualAmount > 150000
+  ){
+
+    showError(
+      "Please enter an annual investment between ₹500 and ₹1,50,000."
+    );
+
+    return;
+  }
+
+
+  if(
+    isNaN(rate) ||
+    rate < 0 ||
+    rate > 30
+  ){
+
+    showError(
+      "Please enter a valid interest rate between 0% and 30%."
+    );
+
+    return;
+  }
+
+
+  if(
+    isNaN(years) ||
+    years < 1 ||
+    years > 50
+  ){
+
+    showError(
+      "Please enter an investment period between 1 and 50 years."
+    );
+
+    return;
+  }
+
+
+  /*
+    Illustrative calculation:
+
+    This calculator assumes the selected annual contribution
+    is added at the beginning of each year and annual interest
+    is applied to the accumulated balance.
+
+    Actual PPF interest depends on deposit timing and the
+    applicable PPF scheme rules.
+  */
+
+  const annualRate = rate / 100;
+
+  let balance = 0;
+
+
+  for(let year = 1; year <= years; year++){
+
+    balance += annualAmount;
+
+    balance = balance * (1 + annualRate);
+
+  }
+
+
+  const invested = annualAmount * years;
+
+  const interest = balance - invested;
+
+
+  /* Results */
+
+  maturityValue.textContent =
+    formatCurrency(balance);
+
+  totalInvestment.textContent =
+    formatCurrency(invested);
+
+  interestEarned.textContent =
+    formatCurrency(Math.max(0, interest));
+
+
+  /* Summary */
+
+  summaryAmount.textContent =
+    formatCurrency(annualAmount);
+
+  summaryRate.textContent =
+    rate.toFixed(1) + "%";
+
+  summaryYears.textContent =
+    years + (years === 1 ? " year" : " years");
+
+}
+
+
+/* Calculate */
+
+calculateBtn.addEventListener(
+  "click",
+  calculatePPF
+);
+
+
+/* Reset */
+
+resetBtn.addEventListener(
+  "click",
+  function(){
+
+    amountInput.value = "150000";
+    rateInput.value = "7.1";
+    yearsInput.value = "15";
+
+    maturityValue.textContent = "₹0";
+    totalInvestment.textContent = "₹0";
+    interestEarned.textContent = "₹0";
+
+    summaryAmount.textContent = "₹1,50,000";
+    summaryRate.textContent = "7.1%";
+    summaryYears.textContent = "15 years";
+
+    hideError();
+
+    calculatePPF();
+
+  }
+);
+
+
+/* Enter key support */
+
+[
+  amountInput,
+  rateInput,
+  yearsInput
+].forEach(function(input){
+
+  input.addEventListener(
+    "keydown",
+    function(event){
+
+      if(event.key === "Enter"){
+
+        event.preventDefault();
+
+        calculatePPF();
+
+      }
+
+    }
+  );
+
+});
+
+
+/* Initial calculation */
+
+calculatePPF();
+
+</script>
+
 </body>
 </html>
