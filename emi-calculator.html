@@ -1,40 +1,1265 @@
+```
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EMI Calculator - Home Loan, Personal Loan EMI | Antokia</title>
-<meta name="description" content="Free EMI Calculator for Home Loan, Personal Loan & Car Loan.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>EMI Calculator - Home Loan, Personal Loan & Car Loan EMI | Antokia</title>
+
+<meta name="description" content="Free EMI Calculator by Antokia. Calculate monthly EMI, total interest and total payment for home loans, personal loans and car loans using loan amount, interest rate and tenure.">
+
+<meta name="robots" content="index, follow, max-image-preview:large">
+
+<link rel="canonical" href="https://antokia.com/emi-calculator.html">
+
+<!-- Open Graph -->
+<meta property="og:title" content="EMI Calculator - Home Loan, Personal Loan & Car Loan EMI | Antokia">
+<meta property="og:description" content="Calculate monthly EMI, total interest and total loan payment with Antokia's free online EMI Calculator.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://antokia.com/emi-calculator.html">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="EMI Calculator | Antokia">
+<meta name="twitter:description" content="Calculate your monthly loan EMI, total interest and total payment online for free.">
+
+<!-- Tailwind -->
 <script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body class="bg-[#f5f5fa]">
-<header class="bg-white shadow-sm"><div class="max-w-4xl mx-auto px-4 py-3 flex justify-between"><a href="/" class="text-2xl font-extrabold text-[#e5322d]">Antokia</a><a href="/" class="text-sm bg-gray-100 px-3 py-1 rounded-full">← Home</a></div></header>
-<main class="max-w-4xl mx-auto px-4 py-6">
-<h1 class="text-3xl font-bold text-center">EMI Calculator</h1>
-<p class="text-center text-gray-500 text-sm mt-1">Home, Personal & Car Loan EMI - Free</p>
 
-<div class="bg-gray-200 rounded-xl h-24 mt-6 flex items-center justify-center text-gray-500 text-sm">Ad Top</div>
+<!-- Font Awesome -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-<div class="bg-white rounded-2xl shadow p-6 md:p-8 mt-6">
-<div class="grid md:grid-cols-2 gap-8">
-<div>
-<label class="font-semibold text-sm">Loan Amount (₹)</label><input id="loan" type="number" value="2000000" class="border rounded-lg px-3 py-2 w-full mt-2">
-<label class="font-semibold text-sm mt-4 block">Interest Rate (% p.a)</label><input id="rate" type="number" value="8.5" step="0.1" class="border rounded-lg px-3 py-2 w-full mt-2">
-<label class="font-semibold text-sm mt-4 block">Loan Tenure (Years)</label><input id="tenure" type="number" value="20" class="border rounded-lg px-3 py-2 w-full mt-2">
-<button onclick="calcEMI()" class="w-full bg-[#e5322d] text-white py-3 rounded-xl font-bold mt-6">Calculate EMI</button>
-</div>
-<div class="bg-[#f8fafc] rounded-xl p-6 text-center">
-<p class="text-sm text-gray-500">Your Monthly EMI</p><h2 id="emiVal" class="text-3xl font-extrabold text-blue-600 mt-2">₹0</h2>
-<div class="grid grid-cols-2 gap-3 mt-6"><div class="bg-white border rounded-xl p-3"><small class="text-gray-500">Total Interest</small><b id="intVal" class="block">₹0</b></div><div class="bg-white border rounded-xl p-3"><small class="text-gray-500">Total Payment</small><b id="totalPay" class="block">₹0</b></div></div>
-</div>
-</div>
-</div>
-
-<div class="bg-gray-200 rounded-xl h-24 mt-6 flex items-center justify-center text-gray-500 text-sm">Ad Bottom</div>
-</main>
-<script>
-function calcEMI(){let P=parseFloat(document.getElementById('loan').value), R=parseFloat(document.getElementById('rate').value)/12/100, N=parseFloat(document.getElementById('tenure').value)*12, EMI=P*R*Math.pow(1+R,N)/(Math.pow(1+R,N)-1), total=EMI*N; document.getElementById('emiVal').innerText='₹'+Math.round(EMI).toLocaleString('en-IN'); document.getElementById('intVal').innerText='₹'+Math.round(total-P).toLocaleString('en-IN'); document.getElementById('totalPay').innerText='₹'+Math.round(total).toLocaleString('en-IN');}
-calcEMI();
+<!-- WebApplication Schema -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebApplication",
+  "name":"Antokia EMI Calculator",
+  "url":"https://antokia.com/emi-calculator.html",
+  "applicationCategory":"FinanceApplication",
+  "operatingSystem":"All",
+  "description":"Free online EMI calculator for estimating monthly loan EMI, total interest and total payment.",
+  "offers":{
+    "@type":"Offer",
+    "price":"0",
+    "priceCurrency":"INR"
+  }
+}
 </script>
+
+<!-- Breadcrumb Schema -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {
+      "@type":"ListItem",
+      "position":1,
+      "name":"Home",
+      "item":"https://antokia.com/"
+    },
+    {
+      "@type":"ListItem",
+      "position":2,
+      "name":"EMI Calculator",
+      "item":"https://antokia.com/emi-calculator.html"
+    }
+  ]
+}
+</script>
+
+<!-- FAQ Schema -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {
+      "@type":"Question",
+      "name":"What is an EMI?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"EMI stands for Equated Monthly Instalment. It is the fixed or calculated amount paid periodically by a borrower towards repayment of a loan."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"How does an EMI Calculator work?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"An EMI Calculator uses the loan amount, annual interest rate and loan tenure to estimate the monthly EMI, total interest and total payment."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"Can I use this calculator for a home loan?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"Yes. You can use the calculator for hypothetical home loan EMI calculations by entering the required loan amount, interest rate and tenure."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"Does the EMI Calculator include processing fees?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"No. This calculator estimates EMI, interest and total repayment based on the loan amount, interest rate and tenure. Additional charges such as processing fees are not included."
+      }
+    }
+  ]
+</script>
+
+<style>
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  background:#f5f5fa;
+  color:#1f2937;
+  font-family:Arial,Helvetica,sans-serif;
+}
+
+.antokia-red{
+  color:#e5322d;
+}
+
+.calculator-card{
+  box-shadow:0 8px 30px rgba(15,23,42,.08);
+}
+
+.result-highlight{
+  background:linear-gradient(135deg,#eff6ff,#f0f9ff);
+}
+
+.faq-answer{
+  display:none;
+}
+
+.faq-item.active .faq-answer{
+  display:block;
+}
+
+.faq-icon{
+  transition:transform .2s ease;
+}
+
+.faq-item.active .faq-icon{
+  transform:rotate(45deg);
+}
+
+.range-value{
+  font-variant-numeric:tabular-nums;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header class="bg-white shadow-sm sticky top-0 z-50">
+
+  <div class="max-w-6xl mx-auto px-4 py-3">
+
+    <div class="flex items-center justify-between gap-4">
+
+      <!-- Logo -->
+      <a href="/" class="text-2xl font-extrabold antokia-red">
+        Antokia
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+
+        <a href="/" class="hover:text-red-600 transition">
+          Home
+        </a>
+
+        <a href="/blog/" class="hover:text-red-600 transition">
+          Blog
+        </a>
+
+        <a href="/about.html" class="hover:text-red-600 transition">
+          About
+        </a>
+
+        <a href="/contact.html" class="hover:text-red-600 transition">
+          Contact
+        </a>
+
+      </nav>
+
+      <!-- Home Button -->
+      <a href="/"
+         class="text-sm bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-full transition">
+
+        <i class="fa-solid fa-arrow-left mr-1"></i>
+        Home
+
+      </a>
+
+    </div>
+
+  </div>
+
+</header>
+
+
+<!-- ================= MAIN ================= -->
+
+<main class="max-w-5xl mx-auto px-4 py-8">
+
+
+  <!-- HERO -->
+
+  <section class="text-center">
+
+    <div class="inline-block bg-red-50 text-red-600 text-xs font-bold px-4 py-2 rounded-full mb-4">
+      FREE FINANCE TOOL
+    </div>
+
+    <h1 class="text-3xl md:text-5xl font-extrabold text-gray-900">
+      EMI Calculator
+    </h1>
+
+    <p class="text-gray-600 mt-3 max-w-2xl mx-auto leading-7">
+      Calculate your estimated monthly EMI, total interest and total
+      loan payment using our free online EMI Calculator.
+    </p>
+
+  </section>
+
+
+  <!-- TOP AD -->
+
+  <div class="bg-gray-200 rounded-xl min-h-[90px] mt-7 flex items-center justify-center text-gray-500 text-sm">
+    Advertisement
+  </div>
+
+
+  <!-- ================= CALCULATOR ================= -->
+
+  <section class="calculator-card bg-white rounded-2xl p-6 md:p-8 mt-7">
+
+    <div class="grid md:grid-cols-2 gap-8">
+
+
+      <!-- INPUT SECTION -->
+
+      <div>
+
+        <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-6">
+          Loan Details
+        </h2>
+
+
+        <!-- LOAN AMOUNT -->
+
+        <div class="mb-7">
+
+          <div class="flex justify-between items-center gap-3">
+
+            <label for="loanAmount" class="font-semibold text-sm">
+              Loan Amount
+            </label>
+
+            <span id="loanAmountDisplay"
+                  class="range-value font-bold text-red-600">
+              ₹20,00,000
+            </span>
+
+          </div>
+
+          <input
+            id="loanAmount"
+            type="range"
+            min="10000"
+            max="100000000"
+            step="10000"
+            value="2000000"
+            class="w-full mt-3 accent-red-600">
+
+          <div class="flex justify-between items-center gap-3 mt-3">
+
+            <div class="relative">
+
+              <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">
+                ₹
+              </span>
+
+              <input
+                id="loanAmountInput"
+                type="number"
+                min="10000"
+                max="100000000"
+                step="10000"
+                value="2000000"
+                class="border border-gray-300 rounded-lg px-3 py-2 pl-8 w-40 focus:outline-none focus:ring-2 focus:ring-red-300">
+
+            </div>
+
+            <span class="text-xs text-gray-500 text-right">
+              ₹10,000 - ₹10 Crore
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <!-- INTEREST RATE -->
+
+        <div class="mb-7">
+
+          <div class="flex justify-between items-center">
+
+            <label for="interestRate" class="font-semibold text-sm">
+              Interest Rate
+            </label>
+
+            <span id="interestRateDisplay"
+                  class="range-value font-bold text-red-600">
+              8.5%
+            </span>
+
+          </div>
+
+          <input
+            id="interestRate"
+            type="range"
+            min="1"
+            max="30"
+            step="0.1"
+            value="8.5"
+            class="w-full mt-3 accent-red-600">
+
+          <div class="flex justify-between items-center mt-3">
+
+            <input
+              id="interestRateInput"
+              type="number"
+              min="1"
+              max="30"
+              step="0.1"
+              value="8.5"
+              class="border border-gray-300 rounded-lg px-3 py-2 w-36 focus:outline-none focus:ring-2 focus:ring-red-300">
+
+            <span class="text-xs text-gray-500">
+              1% - 30% p.a.
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <!-- LOAN TENURE -->
+
+        <div class="mb-7">
+
+          <div class="flex justify-between items-center">
+
+            <label for="loanTenure" class="font-semibold text-sm">
+              Loan Tenure
+            </label>
+
+            <span id="loanTenureDisplay"
+                  class="range-value font-bold text-red-600">
+              20 Years
+            </span>
+
+          </div>
+
+          <input
+            id="loanTenure"
+            type="range"
+            min="1"
+            max="40"
+            step="1"
+            value="20"
+            class="w-full mt-3 accent-red-600">
+
+          <div class="flex justify-between items-center mt-3">
+
+            <input
+              id="loanTenureInput"
+              type="number"
+              min="1"
+              max="40"
+              step="1"
+              value="20"
+              class="border border-gray-300 rounded-lg px-3 py-2 w-36 focus:outline-none focus:ring-2 focus:ring-red-300">
+
+            <span class="text-xs text-gray-500">
+              1 - 40 Years
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <button
+          id="calculateBtn"
+          type="button"
+          class="w-full bg-[#e5322d] hover:bg-red-700 text-white font-bold py-3.5 rounded-xl transition">
+
+          <i class="fa-solid fa-calculator mr-2"></i>
+          Calculate EMI
+
+        </button>
+
+      </div>
+
+
+      <!-- RESULT SECTION -->
+
+      <div>
+
+        <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-6">
+          Estimated EMI Results
+        </h2>
+
+
+        <div class="result-highlight rounded-2xl p-6 border border-blue-100 text-center">
+
+          <p class="text-sm text-gray-500">
+            Monthly EMI
+          </p>
+
+          <h3
+            id="emiValue"
+            class="text-3xl md:text-4xl font-extrabold text-blue-600 mt-2">
+            ₹17,356
+          </h3>
+
+
+          <div class="grid grid-cols-2 gap-3 mt-7">
+
+            <div class="bg-white border rounded-xl p-4">
+
+              <small class="text-gray-500 block">
+                Total Interest
+              </small>
+
+              <b
+                id="interestValue"
+                class="block text-lg mt-1">
+                ₹21,65,364
+              </b>
+
+            </div>
+
+
+            <div class="bg-white border rounded-xl p-4">
+
+              <small class="text-gray-500 block">
+                Total Payment
+              </small>
+
+              <b
+                id="totalPaymentValue"
+                class="block text-lg mt-1">
+                ₹41,65,364
+              </b>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mt-5 text-sm text-amber-800 leading-6">
+
+          <strong>Note:</strong>
+          The result is an estimate based on the loan amount, interest rate
+          and tenure entered. Actual loan terms and charges may vary by
+          lender.
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= INFORMATION ================= -->
+
+  <section class="mt-10 bg-white rounded-2xl p-6 md:p-8">
+
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+      What is an EMI Calculator?
+    </h2>
+
+    <p class="text-gray-600 leading-8">
+      An EMI Calculator is a financial planning tool that helps you estimate
+      the monthly instalment payable on a loan. By entering the loan amount,
+      annual interest rate and loan tenure, you can calculate the estimated
+      monthly EMI, total interest and total amount payable over the selected
+      loan period.
+    </p>
+
+    <p class="text-gray-600 leading-8 mt-4">
+      The calculator can be used for hypothetical home loan, personal loan,
+      car loan and other similar repayment calculations. The result is an
+      estimate and may differ from the actual repayment schedule provided
+      by a lender.
+    </p>
+
+  </section>
+
+
+  <!-- ================= HOW TO USE ================= -->
+
+  <section class="mt-10">
+
+    <h2 class="text-2xl md:text-3xl font-bold text-center mb-7">
+      How to Use the EMI Calculator
+    </h2>
+
+    <div class="grid md:grid-cols-3 gap-5">
+
+      <div class="bg-white rounded-xl border p-6">
+
+        <div class="text-2xl font-bold text-red-600 mb-3">
+          01
+        </div>
+
+        <h3 class="font-bold text-lg">
+          Enter Loan Amount
+        </h3>
+
+        <p class="text-gray-600 text-sm leading-6 mt-2">
+          Enter the amount you plan to borrow from the lender.
+        </p>
+
+      </div>
+
+
+      <div class="bg-white rounded-xl border p-6">
+
+        <div class="text-2xl font-bold text-red-600 mb-3">
+          02
+        </div>
+
+        <h3 class="font-bold text-lg">
+          Enter Interest Rate
+        </h3>
+
+        <p class="text-gray-600 text-sm leading-6 mt-2">
+          Enter the expected annual interest rate applicable to the loan.
+        </p>
+
+      </div>
+
+
+      <div class="bg-white rounded-xl border p-6">
+
+        <div class="text-2xl font-bold text-red-600 mb-3">
+          03
+        </div>
+
+        <h3 class="font-bold text-lg">
+          Select Loan Tenure
+        </h3>
+
+        <p class="text-gray-600 text-sm leading-6 mt-2">
+          Choose the number of years over which you plan to repay the loan.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= FORMULA ================= -->
+
+  <section class="mt-10 bg-gray-900 text-white rounded-2xl p-6 md:p-8">
+
+    <h2 class="text-2xl font-bold mb-4">
+      EMI Calculator Formula
+    </h2>
+
+    <p class="text-gray-300 leading-7">
+      The calculator uses the standard reducing-balance EMI formula
+      to estimate the monthly loan instalment.
+    </p>
+
+    <div class="bg-gray-800 rounded-xl p-5 mt-5 overflow-x-auto">
+
+      <code class="text-green-300 whitespace-nowrap">
+        EMI = P × r × (1 + r)ⁿ ÷ [(1 + r)ⁿ − 1]
+      </code>
+
+    </div>
+
+    <div class="text-gray-300 text-sm leading-7 mt-5">
+
+      <strong>P</strong> = Loan principal amount<br>
+      <strong>r</strong> = Monthly interest rate<br>
+      <strong>n</strong> = Total number of monthly instalments<br>
+      <strong>EMI</strong> = Estimated monthly instalment
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= BENEFITS ================= -->
+
+  <section class="mt-10">
+
+    <h2 class="text-2xl md:text-3xl font-bold mb-7">
+      Why Use an EMI Calculator?
+    </h2>
+
+    <div class="grid md:grid-cols-2 gap-5">
+
+      <div class="bg-white border rounded-xl p-6">
+
+        <h3 class="font-bold text-lg">
+          Plan Loan Repayment
+        </h3>
+
+        <p class="text-gray-600 text-sm leading-7 mt-2">
+          Estimate your monthly repayment before comparing different
+          loan amounts and repayment periods.
+        </p>
+
+      </div>
+
+
+      <div class="bg-white border rounded-xl p-6">
+
+        <h3 class="font-bold text-lg">
+          Understand Interest Cost
+        </h3>
+
+        <p class="text-gray-600 text-sm leading-7 mt-2">
+          See the estimated interest component and total payment over
+          the selected loan tenure.
+        </p>
+
+      </div>
+
+
+      <div class="bg-white border rounded-xl p-6">
+
+        <h3 class="font-bold text-lg">
+          Compare Loan Scenarios
+        </h3>
+
+        <p class="text-gray-600 text-sm leading-7 mt-2">
+          Change the loan amount, interest rate and tenure to compare
+          different hypothetical repayment scenarios.
+        </p>
+
+      </div>
+
+
+      <div class="bg-white border rounded-xl p-6">
+
+        <h3 class="font-bold text-lg">
+          Free Online Tool
+        </h3>
+
+        <p class="text-gray-600 text-sm leading-7 mt-2">
+          Use the calculator directly in your browser without registration.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= FAQ ================= -->
+
+  <section class="mt-10">
+
+    <h2 class="text-2xl md:text-3xl font-bold text-center mb-7">
+      Frequently Asked Questions
+    </h2>
+
+
+    <div class="space-y-4">
+
+
+      <div class="faq-item bg-white border rounded-xl overflow-hidden">
+
+        <button
+          type="button"
+          class="faq-question w-full text-left px-5 py-4 flex justify-between items-center font-semibold">
+
+          <span>What is an EMI?</span>
+
+          <span class="faq-icon text-xl">
+            +
+          </span>
+
+        </button>
+
+        <div class="faq-answer px-5 pb-5 text-gray-600 text-sm leading-7">
+
+          EMI stands for Equated Monthly Instalment. It is the amount
+          paid periodically by a borrower towards repayment of a loan,
+          including principal and applicable interest.
+
+        </div>
+
+      </div>
+
+
+      <div class="faq-item bg-white border rounded-xl overflow-hidden">
+
+        <button
+          type="button"
+          class="faq-question w-full text-left px-5 py-4 flex justify-between items-center font-semibold">
+
+          <span>How does the EMI Calculator work?</span>
+
+          <span class="faq-icon text-xl">
+            +
+          </span>
+
+        </button>
+
+        <div class="faq-answer px-5 pb-5 text-gray-600 text-sm leading-7">
+
+          Enter the loan amount, annual interest rate and loan tenure.
+          The calculator uses these values to estimate the monthly EMI,
+          total interest and total payment.
+
+        </div>
+
+      </div>
+
+
+      <div class="faq-item bg-white border rounded-xl overflow-hidden">
+
+        <button
+          type="button"
+          class="faq-question w-full text-left px-5 py-4 flex justify-between items-center font-semibold">
+
+          <span>Can I use this calculator for a home loan?</span>
+
+          <span class="faq-icon text-xl">
+            +
+          </span>
+
+        </button>
+
+        <div class="faq-answer px-5 pb-5 text-gray-600 text-sm leading-7">
+
+          Yes. You can use this calculator for hypothetical home loan,
+          personal loan, car loan and other similar loan calculations.
+
+        </div>
+
+      </div>
+
+
+      <div class="faq-item bg-white border rounded-xl overflow-hidden">
+
+        <button
+          type="button"
+          class="faq-question w-full text-left px-5 py-4 flex justify-between items-center font-semibold">
+
+          <span>Does the calculator include processing fees?</span>
+
+          <span class="faq-icon text-xl">
+            +
+          </span>
+
+        </button>
+
+        <div class="faq-answer px-5 pb-5 text-gray-600 text-sm leading-7">
+
+          No. The calculator estimates EMI, interest and total payment
+          using the entered loan amount, interest rate and tenure.
+          Additional lender charges such as processing fees are not included.
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= RELATED TOOLS ================= -->
+
+  <section class="mt-10">
+
+    <h2 class="text-2xl md:text-3xl font-bold mb-6">
+      Related Free Tools
+    </h2>
+
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+
+
+      <a
+        href="/sip-calculator.html"
+        class="bg-white border rounded-xl p-5 hover:border-red-400 transition">
+
+        <i class="fa-solid fa-chart-line text-red-600 text-xl"></i>
+
+        <h3 class="font-bold mt-3">
+          SIP Calculator
+        </h3>
+
+        <p class="text-sm text-gray-500 mt-2">
+          Calculate estimated SIP investment returns.
+        </p>
+
+      </a>
+
+
+      <a
+        href="/age-calculator.html"
+        class="bg-white border rounded-xl p-5 hover:border-red-400 transition">
+
+        <i class="fa-solid fa-calendar-days text-red-600 text-xl"></i>
+
+        <h3 class="font-bold mt-3">
+          Age Calculator
+        </h3>
+
+        <p class="text-sm text-gray-500 mt-2">
+          Calculate your exact age online.
+        </p>
+
+      </a>
+
+
+      <a
+        href="/"
+        class="bg-white border rounded-xl p-5 hover:border-red-400 transition">
+
+        <i class="fa-solid fa-toolbox text-red-600 text-xl"></i>
+
+        <h3 class="font-bold mt-3">
+          All Free Tools
+        </h3>
+
+        <p class="text-sm text-gray-500 mt-2">
+          Explore more free tools available on Antokia.
+        </p>
+
+      </a>
+
+
+    </div>
+
+  </section>
+
+
+  <!-- BOTTOM AD -->
+
+  <div class="bg-gray-200 rounded-xl min-h-[90px] mt-10 flex items-center justify-center text-gray-500 text-sm">
+    Advertisement
+  </div>
+
+
+  <!-- DISCLAIMER -->
+
+  <section class="mt-8 mb-10">
+
+    <div class="bg-gray-100 border border-gray-200 rounded-xl p-5 text-sm text-gray-600 leading-7">
+
+      <strong>Disclaimer:</strong>
+      This EMI Calculator is provided for informational and educational
+      purposes only. The results are estimates based on the information
+      entered by the user. Actual loan terms, interest rates, charges and
+      repayment schedules may vary by lender. This tool does not provide
+      financial advice or guarantee loan approval or loan terms.
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="bg-gray-900 text-gray-300">
+
+  <div class="max-w-6xl mx-auto px-4 py-10">
+
+    <div class="grid md:grid-cols-4 gap-8">
+
+
+      <!-- BRAND -->
+
+      <div>
+
+        <h2 class="text-2xl font-extrabold text-white">
+          Antokia
+        </h2>
+
+        <p class="text-sm leading-6 mt-3">
+          Free online tools for everyday tasks including PDF, image,
+          finance and utility tools.
+        </p>
+
+      </div>
+
+
+      <!-- EXPLORE -->
+
+      <div>
+
+        <h3 class="text-white font-bold mb-4">
+          Explore
+        </h3>
+
+        <div class="space-y-2 text-sm">
+
+          <a href="/" class="block hover:text-white">
+            Home
+          </a>
+
+          <a href="/blog/" class="block hover:text-white">
+            Blog
+          </a>
+
+          <a href="/about.html" class="block hover:text-white">
+            About
+          </a>
+
+          <a href="/contact.html" class="block hover:text-white">
+            Contact
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- LEGAL -->
+
+      <div>
+
+        <h3 class="text-white font-bold mb-4">
+          Legal
+        </h3>
+
+        <div class="space-y-2 text-sm">
+
+          <a href="/privacy.html" class="block hover:text-white">
+            Privacy Policy
+          </a>
+
+          <a href="/terms.html" class="block hover:text-white">
+            Terms & Conditions
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- SOCIAL -->
+
+      <div>
+
+        <h3 class="text-white font-bold mb-4">
+          Follow Antokia
+        </h3>
+
+        <div class="flex gap-3">
+
+          <a
+            href="https://www.instagram.com/antokia.insta"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Antokia on Instagram"
+            class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-gray-700">
+
+            <i class="fa-brands fa-instagram"></i>
+
+          </a>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+    <div class="border-t border-gray-700 mt-8 pt-6 text-center text-sm text-gray-400">
+
+      © 2026 Antokia. All rights reserved.
+
+    </div>
+
+  </div>
+
+</footer>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+(function(){
+
+  const loanAmount = document.getElementById("loanAmount");
+  const loanAmountInput = document.getElementById("loanAmountInput");
+
+  const interestRate = document.getElementById("interestRate");
+  const interestRateInput = document.getElementById("interestRateInput");
+
+  const loanTenure = document.getElementById("loanTenure");
+  const loanTenureInput = document.getElementById("loanTenureInput");
+
+  const loanAmountDisplay =
+    document.getElementById("loanAmountDisplay");
+
+  const interestRateDisplay =
+    document.getElementById("interestRateDisplay");
+
+  const loanTenureDisplay =
+    document.getElementById("loanTenureDisplay");
+
+  const emiValue =
+    document.getElementById("emiValue");
+
+  const interestValue =
+    document.getElementById("interestValue");
+
+  const totalPaymentValue =
+    document.getElementById("totalPaymentValue");
+
+  const calculateBtn =
+    document.getElementById("calculateBtn");
+
+
+  function formatINR(value){
+
+    return new Intl.NumberFormat("en-IN",{
+      style:"currency",
+      currency:"INR",
+      maximumFractionDigits:0
+    }).format(Math.max(0,value));
+
+  }
+
+
+  function cleanNumber(value,fallback,min,max){
+
+    let number = Number(value);
+
+    if(!Number.isFinite(number)){
+      number = fallback;
+    }
+
+    number = Math.max(min,Math.min(max,number));
+
+    return number;
+
+  }
+
+
+  function calculate(){
+
+    const P = cleanNumber(
+      loanAmountInput.value,
+      2000000,
+      10000,
+      100000000
+    );
+
+    const annualRate = cleanNumber(
+      interestRateInput.value,
+      8.5,
+      1,
+      30
+    );
+
+    const years = cleanNumber(
+      loanTenureInput.value,
+      20,
+      1,
+      40
+    );
+
+
+    const months = years * 12;
+
+    const monthlyRate =
+      annualRate / 12 / 100;
+
+
+    let EMI;
+    let totalPayment;
+    let totalInterest;
+
+
+    if(monthlyRate === 0){
+
+      EMI = P / months;
+
+    }else{
+
+      const factor =
+        Math.pow(1 + monthlyRate,months);
+
+      EMI =
+        P *
+        monthlyRate *
+        factor /
+        (factor - 1);
+
+    }
+
+
+    totalPayment = EMI * months;
+
+    totalInterest = totalPayment - P;
+
+
+    emiValue.textContent =
+      formatINR(EMI);
+
+    interestValue.textContent =
+      formatINR(totalInterest);
+
+    totalPaymentValue.textContent =
+      formatINR(totalPayment);
+
+
+    loanAmountDisplay.textContent =
+      formatINR(P);
+
+    interestRateDisplay.textContent =
+      annualRate.toFixed(1).replace(".0","") + "%";
+
+    loanTenureDisplay.textContent =
+      years + (years === 1 ? " Year" : " Years");
+
+
+    /* Keep slider and number inputs synchronized */
+
+    loanAmount.value = P;
+    loanAmountInput.value = P;
+
+    interestRate.value = annualRate;
+    interestRateInput.value = annualRate;
+
+    loanTenure.value = years;
+    loanTenureInput.value = years;
+
+  }
+
+
+  /* Slider Events */
+
+  loanAmount.addEventListener("input",function(){
+
+    loanAmountInput.value = this.value;
+
+    calculate();
+
+  });
+
+
+  interestRate.addEventListener("input",function(){
+
+    interestRateInput.value = this.value;
+
+    calculate();
+
+  });
+
+
+  loanTenure.addEventListener("input",function(){
+
+    loanTenureInput.value = this.value;
+
+    calculate();
+
+  });
+
+
+  /* Number Input Events */
+
+  loanAmountInput.addEventListener("input",function(){
+
+    calculate();
+
+  });
+
+
+  interestRateInput.addEventListener("input",function(){
+
+    calculate();
+
+  });
+
+
+  loanTenureInput.addEventListener("input",function(){
+
+    calculate();
+
+  });
+
+
+  calculateBtn.addEventListener("click",calculate);
+
+
+  /* FAQ */
+
+  document.querySelectorAll(".faq-question").forEach(function(button){
+
+    button.addEventListener("click",function(){
+
+      const item =
+        this.closest(".faq-item");
+
+      document.querySelectorAll(".faq-item").forEach(function(other){
+
+        if(other !== item){
+
+          other.classList.remove("active");
+
+        }
+
+      });
+
+      item.classList.toggle("active");
+
+    });
+
+  });
+
+
+  calculate();
+
+})();
+
+</script>
+
 </body>
 </html>
+```
