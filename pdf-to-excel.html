@@ -3,91 +3,1588 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PDF to Excel Converter - Free Online | Antokia</title>
-<meta name="description" content="Convert PDF to Excel XLSX free, extract tables from PDF online.">
+
+<title>PDF to Excel Converter Online Free | Extract PDF Data to XLSX | Antokia</title>
+
+<meta name="description" content="Convert PDF to Excel XLSX online for free with Antokia. Extract text and table-like data from PDF files into an editable Excel spreadsheet. No login required.">
+
+<meta name="robots" content="index, follow, max-image-preview:large">
+
+<link rel="canonical" href="https://antokia.com/pdf-to-excel.html">
+
+<meta property="og:title" content="PDF to Excel Converter Online Free | Antokia">
+<meta property="og:description" content="Extract PDF text and table-like data into an editable Excel XLSX file for free.">
+<meta property="og:url" content="https://antokia.com/pdf-to-excel.html">
+<meta property="og:type" content="website">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PDF to Excel Converter Online Free | Antokia">
+<meta name="twitter:description" content="Free browser-based PDF to Excel converter by Antokia.">
+
+<script src="https://cdn.tailwindcss.com"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 <style>
-body{font-family:Inter,system-ui;background:#f8fafc;margin:0;padding:20px}
-.container{max-width:700px;margin:30px auto;background:#fff;padding:30px;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.08)}
-h1{text-align:center}
-.drop{border:2px dashed #10b981;padding:40px;text-align:center;border-radius:12px;cursor:pointer;background:#ecfdf5}
-#status{margin-top:20px;text-align:center;font-weight:600}
-button{background:#10b981;color:#fff;border:0;padding:12px 20px;border-radius:8px;cursor:pointer;width:100%;margin-top:15px;font-size:16px}
-table{width:100%;margin-top:15px;border-collapse:collapse;font-size:13px}
-td,th{border:1px solid #ddd;padding:6px}
+
+body{
+font-family:Arial,sans-serif;
+}
+
+.drop-zone{
+transition:all .2s ease;
+}
+
+.drop-zone.dragover{
+border-color:#e5322d;
+background:#fff5f5;
+transform:scale(1.01);
+}
+
+.progress-bar{
+transition:width .3s ease;
+}
+
+.preview-table{
+border-collapse:collapse;
+width:100%;
+font-size:13px;
+}
+
+.preview-table th,
+.preview-table td{
+border:1px solid #e5e7eb;
+padding:8px 10px;
+text-align:left;
+vertical-align:top;
+}
+
+.preview-table th{
+background:#f5f5f5;
+font-weight:700;
+}
+
+.preview-table tr:nth-child(even){
+background:#fafafa;
+}
+
 </style>
-</head>
-<body>
-<div class="container">
-<h1>PDF to Excel Converter</h1>
-<p style="text-align:center;color:#666">Extract Tables & Text from PDF to Excel</p>
-<div class="drop" id="drop">
-<span>📊 Click or Drag PDF Here</span>
-<input type="file" id="file" accept=".pdf" hidden>
-</div>
-<div id="status"></div>
-<div id="preview"></div>
-<button id="download" style="display:none">Download Excel File (.xlsx)</button>
-</div>
-<script>
-const fileInput=document.getElementById('file');
-const drop=document.getElementById('drop');
-const status=document.getElementById('status');
-const preview=document.getElementById('preview');
-const dlBtn=document.getElementById('download');
-let workbook=null;
 
-drop.onclick=()=>fileInput.click();
-drop.ondragover=e=>{e.preventDefault();drop.style.background='#d1fae5'}
-drop.ondrop=e=>{e.preventDefault();fileInput.files=e.dataTransfer.files;handleFile();}
-fileInput.onchange=handleFile;
 
-async function handleFile(){
- const file=fileInput.files[0];
- if(!file) return;
- status.textContent="Reading PDF...";
- const reader=new FileReader();
- reader.onload=async function(){
-   const typedarray=new Uint8Array(this.result);
-   const pdf=await pdfjsLib.getDocument(typedarray).promise;
-   let allRows=[];
-   for(let i=1;i<=pdf.numPages;i++){
-     status.textContent=`Extracting Page ${i}/${pdf.numPages}...`;
-     const page=await pdf.getPage(i);
-     const content=await page.getTextContent();
-     // Simple line grouping
-     let lines={};
-     content.items.forEach(item=>{
-       let y=Math.round(item.transform[5]);
-       if(!lines[y]) lines[y]=[];
-       lines[y].push(item.str);
-     });
-     Object.values(lines).forEach(line=>{
-       allRows.push(line);
-     });
-     allRows.push([]); // empty row for page break
-   }
-   // Create Excel
-   const ws=XLSX.utils.aoa_to_sheet(allRows);
-   workbook=XLSX.utils.book_new();
-   XLSX.utils.book_append_sheet(workbook, ws, "Sheet1");
+<!-- WebApplication Schema -->
 
-   // Preview first 10 rows
-   let html="<table><tr><th>Extracted Data (Preview)</th></tr>";
-   allRows.slice(0,10).forEach(r=>{html+=`<tr><td>${r.join(" | ")}</td></tr>`});
-   html+="</table>";
-   preview.innerHTML=html;
-   status.textContent=`Done! ${pdf.numPages} pages extracted to Excel.`;
-   dlBtn.style.display="block";
- }
- reader.readAsArrayBuffer(file);
+<script type="application/ld+json">
+{
+"@context":"https://schema.org",
+"@type":"WebApplication",
+"name":"PDF to Excel Converter",
+"url":"https://antokia.com/pdf-to-excel.html",
+"applicationCategory":"UtilitiesApplication",
+"operatingSystem":"All",
+"description":"Free browser-based PDF to Excel XLSX converter.",
+"offers":{
+"@type":"Offer",
+"price":"0",
+"priceCurrency":"USD"
 }
-dlBtn.onclick=()=>{
- if(!workbook) return;
- XLSX.writeFile(workbook, "converted.xlsx");
 }
-pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 </script>
+
+
+<!-- Breadcrumb Schema -->
+
+<script type="application/ld+json">
+{
+"@context":"https://schema.org",
+"@type":"BreadcrumbList",
+"itemListElement":[
+{
+"@type":"ListItem",
+"position":1,
+"name":"Home",
+"item":"https://antokia.com/"
+},
+{
+"@type":"ListItem",
+"position":2,
+"name":"PDF to Excel",
+"item":"https://antokia.com/pdf-to-excel.html"
+}
+]
+}
+</script>
+
+
+<!-- FAQ Schema -->
+
+<script type="application/ld+json">
+{
+"@context":"https://schema.org",
+"@type":"FAQPage",
+"mainEntity":[
+{
+"@type":"Question",
+"name":"How do I convert PDF to Excel?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"Upload a PDF file, allow Antokia to extract the readable text and row data, review the preview and download the resulting XLSX Excel file."
+}
+},
+{
+"@type":"Question",
+"name":"Is PDF to Excel converter free?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"Yes. Antokia's PDF to Excel converter is free to use."
+}
+},
+{
+"@type":"Question",
+"name":"Do I need to create an account?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"No. No account or login is required."
+}
+},
+{
+"@type":"Question",
+"name":"Are PDF files uploaded to a server?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"The extraction and spreadsheet creation are performed in your browser. The tool does not require uploading the PDF to an Antokia conversion server."
+}
+},
+{
+"@type":"Question",
+"name":"Can every PDF table be converted perfectly to Excel?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"PDF layouts vary. Text-based PDFs can be extracted into spreadsheet rows, but complex tables, scanned PDFs, graphics and unusual layouts may require manual adjustment."
+}
+}
+]
+}
+</script>
+
+</head>
+
+
+<body class="bg-[#f5f5fa] text-gray-800">
+
+
+<!-- HEADER -->
+
+<header class="bg-white sticky top-0 z-50 shadow-sm">
+
+<div class="max-w-6xl mx-auto px-4 py-4">
+
+<div class="flex items-center justify-between gap-4">
+
+
+<!-- Desktop Navigation -->
+
+<div class="hidden md:flex items-center gap-7 text-sm font-medium">
+
+<a href="/" class="hover:text-[#e5322d] transition">
+Home
+</a>
+
+<a href="/blog/" class="hover:text-[#e5322d] transition">
+Blog
+</a>
+
+<a href="/about.html" class="hover:text-[#e5322d] transition">
+About
+</a>
+
+<a href="/contact.html" class="hover:text-[#e5322d] transition">
+Contact
+</a>
+
+</div>
+
+
+<!-- Mobile Menu -->
+
+<div class="md:hidden">
+
+<button
+onclick="toggleMobileMenu()"
+class="text-gray-700 text-xl"
+aria-label="Open menu">
+
+<i class="fa-solid fa-bars"></i>
+
+</button>
+
+</div>
+
+
+<!-- Right Side -->
+
+<div class="flex items-center gap-3">
+
+<span class="font-extrabold text-[#e5322d] text-xl">
+Antokia
+</span>
+
+<a
+href="/"
+class="bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-full text-sm font-medium transition">
+
+<i class="fa-solid fa-arrow-left mr-1"></i>
+Home
+
+</a>
+
+</div>
+
+</div>
+
+
+<!-- Mobile Navigation -->
+
+<div id="mobileMenu" class="hidden md:hidden pt-4">
+
+<div class="flex flex-col gap-3 text-sm border-t pt-4">
+
+<a href="/" class="hover:text-[#e5322d]">
+Home
+</a>
+
+<a href="/blog/" class="hover:text-[#e5322d]">
+Blog
+</a>
+
+<a href="/about.html" class="hover:text-[#e5322d]">
+About
+</a>
+
+<a href="/contact.html" class="hover:text-[#e5322d]">
+Contact
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</header>
+
+
+<!-- MAIN -->
+
+<main class="max-w-5xl mx-auto px-4 py-8 md:py-10">
+
+
+<!-- TITLE -->
+
+<section class="text-center">
+
+<h1 class="text-3xl md:text-4xl font-extrabold text-gray-900">
+PDF to Excel Converter
+</h1>
+
+<p class="text-gray-500 text-sm md:text-base mt-2">
+Extract PDF data and download as an editable Excel XLSX file
+</p>
+
+</section>
+
+
+<!-- TOP AD -->
+
+<div class="max-w-4xl mx-auto mt-7">
+
+<div class="h-[90px] rounded-xl bg-gray-200 flex items-center justify-center text-xs text-gray-500">
+Ad Space
+</div>
+
+</div>
+
+
+<!-- TOOL CARD -->
+
+<section class="bg-white rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.07)] border border-gray-100 p-5 md:p-8 mt-6">
+
+
+<!-- DROP ZONE -->
+
+<div
+id="dropZone"
+class="drop-zone border-2 border-dashed border-gray-300 rounded-2xl p-7 md:p-10 text-center cursor-pointer bg-[#fafafa]">
+
+<div class="w-16 h-16 mx-auto rounded-full bg-red-50 flex items-center justify-center">
+
+<i class="fa-solid fa-file-excel text-3xl text-[#e5322d]"></i>
+
+</div>
+
+<h2 class="text-lg md:text-xl font-bold mt-4">
+Drop your PDF here
+</h2>
+
+<p class="text-sm text-gray-500 mt-2">
+or click to browse from your device
+</p>
+
+<p class="text-xs text-gray-400 mt-2">
+PDF files only
+</p>
+
+<input
+type="file"
+id="fileInput"
+accept=".pdf,application/pdf"
+class="hidden">
+
+<button
+type="button"
+onclick="document.getElementById('fileInput').click()"
+class="mt-5 bg-[#e5322d] hover:bg-red-700 text-white px-6 py-3 rounded-xl font-bold transition">
+
+<i class="fa-solid fa-upload mr-2"></i>
+Choose PDF
+
+</button>
+
+</div>
+
+
+<!-- FILE INFORMATION -->
+
+<div id="fileBox" class="hidden mt-5">
+
+<div class="border border-gray-200 rounded-xl p-4 flex items-center justify-between gap-4">
+
+<div class="flex items-center gap-3 min-w-0">
+
+<div class="w-11 h-11 rounded-lg bg-red-50 flex items-center justify-center shrink-0">
+
+<i class="fa-solid fa-file-pdf text-[#e5322d] text-xl"></i>
+
+</div>
+
+<div class="min-w-0">
+
+<p id="fileName" class="font-bold text-sm truncate"></p>
+
+<p id="fileSize" class="text-xs text-gray-500 mt-1"></p>
+
+</div>
+
+</div>
+
+
+<button
+onclick="clearFile()"
+class="text-gray-400 hover:text-red-600 transition"
+aria-label="Remove file">
+
+<i class="fa-solid fa-trash"></i>
+
+</button>
+
+</div>
+
+</div>
+
+
+<!-- SUMMARY -->
+
+<div id="summaryBox" class="hidden mt-5 grid grid-cols-2 md:grid-cols-3 gap-3">
+
+<div class="bg-gray-50 rounded-xl p-4 text-center">
+
+<p class="text-xs text-gray-500">
+PDF Pages
+</p>
+
+<p id="pageCount" class="text-xl font-extrabold mt-1">
+0
+</p>
+
+</div>
+
+
+<div class="bg-gray-50 rounded-xl p-4 text-center">
+
+<p class="text-xs text-gray-500">
+Rows Extracted
+</p>
+
+<p id="rowCount" class="text-xl font-extrabold text-[#e5322d] mt-1">
+0
+</p>
+
+</div>
+
+
+<div class="bg-gray-50 rounded-xl p-4 text-center col-span-2 md:col-span-1">
+
+<p class="text-xs text-gray-500">
+Status
+</p>
+
+<p id="summaryStatus" class="text-xl font-extrabold mt-1">
+Ready
+</p>
+
+</div>
+
+</div>
+
+
+<!-- STATUS -->
+
+<div
+id="status"
+class="hidden mt-5 rounded-xl p-3 text-center text-sm font-semibold">
+</div>
+
+
+<!-- PROGRESS -->
+
+<div id="progressBox" class="hidden mt-4">
+
+<div class="flex justify-between text-xs text-gray-500 mb-2">
+
+<span id="progressText">
+Preparing...
+</span>
+
+<span id="progressPercent">
+0%
+</span>
+
+</div>
+
+<div class="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
+
+<div
+id="progressBar"
+class="progress-bar bg-[#e5322d] h-2 rounded-full"
+style="width:0%">
+</div>
+
+</div>
+
+</div>
+
+
+<!-- DOWNLOAD -->
+
+<button
+id="downloadBtn"
+disabled
+class="mt-6 w-full bg-[#e5322d] hover:bg-red-700 disabled:bg-gray-300 disabled:cursor-not-allowed text-white py-4 rounded-xl font-bold transition">
+
+<i class="fa-solid fa-file-excel mr-2"></i>
+Download Excel File (.xlsx)
+
+</button>
+
+
+<button
+onclick="clearFile()"
+class="mt-3 w-full bg-gray-100 hover:bg-gray-200 text-gray-700 py-3.5 rounded-xl font-bold transition">
+
+<i class="fa-solid fa-xmark mr-2"></i>
+Clear
+
+</button>
+
+
+<!-- PRIVACY -->
+
+<div class="mt-5 bg-gray-50 rounded-xl p-4">
+
+<div class="flex gap-3">
+
+<i class="fa-solid fa-shield-halved text-[#e5322d] mt-0.5"></i>
+
+<div>
+
+<p class="font-bold text-sm">
+Private browser-based processing
+</p>
+
+<p class="text-xs text-gray-500 leading-5 mt-1">
+Your PDF is processed in your browser. No account or document upload to an Antokia conversion server is required.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- PREVIEW -->
+
+<section
+id="previewSection"
+class="hidden bg-white rounded-2xl shadow-sm border border-gray-100 p-5 md:p-8 mt-6">
+
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+
+<div>
+
+<h2 class="text-lg font-bold">
+Extracted Data Preview
+</h2>
+
+<p class="text-xs text-gray-500 mt-1">
+Preview of the first extracted rows.
+</p>
+
+</div>
+
+<span
+id="previewBadge"
+class="text-xs bg-gray-100 px-3 py-2 rounded-full">
+Preview
+</span>
+
+</div>
+
+
+<div class="overflow-x-auto mt-5 rounded-xl border border-gray-200">
+
+<table id="previewTable" class="preview-table">
+</table>
+
+</div>
+
+
+<p class="text-xs text-gray-400 mt-4">
+Only a preview is shown here. The downloaded XLSX file contains the complete extracted data.
+</p>
+
+</section>
+
+
+<!-- BOTTOM AD -->
+
+<div class="max-w-4xl mx-auto mt-7">
+
+<div class="h-[90px] rounded-xl bg-gray-200 flex items-center justify-center text-xs text-gray-500">
+Ad Space
+</div>
+
+</div>
+
+
+<!-- INFORMATION -->
+
+<section class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 md:p-8 mt-8">
+
+<h2 class="text-2xl font-extrabold">
+Free PDF to Excel Converter
+</h2>
+
+<p class="text-sm text-gray-600 leading-7 mt-4">
+
+Antokia's PDF to Excel Converter extracts readable text and row-based data from PDF files and creates an editable XLSX spreadsheet. It is useful when you need to move information from a text-based PDF into Excel for further editing, sorting or analysis.
+
+</p>
+
+<p class="text-sm text-gray-600 leading-7 mt-3">
+
+The conversion happens directly in your browser. No login is required, making it convenient for quick document processing on desktop and mobile devices.
+
+</p>
+
+
+<h3 class="text-lg font-bold mt-7">
+How to Convert PDF to Excel?
+</h3>
+
+<ol class="text-sm text-gray-600 mt-3 space-y-2 list-decimal ml-5">
+
+<li>Select or drag and drop your PDF file.</li>
+
+<li>Wait while the PDF pages are processed.</li>
+
+<li>Review the extracted data preview.</li>
+
+<li>Click <strong>Download Excel File (.xlsx)</strong>.</li>
+
+<li>Open the XLSX file in Microsoft Excel, Google Sheets or another compatible spreadsheet application.</li>
+
+</ol>
+
+
+<h3 class="text-lg font-bold mt-7">
+What Can Be Extracted?
+</h3>
+
+<ul class="text-sm text-gray-600 mt-3 space-y-2 list-disc ml-5">
+
+<li>Readable text from PDF pages.</li>
+
+<li>Text arranged into row-based spreadsheet data.</li>
+
+<li>Multi-page PDF content.</li>
+
+<li>Basic table-like information from text-based PDFs.</li>
+
+</ul>
+
+
+<div class="mt-6 bg-red-50 border border-red-100 rounded-xl p-4">
+
+<p class="text-xs text-gray-600 leading-5">
+
+<strong>Important:</strong> PDF files use many different layouts. Text-based PDFs generally provide better extraction results. Scanned documents, image-only PDFs, complex tables, merged cells, graphics and unusual layouts may not convert into perfectly structured Excel columns and may require manual editing after download.
+
+</p>
+
+</div>
+
+</section>
+
+
+<!-- RELATED TOOLS -->
+
+<section class="mt-8">
+
+<h2 class="text-2xl font-extrabold text-center">
+Related PDF Tools
+</h2>
+
+<p class="text-sm text-gray-500 text-center mt-2">
+Explore more free document tools from Antokia.
+</p>
+
+
+<div class="grid md:grid-cols-2 gap-5 mt-6">
+
+
+<a
+href="/pdf-to-word.html"
+class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition">
+
+<div class="w-12 h-12 rounded-xl bg-red-50 flex items-center justify-center">
+
+<i class="fa-solid fa-file-word text-[#e5322d] text-xl"></i>
+
+</div>
+
+<h3 class="font-bold text-lg mt-4">
+PDF to Word
+</h3>
+
+<p class="text-sm text-gray-500 mt-2">
+Convert PDF documents into editable Word files.
+</p>
+
+<span class="inline-block mt-4 text-sm font-bold text-[#e5322d]">
+Open Tool →
+</span>
+
+</a>
+
+
+<a
+href="/merge-pdf.html"
+class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition">
+
+<div class="w-12 h-12 rounded-xl bg-red-50 flex items-center justify-center">
+
+<i class="fa-solid fa-layer-group text-[#e5322d] text-xl"></i>
+
+</div>
+
+<h3 class="font-bold text-lg mt-4">
+Merge PDF
+</h3>
+
+<p class="text-sm text-gray-500 mt-2">
+Combine multiple PDF files into one PDF document.
+</p>
+
+<span class="inline-block mt-4 text-sm font-bold text-[#e5322d]">
+Open Tool →
+</span>
+
+</a>
+
+</div>
+
+</section>
+
+
+<!-- FAQ -->
+
+<section class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 md:p-8 mt-8">
+
+<h2 class="text-2xl font-extrabold">
+Frequently Asked Questions
+</h2>
+
+
+<div class="mt-6 space-y-5">
+
+
+<div>
+
+<h3 class="font-bold text-sm">
+How do I convert PDF to Excel?
+</h3>
+
+<p class="text-sm text-gray-600 mt-2 leading-6">
+Upload a PDF, wait for the data extraction to finish, review the preview and click Download Excel File to create the XLSX spreadsheet.
+</p>
+
+</div>
+
+
+<div>
+
+<h3 class="font-bold text-sm">
+Is the PDF to Excel converter free?
+</h3>
+
+<p class="text-sm text-gray-600 mt-2 leading-6">
+Yes. Antokia's PDF to Excel converter is free to use.
+</p>
+
+</div>
+
+
+<div>
+
+<h3 class="font-bold text-sm">
+Can I convert a multi-page PDF?
+</h3>
+
+<p class="text-sm text-gray-600 mt-2 leading-6">
+Yes. The tool processes the pages of the selected PDF and combines the extracted data into one Excel workbook.
+</p>
+
+</div>
+
+
+<div>
+
+<h3 class="font-bold text-sm">
+Will every PDF table convert perfectly?
+</h3>
+
+<p class="text-sm text-gray-600 mt-2 leading-6">
+Not necessarily. PDF layouts vary significantly. Text-based PDFs generally work better, while scanned PDFs and complex tables may require manual formatting in Excel.
+</p>
+
+</div>
+
+
+<div>
+
+<h3 class="font-bold text-sm">
+Do I need an account?
+</h3>
+
+<p class="text-sm text-gray-600 mt-2 leading-6">
+No. You can use the tool without registration or login.
+</p>
+
+</div>
+
+
+<div>
+
+<h3 class="font-bold text-sm">
+Are my PDF files uploaded?
+</h3>
+
+<p class="text-sm text-gray-600 mt-2 leading-6">
+The extraction and Excel creation are performed in your browser and do not require uploading the PDF to an Antokia conversion server.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- DISCLAIMER -->
+
+<p class="text-xs text-gray-400 text-center leading-5 mt-7 max-w-3xl mx-auto">
+
+Antokia provides browser-based utility tools for general document processing. Always review extracted spreadsheet data before using it for official, financial or business purposes.
+
+</p>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer class="bg-[#242424] text-gray-300 mt-12">
+
+<div class="max-w-6xl mx-auto px-4 py-10">
+
+<div class="grid md:grid-cols-3 gap-8">
+
+
+<!-- Explore -->
+
+<div>
+
+<h3 class="text-white font-bold mb-4">
+Explore
+</h3>
+
+<div class="space-y-2 text-sm">
+
+<a href="/" class="block hover:text-white">
+Home
+</a>
+
+<a href="/blog/" class="block hover:text-white">
+Blog
+</a>
+
+<a href="/about.html" class="block hover:text-white">
+About
+</a>
+
+<a href="/contact.html" class="block hover:text-white">
+Contact
+</a>
+
+</div>
+
+</div>
+
+
+<!-- Legal -->
+
+<div>
+
+<h3 class="text-white font-bold mb-4">
+Legal
+</h3>
+
+<div class="space-y-2 text-sm">
+
+<a href="/privacy.html" class="block hover:text-white">
+Privacy Policy
+</a>
+
+<a href="/terms.html" class="block hover:text-white">
+Terms & Conditions
+</a>
+
+</div>
+
+</div>
+
+
+<!-- Instagram -->
+
+<div>
+
+<h3 class="text-white font-bold mb-4">
+Follow Antokia
+</h3>
+
+<a
+href="https://www.instagram.com/antokia.insta"
+target="_blank"
+rel="noopener noreferrer"
+class="inline-flex items-center gap-2 text-sm hover:text-white">
+
+<i class="fa-brands fa-instagram"></i>
+Instagram
+
+</a>
+
+</div>
+
+</div>
+
+
+<div class="border-t border-gray-700 mt-8 pt-6 text-center text-xs text-gray-500">
+
+© 2026 Antokia. All rights reserved.
+
+</div>
+
+</div>
+
+</footer>
+
+
+<script>
+
+/* PDF.JS WORKER */
+
+pdfjsLib.GlobalWorkerOptions.workerSrc =
+"https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+
+/* ELEMENTS */
+
+const fileInput = document.getElementById("fileInput");
+const dropZone = document.getElementById("dropZone");
+
+const fileBox = document.getElementById("fileBox");
+const fileName = document.getElementById("fileName");
+const fileSize = document.getElementById("fileSize");
+
+const summaryBox = document.getElementById("summaryBox");
+const pageCount = document.getElementById("pageCount");
+const rowCount = document.getElementById("rowCount");
+const summaryStatus = document.getElementById("summaryStatus");
+
+const statusBox = document.getElementById("status");
+
+const progressBox = document.getElementById("progressBox");
+const progressBar = document.getElementById("progressBar");
+const progressText = document.getElementById("progressText");
+const progressPercent = document.getElementById("progressPercent");
+
+const previewSection = document.getElementById("previewSection");
+const previewTable = document.getElementById("previewTable");
+const previewBadge = document.getElementById("previewBadge");
+
+const downloadBtn = document.getElementById("downloadBtn");
+
+
+/* DATA */
+
+let workbook = null;
+let allRows = [];
+let selectedFile = null;
+
+
+/* MOBILE MENU */
+
+function toggleMobileMenu(){
+
+const menu = document.getElementById("mobileMenu");
+
+menu.classList.toggle("hidden");
+
+}
+
+
+/* FILE SIZE */
+
+function formatFileSize(bytes){
+
+if(bytes < 1024){
+
+return bytes + " B";
+
+}
+
+if(bytes < 1024 * 1024){
+
+return (bytes / 1024).toFixed(1) + " KB";
+
+}
+
+return (bytes / (1024 * 1024)).toFixed(2) + " MB";
+
+}
+
+
+/* STATUS */
+
+function showStatus(message,type="info"){
+
+statusBox.classList.remove(
+"hidden",
+"bg-red-50",
+"text-red-600",
+"bg-green-50",
+"text-green-600",
+"bg-blue-50",
+"text-blue-600"
+);
+
+
+if(type === "error"){
+
+statusBox.classList.add(
+"bg-red-50",
+"text-red-600"
+);
+
+}
+
+else if(type === "success"){
+
+statusBox.classList.add(
+"bg-green-50",
+"text-green-600"
+);
+
+}
+
+else{
+
+statusBox.classList.add(
+"bg-blue-50",
+"text-blue-600"
+);
+
+}
+
+
+statusBox.innerHTML = message;
+
+}
+
+
+/* PROGRESS */
+
+function setProgress(percent,text){
+
+progressBox.classList.remove("hidden");
+
+progressBar.style.width = percent + "%";
+
+progressPercent.textContent = percent + "%";
+
+progressText.textContent = text;
+
+}
+
+
+/* FILE INPUT */
+
+fileInput.addEventListener("change",function(e){
+
+if(e.target.files && e.target.files[0]){
+
+processPDF(e.target.files[0]);
+
+}
+
+});
+
+
+/* DRAG & DROP */
+
+["dragenter","dragover"].forEach(eventName=>{
+
+dropZone.addEventListener(eventName,function(e){
+
+e.preventDefault();
+
+e.stopPropagation();
+
+dropZone.classList.add("dragover");
+
+});
+
+});
+
+
+["dragleave","drop"].forEach(eventName=>{
+
+dropZone.addEventListener(eventName,function(e){
+
+e.preventDefault();
+
+e.stopPropagation();
+
+dropZone.classList.remove("dragover");
+
+});
+
+});
+
+
+dropZone.addEventListener("drop",function(e){
+
+const files = e.dataTransfer.files;
+
+if(files && files.length){
+
+processPDF(files[0]);
+
+}
+
+});
+
+
+/* PDF PROCESSING */
+
+async function processPDF(file){
+
+clearFile(false);
+
+
+if(file.type !== "application/pdf" &&
+!file.name.toLowerCase().endsWith(".pdf")){
+
+showStatus(
+"<i class='fa-solid fa-circle-exclamation mr-2'></i>Please select a valid PDF file.",
+"error"
+);
+
+return;
+
+}
+
+
+if(file.size > 50 * 1024 * 1024){
+
+showStatus(
+"<i class='fa-solid fa-circle-exclamation mr-2'></i>Please use a PDF up to 50 MB for better browser performance.",
+"error"
+);
+
+return;
+
+}
+
+
+selectedFile = file;
+
+fileBox.classList.remove("hidden");
+
+fileName.textContent = file.name;
+
+fileSize.textContent = formatFileSize(file.size);
+
+
+try{
+
+showStatus(
+"<i class='fa-solid fa-spinner fa-spin mr-2'></i>Reading PDF...",
+"info"
+);
+
+setProgress(10,"Loading PDF...");
+
+
+const buffer = await file.arrayBuffer();
+
+const typedArray = new Uint8Array(buffer);
+
+
+setProgress(20,"Opening PDF...");
+
+
+const pdf = await pdfjsLib
+.getDocument({data:typedArray})
+.promise;
+
+
+const total = pdf.numPages;
+
+pageCount.textContent = total;
+
+summaryBox.classList.remove("hidden");
+
+
+allRows = [];
+
+
+for(let pageNumber = 1; pageNumber <= total; pageNumber++){
+
+const percent =
+25 + Math.round((pageNumber / total) * 55);
+
+
+setProgress(
+percent,
+"Extracting page " + pageNumber + " of " + total + "..."
+);
+
+
+summaryStatus.textContent =
+"Page " + pageNumber + "/" + total;
+
+
+const page = await pdf.getPage(pageNumber);
+
+const content = await page.getTextContent();
+
+
+/*
+Group PDF text items by approximate Y position.
+This keeps text appearing on the same PDF line together.
+*/
+
+const lines = {};
+
+content.items.forEach(item=>{
+
+const y = Math.round(item.transform[5] / 2) * 2;
+
+if(!lines[y]){
+
+lines[y] = [];
+
+}
+
+lines[y].push({
+
+text:item.str || "",
+
+x:item.transform[4]
+
+});
+
+});
+
+
+const sortedLines = Object.keys(lines)
+.sort((a,b)=>Number(b)-Number(a));
+
+
+sortedLines.forEach(y=>{
+
+const items = lines[y];
+
+items.sort((a,b)=>a.x-b.x);
+
+
+const row = items
+.map(item=>item.text.trim())
+.filter(Boolean);
+
+
+if(row.length){
+
+allRows.push(row);
+
+}
+
+});
+
+
+/* Page separator */
+
+allRows.push([]);
+
+}
+
+
+setProgress(88,"Preparing Excel workbook...");
+
+
+if(!allRows.length){
+
+throw new Error("No readable text found");
+
+}
+
+
+/* Create workbook */
+
+const worksheet =
+XLSX.utils.aoa_to_sheet(allRows);
+
+
+worksheet["!cols"] = calculateColumnWidths(allRows);
+
+
+workbook = XLSX.utils.book_new();
+
+
+XLSX.utils.book_append_sheet(
+workbook,
+worksheet,
+"PDF Data"
+);
+
+
+/* Preview */
+
+renderPreview(allRows);
+
+
+rowCount.textContent = allRows.length;
+
+summaryStatus.textContent = "Ready";
+
+
+setProgress(100,"Excel file ready");
+
+
+showStatus(
+"<i class='fa-solid fa-circle-check mr-2'></i>PDF processed successfully. Review the preview and download your Excel file.",
+"success"
+);
+
+
+downloadBtn.disabled = false;
+
+
+setTimeout(()=>{
+
+progressBox.classList.add("hidden");
+
+},1200);
+
+
+}
+
+catch(error){
+
+console.error(error);
+
+workbook = null;
+
+allRows = [];
+
+
+summaryStatus.textContent = "Error";
+
+
+showStatus(
+"<i class='fa-solid fa-circle-exclamation mr-2'></i>No readable text could be extracted from this PDF. Scanned or image-only PDFs may require OCR.",
+"error"
+);
+
+
+progressBox.classList.add("hidden");
+
+downloadBtn.disabled = true;
+
+}
+
+}
+
+
+/* COLUMN WIDTHS */
+
+function calculateColumnWidths(rows){
+
+let maxColumns = 0;
+
+
+rows.forEach(row=>{
+
+if(row.length > maxColumns){
+
+maxColumns = row.length;
+
+}
+
+});
+
+
+const widths = [];
+
+
+for(let column = 0; column < maxColumns; column++){
+
+let maxLength = 10;
+
+
+rows.forEach(row=>{
+
+if(row[column]){
+
+maxLength = Math.max(
+maxLength,
+String(row[column]).length
+);
+
+}
+
+});
+
+
+widths.push({
+
+wch:Math.min(maxLength + 2,40)
+
+});
+
+}
+
+
+return widths;
+
+}
+
+
+/* PREVIEW */
+
+function renderPreview(rows){
+
+previewTable.innerHTML = "";
+
+
+const previewRows = rows
+.filter(row=>row.length)
+.slice(0,12);
+
+
+if(!previewRows.length){
+
+previewSection.classList.add("hidden");
+
+return;
+
+}
+
+
+const maxColumns = Math.max(
+...previewRows.map(row=>row.length)
+);
+
+
+const header = document.createElement("tr");
+
+
+for(let i=0;i<maxColumns;i++){
+
+const th = document.createElement("th");
+
+th.textContent = "Column " + (i+1);
+
+header.appendChild(th);
+
+}
+
+
+previewTable.appendChild(header);
+
+
+previewRows.forEach(row=>{
+
+const tr = document.createElement("tr");
+
+
+for(let i=0;i<maxColumns;i++){
+
+const td = document.createElement("td");
+
+td.textContent = row[i] || "";
+
+tr.appendChild(td);
+
+}
+
+
+previewTable.appendChild(tr);
+
+});
+
+
+previewBadge.textContent =
+Math.min(previewRows.length,12) +
+" rows shown";
+
+
+previewSection.classList.remove("hidden");
+
+}
+
+
+/* DOWNLOAD */
+
+downloadBtn.addEventListener("click",function(){
+
+if(!workbook){
+
+showStatus(
+"<i class='fa-solid fa-circle-exclamation mr-2'></i>Please process a PDF first.",
+"error"
+);
+
+return;
+
+}
+
+
+try{
+
+const baseName =
+selectedFile
+? selectedFile.name.replace(/\.pdf$/i,"")
+: "converted";
+
+
+XLSX.writeFile(
+workbook,
+baseName + "-converted.xlsx"
+);
+
+
+showStatus(
+"<i class='fa-solid fa-circle-check mr-2'></i>Excel file downloaded successfully.",
+"success"
+);
+
+}
+
+catch(error){
+
+console.error(error);
+
+showStatus(
+"<i class='fa-solid fa-circle-exclamation mr-2'></i>Unable to create the Excel download. Please try again.",
+"error"
+);
+
+}
+
+});
+
+
+/* CLEAR */
+
+function clearFile(clearInput=true){
+
+workbook = null;
+
+allRows = [];
+
+selectedFile = null;
+
+
+if(clearInput){
+
+fileInput.value = "";
+
+}
+
+
+fileBox.classList.add("hidden");
+
+summaryBox.classList.add("hidden");
+
+previewSection.classList.add("hidden");
+
+statusBox.classList.add("hidden");
+
+progressBox.classList.add("hidden");
+
+
+previewTable.innerHTML = "";
+
+pageCount.textContent = "0";
+
+rowCount.textContent = "0";
+
+summaryStatus.textContent = "Ready";
+
+
+downloadBtn.disabled = true;
+
+}
+
+</script>
+
 </body>
 </html>
