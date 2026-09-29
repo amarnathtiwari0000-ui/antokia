@@ -1,52 +1,1099 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Compress PDF - Reduce PDF Size Free | Antokia</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Compress PDF Online Free – Reduce PDF Size | Antokia</title>
+
+<meta name="description" content="Compress and optimize PDF files online for free with Antokia. Reduce PDF file size directly in your browser without uploading your document to a server.">
+<meta name="keywords" content="compress PDF, compress PDF online, reduce PDF size, PDF compressor, optimize PDF, free PDF compressor">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://antokia.com/compress-pdf.html">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Compress PDF Online Free – Reduce PDF Size | Antokia">
+<meta property="og:description" content="Free online PDF compressor to optimize and reduce PDF file size directly in your browser.">
+<meta property="og:url" content="https://antokia.com/compress-pdf.html">
+<meta property="og:site_name" content="Antokia">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Compress PDF Online Free – Antokia">
+<meta name="twitter:description" content="Reduce and optimize PDF file size online for free with Antokia.">
+
+<script src="https://cdn.tailwindcss.com"></script>
 <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
-<style>
-body{font-family:system-ui;background:#f8fafc;margin:0;padding:20px}
-.container{max-width:700px;margin:30px auto;background:#fff;padding:30px;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.08)}
-.drop{border:2px dashed #ef4444;padding:40px;text-align:center;border-radius:12px;background:#fef2f2;cursor:pointer}
-button{background:#ef4444;color:#fff;border:0;padding:12px 20px;border-radius:8px;width:100%;margin-top:15px;font-size:16px;cursor:pointer}
-#stats{display:flex;justify-content:space-around;margin-top:20px;text-align:center}
-</style>
-</head>
-<body>
-<div class="container">
-<h1 style="text-align:center">Compress PDF</h1>
-<p style="text-align:center;color:#666">Reduce PDF size without losing quality</p>
-<div class="drop" id="drop">🗜️ Click or Drop PDF Here<input type="file" id="file" accept=".pdf" hidden></div>
-<div id="stats"></div>
-<div id="status" style="text-align:center;margin-top:15px;font-weight:600"></div>
-<button id="dl" style="display:none">Download Compressed PDF</button>
-</div>
-<script>
-const fileInput=document.getElementById('file'), drop=document.getElementById('drop'), status=document.getElementById('status'), dl=document.getElementById('dl'), stats=document.getElementById('stats');
-let compressedBlob=null, originalSize=0;
-drop.onclick=()=>fileInput.click();
-fileInput.onchange=handle;
-drop.ondragover=e=>e.preventDefault();
-drop.ondrop=e=>{e.preventDefault(); fileInput.files=e.dataTransfer.files; handle();};
-async function handle(){
- const file=fileInput.files[0]; if(!file) return;
- originalSize=file.size;
- status.textContent="Compressing... Please wait";
- const bytes=await file.arrayBuffer();
- const pdfDoc=await PDFLib.PDFDocument.load(bytes);
- // Remove metadata & compress
- pdfDoc.setTitle(""); pdfDoc.setAuthor(""); pdfDoc.setSubject("");
- const compressedBytes=await pdfDoc.save({useObjectStreams:true});
- compressedBlob=new Blob([compressedBytes],{type:"application/pdf"});
- const newSize=compressedBytes.length;
- const saved=((originalSize-newSize)/originalSize*100).toFixed(1);
- stats.innerHTML=`<div><b>Original</b><br>${(originalSize/1024).toFixed(1)} KB</div><div><b>Compressed</b><br>${(newSize/1024).toFixed(1)} KB</div><div><b>Saved</b><br>${saved}%</div>`;
- status.textContent=saved>0?`Compressed! ${saved}% size reduced`:`Optimized! Ready to download`;
- dl.style.display="block";
-}
-dl.onclick=()=>{
- const a=document.createElement('a'); a.href=URL.createObjectURL(compressedBlob); a.download="compressed-antokia.pdf"; a.click();
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebApplication",
+  "name":"Antokia Compress PDF",
+  "url":"https://antokia.com/compress-pdf.html",
+  "applicationCategory":"UtilitiesApplication",
+  "operatingSystem":"Web Browser",
+  "description":"Free browser-based PDF compressor and optimizer from Antokia.",
+  "offers":{
+    "@type":"Offer",
+    "price":"0",
+    "priceCurrency":"USD"
+  }
 }
 </script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {
+      "@type":"ListItem",
+      "position":1,
+      "name":"Home",
+      "item":"https://antokia.com/"
+    },
+    {
+      "@type":"ListItem",
+      "position":2,
+      "name":"Compress PDF",
+      "item":"https://antokia.com/compress-pdf.html"
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {
+      "@type":"Question",
+      "name":"How can I compress a PDF online for free?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"Open the Antokia Compress PDF tool, select or drop your PDF file, wait for the browser-based optimization to finish, and download the optimized PDF."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"Is my PDF uploaded to a server?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"The compression process on this page runs in your browser using client-side JavaScript. Your selected PDF is processed locally by the tool."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"Will every PDF become significantly smaller?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"Not necessarily. The amount of size reduction depends on how the original PDF was created and what content it contains. Some PDFs may already be optimized."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"Will compressing a PDF reduce its quality?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"This tool focuses on PDF optimization and does not intentionally reduce image resolution or visual quality. The resulting file size reduction can therefore vary between PDFs."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f5f5fa;
+  color:#222;
+}
+
+.antokia-red{
+  color:#e5322d;
+}
+
+.bg-antokia{
+  background:#e5322d;
+}
+
+.border-antokia{
+  border-color:#e5322d;
+}
+
+.tool-card{
+  background:#fff;
+  border:1px solid #e9e9ee;
+  border-radius:18px;
+  box-shadow:0 8px 25px rgba(0,0,0,.06);
+}
+
+.drop-zone{
+  border:2px dashed #e5322d;
+  background:#fff8f7;
+  transition:.2s ease;
+}
+
+.drop-zone:hover,
+.drop-zone.drag-active{
+  background:#fff0ef;
+  transform:translateY(-1px);
+}
+
+.primary-btn{
+  background:#e5322d;
+  color:#fff;
+  transition:.2s ease;
+}
+
+.primary-btn:hover{
+  background:#c92824;
+}
+
+.secondary-btn{
+  background:#f1f1f4;
+  color:#333;
+  transition:.2s ease;
+}
+
+.secondary-btn:hover{
+  background:#e5e5e9;
+}
+
+.stat-card{
+  background:#fafafa;
+  border:1px solid #ededed;
+  border-radius:14px;
+}
+
+.progress-track{
+  height:8px;
+  background:#ededed;
+  border-radius:20px;
+  overflow:hidden;
+}
+
+.progress-bar{
+  height:100%;
+  width:0%;
+  background:#e5322d;
+  transition:width .25s ease;
+}
+
+.info-card{
+  background:#fff;
+  border:1px solid #e9e9ee;
+  border-radius:16px;
+  box-shadow:0 5px 20px rgba(0,0,0,.04);
+}
+
+.footer-link{
+  color:#cfcfcf;
+  transition:.2s ease;
+}
+
+.footer-link:hover{
+  color:#fff;
+}
+
+@media(max-width:768px){
+  .desktop-nav{
+    display:none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="bg-white sticky top-0 z-50 shadow-sm">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="h-16 flex items-center justify-between">
+
+      <nav class="desktop-nav flex items-center gap-6 text-sm font-medium">
+        <a href="/" class="hover:text-red-600">Home</a>
+        <a href="/blog/" class="hover:text-red-600">Blog</a>
+        <a href="/about.html" class="hover:text-red-600">About</a>
+        <a href="/contact.html" class="hover:text-red-600">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-3 ml-auto">
+        <span class="text-xl font-extrabold antokia-red tracking-tight">
+          Antokia
+        </span>
+
+        <a href="/"
+           class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm font-semibold transition">
+          <i class="fa-solid fa-arrow-left mr-1"></i>
+          Home
+        </a>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+
+<!-- MAIN -->
+<main class="max-w-5xl mx-auto px-4 sm:px-6 py-10">
+
+  <!-- TOP AD SPACE -->
+  <div class="mb-8">
+    <div class="max-w-3xl mx-auto min-h-[90px] flex items-center justify-center">
+      <!-- AdSense ad unit can be placed here after approval -->
+    </div>
+  </div>
+
+
+  <!-- PAGE INTRO -->
+  <section class="text-center mb-8">
+    <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-red-50 mb-4">
+      <i class="fa-solid fa-compress text-2xl antokia-red"></i>
+    </div>
+
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-3">
+      Compress PDF Online
+    </h1>
+
+    <p class="text-gray-600 max-w-2xl mx-auto leading-relaxed">
+      Reduce and optimize your PDF file size for free with Antokia.
+      Process your PDF directly in your browser and download the optimized file.
+    </p>
+  </section>
+
+
+  <!-- TOOL CARD -->
+  <section class="tool-card p-5 sm:p-8 max-w-3xl mx-auto">
+
+    <!-- DROP AREA -->
+    <div id="dropZone"
+         class="drop-zone rounded-2xl p-8 sm:p-12 text-center cursor-pointer">
+
+      <div class="w-16 h-16 mx-auto rounded-full bg-red-100 flex items-center justify-center mb-4">
+        <i class="fa-solid fa-file-pdf text-3xl antokia-red"></i>
+      </div>
+
+      <h2 class="text-xl font-bold text-gray-800 mb-2">
+        Select or Drop Your PDF
+      </h2>
+
+      <p class="text-gray-500 text-sm mb-5">
+        Click here or drag and drop a PDF file
+      </p>
+
+      <button type="button"
+              id="browseBtn"
+              class="primary-btn px-6 py-3 rounded-xl font-semibold">
+        <i class="fa-solid fa-folder-open mr-2"></i>
+        Choose PDF
+      </button>
+
+      <p class="text-xs text-gray-400 mt-4">
+        PDF files only
+      </p>
+
+      <input type="file"
+             id="fileInput"
+             accept=".pdf,application/pdf"
+             class="hidden">
+    </div>
+
+
+    <!-- FILE INFORMATION -->
+    <div id="fileInfo" class="hidden mt-6">
+      <div class="bg-gray-50 border border-gray-200 rounded-xl p-4">
+
+        <div class="flex items-start gap-3">
+          <div class="w-11 h-11 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0">
+            <i class="fa-solid fa-file-pdf antokia-red text-xl"></i>
+          </div>
+
+          <div class="min-w-0 flex-1">
+            <div id="fileName"
+                 class="font-semibold text-gray-800 break-all">
+            </div>
+
+            <div id="fileSize"
+                 class="text-sm text-gray-500 mt-1">
+            </div>
+          </div>
+
+          <button type="button"
+                  id="removeFile"
+                  class="text-gray-400 hover:text-red-600 p-2"
+                  title="Remove file">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- PROGRESS -->
+    <div id="progressSection" class="hidden mt-6">
+
+      <div class="flex justify-between text-sm mb-2">
+        <span id="progressText" class="font-semibold text-gray-700">
+          Preparing PDF...
+        </span>
+
+        <span id="progressPercent" class="text-gray-500">
+          0%
+        </span>
+      </div>
+
+      <div class="progress-track">
+        <div id="progressBar" class="progress-bar"></div>
+      </div>
+
+    </div>
+
+
+    <!-- STATS -->
+    <div id="stats"
+         class="hidden grid grid-cols-1 sm:grid-cols-3 gap-3 mt-6">
+
+      <div class="stat-card p-4 text-center">
+        <div class="text-xs text-gray-500 uppercase tracking-wide">
+          Original Size
+        </div>
+        <div id="originalSize"
+             class="text-lg font-bold text-gray-800 mt-1">
+          -
+        </div>
+      </div>
+
+      <div class="stat-card p-4 text-center">
+        <div class="text-xs text-gray-500 uppercase tracking-wide">
+          Optimized Size
+        </div>
+        <div id="compressedSize"
+             class="text-lg font-bold antokia-red mt-1">
+          -
+        </div>
+      </div>
+
+      <div class="stat-card p-4 text-center">
+        <div class="text-xs text-gray-500 uppercase tracking-wide">
+          Size Change
+        </div>
+        <div id="savedSize"
+             class="text-lg font-bold text-gray-800 mt-1">
+          -
+        </div>
+      </div>
+
+    </div>
+
+
+    <!-- STATUS -->
+    <div id="statusBox"
+         class="hidden mt-5 rounded-xl p-4 text-center text-sm">
+      <span id="statusText"></span>
+    </div>
+
+
+    <!-- ACTION BUTTONS -->
+    <div id="actions" class="hidden mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
+
+      <button type="button"
+              id="downloadBtn"
+              class="primary-btn py-3 rounded-xl font-semibold">
+        <i class="fa-solid fa-download mr-2"></i>
+        Download Optimized PDF
+      </button>
+
+      <button type="button"
+              id="resetBtn"
+              class="secondary-btn py-3 rounded-xl font-semibold">
+        <i class="fa-solid fa-rotate-left mr-2"></i>
+        Compress Another PDF
+      </button>
+
+    </div>
+
+
+    <!-- PRIVACY NOTE -->
+    <div class="mt-6 p-4 bg-green-50 border border-green-100 rounded-xl">
+      <div class="flex gap-3">
+        <i class="fa-solid fa-shield-halved text-green-600 mt-0.5"></i>
+
+        <div>
+          <h3 class="font-semibold text-green-800 text-sm">
+            Browser-Based Processing
+          </h3>
+
+          <p class="text-xs text-green-700 mt-1 leading-relaxed">
+            This tool processes your selected PDF in your browser.
+            Your file is not intentionally uploaded to an Antokia server for this operation.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- MIDDLE AD SPACE -->
+  <div class="my-10">
+    <div class="max-w-3xl mx-auto min-h-[100px] flex items-center justify-center">
+      <!-- AdSense ad unit can be placed here after approval -->
+    </div>
+  </div>
+
+
+  <!-- INFORMATION -->
+  <section class="info-card p-6 sm:p-8 mb-6">
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">
+      Compress PDF Online for Free
+    </h2>
+
+    <p class="text-gray-600 leading-7 mb-4">
+      Antokia's Compress PDF tool helps you optimize PDF documents and reduce
+      unnecessary file overhead directly in your web browser. It can be useful
+      when a PDF is too large to attach to an email, upload to a website,
+      store on a device, or share online.
+    </p>
+
+    <p class="text-gray-600 leading-7">
+      The tool uses browser-based PDF processing. The amount of size reduction
+      depends on the original PDF structure and content. PDFs that are already
+      highly optimized may show only a small reduction.
+    </p>
+
+  </section>
+
+
+  <!-- HOW TO USE -->
+  <section class="info-card p-6 sm:p-8 mb-6">
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-5">
+      How to Compress a PDF
+    </h2>
+
+    <div class="space-y-5">
+
+      <div class="flex gap-4">
+        <div class="w-9 h-9 rounded-full bg-red-100 antokia-red flex items-center justify-center font-bold flex-shrink-0">
+          1
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-800">
+            Select your PDF
+          </h3>
+          <p class="text-gray-600 text-sm mt-1">
+            Click the upload area or drag and drop your PDF file.
+          </p>
+        </div>
+      </div>
+
+      <div class="flex gap-4">
+        <div class="w-9 h-9 rounded-full bg-red-100 antokia-red flex items-center justify-center font-bold flex-shrink-0">
+          2
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-800">
+            Let Antokia optimize it
+          </h3>
+          <p class="text-gray-600 text-sm mt-1">
+            The PDF is processed locally in your browser.
+          </p>
+        </div>
+      </div>
+
+      <div class="flex gap-4">
+        <div class="w-9 h-9 rounded-full bg-red-100 antokia-red flex items-center justify-center font-bold flex-shrink-0">
+          3
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-800">
+            Compare the file size
+          </h3>
+          <p class="text-gray-600 text-sm mt-1">
+            Review the original and optimized file sizes shown by the tool.
+          </p>
+        </div>
+      </div>
+
+      <div class="flex gap-4">
+        <div class="w-9 h-9 rounded-full bg-red-100 antokia-red flex items-center justify-center font-bold flex-shrink-0">
+          4
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-800">
+            Download your PDF
+          </h3>
+          <p class="text-gray-600 text-sm mt-1">
+            Download the optimized PDF when processing is complete.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- IMPORTANT NOTE -->
+  <section class="info-card p-6 sm:p-8 mb-6">
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">
+      About PDF Compression
+    </h2>
+
+    <p class="text-gray-600 leading-7 mb-4">
+      PDF files can contain text, fonts, images, graphics, metadata and other
+      embedded resources. The possible reduction in file size depends on how
+      those resources were originally stored.
+    </p>
+
+    <div class="bg-yellow-50 border border-yellow-100 rounded-xl p-4">
+      <div class="flex gap-3">
+        <i class="fa-solid fa-circle-info text-yellow-600 mt-1"></i>
+        <p class="text-sm text-yellow-800 leading-6">
+          Some PDFs may not become significantly smaller because they are
+          already optimized. This tool focuses on structural PDF optimization
+          and does not intentionally lower image resolution.
+        </p>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- RELATED TOOLS -->
+  <section class="info-card p-6 sm:p-8 mb-6">
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-5">
+      Related PDF Tools
+    </h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+      <a href="/pdf-to-word.html"
+         class="border border-gray-200 rounded-xl p-5 hover:border-red-300 hover:shadow-sm transition">
+        <div class="w-11 h-11 rounded-lg bg-red-50 flex items-center justify-center mb-3">
+          <i class="fa-solid fa-file-word antokia-red text-xl"></i>
+        </div>
+
+        <h3 class="font-bold text-gray-800">
+          PDF to Word
+        </h3>
+
+        <p class="text-sm text-gray-500 mt-1">
+          Convert PDF documents to editable Word files.
+        </p>
+      </a>
+
+
+      <a href="/merge-pdf.html"
+         class="border border-gray-200 rounded-xl p-5 hover:border-red-300 hover:shadow-sm transition">
+        <div class="w-11 h-11 rounded-lg bg-red-50 flex items-center justify-center mb-3">
+          <i class="fa-solid fa-file-circle-plus antokia-red text-xl"></i>
+        </div>
+
+        <h3 class="font-bold text-gray-800">
+          Merge PDF
+        </h3>
+
+        <p class="text-sm text-gray-500 mt-1">
+          Combine multiple PDF files into one document.
+        </p>
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- FAQ -->
+  <section class="info-card p-6 sm:p-8 mb-10">
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-6">
+      Frequently Asked Questions
+    </h2>
+
+    <div class="space-y-5">
+
+      <div>
+        <h3 class="font-semibold text-gray-800">
+          Can I compress a PDF for free?
+        </h3>
+        <p class="text-gray-600 text-sm leading-6 mt-2">
+          Yes. Antokia provides this PDF optimization tool free to use.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="font-semibold text-gray-800">
+          Is my PDF uploaded to Antokia?
+        </h3>
+        <p class="text-gray-600 text-sm leading-6 mt-2">
+          The processing is performed in your browser using client-side
+          JavaScript. The tool does not intentionally upload your selected
+          PDF to an Antokia server for compression.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="font-semibold text-gray-800">
+          Why did my PDF size reduce only slightly?
+        </h3>
+        <p class="text-gray-600 text-sm leading-6 mt-2">
+          Some PDFs are already optimized or contain compressed resources.
+          In such cases, additional structural optimization may provide
+          only a small reduction.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="font-semibold text-gray-800">
+          Does the tool reduce PDF image quality?
+        </h3>
+        <p class="text-gray-600 text-sm leading-6 mt-2">
+          The tool does not intentionally reduce image resolution. Its
+          optimization method focuses mainly on the PDF structure, so the
+          amount of size reduction can vary.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- BOTTOM AD SPACE -->
+  <div class="mb-8">
+    <div class="max-w-3xl mx-auto min-h-[90px] flex items-center justify-center">
+      <!-- AdSense ad unit can be placed here after approval -->
+    </div>
+  </div>
+
+</main>
+
+
+<!-- FOOTER -->
+<footer class="bg-[#242424] text-white mt-10">
+
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-10">
+
+      <!-- EXPLORE -->
+      <div>
+        <h3 class="text-lg font-bold mb-4">
+          Explore
+        </h3>
+
+        <div class="space-y-3 text-sm">
+          <a href="/" class="footer-link block">Home</a>
+          <a href="/blog/" class="footer-link block">Blog</a>
+          <a href="/about.html" class="footer-link block">About</a>
+          <a href="/contact.html" class="footer-link block">Contact</a>
+        </div>
+      </div>
+
+
+      <!-- LEGAL -->
+      <div>
+        <h3 class="text-lg font-bold mb-4">
+          Legal
+        </h3>
+
+        <div class="space-y-3 text-sm">
+          <a href="/privacy.html" class="footer-link block">
+            Privacy Policy
+          </a>
+
+          <a href="/terms.html" class="footer-link block">
+            Terms &amp; Conditions
+          </a>
+        </div>
+      </div>
+
+
+      <!-- SOCIAL -->
+      <div>
+        <h3 class="text-lg font-bold mb-4">
+          Follow Antokia
+        </h3>
+
+        <a href="https://www.instagram.com/antokia.insta"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="footer-link inline-flex items-center gap-2 text-sm">
+          <i class="fa-brands fa-instagram"></i>
+          Instagram
+        </a>
+      </div>
+
+    </div>
+
+
+    <div class="border-t border-gray-700 mt-10 pt-6 text-center text-sm text-gray-400">
+      © 2026 Antokia. All rights reserved.
+    </div>
+
+  </div>
+
+</footer>
+
+
+<script>
+const fileInput = document.getElementById("fileInput");
+const dropZone = document.getElementById("dropZone");
+const browseBtn = document.getElementById("browseBtn");
+
+const fileInfo = document.getElementById("fileInfo");
+const fileName = document.getElementById("fileName");
+const fileSize = document.getElementById("fileSize");
+const removeFile = document.getElementById("removeFile");
+
+const progressSection = document.getElementById("progressSection");
+const progressBar = document.getElementById("progressBar");
+const progressText = document.getElementById("progressText");
+const progressPercent = document.getElementById("progressPercent");
+
+const stats = document.getElementById("stats");
+const originalSize = document.getElementById("originalSize");
+const compressedSize = document.getElementById("compressedSize");
+const savedSize = document.getElementById("savedSize");
+
+const statusBox = document.getElementById("statusBox");
+const statusText = document.getElementById("statusText");
+
+const actions = document.getElementById("actions");
+const downloadBtn = document.getElementById("downloadBtn");
+const resetBtn = document.getElementById("resetBtn");
+
+let selectedFile = null;
+let compressedBlob = null;
+
+
+function formatBytes(bytes){
+  if(bytes === 0) return "0 Bytes";
+
+  const units = ["Bytes","KB","MB","GB"];
+  const i = Math.floor(Math.log(bytes) / Math.log(1024));
+
+  return (bytes / Math.pow(1024,i)).toFixed(
+    i === 0 ? 0 : 2
+  ) + " " + units[i];
+}
+
+
+function setProgress(percent, text){
+  const safePercent = Math.max(0, Math.min(100, percent));
+
+  progressBar.style.width = safePercent + "%";
+  progressPercent.textContent = safePercent + "%";
+  progressText.textContent = text;
+}
+
+
+function showStatus(message, type){
+  statusBox.classList.remove(
+    "hidden",
+    "bg-green-50",
+    "border-green-100",
+    "text-green-700",
+    "bg-red-50",
+    "border-red-100",
+    "text-red-700",
+    "bg-blue-50",
+    "border-blue-100",
+    "text-blue-700"
+  );
+
+  if(type === "success"){
+    statusBox.classList.add(
+      "bg-green-50",
+      "border",
+      "border-green-100",
+      "text-green-700"
+    );
+  }else if(type === "error"){
+    statusBox.classList.add(
+      "bg-red-50",
+      "border",
+      "border-red-100",
+      "text-red-700"
+    );
+  }else{
+    statusBox.classList.add(
+      "bg-blue-50",
+      "border",
+      "border-blue-100",
+      "text-blue-700"
+    );
+  }
+
+  statusText.textContent = message;
+}
+
+
+function isPdf(file){
+  if(!file) return false;
+
+  const name = file.name.toLowerCase();
+
+  return file.type === "application/pdf" ||
+         name.endsWith(".pdf");
+}
+
+
+async function processPDF(file){
+
+  selectedFile = file;
+  compressedBlob = null;
+
+  fileInfo.classList.remove("hidden");
+  fileName.textContent = file.name;
+  fileSize.textContent = formatBytes(file.size);
+
+  stats.classList.add("hidden");
+  actions.classList.add("hidden");
+  progressSection.classList.remove("hidden");
+
+  setProgress(10, "Reading PDF...");
+  showStatus("Preparing your PDF for optimization...", "info");
+
+  try{
+
+    const bytes = await file.arrayBuffer();
+
+    setProgress(30, "Opening PDF...");
+
+    const pdfDoc = await PDFLib.PDFDocument.load(bytes, {
+      updateMetadata: false
+    });
+
+    setProgress(50, "Optimizing PDF structure...");
+
+    /*
+      Clear common document metadata where possible.
+      This can reduce unnecessary document information.
+    */
+    pdfDoc.setTitle("");
+    pdfDoc.setAuthor("");
+    pdfDoc.setSubject("");
+    pdfDoc.setKeywords([]);
+    pdfDoc.setCreator("Antokia");
+    pdfDoc.setProducer("Antokia PDF Optimizer");
+
+    setProgress(70, "Creating optimized PDF...");
+
+    const optimizedBytes = await pdfDoc.save({
+      useObjectStreams: true,
+      addDefaultPage: false,
+      objectsPerTick: 50
+    });
+
+    setProgress(90, "Calculating file size...");
+
+    compressedBlob = new Blob(
+      [optimizedBytes],
+      {type:"application/pdf"}
+    );
+
+    const oldSize = file.size;
+    const newSize = optimizedBytes.length;
+
+    let changePercent = ((oldSize - newSize) / oldSize) * 100;
+
+    originalSize.textContent = formatBytes(oldSize);
+    compressedSize.textContent = formatBytes(newSize);
+
+    if(changePercent > 0){
+      savedSize.textContent = changePercent.toFixed(1) + "% smaller";
+    }else if(changePercent < 0){
+      savedSize.textContent =
+        Math.abs(changePercent).toFixed(1) + "% larger";
+    }else{
+      savedSize.textContent = "No change";
+    }
+
+    stats.classList.remove("hidden");
+
+    setProgress(100, "Optimization complete");
+
+    if(changePercent > 0){
+
+      showStatus(
+        "PDF optimized successfully. The file size was reduced by " +
+        changePercent.toFixed(1) + "%.",
+        "success"
+      );
+
+    }else if(changePercent === 0){
+
+      showStatus(
+        "The PDF was processed successfully, but its file size did not change.",
+        "info"
+      );
+
+    }else{
+
+      showStatus(
+        "The PDF was processed successfully, but this PDF could not be reduced further.",
+        "info"
+      );
+
+    }
+
+    actions.classList.remove("hidden");
+
+  }catch(error){
+
+    console.error(error);
+
+    progressSection.classList.add("hidden");
+    stats.classList.add("hidden");
+    actions.classList.add("hidden");
+
+    showStatus(
+      "Unable to process this PDF. Please try another valid PDF file.",
+      "error"
+    );
+  }
+}
+
+
+function handleFile(file){
+
+  if(!file){
+    return;
+  }
+
+  if(!isPdf(file)){
+
+    showStatus(
+      "Please select a valid PDF file.",
+      "error"
+    );
+
+    return;
+  }
+
+  processPDF(file);
+}
+
+
+browseBtn.addEventListener("click", function(event){
+  event.stopPropagation();
+  fileInput.click();
+});
+
+
+dropZone.addEventListener("click", function(){
+  fileInput.click();
+});
+
+
+fileInput.addEventListener("change", function(){
+  const file = this.files[0];
+
+  if(file){
+    handleFile(file);
+  }
+});
+
+
+dropZone.addEventListener("dragover", function(event){
+  event.preventDefault();
+  dropZone.classList.add("drag-active");
+});
+
+
+dropZone.addEventListener("dragleave", function(){
+  dropZone.classList.remove("drag-active");
+});
+
+
+dropZone.addEventListener("drop", function(event){
+
+  event.preventDefault();
+
+  dropZone.classList.remove("drag-active");
+
+  const file = event.dataTransfer.files[0];
+
+  if(file){
+    handleFile(file);
+  }
+
+});
+
+
+removeFile.addEventListener("click", function(){
+  resetTool();
+});
+
+
+resetBtn.addEventListener("click", function(){
+  resetTool();
+});
+
+
+downloadBtn.addEventListener("click", function(){
+
+  if(!compressedBlob){
+    return;
+  }
+
+  const url = URL.createObjectURL(compressedBlob);
+
+  const link = document.createElement("a");
+
+  link.href = url;
+  link.download = "compressed-antokia.pdf";
+
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+
+  setTimeout(function(){
+    URL.revokeObjectURL(url);
+  }, 1000);
+
+});
+
+
+function resetTool(){
+
+  selectedFile = null;
+  compressedBlob = null;
+
+  fileInput.value = "";
+
+  fileInfo.classList.add("hidden");
+  progressSection.classList.add("hidden");
+  stats.classList.add("hidden");
+  actions.classList.add("hidden");
+
+  statusBox.classList.add("hidden");
+
+  setProgress(0, "Preparing PDF...");
+
+  fileName.textContent = "";
+  fileSize.textContent = "";
+
+  originalSize.textContent = "-";
+  compressedSize.textContent = "-";
+  savedSize.textContent = "-";
+
+  dropZone.classList.remove("drag-active");
+}
+</script>
+
 </body>
 </html>
