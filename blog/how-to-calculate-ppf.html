@@ -1,91 +1,749 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>How to Calculate PPF Interest & Maturity Amount - 7.1% Formula</title>
-<meta name="description" content="How to calculate PPF interest? PPF formula with example. Calculate PPF maturity amount for 15 years at 7.1% interest rate with Antokia free PPF calculator.">
-<link rel="canonical" href="https://antokia.com/blog/how-to-calculate-ppf.html">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>How to Calculate PPF Interest & Maturity Amount | Formula & Examples | Antokia</title>
+
+<meta name="description" content="Learn how to calculate PPF interest and maturity amount with simple formulas, examples and step-by-step calculations. Use Antokia's free PPF Calculator to estimate your investment, interest and maturity amount.">
+
+<meta name="keywords" content="PPF calculator, PPF interest calculation, PPF maturity amount, PPF formula, how to calculate PPF interest, PPF maturity calculator, PPF investment calculator">
+
+<meta name="robots" content="index, follow">
+
+<link rel="canonical" href="https://antokia.com/how-to-calculate-ppf.html">
+
+<meta property="og:title" content="How to Calculate PPF Interest & Maturity Amount | Antokia">
+<meta property="og:description" content="Understand PPF interest calculation, maturity formula, examples and how to estimate your PPF maturity amount using a free calculator.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://antokia.com/how-to-calculate-ppf.html">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "HowTo",
-  "name": "How to Calculate PPF Interest & Maturity Amount",
-  "step": [
-    {"@type": "HowToStep", "text": "Open Antokia PPF Calculator"},
-    {"@type": "HowToStep", "text": "Enter yearly investment amount, e.g. Rs 1.5 Lakh"},
-    {"@type": "HowToStep", "text": "Select time period 15 years and current interest rate 7.1%"},
-    {"@type": "HowToStep", "text": "Click Calculate to see total invested, interest earned and maturity amount"}
-  ]
+  "@type": "Article",
+  "headline": "How to Calculate PPF Interest & Maturity Amount",
+  "description": "A simple guide to understanding PPF interest calculation, maturity amount, formula and examples.",
+  "author": {
+    "@type": "Organization",
+    "name": "Antokia"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Antokia"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://antokia.com/how-to-calculate-ppf.html"
+  }
 }
 </script>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {"@type": "Question", "name": "What is PPF interest rate 2025?", "acceptedAnswer": {"@type": "Answer", "text": "Current PPF interest rate is 7.1% per annum compounded yearly, decided by Govt of India."}},
-    {"@type": "Question", "name": "What is PPF maturity amount for 150000 yearly for 15 years?", "acceptedAnswer": {"@type": "Answer", "text": "If you invest Rs 1.5 Lakh yearly for 15 years at 7.1%, total investment is Rs 22.5 Lakh, interest earned is approx Rs 18.18 Lakh, maturity is approx Rs 40.68 Lakh."}},
-    {"@type": "Question", "name": "What is PPF formula?", "acceptedAnswer": {"@type": "Answer", "text": "PPF formula is F = P[({(1+i)^n}-1)/i] where F is maturity, P is yearly investment, i is interest rate/100, n is years."}}
+    {
+      "@type": "Question",
+      "name": "What is the PPF interest rate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The PPF interest rate is notified by the Government of India and can change from time to time. Use the applicable rate for the period you are calculating."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is PPF interest calculated?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "PPF interest is calculated according to the PPF scheme rules and is compounded annually. The balance and timing of deposits can affect the interest earned."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the PPF maturity period?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The standard PPF account has a maturity period of 15 years from the end of the financial year in which the account was opened."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I calculate my PPF maturity amount online?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. You can use a PPF calculator to estimate total investment, interest earned and maturity amount by entering your investment amount, tenure and applicable interest rate."
+      }
+    }
   ]
 }
 </script>
+
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f5f5fa;
+  color: #242424;
+}
+
+.soft-card {
+  background: #ffffff;
+  border: 1px solid #e7e7ef;
+  border-radius: 18px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+}
+
+.article-content h2 {
+  font-size: 1.65rem;
+  font-weight: 800;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: #242424;
+}
+
+.article-content h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-top: 1.5rem;
+  margin-bottom: .6rem;
+}
+
+.article-content p {
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  color: #444;
+}
+
+.article-content li {
+  margin-bottom: .55rem;
+  line-height: 1.7;
+  color: #444;
+}
+
+.formula-box {
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  border-radius: 14px;
+  padding: 20px;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.info-box {
+  background: #eff6ff;
+  border-left: 5px solid #2563eb;
+  padding: 18px;
+  border-radius: 10px;
+  margin: 20px 0;
+}
+
+.warning-box {
+  background: #fffbeb;
+  border-left: 5px solid #f59e0b;
+  padding: 18px;
+  border-radius: 10px;
+  margin: 20px 0;
+}
+
+.faq-item {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.faq-question {
+  cursor: pointer;
+  padding: 18px 0;
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.faq-answer {
+  display: none;
+  padding: 0 0 18px;
+  color: #555;
+  line-height: 1.7;
+}
+
+.ad-box {
+  min-height: 90px;
+  border: 1px dashed #d1d5db;
+  border-radius: 12px;
+  background: #fafafa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9ca3af;
+  font-size: 13px;
+}
+</style>
 </head>
-<body style="font-family:Arial; max-width:800px; margin:auto; padding:20px; line-height:1.8;">
-<a href="../index.html">← Back to Home</a> | <a href="index.html">← Back to Blog</a>
 
-<h1>How to Calculate PPF Interest & Maturity Amount (7.1% Formula)</h1>
-<p>PPF me kitna paisa milega 15 saal baad? <b>PPF interest calculation</b> samajhna bahut easy hai. Yaha par formula, example aur free calculator sab diya hai.</p>
+<body>
 
-<div style="background:#f0fdf4; padding:20px; border-radius:12px; border:2px solid #16a34a; text-align:center;">
-<h3 style="margin-top:0;">PPF Maturity Calculator (7.1%)</h3>
-<p>Yearly Investment, Interest Earned & Maturity in 1 click</p>
-<a href="../ppf-calculator.html" style="background:#16a34a; color:white; padding:12px 25px; border-radius:8px; text-decoration:none; font-weight:bold; display:inline-block;">Calculate PPF Now</a>
-<p style="font-size:12px;">100% Free | No Signup | Govt Rate 7.1%</p>
-</div>
+<!-- HEADER -->
+<header class="sticky top-0 z-50 bg-white border-b border-gray-200">
+  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
 
-<h2>PPF Calculation Formula</h2>
-<p><b>F = P [({(1+i)^n} - 1) / i]</b></p>
-<ul>
-<li><b>F</b> = Maturity Amount</li>
-<li><b>P</b> = Yearly Investment</li>
-<li><b>i</b> = Interest Rate / 100 (7.1% = 0.071)</li>
-<li><b>n</b> = Number of years (15)</li>
-</ul>
+    <a href="/" class="flex items-center gap-2">
+      <span class="w-10 h-10 rounded-xl flex items-center justify-center text-white font-extrabold text-xl"
+            style="background:#e5322d;">A</span>
+      <span class="text-2xl font-extrabold" style="color:#242424;">Antokia</span>
+    </a>
 
-<h2>Example: 1.5 Lakh Yearly for 15 Years</h2>
-<table style="width:100%; border-collapse:collapse;" border="1" cellpadding="10">
-<tr><td>Yearly Investment</td><td>Rs 1,50,000</td></tr>
-<tr><td>Time</td><td>15 Years</td></tr>
-<tr><td>Interest Rate</td><td>7.1%</td></tr>
-<tr><td>Total Invested</td><td>Rs 22,50,000</td></tr>
-<tr><td>Interest Earned</td><td>~ Rs 18,18,209</td></tr>
-<tr><td><b>Maturity Amount</b></td><td><b>~ Rs 40,68,209</b></td></tr>
-</table>
+    <nav class="hidden md:flex items-center gap-6 text-sm font-semibold">
+      <a href="/" class="hover:text-red-600">Home</a>
+      <a href="/blog.html" class="hover:text-red-600">Blog</a>
+      <a href="/about.html" class="hover:text-red-600">About</a>
+      <a href="/contact.html" class="hover:text-red-600">Contact</a>
+      <a href="/"
+         class="text-white px-5 py-2 rounded-full"
+         style="background:#e5322d;">
+        Home
+      </a>
+    </nav>
 
-<h2>How to Calculate PPF Step-by-Step</h2>
-<ol>
-<li>Open <a href="../ppf-calculator.html">Antokia PPF Calculator</a></li>
-<li>Enter your yearly deposit (max 1.5 Lakh)</li>
-<li>Select duration - 15 years minimum</li>
-<li>Interest auto set to 7.1% - click Calculate</li>
-<li>You will get total investment, total interest and final maturity instantly</li>
-</ol>
+    <a href="/" class="md:hidden text-white px-4 py-2 rounded-full text-sm font-bold"
+       style="background:#e5322d;">
+      Home
+    </a>
+  </div>
+</header>
 
-<h2>Why Use Antokia PPF Calculator?</h2>
-<ul>
-<li>✅ Latest 7.1% Govt interest rate</li>
-<li>✅ Exact maturity with year-wise breakdown</li>
-<li>✅ No watermark, no signup</li>
-<li>✅ Works on mobile</li>
-</ul>
 
-<h2>FAQs</h2>
-<h3>Q: PPF me 15 saal me kitna milta hai?</h3><p>Agar 1.5 lakh yearly dalo to 15 saal baad ~40.68 lakh milta hai 7.1% pe.</p>
-<h3>Q: PPF interest kaise calculate hota hai?</h3><p>Yearly compounding hota hai. Har saal ke interest par agle saal interest milta hai.</p>
+<main class="max-w-6xl mx-auto px-4 py-6">
 
-<p><b>Related:</b> <a href="how-to-calculate-sip.html">Calculate SIP Returns</a> | <a href="how-to-calculate-emi.html">Calculate EMI</a> | <a href="how-to-calculate-percentage.html">Calculate Percentage</a></p>
+  <!-- TOP AD -->
+  <div class="ad-box mb-6">
+    Advertisement
+  </div>
 
-<a href="index.html">← Back to All Blogs</a>
+
+  <!-- BREADCRUMB -->
+  <div class="text-sm text-gray-500 mb-5">
+    <a href="/" class="hover:text-red-600">Home</a>
+    <span class="mx-2">/</span>
+    <a href="/blog.html" class="hover:text-red-600">Blog</a>
+    <span class="mx-2">/</span>
+    <span>PPF Calculation</span>
+  </div>
+
+
+  <!-- ARTICLE -->
+  <article class="soft-card p-5 md:p-10 article-content">
+
+    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-bold mb-4"
+         style="background:#fff1f2;color:#e5322d;">
+      <i class="fa-solid fa-piggy-bank"></i>
+      Personal Finance Guide
+    </div>
+
+    <h1 class="text-3xl md:text-5xl font-extrabold leading-tight mb-4">
+      How to Calculate PPF Interest & Maturity Amount
+    </h1>
+
+    <p class="text-lg text-gray-600 mb-5">
+      Want to know how much your PPF investment may grow over time?
+      This simple guide explains <strong>PPF interest calculation, maturity amount,
+      formula and examples</strong> so you can understand your expected returns easily.
+    </p>
+
+    <div class="flex flex-wrap gap-4 text-sm text-gray-500 border-b pb-5 mb-6">
+      <span><i class="fa-regular fa-clock mr-1"></i> 5 min read</span>
+      <span><i class="fa-solid fa-calculator mr-1"></i> PPF Calculator Guide</span>
+      <span><i class="fa-solid fa-calendar mr-1"></i> Updated for calculation examples</span>
+    </div>
+
+
+    <!-- CTA -->
+    <div class="rounded-2xl p-6 md:p-8 text-center mb-8"
+         style="background:linear-gradient(135deg,#ecfdf5,#f0fdf4);border:1px solid #bbf7d0;">
+
+      <div class="text-4xl mb-3">💰</div>
+
+      <h2 class="!mt-0 text-2xl md:text-3xl font-extrabold">
+        Calculate Your PPF Maturity
+      </h2>
+
+      <p>
+        Enter your investment amount, duration and applicable interest rate
+        to estimate your total investment, interest and maturity amount.
+      </p>
+
+      <a href="/ppf-calculator.html"
+         class="inline-flex items-center gap-2 mt-3 text-white px-7 py-3 rounded-xl font-bold shadow-md"
+         style="background:#16a34a;">
+        <i class="fa-solid fa-calculator"></i>
+        Open PPF Calculator
+      </a>
+
+      <p class="text-xs !mb-0 !mt-3 text-gray-500">
+        Free to use • No signup required
+      </p>
+    </div>
+
+
+    <h2>What is PPF?</h2>
+
+    <p>
+      PPF stands for <strong>Public Provident Fund</strong>. It is a
+      long-term savings scheme designed for individuals who want to build
+      savings over a longer period.
+    </p>
+
+    <p>
+      PPF calculations depend on factors such as the amount deposited,
+      timing of deposits, applicable interest rate and investment period.
+      The standard PPF account has a <strong>15-year maturity period</strong>,
+      subject to the applicable PPF rules.
+    </p>
+
+
+    <div class="info-box">
+      <strong>Important:</strong>
+      PPF interest rates are notified by the Government of India and may
+      change from time to time. When estimating your returns, always use
+      the applicable rate for the relevant period.
+    </div>
+
+
+    <h2>How is PPF Interest Calculated?</h2>
+
+    <p>
+      PPF interest is calculated according to the rules of the PPF scheme
+      and is compounded annually. The amount and timing of deposits can
+      affect the interest earned during the year.
+    </p>
+
+    <p>
+      For a simple yearly investment illustration, a commonly used
+      estimation formula is:
+    </p>
+
+    <div class="formula-box">
+      <div class="text-xl md:text-2xl font-extrabold text-gray-800">
+        F = P × [((1 + i)<sup>n</sup> − 1) ÷ i]
+      </div>
+
+      <p class="!mb-0 !mt-3 text-sm">
+        This formula is a simplified illustration for regular yearly
+        contributions and should not be treated as the exact bank/post-office
+        calculation for every deposit pattern.
+      </p>
+    </div>
+
+    <ul>
+      <li><strong>F</strong> = Estimated future value</li>
+      <li><strong>P</strong> = Regular yearly investment</li>
+      <li><strong>i</strong> = Annual interest rate in decimal form</li>
+      <li><strong>n</strong> = Number of years</li>
+    </ul>
+
+
+    <h2>Example: ₹1.5 Lakh Investment for 15 Years</h2>
+
+    <p>
+      Suppose you invest <strong>₹1,50,000 every year</strong> for 15 years
+      and use <strong>7.1%</strong> as the assumed annual interest rate for
+      illustration.
+    </p>
+
+    <div class="overflow-x-auto rounded-xl border border-gray-200 mb-5">
+      <table class="w-full text-left">
+        <tr class="bg-gray-50">
+          <th class="p-4 border-b">Particular</th>
+          <th class="p-4 border-b">Example Value</th>
+        </tr>
+
+        <tr>
+          <td class="p-4 border-b">Yearly Investment</td>
+          <td class="p-4 border-b font-semibold">₹1,50,000</td>
+        </tr>
+
+        <tr>
+          <td class="p-4 border-b">Investment Period</td>
+          <td class="p-4 border-b font-semibold">15 Years</td>
+        </tr>
+
+        <tr>
+          <td class="p-4 border-b">Assumed Interest Rate</td>
+          <td class="p-4 border-b font-semibold">7.1%</td>
+        </tr>
+
+        <tr>
+          <td class="p-4 border-b">Total Contributions</td>
+          <td class="p-4 border-b font-semibold">₹22,50,000</td>
+        </tr>
+
+        <tr class="bg-green-50">
+          <td class="p-4 font-bold">Estimated Future Value*</td>
+          <td class="p-4 font-bold text-green-700">Approx. ₹40.68 Lakh</td>
+        </tr>
+      </table>
+    </div>
+
+    <p class="text-sm">
+      *This is an illustrative estimate based on a simplified annual
+      contribution calculation. Actual PPF interest depends on deposit
+      timing and the applicable scheme rules and rate.
+    </p>
+
+
+    <h2>How to Calculate PPF Maturity Step-by-Step</h2>
+
+    <ol class="list-decimal pl-6">
+      <li>Decide how much you want to contribute regularly.</li>
+      <li>Choose the investment period you want to evaluate.</li>
+      <li>Enter the applicable PPF interest rate.</li>
+      <li>Use a PPF calculator to estimate investment and interest.</li>
+      <li>Review the estimated maturity amount and total interest.</li>
+    </ol>
+
+
+    <h2>How to Use Antokia PPF Calculator</h2>
+
+    <p>
+      Antokia's PPF Calculator can help you estimate your PPF investment
+      results without doing the calculations manually.
+    </p>
+
+    <ol class="list-decimal pl-6">
+      <li>Open the <strong>Antokia PPF Calculator</strong>.</li>
+      <li>Enter your investment amount.</li>
+      <li>Enter or select the applicable interest rate.</li>
+      <li>Select the investment duration.</li>
+      <li>Click the calculate button.</li>
+      <li>Review the estimated investment, interest and maturity amount.</li>
+    </ol>
+
+    <div class="text-center my-7">
+      <a href="/ppf-calculator.html"
+         class="inline-flex items-center gap-2 text-white px-7 py-3 rounded-xl font-bold"
+         style="background:#e5322d;">
+        <i class="fa-solid fa-chart-line"></i>
+        Calculate PPF Maturity
+      </a>
+    </div>
+
+
+    <h2>Why Use a PPF Calculator?</h2>
+
+    <div class="grid md:grid-cols-2 gap-4">
+
+      <div class="border rounded-xl p-5 bg-gray-50">
+        <div class="text-2xl mb-2">🧮</div>
+        <h3 class="!mt-0">Quick Calculation</h3>
+        <p class="!mb-0">
+          Calculate estimated returns without manually applying formulas.
+        </p>
+      </div>
+
+      <div class="border rounded-xl p-5 bg-gray-50">
+        <div class="text-2xl mb-2">📊</div>
+        <h3 class="!mt-0">Understand Growth</h3>
+        <p class="!mb-0">
+          See how your contribution and interest can build over time.
+        </p>
+      </div>
+
+      <div class="border rounded-xl p-5 bg-gray-50">
+        <div class="text-2xl mb-2">📱</div>
+        <h3 class="!mt-0">Mobile Friendly</h3>
+        <p class="!mb-0">
+          Use the calculator conveniently from your phone or computer.
+        </p>
+      </div>
+
+      <div class="border rounded-xl p-5 bg-gray-50">
+        <div class="text-2xl mb-2">🔒</div>
+        <h3 class="!mt-0">Simple & Easy</h3>
+        <p class="!mb-0">
+          Enter your details and understand the calculation in a few steps.
+        </p>
+      </div>
+
+    </div>
+
+
+    <!-- MIDDLE AD -->
+    <div class="ad-box my-8">
+      Advertisement
+    </div>
+
+
+    <h2>Important Things to Remember About PPF</h2>
+
+    <ul>
+      <li>The standard PPF maturity period is 15 years, subject to applicable rules.</li>
+      <li>The interest rate is notified by the Government and can change over time.</li>
+      <li>Deposit timing can affect the interest calculation.</li>
+      <li>The annual contribution limit should be checked against the current PPF rules.</li>
+      <li>Calculator results are estimates and should be checked against official scheme rules.</li>
+    </ul>
+
+
+    <div class="warning-box">
+      <strong>Note:</strong>
+      Do not assume that a historical PPF interest rate will remain unchanged
+      for the complete investment period. For financial planning, use the
+      applicable rate and verify current PPF rules before making investment decisions.
+    </div>
+
+
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="border rounded-xl px-5">
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>What is the PPF interest rate?</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          PPF interest rates are notified by the Government of India and
+          can change from time to time. Always check the applicable rate
+          before calculating your expected returns.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>How is PPF interest calculated?</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          PPF interest is calculated according to the PPF scheme rules and
+          compounded annually. The timing and amount of deposits can affect
+          the interest earned.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>What is the PPF maturity period?</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          The standard PPF account has a maturity period of 15 years from
+          the end of the financial year in which the account was opened,
+          subject to the applicable rules.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Can I calculate PPF maturity online?</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          Yes. You can use Antokia's free PPF Calculator to estimate your
+          investment, interest and maturity amount.
+        </div>
+      </div>
+
+    </div>
+
+
+    <h2>Conclusion</h2>
+
+    <p>
+      Understanding PPF calculations makes it easier to estimate how your
+      long-term savings may grow. The final amount depends on your
+      contributions, deposit timing, applicable interest rate and the
+      relevant PPF rules.
+    </p>
+
+    <p>
+      Instead of calculating everything manually, you can use the
+      <strong>Antokia PPF Calculator</strong> for a quick estimate.
+    </p>
+
+
+    <!-- CTA -->
+    <div class="rounded-2xl p-7 text-center mt-8"
+         style="background:#fff1f2;border:1px solid #fecdd3;">
+
+      <h2 class="!mt-0 text-2xl font-extrabold">
+        Ready to Calculate Your PPF Returns?
+      </h2>
+
+      <p>
+        Try the free Antokia PPF Calculator and estimate your maturity amount.
+      </p>
+
+      <a href="/ppf-calculator.html"
+         class="inline-flex items-center gap-2 text-white px-7 py-3 rounded-xl font-bold"
+         style="background:#e5322d;">
+        <i class="fa-solid fa-calculator"></i>
+        Open PPF Calculator
+      </a>
+    </div>
+
+  </article>
+
+
+  <!-- RELATED TOOLS -->
+  <section class="mt-8">
+
+    <h2 class="text-2xl font-extrabold mb-5">
+      Explore More Free Tools
+    </h2>
+
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-5">
+
+      <a href="/ppf-calculator.html"
+         class="soft-card p-6 hover:shadow-lg transition">
+        <div class="text-3xl mb-3">💰</div>
+        <h3 class="font-bold text-lg mb-2">PPF Calculator</h3>
+        <p class="text-sm text-gray-600">
+          Estimate PPF investment, interest and maturity amount.
+        </p>
+      </a>
+
+      <a href="/emi-calculator.html"
+         class="soft-card p-6 hover:shadow-lg transition">
+        <div class="text-3xl mb-3">🏦</div>
+        <h3 class="font-bold text-lg mb-2">EMI Calculator</h3>
+        <p class="text-sm text-gray-600">
+          Calculate monthly loan EMI and total interest.
+        </p>
+      </a>
+
+      <a href="/percentage.html"
+         class="soft-card p-6 hover:shadow-lg transition">
+        <div class="text-3xl mb-3">📊</div>
+        <h3 class="font-bold text-lg mb-2">Percentage Calculator</h3>
+        <p class="text-sm text-gray-600">
+          Calculate percentages, increase, decrease and more.
+        </p>
+      </a>
+
+    </div>
+  </section>
+
+
+  <!-- NAVIGATION -->
+  <div class="flex flex-wrap justify-center gap-4 mt-8">
+
+    <a href="/blog.html"
+       class="px-6 py-3 rounded-xl border border-gray-300 bg-white font-bold hover:bg-gray-50">
+      ← Back to Blog
+    </a>
+
+    <a href="/"
+       class="px-6 py-3 rounded-xl text-white font-bold"
+       style="background:#e5322d;">
+      <i class="fa-solid fa-house mr-2"></i>
+      Antokia Home
+    </a>
+
+  </div>
+
+
+  <!-- BOTTOM AD -->
+  <div class="ad-box my-8">
+    Advertisement
+  </div>
+
+</main>
+
+
+<!-- FOOTER -->
+<footer style="background:#242424;color:white;">
+  <div class="max-w-6xl mx-auto px-4 py-10">
+
+    <div class="grid md:grid-cols-3 gap-8">
+
+      <div>
+        <div class="flex items-center gap-2 mb-4">
+          <span class="w-9 h-9 rounded-lg flex items-center justify-center text-white font-extrabold"
+                style="background:#e5322d;">A</span>
+          <span class="text-xl font-extrabold">Antokia</span>
+        </div>
+
+        <p class="text-gray-400 text-sm leading-7">
+          Free online tools, useful calculators and practical resources
+          designed to make everyday digital tasks easier.
+        </p>
+      </div>
+
+
+      <div>
+        <h3 class="font-bold text-lg mb-4">Explore</h3>
+
+        <div class="space-y-2 text-sm">
+          <a href="/" class="block text-gray-400 hover:text-white">Home</a>
+          <a href="/blog.html" class="block text-gray-400 hover:text-white">Blog</a>
+          <a href="/about.html" class="block text-gray-400 hover:text-white">About</a>
+          <a href="/contact.html" class="block text-gray-400 hover:text-white">Contact</a>
+        </div>
+      </div>
+
+
+      <div>
+        <h3 class="font-bold text-lg mb-4">Legal & Follow</h3>
+
+        <div class="space-y-2 text-sm">
+          <a href="/privacy.html" class="block text-gray-400 hover:text-white">Privacy Policy</a>
+          <a href="/terms.html" class="block text-gray-400 hover:text-white">Terms & Conditions</a>
+
+          <a href="https://www.instagram.com/antokia.insta"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="block text-gray-400 hover:text-white">
+            <i class="fa-brands fa-instagram mr-2"></i>
+            Instagram
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="border-t border-gray-700 mt-8 pt-6 text-center text-sm text-gray-500">
+      © 2026 Antokia. All rights reserved.
+    </div>
+
+  </div>
+</footer>
+
+
+<script>
+document.querySelectorAll(".faq-question").forEach(question => {
+  question.addEventListener("click", () => {
+
+    const answer = question.nextElementSibling;
+    const icon = question.querySelector("i");
+
+    document.querySelectorAll(".faq-answer").forEach(item => {
+      if (item !== answer) {
+        item.style.display = "none";
+      }
+    });
+
+    document.querySelectorAll(".faq-question i").forEach(item => {
+      if (item !== icon) {
+        item.classList.remove("fa-chevron-up");
+        item.classList.add("fa-chevron-down");
+      }
+    });
+
+    if (answer.style.display === "block") {
+      answer.style.display = "none";
+      icon.classList.remove("fa-chevron-up");
+      icon.classList.add("fa-chevron-down");
+    } else {
+      answer.style.display = "block";
+      icon.classList.remove("fa-chevron-down");
+      icon.classList.add("fa-chevron-up");
+    }
+  });
+});
+</script>
+
 </body>
 </html>
