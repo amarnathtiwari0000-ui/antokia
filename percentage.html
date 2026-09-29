@@ -3,77 +3,1266 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>% Calculator - Percentage Calculator Free | Antokia</title>
+
+<title>Percentage Calculator - Free % Calculator | Antokia</title>
+
+<meta name="description" content="Free Percentage Calculator by Antokia. Calculate percentages, percentage increase and decrease, discounts, and find what percentage one number is of another.">
+
+<meta name="keywords" content="percentage calculator, percent calculator, percentage calculator online, calculate percentage, discount calculator, percentage increase calculator, percentage decrease calculator">
+
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://antokia.com/percentage-calculator.html">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Percentage Calculator - Free % Calculator | Antokia">
+<meta property="og:description" content="Calculate percentages, discounts, percentage increase and decrease instantly with Antokia's free Percentage Calculator.">
+<meta property="og:url" content="https://antokia.com/percentage-calculator.html">
+<meta property="og:site_name" content="Antokia">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Percentage Calculator - Free % Calculator | Antokia">
+<meta name="twitter:description" content="Free online percentage calculator for quick and accurate percentage calculations.">
+
 <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-[#f5f5fa]">
-<header class="bg-white shadow-sm sticky top-0">
-<div class="max-w-5xl mx-auto px-4 py-3 flex justify-between">
-<a href="/" class="font-extrabold text-[#e5322d] text-xl">Antokia</a>
-<a href="/" class="text-sm underline">← All Tools</a>
-</div>
-</header>
-<main class="max-w-3xl mx-auto px-4 py-8">
-<h1 class="text-3xl font-bold text-center">Percentage Calculator</h1>
-<p class="text-center text-gray-500 text-sm mt-2">Fast % calculation - Free</p>
-<div class="bg-gray-200 h-20 rounded-xl mt-6 flex items-center justify-center text-xs">Ad Top</div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-<div class="bg-white rounded-2xl p-6 shadow border mt-6 space-y-6">
-<!-- Type 1 -->
-<div class="bg-[#fafafa] p-4 rounded-xl">
-<p class="text-sm font-bold">1. What is X% of Y?</p>
-<div class="flex gap-2 mt-3">
-<input id="p1" type="number" placeholder="%" class="w-1/3 border rounded-xl p-3 text-sm">
-<input id="p2" type="number" placeholder="Value" class="w-2/3 border rounded-xl p-3 text-sm">
-</div>
-<button onclick="calc1()" class="mt-2 w-full bg-[#e5322d] text-white py-3 rounded-xl font-bold text-sm">Calculate</button>
-<p id="r1" class="text-center font-bold mt-2 text-[#e5322d]"></p>
-</div>
-<!-- Type 2 -->
-<div class="bg-[#fafafa] p-4 rounded-xl">
-<p class="text-sm font-bold">2. X is what % of Y?</p>
-<div class="flex gap-2 mt-3">
-<input id="p3" type="number" placeholder="X" class="w-1/2 border rounded-xl p-3 text-sm">
-<input id="p4" type="number" placeholder="Y" class="w-1/2 border rounded-xl p-3 text-sm">
-</div>
-<button onclick="calc2()" class="mt-2 w-full bg-black text-white py-3 rounded-xl font-bold text-sm">Calculate</button>
-<p id="r2" class="text-center font-bold mt-2 text-black"></p>
-</div>
-<!-- Type 3 -->
-<div class="bg-[#fafafa] p-4 rounded-xl">
-<p class="text-sm font-bold">3. Discount Calculator</p>
-<div class="flex gap-2 mt-3">
-<input id="price" type="number" placeholder="Original Price" class="w-2/3 border rounded-xl p-3 text-sm">
-<input id="disc" type="number" placeholder="Discount %" class="w-1/3 border rounded-xl p-3 text-sm">
-</div>
-<button onclick="calc3()" class="mt-2 w-full bg-green-600 text-white py-3 rounded-xl font-bold text-sm">Calculate Discount</button>
-<p id="r3" class="text-center font-bold mt-2 text-green-600"></p>
-</div>
-
-</div>
-<div class="bg-gray-200 h-20 rounded-xl mt-6 flex items-center justify-center text-xs">Ad Bottom</div>
-</main>
-<script>
-function calc1(){
-let a=parseFloat(document.getElementById('p1').value);
-let b=parseFloat(document.getElementById('p2').value);
-if(isNaN(a)||isNaN(b)) return;
-document.getElementById('r1').innerText=(a*b/100)+" is answer";
-}
-function calc2(){
-let a=parseFloat(document.getElementById('p3').value);
-let b=parseFloat(document.getElementById('p4').value);
-if(isNaN(a)||isNaN(b)||b==0) return;
-document.getElementById('r2').innerText=((a/b)*100).toFixed(2)+"%";
-}
-function calc3(){
-let p=parseFloat(document.getElementById('price').value);
-let d=parseFloat(document.getElementById('disc').value);
-if(isNaN(p)||isNaN(d)) return;
-let save=p*d/100;
-let final=p-save;
-document.getElementById('r3').innerText="You Save ₹"+save.toFixed(2)+" | Pay ₹"+final.toFixed(2);
+<!-- WebApplication Schema -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebApplication",
+  "name":"Antokia Percentage Calculator",
+  "url":"https://antokia.com/percentage-calculator.html",
+  "description":"Free online percentage calculator for percentage, discount, increase and decrease calculations.",
+  "applicationCategory":"CalculatorApplication",
+  "operatingSystem":"Any",
+  "offers":{
+    "@type":"Offer",
+    "price":"0",
+    "priceCurrency":"INR"
+  }
 }
 </script>
+
+<!-- Breadcrumb Schema -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {
+      "@type":"ListItem",
+      "position":1,
+      "name":"Home",
+      "item":"https://antokia.com/"
+    },
+    {
+      "@type":"ListItem",
+      "position":2,
+      "name":"Percentage Calculator",
+      "item":"https://antokia.com/percentage-calculator.html"
+    }
+  ]
+}
+</script>
+
+<!-- FAQ Schema -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {
+      "@type":"Question",
+      "name":"How do I calculate a percentage?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"To calculate X percent of Y, multiply X by Y and divide the result by 100."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"How do I find what percentage one number is of another?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"Divide the first number by the second number and multiply the result by 100."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"Can this calculator calculate discounts?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"Yes. The Percentage Calculator can calculate discount amount, savings and final price after discount."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"Is Antokia Percentage Calculator free?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"Yes. Antokia Percentage Calculator is free to use online and does not require registration."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+.antokia-red {
+  color:#e5322d;
+}
+
+.calculator-card {
+  box-shadow:0 12px 35px rgba(0,0,0,0.07);
+}
+
+.result-box {
+  background:linear-gradient(135deg,#fff5f4,#ffffff);
+}
+
+.calc-section {
+  transition:0.2s;
+}
+
+.calc-section:hover {
+  transform:translateY(-2px);
+}
+
+.faq-answer {
+  display:none;
+}
+
+.faq-item.active .faq-answer {
+  display:block;
+}
+
+.faq-item.active .faq-icon {
+  transform:rotate(180deg);
+}
+
+.faq-icon {
+  transition:0.2s;
+}
+</style>
+
+</head>
+
+<body class="bg-[#f5f5fa] text-gray-800">
+
+<!-- Header -->
+<header class="bg-white shadow-sm sticky top-0 z-50">
+
+  <div class="max-w-6xl mx-auto px-4 py-3">
+
+    <div class="flex items-center justify-between">
+
+      <a href="/" class="text-2xl font-extrabold text-[#e5322d]">
+        Antokia
+      </a>
+
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+        <a href="/" class="hover:text-[#e5322d]">Home</a>
+        <a href="/blog.html" class="hover:text-[#e5322d]">Blog</a>
+        <a href="/about.html" class="hover:text-[#e5322d]">About</a>
+        <a href="/contact.html" class="hover:text-[#e5322d]">Contact</a>
+      </nav>
+
+      <a href="/" class="bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-full text-sm font-semibold">
+        <i class="fa-solid fa-arrow-left mr-1"></i> All Tools
+      </a>
+
+    </div>
+
+  </div>
+
+</header>
+
+
+<!-- Main -->
+<main class="max-w-5xl mx-auto px-4 py-8">
+
+  <!-- Hero -->
+  <section class="text-center">
+
+    <div class="inline-flex items-center gap-2 bg-red-50 text-[#e5322d] px-4 py-2 rounded-full text-xs font-bold mb-4">
+      <i class="fa-solid fa-percent"></i>
+      FREE PERCENTAGE TOOL
+    </div>
+
+    <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900">
+      Percentage Calculator
+    </h1>
+
+    <p class="text-gray-500 mt-2 max-w-2xl mx-auto">
+      Calculate percentages, discounts, percentage increase and decrease,
+      and find what percentage one number is of another.
+    </p>
+
+  </section>
+
+
+  <!-- Top Ad -->
+  <div class="bg-gray-200 rounded-xl h-24 mt-7 flex items-center justify-center text-gray-500 text-sm">
+    Advertisement
+  </div>
+
+
+  <!-- Calculator -->
+  <section class="bg-white rounded-3xl calculator-card p-6 md:p-9 mt-7 border border-gray-100">
+
+    <div class="text-center mb-8">
+
+      <div class="w-14 h-14 mx-auto bg-red-50 text-[#e5322d] rounded-2xl flex items-center justify-center text-2xl">
+        <i class="fa-solid fa-percent"></i>
+      </div>
+
+      <h2 class="text-2xl font-extrabold mt-4">
+        Quick Percentage Calculations
+      </h2>
+
+      <p class="text-sm text-gray-500 mt-1">
+        Choose the calculation you need
+      </p>
+
+    </div>
+
+
+    <div class="space-y-6">
+
+
+      <!-- Type 1 -->
+      <div class="calc-section bg-gray-50 border rounded-2xl p-5 md:p-6">
+
+        <div class="flex items-start gap-3">
+
+          <div class="w-10 h-10 bg-red-100 text-[#e5322d] rounded-xl flex items-center justify-center shrink-0">
+            <i class="fa-solid fa-calculator"></i>
+          </div>
+
+          <div>
+            <h3 class="font-extrabold text-lg">
+              What is X% of Y?
+            </h3>
+
+            <p class="text-sm text-gray-500 mt-1">
+              Find a percentage of a number.
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="grid sm:grid-cols-2 gap-3 mt-5">
+
+          <div>
+            <label class="text-xs font-bold text-gray-600">
+              Percentage (%)
+            </label>
+
+            <input
+              id="p1"
+              type="number"
+              placeholder="Example: 20"
+              class="w-full border rounded-xl p-3 mt-1 outline-none focus:ring-2 focus:ring-red-200"
+            >
+          </div>
+
+          <div>
+            <label class="text-xs font-bold text-gray-600">
+              Number (Y)
+            </label>
+
+            <input
+              id="p2"
+              type="number"
+              placeholder="Example: 500"
+              class="w-full border rounded-xl p-3 mt-1 outline-none focus:ring-2 focus:ring-red-200"
+            >
+          </div>
+
+        </div>
+
+
+        <button
+          onclick="calc1()"
+          class="mt-4 w-full bg-[#e5322d] hover:bg-red-700 text-white py-3 rounded-xl font-bold transition"
+        >
+          Calculate
+        </button>
+
+
+        <div id="r1" class="hidden result-box border border-red-100 rounded-xl p-4 text-center mt-4">
+          <p class="text-xs text-gray-500">Result</p>
+          <p id="r1value" class="text-xl font-extrabold text-[#e5322d] mt-1"></p>
+        </div>
+
+      </div>
+
+
+      <!-- Type 2 -->
+      <div class="calc-section bg-gray-50 border rounded-2xl p-5 md:p-6">
+
+        <div class="flex items-start gap-3">
+
+          <div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center shrink-0">
+            <i class="fa-solid fa-chart-pie"></i>
+          </div>
+
+          <div>
+            <h3 class="font-extrabold text-lg">
+              X is what % of Y?
+            </h3>
+
+            <p class="text-sm text-gray-500 mt-1">
+              Find the percentage relationship between two numbers.
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="grid sm:grid-cols-2 gap-3 mt-5">
+
+          <div>
+            <label class="text-xs font-bold text-gray-600">
+              X
+            </label>
+
+            <input
+              id="p3"
+              type="number"
+              placeholder="Example: 25"
+              class="w-full border rounded-xl p-3 mt-1 outline-none focus:ring-2 focus:ring-blue-200"
+            >
+          </div>
+
+          <div>
+            <label class="text-xs font-bold text-gray-600">
+              Y
+            </label>
+
+            <input
+              id="p4"
+              type="number"
+              placeholder="Example: 100"
+              class="w-full border rounded-xl p-3 mt-1 outline-none focus:ring-2 focus:ring-blue-200"
+            >
+          </div>
+
+        </div>
+
+
+        <button
+          onclick="calc2()"
+          class="mt-4 w-full bg-gray-900 hover:bg-black text-white py-3 rounded-xl font-bold transition"
+        >
+          Calculate
+        </button>
+
+
+        <div id="r2" class="hidden bg-blue-50 border border-blue-100 rounded-xl p-4 text-center mt-4">
+          <p class="text-xs text-gray-500">Percentage</p>
+          <p id="r2value" class="text-xl font-extrabold text-blue-600 mt-1"></p>
+        </div>
+
+      </div>
+
+
+      <!-- Type 3 -->
+      <div class="calc-section bg-gray-50 border rounded-2xl p-5 md:p-6">
+
+        <div class="flex items-start gap-3">
+
+          <div class="w-10 h-10 bg-green-100 text-green-600 rounded-xl flex items-center justify-center shrink-0">
+            <i class="fa-solid fa-tag"></i>
+          </div>
+
+          <div>
+            <h3 class="font-extrabold text-lg">
+              Discount Calculator
+            </h3>
+
+            <p class="text-sm text-gray-500 mt-1">
+              Calculate discount amount, savings and final price.
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="grid sm:grid-cols-2 gap-3 mt-5">
+
+          <div>
+            <label class="text-xs font-bold text-gray-600">
+              Original Price (₹)
+            </label>
+
+            <input
+              id="price"
+              type="number"
+              placeholder="Example: 1000"
+              class="w-full border rounded-xl p-3 mt-1 outline-none focus:ring-2 focus:ring-green-200"
+            >
+          </div>
+
+          <div>
+            <label class="text-xs font-bold text-gray-600">
+              Discount (%)
+            </label>
+
+            <input
+              id="disc"
+              type="number"
+              placeholder="Example: 20"
+              class="w-full border rounded-xl p-3 mt-1 outline-none focus:ring-2 focus:ring-green-200"
+            >
+          </div>
+
+        </div>
+
+
+        <button
+          onclick="calc3()"
+          class="mt-4 w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-xl font-bold transition"
+        >
+          Calculate Discount
+        </button>
+
+
+        <div id="r3" class="hidden mt-4">
+
+          <div class="grid sm:grid-cols-2 gap-3">
+
+            <div class="bg-green-50 border border-green-100 rounded-xl p-4 text-center">
+              <p class="text-xs text-gray-500">You Save</p>
+              <p id="saveValue" class="text-xl font-extrabold text-green-600 mt-1"></p>
+            </div>
+
+            <div class="bg-white border rounded-xl p-4 text-center">
+              <p class="text-xs text-gray-500">Final Price</p>
+              <p id="finalValue" class="text-xl font-extrabold text-gray-900 mt-1"></p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- Type 4 -->
+      <div class="calc-section bg-gray-50 border rounded-2xl p-5 md:p-6">
+
+        <div class="flex items-start gap-3">
+
+          <div class="w-10 h-10 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center shrink-0">
+            <i class="fa-solid fa-arrow-trend-up"></i>
+          </div>
+
+          <div>
+            <h3 class="font-extrabold text-lg">
+              Percentage Increase / Decrease
+            </h3>
+
+            <p class="text-sm text-gray-500 mt-1">
+              Compare an original value with a new value.
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="grid sm:grid-cols-2 gap-3 mt-5">
+
+          <div>
+            <label class="text-xs font-bold text-gray-600">
+              Original Value
+            </label>
+
+            <input
+              id="oldValue"
+              type="number"
+              placeholder="Example: 100"
+              class="w-full border rounded-xl p-3 mt-1 outline-none focus:ring-2 focus:ring-purple-200"
+            >
+          </div>
+
+          <div>
+            <label class="text-xs font-bold text-gray-600">
+              New Value
+            </label>
+
+            <input
+              id="newValue"
+              type="number"
+              placeholder="Example: 120"
+              class="w-full border rounded-xl p-3 mt-1 outline-none focus:ring-2 focus:ring-purple-200"
+            >
+          </div>
+
+        </div>
+
+
+        <button
+          onclick="calc4()"
+          class="mt-4 w-full bg-purple-600 hover:bg-purple-700 text-white py-3 rounded-xl font-bold transition"
+        >
+          Calculate Change
+        </button>
+
+
+        <div id="r4" class="hidden bg-purple-50 border border-purple-100 rounded-xl p-4 text-center mt-4">
+
+          <p class="text-xs text-gray-500">
+            Percentage Change
+          </p>
+
+          <p id="changeValue" class="text-xl font-extrabold text-purple-600 mt-1"></p>
+
+        </div>
+
+      </div>
+
+
+      <!-- Type 5 -->
+      <div class="calc-section bg-gray-50 border rounded-2xl p-5 md:p-6">
+
+        <div class="flex items-start gap-3">
+
+          <div class="w-10 h-10 bg-orange-100 text-orange-600 rounded-xl flex items-center justify-center shrink-0">
+            <i class="fa-solid fa-plus-minus"></i>
+          </div>
+
+          <div>
+            <h3 class="font-extrabold text-lg">
+              Add or Subtract a Percentage
+            </h3>
+
+            <p class="text-sm text-gray-500 mt-1">
+              Find the final value after adding or removing a percentage.
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="grid sm:grid-cols-2 gap-3 mt-5">
+
+          <div>
+            <label class="text-xs font-bold text-gray-600">
+              Original Value
+            </label>
+
+            <input
+              id="baseValue"
+              type="number"
+              placeholder="Example: 1000"
+              class="w-full border rounded-xl p-3 mt-1 outline-none focus:ring-2 focus:ring-orange-200"
+            >
+          </div>
+
+          <div>
+            <label class="text-xs font-bold text-gray-600">
+              Percentage (%)
+            </label>
+
+            <input
+              id="addPercent"
+              type="number"
+              placeholder="Example: 10"
+              class="w-full border rounded-xl p-3 mt-1 outline-none focus:ring-2 focus:ring-orange-200"
+            >
+          </div>
+
+        </div>
+
+
+        <div class="grid grid-cols-2 gap-3 mt-4">
+
+          <button
+            onclick="calc5('add')"
+            class="bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-xl font-bold"
+          >
+            Add %
+          </button>
+
+          <button
+            onclick="calc5('subtract')"
+            class="bg-gray-800 hover:bg-gray-900 text-white py-3 rounded-xl font-bold"
+          >
+            Subtract %
+          </button>
+
+        </div>
+
+
+        <div id="r5" class="hidden bg-orange-50 border border-orange-100 rounded-xl p-4 text-center mt-4">
+
+          <p class="text-xs text-gray-500">
+            Final Value
+          </p>
+
+          <p id="finalPercentValue" class="text-xl font-extrabold text-orange-600 mt-1"></p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- Information -->
+  <section class="bg-white rounded-2xl shadow-sm border p-6 md:p-8 mt-7">
+
+    <h2 class="text-2xl font-extrabold">
+      What is a Percentage?
+    </h2>
+
+    <p class="text-gray-600 leading-7 mt-3">
+      A percentage represents a number as a fraction of 100. The percentage
+      symbol (%) is commonly used to describe discounts, increases,
+      decreases, marks, interest, profit, loss and many other everyday
+      calculations.
+    </p>
+
+    <p class="text-gray-600 leading-7 mt-3">
+      Antokia's free Percentage Calculator provides multiple ways to calculate
+      percentages quickly without doing manual calculations.
+    </p>
+
+  </section>
+
+
+  <!-- How To Use -->
+  <section class="bg-white rounded-2xl shadow-sm border p-6 md:p-8 mt-6">
+
+    <h2 class="text-2xl font-extrabold">
+      How to Use the Percentage Calculator
+    </h2>
+
+    <div class="grid md:grid-cols-3 gap-5 mt-6">
+
+      <div class="bg-gray-50 rounded-xl p-5">
+
+        <div class="w-10 h-10 bg-red-100 text-[#e5322d] rounded-lg flex items-center justify-center font-bold">
+          1
+        </div>
+
+        <h3 class="font-bold mt-4">
+          Select Calculation
+        </h3>
+
+        <p class="text-sm text-gray-600 mt-2">
+          Choose the percentage calculation that matches your requirement.
+        </p>
+
+      </div>
+
+
+      <div class="bg-gray-50 rounded-xl p-5">
+
+        <div class="w-10 h-10 bg-red-100 text-[#e5322d] rounded-lg flex items-center justify-center font-bold">
+          2
+        </div>
+
+        <h3 class="font-bold mt-4">
+          Enter Values
+        </h3>
+
+        <p class="text-sm text-gray-600 mt-2">
+          Enter the required numbers, percentage or price in the fields.
+        </p>
+
+      </div>
+
+
+      <div class="bg-gray-50 rounded-xl p-5">
+
+        <div class="w-10 h-10 bg-red-100 text-[#e5322d] rounded-lg flex items-center justify-center font-bold">
+          3
+        </div>
+
+        <h3 class="font-bold mt-4">
+          Get Result
+        </h3>
+
+        <p class="text-sm text-gray-600 mt-2">
+          Click calculate to instantly see the percentage result.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- Formula -->
+  <section class="bg-white rounded-2xl shadow-sm border p-6 md:p-8 mt-6">
+
+    <h2 class="text-2xl font-extrabold">
+      Percentage Formula
+    </h2>
+
+    <div class="bg-red-50 border border-red-100 rounded-xl p-5 mt-5">
+
+      <p class="font-bold text-gray-800">
+        Percentage = (Part ÷ Whole) × 100
+      </p>
+
+      <p class="text-sm text-gray-600 mt-2">
+        To calculate a percentage of a number:
+      </p>
+
+      <p class="font-semibold mt-2 text-[#e5322d]">
+        X% of Y = (X × Y) ÷ 100
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- Uses -->
+  <section class="bg-white rounded-2xl shadow-sm border p-6 md:p-8 mt-6">
+
+    <h2 class="text-2xl font-extrabold">
+      Common Uses of Percentage Calculator
+    </h2>
+
+    <div class="grid md:grid-cols-2 gap-4 mt-5">
+
+      <div class="flex gap-3">
+        <i class="fa-solid fa-check text-green-600 mt-1"></i>
+        <p class="text-gray-600">Shopping discounts and sale prices.</p>
+      </div>
+
+      <div class="flex gap-3">
+        <i class="fa-solid fa-check text-green-600 mt-1"></i>
+        <p class="text-gray-600">Percentage increase and decrease.</p>
+      </div>
+
+      <div class="flex gap-3">
+        <i class="fa-solid fa-check text-green-600 mt-1"></i>
+        <p class="text-gray-600">Marks and percentage calculations.</p>
+      </div>
+
+      <div class="flex gap-3">
+        <i class="fa-solid fa-check text-green-600 mt-1"></i>
+        <p class="text-gray-600">Business and financial calculations.</p>
+      </div>
+
+      <div class="flex gap-3">
+        <i class="fa-solid fa-check text-green-600 mt-1"></i>
+        <p class="text-gray-600">Price changes and comparisons.</p>
+      </div>
+
+      <div class="flex gap-3">
+        <i class="fa-solid fa-check text-green-600 mt-1"></i>
+        <p class="text-gray-600">Everyday mathematical calculations.</p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FAQ -->
+  <section class="bg-white rounded-2xl shadow-sm border p-6 md:p-8 mt-6">
+
+    <h2 class="text-2xl font-extrabold">
+      Frequently Asked Questions
+    </h2>
+
+
+    <div class="mt-5 space-y-3">
+
+
+      <div class="faq-item border rounded-xl overflow-hidden">
+
+        <button class="faq-question w-full flex justify-between items-center text-left p-4 font-semibold">
+
+          <span>How do I calculate a percentage?</span>
+
+          <i class="fa-solid fa-chevron-down faq-icon text-gray-500"></i>
+
+        </button>
+
+        <div class="faq-answer px-4 pb-4 text-sm text-gray-600 leading-6">
+
+          To calculate X% of Y, multiply X by Y and divide the result by 100.
+          For example, 20% of 500 is 100.
+
+        </div>
+
+      </div>
+
+
+      <div class="faq-item border rounded-xl overflow-hidden">
+
+        <button class="faq-question w-full flex justify-between items-center text-left p-4 font-semibold">
+
+          <span>How can I find what percentage X is of Y?</span>
+
+          <i class="fa-solid fa-chevron-down faq-icon text-gray-500"></i>
+
+        </button>
+
+        <div class="faq-answer px-4 pb-4 text-sm text-gray-600 leading-6">
+
+          Divide X by Y and multiply the result by 100.
+          For example, 25 is 25% of 100.
+
+        </div>
+
+      </div>
+
+
+      <div class="faq-item border rounded-xl overflow-hidden">
+
+        <button class="faq-question w-full flex justify-between items-center text-left p-4 font-semibold">
+
+          <span>Can I calculate shopping discounts?</span>
+
+          <i class="fa-solid fa-chevron-down faq-icon text-gray-500"></i>
+
+        </button>
+
+        <div class="faq-answer px-4 pb-4 text-sm text-gray-600 leading-6">
+
+          Yes. Enter the original price and discount percentage to calculate
+          the amount saved and the final price after discount.
+
+        </div>
+
+      </div>
+
+
+      <div class="faq-item border rounded-xl overflow-hidden">
+
+        <button class="faq-question w-full flex justify-between items-center text-left p-4 font-semibold">
+
+          <span>Is this Percentage Calculator free?</span>
+
+          <i class="fa-solid fa-chevron-down faq-icon text-gray-500"></i>
+
+        </button>
+
+        <div class="faq-answer px-4 pb-4 text-sm text-gray-600 leading-6">
+
+          Yes. Antokia Percentage Calculator is free to use and does not
+          require registration.
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- Related Tools -->
+  <section class="bg-white rounded-2xl shadow-sm border p-6 md:p-8 mt-6">
+
+    <h2 class="text-2xl font-extrabold">
+      Related Free Tools
+    </h2>
+
+    <div class="grid sm:grid-cols-3 gap-4 mt-5">
+
+
+      <a href="/emi-calculator.html"
+         class="border rounded-xl p-5 hover:border-red-300 hover:shadow-sm transition">
+
+        <i class="fa-solid fa-money-bill-transfer text-[#e5322d] text-xl"></i>
+
+        <h3 class="font-bold mt-3">
+          EMI Calculator
+        </h3>
+
+        <p class="text-sm text-gray-500 mt-1">
+          Calculate monthly loan EMI.
+        </p>
+
+      </a>
+
+
+      <a href="/sip-calculator.html"
+         class="border rounded-xl p-5 hover:border-red-300 hover:shadow-sm transition">
+
+        <i class="fa-solid fa-chart-line text-[#e5322d] text-xl"></i>
+
+        <h3 class="font-bold mt-3">
+          SIP Calculator
+        </h3>
+
+        <p class="text-sm text-gray-500 mt-1">
+          Calculate estimated SIP returns.
+        </p>
+
+      </a>
+
+
+      <a href="/age-calculator.html"
+         class="border rounded-xl p-5 hover:border-red-300 hover:shadow-sm transition">
+
+        <i class="fa-solid fa-cake-candles text-[#e5322d] text-xl"></i>
+
+        <h3 class="font-bold mt-3">
+          Age Calculator
+        </h3>
+
+        <p class="text-sm text-gray-500 mt-1">
+          Calculate exact age instantly.
+        </p>
+
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- Bottom Ad -->
+  <div class="bg-gray-200 rounded-xl h-24 mt-7 flex items-center justify-center text-gray-500 text-sm">
+    Advertisement
+  </div>
+
+
+  <!-- Disclaimer -->
+  <section class="bg-gray-50 border rounded-xl p-5 mt-7 text-sm text-gray-500">
+
+    <h3 class="font-bold text-gray-700 mb-2">
+      Disclaimer
+    </h3>
+
+    <p>
+      This Percentage Calculator is provided for general informational and
+      calculation purposes only. Results are based on the values entered by
+      the user. Antokia does not guarantee suitability for financial, legal
+      or official purposes.
+    </p>
+
+  </section>
+
+</main>
+
+
+<!-- Footer with Background Colour -->
+<footer class="bg-[#1f2937] text-white mt-12">
+
+  <div class="max-w-6xl mx-auto px-4 py-10">
+
+    <div class="grid md:grid-cols-3 gap-8">
+
+
+      <!-- Brand -->
+      <div>
+
+        <a href="/" class="text-2xl font-extrabold text-white">
+          Antokia
+        </a>
+
+        <p class="text-sm text-gray-300 mt-3 leading-6">
+          Free online tools designed to make everyday calculations
+          and document tasks simple, fast and easy.
+        </p>
+
+      </div>
+
+
+      <!-- Explore -->
+      <div>
+
+        <h3 class="font-bold text-white">
+          Explore
+        </h3>
+
+        <div class="flex flex-col gap-2 mt-3 text-sm text-gray-300">
+
+          <a href="/" class="hover:text-white">
+            All Tools
+          </a>
+
+          <a href="/age-calculator.html" class="hover:text-white">
+            Age Calculator
+          </a>
+
+          <a href="/emi-calculator.html" class="hover:text-white">
+            EMI Calculator
+          </a>
+
+          <a href="/sip-calculator.html" class="hover:text-white">
+            SIP Calculator
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- Legal & Social -->
+      <div>
+
+        <h3 class="font-bold text-white">
+          Legal & Social
+        </h3>
+
+        <div class="flex flex-col gap-2 mt-3 text-sm text-gray-300">
+
+          <a href="/privacy.html" class="hover:text-white">
+            Privacy Policy
+          </a>
+
+          <a href="/terms.html" class="hover:text-white">
+            Terms & Conditions
+          </a>
+
+          <a
+            href="https://www.instagram.com/antokia.insta"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:text-white"
+          >
+            <i class="fa-brands fa-instagram mr-1"></i>
+            Instagram
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="border-t border-gray-600 mt-8 pt-5 text-center text-xs text-gray-400">
+
+      © 2026 Antokia. All Rights Reserved.
+
+    </div>
+
+  </div>
+
+</footer>
+
+
+<script>
+
+/* Format Number */
+function formatNumber(value) {
+
+  return Number(value).toLocaleString("en-IN", {
+    maximumFractionDigits:2
+  });
+
+}
+
+
+/* 1. What is X% of Y? */
+function calc1() {
+
+  const a = parseFloat(document.getElementById("p1").value);
+  const b = parseFloat(document.getElementById("p2").value);
+
+  if (isNaN(a) || isNaN(b)) {
+
+    alert("Please enter both values.");
+
+    return;
+  }
+
+  const result = (a * b) / 100;
+
+  document.getElementById("r1value").innerText =
+    formatNumber(result);
+
+  document.getElementById("r1").classList.remove("hidden");
+
+}
+
+
+/* 2. X is what % of Y? */
+function calc2() {
+
+  const a = parseFloat(document.getElementById("p3").value);
+  const b = parseFloat(document.getElementById("p4").value);
+
+  if (isNaN(a) || isNaN(b)) {
+
+    alert("Please enter both values.");
+
+    return;
+  }
+
+  if (b === 0) {
+
+    alert("Y cannot be zero.");
+
+    return;
+  }
+
+  const result = (a / b) * 100;
+
+  document.getElementById("r2value").innerText =
+    result.toFixed(2) + "%";
+
+  document.getElementById("r2").classList.remove("hidden");
+
+}
+
+
+/* 3. Discount Calculator */
+function calc3() {
+
+  const price =
+    parseFloat(document.getElementById("price").value);
+
+  const discount =
+    parseFloat(document.getElementById("disc").value);
+
+  if (isNaN(price) || isNaN(discount)) {
+
+    alert("Please enter price and discount percentage.");
+
+    return;
+  }
+
+  if (price < 0 || discount < 0) {
+
+    alert("Please enter positive values.");
+
+    return;
+  }
+
+  const save = (price * discount) / 100;
+
+  const finalPrice = price - save;
+
+  document.getElementById("saveValue").innerText =
+    "₹" + formatNumber(save);
+
+  document.getElementById("finalValue").innerText =
+    "₹" + formatNumber(finalPrice);
+
+  document.getElementById("r3").classList.remove("hidden");
+
+}
+
+
+/* 4. Percentage Increase / Decrease */
+function calc4() {
+
+  const oldValue =
+    parseFloat(document.getElementById("oldValue").value);
+
+  const newValue =
+    parseFloat(document.getElementById("newValue").value);
+
+  if (isNaN(oldValue) || isNaN(newValue)) {
+
+    alert("Please enter both values.");
+
+    return;
+  }
+
+  if (oldValue === 0) {
+
+    alert("Original value cannot be zero.");
+
+    return;
+  }
+
+  const change =
+    ((newValue - oldValue) / oldValue) * 100;
+
+  let text = "";
+
+  if (change > 0) {
+
+    text = "+" + change.toFixed(2) + "% Increase";
+
+  } else if (change < 0) {
+
+    text = Math.abs(change).toFixed(2) + "% Decrease";
+
+  } else {
+
+    text = "0% No Change";
+
+  }
+
+  document.getElementById("changeValue").innerText = text;
+
+  document.getElementById("r4").classList.remove("hidden");
+
+}
+
+
+/* 5. Add / Subtract Percentage */
+function calc5(type) {
+
+  const base =
+    parseFloat(document.getElementById("baseValue").value);
+
+  const percent =
+    parseFloat(document.getElementById("addPercent").value);
+
+  if (isNaN(base) || isNaN(percent)) {
+
+    alert("Please enter both values.");
+
+    return;
+  }
+
+  const amount =
+    (base * percent) / 100;
+
+  let finalValue;
+
+  if (type === "add") {
+
+    finalValue = base + amount;
+
+  } else {
+
+    finalValue = base - amount;
+
+  }
+
+  document.getElementById("finalPercentValue").innerText =
+    formatNumber(finalValue);
+
+  document.getElementById("r5").classList.remove("hidden");
+
+}
+
+
+/* FAQ Accordion */
+document.querySelectorAll(".faq-question").forEach(function(button) {
+
+  button.addEventListener("click", function() {
+
+    const item = this.parentElement;
+
+    document.querySelectorAll(".faq-item").forEach(function(otherItem) {
+
+      if (otherItem !== item) {
+        otherItem.classList.remove("active");
+      }
+
+    });
+
+    item.classList.toggle("active");
+
+  });
+
+});
+
+</script>
+
 </body>
 </html>
