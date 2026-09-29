@@ -3,50 +3,1071 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>QR Generator - Free QR Maker | Antokia</title>
-<link rel="canonical" href="https://www.antokia.com/qr-generator.html" />
-<meta name="robots" content="index, follow" />
+
+<title>QR Code Generator Online Free – Create QR Code | Antokia</title>
+
+<meta name="description" content="Create QR codes online for free with Antokia. Generate QR codes for URLs, text, contact details and other information, then download your QR code as a PNG image.">
+<meta name="keywords" content="QR code generator, QR generator, QR maker, create QR code, free QR code generator, online QR code maker">
+<meta name="robots" content="index, follow">
+
+<link rel="canonical" href="https://antokia.com/qr-generator.html">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="QR Code Generator Online Free | Antokia">
+<meta property="og:description" content="Create and download QR codes online for free with Antokia.">
+<meta property="og:url" content="https://antokia.com/qr-generator.html">
+<meta property="og:site_name" content="Antokia">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="QR Code Generator Online Free | Antokia">
+<meta name="twitter:description" content="Create QR codes for links, text and other information with Antokia.">
+
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-</head>
-<body class="bg-[#f5f5fa]">
-<header class="bg-white shadow-sm sticky top-0">
-<div class="max-w-5xl mx-auto px-4 py-3 flex justify-between">
-<a href="/" class="font-extrabold text-[#e5322d] text-xl">Antokia</a>
-<a href="/" class="text-sm underline">← All Tools</a>
-</div>
-</header>
-<main class="max-w-3xl mx-auto px-4 py-8">
-<h1 class="text-3xl font-bold text-center">QR Code Generator</h1>
-<p class="text-center text-gray-500 text-sm mt-2">Create QR for link, text, wifi - Free</p>
-<div class="bg-gray-200 h-20 rounded-xl mt-6 flex items-center justify-center text-xs">Ad Top</div>
-<div class="bg-white rounded-2xl p-6 shadow border mt-6">
-<input type="text" id="qrText" placeholder="Yaha link ya text daalo Jane..." class="w-full border rounded-xl p-4 text-sm focus:border-[#e5322d] outline-none">
-<div class="grid grid-cols-2 gap-3 mt-4">
-<button id="genBtn" class="bg-[#e5322d] text-white py-4 rounded-xl font-bold">Generate QR</button>
-<button id="dlQr" class="bg-black text-white py-4 rounded-xl font-bold hidden">Download PNG</button>
-</div>
-<div id="qrcode" class="mt-8 flex justify-center bg-white p-4 rounded-xl border"></div>
-<p class="text-[11px] text-gray-400 mt-4 text-center">✓ No ads in QR ✓ Lifetime valid ✓ High quality</p>
-</div>
-<div class="bg-gray-200 h-20 rounded-xl mt-6 flex items-center justify-center text-xs">Ad Bottom</div>
-</main>
-<script>
-document.getElementById('genBtn').onclick=()=>{
-let text=document.getElementById('qrText').value.trim();
-if(!text) return alert('Kuch likho Jane!');
-document.getElementById('qrcode').innerHTML="";
-new QRCode(document.getElementById('qrcode'),{text:text,width:220,height:220,colorDark:"#000",colorLight:"#fff",correctLevel:QRCode.CorrectLevel.H});
-document.getElementById('dlQr').classList.remove('hidden');
-}
-document.getElementById('dlQr').onclick=()=>{
-let img=document.querySelector('#qrcode img');
-if(img){let a=document.createElement('a');a.href=img.src;a.download="antokia-qr.png";a.click();}
-else{
-let canvas=document.querySelector('#qrcode canvas');
-let a=document.createElement('a');a.href=canvas.toDataURL();a.download="antokia-qr.png";a.click();
-}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+
+<!-- WebApplication Schema -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebApplication",
+  "name":"Antokia QR Code Generator",
+  "url":"https://antokia.com/qr-generator.html",
+  "applicationCategory":"UtilitiesApplication",
+  "operatingSystem":"Web Browser",
+  "description":"Free online QR code generator for creating QR codes from URLs, text and other information.",
+  "offers":{
+    "@type":"Offer",
+    "price":"0",
+    "priceCurrency":"USD"
+  }
 }
 </script>
+
+<!-- Breadcrumb Schema -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {
+      "@type":"ListItem",
+      "position":1,
+      "name":"Home",
+      "item":"https://antokia.com/"
+    },
+    {
+      "@type":"ListItem",
+      "position":2,
+      "name":"QR Code Generator",
+      "item":"https://antokia.com/qr-generator.html"
+    }
+  ]
+}
+</script>
+
+<!-- FAQ Schema -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {
+      "@type":"Question",
+      "name":"How do I create a QR code online?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"Enter your URL, text or other information in the QR Code Generator, click Generate QR Code, and download the generated QR code as a PNG image."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"Is the QR Code Generator free?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"Yes. Antokia provides this QR code generator free to use."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"Can I create a QR code for a website link?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"Yes. You can enter a website URL and generate a QR code that contains that URL."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"Can I download the generated QR code?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"Yes. After generating the QR code, you can download it as a PNG image."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"Does Antokia store my QR code content?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"The QR code is generated in your browser using client-side JavaScript. The tool does not require you to create an account or upload your content to generate the QR code."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f5f5fa;
+  color:#222;
+}
+
+.antokia-red{
+  color:#e5322d;
+}
+
+.bg-antokia{
+  background:#e5322d;
+}
+
+.tool-card{
+  background:#fff;
+  border:1px solid #e9e9ee;
+  border-radius:18px;
+  box-shadow:0 8px 25px rgba(0,0,0,.06);
+}
+
+.primary-btn{
+  background:#e5322d;
+  color:#fff;
+  transition:.2s ease;
+}
+
+.primary-btn:hover{
+  background:#c92824;
+}
+
+.secondary-btn{
+  background:#f1f1f4;
+  color:#333;
+  transition:.2s ease;
+}
+
+.secondary-btn:hover{
+  background:#e5e5e9;
+}
+
+.input-box{
+  transition:.2s ease;
+}
+
+.input-box:focus{
+  border-color:#e5322d;
+  box-shadow:0 0 0 3px rgba(229,50,45,.08);
+}
+
+.qr-preview{
+  background:#fff;
+  border:1px solid #e5e5e5;
+  border-radius:16px;
+  min-height:280px;
+}
+
+.info-card{
+  background:#fff;
+  border:1px solid #e9e9ee;
+  border-radius:16px;
+  box-shadow:0 5px 20px rgba(0,0,0,.04);
+}
+
+.footer-link{
+  color:#cfcfcf;
+  transition:.2s ease;
+}
+
+.footer-link:hover{
+  color:#fff;
+}
+
+@media(max-width:768px){
+  .desktop-nav{
+    display:none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="bg-white sticky top-0 z-50 shadow-sm">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="h-16 flex items-center justify-between">
+
+      <nav class="desktop-nav flex items-center gap-6 text-sm font-medium">
+        <a href="/" class="hover:text-red-600">Home</a>
+        <a href="/blog/" class="hover:text-red-600">Blog</a>
+        <a href="/about.html" class="hover:text-red-600">About</a>
+        <a href="/contact.html" class="hover:text-red-600">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-3 ml-auto">
+
+        <span class="text-xl font-extrabold antokia-red tracking-tight">
+          Antokia
+        </span>
+
+        <a href="/"
+           class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm font-semibold transition">
+          <i class="fa-solid fa-arrow-left mr-1"></i>
+          Home
+        </a>
+
+      </div>
+
+    </div>
+  </div>
+</header>
+
+
+<!-- MAIN -->
+<main class="max-w-5xl mx-auto px-4 sm:px-6 py-10">
+
+  <!-- TOP AD SPACE -->
+  <div class="mb-8">
+    <div class="max-w-3xl mx-auto min-h-[90px] flex items-center justify-center">
+      <!-- AdSense ad unit can be placed here after approval -->
+    </div>
+  </div>
+
+
+  <!-- INTRO -->
+  <section class="text-center mb-8">
+
+    <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-red-50 mb-4">
+      <i class="fa-solid fa-qrcode text-3xl antokia-red"></i>
+    </div>
+
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-3">
+      QR Code Generator
+    </h1>
+
+    <p class="text-gray-600 max-w-2xl mx-auto leading-relaxed">
+      Create QR codes online for free. Enter a website link, text or other
+      information and download your QR code as a PNG image.
+    </p>
+
+  </section>
+
+
+  <!-- TOOL CARD -->
+  <section class="tool-card p-5 sm:p-8 max-w-3xl mx-auto">
+
+    <!-- INPUT -->
+    <div>
+
+      <label for="qrText"
+             class="block text-sm font-bold text-gray-800 mb-2">
+        Enter your content
+      </label>
+
+      <textarea
+        id="qrText"
+        rows="4"
+        maxlength="2000"
+        placeholder="Enter a website URL, text or other information..."
+        class="input-box w-full border border-gray-300 rounded-xl p-4 text-sm outline-none resize-y"
+      ></textarea>
+
+      <div class="flex justify-between mt-2 text-xs text-gray-400">
+        <span>
+          Example: https://antokia.com/
+        </span>
+
+        <span id="charCount">
+          0 / 2000
+        </span>
+      </div>
+
+    </div>
+
+
+    <!-- GENERATE BUTTON -->
+    <button
+      type="button"
+      id="generateBtn"
+      class="primary-btn w-full py-3.5 rounded-xl font-bold mt-5">
+
+      <i class="fa-solid fa-qrcode mr-2"></i>
+      Generate QR Code
+
+    </button>
+
+
+    <!-- STATUS -->
+    <div id="statusBox"
+         class="hidden mt-4 rounded-xl p-4 text-center text-sm">
+      <span id="statusText"></span>
+    </div>
+
+
+    <!-- QR PREVIEW -->
+    <div id="previewSection"
+         class="hidden mt-7">
+
+      <div class="flex items-center justify-between mb-3">
+
+        <h2 class="font-bold text-gray-800">
+          QR Code Preview
+        </h2>
+
+        <span class="text-xs text-gray-500">
+          PNG Download
+        </span>
+
+      </div>
+
+      <div id="qrcode"
+           class="qr-preview flex items-center justify-center p-6">
+      </div>
+
+    </div>
+
+
+    <!-- ACTIONS -->
+    <div id="actions"
+         class="hidden grid grid-cols-1 sm:grid-cols-2 gap-3 mt-5">
+
+      <button
+        type="button"
+        id="downloadBtn"
+        class="primary-btn py-3 rounded-xl font-semibold">
+
+        <i class="fa-solid fa-download mr-2"></i>
+        Download PNG
+
+      </button>
+
+      <button
+        type="button"
+        id="resetBtn"
+        class="secondary-btn py-3 rounded-xl font-semibold">
+
+        <i class="fa-solid fa-rotate-left mr-2"></i>
+        Create Another
+
+      </button>
+
+    </div>
+
+
+    <!-- PRIVACY NOTE -->
+    <div class="mt-6 p-4 bg-green-50 border border-green-100 rounded-xl">
+
+      <div class="flex gap-3">
+
+        <i class="fa-solid fa-shield-halved text-green-600 mt-0.5"></i>
+
+        <div>
+
+          <h3 class="font-semibold text-green-800 text-sm">
+            Browser-Based QR Generation
+          </h3>
+
+          <p class="text-xs text-green-700 mt-1 leading-relaxed">
+            Your QR code is generated directly in your browser.
+            No account or file upload is required to create the QR code.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- MIDDLE AD SPACE -->
+  <div class="my-10">
+    <div class="max-w-3xl mx-auto min-h-[100px] flex items-center justify-center">
+      <!-- AdSense ad unit can be placed here after approval -->
+    </div>
+  </div>
+
+
+  <!-- INFORMATION -->
+  <section class="info-card p-6 sm:p-8 mb-6">
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">
+      Create QR Codes Online for Free
+    </h2>
+
+    <p class="text-gray-600 leading-7 mb-4">
+      QR codes provide a convenient way to share information using a
+      smartphone camera. With Antokia's QR Code Generator, you can turn
+      a website URL, text or other information into a scannable QR code.
+    </p>
+
+    <p class="text-gray-600 leading-7">
+      The generated QR code can be downloaded as a PNG image and used on
+      websites, documents, posters, presentations, printed materials
+      and other suitable applications.
+    </p>
+
+  </section>
+
+
+  <!-- HOW TO USE -->
+  <section class="info-card p-6 sm:p-8 mb-6">
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-5">
+      How to Create a QR Code
+    </h2>
+
+    <div class="space-y-5">
+
+      <div class="flex gap-4">
+
+        <div class="w-9 h-9 rounded-full bg-red-100 antokia-red flex items-center justify-center font-bold flex-shrink-0">
+          1
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-gray-800">
+            Enter your information
+          </h3>
+
+          <p class="text-gray-600 text-sm mt-1">
+            Enter a website URL, text or other information into the input box.
+          </p>
+        </div>
+
+      </div>
+
+
+      <div class="flex gap-4">
+
+        <div class="w-9 h-9 rounded-full bg-red-100 antokia-red flex items-center justify-center font-bold flex-shrink-0">
+          2
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-gray-800">
+            Generate the QR code
+          </h3>
+
+          <p class="text-gray-600 text-sm mt-1">
+            Click the Generate QR Code button to create your QR code.
+          </p>
+        </div>
+
+      </div>
+
+
+      <div class="flex gap-4">
+
+        <div class="w-9 h-9 rounded-full bg-red-100 antokia-red flex items-center justify-center font-bold flex-shrink-0">
+          3
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-gray-800">
+            Check the preview
+          </h3>
+
+          <p class="text-gray-600 text-sm mt-1">
+            Review the generated QR code before downloading it.
+          </p>
+        </div>
+
+      </div>
+
+
+      <div class="flex gap-4">
+
+        <div class="w-9 h-9 rounded-full bg-red-100 antokia-red flex items-center justify-center font-bold flex-shrink-0">
+          4
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-gray-800">
+            Download the PNG
+          </h3>
+
+          <p class="text-gray-600 text-sm mt-1">
+            Download the generated QR code and use it where needed.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- USE CASES -->
+  <section class="info-card p-6 sm:p-8 mb-6">
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-5">
+      What Can You Use a QR Code For?
+    </h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+      <div class="border border-gray-200 rounded-xl p-5">
+        <div class="w-11 h-11 rounded-lg bg-red-50 flex items-center justify-center mb-3">
+          <i class="fa-solid fa-link antokia-red"></i>
+        </div>
+
+        <h3 class="font-bold text-gray-800">
+          Website Links
+        </h3>
+
+        <p class="text-sm text-gray-500 mt-1">
+          Share a website or web page using a scannable QR code.
+        </p>
+      </div>
+
+
+      <div class="border border-gray-200 rounded-xl p-5">
+        <div class="w-11 h-11 rounded-lg bg-red-50 flex items-center justify-center mb-3">
+          <i class="fa-solid fa-align-left antokia-red"></i>
+        </div>
+
+        <h3 class="font-bold text-gray-800">
+          Text
+        </h3>
+
+        <p class="text-sm text-gray-500 mt-1">
+          Encode short text or useful information into a QR code.
+        </p>
+      </div>
+
+
+      <div class="border border-gray-200 rounded-xl p-5">
+        <div class="w-11 h-11 rounded-lg bg-red-50 flex items-center justify-center mb-3">
+          <i class="fa-solid fa-print antokia-red"></i>
+        </div>
+
+        <h3 class="font-bold text-gray-800">
+          Printed Materials
+        </h3>
+
+        <p class="text-sm text-gray-500 mt-1">
+          Add QR codes to suitable posters, flyers and printed documents.
+        </p>
+      </div>
+
+
+      <div class="border border-gray-200 rounded-xl p-5">
+        <div class="w-11 h-11 rounded-lg bg-red-50 flex items-center justify-center mb-3">
+          <i class="fa-solid fa-share-nodes antokia-red"></i>
+        </div>
+
+        <h3 class="font-bold text-gray-800">
+          Easy Sharing
+        </h3>
+
+        <p class="text-sm text-gray-500 mt-1">
+          Make information easier to access from a mobile device.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- RELATED TOOLS -->
+  <section class="info-card p-6 sm:p-8 mb-6">
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-5">
+      Related Tools
+    </h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+      <a href="/image-to-pdf.html"
+         class="border border-gray-200 rounded-xl p-5 hover:border-red-300 hover:shadow-sm transition">
+
+        <div class="w-11 h-11 rounded-lg bg-red-50 flex items-center justify-center mb-3">
+          <i class="fa-solid fa-file-pdf antokia-red text-xl"></i>
+        </div>
+
+        <h3 class="font-bold text-gray-800">
+          Image to PDF
+        </h3>
+
+        <p class="text-sm text-gray-500 mt-1">
+          Convert images into PDF documents online.
+        </p>
+
+      </a>
+
+
+      <a href="/compress-pdf.html"
+         class="border border-gray-200 rounded-xl p-5 hover:border-red-300 hover:shadow-sm transition">
+
+        <div class="w-11 h-11 rounded-lg bg-red-50 flex items-center justify-center mb-3">
+          <i class="fa-solid fa-compress antokia-red text-xl"></i>
+        </div>
+
+        <h3 class="font-bold text-gray-800">
+          Compress PDF
+        </h3>
+
+        <p class="text-sm text-gray-500 mt-1">
+          Optimize and reduce PDF file size.
+        </p>
+
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- FAQ -->
+  <section class="info-card p-6 sm:p-8 mb-10">
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-6">
+      Frequently Asked Questions
+    </h2>
+
+    <div class="space-y-5">
+
+      <div>
+        <h3 class="font-semibold text-gray-800">
+          Is Antokia's QR Code Generator free?
+        </h3>
+
+        <p class="text-gray-600 text-sm leading-6 mt-2">
+          Yes. The QR Code Generator is available free to use.
+        </p>
+      </div>
+
+
+      <div>
+        <h3 class="font-semibold text-gray-800">
+          Can I create a QR code for a website?
+        </h3>
+
+        <p class="text-gray-600 text-sm leading-6 mt-2">
+          Yes. Enter the complete website URL, such as
+          https://antokia.com/, and generate the QR code.
+        </p>
+      </div>
+
+
+      <div>
+        <h3 class="font-semibold text-gray-800">
+          Can I use text instead of a URL?
+        </h3>
+
+        <p class="text-gray-600 text-sm leading-6 mt-2">
+          Yes. You can enter text or other supported information instead
+          of a website URL.
+        </p>
+      </div>
+
+
+      <div>
+        <h3 class="font-semibold text-gray-800">
+          Can I download my QR code?
+        </h3>
+
+        <p class="text-gray-600 text-sm leading-6 mt-2">
+          Yes. After generating the QR code, use the Download PNG button
+          to save it as an image.
+        </p>
+      </div>
+
+
+      <div>
+        <h3 class="font-semibold text-gray-800">
+          Does the QR code generator require an account?
+        </h3>
+
+        <p class="text-gray-600 text-sm leading-6 mt-2">
+          No account is required to generate a QR code with this tool.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- BOTTOM AD SPACE -->
+  <div class="mb-8">
+    <div class="max-w-3xl mx-auto min-h-[90px] flex items-center justify-center">
+      <!-- AdSense ad unit can be placed here after approval -->
+    </div>
+  </div>
+
+</main>
+
+
+<!-- FOOTER -->
+<footer class="bg-[#242424] text-white mt-10">
+
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-10">
+
+      <!-- EXPLORE -->
+      <div>
+
+        <h3 class="text-lg font-bold mb-4">
+          Explore
+        </h3>
+
+        <div class="space-y-3 text-sm">
+
+          <a href="/" class="footer-link block">
+            Home
+          </a>
+
+          <a href="/blog/" class="footer-link block">
+            Blog
+          </a>
+
+          <a href="/about.html" class="footer-link block">
+            About
+          </a>
+
+          <a href="/contact.html" class="footer-link block">
+            Contact
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- LEGAL -->
+      <div>
+
+        <h3 class="text-lg font-bold mb-4">
+          Legal
+        </h3>
+
+        <div class="space-y-3 text-sm">
+
+          <a href="/privacy.html" class="footer-link block">
+            Privacy Policy
+          </a>
+
+          <a href="/terms.html" class="footer-link block">
+            Terms &amp; Conditions
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- SOCIAL -->
+      <div>
+
+        <h3 class="text-lg font-bold mb-4">
+          Follow Antokia
+        </h3>
+
+        <a href="https://www.instagram.com/antokia.insta"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="footer-link inline-flex items-center gap-2 text-sm">
+
+          <i class="fa-brands fa-instagram"></i>
+          Instagram
+
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="border-t border-gray-700 mt-10 pt-6 text-center text-sm text-gray-400">
+      © 2026 Antokia. All rights reserved.
+    </div>
+
+  </div>
+
+</footer>
+
+
+<script>
+
+const qrText = document.getElementById("qrText");
+const generateBtn = document.getElementById("generateBtn");
+const downloadBtn = document.getElementById("downloadBtn");
+const resetBtn = document.getElementById("resetBtn");
+
+const qrcode = document.getElementById("qrcode");
+const previewSection = document.getElementById("previewSection");
+const actions = document.getElementById("actions");
+
+const statusBox = document.getElementById("statusBox");
+const statusText = document.getElementById("statusText");
+
+const charCount = document.getElementById("charCount");
+
+let qrGenerated = false;
+
+
+/* Character Counter */
+qrText.addEventListener("input", function(){
+
+  charCount.textContent =
+    this.value.length + " / 2000";
+
+});
+
+
+/* Status Message */
+function showStatus(message, type){
+
+  statusBox.classList.remove(
+    "hidden",
+    "bg-green-50",
+    "border-green-100",
+    "text-green-700",
+    "bg-red-50",
+    "border-red-100",
+    "text-red-700",
+    "bg-blue-50",
+    "border-blue-100",
+    "text-blue-700"
+  );
+
+  if(type === "success"){
+
+    statusBox.classList.add(
+      "bg-green-50",
+      "border",
+      "border-green-100",
+      "text-green-700"
+    );
+
+  }else if(type === "error"){
+
+    statusBox.classList.add(
+      "bg-red-50",
+      "border",
+      "border-red-100",
+      "text-red-700"
+    );
+
+  }else{
+
+    statusBox.classList.add(
+      "bg-blue-50",
+      "border",
+      "border-blue-100",
+      "text-blue-700"
+    );
+
+  }
+
+  statusText.textContent = message;
+
+}
+
+
+/* Generate QR */
+generateBtn.addEventListener("click", function(){
+
+  const text = qrText.value.trim();
+
+  if(!text){
+
+    showStatus(
+      "Please enter a URL, text or other information first.",
+      "error"
+    );
+
+    qrText.focus();
+
+    return;
+  }
+
+
+  if(text.length > 2000){
+
+    showStatus(
+      "Please keep the content within 2000 characters.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  qrcode.innerHTML = "";
+
+  previewSection.classList.remove("hidden");
+
+  actions.classList.add("hidden");
+
+  showStatus(
+    "Generating your QR code...",
+    "info"
+  );
+
+
+  try{
+
+    new QRCode(qrcode, {
+
+      text: text,
+
+      width: 240,
+
+      height: 240,
+
+      colorDark: "#000000",
+
+      colorLight: "#ffffff",
+
+      correctLevel: QRCode.CorrectLevel.H
+
+    });
+
+
+    qrGenerated = true;
+
+    actions.classList.remove("hidden");
+
+    showStatus(
+      "QR code generated successfully.",
+      "success"
+    );
+
+
+    setTimeout(function(){
+
+      previewSection.scrollIntoView({
+        behavior:"smooth",
+        block:"center"
+      });
+
+    },100);
+
+  }catch(error){
+
+    console.error(error);
+
+    qrGenerated = false;
+
+    actions.classList.add("hidden");
+
+    showStatus(
+      "Unable to generate the QR code. Please try different content.",
+      "error"
+    );
+
+  }
+
+});
+
+
+/* Download QR */
+downloadBtn.addEventListener("click", function(){
+
+  if(!qrGenerated){
+    return;
+  }
+
+
+  const canvas = qrcode.querySelector("canvas");
+
+  if(canvas){
+
+    const link = document.createElement("a");
+
+    link.href = canvas.toDataURL("image/png");
+
+    link.download = "antokia-qr-code.png";
+
+    document.body.appendChild(link);
+
+    link.click();
+
+    link.remove();
+
+    return;
+  }
+
+
+  const image = qrcode.querySelector("img");
+
+  if(image){
+
+    const link = document.createElement("a");
+
+    link.href = image.src;
+
+    link.download = "antokia-qr-code.png";
+
+    document.body.appendChild(link);
+
+    link.click();
+
+    link.remove();
+
+  }
+
+});
+
+
+/* Reset */
+resetBtn.addEventListener("click", function(){
+
+  qrText.value = "";
+
+  charCount.textContent = "0 / 2000";
+
+  qrcode.innerHTML = "";
+
+  previewSection.classList.add("hidden");
+
+  actions.classList.add("hidden");
+
+  statusBox.classList.add("hidden");
+
+  qrGenerated = false;
+
+  qrText.focus();
+
+});
+
+
+/* Enter Key */
+qrText.addEventListener("keydown", function(event){
+
+  if(
+    event.key === "Enter" &&
+    (event.ctrlKey || event.metaKey)
+  ){
+
+    event.preventDefault();
+
+    generateBtn.click();
+
+  }
+
+});
+
+</script>
+
 </body>
 </html>
