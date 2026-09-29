@@ -1,74 +1,1049 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>How to Calculate Percentage? 3 Easy Formulas | Antokia</title>
-    <meta name="description" content="Learn how to calculate percentage easily. Calculate X% of Y, discount, marks percentage with formula and free online percentage calculator.">
-    <meta name="keywords" content="how to calculate percentage, percentage calculator, how to find percentage, antokia">
-    <link rel="canonical" href="https://antokia.com/blog/how-to-calculate-percentage.html">
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-50 text-gray-800">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<header class="bg-white shadow-sm p-4">
-    <div class="max-w-4xl mx-auto flex justify-between items-center">
-        <a href="/" class="text-2xl font-bold text-blue-600">Antokia</a>
-        <a href="../percentage.html" class="bg-blue-600 text-white px-4 py-2 rounded-lg">Use Calculator</a>
+<title>How to Calculate Percentage? Formula, Examples & Calculator | Antokia</title>
+
+<meta name="description" content="Learn how to calculate percentage with simple formulas and examples. Calculate marks percentage, discounts, percentage increase and decrease using Antokia's free Percentage Calculator.">
+
+<meta name="keywords" content="how to calculate percentage, percentage calculator, percentage formula, calculate marks percentage, discount percentage, percentage increase, percentage decrease">
+
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://antokia.com/how-to-calculate-percentage.html">
+
+<meta property="og:title" content="How to Calculate Percentage? Formula, Examples & Calculator | Antokia">
+<meta property="og:description" content="Learn how to calculate percentage with simple formulas, examples and an easy online percentage calculator.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://antokia.com/how-to-calculate-percentage.html">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #f5f5fa;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #222;
+}
+
+.antokia-red {
+    color: #e5322d;
+}
+
+.btn-red {
+    background: #e5322d;
+    color: #fff;
+}
+
+.btn-red:hover {
+    background: #c92521;
+}
+
+.soft-card {
+    background: #fff;
+    border: 1px solid #e7e7ed;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0,0,0,.05);
+}
+
+.ad-box {
+    min-height: 90px;
+    border: 1px dashed #d5d5dd;
+    border-radius: 12px;
+    background: #fafafd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-size: 13px;
+}
+
+.article-content {
+    color: #444;
+    line-height: 1.85;
+    font-size: 16px;
+}
+
+.article-content h2 {
+    color: #222;
+    font-size: 25px;
+    font-weight: 700;
+    margin-top: 34px;
+    margin-bottom: 14px;
+}
+
+.article-content h3 {
+    color: #222;
+    font-size: 21px;
+    font-weight: 700;
+    margin-top: 28px;
+    margin-bottom: 12px;
+}
+
+.article-content p {
+    margin-bottom: 17px;
+}
+
+.article-content ul,
+.article-content ol {
+    margin: 12px 0 20px 24px;
+}
+
+.article-content li {
+    margin-bottom: 9px;
+}
+
+.formula-box {
+    background: #fff5f5;
+    border-left: 4px solid #e5322d;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px 0;
+    overflow-x: auto;
+}
+
+.formula {
+    font-size: 19px;
+    font-weight: 700;
+    color: #e5322d;
+    margin-top: 10px;
+}
+
+.example-box {
+    background: #f5f8ff;
+    border: 1px solid #dce6ff;
+    border-radius: 14px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.result-box {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-radius: 14px;
+    padding: 20px;
+    margin-top: 18px;
+}
+
+.info-box {
+    background: #f0f9ff;
+    border: 1px solid #d7efff;
+    border-radius: 14px;
+    padding: 18px;
+    margin: 20px 0;
+}
+
+.faq-item {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.faq-question {
+    width: 100%;
+    padding: 18px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.faq-answer {
+    display: none;
+    padding: 0 0 18px;
+    color: #555;
+    line-height: 1.7;
+}
+
+.faq-item.open .faq-answer {
+    display: block;
+}
+
+.faq-item.open .faq-icon {
+    transform: rotate(45deg);
+}
+
+.tool-card {
+    transition: .2s ease;
+}
+
+.tool-card:hover {
+    transform: translateY(-3px);
+    border-color: #e5322d;
+    box-shadow: 0 8px 20px rgba(0,0,0,.07);
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="sticky top-0 z-50 bg-white border-b border-gray-200">
+
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+
+        <a href="/" class="flex items-center gap-2">
+
+            <div class="w-10 h-10 rounded-xl bg-red-600 text-white flex items-center justify-center font-bold text-lg">
+                A
+            </div>
+
+            <div>
+                <div class="text-xl font-bold antokia-red">
+                    Antokia
+                </div>
+
+                <div class="text-[11px] text-gray-500">
+                    Free Online Tools
+                </div>
+            </div>
+
+        </a>
+
+        <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+
+            <a href="/" class="hover:text-red-600">
+                Home
+            </a>
+
+            <a href="/blog.html" class="text-red-600">
+                Blog
+            </a>
+
+            <a href="/about.html" class="hover:text-red-600">
+                About
+            </a>
+
+            <a href="/contact.html" class="hover:text-red-600">
+                Contact
+            </a>
+
+        </nav>
+
+        <a href="/" class="btn-red px-4 py-2 rounded-full text-sm font-semibold">
+            <i class="fa-solid fa-house mr-1"></i>
+            Home
+        </a>
+
     </div>
+
 </header>
 
-<main class="max-w-3xl mx-auto bg-white mt-6 p-6 md:p-8 rounded-xl shadow">
-    
-    <p class="text-sm text-blue-600 font-semibold">BLOG / MATHS</p>
-    <h1 class="text-3xl md:text-4xl font-bold mt-2 leading-tight">How to Calculate Percentage? 3 Easy Tricks</h1>
-    <p class="text-gray-500 mt-3 text-sm">Updated on Sep 20, 2026 • 3 min read</p>
 
-    <div class="prose mt-6">
-        <p class="text-lg leading-7">Calculating percentage is needed for marks, discount, GST, salary. With Antokia's Percentage Calculator you can do it in 2 seconds without formula.</p>
+<main class="max-w-6xl mx-auto px-4 py-6">
 
-        <h2 class="text-2xl font-bold mt-8">How to Use Percentage Calculator? 3 Steps</h2>
-        
-        <div class="bg-gray-50 p-4 rounded-lg mt-4 border-l-4 border-green-600">
-            <h3 class="font-bold">Step 1: Open Percentage Calculator</h3>
-            <p>Go to: <a href="../percentage.html" class="text-blue-600 underline">antokia.com/percentage.html</a></p>
-        </div>
-
-        <div class="bg-gray-50 p-4 rounded-lg mt-3 border-l-4 border-green-600">
-            <h3 class="font-bold">Step 2: Select Type</h3>
-            <ul class="list-disc ml-5 mt-2">
-                <li><strong>X% of Y:</strong> What is 20% of 500?</li>
-                <li><strong>What % is X of Y:</strong> 50 is what % of 200?</li>
-                <li><strong>Percentage Increase/Decrease</strong></li>
-            </ul>
-        </div>
-
-        <div class="bg-gray-50 p-4 rounded-lg mt-3 border-l-4 border-green-600">
-            <h3 class="font-bold">Step 3: Get Answer Instantly</h3>
-            <p>Enter numbers and click Calculate - you will get answer with formula.</p>
-        </div>
-
-        <h2 class="text-2xl font-bold mt-8">Percentage Formula</h2>
-        <div class="bg-blue-50 p-5 rounded-lg mt-4">
-            <p class="font-mono text-center text-lg"><strong>(Part / Total) * 100 = Percentage</strong></p>
-            <p class="mt-3 text-center">Example: (45 / 50) * 100 = <strong>90%</strong></p>
-        </div>
-
-        <div class="text-center mt-8">
-            <a href="../percentage.html" class="bg-green-600 text-white px-8 py-3 rounded-full text-lg font-semibold inline-block">Calculate Percentage Now →</a>
-        </div>
-
-        <h2 class="text-2xl font-bold mt-10">FAQ</h2>
-        <h3 class="font-bold mt-4">Q. How to calculate discount?</h3>
-        <p>If item is ₹1000 and 20% discount, Discount = 1000 * 20 / 100 = ₹200. Final Price = ₹800.</p>
-        <h3 class="font-bold mt-4">Q. How to calculate marks percentage?</h3>
-        <p>Total marks obtained divided by total marks * 100. e.g. 450/500*100 = 90%.</p>
+    <!-- TOP AD -->
+    <div class="ad-box mb-6">
+        Advertisement
     </div>
+
+
+    <!-- BREADCRUMB -->
+    <div class="text-sm text-gray-500 mb-5">
+
+        <a href="/" class="hover:text-red-600">
+            Home
+        </a>
+
+        <span class="mx-2">›</span>
+
+        <a href="/blog.html" class="hover:text-red-600">
+            Blog
+        </a>
+
+        <span class="mx-2">›</span>
+
+        <span>
+            Percentage Guide
+        </span>
+
+    </div>
+
+
+    <!-- ARTICLE -->
+    <article class="soft-card overflow-hidden">
+
+        <!-- ARTICLE HEADER -->
+        <div class="p-6 md:p-10 border-b border-gray-100">
+
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 text-red-600 text-xs font-semibold mb-4">
+
+                <i class="fa-solid fa-percent"></i>
+
+                Maths & Percentage Guide
+
+            </div>
+
+            <h1 class="text-3xl md:text-4xl font-bold leading-tight mb-4">
+                How to Calculate Percentage? Formula, Examples & Easy Methods
+            </h1>
+
+            <p class="text-lg text-gray-600 leading-7 max-w-3xl">
+                Learn how to calculate percentages with simple formulas and
+                examples. Understand marks percentage, discounts, percentage
+                increase and decrease without complicated calculations.
+            </p>
+
+            <div class="flex flex-wrap items-center gap-4 mt-5 text-sm text-gray-500">
+
+                <span>
+                    <i class="fa-regular fa-clock mr-1"></i>
+                    Easy Guide
+                </span>
+
+                <span>
+                    <i class="fa-solid fa-percent mr-1"></i>
+                    Percentage Calculator
+                </span>
+
+                <span>
+                    <i class="fa-solid fa-globe mr-1"></i>
+                    Antokia.com
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- ARTICLE CONTENT -->
+        <div class="p-6 md:p-10 article-content">
+
+            <p>
+                Percentage is one of the most commonly used mathematical
+                concepts in everyday life. We use percentages to calculate
+                marks, discounts, GST, salary changes, profits, losses,
+                interest and many other values.
+            </p>
+
+            <p>
+                The basic concept is simple: percentage means a value out of
+                100. Once you understand a few basic formulas, you can solve
+                many percentage problems quickly.
+            </p>
+
+
+            <h2>
+                What Does Percentage Mean?
+            </h2>
+
+            <p>
+                The word percentage means "per hundred". It is represented
+                using the <strong>%</strong> symbol.
+            </p>
+
+            <div class="formula-box">
+
+                <strong class="text-gray-900">
+                    Basic Percentage Formula
+                </strong>
+
+                <div class="formula">
+                    Percentage = (Part ÷ Total) × 100
+                </div>
+
+            </div>
+
+
+            <h2>
+                1. How to Calculate X% of Y
+            </h2>
+
+            <p>
+                To find a particular percentage of a number, multiply the
+                number by the percentage and divide the result by 100.
+            </p>
+
+            <div class="example-box">
+
+                <strong>
+                    Example: What is 20% of 500?
+                </strong>
+
+                <div class="mt-4 text-lg font-semibold">
+                    20 ÷ 100 × 500
+                </div>
+
+                <div class="mt-2 text-lg font-semibold text-red-600">
+                    = 100
+                </div>
+
+            </div>
+
+            <p>
+                Therefore, <strong>20% of 500 is 100</strong>.
+            </p>
+
+
+            <h2>
+                2. How to Find What Percentage One Number Is of Another
+            </h2>
+
+            <p>
+                When you want to know what percentage one number represents
+                out of another number, divide the first number by the total
+                and multiply by 100.
+            </p>
+
+            <div class="formula-box">
+
+                <strong class="text-gray-900">
+                    Formula
+                </strong>
+
+                <div class="formula">
+                    Percentage = (Part ÷ Total) × 100
+                </div>
+
+            </div>
+
+
+            <div class="example-box">
+
+                <strong>
+                    Example: 45 is what percentage of 50?
+                </strong>
+
+                <div class="mt-4 text-lg font-semibold">
+                    (45 ÷ 50) × 100
+                </div>
+
+                <div class="mt-2 text-lg font-semibold text-red-600">
+                    = 90%
+                </div>
+
+            </div>
+
+            <p>
+                Therefore, <strong>45 is 90% of 50</strong>.
+            </p>
+
+
+            <h2>
+                3. How to Calculate Percentage Increase or Decrease
+            </h2>
+
+            <p>
+                Percentage increase or decrease is useful when comparing an
+                original value with a new value.
+            </p>
+
+            <div class="formula-box">
+
+                <strong class="text-gray-900">
+                    Percentage Change Formula
+                </strong>
+
+                <div class="formula">
+                    Percentage Change = ((New Value − Original Value) ÷ Original Value) × 100
+                </div>
+
+            </div>
+
+
+            <div class="example-box">
+
+                <strong>
+                    Example: A price increases from ₹500 to ₹600.
+                </strong>
+
+                <div class="mt-4">
+                    Difference = ₹600 − ₹500 = ₹100
+                </div>
+
+                <div class="mt-2">
+                    Percentage Increase = (100 ÷ 500) × 100
+                </div>
+
+                <div class="mt-2 text-lg font-semibold text-red-600">
+                    = 20%
+                </div>
+
+            </div>
+
+
+            <h2>
+                How to Calculate Marks Percentage
+            </h2>
+
+            <p>
+                Percentage is commonly used to calculate examination or school
+                marks.
+            </p>
+
+            <div class="formula-box">
+
+                <strong class="text-gray-900">
+                    Marks Percentage Formula
+                </strong>
+
+                <div class="formula">
+                    (Marks Obtained ÷ Total Marks) × 100
+                </div>
+
+            </div>
+
+
+            <div class="example-box">
+
+                <strong>
+                    Example: 450 marks out of 500
+                </strong>
+
+                <div class="mt-4 text-lg font-semibold">
+                    (450 ÷ 500) × 100
+                </div>
+
+                <div class="mt-2 text-2xl font-bold text-red-600">
+                    = 90%
+                </div>
+
+            </div>
+
+
+            <h2>
+                How to Calculate Discount Percentage
+            </h2>
+
+            <p>
+                Percentage is also commonly used when shopping. A discount
+                percentage tells you how much is reduced from the original
+                price.
+            </p>
+
+            <div class="example-box">
+
+                <strong>
+                    Example: ₹1,000 item with 20% discount
+                </strong>
+
+                <div class="mt-4">
+                    Discount = ₹1,000 × 20 ÷ 100
+                </div>
+
+                <div class="mt-2 font-semibold">
+                    Discount = ₹200
+                </div>
+
+                <div class="mt-2 text-lg font-bold text-red-600">
+                    Final Price = ₹800
+                </div>
+
+            </div>
+
+
+            <h2>
+                How to Use Antokia Percentage Calculator
+            </h2>
+
+            <p>
+                If you do not want to calculate percentages manually, you can
+                use the free Antokia Percentage Calculator.
+            </p>
+
+            <ol>
+
+                <li>
+                    Open the
+                    <a href="/percentage.html"
+                       class="text-red-600 font-semibold hover:underline">
+                        Antokia Percentage Calculator
+                    </a>.
+                </li>
+
+                <li>
+                    Select the type of percentage calculation you need.
+                </li>
+
+                <li>
+                    Enter the required numbers.
+                </li>
+
+                <li>
+                    Click the calculate button.
+                </li>
+
+                <li>
+                    Review the calculated result and formula.
+                </li>
+
+            </ol>
+
+
+            <div class="text-center my-8">
+
+                <a href="/percentage.html"
+                   class="inline-flex items-center gap-2 btn-red px-6 py-3 rounded-full font-semibold shadow-sm">
+
+                    <i class="fa-solid fa-percent"></i>
+
+                    Calculate Percentage Now
+
+                </a>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <div class="flex gap-3">
+
+                    <div class="text-blue-600 text-xl">
+                        <i class="fa-solid fa-circle-info"></i>
+                    </div>
+
+                    <div>
+
+                        <strong class="text-gray-900">
+                            Quick Tip:
+                        </strong>
+
+                        <p class="mb-0 mt-1">
+                            Before calculating a percentage, identify whether
+                            you are finding a percentage of a number, comparing
+                            two values, or calculating an increase or decrease.
+                            Using the correct formula makes the calculation
+                            much easier.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <h2>
+                Common Uses of Percentage
+            </h2>
+
+            <ul>
+
+                <li>
+                    School and examination marks
+                </li>
+
+                <li>
+                    Shopping discounts
+                </li>
+
+                <li>
+                    GST and other financial calculations
+                </li>
+
+                <li>
+                    Salary increases and decreases
+                </li>
+
+                <li>
+                    Profit and loss calculations
+                </li>
+
+                <li>
+                    Comparing values and changes
+                </li>
+
+            </ul>
+
+
+            <h2>
+                Frequently Asked Questions
+            </h2>
+
+
+            <div class="mt-4">
+
+                <div class="faq-item">
+
+                    <button class="faq-question">
+
+                        <span>
+                            What is the basic percentage formula?
+                        </span>
+
+                        <span class="faq-icon transition-transform">
+                            +
+                        </span>
+
+                    </button>
+
+                    <div class="faq-answer">
+                        The basic formula is Percentage = (Part ÷ Total) × 100.
+                        It is commonly used when finding what percentage one
+                        number represents of another.
+                    </div>
+
+                </div>
+
+
+                <div class="faq-item">
+
+                    <button class="faq-question">
+
+                        <span>
+                            How do I calculate 20% of 500?
+                        </span>
+
+                        <span class="faq-icon transition-transform">
+                            +
+                        </span>
+
+                    </button>
+
+                    <div class="faq-answer">
+                        Multiply 500 by 20 and divide by 100. The result is
+                        100, so 20% of 500 is 100.
+                    </div>
+
+                </div>
+
+
+                <div class="faq-item">
+
+                    <button class="faq-question">
+
+                        <span>
+                            How do I calculate marks percentage?
+                        </span>
+
+                        <span class="faq-icon transition-transform">
+                            +
+                        </span>
+
+                    </button>
+
+                    <div class="faq-answer">
+                        Divide the marks obtained by the total marks and
+                        multiply the result by 100. For example, 450 out of
+                        500 gives 90%.
+                    </div>
+
+                </div>
+
+
+                <div class="faq-item">
+
+                    <button class="faq-question">
+
+                        <span>
+                            How do I calculate discount?
+                        </span>
+
+                        <span class="faq-icon transition-transform">
+                            +
+                        </span>
+
+                    </button>
+
+                    <div class="faq-answer">
+                        Multiply the original price by the discount percentage
+                        and divide by 100. For example, a 20% discount on
+                        ₹1,000 is ₹200, making the price ₹800 before any other
+                        charges or adjustments.
+                    </div>
+
+                </div>
+
+
+                <div class="faq-item">
+
+                    <button class="faq-question">
+
+                        <span>
+                            Can I calculate percentage online?
+                        </span>
+
+                        <span class="faq-icon transition-transform">
+                            +
+                        </span>
+
+                    </button>
+
+                    <div class="faq-answer">
+                        Yes. You can use the free Antokia Percentage Calculator
+                        to perform common percentage calculations quickly.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <h2>
+                Conclusion
+            </h2>
+
+            <p>
+                Percentage calculations are useful for marks, discounts,
+                financial calculations and everyday comparisons. The basic
+                formula becomes easy once you identify the type of calculation
+                you need.
+            </p>
+
+            <p>
+                For a quick result, try the
+                <a href="/percentage.html"
+                   class="text-red-600 font-semibold hover:underline">
+                    free Antokia Percentage Calculator
+                </a>.
+            </p>
+
+        </div>
+
+    </article>
+
+
+    <!-- MIDDLE AD -->
+    <div class="ad-box my-7">
+        Advertisement
+    </div>
+
+
+    <!-- RELATED TOOLS -->
+    <section class="soft-card p-6 md:p-8 mb-7">
+
+        <h2 class="text-2xl font-bold mb-5">
+            Explore More Free Tools
+        </h2>
+
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+
+
+            <!-- PERCENTAGE -->
+            <a href="/percentage.html"
+               class="tool-card border rounded-xl p-5">
+
+                <div class="w-11 h-11 rounded-xl bg-red-50 text-red-600 flex items-center justify-center mb-3">
+                    <i class="fa-solid fa-percent text-lg"></i>
+                </div>
+
+                <h3 class="font-bold">
+                    Percentage Calculator
+                </h3>
+
+                <p class="text-sm text-gray-500 mt-1">
+                    Calculate percentages quickly with simple inputs.
+                </p>
+
+                <div class="text-red-600 text-sm font-semibold mt-3">
+                    Open Tool →
+                </div>
+
+            </a>
+
+
+            <!-- AGE CALCULATOR -->
+            <a href="/age-calculator.html"
+               class="tool-card border rounded-xl p-5">
+
+                <div class="w-11 h-11 rounded-xl bg-red-50 text-red-600 flex items-center justify-center mb-3">
+                    <i class="fa-solid fa-calendar-days text-lg"></i>
+                </div>
+
+                <h3 class="font-bold">
+                    Age Calculator
+                </h3>
+
+                <p class="text-sm text-gray-500 mt-1">
+                    Calculate exact age from your date of birth.
+                </p>
+
+                <div class="text-red-600 text-sm font-semibold mt-3">
+                    Open Tool →
+                </div>
+
+            </a>
+
+
+            <!-- EMI CALCULATOR -->
+            <a href="/emi-calculator.html"
+               class="tool-card border rounded-xl p-5">
+
+                <div class="w-11 h-11 rounded-xl bg-red-50 text-red-600 flex items-center justify-center mb-3">
+                    <i class="fa-solid fa-calculator text-lg"></i>
+                </div>
+
+                <h3 class="font-bold">
+                    EMI Calculator
+                </h3>
+
+                <p class="text-sm text-gray-500 mt-1">
+                    Calculate estimated monthly loan EMI easily.
+                </p>
+
+                <div class="text-red-600 text-sm font-semibold mt-3">
+                    Open Tool →
+                </div>
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- NAVIGATION -->
+    <div class="flex flex-wrap justify-center gap-3 mb-7">
+
+        <a href="/blog.html"
+           class="px-5 py-2.5 rounded-full border border-gray-300 bg-white text-sm font-semibold hover:border-red-500 hover:text-red-600">
+
+            <i class="fa-solid fa-arrow-left mr-1"></i>
+            Back to Blog
+
+        </a>
+
+        <a href="/"
+           class="px-5 py-2.5 rounded-full btn-red text-sm font-semibold">
+
+            <i class="fa-solid fa-house mr-1"></i>
+            Antokia Home
+
+        </a>
+
+    </div>
+
+
+    <!-- BOTTOM AD -->
+    <div class="ad-box mb-7">
+        Advertisement
+    </div>
+
 </main>
 
-<footer class="text-center p-6 text-gray-500 text-sm mt-6">
-    © 2026 Antokia.com - All Tools Free
+
+<!-- FOOTER -->
+<footer class="bg-[#242424] text-gray-300 mt-10">
+
+    <div class="max-w-6xl mx-auto px-4 py-10">
+
+        <div class="grid md:grid-cols-4 gap-8">
+
+
+            <!-- BRAND -->
+            <div>
+
+                <div class="text-2xl font-bold text-white mb-2">
+                    Antokia
+                </div>
+
+                <p class="text-sm text-gray-400 leading-6">
+                    Free online tools for images, PDFs, documents,
+                    calculators and everyday digital tasks.
+                </p>
+
+            </div>
+
+
+            <!-- EXPLORE -->
+            <div>
+
+                <h3 class="text-white font-bold mb-3">
+                    Explore
+                </h3>
+
+                <div class="space-y-2 text-sm">
+
+                    <a href="/" class="block hover:text-white">
+                        Home
+                    </a>
+
+                    <a href="/blog.html" class="block hover:text-white">
+                        Blog
+                    </a>
+
+                    <a href="/about.html" class="block hover:text-white">
+                        About
+                    </a>
+
+                    <a href="/contact.html" class="block hover:text-white">
+                        Contact
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- LEGAL -->
+            <div>
+
+                <h3 class="text-white font-bold mb-3">
+                    Legal
+                </h3>
+
+                <div class="space-y-2 text-sm">
+
+                    <a href="/privacy.html" class="block hover:text-white">
+                        Privacy Policy
+                    </a>
+
+                    <a href="/terms.html" class="block hover:text-white">
+                        Terms & Conditions
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- SOCIAL -->
+            <div>
+
+                <h3 class="text-white font-bold mb-3">
+                    Follow Antokia
+                </h3>
+
+                <a
+                    href="https://www.instagram.com/antokia.insta"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 text-sm hover:text-white"
+                >
+
+                    <i class="fa-brands fa-instagram text-lg"></i>
+                    Instagram
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="border-t border-gray-700 mt-8 pt-5 text-center text-xs text-gray-500">
+
+            © 2026 Antokia. All rights reserved.
+
+        </div>
+
+    </div>
+
 </footer>
+
+
+<script>
+
+document.querySelectorAll(".faq-question").forEach(question => {
+
+    question.addEventListener("click", function() {
+
+        const item = this.parentElement;
+
+        item.classList.toggle("open");
+
+    });
+
+});
+
+</script>
 
 </body>
 </html>
