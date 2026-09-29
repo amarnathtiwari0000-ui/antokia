@@ -1,29 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Merge PDF Online – Combine Multiple PDF Files Free | Antokia</title>
 
-<meta name="description" content="Merge multiple PDF files into one document online for free with Antokia. Combine, reorder and download PDFs securely in your browser without uploading files.">
-<meta name="keywords" content="merge PDF, combine PDF, merge PDF online, combine PDF files, PDF merger, join PDF, free PDF merger">
-<meta name="robots" content="index, follow">
+<meta name="description" content="Merge multiple PDF files online for free with Antokia. Combine PDF documents into one file directly in your browser without uploading files to a server.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+
 <link rel="canonical" href="https://antokia.com/merge-pdf.html">
 
+<meta property="og:title" content="Merge PDF Online – Combine Multiple PDF Files Free | Antokia">
+<meta property="og:description" content="Combine multiple PDF files into one PDF online for free with Antokia. Fast, simple and browser-based.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Merge PDF Online – Combine PDF Files Free | Antokia">
-<meta property="og:description" content="Combine multiple PDF files into one PDF for free with Antokia. Fast, simple and browser-based.">
 <meta property="og:url" content="https://antokia.com/merge-pdf.html">
-<meta property="og:site_name" content="Antokia">
 
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Merge PDF Online – Combine PDF Files Free | Antokia">
-<meta name="twitter:description" content="Merge multiple PDF files into one PDF online for free with Antokia.">
+<meta name="twitter:title" content="Merge PDF Online | Antokia">
+<meta name="twitter:description" content="Combine multiple PDF files into one PDF online for free.">
 
 <script src="https://cdn.tailwindcss.com"></script>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
 
+
+<!-- WebApplication Schema -->
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -31,8 +37,8 @@
   "name":"Antokia Merge PDF",
   "url":"https://antokia.com/merge-pdf.html",
   "applicationCategory":"UtilitiesApplication",
-  "operatingSystem":"Any",
-  "description":"Free browser-based tool to combine multiple PDF files into one PDF.",
+  "operatingSystem":"All",
+  "description":"Free online PDF merger for combining multiple PDF files into one document.",
   "offers":{
     "@type":"Offer",
     "price":"0",
@@ -41,6 +47,8 @@
 }
 </script>
 
+
+<!-- Breadcrumb Schema -->
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -62,6 +70,8 @@
 }
 </script>
 
+
+<!-- FAQ Schema -->
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -77,18 +87,10 @@
     },
     {
       "@type":"Question",
-      "name":"Is the Antokia PDF merger free?",
+      "name":"Is the Antokia Merge PDF tool free?",
       "acceptedAnswer":{
         "@type":"Answer",
-        "text":"Yes. Antokia's Merge PDF tool is available free of charge."
-      }
-    },
-    {
-      "@type":"Question",
-      "name":"Can I merge more than two PDF files?",
-      "acceptedAnswer":{
-        "@type":"Answer",
-        "text":"Yes. You can select multiple PDF files and combine them into a single PDF document."
+        "text":"Yes. Antokia provides this PDF merging tool free of charge."
       }
     },
     {
@@ -96,7 +98,7 @@
       "name":"Are my PDF files uploaded to a server?",
       "acceptedAnswer":{
         "@type":"Answer",
-        "text":"The merging process is performed in your browser using client-side processing. Your selected files are not intentionally uploaded to an Antokia server by this tool."
+        "text":"The merging process is performed in your browser using JavaScript and PDF-LIB. The tool is designed to process the selected files locally in the browser."
       }
     },
     {
@@ -104,435 +106,759 @@
       "name":"Can I change the order of PDF files?",
       "acceptedAnswer":{
         "@type":"Answer",
-        "text":"Yes. Use the move controls next to each selected PDF to arrange the files in the required order before merging."
+        "text":"Yes. You can move PDF files up or down before merging them."
+      },
+    {
+      "@type":"Question",
+      "name":"How many PDF files can I merge?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"You can select multiple PDF files. The practical limit depends on the available memory and processing capacity of your device and browser."
       }
     }
   ]
 }
 </script>
+
+
+<style>
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  background:#f5f5fa;
+  color:#1f2937;
+  font-family:Arial,Helvetica,sans-serif;
+}
+
+.antokia-red{
+  color:#e5322d;
+}
+
+.tool-card{
+  box-shadow:0 8px 30px rgba(15,23,42,.08);
+}
+
+.faq-answer{
+  display:none;
+}
+
+.faq-item.active .faq-answer{
+  display:block;
+}
+
+.faq-icon{
+  transition:transform .2s ease;
+}
+
+.faq-item.active .faq-icon{
+  transform:rotate(45deg);
+}
+
+.drop-zone{
+  border:2px dashed #e5322d;
+  background:#fff7f7;
+  transition:.2s ease;
+}
+
+.drop-zone:hover,
+.drop-zone.dragover{
+  background:#fff0f0;
+  border-color:#c92722;
+}
+
+.file-row{
+  border:1px solid #e5e7eb;
+  background:#fff;
+}
+
+.file-row:hover{
+  border-color:#fecaca;
+}
+
+.action-btn{
+  transition:.2s ease;
+}
+
+.primary-btn{
+  background:#e5322d;
+}
+
+.primary-btn:hover{
+  background:#c92722;
+}
+
+.secondary-btn{
+  background:#f3f4f6;
+}
+
+.secondary-btn:hover{
+  background:#e5e7eb;
+}
+
+.progress-bar{
+  transition:width .25s ease;
+}
+
+</style>
+
 </head>
 
-<body class="bg-slate-50 text-slate-800">
 
-<!-- HEADER -->
-<header class="bg-white border-b border-slate-200 sticky top-0 z-50">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-16">
+<body>
 
-      <a href="/" class="flex items-center gap-2">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-600 to-purple-600 flex items-center justify-center text-white font-extrabold text-lg shadow">
-          A
-        </div>
-        <span class="text-2xl font-extrabold tracking-tight text-slate-900">
-          Antokia
-        </span>
-      </a>
 
-      <nav class="hidden md:flex items-center gap-7 text-sm font-semibold">
-        <a href="/" class="text-slate-600 hover:text-indigo-600 transition">Home</a>
-        <a href="/blog.html" class="text-slate-600 hover:text-indigo-600 transition">Blog</a>
-        <a href="/about.html" class="text-slate-600 hover:text-indigo-600 transition">About</a>
-        <a href="/contact.html" class="text-slate-600 hover:text-indigo-600 transition">Contact</a>
+<!-- ================= HEADER ================= -->
 
-        <a href="/"
-           class="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2.5 rounded-xl transition shadow-sm">
-          All Tools
+<header class="bg-white shadow-sm sticky top-0 z-50">
+
+  <div class="max-w-6xl mx-auto px-4 py-3">
+
+    <div class="flex items-center justify-end gap-4">
+
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+
+        <a href="/" class="hover:text-red-600 transition">
+          Home
         </a>
+
+        <a href="/blog/" class="hover:text-red-600 transition">
+          Blog
+        </a>
+
+        <a href="/about.html" class="hover:text-red-600 transition">
+          About
+        </a>
+
+        <a href="/contact.html" class="hover:text-red-600 transition">
+          Contact
+        </a>
+
       </nav>
 
       <a href="/"
-         class="md:hidden bg-indigo-600 text-white px-4 py-2 rounded-xl text-sm font-semibold">
-        Tools
+         class="text-sm bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-full transition">
+
+        <i class="fa-solid fa-arrow-left mr-1"></i>
+        Home
+
       </a>
 
     </div>
+
   </div>
+
 </header>
 
 
-<!-- MAIN -->
-<main>
+
+<!-- ================= MAIN ================= -->
+
+<main class="max-w-5xl mx-auto px-4 py-8">
+
 
   <!-- HERO -->
-  <section class="bg-gradient-to-br from-indigo-600 via-purple-600 to-fuchsia-600 text-white">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-14 sm:py-20 text-center">
 
-      <div class="inline-flex items-center gap-2 bg-white/15 border border-white/20 px-4 py-2 rounded-full text-sm font-semibold mb-5">
-        📄 Free PDF Tool
+  <section class="text-center">
+
+    <div class="inline-block bg-red-50 text-red-600 text-xs font-bold px-4 py-2 rounded-full mb-4">
+      FREE PDF TOOL
+    </div>
+
+    <h1 class="text-3xl md:text-5xl font-extrabold text-gray-900">
+      Merge PDF Online
+    </h1>
+
+    <p class="text-gray-600 mt-3 max-w-2xl mx-auto leading-7">
+      Combine multiple PDF files into one document quickly and easily
+      with Antokia's free online PDF merger.
+    </p>
+
+  </section>
+
+
+  <!-- TOP AD -->
+
+  <div class="bg-gray-200 rounded-xl min-h-[90px] mt-7 flex items-center justify-center text-gray-500 text-sm">
+    Advertisement
+  </div>
+
+
+
+  <!-- ================= TOOL ================= -->
+
+  <section class="tool-card bg-white rounded-2xl p-6 md:p-8 mt-7">
+
+
+    <div class="text-center mb-6">
+
+      <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-red-50 text-red-600 text-2xl mb-3">
+        <i class="fa-solid fa-file-pdf"></i>
       </div>
 
-      <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight mb-5">
-        Merge PDF Files Online
-      </h1>
+      <h2 class="text-2xl font-bold text-gray-900">
+        Combine PDF Files
+      </h2>
 
-      <p class="max-w-2xl mx-auto text-lg sm:text-xl text-indigo-100 leading-relaxed">
-        Combine multiple PDF files into one document quickly and easily.
-        Free, simple and processed directly in your browser.
+      <p class="text-gray-500 mt-2">
+        Select multiple PDF files and arrange them in your preferred order.
       </p>
 
     </div>
+
+
+
+    <!-- DROP ZONE -->
+
+    <div id="dropZone"
+         class="drop-zone rounded-2xl p-8 md:p-12 text-center cursor-pointer">
+
+      <div class="text-red-600 text-4xl mb-4">
+        <i class="fa-solid fa-cloud-arrow-up"></i>
+      </div>
+
+      <h3 class="text-lg font-bold text-gray-800">
+        Select or Drag & Drop PDF Files
+      </h3>
+
+      <p class="text-gray-500 text-sm mt-2">
+        You can select multiple PDF files at once.
+      </p>
+
+      <button type="button"
+              id="selectBtn"
+              class="primary-btn text-white px-6 py-3 rounded-xl font-semibold mt-5 action-btn">
+
+        <i class="fa-solid fa-folder-open mr-2"></i>
+        Choose PDF Files
+
+      </button>
+
+      <input
+        type="file"
+        id="fileInput"
+        accept="application/pdf,.pdf"
+        multiple
+        hidden
+      >
+
+    </div>
+
+
+
+    <!-- FILE SUMMARY -->
+
+    <div id="summary"
+         class="hidden mt-6 grid grid-cols-2 md:grid-cols-3 gap-3">
+
+      <div class="bg-red-50 rounded-xl p-4 text-center">
+
+        <div id="fileCount"
+             class="text-2xl font-extrabold text-red-600">
+          0
+        </div>
+
+        <div class="text-xs text-gray-500 mt-1">
+          PDF Files
+        </div>
+
+      </div>
+
+
+      <div class="bg-gray-50 rounded-xl p-4 text-center">
+
+        <div id="pageCount"
+             class="text-2xl font-extrabold text-gray-800">
+          0
+        </div>
+
+        <div class="text-xs text-gray-500 mt-1">
+          Total Pages
+        </div>
+
+      </div>
+
+
+      <div class="bg-gray-50 rounded-xl p-4 text-center col-span-2 md:col-span-1">
+
+        <div id="totalSize"
+             class="text-2xl font-extrabold text-gray-800">
+          0 MB
+        </div>
+
+        <div class="text-xs text-gray-500 mt-1">
+          Total Size
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- FILE LIST -->
+
+    <div id="fileList" class="mt-5 space-y-3"></div>
+
+
+
+    <!-- CONTROLS -->
+
+    <div id="controls"
+         class="hidden flex flex-col sm:flex-row gap-3 mt-6">
+
+      <button
+        type="button"
+        id="addMoreBtn"
+        class="secondary-btn text-gray-800 px-5 py-3 rounded-xl font-semibold flex-1 action-btn">
+
+        <i class="fa-solid fa-plus mr-2"></i>
+        Add More
+
+      </button>
+
+
+      <button
+        type="button"
+        id="clearBtn"
+        class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-5 py-3 rounded-xl font-semibold flex-1 action-btn">
+
+        <i class="fa-solid fa-trash mr-2"></i>
+        Clear All
+
+      </button>
+
+    </div>
+
+
+
+    <!-- MERGE BUTTON -->
+
+    <button
+      type="button"
+      id="mergeBtn"
+      class="hidden w-full primary-btn hover:bg-red-700 text-white font-bold py-4 px-6 rounded-xl mt-5 text-lg action-btn">
+
+      <i class="fa-solid fa-layer-group mr-2"></i>
+      Merge & Download PDF
+
+    </button>
+
+
+
+    <!-- PROGRESS -->
+
+    <div id="progressBox" class="hidden mt-6">
+
+      <div class="flex justify-between text-sm mb-2">
+
+        <span id="statusText" class="font-semibold text-gray-700">
+          Preparing...
+        </span>
+
+        <span id="progressPercent" class="text-gray-500">
+          0%
+        </span>
+
+      </div>
+
+      <div class="w-full h-3 bg-gray-200 rounded-full overflow-hidden">
+
+        <div id="progressBar"
+             class="progress-bar h-full bg-red-500 rounded-full"
+             style="width:0%">
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- STATUS -->
+
+    <div id="status"
+         class="text-center text-sm font-semibold mt-5 min-h-[22px]">
+    </div>
+
+
+
+    <!-- PRIVACY NOTE -->
+
+    <div class="mt-6 bg-green-50 border border-green-100 rounded-xl p-4 text-sm text-green-800">
+
+      <i class="fa-solid fa-shield-halved mr-2"></i>
+
+      Your PDF files are processed in your browser. The merge operation
+      is performed locally using JavaScript.
+
+    </div>
+
   </section>
 
 
-  <!-- TOOL CARD -->
-  <section class="max-w-5xl mx-auto px-4 sm:px-6 -mt-8 relative z-10">
 
-    <div class="bg-white rounded-3xl shadow-xl border border-slate-200 overflow-hidden">
+  <!-- ================= INFORMATION ================= -->
 
-      <div class="p-5 sm:p-8">
+  <section class="bg-white rounded-2xl p-6 md:p-8 mt-7 shadow-sm">
 
-        <!-- DROP AREA -->
-        <div id="dropArea"
-             class="border-2 border-dashed border-indigo-300 bg-indigo-50/60 hover:bg-indigo-50 rounded-2xl p-8 sm:p-12 text-center cursor-pointer transition">
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">
+      Merge PDF Files Online
+    </h2>
 
-          <div class="w-16 h-16 mx-auto mb-5 rounded-2xl bg-indigo-100 flex items-center justify-center text-3xl">
-            📑
-          </div>
+    <p class="text-gray-600 leading-7">
+      Antokia's free Merge PDF tool helps you combine multiple PDF
+      documents into a single PDF file. It can be useful when you need
+      to combine reports, invoices, forms, scanned documents,
+      certificates or other PDF files into one document.
+    </p>
 
-          <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mb-2">
-            Select PDF Files
-          </h2>
+    <h3 class="text-xl font-bold text-gray-900 mt-7 mb-3">
+      How to Merge PDF Files
+    </h3>
 
-          <p class="text-slate-500 mb-5">
-            Drag & drop your PDF files here or click to browse
-          </p>
+    <ol class="list-decimal pl-6 text-gray-600 leading-8">
 
-          <button type="button"
-                  id="selectBtn"
-                  class="inline-flex items-center justify-center bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-xl font-bold shadow-sm transition">
-            Select PDF Files
-          </button>
+      <li>Select multiple PDF files using the upload button or drag and drop them into the tool.</li>
 
-          <p class="text-xs text-slate-400 mt-4">
-            You can select multiple PDF files at once.
-          </p>
+      <li>Review the selected PDF files and change their order if required.</li>
 
-          <input type="file"
-                 id="fileInput"
-                 accept="application/pdf,.pdf"
-                 multiple
-                 hidden>
+      <li>Remove any file that you do not want to include.</li>
+
+      <li>Click <strong>Merge & Download PDF</strong>.</li>
+
+      <li>Your combined PDF will be generated and downloaded to your device.</li>
+
+    </ol>
+
+
+    <h3 class="text-xl font-bold text-gray-900 mt-7 mb-3">
+      Features
+    </h3>
+
+    <ul class="list-disc pl-6 text-gray-600 leading-8">
+
+      <li>Free PDF merging tool</li>
+      <li>Combine multiple PDF files</li>
+      <li>Drag and drop support</li>
+      <li>Change PDF order before merging</li>
+      <li>Remove individual PDF files</li>
+      <li>No watermark added to the merged file</li>
+      <li>Browser-based processing</li>
+      <li>Works on desktop and mobile browsers</li>
+
+    </ul>
+
+  </section>
+
+
+
+  <!-- ================= RELATED TOOLS ================= -->
+
+  <section class="mt-8">
+
+    <h2 class="text-2xl font-bold text-center text-gray-900 mb-5">
+      Related PDF Tools
+    </h2>
+
+    <div class="grid sm:grid-cols-2 gap-4">
+
+      <a href="/pdf-to-word.html"
+         class="bg-white rounded-xl p-5 shadow-sm hover:shadow-md transition border border-gray-100">
+
+        <div class="text-red-600 text-2xl mb-3">
+          <i class="fa-solid fa-file-word"></i>
         </div>
 
+        <h3 class="font-bold text-gray-900">
+          PDF to Word
+        </h3>
 
-        <!-- PRIVACY NOTE -->
-        <div class="mt-5 flex items-start gap-3 bg-emerald-50 border border-emerald-100 rounded-xl p-4">
-          <div class="text-lg">🔒</div>
-          <div>
-            <p class="font-semibold text-emerald-800 text-sm">
-              Browser-based processing
-            </p>
-            <p class="text-emerald-700 text-sm mt-1">
-              Your selected PDF files are processed in your browser. The tool does not intentionally upload your files to an Antokia server.
-            </p>
-          </div>
+        <p class="text-sm text-gray-500 mt-1">
+          Convert PDF files to editable Word documents.
+        </p>
+
+      </a>
+
+
+      <a href="/word-to-pdf.html"
+         class="bg-white rounded-xl p-5 shadow-sm hover:shadow-md transition border border-gray-100">
+
+        <div class="text-red-600 text-2xl mb-3">
+          <i class="fa-solid fa-file-pdf"></i>
         </div>
 
+        <h3 class="font-bold text-gray-900">
+          Word to PDF
+        </h3>
 
-        <!-- FILE SUMMARY -->
-        <div id="summary"
-             class="hidden mt-6 grid grid-cols-2 sm:grid-cols-3 gap-3">
+        <p class="text-sm text-gray-500 mt-1">
+          Convert Word documents into PDF files.
+        </p>
 
-          <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center">
-            <div id="fileCount" class="text-2xl font-extrabold text-indigo-600">0</div>
-            <div class="text-xs text-slate-500 mt-1">PDF Files</div>
-          </div>
+      </a>
 
-          <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center">
-            <div id="totalPages" class="text-2xl font-extrabold text-purple-600">0</div>
-            <div class="text-xs text-slate-500 mt-1">Total Pages</div>
-          </div>
+    </div>
 
-          <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center col-span-2 sm:col-span-1">
-            <div id="totalSize" class="text-2xl font-extrabold text-fuchsia-600">0 MB</div>
-            <div class="text-xs text-slate-500 mt-1">Total Size</div>
-          </div>
-
-        </div>
+  </section>
 
 
-        <!-- SELECTED FILES -->
-        <div id="fileSection" class="hidden mt-7">
 
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+  <!-- ================= FAQ ================= -->
 
-            <div>
-              <h3 class="text-lg font-bold text-slate-900">
-                Selected PDF Files
-              </h3>
-              <p class="text-sm text-slate-500">
-                Arrange files in the order you want them merged.
-              </p>
-            </div>
+  <section class="bg-white rounded-2xl p-6 md:p-8 mt-8 shadow-sm">
 
-            <button type="button"
-                    id="clearBtn"
-                    class="text-sm font-semibold text-red-600 hover:text-red-700">
-              Clear All
-            </button>
-
-          </div>
-
-          <div id="fileList" class="space-y-3"></div>
-
-          <button type="button"
-                  id="addMoreBtn"
-                  class="w-full mt-4 border-2 border-dashed border-slate-300 hover:border-indigo-400 hover:bg-indigo-50 rounded-xl py-3 text-sm font-semibold text-slate-600 hover:text-indigo-600 transition">
-            + Add More PDF Files
-          </button>
-
-        </div>
+    <h2 class="text-2xl font-bold text-gray-900 mb-5">
+      Frequently Asked Questions
+    </h2>
 
 
-        <!-- PROGRESS -->
-        <div id="progressSection" class="hidden mt-7">
-
-          <div class="flex justify-between text-sm font-semibold mb-2">
-            <span id="progressText">Preparing...</span>
-            <span id="progressPercent">0%</span>
-          </div>
-
-          <div class="h-3 bg-slate-100 rounded-full overflow-hidden">
-            <div id="progressBar"
-                 class="h-full bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full transition-all duration-300"
-                 style="width:0%">
-            </div>
-          </div>
-
-        </div>
+    <div class="space-y-3">
 
 
-        <!-- STATUS -->
-        <div id="status"
-             class="hidden mt-5 rounded-xl p-4 text-center text-sm font-semibold">
-        </div>
+      <div class="faq-item border border-gray-200 rounded-xl overflow-hidden">
 
-
-        <!-- MERGE BUTTON -->
         <button type="button"
-                id="mergeBtn"
-                disabled
-                class="w-full mt-7 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 disabled:from-slate-300 disabled:to-slate-300 disabled:cursor-not-allowed text-white py-4 rounded-xl font-extrabold text-lg shadow-lg transition">
-          Merge & Download PDF
+                class="faq-question w-full flex items-center justify-between text-left p-4 font-semibold text-gray-800">
+
+          <span>
+            How can I merge PDF files online?
+          </span>
+
+          <i class="fa-solid fa-plus faq-icon text-red-600"></i>
+
         </button>
 
+        <div class="faq-answer px-4 pb-4 text-gray-600 leading-7">
+
+          Select multiple PDF files, arrange them in the required order
+          and click the Merge & Download PDF button.
+
+        </div>
+
       </div>
+
+
+
+      <div class="faq-item border border-gray-200 rounded-xl overflow-hidden">
+
+        <button type="button"
+                class="faq-question w-full flex items-center justify-between text-left p-4 font-semibold text-gray-800">
+
+          <span>
+            Is the Merge PDF tool free?
+          </span>
+
+          <i class="fa-solid fa-plus faq-icon text-red-600"></i>
+
+        </button>
+
+        <div class="faq-answer px-4 pb-4 text-gray-600 leading-7">
+
+          Yes. Antokia provides this PDF merging tool free of charge.
+
+        </div>
+
+      </div>
+
+
+
+      <div class="faq-item border border-gray-200 rounded-xl overflow-hidden">
+
+        <button type="button"
+                class="faq-question w-full flex items-center justify-between text-left p-4 font-semibold text-gray-800">
+
+          <span>
+            Are my PDF files uploaded to a server?
+          </span>
+
+          <i class="fa-solid fa-plus faq-icon text-red-600"></i>
+
+        </button>
+
+        <div class="faq-answer px-4 pb-4 text-gray-600 leading-7">
+
+          The merge operation is performed in your browser using
+          JavaScript and PDF-LIB.
+
+        </div>
+
+      </div>
+
+
+
+      <div class="faq-item border border-gray-200 rounded-xl overflow-hidden">
+
+        <button type="button"
+                class="faq-question w-full flex items-center justify-between text-left p-4 font-semibold text-gray-800">
+
+          <span>
+            Can I change the order of PDF files?
+          </span>
+
+          <i class="fa-solid fa-plus faq-icon text-red-600"></i>
+
+        </button>
+
+        <div class="faq-answer px-4 pb-4 text-gray-600 leading-7">
+
+          Yes. Use the up and down controls next to each PDF file
+          to arrange the documents before merging.
+
+        </div>
+
+      </div>
+
+
+
+      <div class="faq-item border border-gray-200 rounded-xl overflow-hidden">
+
+        <button type="button"
+                class="faq-question w-full flex items-center justify-between text-left p-4 font-semibold text-gray-800">
+
+          <span>
+            How many PDF files can I merge?
+          </span>
+
+          <i class="fa-solid fa-plus faq-icon text-red-600"></i>
+
+        </button>
+
+        <div class="faq-answer px-4 pb-4 text-gray-600 leading-7">
+
+          You can select multiple PDF files. The practical limit depends
+          on your device's available memory and browser capacity.
+
+        </div>
+
+      </div>
+
 
     </div>
 
   </section>
 
 
-  <!-- CONTENT -->
-  <section class="max-w-5xl mx-auto px-4 sm:px-6 py-14">
 
-    <div class="grid md:grid-cols-2 gap-6">
+  <!-- DISCLAIMER -->
 
-      <article class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
-        <h2 class="text-xl font-bold text-slate-900 mb-3">
-          How to Merge PDF Files
-        </h2>
+  <section class="text-center text-xs text-gray-500 mt-7 px-4 leading-6">
 
-        <ol class="space-y-3 text-slate-600 text-sm leading-relaxed">
-          <li><strong>1.</strong> Select or drag multiple PDF files into the tool.</li>
-          <li><strong>2.</strong> Arrange the files in your preferred order.</li>
-          <li><strong>3.</strong> Click <strong>Merge & Download PDF</strong>.</li>
-          <li><strong>4.</strong> Your combined PDF will be downloaded to your device.</li>
-        </ol>
-      </article>
-
-
-      <article class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
-        <h2 class="text-xl font-bold text-slate-900 mb-3">
-          Why Use Antokia Merge PDF?
-        </h2>
-
-        <ul class="space-y-3 text-slate-600 text-sm leading-relaxed">
-          <li>✓ Free to use</li>
-          <li>✓ Multiple PDF files can be combined</li>
-          <li>✓ Reorder files before merging</li>
-          <li>✓ No account or login required</li>
-          <li>✓ Browser-based processing</li>
-          <li>✓ Works on desktop and mobile browsers</li>
-        </ul>
-      </article>
-
-    </div>
-
-
-    <!-- FAQ -->
-    <div class="mt-10 bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-8">
-
-      <h2 class="text-2xl font-bold text-slate-900 text-center mb-7">
-        Frequently Asked Questions
-      </h2>
-
-      <div class="space-y-3">
-
-        <details class="border border-slate-200 rounded-xl p-4">
-          <summary class="font-semibold cursor-pointer text-slate-800">
-            How can I merge PDF files online?
-          </summary>
-          <p class="text-sm text-slate-600 mt-3 leading-relaxed">
-            Select multiple PDF files, arrange them in the required order and click the Merge & Download PDF button.
-          </p>
-        </details>
-
-        <details class="border border-slate-200 rounded-xl p-4">
-          <summary class="font-semibold cursor-pointer text-slate-800">
-            Is Antokia Merge PDF free?
-          </summary>
-          <p class="text-sm text-slate-600 mt-3 leading-relaxed">
-            Yes. Antokia's Merge PDF tool is free to use.
-          </p>
-        </details>
-
-        <details class="border border-slate-200 rounded-xl p-4">
-          <summary class="font-semibold cursor-pointer text-slate-800">
-            Can I merge multiple PDF files?
-          </summary>
-          <p class="text-sm text-slate-600 mt-3 leading-relaxed">
-            Yes. You can select multiple PDF files and combine them into one PDF document.
-          </p>
-        </details>
-
-        <details class="border border-slate-200 rounded-xl p-4">
-          <summary class="font-semibold cursor-pointer text-slate-800">
-            Are my files uploaded to Antokia?
-          </summary>
-          <p class="text-sm text-slate-600 mt-3 leading-relaxed">
-            The PDF merging process is performed directly in your browser. The tool does not intentionally upload your selected files to an Antokia server.
-          </p>
-        </details>
-
-        <details class="border border-slate-200 rounded-xl p-4">
-          <summary class="font-semibold cursor-pointer text-slate-800">
-            Can I change the order of the PDF files?
-          </summary>
-          <p class="text-sm text-slate-600 mt-3 leading-relaxed">
-            Yes. Use the up and down controls beside each file to set the required order before merging.
-          </p>
-        </details>
-
-      </div>
-
-    </div>
-
-
-    <!-- RELATED TOOLS -->
-    <div class="mt-10">
-
-      <h2 class="text-2xl font-bold text-slate-900 text-center mb-6">
-        Explore More Free Tools
-      </h2>
-
-      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-
-        <a href="/pdf-to-word.html"
-           class="bg-white border border-slate-200 rounded-2xl p-5 hover:border-indigo-400 hover:shadow-md transition">
-          <div class="text-2xl mb-3">📝</div>
-          <h3 class="font-bold text-slate-900">PDF to Word</h3>
-          <p class="text-sm text-slate-500 mt-1">
-            Convert PDF files to Word documents.
-          </p>
-        </a>
-
-        <a href="/word-to-pdf.html"
-           class="bg-white border border-slate-200 rounded-2xl p-5 hover:border-indigo-400 hover:shadow-md transition">
-          <div class="text-2xl mb-3">📄</div>
-          <h3 class="font-bold text-slate-900">Word to PDF</h3>
-          <p class="text-sm text-slate-500 mt-1">
-            Convert Word documents into PDF files.
-          </p>
-        </a>
-
-        <a href="/"
-           class="bg-white border border-slate-200 rounded-2xl p-5 hover:border-indigo-400 hover:shadow-md transition">
-          <div class="text-2xl mb-3">🛠️</div>
-          <h3 class="font-bold text-slate-900">All Free Tools</h3>
-          <p class="text-sm text-slate-500 mt-1">
-            Explore more free Antokia online tools.
-          </p>
-        </a>
-
-      </div>
-
-    </div>
+    <strong>Note:</strong>
+    This tool is provided for general document processing purposes.
+    Always review the final merged PDF before using or submitting it.
 
   </section>
+
 
 </main>
 
 
-<!-- FOOTER -->
-<footer class="bg-slate-950 text-slate-300">
 
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<!-- ================= FOOTER ================= -->
 
-    <div class="grid md:grid-cols-4 gap-10">
+<footer class="bg-gray-900 text-gray-300 mt-12">
 
-      <div class="md:col-span-2">
+  <div class="max-w-6xl mx-auto px-4 py-10">
 
-        <a href="/" class="inline-flex items-center gap-2 mb-4">
-          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-600 to-purple-600 flex items-center justify-center text-white font-extrabold text-lg">
-            A
-          </div>
-          <span class="text-2xl font-extrabold text-white">
-            Antokia
-          </span>
-        </a>
+    <div class="grid md:grid-cols-3 gap-8">
 
-        <p class="max-w-md text-sm leading-6 text-slate-400">
-          Antokia provides simple, useful and free online tools for everyday digital tasks.
-          Our tools are designed to be easy to use across desktop and mobile devices.
-        </p>
 
-      </div>
-
+      <!-- EXPLORE -->
 
       <div>
-        <h3 class="text-white font-bold mb-4">Explore</h3>
 
-        <ul class="space-y-3 text-sm">
-          <li><a href="/" class="hover:text-white transition">Home</a></li>
-          <li><a href="/blog.html" class="hover:text-white transition">Blog</a></li>
-          <li><a href="/about.html" class="hover:text-white transition">About</a></li>
-          <li><a href="/contact.html" class="hover:text-white transition">Contact</a></li>
-        </ul>
+        <h3 class="text-white font-bold mb-4">
+          Explore
+        </h3>
+
+        <div class="space-y-2 text-sm">
+
+          <a href="/" class="block hover:text-white">
+            Home
+          </a>
+
+          <a href="/blog/" class="block hover:text-white">
+            Blog
+          </a>
+
+          <a href="/about.html" class="block hover:text-white">
+            About
+          </a>
+
+          <a href="/contact.html" class="block hover:text-white">
+            Contact
+          </a>
+
+        </div>
 
       </div>
 
+
+
+      <!-- LEGAL -->
 
       <div>
-        <h3 class="text-white font-bold mb-4">Legal & Social</h3>
 
-        <ul class="space-y-3 text-sm">
-          <li><a href="/privacy.html" class="hover:text-white transition">Privacy Policy</a></li>
-          <li><a href="/terms.html" class="hover:text-white transition">Terms & Conditions</a></li>
-          <li>
-            <a href="https://www.instagram.com/antokia.insta"
-               target="_blank"
-               rel="noopener noreferrer"
-               class="hover:text-white transition">
-              Instagram
-            </a>
-          </li>
-        </ul>
+        <h3 class="text-white font-bold mb-4">
+          Legal
+        </h3>
+
+        <div class="space-y-2 text-sm">
+
+          <a href="/privacy.html" class="block hover:text-white">
+            Privacy Policy
+          </a>
+
+          <a href="/terms.html" class="block hover:text-white">
+            Terms & Conditions
+          </a>
+
+        </div>
 
       </div>
+
+
+
+      <!-- SOCIAL -->
+
+      <div>
+
+        <h3 class="text-white font-bold mb-4">
+          Follow Antokia
+        </h3>
+
+        <div class="flex gap-3">
+
+          <a
+            href="https://www.instagram.com/antokia.insta"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Antokia on Instagram"
+            class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-gray-700">
+
+            <i class="fa-brands fa-instagram"></i>
+
+          </a>
+
+        </div>
+
+      </div>
+
 
     </div>
 
 
-    <div class="border-t border-slate-800 mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+    <div class="border-t border-gray-700 mt-8 pt-6 text-center text-sm text-gray-400">
 
-      <p class="text-xs text-slate-500 text-center sm:text-left">
-        © 2026 Antokia. All rights reserved.
-      </p>
-
-      <p class="text-xs text-slate-500 text-center sm:text-right">
-        Free online tools for everyday use.
-      </p>
+      © 2026 Antokia. All rights reserved.
 
     </div>
 
@@ -541,493 +867,629 @@
 </footer>
 
 
+
+<!-- ================= JAVASCRIPT ================= -->
+
 <script>
+
 const fileInput = document.getElementById("fileInput");
-const dropArea = document.getElementById("dropArea");
+const dropZone = document.getElementById("dropZone");
 const selectBtn = document.getElementById("selectBtn");
-const addMoreBtn = document.getElementById("addMoreBtn");
-const clearBtn = document.getElementById("clearBtn");
+
 const fileList = document.getElementById("fileList");
-const fileSection = document.getElementById("fileSection");
 const summary = document.getElementById("summary");
-const mergeBtn = document.getElementById("mergeBtn");
 
 const fileCount = document.getElementById("fileCount");
-const totalPages = document.getElementById("totalPages");
+const pageCount = document.getElementById("pageCount");
 const totalSize = document.getElementById("totalSize");
 
-const progressSection = document.getElementById("progressSection");
+const controls = document.getElementById("controls");
+const addMoreBtn = document.getElementById("addMoreBtn");
+const clearBtn = document.getElementById("clearBtn");
+
+const mergeBtn = document.getElementById("mergeBtn");
+
+const progressBox = document.getElementById("progressBox");
 const progressBar = document.getElementById("progressBar");
-const progressText = document.getElementById("progressText");
 const progressPercent = document.getElementById("progressPercent");
+const statusText = document.getElementById("statusText");
 
 const status = document.getElementById("status");
 
 let files = [];
+let filePages = [];
 
 
-/* OPEN FILE SELECTOR */
-selectBtn.addEventListener("click", function(e) {
+
+/* ================= FILE SELECTION ================= */
+
+selectBtn.addEventListener("click", function(e){
+
   e.stopPropagation();
+
   fileInput.click();
-});
 
-dropArea.addEventListener("click", function(e) {
-  if (e.target !== selectBtn) {
-    fileInput.click();
-  }
-});
-
-addMoreBtn.addEventListener("click", function() {
-  fileInput.click();
 });
 
 
-/* FILE INPUT */
-fileInput.addEventListener("change", function(e) {
-  addFiles(Array.from(e.target.files));
-  fileInput.value = "";
-});
+dropZone.addEventListener("click", function(e){
 
-
-/* DRAG & DROP */
-["dragenter", "dragover"].forEach(eventName => {
-  dropArea.addEventListener(eventName, function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    dropArea.classList.add("border-indigo-500", "bg-indigo-100");
-  });
-});
-
-["dragleave", "drop"].forEach(eventName => {
-  dropArea.addEventListener(eventName, function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    dropArea.classList.remove("border-indigo-500", "bg-indigo-100");
-  });
-});
-
-dropArea.addEventListener("drop", function(e) {
-  const droppedFiles = Array.from(e.dataTransfer.files)
-    .filter(file => file.type === "application/pdf" || file.name.toLowerCase().endsWith(".pdf"));
-
-  addFiles(droppedFiles);
-});
-
-
-/* ADD FILES */
-function addFiles(newFiles) {
-
-  const existingKeys = new Set(
-    files.map(file => file.name + "_" + file.size + "_" + file.lastModified)
-  );
-
-  newFiles.forEach(file => {
-
-    const key = file.name + "_" + file.size + "_" + file.lastModified;
-
-    if (!existingKeys.has(key)) {
-      files.push(file);
-      existingKeys.add(key);
-    }
-
-  });
-
-  renderFiles();
-}
-
-
-/* FORMAT SIZE */
-function formatFileSize(bytes) {
-
-  if (bytes < 1024 * 1024) {
-    return (bytes / 1024).toFixed(1) + " KB";
-  }
-
-  return (bytes / (1024 * 1024)).toFixed(2) + " MB";
-}
-
-
-/* ESCAPE HTML */
-function escapeHtml(value) {
-
-  return value
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
-}
-
-
-/* RENDER FILES */
-async function renderFiles() {
-
-  fileList.innerHTML = "";
-
-  if (files.length === 0) {
-
-    fileSection.classList.add("hidden");
-    summary.classList.add("hidden");
-    mergeBtn.disabled = true;
-
+  if(e.target === selectBtn){
     return;
   }
 
-  fileSection.classList.remove("hidden");
-  summary.classList.remove("hidden");
-
-  let pages = 0;
-  let size = 0;
-
-  files.forEach(file => {
-    size += file.size;
-  });
-
-
-  for (let i = 0; i < files.length; i++) {
-
-    const item = document.createElement("div");
-
-    item.className =
-      "bg-slate-50 border border-slate-200 rounded-xl p-4 flex flex-col sm:flex-row sm:items-center gap-4";
-
-    item.innerHTML = `
-      <div class="flex items-center gap-3 flex-1 min-w-0">
-
-        <div class="w-11 h-11 shrink-0 rounded-xl bg-red-100 flex items-center justify-center text-xl">
-          📄
-        </div>
-
-        <div class="min-w-0">
-          <p class="font-semibold text-slate-800 truncate">
-            ${i + 1}. ${escapeHtml(files[i].name)}
-          </p>
-
-          <p class="text-xs text-slate-500 mt-1">
-            ${formatFileSize(files[i].size)}
-          </p>
-        </div>
-
-      </div>
-
-      <div class="flex items-center gap-2">
-
-        <button type="button"
-                data-action="up"
-                data-index="${i}"
-                ${i === 0 ? "disabled" : ""}
-                class="w-9 h-9 rounded-lg border border-slate-200 bg-white hover:bg-indigo-50 disabled:opacity-30 disabled:cursor-not-allowed font-bold"
-                title="Move up">
-          ↑
-        </button>
-
-        <button type="button"
-                data-action="down"
-                data-index="${i}"
-                ${i === files.length - 1 ? "disabled" : ""}
-                class="w-9 h-9 rounded-lg border border-slate-200 bg-white hover:bg-indigo-50 disabled:opacity-30 disabled:cursor-not-allowed font-bold"
-                title="Move down">
-          ↓
-        </button>
-
-        <button type="button"
-                data-action="remove"
-                data-index="${i}"
-                class="w-9 h-9 rounded-lg border border-red-100 bg-white hover:bg-red-50 text-red-500 font-bold"
-                title="Remove">
-          ×
-        </button>
-
-      </div>
-    `;
-
-    fileList.appendChild(item);
-
-
-    /* PAGE COUNT */
-    try {
-
-      const bytes = await files[i].arrayBuffer();
-      const pdf = await PDFLib.PDFDocument.load(bytes, {
-        ignoreEncryption: true
-      });
-
-      pages += pdf.getPageCount();
-
-    } catch (error) {
-      /* Page count may not be available for protected/corrupt files. */
-    }
-
-  }
-
-
-  fileCount.textContent = files.length;
-  totalPages.textContent = pages || "—";
-  totalSize.textContent = formatFileSize(size);
-
-  mergeBtn.disabled = files.length < 2;
-}
-
-
-/* FILE ACTIONS */
-fileList.addEventListener("click", function(e) {
-
-  const button = e.target.closest("button");
-
-  if (!button) return;
-
-  const action = button.dataset.action;
-  const index = Number(button.dataset.index);
-
-  if (action === "remove") {
-
-    files.splice(index, 1);
-    renderFiles();
-
-  }
-
-  if (action === "up" && index > 0) {
-
-    [files[index - 1], files[index]] =
-      [files[index], files[index - 1]];
-
-    renderFiles();
-
-  }
-
-  if (action === "down" && index < files.length - 1) {
-
-    [files[index + 1], files[index]] =
-      [files[index], files[index + 1]];
-
-    renderFiles();
-
-  }
+  fileInput.click();
 
 });
 
 
-/* CLEAR ALL */
-clearBtn.addEventListener("click", function() {
+fileInput.addEventListener("change", function(){
+
+  addFiles(Array.from(fileInput.files));
+
+  fileInput.value = "";
+
+});
+
+
+
+/* ================= DRAG DROP ================= */
+
+dropZone.addEventListener("dragover", function(e){
+
+  e.preventDefault();
+
+  dropZone.classList.add("dragover");
+
+});
+
+
+dropZone.addEventListener("dragleave", function(){
+
+  dropZone.classList.remove("dragover");
+
+});
+
+
+dropZone.addEventListener("drop", function(e){
+
+  e.preventDefault();
+
+  dropZone.classList.remove("dragover");
+
+  const droppedFiles = Array.from(e.dataTransfer.files);
+
+  addFiles(droppedFiles);
+
+});
+
+
+
+/* ================= ADD FILES ================= */
+
+function addFiles(newFiles){
+
+  const pdfFiles = newFiles.filter(function(file){
+
+    return file.type === "application/pdf" ||
+           file.name.toLowerCase().endsWith(".pdf");
+
+  });
+
+
+  if(pdfFiles.length === 0){
+
+    showStatus("Please select valid PDF files.", "error");
+
+    return;
+
+  }
+
+
+  pdfFiles.forEach(function(file){
+
+    const duplicate = files.some(function(existing){
+
+      return existing.name === file.name &&
+             existing.size === file.size &&
+             existing.lastModified === file.lastModified;
+
+    });
+
+
+    if(!duplicate){
+
+      files.push(file);
+      filePages.push(null);
+
+    }
+
+  });
+
+
+  renderFiles();
+
+  updateSummary();
+
+  loadPageCounts();
+
+}
+
+
+
+/* ================= RENDER ================= */
+
+function renderFiles(){
+
+  fileList.innerHTML = "";
+
+
+  files.forEach(function(file,index){
+
+    const row = document.createElement("div");
+
+    row.className =
+      "file-row rounded-xl p-3 md:p-4 flex items-center gap-3";
+
+
+    row.innerHTML = `
+
+      <div class="w-10 h-10 rounded-lg bg-red-50 text-red-600 flex items-center justify-center flex-shrink-0">
+
+        <i class="fa-solid fa-file-pdf"></i>
+
+      </div>
+
+
+      <div class="min-w-0 flex-1">
+
+        <div class="font-semibold text-gray-800 truncate">
+          ${escapeHtml(file.name)}
+        </div>
+
+        <div class="text-xs text-gray-500 mt-1">
+          ${formatSize(file.size)}
+          ${filePages[index] !== null ? " • " + filePages[index] + " pages" : ""}
+        </div>
+
+      </div>
+
+
+      <div class="flex items-center gap-1">
+
+        <button
+          type="button"
+          title="Move Up"
+          class="w-9 h-9 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700"
+          onclick="moveFile(${index},-1)"
+          ${index === 0 ? "disabled" : ""}>
+
+          <i class="fa-solid fa-arrow-up"></i>
+
+        </button>
+
+
+        <button
+          type="button"
+          title="Move Down"
+          class="w-9 h-9 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700"
+          onclick="moveFile(${index},1)"
+          ${index === files.length - 1 ? "disabled" : ""}>
+
+          <i class="fa-solid fa-arrow-down"></i>
+
+        </button>
+
+
+        <button
+          type="button"
+          title="Remove"
+          class="w-9 h-9 rounded-lg bg-red-50 hover:bg-red-100 text-red-600"
+          onclick="removeFile(${index})">
+
+          <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+      </div>
+
+    `;
+
+
+    fileList.appendChild(row);
+
+  });
+
+
+  const hasFiles = files.length > 0;
+
+  summary.classList.toggle("hidden", !hasFiles);
+  controls.classList.toggle("hidden", !hasFiles);
+
+  mergeBtn.classList.toggle("hidden", files.length < 2);
+
+}
+
+
+
+/* ================= MOVE ================= */
+
+function moveFile(index,direction){
+
+  const newIndex = index + direction;
+
+
+  if(newIndex < 0 || newIndex >= files.length){
+    return;
+  }
+
+
+  const tempFile = files[index];
+
+  files[index] = files[newIndex];
+  files[newIndex] = tempFile;
+
+
+  const tempPages = filePages[index];
+
+  filePages[index] = filePages[newIndex];
+  filePages[newIndex] = tempPages;
+
+
+  renderFiles();
+
+  updateSummary();
+
+}
+
+
+
+/* ================= REMOVE ================= */
+
+function removeFile(index){
+
+  files.splice(index,1);
+
+  filePages.splice(index,1);
+
+  renderFiles();
+
+  updateSummary();
+
+  showStatus("");
+
+}
+
+
+
+/* ================= CLEAR ================= */
+
+clearBtn.addEventListener("click", function(){
 
   files = [];
 
-  fileInput.value = "";
+  filePages = [];
 
-  fileList.innerHTML = "";
+  renderFiles();
 
-  fileSection.classList.add("hidden");
-  summary.classList.add("hidden");
+  updateSummary();
 
-  progressSection.classList.add("hidden");
+  progressBox.classList.add("hidden");
 
-  status.className = "hidden mt-5 rounded-xl p-4 text-center text-sm font-semibold";
-  status.textContent = "";
-
-  mergeBtn.disabled = true;
+  showStatus("");
 
 });
 
 
-/* STATUS */
-function showStatus(message, type) {
 
-  status.classList.remove(
-    "hidden",
-    "bg-red-50",
-    "text-red-700",
-    "border-red-200",
-    "bg-green-50",
-    "text-green-700",
-    "border-green-200",
-    "bg-blue-50",
-    "text-blue-700",
-    "border-blue-200"
-  );
+/* ================= ADD MORE ================= */
 
-  if (type === "error") {
+addMoreBtn.addEventListener("click", function(){
 
-    status.classList.add(
-      "bg-red-50",
-      "text-red-700",
-      "border",
-      "border-red-200"
-    );
+  fileInput.click();
 
-  } else if (type === "success") {
+});
 
-    status.classList.add(
-      "bg-green-50",
-      "text-green-700",
-      "border",
-      "border-green-200"
-    );
 
-  } else {
 
-    status.classList.add(
-      "bg-blue-50",
-      "text-blue-700",
-      "border",
-      "border-blue-200"
-    );
+/* ================= PAGE COUNT ================= */
+
+async function loadPageCounts(){
+
+  for(let i = 0; i < files.length; i++){
+
+    if(filePages[i] !== null){
+      continue;
+    }
+
+
+    try{
+
+      const bytes = await files[i].arrayBuffer();
+
+      const pdf = await PDFLib.PDFDocument.load(bytes, {
+        ignoreEncryption:true
+      });
+
+      filePages[i] = pdf.getPageCount();
+
+    }
+    catch(error){
+
+      filePages[i] = 0;
+
+    }
+
+
+    renderFiles();
+
+    updateSummary();
 
   }
 
-  status.textContent = message;
 }
 
 
-/* PROGRESS */
-function updateProgress(current, total, message) {
 
-  const percent = Math.round((current / total) * 100);
+/* ================= SUMMARY ================= */
 
-  progressSection.classList.remove("hidden");
+function updateSummary(){
 
-  progressBar.style.width = percent + "%";
+  let totalBytes = 0;
+  let pages = 0;
 
-  progressPercent.textContent = percent + "%";
 
-  progressText.textContent = message;
+  files.forEach(function(file,index){
+
+    totalBytes += file.size;
+
+    if(filePages[index] !== null){
+      pages += filePages[index];
+    }
+
+  });
+
+
+  fileCount.textContent = files.length;
+
+  pageCount.textContent = pages;
+
+  totalSize.textContent = formatSize(totalBytes);
+
 }
 
 
-/* MERGE */
-mergeBtn.addEventListener("click", async function() {
 
-  if (files.length < 2) {
+/* ================= MERGE ================= */
+
+mergeBtn.addEventListener("click", async function(){
+
+  if(files.length < 2){
 
     showStatus("Please select at least two PDF files.", "error");
+
     return;
 
   }
 
+
   mergeBtn.disabled = true;
 
-  clearBtn.disabled = true;
-  addMoreBtn.disabled = true;
+  mergeBtn.classList.add("opacity-70","cursor-not-allowed");
 
-  showStatus("Preparing your PDF files...", "info");
+  progressBox.classList.remove("hidden");
 
-  try {
+  setProgress(5,"Preparing PDF files...");
+
+
+  try{
 
     const mergedPdf = await PDFLib.PDFDocument.create();
 
-    const totalFiles = files.length;
 
+    for(let i = 0; i < files.length; i++){
 
-    for (let i = 0; i < totalFiles; i++) {
-
-      const file = files[i];
-
-      updateProgress(
-        i,
-        totalFiles,
-        "Processing " + (i + 1) + " of " + totalFiles + ": " + file.name
+      const percent = Math.round(
+        10 + ((i / files.length) * 75)
       );
 
-      const bytes = await file.arrayBuffer();
 
-      let pdf;
-
-      try {
-
-        pdf = await PDFLib.PDFDocument.load(bytes, {
-          ignoreEncryption: false
-        });
-
-      } catch (error) {
-
-        throw new Error(
-          'Unable to read "' + file.name + '". The file may be password-protected, corrupted or unsupported.'
-        );
-
-      }
+      setProgress(
+        percent,
+        "Processing " + (i + 1) + " of " + files.length + "..."
+      );
 
 
-      const pageIndices = pdf.getPageIndices();
+      const bytes = await files[i].arrayBuffer();
+
+
+      const pdf = await PDFLib.PDFDocument.load(bytes, {
+        ignoreEncryption:true
+      });
+
 
       const copiedPages = await mergedPdf.copyPages(
         pdf,
-        pageIndices
+        pdf.getPageIndices()
       );
 
-      copiedPages.forEach(page => {
+
+      copiedPages.forEach(function(page){
+
         mergedPdf.addPage(page);
+
       });
 
     }
 
 
-    updateProgress(
-      totalFiles,
-      totalFiles,
-      "Creating your merged PDF..."
-    );
+    setProgress(90,"Creating merged PDF...");
 
 
     const mergedBytes = await mergedPdf.save();
 
 
+    setProgress(100,"Download ready");
+
+
     const blob = new Blob(
       [mergedBytes],
-      { type: "application/pdf" }
+      {type:"application/pdf"}
     );
+
 
     const url = URL.createObjectURL(blob);
 
-    const link = document.createElement("a");
+    const a = document.createElement("a");
 
-    link.href = url;
-    link.download = "antokia-merged.pdf";
+    a.href = url;
 
-    document.body.appendChild(link);
+    a.download = "merged-antokia.pdf";
 
-    link.click();
+    document.body.appendChild(a);
 
-    link.remove();
+    a.click();
 
-    setTimeout(() => {
+    a.remove();
+
+    setTimeout(function(){
+
       URL.revokeObjectURL(url);
-    }, 3000);
 
+    },1000);
 
-    updateProgress(
-      totalFiles,
-      totalFiles,
-      "Completed successfully"
-    );
 
     showStatus(
-      files.length + " PDF files merged successfully. Your download should start automatically.",
+      files.length + " PDF files merged successfully.",
       "success"
     );
 
 
-  } catch (error) {
+  }
+  catch(error){
 
     console.error(error);
 
-    progressSection.classList.add("hidden");
-
     showStatus(
-      error.message || "Something went wrong while merging the PDF files. Please try again.",
+      "Unable to merge the selected PDF files. Please check that the files are valid and try again.",
       "error"
     );
 
-  } finally {
-
-    mergeBtn.disabled = files.length < 2;
-
-    clearBtn.disabled = false;
-    addMoreBtn.disabled = false;
+    setProgress(0,"Merge failed");
 
   }
 
+
+  mergeBtn.disabled = false;
+
+  mergeBtn.classList.remove(
+    "opacity-70",
+    "cursor-not-allowed"
+  );
+
 });
+
+
+
+/* ================= PROGRESS ================= */
+
+function setProgress(percent,text){
+
+  progressBar.style.width = percent + "%";
+
+  progressPercent.textContent = percent + "%";
+
+  statusText.textContent = text;
+
+}
+
+
+
+/* ================= STATUS ================= */
+
+function showStatus(message,type){
+
+  status.textContent = message;
+
+  status.className =
+    "text-center text-sm font-semibold mt-5 min-h-[22px]";
+
+
+  if(type === "success"){
+
+    status.classList.add("text-green-600");
+
+  }
+  else if(type === "error"){
+
+    status.classList.add("text-red-600");
+
+  }
+  else{
+
+    status.classList.add("text-gray-600");
+
+  }
+
+}
+
+
+
+/* ================= FORMAT SIZE ================= */
+
+function formatSize(bytes){
+
+  if(bytes < 1024){
+
+    return bytes + " B";
+
+  }
+
+
+  if(bytes < 1024 * 1024){
+
+    return (bytes / 1024).toFixed(1) + " KB";
+
+  }
+
+
+  return (bytes / (1024 * 1024)).toFixed(2) + " MB";
+
+}
+
+
+
+/* ================= ESCAPE HTML ================= */
+
+function escapeHtml(value){
+
+  return value
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+
+
+/* ================= FAQ ================= */
+
+document.querySelectorAll(".faq-question").forEach(function(button){
+
+  button.addEventListener("click",function(){
+
+    const item = button.closest(".faq-item");
+
+    item.classList.toggle("active");
+
+  });
+
+});
+
 </script>
+
 
 </body>
 </html>
