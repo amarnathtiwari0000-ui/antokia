@@ -1,40 +1,34 @@
 {
   "cleanUrls": true,
-  "rewrites": [
-    {
-      "source": "/tools/:path*",
-      "destination": "/tools/:path*.html"
-    },
-    {
-      "source": "/blog/:path*",
-      "destination": "/blog/:path*.html"
-    }
-  ],
   "redirects": [
     {
-      "source": "/about.html",
-      "destination": "/about",
+      "source": "/pdf-remover.html",
+      "destination": "/tools/pdf-remover",
       "permanent": true
     },
     {
-      "source": "/contact.html",
-      "destination": "/contact",
+      "source": "/word-to-pdf.html",
+      "destination": "/tools/word-to-pdf",
       "permanent": true
     },
     {
-      "source": "/privacy.html",
-      "destination": "/privacy",
+      "source": "/resume-maker.html",
+      "destination": "/tools/resume-maker",
       "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/tools/pdf-remover",
+      "destination": "/tools/pdf-remover.html"
     },
     {
-      "source": "/blog/(.*)\\.html",
-      "destination": "/blog/$1",
-      "permanent": true
+      "source": "/tools/word-to-pdf",
+      "destination": "/tools/word-to-pdf.html"
     },
     {
-      "source": "/(.*)\\.html",
-      "destination": "/tools/$1",
-      "permanent": true
+      "source": "/tools/resume-maker",
+      "destination": "/tools/resume-maker.html"
     }
   ]
 }
