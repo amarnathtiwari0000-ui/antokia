@@ -13,8 +13,6 @@
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body class="bg-[#f8f8ff] text-gray-800">
-
-<!-- HEADER with slight shadow and border -->
 <header class="bg-white/90 backdrop-blur shadow-sm sticky top-0 z-50 border-b">
 <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
 <div class="flex items-center gap-2">
@@ -32,10 +30,7 @@
 </div>
 </div>
 </header>
-
 <main class="max-w-6xl mx-auto px-4 py-8">
-
-<!-- HERO WITH GRADIENT -->
 <section class="text-center py-8 md:py-14 bg-gradient-to-b from-red-50/80 to-transparent rounded-[32px] border border-red-50">
 <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight">
 Free Online Tools for <span class="text-[#e5322d]">Everyday Tasks</span>
@@ -48,13 +43,9 @@ Antokia provides simple and useful online tools for working with PDF files, imag
 <a href="/blog/" class="bg-white border px-8 py-3 rounded-xl font-semibold hover:bg-gray-50 transition">Read Our Guides</a>
 </div>
 </section>
-
-<!-- TOP AD SPACE -->
 <div class="bg-gradient-to-r from-gray-100 to-gray-200 rounded-xl h-24 flex items-center justify-center text-gray-500 text-sm my-10 border border-dashed">
 Ad Space - Top Banner
 </div>
-
-<!-- QUICK SEARCH with colour -->
 <section class="bg-white rounded-2xl p-6 shadow-sm border border-violet-100 mb-10">
 <h2 class="text-xl font-bold text-center">Find the Right Tool</h2>
 <p class="text-sm text-gray-500 text-center mt-2">Search by tool name or task, such as PDF, image, EMI or age.</p>
@@ -62,79 +53,65 @@ Ad Space - Top Banner
 <input id="mobileSearchTool" type="text" placeholder="Search for a tool..." class="w-full border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-violet-200 bg-[#fcfcff]">
 </div>
 </section>
-
-<!-- POPULAR TOOLS with hover colour -->
 <section id="tools" class="mb-12">
 <h2 class="text-2xl font-bold mb-2">Popular Free Tools</h2>
 <p class="text-gray-600 text-sm mb-5">Start with some of the most useful tools available on Antokia.</p>
 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-<a href="/compress-image" class="tool-card bg-white p-5 rounded-2xl shadow-sm hover:shadow-xl border hover:border-purple-200 text-center transition">
+<a href="/tools/compress-image" class="tool-card bg-white p-5 rounded-2xl shadow-sm hover:shadow-xl border hover:border-purple-200 text-center transition">
 <div class="w-14 h-14 bg-gradient-to-br from-purple-100 to-violet-200 rounded-xl flex items-center justify-center mx-auto text-purple-600 text-2xl"><i class="fa-solid fa-minimize"></i></div>
 <h3 class="font-bold mt-3 text-sm">Compress Image</h3>
 <p class="text-xs text-gray-500 mt-1">Reduce image file size</p>
 </a>
-<a href="/image-to-pdf" class="tool-card bg-white p-5 rounded-2xl shadow-sm hover:shadow-xl border hover:border-red-200 text-center transition">
+<a href="/tools/image-to-pdf" class="tool-card bg-white p-5 rounded-2xl shadow-sm hover:shadow-xl border hover:border-red-200 text-center transition">
 <div class="w-14 h-14 bg-gradient-to-br from-red-100 to-orange-100 rounded-xl flex items-center justify-center mx-auto text-red-500 text-2xl"><i class="fa-solid fa-file-pdf"></i></div>
 <h3 class="font-bold mt-3 text-sm">Image to PDF</h3>
 <p class="text-xs text-gray-500 mt-1">Convert images to PDF</p>
 </a>
-<a href="/merge-pdf" class="tool-card bg-white p-5 rounded-2xl shadow-sm hover:shadow-xl border hover:border-indigo-200 text-center transition">
+<a href="/tools/merge-pdf" class="tool-card bg-white p-5 rounded-2xl shadow-sm hover:shadow-xl border hover:border-indigo-200 text-center transition">
 <div class="w-14 h-14 bg-gradient-to-br from-indigo-100 to-blue-100 rounded-xl flex items-center justify-center mx-auto text-indigo-600 text-2xl"><i class="fa-solid fa-code-merge"></i></div>
 <h3 class="font-bold mt-3 text-sm">Merge PDF</h3>
 <p class="text-xs text-gray-500 mt-1">Combine PDF files</p>
 </a>
-<a href="/age-calculator" class="tool-card bg-white p-5 rounded-2xl shadow-sm hover:shadow-xl border hover:border-green-200 text-center transition">
+<a href="/tools/age-calculator" class="tool-card bg-white p-5 rounded-2xl shadow-sm hover:shadow-xl border hover:border-green-200 text-center transition">
 <div class="w-14 h-14 bg-gradient-to-br from-green-100 to-emerald-100 rounded-xl flex items-center justify-center mx-auto text-green-600 text-2xl"><i class="fa-solid fa-cake-candles"></i></div>
 <h3 class="font-bold mt-3 text-sm">Age Calculator</h3>
 <p class="text-xs text-gray-500 mt-1">Calculate exact age</p>
 </a>
 </div>
 </section>
-
-<!-- TOOL CATEGORIES -->
 <section>
 <h2 class="text-2xl font-bold mb-2">Explore All Free Tools</h2>
 <p class="text-gray-600 text-sm mb-8">Choose a category to find tools for your specific task.</p>
-
-<!-- PDF TOOLS -->
 <h3 class="font-bold text-lg mb-4"><i class="fa-solid fa-file-pdf text-red-500 mr-2"></i>PDF Tools</h3>
 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-<a href="/image-to-pdf" class="tool-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg border text-center hover:border-red-200 transition"><div class="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center mx-auto text-red-500 text-2xl"><i class="fa-solid fa-image"></i></div><h4 class="font-bold mt-3 text-sm">Image to PDF</h4><p class="text-xs text-gray-500 mt-1">JPG to PDF</p></a>
-<a href="/word-to-pdf" class="tool-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg border text-center hover:border-blue-200 transition"><div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mx-auto text-blue-600 text-2xl"><i class="fa-solid fa-file-word"></i></div><h4 class="font-bold mt-3 text-sm">Word to PDF</h4><p class="text-xs text-gray-500 mt-1">DOCX to PDF</p></a>
-<a href="/pdf-remover" class="tool-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg border text-center hover:border-orange-200 transition"><div class="w-14 h-14 bg-orange-100 rounded-xl flex items-center justify-center mx-auto text-orange-500 text-2xl"><i class="fa-solid fa-file-circle-minus"></i></div><h4 class="font-bold mt-3 text-sm">Remove Pages</h4><p class="text-xs text-gray-500 mt-1">Delete PDF pages</p></a>
-<a href="/pdf-to-word" class="tool-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg border text-center relative"><span class="absolute top-2 right-2 bg-[#e5322d] text-white text-[10px] px-2 py-0.5 rounded-full">NEW</span><div class="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center mx-auto text-green-600 text-2xl"><i class="fa-solid fa-file-word"></i></div><h4 class="font-bold mt-3 text-sm">PDF to Word</h4><p class="text-xs text-gray-500 mt-1">PDF to DOCX</p></a>
-<a href="/pdf-to-excel" class="tool-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg border text-center relative"><span class="absolute top-2 right-2 bg-[#e5322d] text-white text-[10px] px-2 py-0.5 rounded-full">NEW</span><div class="w-14 h-14 bg-emerald-100 rounded-xl flex items-center justify-center mx-auto text-emerald-600 text-2xl"><i class="fa-solid fa-file-excel"></i></div><h4 class="font-bold mt-3 text-sm">PDF to Excel</h4><p class="text-xs text-gray-500 mt-1">Extract tables</p></a>
-<a href="/merge-pdf" class="tool-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg border text-center"><div class="w-14 h-14 bg-indigo-100 rounded-xl flex items-center justify-center mx-auto text-indigo-600 text-2xl"><i class="fa-solid fa-code-merge"></i></div><h4 class="font-bold mt-3 text-sm">Merge PDF</h4><p class="text-xs text-gray-500 mt-1">Combine PDFs</p></a>
-<a href="/compress-pdf" class="tool-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg border text-center"><div class="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center mx-auto text-red-600 text-2xl"><i class="fa-solid fa-file-zipper"></i></div><h4 class="font-bold mt-3 text-sm">Compress PDF</h4><p class="text-xs text-gray-500 mt-1">Reduce PDF size</p></a>
+<a href="/tools/image-to-pdf" class="tool-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg border text-center hover:border-red-200 transition"><div class="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center mx-auto text-red-500 text-2xl"><i class="fa-solid fa-image"></i></div><h4 class="font-bold mt-3 text-sm">Image to PDF</h4><p class="text-xs text-gray-500 mt-1">JPG to PDF</p></a>
+<a href="/tools/word-to-pdf" class="tool-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg border text-center hover:border-blue-200 transition"><div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mx-auto text-blue-600 text-2xl"><i class="fa-solid fa-file-word"></i></div><h4 class="font-bold mt-3 text-sm">Word to PDF</h4><p class="text-xs text-gray-500 mt-1">DOCX to PDF</p></a>
+<a href="/tools/pdf-remover" class="tool-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg border text-center hover:border-orange-200 transition"><div class="w-14 h-14 bg-orange-100 rounded-xl flex items-center justify-center mx-auto text-orange-500 text-2xl"><i class="fa-solid fa-file-circle-minus"></i></div><h4 class="font-bold mt-3 text-sm">Remove Pages</h4><p class="text-xs text-gray-500 mt-1">Delete PDF pages</p></a>
+<a href="/tools/pdf-to-word" class="tool-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg border text-center relative"><span class="absolute top-2 right-2 bg-[#e5322d] text-white text-[10px] px-2 py-0.5 rounded-full">NEW</span><div class="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center mx-auto text-green-600 text-2xl"><i class="fa-solid fa-file-word"></i></div><h4 class="font-bold mt-3 text-sm">PDF to Word</h4><p class="text-xs text-gray-500 mt-1">PDF to DOCX</p></a>
+<a href="/tools/pdf-to-excel" class="tool-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg border text-center relative"><span class="absolute top-2 right-2 bg-[#e5322d] text-white text-[10px] px-2 py-0.5 rounded-full">NEW</span><div class="w-14 h-14 bg-emerald-100 rounded-xl flex items-center justify-center mx-auto text-emerald-600 text-2xl"><i class="fa-solid fa-file-excel"></i></div><h4 class="font-bold mt-3 text-sm">PDF to Excel</h4><p class="text-xs text-gray-500 mt-1">Extract tables</p></a>
+<a href="/tools/merge-pdf" class="tool-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg border text-center"><div class="w-14 h-14 bg-indigo-100 rounded-xl flex items-center justify-center mx-auto text-indigo-600 text-2xl"><i class="fa-solid fa-code-merge"></i></div><h4 class="font-bold mt-3 text-sm">Merge PDF</h4><p class="text-xs text-gray-500 mt-1">Combine PDFs</p></a>
+<a href="/tools/compress-pdf" class="tool-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg border text-center"><div class="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center mx-auto text-red-600 text-2xl"><i class="fa-solid fa-file-zipper"></i></div><h4 class="font-bold mt-3 text-sm">Compress PDF</h4><p class="text-xs text-gray-500 mt-1">Reduce PDF size</p></a>
 </div>
-
-<!-- IMAGE TOOLS -->
 <h3 class="font-bold text-lg mb-4 mt-10"><i class="fa-solid fa-wand-magic-sparkles text-purple-500 mr-2"></i>Image Tools</h3>
 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-<a href="/compress-image" class="tool-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg border text-center hover:border-purple-200 transition"><div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mx-auto text-purple-600 text-2xl"><i class="fa-solid fa-minimize"></i></div><h4 class="font-bold mt-3 text-sm">Compress Image</h4><p class="text-xs text-gray-500 mt-1">Reduce image size</p></a>
-<a href="/bg-remover" class="tool-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg border text-center"><div class="w-14 h-14 bg-pink-100 rounded-xl flex items-center justify-center mx-auto text-pink-500 text-2xl"><i class="fa-solid fa-eraser"></i></div><h4 class="font-bold mt-3 text-sm">BG Remover</h4><p class="text-xs text-gray-500 mt-1">Remove background</p></a>
-<a href="/qr-generator" class="tool-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg border text-center"><div class="w-14 h-14 bg-indigo-100 rounded-xl flex items-center justify-center mx-auto text-indigo-600 text-2xl"><i class="fa-solid fa-qrcode"></i></div><h4 class="font-bold mt-3 text-sm">QR Generator</h4><p class="text-xs text-gray-500 mt-1">Create QR codes</p></a>
-<a href="/image-resizer" class="tool-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg border text-center"><div class="w-14 h-14 bg-yellow-100 rounded-xl flex items-center justify-center mx-auto text-yellow-600 text-2xl"><i class="fa-solid fa-up-right-and-down-left-from-center"></i></div><h4 class="font-bold mt-3 text-sm">Image Resizer</h4><p class="text-xs text-gray-500 mt-1">Resize images</p></a>
+<a href="/tools/compress-image" class="tool-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg border text-center hover:border-purple-200 transition"><div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mx-auto text-purple-600 text-2xl"><i class="fa-solid fa-minimize"></i></div><h4 class="font-bold mt-3 text-sm">Compress Image</h4><p class="text-xs text-gray-500 mt-1">Reduce image size</p></a>
+<a href="/tools/bg-remover" class="tool-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg border text-center"><div class="w-14 h-14 bg-pink-100 rounded-xl flex items-center justify-center mx-auto text-pink-500 text-2xl"><i class="fa-solid fa-eraser"></i></div><h4 class="font-bold mt-3 text-sm">BG Remover</h4><p class="text-xs text-gray-500 mt-1">Remove background</p></a>
+<a href="/tools/qr-generator" class="tool-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg border text-center"><div class="w-14 h-14 bg-indigo-100 rounded-xl flex items-center justify-center mx-auto text-indigo-600 text-2xl"><i class="fa-solid fa-qrcode"></i></div><h4 class="font-bold mt-3 text-sm">QR Generator</h4><p class="text-xs text-gray-500 mt-1">Create QR codes</p></a>
+<a href="/tools/image-resizer" class="tool-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg border text-center"><div class="w-14 h-14 bg-yellow-100 rounded-xl flex items-center justify-center mx-auto text-yellow-600 text-2xl"><i class="fa-solid fa-up-right-and-down-left-from-center"></i></div><h4 class="font-bold mt-3 text-sm">Image Resizer</h4><p class="text-xs text-gray-500 mt-1">Resize images</p></a>
 </div>
-
-<!-- FINANCE TOOLS -->
 <h3 class="font-bold text-lg mb-4 mt-10"><i class="fa-solid fa-indian-rupee-sign text-green-600 mr-2"></i>Finance Tools</h3>
 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-<a href="/sip-calculator" class="tool-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg border text-center hover:border-green-200 transition"><div class="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center mx-auto text-green-600 text-2xl"><i class="fa-solid fa-chart-line"></i></div><h4 class="font-bold mt-3 text-sm">SIP Calculator</h4><p class="text-xs text-gray-500 mt-1">Estimate SIP returns</p></a>
-<a href="/emi-calculator" class="tool-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg border text-center"><div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mx-auto text-blue-600 text-2xl"><i class="fa-solid fa-calculator"></i></div><h4 class="font-bold mt-3 text-sm">EMI Calculator</h4><p class="text-xs text-gray-500 mt-1">Calculate loan EMI</p></a>
-<a href="/ppf-calculator" class="tool-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg border text-center"><div class="w-14 h-14 bg-yellow-100 rounded-xl flex items-center justify-center mx-auto text-yellow-600 text-2xl"><i class="fa-solid fa-piggy-bank"></i></div><h4 class="font-bold mt-3 text-sm">PPF Calculator</h4><p class="text-xs text-gray-500 mt-1">Estimate PPF growth</p></a>
+<a href="/tools/sip-calculator" class="tool-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg border text-center hover:border-green-200 transition"><div class="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center mx-auto text-green-600 text-2xl"><i class="fa-solid fa-chart-line"></i></div><h4 class="font-bold mt-3 text-sm">SIP Calculator</h4><p class="text-xs text-gray-500 mt-1">Estimate SIP returns</p></a>
+<a href="/tools/emi-calculator" class="tool-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg border text-center"><div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mx-auto text-blue-600 text-2xl"><i class="fa-solid fa-calculator"></i></div><h4 class="font-bold mt-3 text-sm">EMI Calculator</h4><p class="text-xs text-gray-500 mt-1">Calculate loan EMI</p></a>
+<a href="/tools/ppf-calculator" class="tool-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg border text-center"><div class="w-14 h-14 bg-yellow-100 rounded-xl flex items-center justify-center mx-auto text-yellow-600 text-2xl"><i class="fa-solid fa-piggy-bank"></i></div><h4 class="font-bold mt-3 text-sm">PPF Calculator</h4><p class="text-xs text-gray-500 mt-1">Estimate PPF growth</p></a>
 </div>
-
-<!-- OTHER TOOLS -->
 <h3 class="font-bold text-lg mb-4 mt-10"><i class="fa-solid fa-calculator text-green-500 mr-2"></i>Other Tools</h3>
 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-<a href="/age-calculator" class="tool-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg border text-center"><div class="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center mx-auto text-green-600 text-2xl"><i class="fa-solid fa-cake-candles"></i></div><h4 class="font-bold mt-3 text-sm">Age Calculator</h4><p class="text-xs text-gray-500 mt-1">Calculate exact age</p></a>
-<a href="/percentage" class="tool-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg border text-center"><div class="w-14 h-14 bg-yellow-100 rounded-xl flex items-center justify-center mx-auto text-yellow-600 text-2xl"><i class="fa-solid fa-percent"></i></div><h4 class="font-bold mt-3 text-sm">% Calculator</h4><p class="text-xs text-gray-500 mt-1">Calculate percentage</p></a>
-<a href="/resume-maker" class="tool-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg border text-center"><div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mx-auto text-blue-600 text-2xl"><i class="fa-solid fa-file-lines"></i></div><h4 class="font-bold mt-3 text-sm">Resume Maker</h4><p class="text-xs text-gray-500 mt-1">Create a professional resume</p></a>
+<a href="/tools/age-calculator" class="tool-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg border text-center"><div class="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center mx-auto text-green-600 text-2xl"><i class="fa-solid fa-cake-candles"></i></div><h4 class="font-bold mt-3 text-sm">Age Calculator</h4><p class="text-xs text-gray-500 mt-1">Calculate exact age</p></a>
+<a href="/tools/percentage" class="tool-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg border text-center"><div class="w-14 h-14 bg-yellow-100 rounded-xl flex items-center justify-center mx-auto text-yellow-600 text-2xl"><i class="fa-solid fa-percent"></i></div><h4 class="font-bold mt-3 text-sm">% Calculator</h4><p class="text-xs text-gray-500 mt-1">Calculate percentage</p></a>
+<a href="/tools/resume-maker" class="tool-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg border text-center"><div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mx-auto text-blue-600 text-2xl"><i class="fa-solid fa-file-lines"></i></div><h4 class="font-bold mt-3 text-sm">Resume Maker</h4><p class="text-xs text-gray-500 mt-1">Create a professional resume</p></a>
 </div>
 </section>
-
-<!-- WHY ANTOKIA COLOURED -->
 <section class="bg-gradient-to-br from-white to-violet-50/60 rounded-2xl p-6 md:p-8 mt-12 border border-violet-100 shadow-sm">
 <h2 class="text-2xl font-bold text-center">Why Use Antokia?</h2>
 <p class="text-gray-600 text-center mt-2 max-w-2xl mx-auto">Antokia is designed to make common digital tasks simple and accessible.</p>
@@ -144,8 +121,6 @@ Ad Space - Top Banner
 <div class="text-center bg-white p-5 rounded-xl border"><div class="text-3xl text-blue-600"><i class="fa-solid fa-toolbox"></i></div><h3 class="font-bold mt-3">Useful Everyday Tools</h3><p class="text-sm text-gray-600 mt-2">From PDF and image tasks to calculators and finance utilities, Antokia brings common tools together in one place.</p></div>
 </div>
 </section>
-
-<!-- HOW IT WORKS COLOURED -->
 <section class="mt-12">
 <h2 class="text-2xl font-bold text-center">How to Use Antokia Tools</h2>
 <p class="text-gray-600 text-center mt-2">Most tools can be used in three simple steps.</p>
@@ -155,8 +130,6 @@ Ad Space - Top Banner
 <div class="bg-gradient-to-br from-green-50 to-white border border-green-100 rounded-2xl p-6 text-center"><div class="w-10 h-10 rounded-full bg-green-100 text-green-600 flex items-center justify-center mx-auto font-bold">3</div><h3 class="font-bold mt-4">Get Your Result</h3><p class="text-sm text-gray-600 mt-2">Follow the tool instructions to process your file or calculate the requested result.</p></div>
 </div>
 </section>
-
-<!-- BLOG -->
 <section class="mt-12">
 <div class="flex justify-between items-center mb-5"><div><h2 class="text-2xl font-bold">Latest Guides</h2><p class="text-gray-600 text-sm mt-1">Helpful articles about PDF, images and online tools.</p></div><a href="/blog/" class="text-[#e5322d] font-semibold text-sm">View All →</a></div>
 <div class="grid md:grid-cols-3 gap-5">
@@ -165,17 +138,13 @@ Ad Space - Top Banner
 <article class="bg-white border rounded-2xl p-6 hover:border-green-200 hover:shadow-md transition"><div class="text-green-500 text-2xl"><i class="fa-solid fa-calculator"></i></div><h3 class="font-bold mt-4">How Online Calculators Work</h3><p class="text-sm text-gray-600 mt-2">Learn how common calculations such as EMI, SIP and percentage are calculated.</p><a href="/blog/" class="inline-block mt-4 text-sm text-blue-600 font-semibold">Read Guide →</a></article>
 </div>
 </section>
-
-<!-- ABOUT COLOURED -->
 <section class="bg-gradient-to-br from-white to-amber-50/50 border border-amber-100/60 rounded-2xl p-6 md:p-8 mt-12">
 <h2 class="text-2xl font-bold">About Antokia</h2>
 <p class="text-gray-600 leading-7 mt-4">Antokia is an online collection of practical digital tools designed for everyday tasks. The website brings together PDF utilities, image tools, calculators, finance utilities and other simple online resources in one place.</p>
 <p class="text-gray-600 leading-7 mt-3">Our aim is to provide easy-to-understand tools and helpful guides that allow users to complete common digital tasks more conveniently.</p>
 <a href="/about" class="inline-block mt-4 text-[#e5322d] font-semibold">Learn More About Antokia →</a>
 </section>
-
 </main>
-
 <footer class="text-center text-sm py-8 mt-8 bg-white border-t">
 <div class="max-w-6xl mx-auto px-4">
 <div class="flex flex-wrap justify-center gap-x-5 gap-y-3 mb-5">
@@ -190,7 +159,6 @@ Ad Space - Top Banner
 <p class="text-gray-500">© 2026 Antokia.com - Made for India</p>
 </div>
 </footer>
-
 <script>
 function filterTools(value) {
 value = value.toLowerCase().trim();
@@ -202,6 +170,5 @@ card.style.display = text.includes(value)? '' : 'none';
 document.getElementById('searchTool')?.addEventListener('input', function(e) { filterTools(e.target.value); });
 document.getElementById('mobileSearchTool')?.addEventListener('input', function(e) { filterTools(e.target.value); });
 </script>
-
 </body>
 </html>
