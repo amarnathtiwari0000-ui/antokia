@@ -2,7 +2,7 @@
   "cleanUrls": true,
   "rewrites": [
     { "source": "/tools/:tool", "destination": "/tools/:tool/index.html" },
-    { "source": "/tools/:tool.html", "destination": "/tools/:tool/index.html" },
-    { "source": "/:tool.html", "destination": "/tools/:tool/index.html" }
+    { "source": "/:tool.html", "destination": "/tools/:tool/index.html" },
+    { "source": "/tools/:tool.html", "destination": "/tools/:tool/index.html" }
   ]
 }
