@@ -1,16 +1,16 @@
 {
   "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/tools/:path*",
+      "destination": "/tools/:path*.html"
+    },
+    {
+      "source": "/blog/:path*",
+      "destination": "/blog/:path*.html"
+    }
+  ],
   "redirects": [
-    {
-      "source": "/(.*)\\.html",
-      "destination": "/tools/$1",
-      "permanent": true
-    },
-    {
-      "source": "/blog/(.*)\\.html",
-      "destination": "/blog/$1",
-      "permanent": true
-    },
     {
       "source": "/about.html",
       "destination": "/about",
@@ -24,6 +24,16 @@
     {
       "source": "/privacy.html",
       "destination": "/privacy",
+      "permanent": true
+    },
+    {
+      "source": "/blog/(.*)\\.html",
+      "destination": "/blog/$1",
+      "permanent": true
+    },
+    {
+      "source": "/(.*)\\.html",
+      "destination": "/tools/$1",
       "permanent": true
     }
   ]
