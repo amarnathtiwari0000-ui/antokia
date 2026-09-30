@@ -1,34 +1,3 @@
 {
-  "cleanUrls": true,
-  "redirects": [
-    {
-      "source": "/pdf-remover.html",
-      "destination": "/tools/pdf-remover",
-      "permanent": true
-    },
-    {
-      "source": "/word-to-pdf.html",
-      "destination": "/tools/word-to-pdf",
-      "permanent": true
-    },
-    {
-      "source": "/resume-maker.html",
-      "destination": "/tools/resume-maker",
-      "permanent": true
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/tools/pdf-remover",
-      "destination": "/tools/pdf-remover.html"
-    },
-    {
-      "source": "/tools/word-to-pdf",
-      "destination": "/tools/word-to-pdf.html"
-    },
-    {
-      "source": "/tools/resume-maker",
-      "destination": "/tools/resume-maker.html"
-    }
-  ]
+  "cleanUrls": true
 }
