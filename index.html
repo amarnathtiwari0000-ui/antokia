@@ -1,2243 +1,995 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta charset="UTF-8">
+<title>Antokia - Free Online PDF, Image, Calculator & Digital Tools</title>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Antokia provides free online PDF, image, calculator, finance and digital tools. Compress images, convert PDF files, calculate EMI, SIP, age and more online.">
 
-  <title>About Us - Antokia | Free Online Tools</title>
+<meta name="google-site-verification" content="L8KkPsyfWGlG0z9LE1dYPJRnzbcuyNrIkXBcKDu8plw">
 
-  <meta
-    name="description"
-    content="Learn about Antokia.com, a free online tools platform offering PDF, image, finance and everyday digital tools. Simple, fast and easy to use."
-  >
+<link rel="icon" type="image/png" href="/logo.png">
 
-  <meta
-    name="robots"
-    content="index, follow, max-image-preview:large"
-  >
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4796863793420610" crossorigin="anonymous"></script>
 
-  <meta
-    name="author"
-    content="Antokia - BHLC Team"
-  >
+<script src="https://cdn.tailwindcss.com"></script>
 
-  <link
-    rel="canonical"
-    href="https://antokia.com/about-us"
-  >
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="About Us - Antokia">
-  <meta
-    property="og:description"
-    content="Learn more about Antokia and our free online tools."
-  >
-  <meta property="og:url" content="https://antokia.com/about-us">
-  <meta property="og:site_name" content="Antokia">
-
-  <meta name="theme-color" content="#e5322d">
-
-
-  <!-- =========================================
-       STRUCTURED DATA
-  ========================================== -->
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Antokia",
-    "url": "https://antokia.com",
-    "description": "Free online tools platform for PDF, image, finance and everyday digital tasks.",
-    "email": "antokiatools@gmail.com",
-    "foundingDate": "2026",
-    "foundingLocation": {
-      "@type": "Place",
-      "name": "Mumbai, Maharashtra, India"
-    }
-  }
-  </script>
-
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "AboutPage",
-    "name": "About Antokia",
-    "url": "https://antokia.com/about-us",
-    "description": "Learn about Antokia, its mission, team and online tools."
-  }
-  </script>
-
-
-  <!-- =========================================
-       COMPLETE CSS
-  ========================================== -->
-
-  <style>
-
-    /* -----------------------------
-       RESET
-    ------------------------------ */
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family:
-        Inter,
-        ui-sans-serif,
-        system-ui,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Roboto,
-        Arial,
-        sans-serif;
-
-      background: #f7f8fc;
-      color: #182230;
-      line-height: 1.6;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-
-    /* -----------------------------
-       VARIABLES
-    ------------------------------ */
-
-    :root {
-      --primary: #e5322d;
-      --primary-dark: #c9231f;
-      --primary-light: #fff1f0;
-
-      --orange: #ff7043;
-
-      --dark: #111827;
-      --text: #273444;
-      --muted: #667085;
-
-      --border: #e7eaf0;
-      --white: #ffffff;
-
-      --green: #0e9f6e;
-      --blue: #2563eb;
-      --purple: #7c3aed;
-
-      --container: 1120px;
-
-      --shadow:
-        0 15px 45px rgba(15, 23, 42, 0.07);
-
-      --shadow-small:
-        0 7px 25px rgba(15, 23, 42, 0.06);
-    }
-
-
-    /* -----------------------------
-       CONTAINER
-    ------------------------------ */
-
-    .container {
-      width: min(
-        calc(100% - 32px),
-        var(--container)
-      );
-
-      margin: 0 auto;
-    }
-
-
-    /* -----------------------------
-       HEADER
-    ------------------------------ */
-
-    .header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-
-      height: 72px;
-
-      background:
-        rgba(255, 255, 255, 0.94);
-
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-
-      border-bottom: 1px solid var(--border);
-    }
-
-    .header-inner {
-      height: 72px;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-
-      font-size: 22px;
-      font-weight: 900;
-      letter-spacing: -0.5px;
-
-      color: var(--primary);
-    }
-
-
-    .logo-icon {
-      width: 40px;
-      height: 40px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      border-radius: 12px;
-
-      color: white;
-      background:
-        linear-gradient(
-          135deg,
-          #e5322d,
-          #ff5a4f
-        );
-
-      box-shadow:
-        0 7px 18px rgba(229, 50, 45, 0.25);
-
-      font-size: 20px;
-      font-weight: 900;
-    }
-
-
-    .home-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-
-      padding: 9px 15px;
-
-      border: 1px solid var(--border);
-      border-radius: 10px;
-
-      background: white;
-
-      color: #344054;
-
-      font-size: 14px;
-      font-weight: 700;
-
-      transition: 0.2s ease;
-    }
-
-    .home-btn:hover {
-      color: var(--primary);
-      border-color: #fecaca;
-      background: #fff7f6;
-      transform: translateY(-1px);
-    }
-
-
-    /* -----------------------------
-       HERO
-    ------------------------------ */
-
-    .hero {
-      position: relative;
-      overflow: hidden;
-
-      background: #ffffff;
-
-      border-bottom: 1px solid var(--border);
-    }
-
-
-    .hero::before {
-      content: "";
-
-      position: absolute;
-
-      width: 420px;
-      height: 420px;
-
-      top: -220px;
-      left: -150px;
-
-      border-radius: 50%;
-
-      background:
-        radial-gradient(
-          circle,
-          rgba(229, 50, 45, 0.12),
-          transparent 70%
-        );
-    }
-
-
-    .hero::after {
-      content: "";
-
-      position: absolute;
-
-      width: 500px;
-      height: 500px;
-
-      right: -230px;
-      bottom: -300px;
-
-      border-radius: 50%;
-
-      background:
-        radial-gradient(
-          circle,
-          rgba(255, 112, 67, 0.10),
-          transparent 70%
-        );
-    }
-
-
-    .hero-inner {
-      position: relative;
-      z-index: 2;
-
-      text-align: center;
-
-      padding:
-        78px 0
-        82px;
-    }
-
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-
-      padding: 7px 13px;
-
-      border-radius: 50px;
-
-      background: var(--primary-light);
-      border: 1px solid #ffd7d4;
-
-      color: var(--primary);
-
-      font-size: 12px;
-      font-weight: 800;
-
-      letter-spacing: 0.2px;
-    }
-
-
-    .badge-dot {
-      width: 7px;
-      height: 7px;
-
-      border-radius: 50%;
-
-      background: var(--primary);
-    }
-
-
-    .hero h1 {
-      margin-top: 20px;
-
-      font-size:
-        clamp(38px, 6vw, 64px);
-
-      line-height: 1.05;
-
-      letter-spacing: -2.5px;
-
-      font-weight: 900;
-
-      color: #101828;
-    }
-
-
-    .hero h1 span {
-      color: var(--primary);
-    }
-
-
-    .hero-description {
-      max-width: 700px;
-
-      margin:
-        22px auto
-        0;
-
-      color: var(--muted);
-
-      font-size:
-        clamp(15px, 2vw, 18px);
-
-      line-height: 1.8;
-    }
-
-
-    .hero-pills {
-      margin-top: 30px;
-
-      display: flex;
-
-      justify-content: center;
-
-      flex-wrap: wrap;
-
-      gap: 10px;
-    }
-
-
-    .hero-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-
-      padding: 9px 14px;
-
-      background: white;
-
-      border: 1px solid var(--border);
-
-      border-radius: 50px;
-
-      color: #475467;
-
-      font-size: 13px;
-      font-weight: 700;
-
-      box-shadow:
-        0 4px 14px rgba(15, 23, 42, 0.04);
-    }
-
-
-    /* -----------------------------
-       AD BOX
-    ------------------------------ */
-
-    .ad-wrapper {
-      padding-top: 22px;
-    }
-
-
-    .ad-box {
-      min-height: 90px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      border-radius: 14px;
-
-      background: #f1f3f6;
-
-      border: 1px solid #e4e7ec;
-
-      color: #98a2b3;
-
-      font-size: 11px;
-      font-weight: 700;
-
-      letter-spacing: 0.5px;
-
-      text-transform: uppercase;
-    }
-
-
-    /* -----------------------------
-       MAIN CONTENT
-    ------------------------------ */
-
-    .content {
-      padding:
-        24px 0
-        55px;
-    }
-
-
-    .main-card {
-      background: white;
-
-      border:
-        1px solid var(--border);
-
-      border-radius: 24px;
-
-      box-shadow: var(--shadow);
-
-      overflow: hidden;
-    }
-
-
-    .card-content {
-      padding:
-        45px;
-    }
-
-
-    @media(max-width: 700px) {
-
-      .card-content {
-        padding: 25px 20px;
-      }
-
-    }
-
-
-    /* -----------------------------
-       SECTION
-    ------------------------------ */
-
-    .section {
-      margin-top: 58px;
-    }
-
-    .section:first-child {
-      margin-top: 0;
-    }
-
-
-    .section-label {
-      display: inline-block;
-
-      margin-bottom: 8px;
-
-      color: var(--primary);
-
-      font-size: 11px;
-      font-weight: 900;
-
-      letter-spacing: 1.2px;
-
-      text-transform: uppercase;
-    }
-
-
-    .section-title {
-      color: #101828;
-
-      font-size:
-        clamp(24px, 4vw, 32px);
-
-      line-height: 1.25;
-
-      font-weight: 900;
-
-      letter-spacing: -0.8px;
-    }
-
-
-    .section-text {
-      margin-top: 15px;
-
-      color: #475467;
-
-      font-size: 15px;
-
-      line-height: 1.9;
-    }
-
-
-    .section-text + .section-text {
-      margin-top: 13px;
-    }
-
-
-    /* -----------------------------
-       INTRO GRID
-    ------------------------------ */
-
-    .intro-grid {
-      display: grid;
-
-      grid-template-columns:
-        1.35fr
-        0.65fr;
-
-      gap: 30px;
-
-      align-items: stretch;
-    }
-
-
-    .intro-side {
-      padding: 25px;
-
-      border-radius: 18px;
-
-      background:
-        linear-gradient(
-          145deg,
-          #fff6f5,
-          #fffaf9
-        );
-
-      border: 1px solid #ffe0dd;
-    }
-
-
-    .intro-side-icon {
-      width: 48px;
-      height: 48px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      border-radius: 14px;
-
-      background: var(--primary);
-
-      color: white;
-
-      font-size: 21px;
-
-      box-shadow:
-        0 8px 20px rgba(229, 50, 45, 0.2);
-    }
-
-
-    .intro-side h3 {
-      margin-top: 18px;
-
-      color: #101828;
-
-      font-size: 18px;
-
-      font-weight: 800;
-    }
-
-
-    .intro-side p {
-      margin-top: 8px;
-
-      color: #667085;
-
-      font-size: 13px;
-
-      line-height: 1.7;
-    }
-
-
-    @media(max-width: 760px) {
-
-      .intro-grid {
-        grid-template-columns: 1fr;
-      }
-
-    }
-
-
-    /* -----------------------------
-       MISSION
-    ------------------------------ */
-
-    .mission {
-      position: relative;
-
-      overflow: hidden;
-
-      margin-top: 32px;
-
-      padding: 28px;
-
-      border-radius: 20px;
-
-      background:
-        linear-gradient(
-          135deg,
-          #fff4f3,
-          #fff9f5
-        );
-
-      border: 1px solid #ffdcd8;
-    }
-
-
-    .mission::after {
-      content: "✦";
-
-      position: absolute;
-
-      right: 28px;
-      top: 18px;
-
-      font-size: 55px;
-
-      color: rgba(229, 50, 45, 0.08);
-    }
-
-
-    .mission-inner {
-      display: flex;
-
-      gap: 17px;
-
-      position: relative;
-      z-index: 2;
-    }
-
-
-    .mission-icon {
-      flex: 0 0 48px;
-
-      width: 48px;
-      height: 48px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      border-radius: 13px;
-
-      background: var(--primary);
-
-      color: white;
-
-      font-size: 21px;
-    }
-
-
-    .mission h3 {
-      color: #101828;
-
-      font-size: 19px;
-
-      font-weight: 800;
-    }
-
-
-    .mission p {
-      margin-top: 5px;
-
-      color: #667085;
-
-      font-size: 14px;
-
-      line-height: 1.75;
-    }
-
-
-    /* -----------------------------
-       TOOLS
-    ------------------------------ */
-
-    .tools-grid {
-      display: grid;
-
-      grid-template-columns:
-        repeat(2, 1fr);
-
-      gap: 16px;
-
-      margin-top: 25px;
-    }
-
-
-    .tool-card {
-      position: relative;
-
-      padding: 24px;
-
-      border:
-        1px solid var(--border);
-
-      border-radius: 18px;
-
-      background: #fff;
-
-      transition:
-        0.25s ease;
-    }
-
-
-    .tool-card:hover {
-      transform: translateY(-4px);
-
-      box-shadow: var(--shadow-small);
-
-      border-color: #ffd1ce;
-    }
-
-
-    .tool-top {
-      display: flex;
-
-      gap: 15px;
-
-      align-items: flex-start;
-    }
-
-
-    .tool-icon {
-      flex: 0 0 48px;
-
-      width: 48px;
-      height: 48px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      border-radius: 13px;
-
-      font-size: 22px;
-    }
-
-
-    .pdf-icon {
-      background: #fff0ef;
-    }
-
-    .image-icon {
-      background: #eef5ff;
-    }
-
-    .finance-icon {
-      background: #ecfdf5;
-    }
-
-    .daily-icon {
-      background: #f5f0ff;
-    }
-
-
-    .tool-card h3 {
-      color: #101828;
-
-      font-size: 17px;
-
-      font-weight: 800;
-    }
-
-
-    .tool-card p {
-      margin-top: 7px;
-
-      color: #667085;
-
-      font-size: 13px;
-
-      line-height: 1.75;
-    }
-
-
-    @media(max-width: 680px) {
-
-      .tools-grid {
-        grid-template-columns: 1fr;
-      }
-
-    }
-
-
-    /* -----------------------------
-       FEATURES
-    ------------------------------ */
-
-    .features {
-      display: grid;
-
-      grid-template-columns:
-        repeat(2, 1fr);
-
-      gap: 16px;
-
-      margin-top: 25px;
-    }
-
-
-    .feature {
-      padding: 23px;
-
-      border-radius: 18px;
-
-      border: 1px solid var(--border);
-
-      background: #fff;
-
-      transition: 0.25s ease;
-    }
-
-
-    .feature:hover {
-      transform: translateY(-3px);
-
-      box-shadow: var(--shadow-small);
-    }
-
-
-    .feature-icon {
-      width: 43px;
-      height: 43px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      border-radius: 12px;
-
-      font-size: 19px;
-    }
-
-
-    .feature h3 {
-      margin-top: 14px;
-
-      color: #101828;
-
-      font-size: 16px;
-
-      font-weight: 800;
-    }
-
-
-    .feature p {
-      margin-top: 7px;
-
-      color: #667085;
-
-      font-size: 13px;
-
-      line-height: 1.7;
-    }
-
-
-    @media(max-width: 680px) {
-
-      .features {
-        grid-template-columns: 1fr;
-      }
-
-    }
-
-
-    /* -----------------------------
-       PRIVACY
-    ------------------------------ */
-
-    .privacy-box {
-      position: relative;
-
-      overflow: hidden;
-
-      margin-top: 58px;
-
-      padding: 30px;
-
-      border-radius: 20px;
-
-      background:
-        linear-gradient(
-          135deg,
-          #151b29,
-          #202938
-        );
-
-      color: white;
-    }
-
-
-    .privacy-box::before {
-      content: "";
-
-      position: absolute;
-
-      width: 220px;
-      height: 220px;
-
-      right: -100px;
-      top: -100px;
-
-      border-radius: 50%;
-
-      background:
-        rgba(229, 50, 45, 0.15);
-    }
-
-
-    .privacy-content {
-      position: relative;
-
-      display: flex;
-
-      gap: 17px;
-    }
-
-
-    .privacy-icon {
-      flex: 0 0 47px;
-
-      width: 47px;
-      height: 47px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      border-radius: 13px;
-
-      background:
-        rgba(255,255,255,0.10);
-
-      font-size: 21px;
-    }
-
-
-    .privacy-box h2 {
-      font-size: 20px;
-
-      font-weight: 800;
-    }
-
-
-    .privacy-box p {
-      margin-top: 7px;
-
-      max-width: 800px;
-
-      color: #b9c1ce;
-
-      font-size: 13px;
-
-      line-height: 1.8;
-    }
-
-
-    /* -----------------------------
-       TEAM
-    ------------------------------ */
-
-    .team-card {
-      margin-top: 58px;
-
-      padding: 28px;
-
-      border-radius: 20px;
-
-      background:
-        linear-gradient(
-          135deg,
-          #f8fafc,
-          #ffffff
-        );
-
-      border: 1px solid var(--border);
-    }
-
-
-    .team-inner {
-      display: flex;
-
-      align-items: center;
-
-      gap: 18px;
-    }
-
-
-    .team-avatar {
-      flex: 0 0 58px;
-
-      width: 58px;
-      height: 58px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      border-radius: 17px;
-
-      background:
-        linear-gradient(
-          135deg,
-          #e5322d,
-          #ff765d
-        );
-
-      color: white;
-
-      font-size: 21px;
-      font-weight: 900;
-
-      box-shadow:
-        0 8px 22px rgba(229, 50, 45, 0.20);
-    }
-
-
-    .team-card h2 {
-      color: #101828;
-
-      font-size: 21px;
-
-      font-weight: 850;
-    }
-
-
-    .team-card p {
-      margin-top: 9px;
-
-      color: #667085;
-
-      font-size: 14px;
-
-      line-height: 1.8;
-    }
-
-
-    @media(max-width: 550px) {
-
-      .team-inner {
-        align-items: flex-start;
-      }
-
-    }
-
-
-    /* -----------------------------
-       CONTACT
-    ------------------------------ */
-
-    .contact {
-      margin-top: 58px;
-
-      padding-top: 38px;
-
-      border-top:
-        1px solid var(--border);
-    }
-
-
-    .email-button {
-      display: inline-flex;
-
-      align-items: center;
-
-      gap: 10px;
-
-      margin-top: 20px;
-
-      padding: 12px 17px;
-
-      border-radius: 11px;
-
-      background: var(--primary-light);
-
-      border: 1px solid #ffd5d2;
-
-      color: var(--primary);
-
-      font-size: 14px;
-
-      font-weight: 800;
-
-      transition: 0.2s ease;
-    }
-
-
-    .email-button:hover {
-      background: #ffe8e6;
-
-      transform: translateY(-1px);
-    }
-
-
-    .location {
-      margin-top: 12px;
-
-      color: #98a2b3;
-
-      font-size: 12px;
-    }
-
-
-    /* -----------------------------
-       CTA
-    ------------------------------ */
-
-    .cta {
-      position: relative;
-
-      overflow: hidden;
-
-      margin-top: 58px;
-
-      padding: 42px 25px;
-
-      text-align: center;
-
-      border-radius: 22px;
-
-      background:
-        linear-gradient(
-          120deg,
-          #e5322d,
-          #f04b3d 55%,
-          #ff7043
-        );
-
-      color: white;
-
-      box-shadow:
-        0 18px 40px rgba(229, 50, 45, 0.18);
-    }
-
-
-    .cta::before {
-      content: "";
-
-      position: absolute;
-
-      width: 280px;
-      height: 280px;
-
-      left: -130px;
-      bottom: -190px;
-
-      border-radius: 50%;
-
-      background:
-        rgba(255,255,255,0.08);
-    }
-
-
-    .cta h2 {
-      position: relative;
-
-      font-size:
-        clamp(25px, 4vw, 32px);
-
-      font-weight: 900;
-    }
-
-
-    .cta p {
-      position: relative;
-
-      max-width: 620px;
-
-      margin: 10px auto 0;
-
-      color: rgba(255,255,255,0.90);
-
-      font-size: 14px;
-
-      line-height: 1.7;
-    }
-
-
-    .cta-button {
-      position: relative;
-
-      display: inline-flex;
-
-      align-items: center;
-
-      gap: 8px;
-
-      margin-top: 22px;
-
-      padding: 12px 20px;
-
-      border-radius: 11px;
-
-      background: white;
-
-      color: var(--primary);
-
-      font-size: 14px;
-
-      font-weight: 800;
-
-      transition: 0.2s ease;
-    }
-
-
-    .cta-button:hover {
-      transform: translateY(-2px);
-
-      box-shadow:
-        0 8px 20px rgba(0,0,0,0.12);
-    }
-
-
-    /* -----------------------------
-       FOOTER
-    ------------------------------ */
-
-    .footer {
-      background: #10141d;
-
-      color: #98a2b3;
-    }
-
-
-    .footer-inner {
-      padding: 45px 0 25px;
-    }
-
-
-    .footer-top {
-      display: flex;
-
-      justify-content: space-between;
-
-      gap: 35px;
-
-      align-items: flex-start;
-    }
-
-
-    .footer-brand {
-      max-width: 360px;
-    }
-
-
-    .footer-logo {
-      color: white;
-
-      font-size: 22px;
-
-      font-weight: 900;
-    }
-
-
-    .footer-description {
-      margin-top: 9px;
-
-      color: #8d96a5;
-
-      font-size: 13px;
-
-      line-height: 1.7;
-    }
-
-
-    .footer-links {
-      display: flex;
-
-      flex-wrap: wrap;
-
-      gap: 11px 22px;
-
-      justify-content: flex-end;
-    }
-
-
-    .footer-links a {
-      color: #aab2bf;
-
-      font-size: 12px;
-
-      transition: 0.2s ease;
-    }
-
-
-    .footer-links a:hover {
-      color: white;
-    }
-
-
-    .footer-bottom {
-      margin-top: 30px;
-
-      padding-top: 20px;
-
-      border-top:
-        1px solid #242b38;
-
-      display: flex;
-
-      justify-content: space-between;
-
-      gap: 15px;
-
-      color: #687282;
-
-      font-size: 11px;
-    }
-
-
-    @media(max-width: 700px) {
-
-      .footer-top {
-        flex-direction: column;
-      }
-
-      .footer-links {
-        justify-content: flex-start;
-      }
-
-      .footer-bottom {
-        flex-direction: column;
-      }
-
-    }
-
-
-    /* -----------------------------
-       MOBILE
-    ------------------------------ */
-
-    @media(max-width: 600px) {
-
-      .container {
-        width: min(
-          calc(100% - 24px),
-          var(--container)
-        );
-      }
-
-
-      .header,
-      .header-inner {
-        height: 64px;
-      }
-
-
-      .logo {
-        font-size: 19px;
-      }
-
-
-      .logo-icon {
-        width: 36px;
-        height: 36px;
-      }
-
-
-      .home-btn {
-        padding: 8px 11px;
-
-        font-size: 12px;
-      }
-
-
-      .hero-inner {
-        padding:
-          58px 0
-          60px;
-      }
-
-
-      .hero h1 {
-        letter-spacing: -1.5px;
-      }
-
-
-      .card-content {
-        padding:
-          25px 18px;
-      }
-
-
-      .tool-card,
-      .feature {
-        padding: 20px;
-      }
-
-
-      .mission,
-      .privacy-box,
-      .team-card {
-        padding: 22px;
-      }
-
-    }
-
-  </style>
+<script defer src="/_vercel/insights/script.js"></script>
 
 </head>
 
+<body class="bg-[#f5f5fa] text-gray-800">
 
-<body>
+<!-- HEADER -->
+<header class="bg-white shadow-sm sticky top-0 z-50">
 
+<div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
 
-  <!-- =========================================
-       HEADER
-  ========================================== -->
+<div class="flex items-center gap-2">
 
-  <header class="header">
+<img src="/logo.png"
+alt="Antokia Logo"
+class="h-9 w-9 object-contain rounded-lg">
 
-    <div class="container header-inner">
+<a href="/" class="text-2xl font-extrabold text-[#e5322d]">
+Antokia
+</a>
 
-      <a
-        href="/"
-        class="logo"
-        aria-label="Antokia Home"
-      >
+</div>
 
-        <span class="logo-icon">
-          A
-        </span>
+<div class="flex items-center gap-4">
 
-        <span>
-          Antokia
-        </span>
+<div class="hidden md:flex items-center gap-4 text-sm font-semibold">
 
-      </a>
+<a href="/blog/" class="hover:text-[#e5322d]">
+Blog
+</a>
 
+<a href="/about" class="hover:text-[#e5322d]">
+About
+</a>
 
-      <a
-        href="/"
-        class="home-btn"
-      >
+</div>
 
-        <span>
-          ←
-        </span>
+<div class="hidden md:block">
 
-        Home
+<input
+id="searchTool"
+type="text"
+placeholder="Search tools..."
+aria-label="Search tools"
+class="border rounded-full px-4 py-2 w-72 text-sm focus:outline-none focus:ring-2 focus:ring-red-200">
 
-      </a>
+</div>
 
-    </div>
+</div>
 
-  </header>
+</div>
 
+</header>
 
 
-  <!-- =========================================
-       MAIN
-  ========================================== -->
+<main class="max-w-6xl mx-auto px-4 py-8">
 
-  <main>
 
+<!-- HERO SECTION -->
 
-    <!-- HERO -->
+<section class="text-center py-6 md:py-10">
 
-    <section class="hero">
+<h1 class="text-4xl md:text-5xl font-extrabold">
+Free Online Tools for Everyday Tasks
+</h1>
 
-      <div class="container hero-inner">
+<p class="text-gray-600 mt-4 max-w-2xl mx-auto leading-7">
+Antokia provides simple and useful online tools for working with
+PDF files, images, calculators, finance and everyday digital tasks.
+Use the tools directly in your browser without complicated steps.
+</p>
 
-        <div class="hero-badge">
+<div class="mt-6 flex flex-col sm:flex-row justify-center gap-3">
 
-          <span class="badge-dot"></span>
+<a href="#tools"
+class="bg-[#e5322d] text-white px-6 py-3 rounded-xl font-semibold hover:opacity-90">
 
-          Free Online Tools Platform
+Explore Free Tools
 
-        </div>
+</a>
 
+<a href="/blog/"
+class="bg-white border px-6 py-3 rounded-xl font-semibold hover:bg-gray-50">
 
-        <h1>
-          About
-          <span>Antokia</span>
-        </h1>
+Read Our Guides
 
+</a>
 
-        <p class="hero-description">
+</div>
 
-          Simple, useful and accessible online tools designed
-          to make everyday digital tasks easier.
+</section>
 
-        </p>
 
+<!-- TOP AD SPACE -->
 
-        <div class="hero-pills">
+<div class="bg-gray-200 rounded-xl h-24 flex items-center justify-center text-gray-500 text-sm mb-10">
 
-          <div class="hero-pill">
-            ⚡ Fast &amp; Simple
-          </div>
+Ad Space - Top Banner
 
-          <div class="hero-pill">
-            📱 Mobile Friendly
-          </div>
+</div>
 
-          <div class="hero-pill">
-            🌎 Made for Everyone
-          </div>
 
-          <div class="hero-pill">
-            🔒 Privacy Conscious
-          </div>
+<!-- QUICK SEARCH -->
 
-        </div>
+<section class="bg-white rounded-2xl p-6 shadow-sm border mb-10">
 
-      </div>
+<h2 class="text-xl font-bold text-center">
+Find the Right Tool
+</h2>
 
-    </section>
+<p class="text-sm text-gray-500 text-center mt-2">
+Search by tool name or task, such as PDF, image, EMI or age.
+</p>
 
+<div class="max-w-xl mx-auto mt-4">
 
+<input
+id="mobileSearchTool"
+type="text"
+placeholder="Search for a tool..."
+aria-label="Search for a tool"
+class="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-200">
 
-    <!-- TOP AD -->
+</div>
 
-    <section class="container ad-wrapper">
+</section>
 
-      <div
-        class="ad-box"
-        aria-label="Advertisement"
-      >
-        Advertisement
-      </div>
 
-    </section>
+<!-- POPULAR TOOLS -->
 
+<section id="tools" class="mb-10">
 
+<h2 class="text-2xl font-bold mb-2">
+Popular Free Tools
+</h2>
 
-    <!-- CONTENT -->
+<p class="text-gray-600 text-sm mb-5">
+Start with some of the most useful tools available on Antokia.
+</p>
 
-    <section class="container content">
 
-      <article class="main-card">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
 
-        <div class="card-content">
 
+<a href="/compress-image"
+class="tool-card bg-white p-5 rounded-2xl shadow-sm hover:shadow-lg border text-center">
 
-          <!-- INTRO -->
+<div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mx-auto text-purple-600 text-2xl">
 
-          <section class="section">
+<i class="fa-solid fa-minimize"></i>
 
-            <div class="intro-grid">
+</div>
 
-              <div>
+<h3 class="font-bold mt-3 text-sm">
+Compress Image
+</h3>
 
-                <span class="section-label">
-                  About Us
-                </span>
+<p class="text-xs text-gray-500 mt-1">
+Reduce image file size
+</p>
 
-                <h2 class="section-title">
-                  Welcome to Antokia
-                </h2>
+</a>
 
 
-                <p class="section-text">
+<a href="/image-to-pdf"
+class="tool-card bg-white p-5 rounded-2xl shadow-sm hover:shadow-lg border text-center">
 
-                  Welcome to <strong>Antokia.com</strong>,
-                  a free online tools platform created to make
-                  common digital tasks simpler and more accessible.
-                  Our goal is to provide practical browser-based
-                  tools with clean interfaces that are easy to
-                  understand and convenient to use.
+<div class="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center mx-auto text-red-500 text-2xl">
 
-                </p>
+<i class="fa-solid fa-file-pdf"></i>
 
+</div>
 
-                <p class="section-text">
+<h3 class="font-bold mt-3 text-sm">
+Image to PDF
+</h3>
 
-                  Antokia was started in
-                  <strong>2026 in Mumbai, India</strong>
-                  with the idea of creating useful digital
-                  utilities for students, professionals, creators,
-                  businesses and everyday internet users around
-                  the world.
+<p class="text-xs text-gray-500 mt-1">
+Convert images to PDF
+</p>
 
-                </p>
+</a>
 
-              </div>
 
+<a href="/merge-pdf"
+class="tool-card bg-white p-5 rounded-2xl shadow-sm hover:shadow-lg border text-center">
 
-              <div class="intro-side">
+<div class="w-14 h-14 bg-indigo-100 rounded-xl flex items-center justify-center mx-auto text-indigo-600 text-2xl">
 
-                <div class="intro-side-icon">
-                  👋
-                </div>
+<i class="fa-solid fa-code-merge"></i>
 
-                <h3>
-                  Built for Everyday Use
-                </h3>
+</div>
 
-                <p>
+<h3 class="font-bold mt-3 text-sm">
+Merge PDF
+</h3>
 
-                  Our tools are designed around common digital
-                  tasks so users can quickly find and use the
-                  utility they need.
+<p class="text-xs text-gray-500 mt-1">
+Combine PDF files
+</p>
 
-                </p>
+</a>
 
-              </div>
 
-            </div>
+<a href="/age-calculator"
+class="tool-card bg-white p-5 rounded-2xl shadow-sm hover:shadow-lg border text-center">
 
+<div class="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center mx-auto text-green-600 text-2xl">
 
-            <!-- MISSION -->
+<i class="fa-solid fa-cake-candles"></i>
 
-            <div class="mission">
+</div>
 
-              <div class="mission-inner">
+<h3 class="font-bold mt-3 text-sm">
+Age Calculator
+</h3>
 
-                <div class="mission-icon">
-                  🎯
-                </div>
+<p class="text-xs text-gray-500 mt-1">
+Calculate exact age
+</p>
 
-                <div>
+</a>
 
-                  <h3>
-                    Our Mission
-                  </h3>
+</div>
 
-                  <p>
+</section>
 
-                    Our mission is to make useful online utilities
-                    easier to access. We focus on straightforward
-                    tools that help people complete everyday
-                    digital tasks from a web browser.
 
-                  </p>
+<!-- TOOL CATEGORIES -->
 
-                </div>
+<section>
 
-              </div>
+<h2 class="text-2xl font-bold mb-2">
+Explore All Free Tools
+</h2>
 
-            </div>
+<p class="text-gray-600 text-sm mb-8">
+Choose a category to find tools for your specific task.
+</p>
 
-          </section>
 
+<!-- PDF TOOLS -->
 
+<h3 class="font-bold text-lg mb-4">
 
-          <!-- TOOLS -->
+<i class="fa-solid fa-file-pdf text-red-500 mr-2"></i>
 
-          <section class="section">
+PDF Tools
 
-            <span class="section-label">
-              What We Offer
-            </span>
+</h3>
 
-            <h2 class="section-title">
-              Useful Tools for Everyday Tasks
-            </h2>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
 
-            <p class="section-text">
 
-              Antokia provides a growing collection of online
-              utilities covering documents, images, finance and
-              everyday calculations.
+<a href="/image-to-pdf" class="tool-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg border text-center">
 
-            </p>
+<div class="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center mx-auto text-red-500 text-2xl">
 
+<i class="fa-solid fa-image"></i>
 
-            <div class="tools-grid">
+</div>
 
+<h4 class="font-bold mt-3 text-sm">Image to PDF</h4>
 
-              <!-- PDF -->
+<p class="text-xs text-gray-500 mt-1">JPG to PDF</p>
 
-              <div class="tool-card">
+</a>
 
-                <div class="tool-top">
 
-                  <div class="tool-icon pdf-icon">
-                    📄
-                  </div>
+<a href="/word-to-pdf" class="tool-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg border text-center">
 
-                  <div>
+<div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mx-auto text-blue-600 text-2xl">
 
-                    <h3>
-                      PDF Tools
-                    </h3>
+<i class="fa-solid fa-file-word"></i>
 
-                    <p>
+</div>
 
-                      Image to PDF, Word to PDF, PDF to Word,
-                      PDF to Excel, Merge PDF, Compress PDF
-                      and Remove Pages.
+<h4 class="font-bold mt-3 text-sm">Word to PDF</h4>
 
-                    </p>
+<p class="text-xs text-gray-500 mt-1">DOCX to PDF</p>
 
-                  </div>
+</a>
 
-                </div>
 
-              </div>
+<a href="/pdf-remover" class="tool-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg border text-center">
 
+<div class="w-14 h-14 bg-orange-100 rounded-xl flex items-center justify-center mx-auto text-orange-500 text-2xl">
 
-              <!-- IMAGE -->
+<i class="fa-solid fa-file-circle-minus"></i>
 
-              <div class="tool-card">
+</div>
 
-                <div class="tool-top">
+<h4 class="font-bold mt-3 text-sm">Remove Pages</h4>
 
-                  <div class="tool-icon image-icon">
-                    🖼️
-                  </div>
+<p class="text-xs text-gray-500 mt-1">Delete PDF pages</p>
 
-                  <div>
+</a>
 
-                    <h3>
-                      Image Tools
-                    </h3>
 
-                    <p>
+<a href="/pdf-to-word" class="tool-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg border text-center relative">
 
-                      Image Compressor, Background Remover,
-                      Image Resizer and Format Converter for
-                      common image tasks.
+<span class="absolute top-2 right-2 bg-[#e5322d] text-white text-[10px] px-2 py-0.5 rounded-full">
+NEW
+</span>
 
-                    </p>
+<div class="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center mx-auto text-green-600 text-2xl">
 
-                  </div>
+<i class="fa-solid fa-file-word"></i>
 
-                </div>
+</div>
 
-              </div>
+<h4 class="font-bold mt-3 text-sm">PDF to Word</h4>
 
+<p class="text-xs text-gray-500 mt-1">PDF to DOCX</p>
 
-              <!-- FINANCE -->
+</a>
 
-              <div class="tool-card">
 
-                <div class="tool-top">
+<a href="/pdf-to-excel" class="tool-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg border text-center relative">
 
-                  <div class="tool-icon finance-icon">
-                    💰
-                  </div>
+<span class="absolute top-2 right-2 bg-[#e5322d] text-white text-[10px] px-2 py-0.5 rounded-full">
+NEW
+</span>
 
-                  <div>
+<div class="w-14 h-14 bg-emerald-100 rounded-xl flex items-center justify-center mx-auto text-emerald-600 text-2xl">
 
-                    <h3>
-                      Finance Tools
-                    </h3>
+<i class="fa-solid fa-file-excel"></i>
 
-                    <p>
+</div>
 
-                      SIP Calculator for mutual funds,
-                      EMI Calculator for home and personal
-                      loans, and PPF Calculator.
+<h4 class="font-bold mt-3 text-sm">PDF to Excel</h4>
 
-                    </p>
+<p class="text-xs text-gray-500 mt-1">Extract tables</p>
 
-                  </div>
+</a>
 
-                </div>
 
-              </div>
+<a href="/merge-pdf" class="tool-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg border text-center">
 
+<div class="w-14 h-14 bg-indigo-100 rounded-xl flex items-center justify-center mx-auto text-indigo-600 text-2xl">
 
-              <!-- DAILY -->
+<i class="fa-solid fa-code-merge"></i>
 
-              <div class="tool-card">
+</div>
 
-                <div class="tool-top">
+<h4 class="font-bold mt-3 text-sm">Merge PDF</h4>
 
-                  <div class="tool-icon daily-icon">
-                    🧮
-                  </div>
+<p class="text-xs text-gray-500 mt-1">Combine PDFs</p>
 
-                  <div>
+</a>
 
-                    <h3>
-                      Daily Utility Tools
-                    </h3>
 
-                    <p>
+<a href="/compress-pdf" class="tool-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg border text-center">
 
-                      QR Code Generator, Age Calculator,
-                      Percentage Calculator and Professional
-                      Resume Maker.
+<div class="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center mx-auto text-red-600 text-2xl">
 
-                    </p>
+<i class="fa-solid fa-file-zipper"></i>
 
-                  </div>
+</div>
 
-                </div>
+<h4 class="font-bold mt-3 text-sm">Compress PDF</h4>
 
-              </div>
+<p class="text-xs text-gray-500 mt-1">Reduce PDF size</p>
 
+</a>
 
-            </div>
+</div>
 
-          </section>
 
+<!-- IMAGE TOOLS -->
 
+<h3 class="font-bold text-lg mb-4 mt-10">
 
-          <!-- FEATURES -->
+<i class="fa-solid fa-wand-magic-sparkles text-purple-500 mr-2"></i>
 
-          <section class="section">
+Image Tools
 
-            <span class="section-label">
-              Our Approach
-            </span>
+</h3>
 
-            <h2 class="section-title">
-              What We Focus On
-            </h2>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
 
-            <p class="section-text">
 
-              We focus on building useful tools with simple
-              interfaces and a practical user experience.
+<a href="/compress-image" class="tool-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg border text-center">
 
-            </p>
+<div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mx-auto text-purple-600 text-2xl">
 
+<i class="fa-solid fa-minimize"></i>
 
-            <div class="features">
+</div>
 
+<h4 class="font-bold mt-3 text-sm">Compress Image</h4>
 
-              <div class="feature">
+<p class="text-xs text-gray-500 mt-1">Reduce image size</p>
 
-                <div
-                  class="feature-icon"
-                  style="background:#fff7e6;"
-                >
-                  ⚡
-                </div>
+</a>
 
-                <h3>
-                  Simple &amp; Accessible
-                </h3>
 
-                <p>
+<a href="/bg-remover" class="tool-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg border text-center">
 
-                  We aim to keep our tools straightforward,
-                  with clear interfaces and easy-to-understand
-                  workflows.
+<div class="w-14 h-14 bg-pink-100 rounded-xl flex items-center justify-center mx-auto text-pink-500 text-2xl">
 
-                </p>
+<i class="fa-solid fa-eraser"></i>
 
-              </div>
+</div>
 
+<h4 class="font-bold mt-3 text-sm">BG Remover</h4>
 
-              <div class="feature">
+<p class="text-xs text-gray-500 mt-1">Remove background</p>
 
-                <div
-                  class="feature-icon"
-                  style="background:#eff6ff;"
-                >
-                  📱
-                </div>
+</a>
 
-                <h3>
-                  Mobile Friendly
-                </h3>
 
-                <p>
+<a href="/qr-generator" class="tool-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg border text-center">
 
-                  The website is designed to work across
-                  smartphones, tablets and desktop devices.
+<div class="w-14 h-14 bg-indigo-100 rounded-xl flex items-center justify-center mx-auto text-indigo-600 text-2xl">
 
-                </p>
+<i class="fa-solid fa-qrcode"></i>
 
-              </div>
+</div>
 
+<h4 class="font-bold mt-3 text-sm">QR Generator</h4>
 
-              <div class="feature">
+<p class="text-xs text-gray-500 mt-1">Create QR codes</p>
 
-                <div
-                  class="feature-icon"
-                  style="background:#ecfdf3;"
-                >
-                  🔒
-                </div>
+</a>
 
-                <h3>
-                  Privacy Conscious
-                </h3>
 
-                <p>
+<a href="/image-resizer" class="tool-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg border text-center">
 
-                  Where a tool performs processing directly
-                  in the browser, files can be handled locally
-                  without requiring an account.
+<div class="w-14 h-14 bg-yellow-100 rounded-xl flex items-center justify-center mx-auto text-yellow-600 text-2xl">
 
-                </p>
+<i class="fa-solid fa-up-right-and-down-left-from-center"></i>
 
-              </div>
+</div>
 
+<h4 class="font-bold mt-3 text-sm">Image Resizer</h4>
 
-              <div class="feature">
+<p class="text-xs text-gray-500 mt-1">Resize images</p>
 
-                <div
-                  class="feature-icon"
-                  style="background:#f5f3ff;"
-                >
-                  🔄
-                </div>
+</a>
 
-                <h3>
-                  Continuous Improvement
-                </h3>
+</div>
 
-                <p>
 
-                  We continue improving existing tools and
-                  developing new utilities based on practical
-                  user needs.
+<!-- FINANCE TOOLS -->
 
-                </p>
+<h3 class="font-bold text-lg mb-4 mt-10">
 
-              </div>
+<i class="fa-solid fa-indian-rupee-sign text-green-600 mr-2"></i>
 
+Finance Tools
 
-            </div>
+</h3>
 
-          </section>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
 
 
+<a href="/sip-calculator" class="tool-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg border text-center">
 
-          <!-- PRIVACY -->
+<div class="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center mx-auto text-green-600 text-2xl">
 
-          <section class="privacy-box">
+<i class="fa-solid fa-chart-line"></i>
 
-            <div class="privacy-content">
+</div>
 
-              <div class="privacy-icon">
-                🔐
-              </div>
+<h4 class="font-bold mt-3 text-sm">SIP Calculator</h4>
 
-              <div>
+<p class="text-xs text-gray-500 mt-1">Estimate SIP returns</p>
 
-                <h2>
-                  Privacy &amp; Browser-Based Processing
-                </h2>
+</a>
 
-                <p>
 
-                  Some Antokia tools are designed to process
-                  files directly in your browser. When a tool
-                  works entirely on your device, the file does
-                  not need to be uploaded to a server for
-                  processing. The exact behavior can vary by
-                  tool, so users should review the relevant
-                  tool page for specific information.
+<a href="/emi-calculator" class="tool-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg border text-center">
 
-                </p>
+<div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mx-auto text-blue-600 text-2xl">
 
-              </div>
+<i class="fa-solid fa-calculator"></i>
 
-            </div>
+</div>
 
-          </section>
+<h4 class="font-bold mt-3 text-sm">EMI Calculator</h4>
 
+<p class="text-xs text-gray-500 mt-1">Calculate loan EMI</p>
 
+</a>
 
-          <!-- TEAM -->
 
-          <section class="team-card">
+<a href="/ppf-calculator" class="tool-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg border text-center">
 
-            <div class="team-inner">
+<div class="w-14 h-14 bg-yellow-100 rounded-xl flex items-center justify-center mx-auto text-yellow-600 text-2xl">
 
-              <div class="team-avatar">
-                B
-              </div>
+<i class="fa-solid fa-piggy-bank"></i>
 
-              <div>
+</div>
 
-                <span class="section-label">
-                  The Team
-                </span>
+<h4 class="font-bold mt-3 text-sm">PPF Calculator</h4>
 
-                <h2>
-                  Built by BHLC Team
-                </h2>
+<p class="text-xs text-gray-500 mt-1">Estimate PPF growth</p>
 
-                <p>
+</a>
 
-                  Antokia is a product by the
-                  <strong>BHLC Team</strong>,
-                  led by
-                  <strong>Amarnath Tiwari</strong>.
-                  The project is based in Mumbai, Maharashtra,
-                  India and is being developed with the goal of
-                  creating useful web-based utilities for users
-                  around the world.
+</div>
 
-                </p>
 
-              </div>
+<!-- OTHER TOOLS -->
 
-            </div>
+<h3 class="font-bold text-lg mb-4 mt-10">
 
-          </section>
+<i class="fa-solid fa-calculator text-green-500 mr-2"></i>
 
+Other Tools
 
+</h3>
 
-          <!-- CONTACT -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
 
-          <section class="contact">
 
-            <span class="section-label">
-              Get in Touch
-            </span>
+<a href="/age-calculator" class="tool-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg border text-center">
 
-            <h2 class="section-title">
-              Contact Antokia
-            </h2>
+<div class="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center mx-auto text-green-600 text-2xl">
 
-            <p class="section-text">
+<i class="fa-solid fa-cake-candles"></i>
 
-              Have a question, suggestion, feedback or business
-              enquiry? You can contact the Antokia team by email.
+</div>
 
-            </p>
+<h4 class="font-bold mt-3 text-sm">Age Calculator</h4>
 
+<p class="text-xs text-gray-500 mt-1">Calculate exact age</p>
 
-            <a
-              href="mailto:antokiatools@gmail.com"
-              class="email-button"
-            >
+</a>
 
-              ✉️
 
-              antokiatools@gmail.com
+<a href="/percentage" class="tool-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg border text-center">
 
-            </a>
+<div class="w-14 h-14 bg-yellow-100 rounded-xl flex items-center justify-center mx-auto text-yellow-600 text-2xl">
 
+<i class="fa-solid fa-percent"></i>
 
-            <p class="location">
-              📍 Mumbai, Maharashtra, India
-            </p>
+</div>
 
-          </section>
+<h4 class="font-bold mt-3 text-sm">% Calculator</h4>
 
+<p class="text-xs text-gray-500 mt-1">Calculate percentage</p>
 
+</a>
 
-          <!-- CTA -->
 
-          <section class="cta">
+<a href="/resume-maker" class="tool-card bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg border text-center">
 
-            <h2>
-              Explore Antokia
-            </h2>
+<div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mx-auto text-blue-600 text-2xl">
 
-            <p>
+<i class="fa-solid fa-file-lines"></i>
 
-              Explore our collection of online tools and find
-              simple solutions for your everyday digital tasks.
+</div>
 
-            </p>
+<h4 class="font-bold mt-3 text-sm">Resume Maker</h4>
 
-            <a
-              href="/"
-              class="cta-button"
-            >
+<p class="text-xs text-gray-500 mt-1">Create a professional resume</p>
 
-              Explore Tools
+</a>
 
-              <span>
-                →
-              </span>
+</div>
 
-            </a>
+</section>
 
-          </section>
 
+<!-- WHY ANTOKIA -->
 
-        </div>
+<section class="bg-white rounded-2xl p-6 md:p-8 mt-12 border shadow-sm">
 
-      </article>
+<h2 class="text-2xl font-bold text-center">
+Why Use Antokia?
+</h2>
 
-    </section>
+<p class="text-gray-600 text-center mt-2 max-w-2xl mx-auto">
+Antokia is designed to make common digital tasks simple and accessible.
+</p>
 
 
+<div class="grid md:grid-cols-3 gap-6 mt-8">
 
-    <!-- BOTTOM AD -->
+<div class="text-center">
 
-    <section class="container">
+<div class="text-3xl text-red-500">
+<i class="fa-solid fa-bolt"></i>
+</div>
 
-      <div
-        class="ad-box"
-        aria-label="Advertisement"
-      >
-        Advertisement
-      </div>
+<h3 class="font-bold mt-3">
+Simple to Use
+</h3>
 
-    </section>
+<p class="text-sm text-gray-600 mt-2">
+Our tools are designed with straightforward interfaces so users can complete common tasks without unnecessary steps.
+</p>
 
+</div>
 
-  </main>
 
+<div class="text-center">
 
+<div class="text-3xl text-green-600">
+<i class="fa-solid fa-laptop"></i>
+</div>
 
-  <!-- =========================================
-       FOOTER
-  ========================================== -->
+<h3 class="font-bold mt-3">
+Works Online
+</h3>
 
-  <footer class="footer">
+<p class="text-sm text-gray-600 mt-2">
+Access useful digital tools directly from your browser without installing a separate desktop application.
+</p>
 
-    <div class="container footer-inner">
+</div>
 
-      <div class="footer-top">
 
+<div class="text-center">
 
-        <div class="footer-brand">
+<div class="text-3xl text-blue-600">
+<i class="fa-solid fa-toolbox"></i>
+</div>
 
-          <a
-            href="/"
-            class="footer-logo"
-          >
-            Antokia
-          </a>
+<h3 class="font-bold mt-3">
+Useful Everyday Tools
+</h3>
 
-          <p class="footer-description">
+<p class="text-sm text-gray-600 mt-2">
+From PDF and image tasks to calculators and finance utilities, Antokia brings common tools together in one place.
+</p>
 
-            Free online tools for everyday digital tasks.
-            Made in Mumbai, India for users around the world.
+</div>
 
-          </p>
+</div>
 
-        </div>
+</section>
 
 
-        <nav
-          class="footer-links"
-          aria-label="Footer Navigation"
-        >
+<!-- HOW IT WORKS -->
 
-          <a href="/">
-            Home
-          </a>
+<section class="mt-12">
 
-          <a href="/about-us">
-            About Us
-          </a>
+<h2 class="text-2xl font-bold text-center">
+How to Use Antokia Tools
+</h2>
 
-          <a href="/privacy-policy">
-            Privacy Policy
-          </a>
+<p class="text-gray-600 text-center mt-2">
+Most tools can be used in three simple steps.
+</p>
 
-          <a href="/terms-and-conditions">
-            Terms &amp; Conditions
-          </a>
 
-          <a href="/contact-us">
-            Contact Us
-          </a>
+<div class="grid md:grid-cols-3 gap-5 mt-7">
 
-        </nav>
+<div class="bg-white border rounded-2xl p-6 text-center">
 
+<div class="w-10 h-10 rounded-full bg-red-100 text-red-600 flex items-center justify-center mx-auto font-bold">
+1
+</div>
 
-      </div>
+<h3 class="font-bold mt-4">
+Choose a Tool
+</h3>
 
+<p class="text-sm text-gray-600 mt-2">
+Select the tool that matches the task you want to complete.
+</p>
 
-      <div class="footer-bottom">
+</div>
 
-        <span>
-          © 2026 Antokia.com. All rights reserved.
-        </span>
 
-        <span>
-          Mumbai, Maharashtra, India
-        </span>
+<div class="bg-white border rounded-2xl p-6 text-center">
 
-      </div>
+<div class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center mx-auto font-bold">
+2
+</div>
 
-    </div>
+<h3 class="font-bold mt-4">
+Upload or Enter Information
+</h3>
 
-  </footer>
+<p class="text-sm text-gray-600 mt-2">
+Depending on the tool, upload your file or enter the required information.
+</p>
 
+</div>
+
+
+<div class="bg-white border rounded-2xl p-6 text-center">
+
+<div class="w-10 h-10 rounded-full bg-green-100 text-green-600 flex items-center justify-center mx-auto font-bold">
+3
+</div>
+
+<h3 class="font-bold mt-4">
+Get Your Result
+</h3>
+
+<p class="text-sm text-gray-600 mt-2">
+Follow the tool instructions to process your file or calculate the requested result.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- BLOG / GUIDES -->
+
+<section class="mt-12">
+
+<div class="flex justify-between items-center mb-5">
+
+<div>
+
+<h2 class="text-2xl font-bold">
+Latest Guides
+</h2>
+
+<p class="text-gray-600 text-sm mt-1">
+Helpful articles about PDF, images and online tools.
+</p>
+
+</div>
+
+<a href="/blog/"
+class="text-[#e5322d] font-semibold text-sm">
+View All →
+</a>
+
+</div>
+
+
+<div class="grid md:grid-cols-3 gap-5">
+
+
+<article class="bg-white border rounded-2xl p-6">
+
+<div class="text-red-500 text-2xl">
+<i class="fa-solid fa-image"></i>
+</div>
+
+<h3 class="font-bold mt-4">
+How to Compress an Image Without Losing Quality
+</h3>
+
+<p class="text-sm text-gray-600 mt-2">
+Learn the basic factors that affect image file size and quality when compressing images online.
+</p>
+
+<a href="/blog/"
+class="inline-block mt-4 text-sm text-blue-600 font-semibold">
+Read Guide →
+</a>
+
+</article>
+
+
+<article class="bg-white border rounded-2xl p-6">
+
+<div class="text-blue-500 text-2xl">
+<i class="fa-solid fa-file-pdf"></i>
+</div>
+
+<h3 class="font-bold mt-4">
+How to Convert Images to PDF
+</h3>
+
+<p class="text-sm text-gray-600 mt-2">
+Understand how JPG and other image files can be combined into a PDF document.
+</p>
+
+<a href="/blog/"
+class="inline-block mt-4 text-sm text-blue-600 font-semibold">
+Read Guide →
+</a>
+
+</article>
+
+
+<article class="bg-white border rounded-2xl p-6">
+
+<div class="text-green-500 text-2xl">
+<i class="fa-solid fa-calculator"></i>
+</div>
+
+<h3 class="font-bold mt-4">
+How Online Calculators Work
+</h3>
+
+<p class="text-sm text-gray-600 mt-2">
+Learn how common calculations such as EMI, SIP and percentage are calculated.
+</p>
+
+<a href="/blog/"
+class="inline-block mt-4 text-sm text-blue-600 font-semibold">
+Read Guide →
+</a>
+
+</article>
+
+</div>
+
+</section>
+
+
+<!-- ABOUT ANTOKIA -->
+
+<section class="bg-white border rounded-2xl p-6 md:p-8 mt-12">
+
+<h2 class="text-2xl font-bold">
+About Antokia
+</h2>
+
+<p class="text-gray-600 leading-7 mt-4">
+Antokia is an online collection of practical digital tools designed
+for everyday tasks. The website brings together PDF utilities,
+image tools, calculators, finance utilities and other simple online
+resources in one place.
+</p>
+
+<p class="text-gray-600 leading-7 mt-3">
+Our aim is to provide easy-to-understand tools and helpful guides
+that allow users to complete common digital tasks more conveniently.
+</p>
+
+<a href="/about"
+class="inline-block mt-4 text-[#e5322d] font-semibold">
+Learn More About Antokia →
+</a>
+
+</section>
+
+
+<!-- LIVE VISITORS -->
+
+<div class="bg-[#e5322d] text-white rounded-2xl p-5 mt-12 text-center shadow">
+
+<p class="text-sm">
+<i class="fa-solid fa-users mr-1"></i>
+Live Visitors
+</p>
+
+<p id="visitCounter" class="text-2xl font-bold mt-1">
+Loading...
+</p>
+
+</div>
+
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer class="text-center text-sm py-8 mt-8 bg-white border-t">
+
+<div class="max-w-6xl mx-auto px-4">
+
+<div class="flex flex-wrap justify-center gap-x-5 gap-y-3 mb-5">
+
+<a href="/blog/" class="underline text-blue-600">
+Blog
+</a>
+
+<a href="/about" class="underline text-blue-600">
+About
+</a>
+
+<a href="/contact" class="underline text-blue-600">
+Contact
+</a>
+
+<a href="/privacy" class="underline text-blue-600">
+Privacy
+</a>
+
+<a href="/terms" class="underline text-blue-600">
+Terms
+</a>
+
+<a href="https://www.linkedin.com/company/145247222/"
+target="_blank"
+rel="noopener noreferrer"
+class="underline text-blue-600">
+LinkedIn
+</a>
+
+<a href="https://www.instagram.com/antokia.insta"
+target="_blank"
+rel="noopener noreferrer"
+class="underline text-blue-600">
+Instagram
+</a>
+
+</div>
+
+<p class="text-gray-500">
+© 2026 Antokia.com - Made for India
+</p>
+
+</div>
+
+</footer>
+
+
+<script>
+
+/* Visitor Counter */
+
+fetch('https://api.countapi.xyz/hit/antokia.com/visits')
+
+.then(r => r.json())
+
+.then(d => {
+
+document.getElementById('visitCounter').innerText =
+d.value + " Visitors";
+
+})
+
+.catch(() => {
+
+let c = localStorage.getItem('antokia_count') || 0;
+
+c++;
+
+localStorage.setItem('antokia_count', c);
+
+document.getElementById('visitCounter').innerText =
+c + " Visitors";
+
+});
+
+
+/* Tool Search */
+
+function filterTools(value) {
+
+value = value.toLowerCase().trim();
+
+document.querySelectorAll('.tool-card').forEach(card => {
+
+let text = card.innerText.toLowerCase();
+
+card.style.display =
+text.includes(value) ? '' : 'none';
+
+});
+
+}
+
+
+/* Desktop Search */
+
+document.getElementById('searchTool')?.addEventListener(
+'input',
+function(e) {
+filterTools(e.target.value);
+}
+);
+
+
+/* Mobile / Main Search */
+
+document.getElementById('mobileSearchTool')?.addEventListener(
+'input',
+function(e) {
+filterTools(e.target.value);
+}
+);
+
+</script>
 
 </body>
 </html>
