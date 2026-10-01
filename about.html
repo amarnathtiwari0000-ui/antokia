@@ -1,5 +1,5 @@
+```html
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -8,32 +8,35 @@
 
   <title>About Us - Antokia | Free Online Tools</title>
 
-<meta
-name="description"
-content="Learn about Antokia.com, a free online tools platform offering PDF, image, finance and everyday digital tools. No signup required."
+  <meta
+    name="description"
+    content="Learn about Antokia.com, a free online tools platform offering PDF, image, finance and everyday digital tools. Fast, simple and easy to use."
+  >
 
->
+  <meta
+    name="keywords"
+    content="Antokia, free online tools, PDF tools, image tools, finance calculator, online calculator, free tools"
+  >
+
+  <meta name="author" content="Antokia - BHLC Team">
 
   <meta name="robots" content="index, follow, max-image-preview:large">
-
-  <meta name="author" content="Antokia.com - BHLC Team">
 
   <link rel="canonical" href="https://antokia.com/about-us">
 
   <!-- Open Graph -->
-
   <meta property="og:type" content="website">
-  <meta property="og:title" content="About Us - Antokia | Free Online Tools">
-  <meta property="og:description" content="Learn more about Antokia.com and our free online tools for PDF, images, finance and everyday digital tasks.">
+  <meta property="og:title" content="About Us - Antokia">
+  <meta
+    property="og:description"
+    content="Learn more about Antokia and our collection of free online tools."
+  >
   <meta property="og:url" content="https://antokia.com/about-us">
   <meta property="og:site_name" content="Antokia">
-
-  <!-- Theme -->
 
   <meta name="theme-color" content="#e5322d">
 
   <!-- Tailwind CSS -->
-
   <script src="https://cdn.tailwindcss.com"></script>
 
   <script>
@@ -42,13 +45,13 @@ content="Learn about Antokia.com, a free online tools platform offering PDF, ima
         extend: {
           colors: {
             antokia: {
-              red: '#e5322d',
-              dark: '#1f2937',
-              soft: '#fff5f4'
+              red: "#e5322d",
+              dark: "#111827",
+              light: "#fff5f4"
             }
           },
           boxShadow: {
-            soft: '0 10px 35px rgba(15, 23, 42, 0.07)'
+            soft: "0 10px 40px rgba(15, 23, 42, 0.07)"
           }
         }
       }
@@ -56,7 +59,6 @@ content="Learn about Antokia.com, a free online tools platform offering PDF, ima
   </script>
 
   <!-- Organization Schema -->
-
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -73,470 +75,1283 @@ content="Learn about Antokia.com, a free online tools platform offering PDF, ima
   }
   </script>
 
-  <!-- AboutPage Schema -->
-
+  <!-- About Page Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "AboutPage",
     "name": "About Antokia",
     "url": "https://antokia.com/about-us",
-    "description": "Information about Antokia.com, its mission and free online tools."
+    "description": "About Antokia.com, its mission, team and free online tools."
   }
   </script>
 
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .hero-grid {
+      background-image:
+        linear-gradient(rgba(229, 50, 45, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(229, 50, 45, 0.035) 1px, transparent 1px);
+      background-size: 30px 30px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, #e5322d, #f97316);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .tool-card {
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(15, 23, 42, 0.08);
+      border-color: #fecaca;
+    }
+
+    .feature-card {
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(15, 23, 42, 0.08);
+    }
+  </style>
 </head>
 
 <body class="bg-slate-50 text-slate-800 antialiased">
 
-  <!-- Header -->
+  <!-- =========================================
+       HEADER
+  ========================================== -->
 
   <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200">
+
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
+
       <div class="h-16 flex items-center justify-between">
 
-```
-    <a
-      href="/"
-      class="flex items-center gap-2"
-      aria-label="Antokia Home"
-    >
-      <span class="w-9 h-9 rounded-xl bg-[#e5322d] text-white flex items-center justify-center font-extrabold text-lg">
-        A
-      </span>
+        <!-- Logo -->
+        <a
+          href="/"
+          aria-label="Antokia Home"
+          class="flex items-center gap-2"
+        >
 
-      <span class="text-xl font-extrabold tracking-tight text-[#e5322d]">
-        Antokia
-      </span>
-    </a>
+          <span
+            class="w-9 h-9 rounded-xl bg-[#e5322d] text-white
+                   flex items-center justify-center
+                   font-black text-lg shadow-sm"
+          >
+            A
+          </span>
 
-    <a
-      href="/"
-      class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-[#e5322d] hover:bg-red-50 transition"
-    >
-      <span aria-hidden="true">←</span>
-      Home
-    </a>
+          <span class="text-xl font-extrabold tracking-tight text-[#e5322d]">
+            Antokia
+          </span>
 
-  </div>
-</div>
-```
+        </a>
+
+
+        <!-- Home -->
+        <a
+          href="/"
+          class="inline-flex items-center gap-2
+                 rounded-lg px-4 py-2
+                 text-sm font-semibold
+                 text-slate-700
+                 hover:bg-red-50
+                 hover:text-[#e5322d]
+                 transition"
+        >
+          <span aria-hidden="true">←</span>
+          Home
+        </a>
+
+      </div>
+
+    </div>
 
   </header>
 
+
+  <!-- =========================================
+       MAIN
+  ========================================== -->
+
   <main>
 
-```
-<!-- Hero -->
-<section class="bg-white border-b border-slate-200">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+    <!-- =======================================
+         HERO SECTION
+    ======================================== -->
 
-    <div class="max-w-3xl mx-auto text-center">
+    <section class="hero-grid bg-white border-b border-slate-200">
 
-      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-red-50 text-[#e5322d] text-xs font-bold mb-5">
-        <span class="w-2 h-2 rounded-full bg-[#e5322d]"></span>
-        Free Online Tools Platform
-      </div>
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
 
-      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900">
-        About Antokia
-      </h1>
+        <div class="py-14 sm:py-20 text-center">
 
-      <p class="mt-5 text-base sm:text-lg leading-8 text-slate-600">
-        Simple, useful and accessible online tools for everyday digital tasks.
-        No complicated software and no unnecessary signup.
-      </p>
+          <!-- Badge -->
+          <div
+            class="inline-flex items-center gap-2
+                   px-4 py-2
+                   rounded-full
+                   bg-red-50
+                   border border-red-100
+                   text-[#e5322d]
+                   text-xs sm:text-sm
+                   font-bold"
+          >
 
-    </div>
+            <span class="w-2 h-2 rounded-full bg-[#e5322d]"></span>
 
-  </div>
-</section>
+            Free Online Tools Platform
 
-
-<!-- Top Advertisement -->
-<section class="max-w-6xl mx-auto px-4 sm:px-6 pt-6" aria-label="Advertisement">
-  <div class="min-h-[90px] rounded-2xl bg-slate-100 border border-slate-200 flex items-center justify-center">
-    <span class="text-xs font-medium text-slate-400">
-      Advertisement
-    </span>
-  </div>
-</section>
-
-
-<!-- Main Content -->
-<section class="max-w-5xl mx-auto px-4 sm:px-6 py-8">
-
-  <article class="bg-white rounded-2xl border border-slate-200 shadow-soft overflow-hidden">
-
-    <div class="p-6 sm:p-8 lg:p-10">
-
-      <!-- Introduction -->
-      <div>
-        <p class="text-base leading-8 text-slate-700">
-          Welcome to <strong>Antokia.com</strong>, a free online tools platform
-          designed to make common digital tasks simpler and more accessible.
-          Our goal is to provide useful browser-based tools that people can
-          use without installing complicated software.
-        </p>
-
-        <p class="mt-5 text-base leading-8 text-slate-700">
-          Antokia was started in <strong>2026 in Mumbai, India</strong> with
-          the idea of making practical digital tools available to students,
-          professionals, creators, businesses and everyday internet users.
-          We focus on simple interfaces, fast loading pages and tools that are
-          easy to understand.
-        </p>
-      </div>
-
-
-      <!-- Mission -->
-      <div class="mt-10 rounded-2xl bg-[#fff7f6] border border-red-100 p-6">
-        <div class="flex gap-4">
-
-          <div class="shrink-0 w-11 h-11 rounded-xl bg-[#e5322d] text-white flex items-center justify-center text-xl">
-            🎯
           </div>
 
-          <div>
-            <h2 class="text-xl font-bold text-slate-900">
-              Our Mission
+
+          <!-- Heading -->
+          <h1
+            class="mt-6
+                   text-4xl sm:text-5xl lg:text-6xl
+                   font-black
+                   tracking-tight
+                   text-slate-900"
+          >
+            About
+            <span class="gradient-text">
+              Antokia
+            </span>
+          </h1>
+
+
+          <!-- Description -->
+          <p
+            class="max-w-2xl mx-auto
+                   mt-6
+                   text-base sm:text-lg
+                   leading-8
+                   text-slate-600"
+          >
+            Simple, useful and accessible online tools designed
+            to make everyday digital tasks easier.
+          </p>
+
+
+          <!-- Small stats -->
+          <div
+            class="mt-8
+                   flex flex-wrap
+                   justify-center
+                   gap-3"
+          >
+
+            <div
+              class="px-4 py-2
+                     bg-white
+                     border border-slate-200
+                     rounded-full
+                     text-xs sm:text-sm
+                     font-semibold
+                     text-slate-600"
+            >
+              ⚡ Fast & Simple
+            </div>
+
+            <div
+              class="px-4 py-2
+                     bg-white
+                     border border-slate-200
+                     rounded-full
+                     text-xs sm:text-sm
+                     font-semibold
+                     text-slate-600"
+            >
+              📱 Mobile Friendly
+            </div>
+
+            <div
+              class="px-4 py-2
+                     bg-white
+                     border border-slate-200
+                     rounded-full
+                     text-xs sm:text-sm
+                     font-semibold
+                     text-slate-600"
+            >
+              🌎 Made for Everyone
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =======================================
+         TOP ADVERTISEMENT
+    ======================================== -->
+
+    <section
+      class="max-w-6xl mx-auto px-4 sm:px-6 pt-6"
+      aria-label="Advertisement"
+    >
+
+      <div
+        class="min-h-[90px]
+               rounded-2xl
+               bg-slate-100
+               border border-slate-200
+               flex items-center justify-center"
+      >
+
+        <span class="text-xs font-medium text-slate-400">
+          Advertisement
+        </span>
+
+      </div>
+
+    </section>
+
+
+    <!-- =======================================
+         ABOUT CONTENT
+    ======================================== -->
+
+    <section class="max-w-5xl mx-auto px-4 sm:px-6 py-8">
+
+      <article
+        class="bg-white
+               rounded-3xl
+               border border-slate-200
+               shadow-soft
+               overflow-hidden"
+      >
+
+        <div class="p-6 sm:p-8 lg:p-10">
+
+
+          <!-- =================================
+               INTRODUCTION
+          ================================== -->
+
+          <section>
+
+            <div
+              class="flex items-center gap-3 mb-5"
+            >
+
+              <div
+                class="w-10 h-10
+                       rounded-xl
+                       bg-red-50
+                       text-[#e5322d]
+                       flex items-center justify-center
+                       text-lg"
+              >
+                👋
+              </div>
+
+              <h2 class="text-2xl font-bold text-slate-900">
+                Welcome to Antokia
+              </h2>
+
+            </div>
+
+
+            <p class="text-base leading-8 text-slate-700">
+
+              Welcome to <strong>Antokia.com</strong>, a free online
+              tools platform created to make common digital tasks
+              simpler and more accessible.
+
+              Our goal is to provide practical browser-based tools
+              with clean interfaces that are easy to understand and
+              convenient to use.
+
+            </p>
+
+
+            <p class="mt-5 text-base leading-8 text-slate-700">
+
+              Antokia was started in
+              <strong>2026 in Mumbai, India</strong>
+              with the idea of creating useful digital utilities
+              for students, professionals, creators, businesses
+              and everyday internet users around the world.
+
+            </p>
+
+          </section>
+
+
+          <!-- =================================
+               MISSION
+          ================================== -->
+
+          <section
+            class="mt-10
+                   rounded-2xl
+                   bg-gradient-to-br
+                   from-red-50
+                   to-orange-50
+                   border border-red-100
+                   p-6 sm:p-7"
+          >
+
+            <div class="flex gap-4">
+
+              <div
+                class="shrink-0
+                       w-12 h-12
+                       rounded-xl
+                       bg-[#e5322d]
+                       text-white
+                       flex items-center justify-center
+                       text-xl
+                       shadow-sm"
+              >
+                🎯
+              </div>
+
+
+              <div>
+
+                <h2 class="text-xl font-bold text-slate-900">
+                  Our Mission
+                </h2>
+
+                <p
+                  class="mt-2
+                         text-sm sm:text-base
+                         leading-7
+                         text-slate-600"
+                >
+                  Our mission is to make useful online utilities
+                  easier to access. We focus on straightforward
+                  tools that help people complete everyday digital
+                  tasks from a web browser.
+                </p>
+
+              </div>
+
+            </div>
+
+          </section>
+
+
+          <!-- =================================
+               OUR TOOLS
+          ================================== -->
+
+          <section class="mt-14">
+
+            <div class="max-w-2xl">
+
+              <span
+                class="text-xs
+                       font-bold
+                       uppercase
+                       tracking-wider
+                       text-[#e5322d]"
+              >
+                What We Offer
+              </span>
+
+              <h2
+                class="mt-2
+                       text-2xl sm:text-3xl
+                       font-extrabold
+                       text-slate-900"
+              >
+                Useful Tools for Everyday Tasks
+              </h2>
+
+              <p
+                class="mt-3
+                       text-sm sm:text-base
+                       leading-7
+                       text-slate-600"
+              >
+                Antokia provides a growing collection of online
+                utilities covering documents, images, finance and
+                everyday calculations.
+              </p>
+
+            </div>
+
+
+            <div
+              class="grid sm:grid-cols-2
+                     gap-4
+                     mt-7"
+            >
+
+              <!-- PDF TOOLS -->
+
+              <div
+                class="tool-card
+                       rounded-2xl
+                       border border-slate-200
+                       bg-slate-50
+                       p-5"
+              >
+
+                <div class="flex gap-4">
+
+                  <div
+                    class="w-12 h-12
+                           shrink-0
+                           rounded-xl
+                           bg-red-100
+                           flex items-center justify-center
+                           text-xl"
+                  >
+                    📄
+                  </div>
+
+                  <div>
+
+                    <h3
+                      class="font-bold
+                             text-slate-900"
+                    >
+                      PDF Tools
+                    </h3>
+
+                    <p
+                      class="mt-2
+                             text-sm
+                             leading-6
+                             text-slate-600"
+                    >
+                      Image to PDF, Word to PDF, PDF to Word,
+                      PDF to Excel, Merge PDF, Compress PDF
+                      and Remove Pages.
+                    </p>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <!-- IMAGE TOOLS -->
+
+              <div
+                class="tool-card
+                       rounded-2xl
+                       border border-slate-200
+                       bg-slate-50
+                       p-5"
+              >
+
+                <div class="flex gap-4">
+
+                  <div
+                    class="w-12 h-12
+                           shrink-0
+                           rounded-xl
+                           bg-blue-100
+                           flex items-center justify-center
+                           text-xl"
+                  >
+                    🖼️
+                  </div>
+
+                  <div>
+
+                    <h3
+                      class="font-bold
+                             text-slate-900"
+                    >
+                      Image Tools
+                    </h3>
+
+                    <p
+                      class="mt-2
+                             text-sm
+                             leading-6
+                             text-slate-600"
+                    >
+                      Image Compressor, Background Remover,
+                      Image Resizer and Format Converter for
+                      common image tasks.
+                    </p>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <!-- FINANCE TOOLS -->
+
+              <div
+                class="tool-card
+                       rounded-2xl
+                       border border-slate-200
+                       bg-slate-50
+                       p-5"
+              >
+
+                <div class="flex gap-4">
+
+                  <div
+                    class="w-12 h-12
+                           shrink-0
+                           rounded-xl
+                           bg-emerald-100
+                           flex items-center justify-center
+                           text-xl"
+                  >
+                    💰
+                  </div>
+
+                  <div>
+
+                    <h3
+                      class="font-bold
+                             text-slate-900"
+                    >
+                      Finance Tools
+                    </h3>
+
+                    <p
+                      class="mt-2
+                             text-sm
+                             leading-6
+                             text-slate-600"
+                    >
+                      SIP Calculator for mutual funds,
+                      EMI Calculator for home and personal
+                      loans, and PPF Calculator.
+                    </p>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <!-- DAILY TOOLS -->
+
+              <div
+                class="tool-card
+                       rounded-2xl
+                       border border-slate-200
+                       bg-slate-50
+                       p-5"
+              >
+
+                <div class="flex gap-4">
+
+                  <div
+                    class="w-12 h-12
+                           shrink-0
+                           rounded-xl
+                           bg-violet-100
+                           flex items-center justify-center
+                           text-xl"
+                  >
+                    🧮
+                  </div>
+
+                  <div>
+
+                    <h3
+                      class="font-bold
+                             text-slate-900"
+                    >
+                      Daily Utility Tools
+                    </h3>
+
+                    <p
+                      class="mt-2
+                             text-sm
+                             leading-6
+                             text-slate-600"
+                    >
+                      QR Code Generator, Age Calculator,
+                      Percentage Calculator and Professional
+                      Resume Maker.
+                    </p>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </section>
+
+
+          <!-- =================================
+               WHY ANTOKIA
+          ================================== -->
+
+          <section class="mt-14">
+
+            <div class="text-center max-w-2xl mx-auto">
+
+              <span
+                class="text-xs
+                       font-bold
+                       uppercase
+                       tracking-wider
+                       text-[#e5322d]"
+              >
+                Our Approach
+              </span>
+
+              <h2
+                class="mt-2
+                       text-2xl sm:text-3xl
+                       font-extrabold
+                       text-slate-900"
+              >
+                What We Focus On
+              </h2>
+
+              <p
+                class="mt-3
+                       text-sm sm:text-base
+                       leading-7
+                       text-slate-600"
+              >
+                We focus on building useful tools with simple
+                interfaces and a practical user experience.
+              </p>
+
+            </div>
+
+
+            <div
+              class="grid sm:grid-cols-2
+                     gap-4
+                     mt-7"
+            >
+
+              <!-- Feature 1 -->
+
+              <div
+                class="feature-card
+                       rounded-2xl
+                       border border-slate-200
+                       bg-white
+                       p-6"
+              >
+
+                <div
+                  class="w-11 h-11
+                         rounded-xl
+                         bg-amber-50
+                         flex items-center justify-center
+                         text-xl"
+                >
+                  ⚡
+                </div>
+
+                <h3
+                  class="mt-4
+                         font-bold
+                         text-slate-900"
+                >
+                  Simple & Accessible
+                </h3>
+
+                <p
+                  class="mt-2
+                         text-sm
+                         leading-6
+                         text-slate-600"
+                >
+                  We aim to keep our tools straightforward,
+                  with clear interfaces and easy-to-understand
+                  workflows.
+                </p>
+
+              </div>
+
+
+              <!-- Feature 2 -->
+
+              <div
+                class="feature-card
+                       rounded-2xl
+                       border border-slate-200
+                       bg-white
+                       p-6"
+              >
+
+                <div
+                  class="w-11 h-11
+                         rounded-xl
+                         bg-blue-50
+                         flex items-center justify-center
+                         text-xl"
+                >
+                  📱
+                </div>
+
+                <h3
+                  class="mt-4
+                         font-bold
+                         text-slate-900"
+                >
+                  Mobile Friendly
+                </h3>
+
+                <p
+                  class="mt-2
+                         text-sm
+                         leading-6
+                         text-slate-600"
+                >
+                  The website is designed to work across
+                  smartphones, tablets and desktop devices.
+                </p>
+
+              </div>
+
+
+              <!-- Feature 3 -->
+
+              <div
+                class="feature-card
+                       rounded-2xl
+                       border border-slate-200
+                       bg-white
+                       p-6"
+              >
+
+                <div
+                  class="w-11 h-11
+                         rounded-xl
+                         bg-emerald-50
+                         flex items-center justify-center
+                         text-xl"
+                >
+                  🔒
+                </div>
+
+                <h3
+                  class="mt-4
+                         font-bold
+                         text-slate-900"
+                >
+                  Privacy Conscious
+                </h3>
+
+                <p
+                  class="mt-2
+                         text-sm
+                         leading-6
+                         text-slate-600"
+                >
+                  Where a tool performs processing directly
+                  in the browser, files can be handled locally
+                  without requiring an account.
+                </p>
+
+              </div>
+
+
+              <!-- Feature 4 -->
+
+              <div
+                class="feature-card
+                       rounded-2xl
+                       border border-slate-200
+                       bg-white
+                       p-6"
+              >
+
+                <div
+                  class="w-11 h-11
+                         rounded-xl
+                         bg-violet-50
+                         flex items-center justify-center
+                         text-xl"
+                >
+                  🔄
+                </div>
+
+                <h3
+                  class="mt-4
+                         font-bold
+                         text-slate-900"
+                >
+                  Continuous Improvement
+                </h3>
+
+                <p
+                  class="mt-2
+                         text-sm
+                         leading-6
+                         text-slate-600"
+                >
+                  We continue improving existing tools and
+                  developing new utilities based on practical
+                  user needs.
+                </p>
+
+              </div>
+
+            </div>
+
+          </section>
+
+
+          <!-- =================================
+               PRIVACY
+          ================================== -->
+
+          <section
+            class="mt-14
+                   rounded-2xl
+                   bg-slate-900
+                   p-6 sm:p-8
+                   text-white"
+          >
+
+            <div class="flex gap-4">
+
+              <div
+                class="w-11 h-11
+                       shrink-0
+                       rounded-xl
+                       bg-white/10
+                       flex items-center justify-center
+                       text-xl"
+              >
+                🔐
+              </div>
+
+              <div>
+
+                <h2 class="text-xl font-bold">
+                  Privacy & Browser-Based Processing
+                </h2>
+
+                <p
+                  class="mt-3
+                         text-sm
+                         leading-7
+                         text-slate-300"
+                >
+                  Some Antokia tools are designed to process files
+                  directly in your browser. When a tool works
+                  entirely on your device, the file does not need
+                  to be uploaded to a server for processing.
+                  The exact behavior can vary by tool, so users
+                  should review the relevant tool page for
+                  specific information.
+                </p>
+
+              </div>
+
+            </div>
+
+          </section>
+
+
+          <!-- =================================
+               TEAM
+          ================================== -->
+
+          <section class="mt-14">
+
+            <div
+              class="rounded-2xl
+                     border border-slate-200
+                     bg-slate-50
+                     p-6 sm:p-8"
+            >
+
+              <div class="flex items-start gap-4">
+
+                <div
+                  class="w-12 h-12
+                         shrink-0
+                         rounded-xl
+                         bg-[#e5322d]
+                         text-white
+                         flex items-center justify-center
+                         font-bold"
+                >
+                  B
+                </div>
+
+                <div>
+
+                  <span
+                    class="text-xs
+                           font-bold
+                           uppercase
+                           tracking-wider
+                           text-[#e5322d]"
+                  >
+                    The Team
+                  </span>
+
+                  <h2
+                    class="mt-1
+                           text-2xl
+                           font-bold
+                           text-slate-900"
+                  >
+                    Built by BHLC Team
+                  </h2>
+
+                  <p
+                    class="mt-3
+                           text-sm sm:text-base
+                           leading-7
+                           text-slate-600"
+                  >
+                    Antokia is a product by the
+                    <strong class="text-slate-900">
+                      BHLC Team
+                    </strong>,
+                    led by
+                    <strong class="text-slate-900">
+                      Amarnath Tiwari
+                    </strong>.
+                    The project is based in Mumbai,
+                    Maharashtra, India and is being developed
+                    with the goal of creating useful web-based
+                    utilities for users around the world.
+                  </p>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </section>
+
+
+          <!-- =================================
+               CONTACT
+          ================================== -->
+
+          <section class="mt-14">
+
+            <div
+              class="border-t
+                     border-slate-200
+                     pt-10"
+            >
+
+              <span
+                class="text-xs
+                       font-bold
+                       uppercase
+                       tracking-wider
+                       text-[#e5322d]"
+              >
+                Get in Touch
+              </span>
+
+              <h2
+                class="mt-2
+                       text-2xl sm:text-3xl
+                       font-extrabold
+                       text-slate-900"
+              >
+                Contact Antokia
+              </h2>
+
+              <p
+                class="mt-3
+                       max-w-2xl
+                       text-sm sm:text-base
+                       leading-7
+                       text-slate-600"
+              >
+                Have a question, suggestion, feedback or
+                business enquiry? You can contact the Antokia
+                team by email.
+              </p>
+
+
+              <!-- Email -->
+              <a
+                href="mailto:antokiatools@gmail.com"
+                class="inline-flex
+                       items-center
+                       gap-3
+                       mt-6
+                       px-5 py-3
+                       rounded-xl
+                       bg-red-50
+                       border border-red-100
+                       text-[#e5322d]
+                       hover:bg-red-100
+                       transition"
+              >
+
+                <span class="text-lg">
+                  ✉️
+                </span>
+
+                <span class="text-sm font-bold">
+                  antokiatools@gmail.com
+                </span>
+
+              </a>
+
+
+              <p class="mt-4 text-xs text-slate-500">
+                Mumbai, Maharashtra, India
+              </p>
+
+            </div>
+
+          </section>
+
+
+          <!-- =================================
+               LAST CTA
+          ================================== -->
+
+          <section
+            class="mt-14
+                   rounded-2xl
+                   bg-gradient-to-r
+                   from-[#e5322d]
+                   to-[#f97316]
+                   p-7 sm:p-9
+                   text-white
+                   text-center"
+          >
+
+            <h2
+              class="text-2xl sm:text-3xl
+                     font-extrabold"
+            >
+              Explore Antokia
             </h2>
 
-            <p class="mt-2 text-sm sm:text-base leading-7 text-slate-600">
-              We want to make useful online utilities easier to access.
-              Antokia focuses on straightforward tools that help users
-              complete everyday tasks quickly from a web browser.
+            <p
+              class="mt-3
+                     max-w-xl
+                     mx-auto
+                     text-sm sm:text-base
+                     leading-7
+                     text-white/90"
+            >
+              Explore our collection of online tools and find
+              simple solutions for your everyday digital tasks.
             </p>
-          </div>
+
+            <a
+              href="/"
+              class="inline-flex
+                     items-center
+                     gap-2
+                     mt-6
+                     px-6 py-3
+                     rounded-xl
+                     bg-white
+                     text-[#e5322d]
+                     text-sm
+                     font-bold
+                     shadow-sm
+                     hover:bg-slate-50
+                     transition"
+            >
+              Explore Tools
+              <span aria-hidden="true">→</span>
+            </a>
+
+          </section>
+
 
         </div>
+
+      </article>
+
+    </section>
+
+
+    <!-- =======================================
+         BOTTOM ADVERTISEMENT
+    ======================================== -->
+
+    <section
+      class="max-w-6xl mx-auto px-4 sm:px-6 pb-8"
+      aria-label="Advertisement"
+    >
+
+      <div
+        class="min-h-[90px]
+               rounded-2xl
+               bg-slate-100
+               border border-slate-200
+               flex items-center justify-center"
+      >
+
+        <span class="text-xs font-medium text-slate-400">
+          Advertisement
+        </span>
+
       </div>
 
-
-      <!-- Tools -->
-      <section class="mt-12">
-
-        <div class="text-center max-w-2xl mx-auto">
-          <h2 class="text-2xl sm:text-3xl font-bold text-slate-900">
-            Our Online Tools
-          </h2>
-
-          <p class="mt-3 text-sm sm:text-base leading-7 text-slate-600">
-            Antokia currently provides a growing collection of free online
-            tools across PDF, image, finance and everyday utility categories.
-          </p>
-        </div>
-
-
-        <div class="grid sm:grid-cols-2 gap-4 mt-7">
-
-          <!-- PDF -->
-          <div class="group rounded-2xl border border-slate-200 bg-slate-50 p-5 hover:bg-white hover:shadow-md transition">
-
-            <div class="flex items-start gap-4">
-
-              <div class="w-11 h-11 shrink-0 rounded-xl bg-red-100 flex items-center justify-center text-xl">
-                📄
-              </div>
-
-              <div>
-                <h3 class="font-bold text-slate-900">
-                  PDF Tools
-                </h3>
-
-                <p class="mt-2 text-sm leading-6 text-slate-600">
-                  Image to PDF, Word to PDF, PDF to Word, PDF to Excel,
-                  Merge PDF, Compress PDF and Remove Pages.
-                </p>
-              </div>
-
-            </div>
-          </div>
-
-
-          <!-- Image -->
-          <div class="group rounded-2xl border border-slate-200 bg-slate-50 p-5 hover:bg-white hover:shadow-md transition">
-
-            <div class="flex items-start gap-4">
-
-              <div class="w-11 h-11 shrink-0 rounded-xl bg-blue-100 flex items-center justify-center text-xl">
-                🖼️
-              </div>
-
-              <div>
-                <h3 class="font-bold text-slate-900">
-                  Image Tools
-                </h3>
-
-                <p class="mt-2 text-sm leading-6 text-slate-600">
-                  Image Compressor, Background Remover, Image Resizer and
-                  Format Converter for common image tasks.
-                </p>
-              </div>
-
-            </div>
-          </div>
-
-
-          <!-- Finance -->
-          <div class="group rounded-2xl border border-slate-200 bg-slate-50 p-5 hover:bg-white hover:shadow-md transition">
-
-            <div class="flex items-start gap-4">
-
-              <div class="w-11 h-11 shrink-0 rounded-xl bg-emerald-100 flex items-center justify-center text-xl">
-                💰
-              </div>
-
-              <div>
-                <h3 class="font-bold text-slate-900">
-                  Finance Tools
-                </h3>
-
-                <p class="mt-2 text-sm leading-6 text-slate-600">
-                  SIP Calculator for mutual funds, EMI Calculator for
-                  home and personal loans, and PPF Calculator.
-                </p>
-              </div>
-
-            </div>
-          </div>
-
-
-          <!-- Daily -->
-          <div class="group rounded-2xl border border-slate-200 bg-slate-50 p-5 hover:bg-white hover:shadow-md transition">
-
-            <div class="flex items-start gap-4">
-
-              <div class="w-11 h-11 shrink-0 rounded-xl bg-violet-100 flex items-center justify-center text-xl">
-                🧮
-              </div>
-
-              <div>
-                <h3 class="font-bold text-slate-900">
-                  Daily Utility Tools
-                </h3>
-
-                <p class="mt-2 text-sm leading-6 text-slate-600">
-                  QR Code Generator, Age Calculator, Percentage Calculator
-                  and Professional Resume Maker.
-                </p>
-              </div>
-
-            </div>
-          </div>
-
-        </div>
-
-      </section>
-
-
-      <!-- Why Antokia -->
-      <section class="mt-12">
-
-        <h2 class="text-2xl font-bold text-slate-900">
-          What We Focus On
-        </h2>
-
-        <div class="grid sm:grid-cols-2 gap-4 mt-6">
-
-          <div class="p-5 rounded-2xl border border-slate-200">
-            <h3 class="font-bold text-slate-900">
-              ⚡ Simple & Accessible
-            </h3>
-
-            <p class="mt-2 text-sm leading-6 text-slate-600">
-              We aim to keep our tools easy to use, with clear interfaces
-              and straightforward workflows.
-            </p>
-          </div>
-
-
-          <div class="p-5 rounded-2xl border border-slate-200">
-            <h3 class="font-bold text-slate-900">
-              📱 Mobile Friendly
-            </h3>
-
-            <p class="mt-2 text-sm leading-6 text-slate-600">
-              Our website is designed to work across smartphones, tablets
-              and desktop devices.
-            </p>
-          </div>
-
-
-          <div class="p-5 rounded-2xl border border-slate-200">
-            <h3 class="font-bold text-slate-900">
-              🔒 Privacy Conscious
-            </h3>
-
-            <p class="mt-2 text-sm leading-6 text-slate-600">
-              Where processing is performed directly in the browser, files
-              can be handled locally without requiring an account.
-            </p>
-          </div>
-
-
-          <div class="p-5 rounded-2xl border border-slate-200">
-            <h3 class="font-bold text-slate-900">
-              🔄 Continuous Improvement
-            </h3>
-
-            <p class="mt-2 text-sm leading-6 text-slate-600">
-              We continue improving existing tools and developing new
-              utilities based on practical user needs.
-            </p>
-          </div>
-
-        </div>
-
-      </section>
-
-
-      <!-- Privacy note -->
-      <section class="mt-12 rounded-2xl bg-slate-900 text-white p-6 sm:p-7">
-
-        <h2 class="text-xl font-bold">
-          Privacy & Browser-Based Processing
-        </h2>
-
-        <p class="mt-3 text-sm leading-7 text-slate-300">
-          Some Antokia tools are designed to process files directly in your
-          browser. When a tool works entirely on your device, the file does
-          not need to be uploaded to a server for processing. The exact
-          behavior can vary by tool, so users should review the relevant
-          tool page for specific information.
-        </p>
-
-      </section>
-
-
-      <!-- Team -->
-      <section class="mt-12">
-
-        <h2 class="text-2xl font-bold text-slate-900">
-          About the Team
-        </h2>
-
-        <p class="mt-4 text-sm sm:text-base leading-7 text-slate-600">
-          Antokia is a product by the <strong class="text-slate-900">BHLC Team</strong>,
-          led by <strong class="text-slate-900">Amarnath Tiwari</strong>.
-          The project is based in Mumbai, Maharashtra, India and is built
-          with the aim of creating useful web-based utilities for users
-          around the world.
-        </p>
-
-      </section>
-
-
-      <!-- Contact -->
-      <section class="mt-12 pt-8 border-t border-slate-200">
-
-        <h2 class="text-2xl font-bold text-slate-900">
-          Contact Antokia
-        </h2>
-
-        <p class="mt-3 text-sm leading-7 text-slate-600">
-          For questions, suggestions, feedback or business-related
-          enquiries, you can contact our team by email.
-        </p>
-
-        <div class="mt-5 inline-flex items-center gap-3 px-4 py-3 rounded-xl bg-slate-50 border border-slate-200">
-          <span class="text-lg">✉️</span>
-
-          <a
-            href="mailto:antokiatools@gmail.com"
-            class="text-sm font-semibold text-[#e5322d] hover:underline"
-          >
-            antokiatools@gmail.com
-          </a>
-        </div>
-
-        <p class="mt-4 text-xs text-slate-500">
-          Mumbai, Maharashtra, India
-        </p>
-
-      </section>
-
-    </div>
-
-  </article>
-
-</section>
-
-
-<!-- Bottom Advertisement -->
-<section class="max-w-6xl mx-auto px-4 sm:px-6 pb-8" aria-label="Advertisement">
-
-  <div class="min-h-[90px] rounded-2xl bg-slate-100 border border-slate-200 flex items-center justify-center">
-    <span class="text-xs font-medium text-slate-400">
-      Advertisement
-    </span>
-  </div>
-
-</section>
-```
+    </section>
 
   </main>
 
-  <!-- Footer -->
 
-  <footer class="bg-slate-900 text-slate-300">
+  <!-- =========================================
+       FOOTER
+  ========================================== -->
 
-```
-<div class="max-w-6xl mx-auto px-4 sm:px-6 py-10">
+  <footer class="bg-slate-950 text-slate-300">
 
-  <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-10">
 
-    <div>
-      <a
-        href="/"
-        class="text-xl font-extrabold text-white"
+      <div
+        class="flex flex-col
+               md:flex-row
+               md:items-center
+               md:justify-between
+               gap-7"
       >
-        Antokia
-      </a>
 
-      <p class="mt-2 text-xs text-slate-400">
-        Free online tools for everyday digital tasks.
-      </p>
+        <!-- Brand -->
+
+        <div>
+
+          <a
+            href="/"
+            class="text-2xl
+                   font-black
+                   text-white"
+          >
+            Antokia
+          </a>
+
+          <p
+            class="mt-2
+                   max-w-sm
+                   text-xs sm:text-sm
+                   leading-6
+                   text-slate-400"
+          >
+            Free online tools for everyday digital tasks.
+            Made in Mumbai, India for users around the world.
+          </p>
+
+        </div>
+
+
+        <!-- Footer Links -->
+
+        <nav
+          aria-label="Footer navigation"
+          class="flex flex-wrap
+                 gap-x-5
+                 gap-y-3
+                 text-xs sm:text-sm"
+        >
+
+          <a
+            href="/"
+            class="hover:text-white transition"
+          >
+            Home
+          </a>
+
+          <a
+            href="/about-us"
+            class="hover:text-white transition"
+          >
+            About Us
+          </a>
+
+          <a
+            href="/privacy-policy"
+            class="hover:text-white transition"
+          >
+            Privacy Policy
+          </a>
+
+          <a
+            href="/terms-and-conditions"
+            class="hover:text-white transition"
+          >
+            Terms & Conditions
+          </a>
+
+          <a
+            href="/contact-us"
+            class="hover:text-white transition"
+          >
+            Contact Us
+          </a>
+
+        </nav>
+
+      </div>
+
+
+      <!-- Copyright -->
+
+      <div
+        class="border-t
+               border-slate-800
+               mt-8
+               pt-6
+               flex flex-col
+               sm:flex-row
+               gap-2
+               sm:items-center
+               sm:justify-between"
+      >
+
+        <p class="text-xs text-slate-500">
+          © 2026 Antokia.com. All rights reserved.
+        </p>
+
+        <p class="text-xs text-slate-500">
+          Mumbai, Maharashtra, India
+        </p>
+
+      </div>
+
     </div>
-
-    <div class="flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs">
-
-      <a href="/" class="hover:text-white transition">
-        Home
-      </a>
-
-      <a href="/about-us" class="hover:text-white transition">
-        About Us
-      </a>
-
-      <a href="/privacy-policy" class="hover:text-white transition">
-        Privacy Policy
-      </a>
-
-      <a href="/terms-and-conditions" class="hover:text-white transition">
-        Terms & Conditions
-      </a>
-
-      <a href="/contact-us" class="hover:text-white transition">
-        Contact Us
-      </a>
-
-    </div>
-
-  </div>
-
-  <div class="border-t border-slate-700 mt-8 pt-5 text-center">
-
-    <p class="text-xs text-slate-500">
-      © 2026 Antokia.com. All rights reserved.
-    </p>
-
-  </div>
-
-</div>
-```
 
   </footer>
 
+
 </body>
 </html>
+```
