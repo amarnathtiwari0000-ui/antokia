@@ -1,6 +1,10 @@
 {
   "cleanUrls": true,
+  "outputDirectory": ".",
   "rewrites": [
-    { "source": "/tools/:tool", "destination": "/tools/:tool/index.html" }
+    {
+      "source": "/tools/:tool",
+      "destination": "/tools/:tool/index.html"
+    }
   ]
 }
