@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Discount Calculator - Calculate Discount Online | Antokia</title>
+
+<meta name="description" content="Use Antokia's free Discount Calculator to calculate discount amount and final price instantly. Enter the original price and discount percentage to get the result.">
+
+<meta name="keywords" content="discount calculator, calculate discount, discount calculator online, discount percentage calculator, sale price calculator, discount amount calculator">
+
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://antokia.com/calculate-discount.html">
+
+<meta property="og:title" content="Discount Calculator - Calculate Discount Online | Antokia">
+<meta property="og:description" content="Calculate discount amount and final price instantly with Antokia's free online Discount Calculator.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://antokia.com/calculate-discount.html">
+
+<link rel="stylesheet" href="/styles.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #f5f5fa;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #222;
+}
+
+.antokia-red {
+    color: #e5322d;
+}
+
+.btn-red {
+    background: #e5322d;
+    color: white;
+}
+
+.btn-red:hover {
+    background: #c92521;
+}
+
+.soft-card {
+    background: #fff;
+    border: 1px solid #e7e7ed;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0,0,0,.05);
+}
+
+.ad-box {
+    min-height: 90px;
+    border: 1px dashed #d5d5dd;
+    border-radius: 12px;
+    background: #fafafd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-size: 13px;
+}
+
+.tool-input {
+    width: 100%;
+    border: 1px solid #d8d8df;
+    border-radius: 10px;
+    padding: 13px 14px;
+    font-size: 16px;
+    outline: none;
+}
+
+.tool-input:focus {
+    border-color: #e5322d;
+    box-shadow: 0 0 0 3px rgba(229,50,45,.08);
+}
+
+.result-box {
+    display: none;
+    background: #fff5f5;
+    border: 1px solid #ffd7d5;
+    border-radius: 14px;
+    padding: 22px;
+    margin-top: 22px;
+}
+
+.result-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 13px 0;
+    border-bottom: 1px solid #f0dcdc;
+}
+
+.result-row:last-child {
+    border-bottom: none;
+}
+
+.result-label {
+    color: #666;
+}
+
+.result-value {
+    font-weight: 700;
+}
+
+.final-price {
+    color: #e5322d;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.error-message {
+    display: none;
+    color: #e5322d;
+    background: #fff5f5;
+    border: 1px solid #ffd7d5;
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.article-content {
+    color: #444;
+    line-height: 1.85;
+    font-size: 16px;
+}
+
+.article-content h2 {
+    color: #222;
+    font-size: 25px;
+    font-weight: 700;
+    margin-top: 34px;
+    margin-bottom: 14px;
+}
+
+.article-content p {
+    margin-bottom: 17px;
+}
+
+.article-content ul,
+.article-content ol {
+    margin: 12px 0 20px 24px;
+}
+
+.article-content li {
+    margin-bottom: 9px;
+}
+
+.formula-box {
+    background: #fff5f5;
+    border-left: 4px solid #e5322d;
+    border-radius: 12px;
+    padding: 18px;
+    margin: 20px 0;
+}
+
+.example-box {
+    background: #f5f8ff;
+    border: 1px solid #dce6ff;
+    border-radius: 14px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.info-box {
+    background: #f0f9ff;
+    border: 1px solid #d7efff;
+    border-radius: 14px;
+    padding: 18px;
+}
+
+.tool-card {
+    transition: .2s ease;
+}
+
+.tool-card:hover {
+    transform: translateY(-3px);
+    border-color: #e5322d;
+    box-shadow: 0 8px 20px rgba(0,0,0,.07);
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="sticky top-0 z-50 bg-white border-b border-gray-200">
+
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+
+        <a href="/" class="flex items-center gap-2">
+
+            <div class="w-10 h-10 rounded-xl bg-red-600 text-white flex items-center justify-center font-bold text-lg">
+                A
+            </div>
+
+            <div>
+                <div class="text-xl font-bold antokia-red">
+                    Antokia
+                </div>
+
+                <div class="text-[11px] text-gray-500">
+                    Free Online Tools
+                </div>
+            </div>
+
+        </a>
+
+        <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+
+            <a href="/" class="hover:text-red-600">
+                Home
+            </a>
+
+            <a href="/blog.html" class="hover:text-red-600">
+                Blog
+            </a>
+
+            <a href="/about.html" class="hover:text-red-600">
+                About
+            </a>
+
+            <a href="/contact.html" class="hover:text-red-600">
+                Contact
+            </a>
+
+        </nav>
+
+        <a href="/" class="btn-red px-4 py-2 rounded-full text-sm font-semibold">
+            <i class="fa-solid fa-house mr-1"></i>
+            Home
+        </a>
+
+    </div>
+
+</header>
+
+
+<main class="max-w-6xl mx-auto px-4 py-6">
+
+    <!-- TOP AD -->
+    <div class="ad-box mb-6">
+        Advertisement
+    </div>
+
+
+    <!-- BREADCRUMB -->
+    <div class="text-sm text-gray-500 mb-5">
+
+        <a href="/" class="hover:text-red-600">
+            Home
+        </a>
+
+        <span class="mx-2">›</span>
+
+        <span>
+            Discount Calculator
+        </span>
+
+    </div>
+
+
+    <!-- CALCULATOR -->
+    <section class="soft-card overflow-hidden">
+
+        <div class="p-6 md:p-10 border-b border-gray-100">
+
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 text-red-600 text-xs font-semibold mb-4">
+
+                <i class="fa-solid fa-tags"></i>
+
+                Free Online Calculator
+
+            </div>
+
+            <h1 class="text-3xl md:text-4xl font-bold leading-tight mb-4">
+                Discount Calculator
+            </h1>
+
+            <p class="text-lg text-gray-600 leading-7 max-w-3xl">
+                Calculate the discount amount and final price instantly.
+                Enter the original price and discount percentage below.
+            </p>
+
+        </div>
+
+
+        <!-- CALCULATOR BODY -->
+        <div class="p-6 md:p-10">
+
+            <div class="max-w-3xl mx-auto">
+
+                <!-- ORIGINAL PRICE -->
+                <div class="mb-5">
+
+                    <label for="originalPrice" class="block font-bold mb-2">
+                        Original Price
+                    </label>
+
+                    <input
+                        type="number"
+                        id="originalPrice"
+                        class="tool-input"
+                        placeholder="Example: 1000"
+                        min="0"
+                        step="any"
+                    >
+
+                </div>
+
+
+                <!-- DISCOUNT -->
+                <div class="mb-5">
+
+                    <label for="discountPercent" class="block font-bold mb-2">
+                        Discount Percentage
+                    </label>
+
+                    <div class="relative">
+
+                        <input
+                            type="number"
+                            id="discountPercent"
+                            class="tool-input pr-12"
+                            placeholder="Example: 20"
+                            min="0"
+                            max="100"
+                            step="any"
+                        >
+
+                        <span class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 font-semibold">
+                            %
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- BUTTONS -->
+                <div class="flex flex-wrap gap-3 mt-6">
+
+                    <button
+                        onclick="calculateDiscount()"
+                        class="btn-red px-6 py-3 rounded-xl font-semibold"
+                    >
+                        <i class="fa-solid fa-calculator mr-1"></i>
+                        Calculate Discount
+                    </button>
+
+                    <button
+                        onclick="clearCalculator()"
+                        class="px-6 py-3 rounded-xl border border-gray-300 bg-white font-semibold hover:border-red-500 hover:text-red-600"
+                    >
+                        <i class="fa-solid fa-rotate-left mr-1"></i>
+                        Clear
+                    </button>
+
+                </div>
+
+
+                <!-- ERROR -->
+                <div id="errorMessage" class="error-message">
+                    Please enter valid values.
+                </div>
+
+
+                <!-- RESULT -->
+                <div id="resultBox" class="result-box">
+
+                    <div class="result-row">
+
+                        <span class="result-label">
+                            Original Price
+                        </span>
+
+                        <span class="result-value" id="originalResult">
+                            ₹0
+                        </span>
+
+                    </div>
+
+
+                    <div class="result-row">
+
+                        <span class="result-label">
+                            Discount
+                        </span>
+
+                        <span class="result-value" id="percentResult">
+                            0%
+                        </span>
+
+                    </div>
+
+
+                    <div class="result-row">
+
+                        <span class="result-label">
+                            Discount Amount
+                        </span>
+
+                        <span class="result-value" id="discountAmount">
+                            ₹0
+                        </span>
+
+                    </div>
+
+
+                    <div class="result-row">
+
+                        <span class="result-label font-semibold">
+                            Final Price
+                        </span>
+
+                        <span class="final-price" id="finalPrice">
+                            ₹0
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- MIDDLE AD -->
+    <div class="ad-box my-7">
+        Advertisement
+    </div>
+
+
+    <!-- INFORMATION -->
+    <article class="soft-card p-6 md:p-10 article-content">
+
+        <h2>
+            What Is a Discount?
+        </h2>
+
+        <p>
+            A discount is a reduction from the original price of a product
+            or service. Discounts are commonly offered during sales,
+            promotions, festivals and special offers.
+        </p>
+
+
+        <h2>
+            Discount Formula
+        </h2>
+
+        <div class="formula-box">
+
+            <strong class="text-gray-900">
+                Discount Amount
+            </strong>
+
+            <div class="mt-2 font-semibold text-red-600">
+                Discount Amount = Original Price × Discount Percentage ÷ 100
+            </div>
+
+            <div class="mt-4">
+
+                <strong class="text-gray-900">
+                    Final Price
+                </strong>
+
+                <div class="mt-2 font-semibold text-red-600">
+                    Final Price = Original Price − Discount Amount
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <h2>
+            Example of Discount Calculation
+        </h2>
+
+        <div class="example-box">
+
+            <div class="text-sm text-gray-500 mb-2">
+                Original Price
+            </div>
+
+            <div class="text-xl font-bold">
+                ₹1,000
+            </div>
+
+
+            <div class="mt-4">
+
+                <div class="text-sm text-gray-500 mb-1">
+                    Discount
+                </div>
+
+                <div class="font-semibold">
+                    20%
+                </div>
+
+            </div>
+
+
+            <div class="border-t border-blue-100 mt-5 pt-5">
+
+                <div class="text-sm text-gray-500 mb-1">
+                    Discount Amount
+                </div>
+
+                <div class="font-semibold">
+                    ₹1,000 × 20 ÷ 100 = ₹200
+                </div>
+
+            </div>
+
+
+            <div class="border-t border-blue-100 mt-5 pt-5">
+
+                <div class="text-sm text-gray-500 mb-1">
+                    Final Price
+                </div>
+
+                <div class="text-2xl font-bold text-red-600">
+                    ₹800
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <h2>
+            How to Calculate Discount Manually
+        </h2>
+
+        <ol>
+
+            <li>
+                Note the original price of the product.
+            </li>
+
+            <li>
+                Note the discount percentage.
+            </li>
+
+            <li>
+                Multiply the original price by the discount percentage.
+            </li>
+
+            <li>
+                Divide the result by 100 to get the discount amount.
+            </li>
+
+            <li>
+                Subtract the discount amount from the original price to get
+                the final price.
+            </li>
+
+        </ol>
+
+
+        <h2>
+            Where Is Discount Calculation Used?
+        </h2>
+
+        <ul>
+
+            <li>
+                Shopping and online purchases.
+            </li>
+
+            <li>
+                Festival and seasonal sales.
+            </li>
+
+            <li>
+                Comparing product prices.
+            </li>
+
+            <li>
+                Business and retail pricing.
+            </li>
+
+            <li>
+                Calculating sale prices.
+            </li>
+
+        </ul>
+
+
+        <div class="info-box mt-6">
+
+            <div class="flex gap-3">
+
+                <div class="text-blue-600 text-xl">
+                    <i class="fa-solid fa-circle-info"></i>
+                </div>
+
+                <div>
+
+                    <strong class="text-gray-900">
+                        Tip:
+                    </strong>
+
+                    <p class="mb-0 mt-1">
+                        Always check whether a displayed sale price already
+                        includes the discount before applying another discount.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <h2>
+            Frequently Asked Questions
+        </h2>
+
+
+        <div class="mt-4">
+
+            <div class="border-b border-gray-200">
+
+                <div class="py-4 font-bold">
+                    How do I calculate a 20% discount?
+                </div>
+
+                <div class="pb-4 text-gray-600">
+                    Multiply the original price by 20 and divide by 100.
+                    The result is the discount amount.
+                </div>
+
+            </div>
+
+
+            <div class="border-b border-gray-200">
+
+                <div class="py-4 font-bold">
+                    What is the formula for discount?
+                </div>
+
+                <div class="pb-4 text-gray-600">
+                    Discount Amount = Original Price × Discount Percentage ÷ 100.
+                </div>
+
+            </div>
+
+
+            <div class="border-b border-gray-200">
+
+                <div class="py-4 font-bold">
+                    How do I calculate the final price after discount?
+                </div>
+
+                <div class="pb-4 text-gray-600">
+                    Subtract the discount amount from the original price.
+                </div>
+
+            </div>
+
+
+            <div class="border-b border-gray-200">
+
+                <div class="py-4 font-bold">
+                    Can I use this calculator for shopping discounts?
+                </div>
+
+                <div class="pb-4 text-gray-600">
+                    Yes. You can use it to quickly calculate discount amounts
+                    and final prices for shopping and sale offers.
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <h2>
+            Related Discount Guide
+        </h2>
+
+        <p>
+            Want to understand discount calculations in more detail? Read our
+            complete guide:
+        </p>
+
+        <p>
+
+            <a
+                href="/how-to-calculate-discount.html"
+                class="text-red-600 font-semibold hover:underline"
+            >
+                How to Calculate Discount: Formula, Examples & Easy Method →
+            </a>
+
+        </p>
+
+    </article>
+
+
+    <!-- RELATED TOOLS -->
+    <section class="soft-card p-6 md:p-8 mt-7 mb-7">
+
+        <h2 class="text-2xl font-bold mb-5">
+            Explore More Free Tools
+        </h2>
+
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+
+
+            <!-- AVERAGE CALCULATOR -->
+            <a href="/calculate-average.html"
+               class="tool-card border rounded-xl p-5">
+
+                <div class="w-11 h-11 rounded-xl bg-red-50 text-red-600 flex items-center justify-center mb-3">
+
+                    <i class="fa-solid fa-calculator text-lg"></i>
+
+                </div>
+
+                <h3 class="font-bold">
+                    Average Calculator
+                </h3>
+
+                <p class="text-sm text-gray-500 mt-1">
+                    Calculate the average of numbers quickly and easily.
+                </p>
+
+                <div class="text-red-600 text-sm font-semibold mt-3">
+                    Open Tool →
+                </div>
+
+            </a>
+
+
+            <!-- AGE CALCULATOR -->
+            <a href="/age-calculator.html"
+               class="tool-card border rounded-xl p-5">
+
+                <div class="w-11 h-11 rounded-xl bg-red-50 text-red-600 flex items-center justify-center mb-3">
+
+                    <i class="fa-solid fa-calendar-days text-lg"></i>
+
+                </div>
+
+                <h3 class="font-bold">
+                    Age Calculator
+                </h3>
+
+                <p class="text-sm text-gray-500 mt-1">
+                    Calculate your exact age from your date of birth.
+                </p>
+
+                <div class="text-red-600 text-sm font-semibold mt-3">
+                    Open Tool →
+                </div>
+
+            </a>
+
+
+            <!-- IMAGE COMPRESSOR -->
+            <a href="/compress-image.html"
+               class="tool-card border rounded-xl p-5">
+
+                <div class="w-11 h-11 rounded-xl bg-red-50 text-red-600 flex items-center justify-center mb-3">
+
+                    <i class="fa-solid fa-compress text-lg"></i>
+
+                </div>
+
+                <h3 class="font-bold">
+                    Image Compressor
+                </h3>
+
+                <p class="text-sm text-gray-500 mt-1">
+                    Reduce image file size for forms and websites.
+                </p>
+
+                <div class="text-red-600 text-sm font-semibold mt-3">
+                    Open Tool →
+                </div>
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- BACK BUTTONS -->
+    <div class="flex flex-wrap justify-center gap-3 mb-7">
+
+        <a
+            href="/blog.html"
+            class="px-5 py-2.5 rounded-full border border-gray-300 bg-white text-sm font-semibold hover:border-red-500 hover:text-red-600"
+        >
+            <i class="fa-solid fa-arrow-left mr-1"></i>
+            Back to Blog
+        </a>
+
+        <a
+            href="/"
+            class="px-5 py-2.5 rounded-full btn-red text-sm font-semibold"
+        >
+            <i class="fa-solid fa-house mr-1"></i>
+            Antokia Home
+        </a>
+
+    </div>
+
+
+    <!-- BOTTOM AD -->
+    <div class="ad-box mb-7">
+        Advertisement
+    </div>
+
+</main>
+
+
+<!-- FOOTER -->
+<footer class="bg-[#242424] text-gray-300 mt-10">
+
+    <div class="max-w-6xl mx-auto px-4 py-10">
+
+        <div class="grid md:grid-cols-4 gap-8">
+
+            <!-- BRAND -->
+            <div>
+
+                <div class="text-2xl font-bold text-white mb-2">
+                    Antokia
+                </div>
+
+                <p class="text-sm text-gray-400 leading-6">
+                    Free online tools for images, PDFs, documents,
+                    calculators and everyday digital tasks.
+                </p>
+
+            </div>
+
+
+            <!-- EXPLORE -->
+            <div>
+
+                <h3 class="text-white font-bold mb-3">
+                    Explore
+                </h3>
+
+                <div class="space-y-2 text-sm">
+
+                    <a href="/" class="block hover:text-white">
+                        Home
+                    </a>
+
+                    <a href="/blog.html" class="block hover:text-white">
+                        Blog
+                    </a>
+
+                    <a href="/about.html" class="block hover:text-white">
+                        About
+                    </a>
+
+                    <a href="/contact.html" class="block hover:text-white">
+                        Contact
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- LEGAL -->
+            <div>
+
+                <h3 class="text-white font-bold mb-3">
+                    Legal
+                </h3>
+
+                <div class="space-y-2 text-sm">
+
+                    <a href="/privacy.html" class="block hover:text-white">
+                        Privacy Policy
+                    </a>
+
+                    <a href="/terms.html" class="block hover:text-white">
+                        Terms & Conditions
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- SOCIAL -->
+            <div>
+
+                <h3 class="text-white font-bold mb-3">
+                    Follow Antokia
+                </h3>
+
+                <a
+                    href="https://www.instagram.com/antokia.insta"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 text-sm hover:text-white"
+                >
+
+                    <i class="fa-brands fa-instagram text-lg"></i>
+                    Instagram
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="border-t border-gray-700 mt-8 pt-5 text-center text-xs text-gray-500">
+
+            © 2026 Antokia. All rights reserved.
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+function calculateDiscount() {
+
+    const originalPrice =
+        parseFloat(document.getElementById("originalPrice").value);
+
+    const discountPercent =
+        parseFloat(document.getElementById("discountPercent").value);
+
+    const resultBox =
+        document.getElementById("resultBox");
+
+    const errorMessage =
+        document.getElementById("errorMessage");
+
+
+    resultBox.style.display = "none";
+    errorMessage.style.display = "none";
+
+
+    if (
+        !Number.isFinite(originalPrice) ||
+        !Number.isFinite(discountPercent)
+    ) {
+
+        errorMessage.textContent =
+            "Please enter a valid original price and discount percentage.";
+
+        errorMessage.style.display = "block";
+
+        return;
+    }
+
+
+    if (originalPrice < 0) {
+
+        errorMessage.textContent =
+            "Original price cannot be negative.";
+
+        errorMessage.style.display = "block";
+
+        return;
+    }
+
+
+    if (
+        discountPercent < 0 ||
+        discountPercent > 100
+    ) {
+
+        errorMessage.textContent =
+            "Discount percentage must be between 0% and 100%.";
+
+        errorMessage.style.display = "block";
+
+        return;
+    }
+
+
+    const discountAmount =
+        originalPrice * discountPercent / 100;
+
+
+    const finalPrice =
+        originalPrice - discountAmount;
+
+
+    document.getElementById("originalResult").textContent =
+        formatCurrency(originalPrice);
+
+    document.getElementById("percentResult").textContent =
+        discountPercent + "%";
+
+    document.getElementById("discountAmount").textContent =
+        formatCurrency(discountAmount);
+
+    document.getElementById("finalPrice").textContent =
+        formatCurrency(finalPrice);
+
+
+    resultBox.style.display = "block";
+
+}
+
+
+function formatCurrency(value) {
+
+    return "₹" + value.toLocaleString("en-IN", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    });
+
+}
+
+
+function clearCalculator() {
+
+    document.getElementById("originalPrice").value = "";
+
+    document.getElementById("discountPercent").value = "";
+
+    document.getElementById("resultBox").style.display = "none";
+
+    document.getElementById("errorMessage").style.display = "none";
+
+}
+
+</script>
+
+</body>
+</html>
