@@ -1,601 +1,1015 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>How to Calculate Average: Formula, Examples & Easy Method | Antokia</title>
+<title>How to Calculate Average: Formula, Examples & Easy Method | Antokia</title>
 
-  <meta name="description" content="Learn how to calculate average using a simple formula with easy examples. Understand average marks, average salary, average of numbers and more.">
+<meta name="description" content="Learn how to calculate average using a simple formula with easy examples. Understand average calculation and use Antokia's free Average Calculator.">
 
-  <meta name="keywords" content="how to calculate average, average formula, average calculator, calculate average, average marks, average of numbers">
+<meta name="keywords" content="how to calculate average, average calculator, calculate average, average formula, mean calculator, average of numbers, average marks">
 
-  <link rel="stylesheet" href="/styles.css">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://antokia.com/how-to-calculate-average.html">
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+<meta property="og:title" content="How to Calculate Average: Formula, Examples & Easy Method | Antokia">
+<meta property="og:description" content="Learn how to calculate average using a simple formula with easy examples and a step-by-step method.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://antokia.com/how-to-calculate-average.html">
+
+<link rel="stylesheet" href="/styles.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #f5f5fa;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #222;
+}
+
+.antokia-red {
+    color: #e5322d;
+}
+
+.btn-red {
+    background: #e5322d;
+    color: white;
+}
+
+.btn-red:hover {
+    background: #c92521;
+}
+
+.soft-card {
+    background: #fff;
+    border: 1px solid #e7e7ed;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0,0,0,.05);
+}
+
+.ad-box {
+    min-height: 90px;
+    border: 1px dashed #d5d5dd;
+    border-radius: 12px;
+    background: #fafafd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-size: 13px;
+}
+
+.article-content {
+    color: #444;
+    line-height: 1.85;
+    font-size: 16px;
+}
+
+.article-content h2 {
+    color: #222;
+    font-size: 25px;
+    font-weight: 700;
+    margin-top: 34px;
+    margin-bottom: 14px;
+}
+
+.article-content h3 {
+    color: #222;
+    font-size: 21px;
+    font-weight: 700;
+    margin-top: 28px;
+    margin-bottom: 12px;
+}
+
+.article-content p {
+    margin-bottom: 17px;
+}
+
+.article-content ul,
+.article-content ol {
+    margin: 12px 0 20px 24px;
+}
+
+.article-content li {
+    margin-bottom: 9px;
+}
+
+.formula-box {
+    background: #fff5f5;
+    border-left: 4px solid #e5322d;
+    border-radius: 12px;
+    padding: 18px;
+    margin: 20px 0;
+}
+
+.example-box {
+    background: #f5f8ff;
+    border: 1px solid #dce6ff;
+    border-radius: 14px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.info-box {
+    background: #f0f9ff;
+    border: 1px solid #d7efff;
+    border-radius: 14px;
+    padding: 18px;
+    margin: 20px 0;
+}
+
+.faq-item {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.faq-question {
+    width: 100%;
+    padding: 18px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    font-weight: 700;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+}
+
+.faq-answer {
+    display: none;
+    padding: 0 0 18px;
+    color: #555;
+    line-height: 1.7;
+}
+
+.faq-item.open .faq-answer {
+    display: block;
+}
+
+.faq-item.open .faq-icon {
+    transform: rotate(45deg);
+}
+
+.tool-card {
+    transition: .2s ease;
+}
+
+.tool-card:hover {
+    transform: translateY(-3px);
+    border-color: #e5322d;
+    box-shadow: 0 8px 20px rgba(0,0,0,.07);
+}
+
+.average-tool {
+    background: #fff;
+    border: 1px solid #e7e7ed;
+    border-radius: 18px;
+    padding: 24px;
+    margin: 25px 0;
+}
+
+.average-tool input {
+    width: 100%;
+    border: 1px solid #d8d8df;
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 16px;
+    outline: none;
+}
+
+.average-tool input:focus {
+    border-color: #e5322d;
+}
+
+.average-result {
+    display: none;
+    background: #fff5f5;
+    border-radius: 12px;
+    padding: 18px;
+    margin-top: 18px;
+    text-align: center;
+}
+
+.average-result-value {
+    color: #e5322d;
+    font-size: 30px;
+    font-weight: 700;
+}
+</style>
 </head>
 
-<body class="bg-gray-50 text-gray-800">
+<body>
 
-  <!-- Header -->
-  <header class="bg-white shadow-sm">
-    <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+<!-- HEADER -->
+<header class="sticky top-0 z-50 bg-white border-b border-gray-200">
 
-      <a href="/" class="text-2xl font-bold text-blue-600">
-        Antokia
-      </a>
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
 
-      <nav class="hidden md:flex gap-6">
-        <a href="/" class="text-gray-700 hover:text-blue-600">Home</a>
-        <a href="/tools.html" class="text-gray-700 hover:text-blue-600">Tools</a>
-        <a href="/blog.html" class="text-gray-700 hover:text-blue-600">Blog</a>
-      </nav>
+        <a href="/" class="flex items-center gap-2">
+
+            <div class="w-10 h-10 rounded-xl bg-red-600 text-white flex items-center justify-center font-bold text-lg">
+                A
+            </div>
+
+            <div>
+                <div class="text-xl font-bold antokia-red">
+                    Antokia
+                </div>
+
+                <div class="text-[11px] text-gray-500">
+                    Free Online Tools
+                </div>
+            </div>
+
+        </a>
+
+        <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+
+            <a href="/" class="hover:text-red-600">
+                Home
+            </a>
+
+            <a href="/blog.html" class="text-red-600">
+                Blog
+            </a>
+
+            <a href="/about.html" class="hover:text-red-600">
+                About
+            </a>
+
+            <a href="/contact.html" class="hover:text-red-600">
+                Contact
+            </a>
+
+        </nav>
+
+        <a href="/" class="btn-red px-4 py-2 rounded-full text-sm font-semibold">
+            <i class="fa-solid fa-house mr-1"></i>
+            Home
+        </a>
 
     </div>
-  </header>
+
+</header>
 
 
-  <!-- Main Content -->
-  <main class="max-w-4xl mx-auto px-4 py-10">
+<main class="max-w-6xl mx-auto px-4 py-6">
 
-    <article class="bg-white rounded-xl shadow-sm p-6 md:p-10">
+    <!-- TOP AD -->
+    <div class="ad-box mb-6">
+        Advertisement
+    </div>
 
-      <!-- Category -->
-      <div class="mb-6">
-        <span class="inline-block bg-blue-100 text-blue-700 text-sm font-semibold px-3 py-1 rounded-full">
-          Math & Calculator
+
+    <!-- BREADCRUMB -->
+    <div class="text-sm text-gray-500 mb-5">
+
+        <a href="/" class="hover:text-red-600">
+            Home
+        </a>
+
+        <span class="mx-2">›</span>
+
+        <a href="/blog.html" class="hover:text-red-600">
+            Blog
+        </a>
+
+        <span class="mx-2">›</span>
+
+        <span>
+            Average Calculation
         </span>
-      </div>
 
+    </div>
 
-      <!-- Title -->
-      <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-        How to Calculate Average: Formula, Examples & Easy Method
-      </h1>
 
-      <p class="text-gray-500 mb-8">
-        Learn how to calculate average easily with simple formulas and practical examples.
-      </p>
+    <!-- ARTICLE -->
+    <article class="soft-card overflow-hidden">
 
+        <!-- ARTICLE HEADER -->
+        <div class="p-6 md:p-10 border-b border-gray-100">
 
-      <!-- Introduction -->
-      <section class="mb-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 text-red-600 text-xs font-semibold mb-4">
 
-        <h2 class="text-2xl font-bold text-gray-900 mb-4">
-          What is Average?
-        </h2>
+                <i class="fa-solid fa-calculator"></i>
 
-        <p class="leading-7 mb-4">
-          An average is a single value that represents the typical or central
-          value of a group of numbers. It is commonly used in mathematics,
-          education, business, finance and everyday calculations.
-        </p>
+                Average Calculator Guide
 
-        <p class="leading-7">
-          The most commonly used type of average is the
-          <strong>arithmetic mean</strong>. It is calculated by adding all the
-          numbers together and dividing the total by the number of values.
-        </p>
+            </div>
 
-      </section>
+            <h1 class="text-3xl md:text-4xl font-bold leading-tight mb-4">
+                How to Calculate Average: Formula, Examples & Easy Method
+            </h1>
 
-
-      <!-- Formula -->
-      <section class="mb-10">
-
-        <h2 class="text-2xl font-bold text-gray-900 mb-4">
-          Average Formula
-        </h2>
-
-        <div class="bg-blue-50 border-l-4 border-blue-600 p-5 rounded-lg mb-5">
-
-          <p class="text-lg font-semibold text-gray-900">
-            Average = Sum of all values ÷ Number of values
-          </p>
-
-        </div>
-
-        <p class="leading-7">
-          In simple words, add all the numbers and divide the result by how
-          many numbers are present.
-        </p>
-
-      </section>
-
-
-      <!-- Basic Example -->
-      <section class="mb-10">
-
-        <h2 class="text-2xl font-bold text-gray-900 mb-4">
-          How to Calculate Average
-        </h2>
-
-        <p class="leading-7 mb-4">
-          Let's take a simple example. Suppose you have the following five numbers:
-        </p>
-
-        <div class="bg-gray-100 p-5 rounded-lg mb-5">
-          <p class="font-semibold text-lg">
-            10, 20, 30, 40, 50
-          </p>
-        </div>
-
-        <p class="leading-7 mb-4">
-          First, add all the numbers:
-        </p>
-
-        <div class="bg-gray-100 p-5 rounded-lg mb-5">
-
-          <p class="font-semibold">
-            10 + 20 + 30 + 40 + 50 = 150
-          </p>
-
-        </div>
-
-        <p class="leading-7 mb-4">
-          There are 5 numbers, so divide the total by 5:
-        </p>
-
-        <div class="bg-blue-50 border-l-4 border-blue-600 p-5 rounded-lg">
-
-          <p class="font-semibold">
-            Average = 150 ÷ 5 = 30
-          </p>
-
-        </div>
-
-        <p class="mt-4 leading-7">
-          Therefore, the average of these five numbers is
-          <strong>30</strong>.
-        </p>
-
-      </section>
-
-
-      <!-- Another Example -->
-      <section class="mb-10">
-
-        <h2 class="text-2xl font-bold text-gray-900 mb-4">
-          Example: Average of 3 Numbers
-        </h2>
-
-        <p class="leading-7 mb-4">
-          Suppose the numbers are:
-        </p>
-
-        <div class="bg-gray-100 p-5 rounded-lg mb-5">
-          <p class="font-semibold">
-            15, 25 and 35
-          </p>
-        </div>
-
-        <p class="leading-7 mb-4">
-          Add the numbers:
-        </p>
-
-        <div class="bg-gray-100 p-5 rounded-lg mb-5">
-          <p class="font-semibold">
-            15 + 25 + 35 = 75
-          </p>
-        </div>
-
-        <p class="leading-7 mb-4">
-          There are 3 numbers:
-        </p>
-
-        <div class="bg-blue-50 border-l-4 border-blue-600 p-5 rounded-lg">
-
-          <p class="font-semibold">
-            Average = 75 ÷ 3 = 25
-          </p>
-
-        </div>
-
-        <p class="mt-4 leading-7">
-          Therefore, the average is <strong>25</strong>.
-        </p>
-
-      </section>
-
-
-      <!-- Average Marks -->
-      <section class="mb-10">
-
-        <h2 class="text-2xl font-bold text-gray-900 mb-4">
-          How to Calculate Average Marks
-        </h2>
-
-        <p class="leading-7 mb-4">
-          Average marks can be calculated by adding the marks obtained in
-          different subjects and dividing the total by the number of subjects.
-        </p>
-
-        <p class="leading-7 mb-4">
-          For example, suppose a student gets the following marks:
-        </p>
-
-        <div class="overflow-x-auto mb-5">
-
-          <table class="w-full border-collapse border border-gray-300">
-
-            <thead>
-              <tr class="bg-gray-100">
-                <th class="border border-gray-300 px-4 py-3 text-left">
-                  Subject
-                </th>
-
-                <th class="border border-gray-300 px-4 py-3 text-left">
-                  Marks
-                </th>
-              </tr>
-            </thead>
-
-            <tbody>
-
-              <tr>
-                <td class="border border-gray-300 px-4 py-3">
-                  Mathematics
-                </td>
-
-                <td class="border border-gray-300 px-4 py-3">
-                  80
-                </td>
-              </tr>
-
-              <tr>
-                <td class="border border-gray-300 px-4 py-3">
-                  Science
-                </td>
-
-                <td class="border border-gray-300 px-4 py-3">
-                  70
-                </td>
-              </tr>
-
-              <tr>
-                <td class="border border-gray-300 px-4 py-3">
-                  English
-                </td>
-
-                <td class="border border-gray-300 px-4 py-3">
-                  90
-                </td>
-              </tr>
-
-            </tbody>
-
-          </table>
-
-        </div>
-
-        <div class="bg-gray-100 p-5 rounded-lg">
-
-          <p class="font-semibold mb-2">
-            Total = 80 + 70 + 90 = 240
-          </p>
-
-          <p class="font-semibold">
-            Average = 240 ÷ 3 = 80
-          </p>
-
-        </div>
-
-        <p class="mt-4 leading-7">
-          The average marks are therefore <strong>80</strong>.
-        </p>
-
-      </section>
-
-
-      <!-- Average Salary -->
-      <section class="mb-10">
-
-        <h2 class="text-2xl font-bold text-gray-900 mb-4">
-          How to Calculate Average Salary
-        </h2>
-
-        <p class="leading-7 mb-4">
-          The same formula can be used to calculate the average salary of a
-          group of employees.
-        </p>
-
-        <p class="leading-7 mb-4">
-          For example, suppose three employees earn:
-        </p>
-
-        <div class="bg-gray-100 p-5 rounded-lg mb-5">
-
-          <p class="font-semibold">
-            ₹30,000, ₹40,000 and ₹50,000
-          </p>
-
-        </div>
-
-        <div class="bg-blue-50 border-l-4 border-blue-600 p-5 rounded-lg">
-
-          <p class="font-semibold">
-            Average Salary = (30,000 + 40,000 + 50,000) ÷ 3
-          </p>
-
-          <p class="font-semibold mt-2">
-            Average Salary = ₹40,000
-          </p>
-
-        </div>
-
-      </section>
-
-
-      <!-- Average of Many Numbers -->
-      <section class="mb-10">
-
-        <h2 class="text-2xl font-bold text-gray-900 mb-4">
-          How to Calculate Average of Many Numbers
-        </h2>
-
-        <p class="leading-7 mb-4">
-          When there are many numbers, the process remains the same:
-        </p>
-
-        <ol class="list-decimal pl-6 space-y-3 leading-7">
-
-          <li>Add all the numbers.</li>
-
-          <li>Count how many numbers are present.</li>
-
-          <li>Divide the total by the number of values.</li>
-
-        </ol>
-
-        <div class="bg-gray-100 p-5 rounded-lg mt-5">
-
-          <p class="font-semibold">
-            Example: 5, 10, 15, 20, 25, 30
-          </p>
-
-          <p class="font-semibold mt-2">
-            Sum = 105
-          </p>
-
-          <p class="font-semibold mt-2">
-            Number of values = 6
-          </p>
-
-          <p class="font-semibold mt-2">
-            Average = 105 ÷ 6 = 17.5
-          </p>
-
-        </div>
-
-      </section>
-
-
-      <!-- Important Point -->
-      <section class="mb-10">
-
-        <h2 class="text-2xl font-bold text-gray-900 mb-4">
-          Important Things to Remember
-        </h2>
-
-        <ul class="list-disc pl-6 space-y-3 leading-7">
-
-          <li>Always add all the values before dividing.</li>
-
-          <li>Count the exact number of values.</li>
-
-          <li>Divide the total by the number of values.</li>
-
-          <li>The average does not always have to be a whole number.</li>
-
-          <li>Decimal values can also be an average.</li>
-
-        </ul>
-
-      </section>
-
-
-      <!-- Common Mistakes -->
-      <section class="mb-10">
-
-        <h2 class="text-2xl font-bold text-gray-900 mb-4">
-          Common Mistakes When Calculating Average
-        </h2>
-
-        <ul class="list-disc pl-6 space-y-3 leading-7">
-
-          <li>Forgetting to include one of the numbers in the total.</li>
-
-          <li>Dividing by the wrong number of values.</li>
-
-          <li>Adding numbers incorrectly.</li>
-
-          <li>Confusing average with the highest or lowest value.</li>
-
-        </ul>
-
-      </section>
-
-
-      <!-- Calculator CTA -->
-      <section class="mb-10">
-
-        <div class="bg-blue-600 text-white rounded-xl p-6 md:p-8">
-
-          <h2 class="text-2xl font-bold mb-3">
-            Calculate Average Quickly
-          </h2>
-
-          <p class="mb-5 leading-7">
-            You don't have to calculate everything manually. Use the Antokia
-            Average Calculator to calculate the average quickly and easily.
-          </p>
-
-          <a
-            href="/average-calculator.html"
-            class="inline-block bg-white text-blue-600 font-semibold px-5 py-3 rounded-lg hover:bg-gray-100"
-          >
-            Use Average Calculator
-          </a>
-
-        </div>
-
-      </section>
-
-
-      <!-- FAQ -->
-      <section class="mb-10">
-
-        <h2 class="text-2xl font-bold text-gray-900 mb-5">
-          Frequently Asked Questions
-        </h2>
-
-
-        <div class="space-y-6">
-
-          <div>
-
-            <h3 class="text-lg font-semibold text-gray-900 mb-2">
-              What is the formula for average?
-            </h3>
-
-            <p class="leading-7">
-              The basic average formula is: Average = Sum of all values ÷
-              Number of values.
+            <p class="text-lg text-gray-600 leading-7 max-w-3xl">
+                Learn how to calculate the average of numbers using a simple
+                formula with easy examples and a step-by-step method.
             </p>
 
-          </div>
+            <div class="flex flex-wrap items-center gap-4 mt-5 text-sm text-gray-500">
 
+                <span>
+                    <i class="fa-regular fa-clock mr-1"></i>
+                    Easy Guide
+                </span>
 
-          <div>
+                <span>
+                    <i class="fa-solid fa-calculator mr-1"></i>
+                    Average Formula
+                </span>
 
-            <h3 class="text-lg font-semibold text-gray-900 mb-2">
-              How do I calculate average marks?
-            </h3>
+                <span>
+                    <i class="fa-solid fa-globe mr-1"></i>
+                    Antokia.com
+                </span>
 
-            <p class="leading-7">
-              Add all the marks and divide the total by the number of subjects.
-            </p>
-
-          </div>
-
-
-          <div>
-
-            <h3 class="text-lg font-semibold text-gray-900 mb-2">
-              Can an average be a decimal?
-            </h3>
-
-            <p class="leading-7">
-              Yes. An average can be a whole number or a decimal depending on
-              the values being calculated.
-            </p>
-
-          </div>
-
-
-          <div>
-
-            <h3 class="text-lg font-semibold text-gray-900 mb-2">
-              What is the average of 10, 20 and 30?
-            </h3>
-
-            <p class="leading-7">
-              The sum is 60 and there are 3 numbers. Therefore, the average is
-              60 ÷ 3 = <strong>20</strong>.
-            </p>
-
-          </div>
-
-
-          <div>
-
-            <h3 class="text-lg font-semibold text-gray-900 mb-2">
-              How can I calculate average quickly?
-            </h3>
-
-            <p class="leading-7">
-              You can use an online average calculator to calculate the result
-              quickly without doing the calculation manually.
-            </p>
-
-          </div>
+            </div>
 
         </div>
 
-      </section>
+
+        <!-- ARTICLE CONTENT -->
+        <div class="p-6 md:p-10 article-content">
+
+            <p>
+                Calculating an average is one of the most common mathematical
+                tasks used in school, college, business and everyday life.
+                Average can be used to find the typical value of a group of
+                numbers.
+            </p>
+
+            <p>
+                For example, you may want to calculate the average marks of
+                students, average monthly expenses, average salary, average
+                temperature or the average of several test scores.
+            </p>
 
 
-      <!-- Conclusion -->
-      <section>
+            <h2>
+                What Is an Average?
+            </h2>
 
-        <h2 class="text-2xl font-bold text-gray-900 mb-4">
-          Conclusion
-        </h2>
+            <p>
+                In basic mathematics, the average usually means the
+                arithmetic mean. It is calculated by adding all the numbers
+                together and then dividing the total by the number of values.
+            </p>
 
-        <p class="leading-7">
-          Calculating an average is simple. Just add all the values together
-          and divide the total by the number of values. This method can be
-          used for numbers, marks, salaries, prices and many other types of
-          data.
-        </p>
 
-        <p class="mt-4 leading-7">
-          For quick and easy calculations, you can use the
-          <a
-            href="/average-calculator.html"
-            class="text-blue-600 font-semibold hover:underline"
-          >
-            Antokia Average Calculator
-          </a>.
-        </p>
+            <div class="formula-box">
 
-      </section>
+                <strong class="text-gray-900">
+                    Average Formula
+                </strong>
+
+                <div class="mt-2 font-semibold text-red-600">
+                    Average = Sum of All Values ÷ Number of Values
+                </div>
+
+            </div>
+
+
+            <h2>
+                How to Calculate Average Step by Step
+            </h2>
+
+            <h3>
+                Step 1: Add All the Numbers
+            </h3>
+
+            <p>
+                First, add every number in the group to find the total sum.
+            </p>
+
+
+            <h3>
+                Step 2: Count the Numbers
+            </h3>
+
+            <p>
+                Count how many numbers are included in the calculation.
+                This gives you the number of values.
+            </p>
+
+
+            <h3>
+                Step 3: Divide the Total by the Number of Values
+            </h3>
+
+            <p>
+                Finally, divide the total sum by the number of values. The
+                result is the average.
+            </p>
+
+
+            <h2>
+                Example: Calculate the Average of 5 Numbers
+            </h2>
+
+            <div class="example-box">
+
+                <div class="text-sm text-gray-500 mb-2">
+                    Numbers
+                </div>
+
+                <div class="text-xl font-bold">
+                    10, 20, 30, 40, 50
+                </div>
+
+                <div class="border-t border-blue-100 mt-5 pt-5">
+
+                    <div class="text-sm text-gray-500 mb-1">
+                        Step 1: Add the numbers
+                    </div>
+
+                    <div class="font-semibold">
+                        10 + 20 + 30 + 40 + 50 = 150
+                    </div>
+
+                </div>
+
+                <div class="mt-4">
+
+                    <div class="text-sm text-gray-500 mb-1">
+                        Step 2: Count the numbers
+                    </div>
+
+                    <div class="font-semibold">
+                        5 numbers
+                    </div>
+
+                </div>
+
+                <div class="mt-4">
+
+                    <div class="text-sm text-gray-500 mb-1">
+                        Step 3: Divide
+                    </div>
+
+                    <div class="font-semibold">
+                        150 ÷ 5 = 30
+                    </div>
+
+                </div>
+
+                <div class="border-t border-blue-100 mt-5 pt-5">
+
+                    <div class="text-sm text-gray-500 mb-1">
+                        Average
+                    </div>
+
+                    <div class="text-2xl font-bold text-red-600">
+                        30
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <h2>
+                Average of Marks
+            </h2>
+
+            <p>
+                Average is commonly used to calculate the average marks
+                obtained by a student in several subjects.
+            </p>
+
+            <p>
+                For example, if a student gets 70, 80, 75, 85 and 90 marks,
+                the average can be calculated by adding all five marks and
+                dividing the total by 5.
+            </p>
+
+
+            <div class="formula-box">
+
+                <strong class="text-gray-900">
+                    Example
+                </strong>
+
+                <div class="mt-2">
+                    (70 + 80 + 75 + 85 + 90) ÷ 5 = 80
+                </div>
+
+                <div class="mt-2 font-semibold text-red-600">
+                    Average Marks = 80
+                </div>
+
+            </div>
+
+
+            <h2>
+                Interactive Average Calculator
+            </h2>
+
+            <p>
+                Enter numbers below to calculate their average instantly.
+            </p>
+
+
+            <div class="average-tool">
+
+                <label class="block font-semibold mb-2">
+                    Enter Numbers
+                </label>
+
+                <input
+                    type="text"
+                    id="averageInput"
+                    placeholder="Example: 10, 20, 30, 40, 50"
+                >
+
+                <button
+                    onclick="calculateAverage()"
+                    class="btn-red px-5 py-3 rounded-xl font-semibold mt-4"
+                >
+                    <i class="fa-solid fa-calculator mr-1"></i>
+                    Calculate Average
+                </button>
+
+                <div id="averageResult" class="average-result">
+
+                    <div class="text-sm text-gray-500 mb-1">
+                        Calculated Average
+                    </div>
+
+                    <div id="averageValue" class="average-result-value">
+                        0
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <h2>
+                Why Is Average Useful?
+            </h2>
+
+            <p>
+                Average helps summarize a group of numbers using one
+                representative value. It can make large sets of data easier
+                to understand and compare.
+            </p>
+
+            <ul>
+
+                <li>
+                    Useful for calculating average marks.
+                </li>
+
+                <li>
+                    Helps compare test scores.
+                </li>
+
+                <li>
+                    Useful for calculating average expenses.
+                </li>
+
+                <li>
+                    Can be used for average salary calculations.
+                </li>
+
+                <li>
+                    Useful for analysing numerical data.
+                </li>
+
+            </ul>
+
+
+            <h2>
+                Important Point About Average
+            </h2>
+
+            <div class="info-box">
+
+                <div class="flex gap-3">
+
+                    <div class="text-blue-600 text-xl">
+                        <i class="fa-solid fa-circle-info"></i>
+                    </div>
+
+                    <div>
+
+                        <strong class="text-gray-900">
+                            Remember:
+                        </strong>
+
+                        <p class="mb-0 mt-1">
+                            The average is calculated by dividing the total
+                            sum by the number of values. Make sure every value
+                            is included when calculating the sum and count.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <h2>
+                Frequently Asked Questions
+            </h2>
+
+
+            <div class="mt-4">
+
+                <div class="faq-item">
+
+                    <button class="faq-question">
+
+                        <span>
+                            What is the formula for calculating average?
+                        </span>
+
+                        <span class="faq-icon transition-transform">
+                            +
+                        </span>
+
+                    </button>
+
+                    <div class="faq-answer">
+                        The basic formula is Average = Sum of All Values ÷
+                        Number of Values.
+                    </div>
+
+                </div>
+
+
+                <div class="faq-item">
+
+                    <button class="faq-question">
+
+                        <span>
+                            How do I calculate the average of 10, 20 and 30?
+                        </span>
+
+                        <span class="faq-icon transition-transform">
+                            +
+                        </span>
+
+                    </button>
+
+                    <div class="faq-answer">
+                        Add the numbers: 10 + 20 + 30 = 60. Then divide 60 by
+                        3. The average is 20.
+                    </div>
+
+                </div>
+
+
+                <div class="faq-item">
+
+                    <button class="faq-question">
+
+                        <span>
+                            Can I calculate average marks using this method?
+                        </span>
+
+                        <span class="faq-icon transition-transform">
+                            +
+                        </span>
+
+                    </button>
+
+                    <div class="faq-answer">
+                        Yes. Add the marks obtained in all subjects and divide
+                        the total by the number of subjects.
+                    </div>
+
+                </div>
+
+
+                <div class="faq-item">
+
+                    <button class="faq-question">
+
+                        <span>
+                            Can an average be a decimal number?
+                        </span>
+
+                        <span class="faq-icon transition-transform">
+                            +
+                        </span>
+
+                    </button>
+
+                    <div class="faq-answer">
+                        Yes. If the total cannot be divided evenly by the
+                        number of values, the average can be a decimal number.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <h2>
+                Conclusion
+            </h2>
+
+            <p>
+                Calculating an average is simple. Add all the values together
+                and divide the total by the number of values.
+            </p>
+
+            <p>
+                For quick calculations, you can also use the
+                <a href="/average-calculator.html"
+                   class="text-red-600 font-semibold hover:underline">
+                    Antokia Average Calculator
+                </a>
+                to calculate the average of numbers instantly.
+            </p>
+
+        </div>
 
     </article>
 
-  </main>
+
+    <!-- MIDDLE AD -->
+    <div class="ad-box my-7">
+        Advertisement
+    </div>
 
 
-  <!-- Footer -->
-  <footer class="bg-gray-900 text-gray-300 mt-10">
+    <!-- RELATED TOOLS -->
+    <section class="soft-card p-6 md:p-8 mb-7">
 
-    <div class="max-w-6xl mx-auto px-4 py-8">
+        <h2 class="text-2xl font-bold mb-5">
+            Explore More Free Tools
+        </h2>
 
-      <div class="text-center">
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
 
-        <a href="/" class="text-xl font-bold text-white">
-          Antokia
-        </a>
+            <!-- AVERAGE CALCULATOR -->
+            <a href="/average-calculator.html"
+               class="tool-card border rounded-xl p-5">
 
-        <p class="mt-2 text-sm">
-          Simple online tools, calculators and useful guides.
-        </p>
+                <div class="w-11 h-11 rounded-xl bg-red-50 text-red-600 flex items-center justify-center mb-3">
+                    <i class="fa-solid fa-calculator text-lg"></i>
+                </div>
 
-        <div class="mt-5 flex justify-center gap-5 text-sm">
+                <h3 class="font-bold">
+                    Average Calculator
+                </h3>
 
-          <a href="/" class="hover:text-white">
-            Home
-          </a>
+                <p class="text-sm text-gray-500 mt-1">
+                    Calculate the average of numbers quickly and easily.
+                </p>
 
-          <a href="/tools.html" class="hover:text-white">
-            Tools
-          </a>
+                <div class="text-red-600 text-sm font-semibold mt-3">
+                    Open Tool →
+                </div>
 
-          <a href="/blog.html" class="hover:text-white">
-            Blog
-          </a>
+            </a>
+
+
+            <!-- AGE CALCULATOR -->
+            <a href="/age-calculator.html"
+               class="tool-card border rounded-xl p-5">
+
+                <div class="w-11 h-11 rounded-xl bg-red-50 text-red-600 flex items-center justify-center mb-3">
+                    <i class="fa-solid fa-calendar-days text-lg"></i>
+                </div>
+
+                <h3 class="font-bold">
+                    Age Calculator
+                </h3>
+
+                <p class="text-sm text-gray-500 mt-1">
+                    Calculate your exact age from your date of birth.
+                </p>
+
+                <div class="text-red-600 text-sm font-semibold mt-3">
+                    Open Tool →
+                </div>
+
+            </a>
+
+
+            <!-- IMAGE COMPRESSOR -->
+            <a href="/compress-image.html"
+               class="tool-card border rounded-xl p-5">
+
+                <div class="w-11 h-11 rounded-xl bg-red-50 text-red-600 flex items-center justify-center mb-3">
+                    <i class="fa-solid fa-compress text-lg"></i>
+                </div>
+
+                <h3 class="font-bold">
+                    Image Compressor
+                </h3>
+
+                <p class="text-sm text-gray-500 mt-1">
+                    Reduce image file size for forms and websites.
+                </p>
+
+                <div class="text-red-600 text-sm font-semibold mt-3">
+                    Open Tool →
+                </div>
+
+            </a>
 
         </div>
 
-        <p class="mt-6 text-sm text-gray-500">
-          © 2026 Antokia. All rights reserved.
-        </p>
+    </section>
 
-      </div>
+
+    <!-- BACK TO BLOG / HOME -->
+    <div class="flex flex-wrap justify-center gap-3 mb-7">
+
+        <a href="/blog.html"
+           class="px-5 py-2.5 rounded-full border border-gray-300 bg-white text-sm font-semibold hover:border-red-500 hover:text-red-600">
+
+            <i class="fa-solid fa-arrow-left mr-1"></i>
+            Back to Blog
+
+        </a>
+
+        <a href="/"
+           class="px-5 py-2.5 rounded-full btn-red text-sm font-semibold">
+
+            <i class="fa-solid fa-house mr-1"></i>
+            Antokia Home
+
+        </a>
 
     </div>
 
-  </footer>
+
+    <!-- BOTTOM AD -->
+    <div class="ad-box mb-7">
+        Advertisement
+    </div>
+
+</main>
+
+
+<!-- FOOTER -->
+<footer class="bg-[#242424] text-gray-300 mt-10">
+
+    <div class="max-w-6xl mx-auto px-4 py-10">
+
+        <div class="grid md:grid-cols-4 gap-8">
+
+            <!-- BRAND -->
+            <div>
+
+                <div class="text-2xl font-bold text-white mb-2">
+                    Antokia
+                </div>
+
+                <p class="text-sm text-gray-400 leading-6">
+                    Free online tools for images, PDFs, documents,
+                    calculators and everyday digital tasks.
+                </p>
+
+            </div>
+
+
+            <!-- EXPLORE -->
+            <div>
+
+                <h3 class="text-white font-bold mb-3">
+                    Explore
+                </h3>
+
+                <div class="space-y-2 text-sm">
+
+                    <a href="/" class="block hover:text-white">
+                        Home
+                    </a>
+
+                    <a href="/blog.html" class="block hover:text-white">
+                        Blog
+                    </a>
+
+                    <a href="/about.html" class="block hover:text-white">
+                        About
+                    </a>
+
+                    <a href="/contact.html" class="block hover:text-white">
+                        Contact
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- LEGAL -->
+            <div>
+
+                <h3 class="text-white font-bold mb-3">
+                    Legal
+                </h3>
+
+                <div class="space-y-2 text-sm">
+
+                    <a href="/privacy.html" class="block hover:text-white">
+                        Privacy Policy
+                    </a>
+
+                    <a href="/terms.html" class="block hover:text-white">
+                        Terms & Conditions
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- SOCIAL -->
+            <div>
+
+                <h3 class="text-white font-bold mb-3">
+                    Follow Antokia
+                </h3>
+
+                <a
+                    href="https://www.instagram.com/antokia.insta"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 text-sm hover:text-white"
+                >
+
+                    <i class="fa-brands fa-instagram text-lg"></i>
+                    Instagram
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="border-t border-gray-700 mt-8 pt-5 text-center text-xs text-gray-500">
+
+            © 2026 Antokia. All rights reserved.
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+function calculateAverage() {
+
+    const input = document.getElementById("averageInput").value.trim();
+
+    if (!input) {
+        alert("Please enter some numbers.");
+        return;
+    }
+
+    const values = input
+        .split(",")
+        .map(value => Number(value.trim()))
+        .filter(value => !isNaN(value));
+
+    if (values.length === 0) {
+        alert("Please enter valid numbers separated by commas.");
+        return;
+    }
+
+    const sum = values.reduce((total, value) => total + value, 0);
+
+    const average = sum / values.length;
+
+    document.getElementById("averageValue").textContent =
+        Number.isInteger(average)
+            ? average
+            : average.toFixed(2);
+
+    document.getElementById("averageResult").style.display = "block";
+}
+
+
+document.querySelectorAll(".faq-question").forEach(question => {
+
+    question.addEventListener("click", function() {
+
+        const item = this.parentElement;
+
+        item.classList.toggle("open");
+
+    });
+
+});
+
+</script>
 
 </body>
 </html>
