@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Average Calculator - Calculate Average Online | Antokia</title>
+
+<meta name="description" content="Use Antokia's free Average Calculator to calculate the average of numbers instantly. Enter multiple numbers and get the average quickly.">
+
+<meta name="keywords" content="average calculator, calculate average, average calculator online, mean calculator, average of numbers, average formula">
+
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://antokia.com/calculate-average.html">
+
+<meta property="og:title" content="Average Calculator - Calculate Average Online | Antokia">
+<meta property="og:description" content="Calculate the average of numbers instantly with Antokia's free online Average Calculator.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://antokia.com/calculate-average.html">
+
+<link rel="stylesheet" href="/styles.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #f5f5fa;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #222;
+}
+
+.antokia-red {
+    color: #e5322d;
+}
+
+.btn-red {
+    background: #e5322d;
+    color: white;
+}
+
+.btn-red:hover {
+    background: #c92521;
+}
+
+.soft-card {
+    background: #fff;
+    border: 1px solid #e7e7ed;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0,0,0,.05);
+}
+
+.ad-box {
+    min-height: 90px;
+    border: 1px dashed #d5d5dd;
+    border-radius: 12px;
+    background: #fafafd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-size: 13px;
+}
+
+.tool-input {
+    width: 100%;
+    min-height: 130px;
+    border: 1px solid #d8d8df;
+    border-radius: 12px;
+    padding: 15px;
+    font-size: 16px;
+    resize: vertical;
+    outline: none;
+}
+
+.tool-input:focus {
+    border-color: #e5322d;
+    box-shadow: 0 0 0 3px rgba(229,50,45,.08);
+}
+
+.result-box {
+    display: none;
+    background: #fff5f5;
+    border: 1px solid #ffd7d5;
+    border-radius: 14px;
+    padding: 22px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.result-value {
+    color: #e5322d;
+    font-size: 36px;
+    font-weight: 700;
+    margin-top: 5px;
+}
+
+.error-message {
+    display: none;
+    color: #e5322d;
+    background: #fff5f5;
+    border: 1px solid #ffd7d5;
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.info-box {
+    background: #f0f9ff;
+    border: 1px solid #d7efff;
+    border-radius: 14px;
+    padding: 18px;
+}
+
+.article-content {
+    color: #444;
+    line-height: 1.85;
+    font-size: 16px;
+}
+
+.article-content h2 {
+    color: #222;
+    font-size: 25px;
+    font-weight: 700;
+    margin-top: 34px;
+    margin-bottom: 14px;
+}
+
+.article-content p {
+    margin-bottom: 17px;
+}
+
+.article-content ul,
+.article-content ol {
+    margin: 12px 0 20px 24px;
+}
+
+.article-content li {
+    margin-bottom: 9px;
+}
+
+.formula-box {
+    background: #fff5f5;
+    border-left: 4px solid #e5322d;
+    border-radius: 12px;
+    padding: 18px;
+    margin: 20px 0;
+}
+
+.example-box {
+    background: #f5f8ff;
+    border: 1px solid #dce6ff;
+    border-radius: 14px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.tool-card {
+    transition: .2s ease;
+}
+
+.tool-card:hover {
+    transform: translateY(-3px);
+    border-color: #e5322d;
+    box-shadow: 0 8px 20px rgba(0,0,0,.07);
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="sticky top-0 z-50 bg-white border-b border-gray-200">
+
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+
+        <a href="/" class="flex items-center gap-2">
+
+            <div class="w-10 h-10 rounded-xl bg-red-600 text-white flex items-center justify-center font-bold text-lg">
+                A
+            </div>
+
+            <div>
+                <div class="text-xl font-bold antokia-red">
+                    Antokia
+                </div>
+
+                <div class="text-[11px] text-gray-500">
+                    Free Online Tools
+                </div>
+            </div>
+
+        </a>
+
+        <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+
+            <a href="/" class="hover:text-red-600">
+                Home
+            </a>
+
+            <a href="/blog.html" class="hover:text-red-600">
+                Blog
+            </a>
+
+            <a href="/about.html" class="hover:text-red-600">
+                About
+            </a>
+
+            <a href="/contact.html" class="hover:text-red-600">
+                Contact
+            </a>
+
+        </nav>
+
+        <a href="/" class="btn-red px-4 py-2 rounded-full text-sm font-semibold">
+            <i class="fa-solid fa-house mr-1"></i>
+            Home
+        </a>
+
+    </div>
+
+</header>
+
+
+<main class="max-w-6xl mx-auto px-4 py-6">
+
+    <!-- TOP AD -->
+    <div class="ad-box mb-6">
+        Advertisement
+    </div>
+
+
+    <!-- BREADCRUMB -->
+    <div class="text-sm text-gray-500 mb-5">
+
+        <a href="/" class="hover:text-red-600">
+            Home
+        </a>
+
+        <span class="mx-2">›</span>
+
+        <span>
+            Average Calculator
+        </span>
+
+    </div>
+
+
+    <!-- CALCULATOR -->
+    <section class="soft-card overflow-hidden">
+
+        <!-- TITLE -->
+        <div class="p-6 md:p-10 border-b border-gray-100">
+
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 text-red-600 text-xs font-semibold mb-4">
+
+                <i class="fa-solid fa-calculator"></i>
+
+                Free Online Calculator
+
+            </div>
+
+            <h1 class="text-3xl md:text-4xl font-bold leading-tight mb-4">
+                Average Calculator
+            </h1>
+
+            <p class="text-lg text-gray-600 leading-7 max-w-3xl">
+                Calculate the average of multiple numbers quickly and easily.
+                Enter your numbers below and get the result instantly.
+            </p>
+
+        </div>
+
+
+        <!-- CALCULATOR BODY -->
+        <div class="p-6 md:p-10">
+
+            <div class="max-w-3xl mx-auto">
+
+                <label for="numbersInput" class="block font-bold text-lg mb-2">
+                    Enter Your Numbers
+                </label>
+
+                <p class="text-sm text-gray-500 mb-4">
+                    Enter numbers separated by commas, spaces or new lines.
+                </p>
+
+                <textarea
+                    id="numbersInput"
+                    class="tool-input"
+                    placeholder="Example:
+10, 20, 30, 40, 50"
+                ></textarea>
+
+
+                <div class="flex flex-wrap gap-3 mt-4">
+
+                    <button
+                        onclick="calculateAverage()"
+                        class="btn-red px-6 py-3 rounded-xl font-semibold"
+                    >
+                        <i class="fa-solid fa-calculator mr-1"></i>
+                        Calculate Average
+                    </button>
+
+                    <button
+                        onclick="clearCalculator()"
+                        class="px-6 py-3 rounded-xl border border-gray-300 bg-white font-semibold hover:border-red-500 hover:text-red-600"
+                    >
+                        <i class="fa-solid fa-rotate-left mr-1"></i>
+                        Clear
+                    </button>
+
+                </div>
+
+
+                <!-- ERROR -->
+                <div id="errorMessage" class="error-message">
+                    Please enter valid numbers.
+                </div>
+
+
+                <!-- RESULT -->
+                <div id="resultBox" class="result-box">
+
+                    <div class="text-sm text-gray-500">
+                        Average
+                    </div>
+
+                    <div id="resultValue" class="result-value">
+                        0
+                    </div>
+
+                    <div class="text-sm text-gray-500 mt-2">
+                        Based on <span id="numberCount">0</span> numbers
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- MIDDLE AD -->
+    <div class="ad-box my-7">
+        Advertisement
+    </div>
+
+
+    <!-- INFORMATION -->
+    <article class="soft-card p-6 md:p-10 article-content">
+
+        <h2>
+            What Is an Average?
+        </h2>
+
+        <p>
+            An average is a value that represents a group of numbers. In basic
+            mathematics, the most commonly used average is the arithmetic mean.
+        </p>
+
+        <p>
+            To calculate the average, add all the numbers together and divide
+            the total by the number of values.
+        </p>
+
+
+        <div class="formula-box">
+
+            <strong class="text-gray-900">
+                Average Formula
+            </strong>
+
+            <div class="mt-2 font-semibold text-red-600">
+                Average = Sum of All Values ÷ Number of Values
+            </div>
+
+        </div>
+
+
+        <h2>
+            Example of Average Calculation
+        </h2>
+
+        <div class="example-box">
+
+            <div class="text-sm text-gray-500 mb-2">
+                Numbers
+            </div>
+
+            <div class="text-xl font-bold">
+                10, 20, 30, 40, 50
+            </div>
+
+            <div class="border-t border-blue-100 mt-5 pt-5">
+
+                <div class="text-sm text-gray-500 mb-1">
+                    Sum
+                </div>
+
+                <div class="font-semibold">
+                    10 + 20 + 30 + 40 + 50 = 150
+                </div>
+
+            </div>
+
+            <div class="mt-4">
+
+                <div class="text-sm text-gray-500 mb-1">
+                    Number of Values
+                </div>
+
+                <div class="font-semibold">
+                    5
+                </div>
+
+            </div>
+
+            <div class="border-t border-blue-100 mt-5 pt-5">
+
+                <div class="text-sm text-gray-500 mb-1">
+                    Average
+                </div>
+
+                <div class="text-2xl font-bold text-red-600">
+                    150 ÷ 5 = 30
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <h2>
+            How to Calculate Average Manually
+        </h2>
+
+        <ol>
+
+            <li>
+                Write down all the numbers.
+            </li>
+
+            <li>
+                Add all the numbers together.
+            </li>
+
+            <li>
+                Count how many numbers you have.
+            </li>
+
+            <li>
+                Divide the total sum by the number of values.
+            </li>
+
+            <li>
+                The result is the average.
+            </li>
+
+        </ol>
+
+
+        <h2>
+            Where Is Average Used?
+        </h2>
+
+        <ul>
+
+            <li>
+                Calculating average marks of students.
+            </li>
+
+            <li>
+                Finding average test scores.
+            </li>
+
+            <li>
+                Calculating average monthly expenses.
+            </li>
+
+            <li>
+                Comparing average prices.
+            </li>
+
+            <li>
+                Analysing numerical data.
+            </li>
+
+        </ul>
+
+
+        <div class="info-box mt-6">
+
+            <div class="flex gap-3">
+
+                <div class="text-blue-600 text-xl">
+                    <i class="fa-solid fa-circle-info"></i>
+                </div>
+
+                <div>
+
+                    <strong class="text-gray-900">
+                        Tip:
+                    </strong>
+
+                    <p class="mb-0 mt-1">
+                        You can enter whole numbers, decimal numbers and
+                        negative numbers in the calculator.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <h2>
+            Frequently Asked Questions
+        </h2>
+
+
+        <div class="mt-4">
+
+            <div class="border-b border-gray-200">
+
+                <div class="py-4 font-bold">
+                    What is the average formula?
+                </div>
+
+                <div class="pb-4 text-gray-600">
+                    Average equals the sum of all values divided by the number
+                    of values.
+                </div>
+
+            </div>
+
+
+            <div class="border-b border-gray-200">
+
+                <div class="py-4 font-bold">
+                    Can I calculate the average of decimal numbers?
+                </div>
+
+                <div class="pb-4 text-gray-600">
+                    Yes. The calculator supports decimal numbers such as
+                    10.5, 20.75 and 35.25.
+                </div>
+
+            </div>
+
+
+            <div class="border-b border-gray-200">
+
+                <div class="py-4 font-bold">
+                    Can I enter negative numbers?
+                </div>
+
+                <div class="pb-4 text-gray-600">
+                    Yes. Negative numbers are also supported.
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <h2>
+            Related Average Guide
+        </h2>
+
+        <p>
+            Want to understand the calculation in more detail? Read our
+            complete guide:
+        </p>
+
+        <p>
+
+            <a
+                href="/how-to-calculate-average.html"
+                class="text-red-600 font-semibold hover:underline"
+            >
+                How to Calculate Average: Formula, Examples & Easy Method →
+            </a>
+
+        </p>
+
+    </article>
+
+
+    <!-- RELATED TOOLS -->
+    <section class="soft-card p-6 md:p-8 mt-7 mb-7">
+
+        <h2 class="text-2xl font-bold mb-5">
+            Explore More Free Tools
+        </h2>
+
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+
+
+            <!-- AGE CALCULATOR -->
+            <a href="/age-calculator.html"
+               class="tool-card border rounded-xl p-5">
+
+                <div class="w-11 h-11 rounded-xl bg-red-50 text-red-600 flex items-center justify-center mb-3">
+
+                    <i class="fa-solid fa-calendar-days text-lg"></i>
+
+                </div>
+
+                <h3 class="font-bold">
+                    Age Calculator
+                </h3>
+
+                <p class="text-sm text-gray-500 mt-1">
+                    Calculate your exact age from your date of birth.
+                </p>
+
+                <div class="text-red-600 text-sm font-semibold mt-3">
+                    Open Tool →
+                </div>
+
+            </a>
+
+
+            <!-- IMAGE COMPRESSOR -->
+            <a href="/compress-image.html"
+               class="tool-card border rounded-xl p-5">
+
+                <div class="w-11 h-11 rounded-xl bg-red-50 text-red-600 flex items-center justify-center mb-3">
+
+                    <i class="fa-solid fa-compress text-lg"></i>
+
+                </div>
+
+                <h3 class="font-bold">
+                    Image Compressor
+                </h3>
+
+                <p class="text-sm text-gray-500 mt-1">
+                    Reduce image file size for forms and websites.
+                </p>
+
+                <div class="text-red-600 text-sm font-semibold mt-3">
+                    Open Tool →
+                </div>
+
+            </a>
+
+
+            <!-- IMAGE TO PDF -->
+            <a href="/image-to-pdf.html"
+               class="tool-card border rounded-xl p-5">
+
+                <div class="w-11 h-11 rounded-xl bg-red-50 text-red-600 flex items-center justify-center mb-3">
+
+                    <i class="fa-solid fa-file-pdf text-lg"></i>
+
+                </div>
+
+                <h3 class="font-bold">
+                    Image to PDF
+                </h3>
+
+                <p class="text-sm text-gray-500 mt-1">
+                    Convert images into PDF files quickly.
+                </p>
+
+                <div class="text-red-600 text-sm font-semibold mt-3">
+                    Open Tool →
+                </div>
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- BACK BUTTONS -->
+    <div class="flex flex-wrap justify-center gap-3 mb-7">
+
+        <a
+            href="/blog.html"
+            class="px-5 py-2.5 rounded-full border border-gray-300 bg-white text-sm font-semibold hover:border-red-500 hover:text-red-600"
+        >
+            <i class="fa-solid fa-arrow-left mr-1"></i>
+            Back to Blog
+        </a>
+
+        <a
+            href="/"
+            class="px-5 py-2.5 rounded-full btn-red text-sm font-semibold"
+        >
+            <i class="fa-solid fa-house mr-1"></i>
+            Antokia Home
+        </a>
+
+    </div>
+
+
+    <!-- BOTTOM AD -->
+    <div class="ad-box mb-7">
+        Advertisement
+    </div>
+
+</main>
+
+
+<!-- FOOTER -->
+<footer class="bg-[#242424] text-gray-300 mt-10">
+
+    <div class="max-w-6xl mx-auto px-4 py-10">
+
+        <div class="grid md:grid-cols-4 gap-8">
+
+            <!-- BRAND -->
+            <div>
+
+                <div class="text-2xl font-bold text-white mb-2">
+                    Antokia
+                </div>
+
+                <p class="text-sm text-gray-400 leading-6">
+                    Free online tools for images, PDFs, documents,
+                    calculators and everyday digital tasks.
+                </p>
+
+            </div>
+
+
+            <!-- EXPLORE -->
+            <div>
+
+                <h3 class="text-white font-bold mb-3">
+                    Explore
+                </h3>
+
+                <div class="space-y-2 text-sm">
+
+                    <a href="/" class="block hover:text-white">
+                        Home
+                    </a>
+
+                    <a href="/blog.html" class="block hover:text-white">
+                        Blog
+                    </a>
+
+                    <a href="/about.html" class="block hover:text-white">
+                        About
+                    </a>
+
+                    <a href="/contact.html" class="block hover:text-white">
+                        Contact
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- LEGAL -->
+            <div>
+
+                <h3 class="text-white font-bold mb-3">
+                    Legal
+                </h3>
+
+                <div class="space-y-2 text-sm">
+
+                    <a href="/privacy.html" class="block hover:text-white">
+                        Privacy Policy
+                    </a>
+
+                    <a href="/terms.html" class="block hover:text-white">
+                        Terms & Conditions
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- SOCIAL -->
+            <div>
+
+                <h3 class="text-white font-bold mb-3">
+                    Follow Antokia
+                </h3>
+
+                <a
+                    href="https://www.instagram.com/antokia.insta"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 text-sm hover:text-white"
+                >
+
+                    <i class="fa-brands fa-instagram text-lg"></i>
+                    Instagram
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="border-t border-gray-700 mt-8 pt-5 text-center text-xs text-gray-500">
+
+            © 2026 Antokia. All rights reserved.
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+function calculateAverage() {
+
+    const input = document.getElementById("numbersInput").value.trim();
+
+    const resultBox = document.getElementById("resultBox");
+    const resultValue = document.getElementById("resultValue");
+    const numberCount = document.getElementById("numberCount");
+    const errorMessage = document.getElementById("errorMessage");
+
+    resultBox.style.display = "none";
+    errorMessage.style.display = "none";
+
+    if (!input) {
+
+        errorMessage.textContent = "Please enter some numbers.";
+        errorMessage.style.display = "block";
+
+        return;
+    }
+
+
+    /*
+        Allow:
+        10,20,30
+        10 20 30
+        10
+        20
+        30
+    */
+
+    const values = input
+        .split(/[\s,]+/)
+        .map(value => value.trim())
+        .filter(value => value !== "")
+        .map(value => Number(value));
+
+
+    if (
+        values.length === 0 ||
+        values.some(value => !Number.isFinite(value))
+    ) {
+
+        errorMessage.textContent =
+            "Please enter only valid numbers separated by commas, spaces or new lines.";
+
+        errorMessage.style.display = "block";
+
+        return;
+    }
+
+
+    const sum = values.reduce(
+        (total, value) => total + value,
+        0
+    );
+
+
+    const average = sum / values.length;
+
+
+    let formattedAverage;
+
+    if (Number.isInteger(average)) {
+
+        formattedAverage = average.toString();
+
+    } else {
+
+        formattedAverage = average.toFixed(2);
+
+    }
+
+
+    resultValue.textContent = formattedAverage;
+
+    numberCount.textContent = values.length;
+
+    resultBox.style.display = "block";
+
+}
+
+
+function clearCalculator() {
+
+    document.getElementById("numbersInput").value = "";
+
+    document.getElementById("resultBox").style.display = "none";
+
+    document.getElementById("errorMessage").style.display = "none";
+
+}
+
+</script>
+
+</body>
+</html>
