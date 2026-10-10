@@ -6,5 +6,32 @@
       "source": "/tools/:tool",
       "destination": "/tools/:tool/index.html"
     }
+  ],
+  "redirects": [
+    {
+      "source": "/blog",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/about",
+      "destination": "/about.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/contact",
+      "destination": "/contact.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/privacy",
+      "destination": "/privacy.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/terms",
+      "destination": "/terms.html",
+      "statusCode": 301
+    }
   ]
 }
