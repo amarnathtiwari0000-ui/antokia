@@ -9,7 +9,7 @@
 
 <meta name="description" content="Learn how to compress image, merge PDF, calculate age, EMI, SIP, average, discount, percentage, resize image, remove PDF pages, resume make with Antokia free tools.">
 
-<meta name="keywords" content="Antokia blog, free online tools guides, PDF tools guide, image compressor guide, EMI calculator guide, SIP calculator guide, average calculator guide, discount calculator guide, free tools">
+<meta name="keywords" content="Antokia blog, free online tools guides, PDF tools guide, image compressor guide, EMI calculator guide, SIP calculator guide, average calculator guide, discount calculator guide">
 
 <meta name="robots" content="index, follow">
 
@@ -948,7 +948,7 @@ in a simple, practical and easy-to-follow way.
 </p>
 
 <a href="https://antokia.com/"
-class="inline-block mt-7 bg-white text-gray-900 px-6 py-3 rounded-xl font-bold hover:bg-red-500 hover:text-white transition">
+class="inline-block mt-7 bg-[#e5322d] text-white px-6 py-3 rounded-xl font-bold hover:opacity-90 transition">
 Explore Free Tools →
 </a>
 
@@ -1001,9 +1001,8 @@ Explore Free Tools →
 More Guides Coming Soon
 </h2>
 
-<p class="text-gray-600 max-w-2xl mx-auto mt-3">
-We are continuously adding practical guides for calculators,
-PDF tools, image tools, productivity and everyday online tasks.
+<p class="text-gray-600 mt-3 max-w-2xl mx-auto">
+We're working on new guides and tools. Subscribe or check back soon for updates!
 </p>
 
 </div>
@@ -1014,197 +1013,73 @@ PDF tools, image tools, productivity and everyday online tasks.
 </main>
 
 
-
 <!-- FOOTER -->
 
-<footer class="bg-gray-950 text-gray-300 mt-16">
+<footer class="text-center text-sm py-8 mt-8 bg-white border-t">
 
-<div class="max-w-7xl mx-auto px-4 py-12">
+<div class="max-w-7xl mx-auto px-4">
 
-<div class="grid md:grid-cols-4 gap-10">
+<div class="flex flex-wrap justify-center gap-x-5 gap-y-3 mb-5">
 
-
-<div>
-
-<a href="https://antokia.com/"
-class="text-2xl font-extrabold text-white">
-Antokia
+<a href="/" class="underline text-blue-600">
+Home
 </a>
 
-<p class="text-sm text-gray-400 mt-4 leading-6">
-Free online tools and practical guides for everyday digital tasks.
-</p>
-
-</div>
-
-
-<div>
-
-<h3 class="font-bold text-white">
-Explore
-</h3>
-
-<div class="space-y-3 mt-4 text-sm">
-
-<a href="https://antokia.com/"
-class="block hover:text-white">
-All Tools
-</a>
-
-<a href="https://antokia.com/blog.html"
-class="block hover:text-white">
-Blog
-</a>
-
-<a href="https://antokia.com/about.html"
-class="block hover:text-white">
+<a href="/about" class="underline text-blue-600">
 About
 </a>
 
-<a href="https://antokia.com/contact.html"
-class="block hover:text-white">
+<a href="/contact" class="underline text-blue-600">
 Contact
 </a>
 
-</div>
-
-</div>
-
-
-<div>
-
-<h3 class="font-bold text-white">
-Popular Guides
-</h3>
-
-<div class="space-y-3 mt-4 text-sm">
-
-<a href="how-to-pdf-to-word.html"
-class="block hover:text-white">
-PDF to Word
+<a href="/privacy" class="underline text-blue-600">
+Privacy
 </a>
 
-<a href="how-to-compress-image.html"
-class="block hover:text-white">
-Compress Image
-</a>
-
-<a href="how-to-calculate-emi.html"
-class="block hover:text-white">
-EMI Guide
-</a>
-
-<a href="how-to-calculate-sip.html"
-class="block hover:text-white">
-SIP Guide
+<a href="/terms" class="underline text-blue-600">
+Terms
 </a>
 
 </div>
 
-</div>
-
-
-<div>
-
-<h3 class="font-bold text-white">
-Legal & Social
-</h3>
-
-<div class="space-y-3 mt-4 text-sm">
-
-<a href="https://antokia.com/privacy.html"
-class="block hover:text-white">
-Privacy Policy
-</a>
-
-<a href="https://antokia.com/terms.html"
-class="block hover:text-white">
-Terms & Conditions
-</a>
-
-<a href="https://www.instagram.com/antokia.insta"
-target="_blank"
-rel="noopener noreferrer"
-class="block hover:text-white">
-Instagram
-</a>
-
-</div>
-
-</div>
-
-
-</div>
-
-
-<div class="border-t border-gray-800 mt-10 pt-6 text-center text-xs text-gray-500">
-
-© 2026 Antokia. All rights reserved.
-
-</div>
+<p class="text-gray-500">
+© 2026 Antokia.com - Made for India
+</p>
 
 </div>
 
 </footer>
 
 
-
-<!-- SEARCH SCRIPT -->
-
 <script>
 
-const searchInput = document.getElementById("searchInput");
+/* Search Functionality */
+const searchInput = document.getElementById('searchInput');
+const articleGrid = document.getElementById('articleGrid');
+const noResults = document.getElementById('noResults');
+const articles = articleGrid.querySelectorAll('a');
 
-const cards = document.querySelectorAll("#articleGrid .article-card");
+if (searchInput) {
+  searchInput.addEventListener('input', (e) => {
+    const query = e.target.value.toLowerCase();
+    let visibleCount = 0;
 
-const noResults = document.getElementById("noResults");
+    articles.forEach(article => {
+      const title = article.getAttribute('data-title') || article.innerText.toLowerCase();
+      if (title.includes(query)) {
+        article.style.display = '';
+        visibleCount++;
+      } else {
+        article.style.display = 'none';
+      }
+    });
 
-
-searchInput.addEventListener("input", function(){
-
-const query =
-this.value.toLowerCase().trim();
-
-let visible = 0;
-
-
-cards.forEach(function(card){
-
-const title =
-(card.dataset.title || "") +
-" " +
-card.innerText.toLowerCase();
-
-
-if(title.includes(query)){
-
-card.style.display = "";
-
-visible++;
-
-}else{
-
-card.style.display = "none";
-
+    noResults.classList.toggle('hidden', visibleCount > 0);
+  });
 }
-
-});
-
-
-if(visible === 0){
-
-noResults.classList.remove("hidden");
-
-}else{
-
-noResults.classList.add("hidden");
-
-}
-
-});
 
 </script>
-
 
 </body>
 </html>
