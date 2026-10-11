@@ -187,11 +187,6 @@
       <p class="text-gray-600 leading-7 mt-3">Our aim is to provide easy-to-understand tools and helpful guides that allow users to complete common digital tasks more conveniently.</p>
       <a href="/about.html" class="inline-block mt-4 text-[#e5322d] font-semibold">Learn More About Antokia →</a>
     </section>
-
-    <div class="bg-[#e5322d] text-white rounded-2xl p-5 mt-12 text-center shadow">
-      <p class="text-sm"><i class="fa-solid fa-users mr-1"></i>Live Visitors</p>
-      <p id="visitCounter" class="text-2xl font-bold mt-1">Loading...</p>
-    </div>
   </main>
 
   <footer class="text-center text-sm py-8 mt-8 bg-white border-t">
@@ -210,17 +205,6 @@
   </footer>
 
   <script>
-    fetch('https://api.countapi.xyz/hit/antokia.com/visits')
-      .then(r => r.json())
-      .then(d => {
-        document.getElementById('visitCounter').innerText = d.value + ' Visitors';
-      })
-      .catch(() => {
-        const c = Number(localStorage.getItem('antokia_count') || 0) + 1;
-        localStorage.setItem('antokia_count', String(c));
-        document.getElementById('visitCounter').innerText = c + ' Visitors';
-      });
-
     function filterTools(value) {
       value = value.toLowerCase().trim();
       document.querySelectorAll('.tool-card').forEach(card => {
