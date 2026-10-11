@@ -1,5 +1,5 @@
 {
-  "cleanUrls": true,
+  "cleanUrls": false,
   "outputDirectory": ".",
   "rewrites": [
     {
@@ -15,6 +15,11 @@
     },
     {
       "source": "/about",
+      "destination": "/about.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/about-us",
       "destination": "/about.html",
       "statusCode": 301
     },
