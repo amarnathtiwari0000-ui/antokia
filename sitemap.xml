@@ -21,6 +21,13 @@
   <url><loc>https://www.antokia.com/tools/resize-image</loc><priority>0.9</priority></url>
   <url><loc>https://www.antokia.com/tools/bg-remover</loc><priority>0.9</priority></url>
   <url><loc>https://www.antokia.com/tools/resume-maker</loc><priority>0.9</priority></url>
+  <!-- Added missing/new tools -->
+  <url><loc>https://www.antokia.com/tools/pdf-to-excel</loc><priority>0.9</priority></url>
+  <url><loc>https://www.antokia.com/tools/pdf-to-jpg</loc><priority>0.9</priority></url>
+  <url><loc>https://www.antokia.com/tools/pdf-remover</loc><priority>0.9</priority></url>
+  <url><loc>https://www.antokia.com/tools/word-to-pdf</loc><priority>0.9</priority></url>
+  <url><loc>https://www.antokia.com/tools/calculate-average</loc><priority>0.9</priority></url>
+  <url><loc>https://www.antokia.com/tools/calculate-discount</loc><priority>0.9</priority></url>
 
   <!-- All Blogs - New URL without .html -->
   <url><loc>https://www.antokia.com/blog/how-to-pdf-to-word</loc><priority>0.7</priority></url>
@@ -37,4 +44,11 @@
   <url><loc>https://www.antokia.com/blog/how-to-resize-image</loc><priority>0.7</priority></url>
   <url><loc>https://www.antokia.com/blog/how-to-remove-background</loc><priority>0.7</priority></url>
   <url><loc>https://www.antokia.com/blog/how-to-make-resume</loc><priority>0.7</priority></url>
+  <!-- Added missing/new blogs -->
+  <url><loc>https://www.antokia.com/blog/how-to-convert-pdf-to-jpg</loc><priority>0.7</priority></url>
+  <url><loc>https://www.antokia.com/blog/how-to-remove-pdf</loc><priority>0.7</priority></url>
+  <url><loc>https://www.antokia.com/blog/how-to-calculate-average</loc><priority>0.7</priority></url>
+  <url><loc>https://www.antokia.com/blog/how-to-calculate-discount</loc><priority>0.7</priority></url>
+  <url><loc>https://www.antokia.com/blog/ats-resume</loc><priority>0.7</priority></url>
+  <url><loc>https://www.antokia.com/blog/sip-vs-mutual-fund</loc><priority>0.7</priority></url>
 </urlset>
