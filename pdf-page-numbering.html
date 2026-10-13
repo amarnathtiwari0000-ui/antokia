@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PDF Page Numbering Online Free – Add Page Numbers | Antokia</title>
+
+<meta name="description" content="Add page numbers to PDF files online for free with Antokia. Number PDF pages directly in your browser without uploading your document to a server.">
+<meta name="keywords" content="pdf page numbering, add page numbers to pdf, number pdf pages, pdf numbering online, free">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://antokia.com/pdf-page-numbering.html">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="PDF Page Numbering Online Free – Add Page Numbers | Antokia">
+<meta property="og:description" content="Add page numbers to PDF files online for free with Antokia.">
+<meta property="og:url" content="https://antokia.com/pdf-page-numbering.html">
+<meta property="og:site_name" content="Antokia">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PDF Page Numbering Online Free – Antokia">
+<meta name="twitter:description" content="Add page numbers to PDFs in your browser with Antokia.">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebApplication",
+  "name":"Antokia PDF Page Numbering",
+  "url":"https://antokia.com/pdf-page-numbering.html",
+  "applicationCategory":"UtilitiesApplication",
+  "operatingSystem":"Web Browser",
+  "description":"Add page numbers to PDF files in your browser for free using Antokia.",
+  "offers":{
+    "@type":"Offer",
+    "price":"0",
+    "priceCurrency":"USD"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {
+      "@type":"ListItem",
+      "position":1,
+      "name":"Home",
+      "item":"https://antokia.com/"
+    },
+    {
+      "@type":"ListItem",
+      "position":2,
+      "name":"PDF Page Numbering",
+      "item":"https://antokia.com/pdf-page-numbering.html"
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {
+      "@type":"Question",
+      "name":"How can I add page numbers to a PDF online for free?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"Open the Antokia PDF page numbering tool, upload the PDF, choose the page number position and style, and download the numbered PDF."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"Is my PDF uploaded to a server?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"No. The numbering process runs directly in your browser using client-side JavaScript. Your file is processed locally by the tool."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"Can I choose where the page numbers appear?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"Yes. This tool lets you choose the page number position, font size, start number, and optional prefix and suffix."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f5f5fa;
+  color:#222;
+}
+
+.antokia-red{
+  color:#e5322d;
+}
+
+.bg-antokia{
+  background:#e5322d;
+}
+
+.border-antokia{
+  border-color:#e5322d;
+}
+
+.tool-card{
+  background:#fff;
+  border:1px solid #e9e9ee;
+  border-radius:18px;
+  box-shadow:0 8px 25px rgba(0,0,0,.06);
+}
+
+.drop-zone{
+  border:2px dashed #e5322d;
+  background:#fff8f7;
+  transition:.2s ease;
+}
+
+.drop-zone:hover,
+.drop-zone.drag-active{
+  background:#fff0ef;
+  transform:translateY(-1px);
+}
+
+.primary-btn{
+  background:#e5322d;
+  color:#fff;
+  transition:.2s ease;
+}
+
+.primary-btn:hover{
+  background:#c92824;
+}
+
+.secondary-btn{
+  background:#f1f1f4;
+  color:#333;
+  transition:.2s ease;
+}
+
+.secondary-btn:hover{
+  background:#e5e5e9;
+}
+
+.stat-card{
+  background:#fafafa;
+  border:1px solid #ededed;
+  border-radius:14px;
+}
+
+.progress-track{
+  height:8px;
+  background:#ededed;
+  border-radius:20px;
+  overflow:hidden;
+}
+
+.progress-bar{
+  height:100%;
+  width:0%;
+  background:#e5322d;
+  transition:width .25s ease;
+}
+
+.info-card{
+  background:#fff;
+  border:1px solid #e9e9ee;
+  border-radius:16px;
+  box-shadow:0 5px 20px rgba(0,0,0,.04);
+}
+
+.footer-link{
+  color:#cfcfcf;
+  transition:.2s ease;
+}
+
+.footer-link:hover{
+  color:#fff;
+}
+
+@media(max-width:768px){
+  .desktop-nav{
+    display:none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="bg-white sticky top-0 z-50 shadow-sm">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="h-16 flex items-center justify-between">
+
+      <nav class="desktop-nav flex items-center gap-6 text-sm font-medium">
+        <a href="/" class="hover:text-red-600">Home</a>
+        <a href="/blog/" class="hover:text-red-600">Blog</a>
+        <a href="/about.html" class="hover:text-red-600">About</a>
+        <a href="/contact.html" class="hover:text-red-600">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-3 ml-auto">
+        <span class="text-xl font-extrabold antokia-red tracking-tight">
+          Antokia
+        </span>
+
+        <a href="/"
+           class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm font-semibold transition">
+          <i class="fa-solid fa-arrow-left mr-1"></i>
+          Home
+        </a>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+
+<!-- MAIN -->
+<main class="max-w-5xl mx-auto px-4 sm:px-6 py-10">
+
+  <!-- TOP AD SPACE -->
+  <div class="mb-8">
+    <div class="max-w-3xl mx-auto min-h-[90px] flex items-center justify-center">
+      <!-- AdSense ad unit can be placed here after approval -->
+    </div>
+  </div>
+
+  <!-- PAGE INTRO -->
+  <section class="text-center mb-8">
+    <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-red-50 mb-4">
+      <i class="fa-solid fa-hashtag text-2xl antokia-red"></i>
+    </div>
+
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-3">
+      PDF Page Numbering
+    </h1>
+
+    <p class="text-gray-600 max-w-2xl mx-auto leading-relaxed">
+      Add page numbers to your PDF files directly in your browser. Choose the number position, font size, and starting page without uploading your file to a server.
+    </p>
+  </section>
+
+  <!-- TOOL CARD -->
+  <section class="tool-card p-5 sm:p-8 max-w-3xl mx-auto">
+
+    <!-- DROP AREA -->
+    <div id="dropZone" class="drop-zone rounded-2xl p-8 sm:p-12 text-center cursor-pointer">
+      <div class="w-16 h-16 mx-auto rounded-full bg-red-100 flex items-center justify-center mb-4">
+        <i class="fa-solid fa-file-lines text-3xl antokia-red"></i>
+      </div>
+
+      <h2 class="text-xl font-bold text-gray-800 mb-2">
+        Select or Drop Your PDF
+      </h2>
+
+      <p class="text-gray-500 text-sm mb-5">
+        Click here or drag and drop a PDF file
+      </p>
+
+      <button type="button" id="browseBtn" class="primary-btn px-6 py-3 rounded-xl font-semibold">
+        <i class="fa-solid fa-folder-open mr-2"></i>
+        Choose PDF
+      </button>
+
+      <p class="text-xs text-gray-400 mt-4">
+        PDF files only
+      </p>
+
+      <input type="file" id="fileInput" accept=".pdf,application/pdf" class="hidden">
+    </div>
+
+    <!-- OPTIONS -->
+    <div id="options" class="hidden mt-6">
+      <div class="bg-gray-50 border border-gray-200 rounded-xl p-4 space-y-3">
+
+        <div class="grid sm:grid-cols-3 gap-3 items-center">
+          <label class="text-sm text-gray-700">Position</label>
+          <select id="positionSelect" class="sm:col-span-2 p-2 rounded border">
+            <option value="bottom-center">Bottom - Center</option>
+            <option value="bottom-right">Bottom - Right</option>
+            <option value="top-right">Top - Right</option>
+          </select>
+        </div>
+
+        <div class="grid sm:grid-cols-3 gap-3 items-center">
+          <label class="text-sm text-gray-700">Start Number</label>
+          <input id="startNumber" type="number" min="1" value="1" class="sm:col-span-2 p-2 rounded border">
+        </div>
+
+        <div class="grid sm:grid-cols-3 gap-3 items-center">
+          <label class="text-sm text-gray-700">Font Size (px)</label>
+          <input id="fontSizeInput" type="number" min="6" max="72" value="12" class="sm:col-span-2 p-2 rounded border">
+        </div>
+
+        <div class="grid sm:grid-cols-3 gap-3 items-center">
+          <label class="text-sm text-gray-700">Prefix / Suffix</label>
+          <div class="sm:col-span-2 flex gap-2">
+            <input id="prefixInput" type="text" placeholder="Prefix (e.g. Page )" class="p-2 rounded border flex-1">
+            <input id="suffixInput" type="text" placeholder="Suffix (e.g. / 10)" class="p-2 rounded border w-36">
+          </div>
+        </div>
+
+        <div class="text-xs text-gray-500">
+          The numbering runs locally in your browser; files are not intentionally uploaded to Antokia.
+        </div>
+      </div>
+    </div>
+
+    <!-- FILE INFORMATION -->
+    <div id="fileInfo" class="hidden mt-6">
+      <div class="bg-gray-50 border border-gray-200 rounded-xl p-4">
+
+        <div class="flex items-start gap-3">
+          <div class="w-11 h-11 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0">
+            <i class="fa-solid fa-file-pdf antokia-red text-xl"></i>
+          </div>
+
+          <div class="min-w-0 flex-1">
+            <div id="fileName" class="font-semibold text-gray-800 break-all"></div>
+            <div id="fileSize" class="text-sm text-gray-500 mt-1"></div>
+          </div>
+
+          <button type="button" id="removeFile" class="text-gray-400 hover:text-red-600 p-2" title="Remove file">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROGRESS -->
+    <div id="progressSection" class="hidden mt-6">
+      <div class="flex justify-between text-sm mb-2">
+        <span id="progressText" class="font-semibold text-gray-700">Preparing PDF...</span>
+        <span id="progressPercent" class="text-gray-500">0%</span>
+      </div>
+
+      <div class="progress-track">
+        <div id="progressBar" class="progress-bar"></div>
+      </div>
+    </div>
+
+    <!-- STATS -->
+    <div id="stats" class="hidden grid grid-cols-1 sm:grid-cols-3 gap-3 mt-6">
+      <div class="stat-card p-4 text-center">
+        <div class="text-xs text-gray-500 uppercase tracking-wide">Original Size</div>
+        <div id="originalSize" class="text-lg font-bold text-gray-800 mt-1">-</div>
+      </div>
+
+      <div class="stat-card p-4 text-center">
+        <div class="text-xs text-gray-500 uppercase tracking-wide">Final Size</div>
+        <div id="finalSize" class="text-lg font-bold antokia-red mt-1">-</div>
+      </div>
+
+      <div class="stat-card p-4 text-center">
+        <div class="text-xs text-gray-500 uppercase tracking-wide">Pages</div>
+        <div id="pageCount" class="text-lg font-bold text-gray-800 mt-1">-</div>
+      </div>
+    </div>
+
+    <!-- STATUS -->
+    <div id="statusBox" class="hidden mt-5 rounded-xl p-4 text-center text-sm">
+      <span id="statusText"></span>
+    </div>
+
+    <!-- ACTION BUTTONS -->
+    <div id="actions" class="hidden mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <button type="button" id="applyBtn" class="primary-btn py-3 rounded-xl font-semibold">
+        <i class="fa-solid fa-hashtag mr-2"></i>
+        Apply Page Numbers
+      </button>
+
+      <button type="button" id="downloadBtn" class="primary-btn py-3 rounded-xl font-semibold hidden">
+        <i class="fa-solid fa-download mr-2"></i>
+        Download Numbered PDF
+      </button>
+
+      <button type="button" id="resetBtn" class="secondary-btn py-3 rounded-xl font-semibold">
+        <i class="fa-solid fa-rotate-left mr-2"></i>
+        Reset
+      </button>
+    </div>
+
+    <!-- PRIVACY NOTE -->
+    <div class="mt-6 p-4 bg-green-50 border border-green-100 rounded-xl">
+      <div class="flex gap-3">
+        <i class="fa-solid fa-shield-halved text-green-600 mt-0.5"></i>
+
+        <div>
+          <h3 class="font-semibold text-green-800 text-sm">
+            Browser-Based Processing
+          </h3>
+
+          <p class="text-xs text-green-700 mt-1 leading-relaxed">
+            This tool processes your selected PDF in your browser.
+            Your file is not intentionally uploaded to an Antokia server for this operation.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- MIDDLE AD SPACE -->
+  <div class="my-10">
+    <div class="max-w-3xl mx-auto min-h-[100px] flex items-center justify-center">
+      <!-- AdSense ad unit can be placed here after approval -->
+    </div>
+  </div>
+
+  <!-- INFORMATION -->
+  <section class="info-card p-6 sm:p-8 mb-6">
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">
+      Add Page Numbers to a PDF
+    </h2>
+
+    <p class="text-gray-600 leading-7 mb-4">
+      Antokia's PDF Page Numbering tool lets you add page numbers to your document quickly and easily in your browser.
+      You can choose the number position, font size, start number, and optional prefix or suffix to match your document's format.
+    </p>
+
+    <p class="text-gray-600 leading-7">
+      This tool works entirely on the client side, so your PDF stays in your browser while it is processed locally.
+    </p>
+  </section>
+
+  <!-- HOW TO USE -->
+  <section class="info-card p-6 sm:p-8 mb-6">
+    <h2 class="text-2xl font-bold text-gray-900 mb-5">
+      How to Number a PDF
+    </h2>
+
+    <div class="space-y-5">
+      <div class="flex gap-4">
+        <div class="w-9 h-9 rounded-full bg-red-100 antokia-red flex items-center justify-center font-bold flex-shrink-0">1</div>
+        <div>
+          <h3 class="font-semibold text-gray-800">Upload your PDF</h3>
+          <p class="text-gray-600 text-sm mt-1">Click the upload area or drag and drop a PDF document.</p>
+        </div>
+      </div>
+
+      <div class="flex gap-4">
+        <div class="w-9 h-9 rounded-full bg-red-100 antokia-red flex items-center justify-center font-bold flex-shrink-0">2</div>
+        <div>
+          <h3 class="font-semibold text-gray-800">Choose the numbering options</h3>
+          <p class="text-gray-600 text-sm mt-1">Pick the page position, start number, font size, and any prefix or suffix.</p>
+        </div>
+      </div>
+
+      <div class="flex gap-4">
+        <div class="w-9 h-9 rounded-full bg-red-100 antokia-red flex items-center justify-center font-bold flex-shrink-0">3</div>
+        <div>
+          <h3 class="font-semibold text-gray-800">Apply page numbers</h3>
+          <p class="text-gray-600 text-sm mt-1">The page numbering is applied locally in your browser.</p>
+        </div>
+      </div>
+
+      <div class="flex gap-4">
+        <div class="w-9 h-9 rounded-full bg-red-100 antokia-red flex items-center justify-center font-bold flex-shrink-0">4</div>
+        <div>
+          <h3 class="font-semibold text-gray-800">Download the file</h3>
+          <p class="text-gray-600 text-sm mt-1">Save the numbered PDF when processing is complete.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="info-card p-6 sm:p-8 mb-10">
+    <h2 class="text-2xl font-bold text-gray-900 mb-6">
+      Frequently Asked Questions
+    </h2>
+
+    <div class="space-y-5">
+      <div>
+        <h3 class="font-semibold text-gray-800">Can I add page numbers to a PDF for free?</h3>
+        <p class="text-gray-600 text-sm leading-6 mt-2">Yes. Antokia provides this PDF numbering tool free to use.</p>
+      </div>
+
+      <div>
+        <h3 class="font-semibold text-gray-800">Is my PDF uploaded to Antokia?</h3>
+        <p class="text-gray-600 text-sm leading-6 mt-2">No. The processing is carried out in your browser using JavaScript, so your file stays local.</p>
+      </div>
+
+      <div>
+        <h3 class="font-semibold text-gray-800">Can I change the position of the page numbers?</h3>
+        <p class="text-gray-600 text-sm leading-6 mt-2">Yes. You can set numbers at the bottom center, bottom right, or top right of each page.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOTTOM AD SPACE -->
+  <div class="mb-8">
+    <div class="max-w-3xl mx-auto min-h-[90px] flex items-center justify-center">
+      <!-- AdSense ad unit can be placed here after approval -->
+    </div>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-[#242424] text-white mt-10">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-10">
+
+      <div>
+        <h3 class="text-lg font-bold mb-4">Explore</h3>
+        <div class="space-y-3 text-sm">
+          <a href="/" class="footer-link block">Home</a>
+          <a href="/blog/" class="footer-link block">Blog</a>
+          <a href="/about.html" class="footer-link block">About</a>
+          <a href="/contact.html" class="footer-link block">Contact</a>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-bold mb-4">Legal</h3>
+        <div class="space-y-3 text-sm">
+          <a href="/privacy.html" class="footer-link block">Privacy Policy</a>
+          <a href="/terms.html" class="footer-link block">Terms &amp; Conditions</a>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-bold mb-4">Follow Antokia</h3>
+        <a href="https://www.instagram.com/antokia.insta" target="_blank" rel="noopener noreferrer" class="footer-link inline-flex items-center gap-2 text-sm">
+          <i class="fa-brands fa-instagram"></i>
+          Instagram
+        </a>
+      </div>
+
+    </div>
+
+    <div class="border-t border-gray-700 mt-10 pt-6 text-center text-sm text-gray-400">
+      © 2026 Antokia. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<script>
+const fileInput = document.getElementById("fileInput");
+const dropZone = document.getElementById("dropZone");
+const browseBtn = document.getElementById("browseBtn");
+
+const options = document.getElementById("options");
+const positionSelect = document.getElementById("positionSelect");
+const startNumber = document.getElementById("startNumber");
+const fontSizeInput = document.getElementById("fontSizeInput");
+const prefixInput = document.getElementById("prefixInput");
+const suffixInput = document.getElementById("suffixInput");
+
+const fileInfo = document.getElementById("fileInfo");
+const fileName = document.getElementById("fileName");
+const fileSize = document.getElementById("fileSize");
+const removeFile = document.getElementById("removeFile");
+
+const progressSection = document.getElementById("progressSection");
+const progressBar = document.getElementById("progressBar");
+const progressText = document.getElementById("progressText");
+const progressPercent = document.getElementById("progressPercent");
+
+const stats = document.getElementById("stats");
+const originalSize = document.getElementById("originalSize");
+const finalSize = document.getElementById("finalSize");
+const pageCount = document.getElementById("pageCount");
+
+const statusBox = document.getElementById("statusBox");
+const statusText = document.getElementById("statusText");
+
+const actions = document.getElementById("actions");
+const applyBtn = document.getElementById("applyBtn");
+const downloadBtn = document.getElementById("downloadBtn");
+const resetBtn = document.getElementById("resetBtn");
+
+let selectedFile = null;
+let numberedBlob = null;
+let downloadUrl = null;
+
+function formatBytes(bytes){
+  if(bytes === 0) return "0 Bytes";
+  const units = ["Bytes","KB","MB","GB"];
+  const i = Math.floor(Math.log(bytes) / Math.log(1024));
+  return (bytes / Math.pow(1024, i)).toFixed(i === 0 ? 0 : 2) + " " + units[i];
+}
+
+function setProgress(percent, text){
+  const safePercent = Math.max(0, Math.min(100, Math.round(percent)));
+  progressBar.style.width = safePercent + "%";
+  progressPercent.textContent = safePercent + "%";
+  progressText.textContent = text;
+}
+
+function showStatus(message, type){
+  statusBox.classList.remove(
+    "hidden",
+    "bg-green-50",
+    "border-green-100",
+    "text-green-700",
+    "bg-red-50",
+    "border-red-100",
+    "text-red-700",
+    "bg-blue-50",
+    "border-blue-100",
+    "text-blue-700"
+  );
+
+  if(type === "success"){
+    statusBox.classList.add("bg-green-50","border","border-green-100","text-green-700");
+  }else if(type === "error"){
+    statusBox.classList.add("bg-red-50","border","border-red-100","text-red-700");
+  }else{
+    statusBox.classList.add("bg-blue-50","border","border-blue-100","text-blue-700");
+  }
+
+  statusText.textContent = message;
+}
+
+function isPdf(file){
+  if(!file) return false;
+  const name = file.name.toLowerCase();
+  return file.type === "application/pdf" || name.endsWith(".pdf");
+}
+
+browseBtn.addEventListener("click", function(event){
+  event.stopPropagation();
+  fileInput.click();
+});
+
+dropZone.addEventListener("click", function(){
+  fileInput.click();
+});
+
+fileInput.addEventListener("change", function(){
+  if(fileInput.files && fileInput.files[0]){
+    handleFile(fileInput.files[0]);
+  }
+});
+
+dropZone.addEventListener("dragover", function(event){
+  event.preventDefault();
+  dropZone.classList.add("drag-active");
+});
+
+dropZone.addEventListener("dragleave", function(){
+  dropZone.classList.remove("drag-active");
+});
+
+dropZone.addEventListener("drop", function(event){
+  event.preventDefault();
+  dropZone.classList.remove("drag-active");
+  if(event.dataTransfer && event.dataTransfer.files && event.dataTransfer.files[0]){
+    handleFile(event.dataTransfer.files[0]);
+  }
+});
+
+function handleFile(file){
+  if(!file) return;
+
+  if(!isPdf(file)){
+    showStatus("Please select a valid PDF file.", "error");
+    return;
+  }
+
+  selectedFile = file;
+  numberedBlob = null;
+  if(downloadUrl){
+    URL.revokeObjectURL(downloadUrl);
+    downloadUrl = null;
+  }
+
+  fileInfo.classList.remove("hidden");
+  fileName.textContent = file.name;
+  fileSize.textContent = formatBytes(file.size);
+
+  options.classList.remove("hidden");
+  stats.classList.add("hidden");
+  actions.classList.remove("hidden");
+  downloadBtn.classList.add("hidden");
+  progressSection.classList.remove("hidden");
+
+  setProgress(5, "Ready to process");
+  showStatus("Set options and click 'Apply Page Numbers'.", "info");
+}
+
+removeFile.addEventListener("click", resetAll);
+resetBtn.addEventListener("click", resetAll);
+
+applyBtn.addEventListener("click", async function(){
+  if(!selectedFile){
+    showStatus("Please choose a PDF first.", "error");
+    return;
+  }
+
+  applyBtn.disabled = true;
+  setProgress(10, "Reading PDF...");
+  showStatus("Processing PDF in your browser...", "info");
+
+  try{
+    const arrayBuffer = await selectedFile.arrayBuffer();
+    setProgress(25, "Loading PDF document...");
+    const pdfDoc = await PDFLib.PDFDocument.load(arrayBuffer);
+
+    const pages = pdfDoc.getPages();
+    const totalPages = pages.length;
+    pageCount.textContent = totalPages;
+    originalSize.textContent = formatBytes(selectedFile.size);
+
+    setProgress(35, "Loading font...");
+    const helvetica = await pdfDoc.embedFont(PDFLib.StandardFonts.Helvetica);
+
+    const start = parseInt(startNumber.value, 10) || 1;
+    const fontSize = parseInt(fontSizeInput.value, 10) || 12;
+    const position = positionSelect.value || "bottom-center";
+    const prefix = prefixInput.value || "";
+    const suffix = suffixInput.value || "";
+
+    const margin = Math.max(10, Math.round(fontSize * 0.6));
+
+    setProgress(50, "Applying page numbers...");
+
+    for(let i = 0; i < pages.length; i++){
+      const page = pages[i];
+      const { width, height } = page.getSize();
+      const pageNumber = start + i;
+      const text = `${prefix}${pageNumber}${suffix}`;
+      const textWidth = helvetica.widthOfTextAtSize(text, fontSize);
+
+      let x = margin;
+      let y = margin;
+
+      if(position === "bottom-center"){
+        x = (width - textWidth) / 2;
+        y = margin;
+      }else if(position === "bottom-right"){
+        x = width - margin - textWidth;
+        y = margin;
+      }else if(position === "top-right"){
+        x = width - margin - textWidth;
+        y = height - margin - fontSize;
+      }
+
+      page.drawText(text, {
+        x,
+        y,
+        size: fontSize,
+        font: helvetica,
+        color: PDFLib.rgb(0, 0, 0),
+        opacity: 1
+      });
+
+      const progress = 50 + Math.round(((i + 1) / totalPages) * 40);
+      setProgress(progress, `Numbering page ${i + 1} of ${totalPages}...`);
+      await new Promise(resolve => setTimeout(resolve, 10));
+    }
+
+    setProgress(92, "Saving numbered PDF...");
+    const modifiedBytes = await pdfDoc.save({
+      useObjectStreams: true,
+      addDefaultPage: false
+    });
+
+    numberedBlob = new Blob([modifiedBytes], { type: "application/pdf" });
+    finalSize.textContent = formatBytes(modifiedBytes.length);
+
+    setProgress(100, "Completed");
+    showStatus("Page numbers applied successfully.", "success");
+
+    if(downloadUrl){
+      URL.revokeObjectURL(downloadUrl);
+    }
+    downloadUrl = URL.createObjectURL(numberedBlob);
+
+    downloadBtn.classList.remove("hidden");
+    stats.classList.remove("hidden");
+
+    downloadBtn.onclick = function(){
+      const a = document.createElement('a');
+      a.href = downloadUrl;
+      const baseName = selectedFile.name.replace(/\.pdf$/i, "") || "numbered-pdf";
+      a.download = `${baseName}-numbered.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    };
+
+  }catch(error){
+    console.error(error);
+    progressSection.classList.add("hidden");
+    stats.classList.add("hidden");
+    showStatus("Unable to process this PDF. Please try another valid PDF file.", "error");
+  }finally{
+    applyBtn.disabled = false;
+  }
+});
+
+function resetAll(){
+  selectedFile = null;
+  numberedBlob = null;
+
+  if(downloadUrl){
+    URL.revokeObjectURL(downloadUrl);
+    downloadUrl = null;
+  }
+
+  fileInput.value = "";
+  fileInfo.classList.add("hidden");
+  options.classList.add("hidden");
+  progressSection.classList.add("hidden");
+  stats.classList.add("hidden");
+  actions.classList.add("hidden");
+  downloadBtn.classList.add("hidden");
+  setProgress(0, "");
+  statusBox.classList.add("hidden");
+}
+
+setProgress(0, "");
+showStatus("Select a PDF to begin.", "info");
+</script>
+
+</body>
+</html>
