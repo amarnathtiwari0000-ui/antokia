@@ -89,7 +89,7 @@
       "name":"Can I choose where the page numbers appear?",
       "acceptedAnswer":{
         "@type":"Answer",
-        "text":"Yes. This tool lets you choose the page number position, font size, start number, and optional prefix and suffix."
+        "text":"Yes. This tool lets you choose the page number position, font size, start number, page range, and optional prefix and suffix."
       }
     }
   ]
@@ -254,7 +254,7 @@ body{
     </h1>
 
     <p class="text-gray-600 max-w-2xl mx-auto leading-relaxed">
-      Add page numbers to your PDF files directly in your browser. Choose the number position, font size, and starting page without uploading your file to a server.
+      Add page numbers to your PDF files directly in your browser. Choose the position, font size, starting page, and custom range without uploading your file to a server.
     </p>
   </section>
 
@@ -289,15 +289,34 @@ body{
 
     <!-- OPTIONS -->
     <div id="options" class="hidden mt-6">
-      <div class="bg-gray-50 border border-gray-200 rounded-xl p-4 space-y-3">
+      <div class="bg-gray-50 border border-gray-200 rounded-xl p-4 space-y-4">
 
         <div class="grid sm:grid-cols-3 gap-3 items-center">
           <label class="text-sm text-gray-700">Position</label>
           <select id="positionSelect" class="sm:col-span-2 p-2 rounded border">
             <option value="bottom-center">Bottom - Center</option>
             <option value="bottom-right">Bottom - Right</option>
+            <option value="top-center">Top - Center</option>
             <option value="top-right">Top - Right</option>
           </select>
+        </div>
+
+        <div class="grid sm:grid-cols-3 gap-3 items-center">
+          <label class="text-sm text-gray-700">Page Range</label>
+          <div class="sm:col-span-2 flex gap-2">
+            <select id="pageRangeMode" class="p-2 rounded border flex-1">
+              <option value="all">All pages</option>
+              <option value="custom">Custom range</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="customRangeFields" class="hidden grid sm:grid-cols-3 gap-3 items-center">
+          <label class="text-sm text-gray-700">Custom Range</label>
+          <div class="sm:col-span-2 grid grid-cols-2 gap-2">
+            <input id="pageStartInput" type="number" min="1" value="1" class="p-2 rounded border" placeholder="From">
+            <input id="pageEndInput" type="number" min="1" value="1" class="p-2 rounded border" placeholder="To">
+          </div>
         </div>
 
         <div class="grid sm:grid-cols-3 gap-3 items-center">
@@ -433,7 +452,7 @@ body{
 
     <p class="text-gray-600 leading-7 mb-4">
       Antokia's PDF Page Numbering tool lets you add page numbers to your document quickly and easily in your browser.
-      You can choose the number position, font size, start number, and optional prefix or suffix to match your document's format.
+      You can choose the number position, page range, font size, start number, and optional prefix or suffix to match your document formatting.
     </p>
 
     <p class="text-gray-600 leading-7">
@@ -460,7 +479,7 @@ body{
         <div class="w-9 h-9 rounded-full bg-red-100 antokia-red flex items-center justify-center font-bold flex-shrink-0">2</div>
         <div>
           <h3 class="font-semibold text-gray-800">Choose the numbering options</h3>
-          <p class="text-gray-600 text-sm mt-1">Pick the page position, start number, font size, and any prefix or suffix.</p>
+          <p class="text-gray-600 text-sm mt-1">Pick the page position, range, start number, font size, and prefix or suffix.</p>
         </div>
       </div>
 
@@ -501,7 +520,7 @@ body{
 
       <div>
         <h3 class="font-semibold text-gray-800">Can I change the position of the page numbers?</h3>
-        <p class="text-gray-600 text-sm leading-6 mt-2">Yes. You can set numbers at the bottom center, bottom right, or top right of each page.</p>
+        <p class="text-gray-600 text-sm leading-6 mt-2">Yes. You can set numbers at the bottom center, bottom right, top center, or top right of each page.</p>
       </div>
     </div>
   </section>
@@ -560,6 +579,10 @@ const dropZone = document.getElementById("dropZone");
 const browseBtn = document.getElementById("browseBtn");
 
 const options = document.getElementById("options");
+const pageRangeMode = document.getElementById("pageRangeMode");
+const customRangeFields = document.getElementById("customRangeFields");
+const pageStartInput = document.getElementById("pageStartInput");
+const pageEndInput = document.getElementById("pageEndInput");
 const positionSelect = document.getElementById("positionSelect");
 const startNumber = document.getElementById("startNumber");
 const fontSizeInput = document.getElementById("fontSizeInput");
@@ -637,6 +660,10 @@ function isPdf(file){
   const name = file.name.toLowerCase();
   return file.type === "application/pdf" || name.endsWith(".pdf");
 }
+
+pageRangeMode.addEventListener("change", function(){
+  customRangeFields.classList.toggle("hidden", pageRangeMode.value !== "custom");
+});
 
 browseBtn.addEventListener("click", function(event){
   event.stopPropagation();
@@ -722,23 +749,35 @@ applyBtn.addEventListener("click", async function(){
     pageCount.textContent = totalPages;
     originalSize.textContent = formatBytes(selectedFile.size);
 
-    setProgress(35, "Loading font...");
-    const helvetica = await pdfDoc.embedFont(PDFLib.StandardFonts.Helvetica);
+    const pageRangeModeValue = pageRangeMode.value;
+    let fromPage = 1;
+    let toPage = totalPages;
 
-    const start = parseInt(startNumber.value, 10) || 1;
-    const fontSize = parseInt(fontSizeInput.value, 10) || 12;
+    if(pageRangeModeValue === "custom"){
+      fromPage = Math.max(1, parseInt(pageStartInput.value, 10) || 1);
+      toPage = Math.max(fromPage, Math.min(totalPages, parseInt(pageEndInput.value, 10) || totalPages));
+    }
+
+    const start = Math.max(1, parseInt(startNumber.value, 10) || 1);
+    const fontSize = Math.max(6, Math.min(72, parseInt(fontSizeInput.value, 10) || 12));
     const position = positionSelect.value || "bottom-center";
     const prefix = prefixInput.value || "";
     const suffix = suffixInput.value || "";
 
     const margin = Math.max(10, Math.round(fontSize * 0.6));
 
+    setProgress(35, "Loading font...");
+    const helvetica = await pdfDoc.embedFont(PDFLib.StandardFonts.Helvetica);
+
     setProgress(50, "Applying page numbers...");
 
-    for(let i = 0; i < pages.length; i++){
+    for(let i = 0; i < totalPages; i++){
+      const pageIndex = i + 1;
+      if(pageIndex < fromPage || pageIndex > toPage) continue;
+
       const page = pages[i];
       const { width, height } = page.getSize();
-      const pageNumber = start + i;
+      const pageNumber = start + (pageIndex - fromPage);
       const text = `${prefix}${pageNumber}${suffix}`;
       const textWidth = helvetica.widthOfTextAtSize(text, fontSize);
 
@@ -751,6 +790,9 @@ applyBtn.addEventListener("click", async function(){
       }else if(position === "bottom-right"){
         x = width - margin - textWidth;
         y = margin;
+      }else if(position === "top-center"){
+        x = (width - textWidth) / 2;
+        y = height - margin - fontSize;
       }else if(position === "top-right"){
         x = width - margin - textWidth;
         y = height - margin - fontSize;
@@ -765,8 +807,8 @@ applyBtn.addEventListener("click", async function(){
         opacity: 1
       });
 
-      const progress = 50 + Math.round(((i + 1) / totalPages) * 40);
-      setProgress(progress, `Numbering page ${i + 1} of ${totalPages}...`);
+      const progress = 50 + Math.round(((pageIndex - fromPage + 1) / (toPage - fromPage + 1)) * 40);
+      setProgress(progress, `Numbering page ${pageIndex} of ${totalPages}...`);
       await new Promise(resolve => setTimeout(resolve, 10));
     }
 
@@ -779,13 +821,13 @@ applyBtn.addEventListener("click", async function(){
     numberedBlob = new Blob([modifiedBytes], { type: "application/pdf" });
     finalSize.textContent = formatBytes(modifiedBytes.length);
 
-    setProgress(100, "Completed");
-    showStatus("Page numbers applied successfully.", "success");
-
     if(downloadUrl){
       URL.revokeObjectURL(downloadUrl);
     }
     downloadUrl = URL.createObjectURL(numberedBlob);
+
+    setProgress(100, "Completed");
+    showStatus("Page numbers applied successfully.", "success");
 
     downloadBtn.classList.remove("hidden");
     stats.classList.remove("hidden");
