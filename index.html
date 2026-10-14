@@ -6,23 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Antokia - Free Online PDF, Image, Calculator & Digital Tools</title>
-
   <meta name="description" content="Use free online tools on Antokia to convert PDF to Word, PDF to Excel, images to PDF, compress images, calculate EMI, SIP and more.">
-
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#e5322d">
 
   <link rel="icon" type="image/png" href="/logo.png">
-  <link rel="preconnect" href="https://cdn.tailwindcss.com">
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     .tool-card {
       transition: box-shadow 0.2s ease, transform 0.2s ease;
@@ -32,15 +25,14 @@
       transform: translateY(-3px);
     }
 
-    .tool-card:focus-visible,
+    .tool-card[hidden] {
+      display: none !important;
+    }
+
     a:focus-visible,
     input:focus-visible {
       outline: 2px solid #e5322d;
       outline-offset: 3px;
-    }
-
-    .tool-card[hidden] {
-      display: none !important;
     }
   </style>
 </head>
@@ -66,7 +58,7 @@
             id="searchTool"
             type="search"
             placeholder="Search tools..."
-            aria-label="Search available tools"
+            aria-label="Search tools"
             class="border rounded-full px-4 py-2 w-72 text-sm focus:outline-none focus:ring-2 focus:ring-[#e5322d]"
           >
         </div>
@@ -88,24 +80,33 @@
       </p>
 
       <div class="mt-6 flex flex-wrap justify-center gap-3">
-        <a href="#tools"
-           class="bg-[#e5322d] text-white px-6 py-3 rounded-xl font-semibold hover:bg-red-700">
+        <a href="#tools" class="bg-[#e5322d] text-white px-6 py-3 rounded-xl font-semibold">
           Explore Free Tools
         </a>
 
-        <a href="/blog.html"
-           class="bg-white border px-6 py-3 rounded-xl font-semibold hover:bg-gray-50">
+        <a href="/blog.html" class="bg-white border px-6 py-3 rounded-xl font-semibold">
           Read Our Guides
         </a>
       </div>
     </section>
 
-    <!-- POPULAR TOOLS -->
-    <section id="tools" class="mb-10" aria-labelledby="popular-heading">
-      <h2 id="popular-heading" class="text-2xl font-bold mb-2">
-        Popular Free Tools
-      </h2>
+    <!-- MOBILE SEARCH -->
+    <section class="md:hidden mb-8">
+      <label for="mobileSearchTool" class="block font-semibold text-sm mb-2">
+        Search Free Tools
+      </label>
+      <input
+        id="mobileSearchTool"
+        type="search"
+        placeholder="e.g. PDF to Word..."
+        aria-label="Search tools on mobile"
+        class="w-full border rounded-xl px-4 py-3 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#e5322d]"
+      >
+    </section>
 
+    <!-- POPULAR TOOLS -->
+    <section id="tools" class="mb-10">
+      <h2 class="text-2xl font-bold mb-2">Popular Free Tools</h2>
       <p class="text-gray-600 text-sm mb-5">
         Start with some of the most useful tools available on Antokia.
       </p>
@@ -156,11 +157,8 @@
     </section>
 
     <!-- ALL TOOLS -->
-    <section aria-labelledby="all-tools-heading">
-      <h2 id="all-tools-heading" class="text-2xl font-bold mb-2">
-        Explore All Free Tools
-      </h2>
-
+    <section>
+      <h2 class="text-2xl font-bold mb-2">Explore All Free Tools</h2>
       <p class="text-gray-600 text-sm mb-8">
         Choose a category to find tools for your specific task.
       </p>
@@ -277,7 +275,6 @@
       </h3>
 
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
-
         <a href="/sip-calculator.html" class="tool-card bg-white p-6 rounded-2xl border text-center">
           <h3 class="font-bold">SIP Calculator</h3>
         </a>
@@ -289,7 +286,6 @@
         <a href="/ppf-calculator.html" class="tool-card bg-white p-6 rounded-2xl border text-center">
           <h3 class="font-bold">PPF Calculator</h3>
         </a>
-
       </div>
 
       <!-- OTHER TOOLS -->
@@ -299,13 +295,12 @@
       </h3>
 
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-
         <a href="/age-calculator.html" class="tool-card bg-white p-6 rounded-2xl border text-center">
           <h3 class="font-bold">Age Calculator</h3>
         </a>
 
         <a href="/percentage.html" class="tool-card bg-white p-6 rounded-2xl border text-center">
-          <h3 class="font-bold">Percentage Calculator</h3>
+          <h3 class="font-bold">Percentage</h3>
         </a>
 
         <a href="/resume-maker.html" class="tool-card bg-white p-6 rounded-2xl border text-center">
@@ -315,18 +310,14 @@
         <a href="/calculate-average.html" class="tool-card bg-white p-6 rounded-2xl border text-center">
           <h3 class="font-bold">Average Calculator</h3>
         </a>
-
       </div>
     </section>
 
     <!-- LATEST GUIDES -->
-    <section class="mt-12" aria-labelledby="guides-heading">
-
+    <section class="mt-12">
       <div class="flex justify-between items-center mb-5">
         <div>
-          <h2 id="guides-heading" class="text-2xl font-bold">
-            Latest Guides
-          </h2>
+          <h2 class="text-2xl font-bold">Latest Guides</h2>
           <p class="text-gray-600 text-sm mt-1">
             Helpful articles about PDF, images and online tools.
           </p>
@@ -340,7 +331,7 @@
       <div class="grid md:grid-cols-3 gap-5">
 
         <article class="bg-white border rounded-2xl p-6 hover:shadow-md transition">
-          <a href="/blog.html" class="block rounded-xl">
+          <a href="/blog.html" class="block">
             <div class="text-red-500 text-2xl">
               <i class="fa-solid fa-image" aria-hidden="true"></i>
             </div>
@@ -357,7 +348,7 @@
         </article>
 
         <article class="bg-white border rounded-2xl p-6 hover:shadow-md transition">
-          <a href="/blog.html" class="block rounded-xl">
+          <a href="/blog.html" class="block">
             <div class="text-blue-500 text-2xl">
               <i class="fa-solid fa-file-pdf" aria-hidden="true"></i>
             </div>
@@ -374,7 +365,7 @@
         </article>
 
         <article class="bg-white border rounded-2xl p-6 hover:shadow-md transition">
-          <a href="/blog.html" class="block rounded-xl">
+          <a href="/blog.html" class="block">
             <div class="text-green-500 text-2xl">
               <i class="fa-solid fa-calculator" aria-hidden="true"></i>
             </div>
@@ -395,12 +386,46 @@
 
   </main>
 
-  <!-- FOOTER: Original design and text preserved -->
-  <footer class="text-center text-sm py-8 mt-8 bg-white border-t">
-    <p class="text-gray-500">© 2026 Antokia.com - Made for India</p>
+  <!-- FOOTER: Screenshot design and navigation restored -->
+  <footer class="bg-[#020617] text-white mt-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-12">
+
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+
+        <div class="max-w-xl">
+          <a href="/" class="text-4xl font-extrabold text-white">
+            Antokia
+          </a>
+
+          <p class="text-gray-400 text-lg leading-7 mt-3">
+            Free online tools for everyday digital tasks. Made in Mumbai,
+            India for users around the world.
+          </p>
+        </div>
+
+        <nav aria-label="Footer navigation"
+             class="flex flex-wrap gap-x-7 gap-y-4 text-base md:text-lg">
+
+          <a href="/" class="hover:text-red-400 transition">Home</a>
+          <a href="/about.html" class="hover:text-red-400 transition">About Us</a>
+          <a href="/privacy-policy.html" class="hover:text-red-400 transition">Privacy Policy</a>
+          <a href="/terms.html" class="hover:text-red-400 transition">Terms &amp; Conditions</a>
+          <a href="/contact.html" class="hover:text-red-400 transition">Contact Us</a>
+
+        </nav>
+      </div>
+
+      <div class="border-t border-slate-800 mt-12 pt-8 flex flex-col md:flex-row justify-between gap-4 text-gray-500">
+
+        <p>© 2026 Antokia.com. All rights reserved.</p>
+
+        <p>Mumbai, Maharashtra, India</p>
+
+      </div>
+    </div>
   </footer>
 
-  <!-- TOOL SEARCH -->
+  <!-- TOOL SEARCH: Desktop and mobile -->
   <script>
     function filterTools(value) {
       const searchValue = value.toLowerCase().trim();
@@ -408,16 +433,23 @@
 
       cards.forEach(card => {
         const cardText = card.innerText.toLowerCase();
-        const matches = cardText.includes(searchValue);
-
-        card.hidden = !matches;
+        card.hidden = !cardText.includes(searchValue);
       });
     }
 
-    const searchInput = document.getElementById('searchTool');
+    const desktopSearch = document.getElementById('searchTool');
+    const mobileSearch = document.getElementById('mobileSearchTool');
 
-    if (searchInput) {
-      searchInput.addEventListener('input', function () {
+    if (desktopSearch) {
+      desktopSearch.addEventListener('input', function () {
+        if (mobileSearch) mobileSearch.value = this.value;
+        filterTools(this.value);
+      });
+    }
+
+    if (mobileSearch) {
+      mobileSearch.addEventListener('input', function () {
+        if (desktopSearch) desktopSearch.value = this.value;
         filterTools(this.value);
       });
     }
