@@ -4,53 +4,2141 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- SEO OPTIMIZED - Top queries: background remover, remove bg, hd remove bg free -->
-<title>Background Remover - Remove BG Free, HD No Watermark | Antokia</title>
-<meta name="description" content="Free background remover - Remove BG from image in 1 click. HD quality, no watermark, 100% free. Remove background & create transparent PNG instantly.">
-<meta name="keywords" content="background remover, remove bg, bg remover, remove background, remove background from image, hd background remover, free background remover no watermark, transparent background maker, antokia bg remover, remove bg free, hd remove bg free">
+<title>Free AI Background Remover for Photos – Remove BG | Antokia</title>
+
+<meta name="description" content="Remove image backgrounds online for free with Antokia AI Background Remover. Create transparent PNGs, white or custom backgrounds, blur backgrounds, and download your edited image easily.">
+<meta name="keywords" content="background remover, remove background, AI background remover, remove image background, transparent PNG, free background remover, photo background remover">
+
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://www.antokia.com/bg-remover.html">
+<link rel="canonical" href="https://antokia.com/bg-remover.html">
+
 <meta name="google-site-verification" content="google-site-verification-code">
-<meta property="og:title" content="Background Remover - Free Remove BG, HD No Watermark | Antokia">
-<meta property="og:description" content="Remove background from any image free & fast. HD quality, no watermark. Upload JPG/PNG and download transparent PNG in seconds.">
+
+<meta property="og:title" content="Free AI Background Remover – Antokia">
+<meta property="og:description" content="Remove photo backgrounds online for free with Antokia. Create transparent PNGs and replace backgrounds with white, black, custom colors or blur.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://www.antokia.com/bg-remover.html">
-<meta property="og:image" content="https://www.antokia.com/og-bg-remover.png">
+<meta property="og:url" content="https://antokia.com/bg-remover.html">
+
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+
+<!-- TensorFlow + BodyPix -->
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.17.0/dist/tf.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/body-pix@2.2.0/dist/body-pix.min.js"></script>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"Background Remover - Remove BG Free HD No Watermark","url":"https://www.antokia.com/bg-remover.html","applicationCategory":"ImageEditingApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Free background remover to remove bg from image. HD quality, no watermark.","aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","ratingCount":"1240"}}
-</script>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is Antokia Background Remover free and no watermark?","acceptedAnswer":{"@type":"Answer","text":"Yes, 100% free, HD quality, no watermark, unlimited use."}},{"@type":"Question","name":"Is it HD remove bg free tool?","acceptedAnswer":{"@type":"Answer","text":"Yes, HD quality without losing quality, free, no watermark."}},{"@type":"Question","name":"How to remove background from image?","acceptedAnswer":{"@type":"Answer","text":"Upload JPG/PNG/WEBP up to 2MB, AI automatically removes BG, download transparent PNG."}},{"@type":"Question","name":"Can I remove bg on mobile?","acceptedAnswer":{"@type":"Answer","text":"Yes, works on Android, iPhone and desktop directly in browser."}}]}
-</script>
+
 <style>
-    *{box-sizing:border-box}body{margin:0;background:#f5f5fa;font-family:Arial,Helvetica,sans-serif;color:#222}.antokia-red{color:#e5322d}.btn-red{background:#e5322d;color:#fff}.btn-red:hover{background:#c92521}.soft-card{background:#fff;border:1px solid #e7e7ed;border-radius:18px;box-shadow:0 8px 25px rgba(0,0,0,.05)}.ad-box{min-height:90px;border:1px dashed #d5d5dd;border-radius:12px;background:#fafafd;display:flex;align-items:center;justify-content:center;color:#999;font-size:13px}.drop-zone{border:2px dashed #d7d7df;border-radius:18px;padding:35px 20px;text-align:center;background:#fafafd;transition:.2s ease;cursor:pointer}.drop-zone:hover,.drop-zone.dragover{border-color:#e5322d;background:#fff7f7}.tool-btn{border:1px solid #e1e1e8;background:#fff;border-radius:10px;padding:9px 13px;font-size:14px;transition:.2s}.tool-btn:hover{border-color:#e5322d;color:#e5322d}.tool-btn.active{background:#e5322d;color:#fff;border-color:#e5322d}.canvas-wrap{background:linear-gradient(45deg,#eeeeee 25%,transparent 25%),linear-gradient(-45deg,#eeeeee 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#eeeeee 75%),linear-gradient(-45deg,transparent 75%,#eeeeee 75%);background-size:24px 24px;background-position:0 0,0 12px,12px -12px,-12px 0;border-radius:16px;overflow:hidden;border:1px solid #ddd;min-height:280px;display:flex;align-items:center;justify-content:center}canvas{max-width:100%;height:auto;display:block}.loader{width:38px;height:38px;border:4px solid #eee;border-top-color:#e5322d;border-radius:50%;animation:spin 1s linear infinite;margin:auto}@keyframes spin{to{transform:rotate(360deg)}}.faq-item{border-bottom:1px solid #e5e5e5}.faq-question{width:100%;padding:18px 0;display:flex;justify-content:space-between;align-items:center;text-align:left;font-weight:700;cursor:pointer}.faq-answer{display:none;padding:0 0 18px;color:#555;line-height:1.7}.faq-item.open .faq-answer{display:block}.faq-item.open .faq-icon{transform:rotate(45deg)}.checker{background-image:linear-gradient(45deg,#ddd 25%,transparent 25%),linear-gradient(-45deg,#ddd 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#ddd 75%),linear-gradient(-45deg,transparent 75%,#ddd 75%);background-size:20px 20px;background-position:0 0,0 10px,10px -10px,-10px 0}.hidden-important{display:none!important}input[type="range"]{accent-color:#e5322d}
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        background: #f5f5fa;
+        font-family: Arial, Helvetica, sans-serif;
+        color: #222;
+    }
+
+    .antokia-red {
+        color: #e5322d;
+    }
+
+    .btn-red {
+        background: #e5322d;
+        color: #fff;
+    }
+
+    .btn-red:hover {
+        background: #c92521;
+    }
+
+    .soft-card {
+        background: #fff;
+        border: 1px solid #e7e7ed;
+        border-radius: 18px;
+        box-shadow: 0 8px 25px rgba(0,0,0,.05);
+    }
+
+    .ad-box {
+        min-height: 90px;
+        border: 1px dashed #d5d5dd;
+        border-radius: 12px;
+        background: #fafafd;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #999;
+        font-size: 13px;
+    }
+
+    .drop-zone {
+        border: 2px dashed #d7d7df;
+        border-radius: 18px;
+        padding: 35px 20px;
+        text-align: center;
+        background: #fafafd;
+        transition: .2s ease;
+        cursor: pointer;
+    }
+
+    .drop-zone:hover,
+    .drop-zone.dragover {
+        border-color: #e5322d;
+        background: #fff7f7;
+    }
+
+    .tool-btn {
+        border: 1px solid #e1e1e8;
+        background: #fff;
+        border-radius: 10px;
+        padding: 9px 13px;
+        font-size: 14px;
+        transition: .2s;
+    }
+
+    .tool-btn:hover {
+        border-color: #e5322d;
+        color: #e5322d;
+    }
+
+    .tool-btn.active {
+        background: #e5322d;
+        color: #fff;
+        border-color: #e5322d;
+    }
+
+    .canvas-wrap {
+        background:
+            linear-gradient(45deg, #eeeeee 25%, transparent 25%),
+            linear-gradient(-45deg, #eeeeee 25%, transparent 25%),
+            linear-gradient(45deg, transparent 75%, #eeeeee 75%),
+            linear-gradient(-45deg, transparent 75%, #eeeeee 75%);
+        background-size: 24px 24px;
+        background-position: 0 0, 0 12px, 12px -12px, -12px 0;
+        border-radius: 16px;
+        overflow: hidden;
+        border: 1px solid #ddd;
+        min-height: 280px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    canvas {
+        max-width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .loader {
+        width: 38px;
+        height: 38px;
+        border: 4px solid #eee;
+        border-top-color: #e5322d;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: auto;
+    }
+
+    @keyframes spin {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    .faq-item {
+        border-bottom: 1px solid #e5e5e5;
+    }
+
+    .faq-question {
+        width: 100%;
+        padding: 18px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+    .faq-answer {
+        display: none;
+        padding: 0 0 18px;
+        color: #555;
+        line-height: 1.7;
+    }
+
+    .faq-item.open .faq-answer {
+        display: block;
+    }
+
+    .faq-item.open .faq-icon {
+        transform: rotate(45deg);
+    }
+
+    .checker {
+        background-image:
+            linear-gradient(45deg, #ddd 25%, transparent 25%),
+            linear-gradient(-45deg, #ddd 25%, transparent 25%),
+            linear-gradient(45deg, transparent 75%, #ddd 75%),
+            linear-gradient(-45deg, transparent 75%, #ddd 75%);
+        background-size: 20px 20px;
+        background-position: 0 0, 0 10px, 10px -10px, -10px 0;
+    }
+
+    .hidden-important {
+        display: none !important;
+    }
+
+    input[type="range"] {
+        accent-color: #e5322d;
+    }
 </style>
 </head>
+
 <body>
-<!-- HEADER - SAME AS YOURS -->
+
+<!-- HEADER -->
 <header class="sticky top-0 z-50 bg-white border-b border-gray-200">
     <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+
         <a href="/" class="flex items-center gap-2">
-            <div class="w-10 h-10 rounded-xl bg-red-600 text-white flex items-center justify-center font-bold text-lg">A</div>
-            <div><div class="text-xl font-bold antokia-red">Antokia</div><div class="text-[11px] text-gray-500">Free Online Tools</div></div>
+            <div class="w-10 h-10 rounded-xl bg-red-600 text-white flex items-center justify-center font-bold text-lg">
+                A
+            </div>
+            <div>
+                <div class="text-xl font-bold antokia-red">Antokia</div>
+                <div class="text-[11px] text-gray-500">Free Online Tools</div>
+            </div>
         </a>
+
         <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
             <a href="/" class="hover:text-red-600">Home</a>
             <a href="/blog.html" class="hover:text-red-600">Blog</a>
             <a href="/about.html" class="hover:text-red-600">About</a>
             <a href="/contact.html" class="hover:text-red-600">Contact</a>
         </nav>
-        <a href="/" class="btn-red px-4 py-2 rounded-full text-sm font-semibold"><i class="fa-solid fa-house mr-1"></i> Home</a>
+
+        <a href="/" class="btn-red px-4 py-2 rounded-full text-sm font-semibold">
+            <i class="fa-solid fa-house mr-1"></i>
+            Home
+        </a>
     </div>
 </header>
+
+
 <main class="max-w-6xl mx-auto px-4 py-6">
-    <div class="ad-box mb-6">Advertisement</div>
+
+    <!-- TOP AD -->
+    <div class="ad-box mb-6">
+        Advertisement
+    </div>
+
+
+    <!-- TITLE -->
     <section class="text-center mb-7">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 text-red-600 text-xs font-semibold mb-3"><i class="fa-solid fa-wand-magic-sparkles"></i> Free HD Background Remover - No Watermark</div>
-        <h1 class="text-3xl md:text-4xl font-bold mb-3">Background Remover - Remove BG Free, No Watermark</h1>
-        <p class="text-gray-600 max-w-2xl mx-auto leading-7">Free <strong>background remover</strong> to <strong>remove bg</strong> from any photo in 1 click. HD quality <strong>remove background</strong> tool with no watermark. Create transparent PNG, white background or blur background instantly. 100% free, no signup.</p>
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 text-red-600 text-xs font-semibold mb-3">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            Free Online AI Tool
+        </div>
+
+        <h1 class="text-3xl md:text-4xl font-bold mb-3">
+            Free AI Background Remover
+        </h1>
+
+        <p class="text-gray-600 max-w-2xl mx-auto leading-7">
+            Remove backgrounds from photos online for free. Create transparent PNG images,
+            add white or custom backgrounds, blur the background, and download your result.
+        </p>
     </section>
+
+
+    <!-- MAIN TOOL -->
+    <section class="soft-card p-5 md:p-7">
+
+        <!-- Upload -->
+        <div id="uploadSection">
+
+            <div id="dropZone" class="drop-zone">
+
+                <div class="w-16 h-16 rounded-full bg-red-50 text-red-600 flex items-center justify-center mx-auto mb-4">
+                    <i class="fa-solid fa-cloud-arrow-up text-2xl"></i>
+                </div>
+
+                <h2 class="text-xl font-bold mb-2">
+                    Upload Your Image
+                </h2>
+
+                <p class="text-gray-500 mb-5">
+                    Drag & drop your image here or click to browse
+                </p>
+
+                <button type="button"
+                        id="browseBtn"
+                        class="btn-red px-6 py-3 rounded-xl font-semibold">
+                    <i class="fa-solid fa-image mr-2"></i>
+                    Choose Image
+                </button>
+
+                <input
+                    type="file"
+                    id="fileInput"
+                    accept="image/jpeg,image/jpg,image/png,image/webp"
+                    class="hidden"
+                >
+
+                <p class="text-xs text-gray-500 mt-4">
+                    JPG, JPEG, PNG or WEBP • Maximum 2 MB
+                </p>
+
+                <p class="text-xs text-gray-400 mt-1">
+                    For larger images, use our
+                    <a href="/compress-image.html" class="text-red-600 font-semibold hover:underline">
+                        Image Compressor
+                    </a>
+                    first.
+                </p>
+
+            </div>
+
+            <div class="mt-4 p-4 bg-blue-50 border border-blue-100 rounded-xl text-sm text-blue-800">
+                <i class="fa-solid fa-circle-info mr-2"></i>
+                <strong>Best results:</strong> Use a clear photo with one or more clearly visible people.
+                The AI model is optimized mainly for person segmentation.
+            </div>
+
+        </div>
+
+
+        <!-- PROCESSING -->
+        <div id="processingSection" class="hidden text-center py-12">
+
+            <div class="loader mb-5"></div>
+
+            <h3 class="text-xl font-bold mb-2">
+                Removing Background...
+            </h3>
+
+            <p id="processingText" class="text-gray-500">
+                Preparing your image for AI processing.
+            </p>
+
+            <div class="max-w-md mx-auto mt-5 bg-gray-100 rounded-full h-2 overflow-hidden">
+                <div id="progressBar"
+                     class="bg-red-600 h-full rounded-full transition-all duration-500"
+                     style="width:10%">
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- EDITOR -->
+        <div id="editorSection" class="hidden">
+
+            <div class="flex flex-col lg:flex-row gap-6">
+
+                <!-- LEFT -->
+                <div class="lg:w-3/5">
+
+                    <div class="flex items-center justify-between mb-3">
+                        <h2 class="font-bold text-lg">
+                            <i class="fa-solid fa-pen-to-square text-red-600 mr-1"></i>
+                            Edit Result
+                        </h2>
+
+                        <button id="newImageBtn"
+                                class="text-sm text-red-600 font-semibold hover:underline">
+                            <i class="fa-solid fa-rotate-left mr-1"></i>
+                            New Image
+                        </button>
+                    </div>
+
+                    <div class="canvas-wrap">
+                        <canvas id="canvas"></canvas>
+                    </div>
+
+                    <p class="text-xs text-gray-500 mt-2 text-center">
+                        Transparent areas are shown with a checkerboard pattern.
+                    </p>
+
+                </div>
+
+
+                <!-- RIGHT -->
+                <div class="lg:w-2/5">
+
+                    <!-- Background -->
+                    <div class="border border-gray-200 rounded-xl p-4 mb-4">
+
+                        <h3 class="font-bold mb-3">
+                            <i class="fa-solid fa-palette text-red-600 mr-1"></i>
+                            Background
+                        </h3>
+
+                        <div class="grid grid-cols-2 gap-2">
+
+                            <button class="tool-btn bg-btn" data-bg="transparent">
+                                <i class="fa-solid fa-border-none mr-1"></i>
+                                Transparent
+                            </button>
+
+                            <button class="tool-btn bg-btn" data-bg="white">
+                                <i class="fa-solid fa-square mr-1"></i>
+                                White
+                            </button>
+
+                            <button class="tool-btn bg-btn" data-bg="black">
+                                <i class="fa-solid fa-square mr-1"></i>
+                                Black
+                            </button>
+
+                            <button class="tool-btn bg-btn" data-bg="blur">
+                                <i class="fa-solid fa-droplet mr-1"></i>
+                                Blur
+                            </button>
+
+                        </div>
+
+                        <div class="mt-3">
+
+                            <label class="text-sm font-semibold block mb-2">
+                                Custom Color
+                            </label>
+
+                            <div class="flex gap-2">
+
+                                <input
+                                    type="color"
+                                    id="colorPicker"
+                                    value="#ffffff"
+                                    class="w-12 h-10 rounded-lg border cursor-pointer"
+                                >
+
+                                <button id="applyColorBtn"
+                                        class="tool-btn flex-1">
+                                    Apply Color
+                                </button>
+
+                            </div>
+                        </div>
+
+                        <div class="mt-3">
+
+                            <label class="text-sm font-semibold block mb-2">
+                                Custom Background Image
+                            </label>
+
+                            <input
+                                type="file"
+                                id="bgFile"
+                                accept="image/jpeg,image/jpg,image/png,image/webp"
+                                class="w-full text-sm"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Manual Tools -->
+                    <div class="border border-gray-200 rounded-xl p-4 mb-4">
+
+                        <h3 class="font-bold mb-3">
+                            <i class="fa-solid fa-brush text-red-600 mr-1"></i>
+                            Manual Edit
+                        </h3>
+
+                        <div class="grid grid-cols-2 gap-2">
+
+                            <button id="eraseBtn" class="tool-btn">
+                                <i class="fa-solid fa-eraser mr-1"></i>
+                                Erase
+                            </button>
+
+                            <button id="restoreBtn" class="tool-btn">
+                                <i class="fa-solid fa-rotate-left mr-1"></i>
+                                Restore
+                            </button>
+
+                            <button id="undoBtn" class="tool-btn">
+                                <i class="fa-solid fa-rotate-left mr-1"></i>
+                                Undo
+                            </button>
+
+                            <button id="redoBtn" class="tool-btn">
+                                <i class="fa-solid fa-rotate-right mr-1"></i>
+                                Redo
+                            </button>
+
+                            <button id="resetBtn" class="tool-btn col-span-2">
+                                <i class="fa-solid fa-arrows-rotate mr-1"></i>
+                                Reset Cutout
+                            </button>
+
+                        </div>
+
+                        <div class="mt-4">
+
+                            <label class="text-sm font-semibold flex justify-between mb-2">
+                                <span>Brush Size</span>
+                                <span id="brushSizeValue">35 px</span>
+                            </label>
+
+                            <input
+                                type="range"
+                                id="brushSize"
+                                min="5"
+                                max="150"
+                                value="35"
+                                class="w-full"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Download -->
+                    <div class="border border-gray-200 rounded-xl p-4">
+
+                        <h3 class="font-bold mb-3">
+                            <i class="fa-solid fa-download text-red-600 mr-1"></i>
+                            Download
+                        </h3>
+
+                        <div class="grid grid-cols-1 gap-2">
+
+                            <button id="downloadPng"
+                                    class="btn-red rounded-xl py-3 font-semibold">
+                                <i class="fa-solid fa-file-image mr-2"></i>
+                                Download Transparent PNG
+                            </button>
+
+                            <button id="downloadJpg"
+                                    class="tool-btn py-3 font-semibold">
+                                <i class="fa-solid fa-image mr-2"></i>
+                                Download JPG
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- MIDDLE AD -->
+    <div class="ad-box my-7">
+        Advertisement
+    </div>
+
+
+    <!-- ABOUT TOOL -->
+    <section class="soft-card p-6 md:p-8 mb-7">
+
+        <h2 class="text-2xl font-bold mb-4">
+            Free AI Background Remover Online
+        </h2>
+
+        <p class="text-gray-600 leading-7 mb-4">
+            Antokia's free background remover helps you remove the background from
+            photos directly in your browser. You can create a transparent PNG,
+            replace the background with a solid color, blur the original background,
+            or add another image as the background.
+        </p>
+
+        <p class="text-gray-600 leading-7 mb-4">
+            The tool uses an AI-based person segmentation model to identify people
+            in the image. For the best result, use a clear photograph where the
+            person is visible and separated from the background.
+        </p>
+
+        <div class="grid md:grid-cols-3 gap-4 mt-6">
+
+            <div class="bg-red-50 rounded-xl p-4">
+                <div class="text-red-600 text-xl mb-2">
+                    <i class="fa-solid fa-bolt"></i>
+                </div>
+                <h3 class="font-bold mb-1">Fast Processing</h3>
+                <p class="text-sm text-gray-600">
+                    Images are resized in your browser before AI processing.
+                </p>
+            </div>
+
+            <div class="bg-blue-50 rounded-xl p-4">
+                <div class="text-blue-600 text-xl mb-2">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <h3 class="font-bold mb-1">Browser Processing</h3>
+                <p class="text-sm text-gray-600">
+                    Your image is processed directly in your browser.
+                </p>
+            </div>
+
+            <div class="bg-green-50 rounded-xl p-4">
+                <div class="text-green-600 text-xl mb-2">
+                    <i class="fa-solid fa-gift"></i>
+                </div>
+                <h3 class="font-bold mb-1">100% Free</h3>
+                <p class="text-sm text-gray-600">
+                    No account or subscription is required to use this tool.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- HOW TO USE -->
+    <section class="soft-card p-6 md:p-8 mb-7">
+
+        <h2 class="text-2xl font-bold mb-5">
+            How to Remove Image Background
+        </h2>
+
+        <div class="grid md:grid-cols-4 gap-5">
+
+            <div>
+                <div class="w-10 h-10 rounded-full bg-red-100 text-red-600 flex items-center justify-center font-bold mb-3">
+                    1
+                </div>
+                <h3 class="font-bold mb-1">Upload</h3>
+                <p class="text-sm text-gray-600">
+                    Select a JPG, PNG or WEBP image up to 2 MB.
+                </p>
+            </div>
+
+            <div>
+                <div class="w-10 h-10 rounded-full bg-red-100 text-red-600 flex items-center justify-center font-bold mb-3">
+                    2
+                </div>
+                <h3 class="font-bold mb-1">AI Processing</h3>
+                <p class="text-sm text-gray-600">
+                    The image is resized and processed using AI segmentation.
+                </p>
+            </div>
+
+            <div>
+                <div class="w-10 h-10 rounded-full bg-red-100 text-red-600 flex items-center justify-center font-bold mb-3">
+                    3
+                </div>
+                <h3 class="font-bold mb-1">Edit</h3>
+                <p class="text-sm text-gray-600">
+                    Change the background or manually erase and restore areas.
+                </p>
+            </div>
+
+            <div>
+                <div class="w-10 h-10 rounded-full bg-red-100 text-red-600 flex items-center justify-center font-bold mb-3">
+                    4
+                </div>
+                <h3 class="font-bold mb-1">Download</h3>
+                <p class="text-sm text-gray-600">
+                    Download your result as PNG or JPG.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- MORE TOOLS -->
+    <section class="soft-card p-6 md:p-8 mb-7">
+
+        <h2 class="text-2xl font-bold mb-5">
+            More Free Image Tools
+        </h2>
+
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+
+            <a href="/compress-image.html"
+               class="border rounded-xl p-4 hover:border-red-500 hover:shadow-sm transition">
+                <i class="fa-solid fa-compress text-red-600 text-xl mb-2"></i>
+                <h3 class="font-bold">Image Compressor</h3>
+                <p class="text-sm text-gray-500 mt-1">
+                    Compress JPG, PNG and WEBP images.
+                </p>
+            </a>
+
+            <a href="/image-resizer.html"
+               class="border rounded-xl p-4 hover:border-red-500 hover:shadow-sm transition">
+                <i class="fa-solid fa-expand text-red-600 text-xl mb-2"></i>
+                <h3 class="font-bold">Image Resizer</h3>
+                <p class="text-sm text-gray-500 mt-1">
+                    Resize images to your required dimensions.
+                </p>
+            </a>
+
+            <a href="/image-to-pdf.html"
+               class="border rounded-xl p-4 hover:border-red-500 hover:shadow-sm transition">
+                <i class="fa-solid fa-file-pdf text-red-600 text-xl mb-2"></i>
+                <h3 class="font-bold">Image to PDF</h3>
+                <p class="text-sm text-gray-500 mt-1">
+                    Convert images into PDF files online.
+                </p>
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- FAQ -->
+    <section class="soft-card p-6 md:p-8 mb-7">
+
+        <h2 class="text-2xl font-bold mb-5">
+            Frequently Asked Questions
+        </h2>
+
+        <div class="faq-item">
+
+            <button class="faq-question">
+                <span>Is Antokia Background Remover free?</span>
+                <span class="faq-icon transition-transform">+</span>
+            </button>
+
+            <div class="faq-answer">
+                Yes. Antokia's background remover is available free of charge.
+                You do not need to create an account or purchase a subscription.
+            </div>
+
+        </div>
+
+
+        <div class="faq-item">
+
+            <button class="faq-question">
+                <span>What image formats are supported?</span>
+                <span class="faq-icon transition-transform">+</span>
+            </button>
+
+            <div class="faq-answer">
+                JPG, JPEG, PNG and WEBP images are supported.
+                The maximum upload size is 2 MB.
+            </div>
+
+        </div>
+
+
+        <div class="faq-item">
+
+            <button class="faq-question">
+                <span>Why is my image limited to 2 MB?</span>
+                <span class="faq-icon transition-transform">+</span>
+            </button>
+
+            <div class="faq-answer">
+                Background removal uses browser-based AI processing.
+                A smaller input helps keep processing faster and reduces the
+                chance of browser memory or performance problems.
+            </div>
+
+        </div>
+
+
+        <div class="faq-item">
+
+            <button class="faq-question">
+                <span>Can I make the background transparent?</span>
+                <span class="faq-icon transition-transform">+</span>
+            </button>
+
+            <div class="faq-answer">
+                Yes. Select the Transparent option and download the result as a PNG.
+                PNG preserves transparency.
+            </div>
+
+        </div>
+
+
+        <div class="faq-item">
+
+            <button class="faq-question">
+                <span>Can I use my own background?</span>
+                <span class="faq-icon transition-transform">+</span>
+            </button>
+
+            <div class="faq-answer">
+                Yes. After removing the original background, you can upload another
+                image and use it as the new background.
+            </div>
+
+        </div>
+
+
+        <div class="faq-item">
+
+            <button class="faq-question">
+                <span>Why does the result work better with people?</span>
+                <span class="faq-icon transition-transform">+</span>
+            </button>
+
+            <div class="faq-answer">
+                The AI segmentation model used by this browser-based tool is
+                primarily designed for identifying people. Results can therefore
+                vary for products, animals, objects, very complex backgrounds,
+                or images where the subject is difficult to distinguish.
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- BOTTOM AD -->
+    <div class="ad-box mb-7">
+        Advertisement
+    </div>
+
+</main>
+
+
+<!-- FOOTER -->
+<footer class="bg-[#242424] text-gray-300 mt-10">
+
+    <div class="max-w-6xl mx-auto px-4 py-10">
+
+        <div class="grid md:grid-cols-4 gap-8">
+
+            <div>
+                <div class="text-2xl font-bold text-white mb-2">
+                    Antokia
+                </div>
+
+                <p class="text-sm text-gray-400 leading-6">
+                    Free online tools for images, PDFs, documents,
+                    calculators and everyday digital tasks.
+                </p>
+            </div>
+
+
+            <div>
+                <h3 class="text-white font-bold mb-3">
+                    Explore
+                </h3>
+
+                <div class="space-y-2 text-sm">
+
+                    <a href="/" class="block hover:text-white">
+                        Home
+                    </a>
+
+                    <a href="/blog.html" class="block hover:text-white">
+                        Blog
+                    </a>
+
+                    <a href="/about.html" class="block hover:text-white">
+                        About
+                    </a>
+
+                    <a href="/contact.html" class="block hover:text-white">
+                        Contact
+                    </a>
+
+                </div>
+            </div>
+
+
+            <div>
+                <h3 class="text-white font-bold mb-3">
+                    Legal
+                </h3>
+
+                <div class="space-y-2 text-sm">
+
+                    <a href="/privacy.html" class="block hover:text-white">
+                        Privacy Policy
+                    </a>
+
+                    <a href="/terms.html" class="block hover:text-white">
+                        Terms & Conditions
+                    </a>
+
+                </div>
+            </div>
+
+
+            <div>
+                <h3 class="text-white font-bold mb-3">
+                    Follow Antokia
+                </h3>
+
+                <a
+                    href="https://www.instagram.com/antokia.insta"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 text-sm hover:text-white"
+                >
+                    <i class="fa-brands fa-instagram text-lg"></i>
+                    Instagram
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="border-t border-gray-700 mt-8 pt-5 text-center text-xs text-gray-500">
+            © 2026 Antokia. All rights reserved.
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script>
+/* =========================================================
+   ANTOKIA AI BACKGROUND REMOVER
+   Browser-based BodyPix processing
+========================================================= */
+
+const fileInput = document.getElementById("fileInput");
+const browseBtn = document.getElementById("browseBtn");
+const dropZone = document.getElementById("dropZone");
+
+const uploadSection = document.getElementById("uploadSection");
+const processingSection = document.getElementById("processingSection");
+const editorSection = document.getElementById("editorSection");
+
+const processingText = document.getElementById("processingText");
+const progressBar = document.getElementById("progressBar");
+
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+
+const colorPicker = document.getElementById("colorPicker");
+const applyColorBtn = document.getElementById("applyColorBtn");
+const bgFile = document.getElementById("bgFile");
+
+const brushSize = document.getElementById("brushSize");
+const brushSizeValue = document.getElementById("brushSizeValue");
+
+const eraseBtn = document.getElementById("eraseBtn");
+const restoreBtn = document.getElementById("restoreBtn");
+
+const undoBtn = document.getElementById("undoBtn");
+const redoBtn = document.getElementById("redoBtn");
+const resetBtn = document.getElementById("resetBtn");
+
+const downloadPng = document.getElementById("downloadPng");
+const downloadJpg = document.getElementById("downloadJpg");
+const newImageBtn = document.getElementById("newImageBtn");
+
+let net = null;
+let originalImg = null;
+let originalObjectUrl = null;
+
+let personCutData = null;
+let originalImageData = null;
+
+let currentBackground = "transparent";
+let customBackgroundImage = null;
+
+let editMode = null;
+let isDrawing = false;
+
+let history = [];
+let historyIndex = -1;
+
+let processingCanvas = document.createElement("canvas");
+let processingCtx = processingCanvas.getContext("2d");
+
+
+/* =========================================================
+   FILE SIZE
+========================================================= */
+
+function isValidImage(file) {
+
+    if (!file) return false;
+
+    const allowed = [
+        "image/jpeg",
+        "image/jpg",
+        "image/png",
+        "image/webp"
+    ];
+
+    if (!allowed.includes(file.type)) {
+        alert("Please select a JPG, JPEG, PNG or WEBP image.");
+        return false;
+    }
+
+    if (file.size > 2 * 1024 * 1024) {
+        alert(
+            "Image 2MB se badi hai. Pehle Compress Image tool use karo fir BG Remove karo."
+        );
+        return false;
+    }
+
+    return true;
+}
+
+
+/* =========================================================
+   LOAD IMAGE
+========================================================= */
+
+function loadImageFromFile(file) {
+
+    return new Promise((resolve, reject) => {
+
+        const url = URL.createObjectURL(file);
+
+        const img = new Image();
+
+        img.onload = () => {
+            URL.revokeObjectURL(url);
+            resolve(img);
+        };
+
+        img.onerror = () => {
+            URL.revokeObjectURL(url);
+            reject(new Error("Unable to load image."));
+        };
+
+        img.src = url;
+
+    });
+
+}
+
+
+/* =========================================================
+   RESIZE IMAGE TO MAX 1500 PX
+========================================================= */
+
+function prepareImageCanvas(img) {
+
+    const MAX = 1500;
+
+    let width = img.naturalWidth || img.width;
+    let height = img.naturalHeight || img.height;
+
+    if (!width || !height) {
+        throw new Error("Invalid image dimensions.");
+    }
+
+    if (width > MAX || height > MAX) {
+
+        if (width > height) {
+
+            height = Math.round((height / width) * MAX);
+            width = MAX;
+
+        } else {
+
+            width = Math.round((width / height) * MAX);
+            height = MAX;
+
+        }
+
+    }
+
+    processingCanvas.width = width;
+    processingCanvas.height = height;
+
+    processingCtx.clearRect(
+        0,
+        0,
+        width,
+        height
+    );
+
+    processingCtx.drawImage(
+        img,
+        0,
+        0,
+        width,
+        height
+    );
+
+    return {
+        canvas: processingCanvas,
+        width,
+        height
+    };
+
+}
+
+
+/* =========================================================
+   BODYPIX LOAD
+========================================================= */
+
+async function loadModel() {
+
+    if (net) return net;
+
+    processingText.textContent =
+        "Loading AI model for background removal...";
+
+    progressBar.style.width = "25%";
+
+    net = await bodyPix.load({
+        architecture: "ResNet50",
+        outputStride: 16,
+        quantBytes: 2
+    });
+
+    return net;
+}
+
+
+/* =========================================================
+   PROCESS IMAGE
+========================================================= */
+
+async function processImage(file) {
+
+    if (!isValidImage(file)) {
+        return;
+    }
+
+    try {
+
+        uploadSection.classList.add("hidden");
+        editorSection.classList.add("hidden");
+        processingSection.classList.remove("hidden");
+
+        progressBar.style.width = "10%";
+
+        processingText.textContent =
+            "Loading your image...";
+
+        originalImg = await loadImageFromFile(file);
+
+        progressBar.style.width = "20%";
+
+        processingText.textContent =
+            "Resizing image for faster browser processing...";
+
+        const prepared = prepareImageCanvas(originalImg);
+
+        progressBar.style.width = "35%";
+
+        await loadModel();
+
+        processingText.textContent =
+            "AI is detecting the subject...";
+
+        progressBar.style.width = "50%";
+
+        const segmentation =
+            await net.segmentMultiPerson(
+                prepared.canvas,
+                {
+                    flipHorizontal: false,
+                    internalResolution: "full",
+                    segmentationThreshold: 0.35,
+                    maxDetections: 10,
+                    scoreThreshold: 0.25,
+                    nmsRadius: 20,
+                    minKeypointScore: 0.3,
+                    refineSteps: 10
+                }
+            );
+
+        progressBar.style.width = "70%";
+
+        if (!segmentation || segmentation.length === 0) {
+
+            throw new Error(
+                "No person was detected in the image."
+            );
+
+        }
+
+        processingText.textContent =
+            "Creating transparent background...";
+
+        createCutout(
+            prepared.canvas,
+            segmentation
+        );
+
+        progressBar.style.width = "90%";
+
+        setTimeout(() => {
+
+            processingSection.classList.add("hidden");
+            editorSection.classList.remove("hidden");
+
+            progressBar.style.width = "100%";
+
+        }, 250);
+
+    } catch (error) {
+
+        console.error(error);
+
+        processingSection.classList.add("hidden");
+        uploadSection.classList.remove("hidden");
+
+        alert(
+            "Background remove nahi ho saka. Clear person photo try karo ya thodi chhoti image use karo."
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   CREATE CUTOUT
+========================================================= */
+
+function createCutout(sourceCanvas, segmentation) {
+
+    const width = sourceCanvas.width;
+    const height = sourceCanvas.height;
+
+    canvas.width = width;
+    canvas.height = height;
+
+    const sourceCtx = sourceCanvas.getContext("2d");
+
+    const sourceImageData =
+        sourceCtx.getImageData(
+            0,
+            0,
+            width,
+            height
+        );
+
+    const output =
+        ctx.createImageData(
+            width,
+            height
+        );
+
+    const maskWidth =
+        segmentation[0].width;
+
+    const maskHeight =
+        segmentation[0].height;
+
+    const combinedMask =
+        new Uint8Array(
+            maskWidth * maskHeight
+        );
+
+    /* Combine all detected people */
+
+    segmentation.forEach(person => {
+
+        const data = person.data;
+
+        for (let i = 0; i < data.length; i++) {
+
+            if (data[i] === 1) {
+                combinedMask[i] = 1;
+            }
+
+        }
+
+    });
+
+
+    /* Convert mask to image */
+
+    for (let y = 0; y < height; y++) {
+
+        for (let x = 0; x < width; x++) {
+
+            const outputIndex =
+                (y * width + x) * 4;
+
+            const maskX =
+                Math.min(
+                    maskWidth - 1,
+                    Math.floor(
+                        x * maskWidth / width
+                    )
+                );
+
+            const maskY =
+                Math.min(
+                    maskHeight - 1,
+                    Math.floor(
+                        y * maskHeight / height
+                    )
+                );
+
+            const maskIndex =
+                maskY * maskWidth + maskX;
+
+            const keep =
+                combinedMask[maskIndex] === 1;
+
+            output.data[outputIndex] =
+                sourceImageData.data[outputIndex];
+
+            output.data[outputIndex + 1] =
+                sourceImageData.data[outputIndex + 1];
+
+            output.data[outputIndex + 2] =
+                sourceImageData.data[outputIndex + 2];
+
+            output.data[outputIndex + 3] =
+                keep
+                    ? 255
+                    : 0;
+        }
+
+    }
+
+    ctx.putImageData(
+        output,
+        0,
+        0
+    );
+
+    personCutData =
+        ctx.getImageData(
+            0,
+            0,
+            width,
+            height
+        );
+
+    originalImageData =
+        sourceImageData;
+
+    history = [];
+    historyIndex = -1;
+
+    saveHistory();
+
+    currentBackground = "transparent";
+    customBackgroundImage = null;
+
+}
+
+
+/* =========================================================
+   DRAW BACKGROUND
+========================================================= */
+
+function redrawCanvas() {
+
+    if (!personCutData || !originalImageData) return;
+
+    ctx.clearRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+
+    if (currentBackground === "transparent") {
+
+        ctx.putImageData(
+            personCutData,
+            0,
+            0
+        );
+
+        return;
+    }
+
+
+    if (currentBackground === "white") {
+
+        ctx.fillStyle = "#ffffff";
+
+        ctx.fillRect(
+            0,
+            0,
+            canvas.width,
+            canvas.height
+        );
+
+    }
+
+
+    else if (currentBackground === "black") {
+
+        ctx.fillStyle = "#000000";
+
+        ctx.fillRect(
+            0,
+            0,
+            canvas.width,
+            canvas.height
+        );
+
+    }
+
+
+    else if (currentBackground === "blur") {
+
+        ctx.save();
+
+        ctx.filter = "blur(12px)";
+
+        ctx.drawImage(
+            processingCanvas,
+            0,
+            0,
+            canvas.width,
+            canvas.height
+        );
+
+        ctx.restore();
+
+    }
+
+
+    else if (currentBackground === "color") {
+
+        ctx.fillStyle =
+            colorPicker.value;
+
+        ctx.fillRect(
+            0,
+            0,
+            canvas.width,
+            canvas.height
+        );
+
+    }
+
+
+    else if (
+        currentBackground === "image"
+        && customBackgroundImage
+    ) {
+
+        drawCoverImage(
+            ctx,
+            customBackgroundImage,
+            canvas.width,
+            canvas.height
+        );
+
+    }
+
+
+    ctx.putImageData(
+        personCutData,
+        0,
+        0
+    );
+
+}
+
+
+/* =========================================================
+   DRAW COVER IMAGE
+========================================================= */
+
+function drawCoverImage(
+    context,
+    image,
+    width,
+    height
+) {
+
+    const imageRatio =
+        image.width / image.height;
+
+    const canvasRatio =
+        width / height;
+
+    let drawWidth;
+    let drawHeight;
+    let x;
+    let y;
+
+    if (imageRatio > canvasRatio) {
+
+        drawHeight = height;
+        drawWidth = height * imageRatio;
+
+        x = (width - drawWidth) / 2;
+        y = 0;
+
+    } else {
+
+        drawWidth = width;
+        drawHeight = width / imageRatio;
+
+        x = 0;
+        y = (height - drawHeight) / 2;
+
+    }
+
+    context.drawImage(
+        image,
+        x,
+        y,
+        drawWidth,
+        drawHeight
+    );
+
+}
+
+
+/* =========================================================
+   BACKGROUND BUTTONS
+========================================================= */
+
+document.querySelectorAll(".bg-btn").forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        document.querySelectorAll(".bg-btn")
+            .forEach(btn => btn.classList.remove("active"));
+
+        button.classList.add("active");
+
+        currentBackground =
+            button.dataset.bg;
+
+        redrawCanvas();
+
+    });
+
+});
+
+
+/* =========================================================
+   CUSTOM COLOR
+========================================================= */
+
+applyColorBtn.addEventListener("click", () => {
+
+    document.querySelectorAll(".bg-btn")
+        .forEach(btn => btn.classList.remove("active"));
+
+    currentBackground = "color";
+
+    redrawCanvas();
+
+});
+
+
+/* =========================================================
+   CUSTOM BACKGROUND IMAGE
+========================================================= */
+
+bgFile.addEventListener("change", async function () {
+
+    const file = this.files[0];
+
+    if (!file) return;
+
+    if (!file.type.startsWith("image/")) {
+
+        alert("Please select a valid image.");
+        this.value = "";
+        return;
+
+    }
+
+    try {
+
+        customBackgroundImage =
+            await loadImageFromFile(file);
+
+        document.querySelectorAll(".bg-btn")
+            .forEach(btn => btn.classList.remove("active"));
+
+        currentBackground = "image";
+
+        redrawCanvas();
+
+    } catch (error) {
+
+        alert("Unable to load background image.");
+
+    }
+
+});
+
+
+/* =========================================================
+   BRUSH
+========================================================= */
+
+brushSize.addEventListener("input", () => {
+
+    brushSizeValue.textContent =
+        brushSize.value + " px";
+
+});
+
+
+eraseBtn.addEventListener("click", () => {
+
+    editMode = "erase";
+
+    eraseBtn.classList.add("active");
+    restoreBtn.classList.remove("active");
+
+});
+
+
+restoreBtn.addEventListener("click", () => {
+
+    editMode = "restore";
+
+    restoreBtn.classList.add("active");
+    eraseBtn.classList.remove("active");
+
+});
+
+
+function getCanvasPosition(event) {
+
+    const rect =
+        canvas.getBoundingClientRect();
+
+    const scaleX =
+        canvas.width / rect.width;
+
+    const scaleY =
+        canvas.height / rect.height;
+
+    return {
+        x: (event.clientX - rect.left) * scaleX,
+        y: (event.clientY - rect.top) * scaleY
+    };
+
+}
+
+
+function applyBrush(x, y) {
+
+    const size =
+        Number(brushSize.value);
+
+    const radius =
+        size / 2;
+
+
+    if (editMode === "erase") {
+
+        ctx.save();
+
+        ctx.globalCompositeOperation =
+            "destination-out";
+
+        ctx.beginPath();
+
+        ctx.arc(
+            x,
+            y,
+            radius,
+            0,
+            Math.PI * 2
+        );
+
+        ctx.fill();
+
+        ctx.restore();
+
+    }
+
+
+    else if (editMode === "restore") {
+
+        if (!originalImageData) return;
+
+        const tempCanvas =
+            document.createElement("canvas");
+
+        tempCanvas.width =
+            canvas.width;
+
+        tempCanvas.height =
+            canvas.height;
+
+        const tempCtx =
+            tempCanvas.getContext("2d");
+
+        tempCtx.putImageData(
+            originalImageData,
+            0,
+            0
+        );
+
+        ctx.save();
+
+        ctx.beginPath();
+
+        ctx.arc(
+            x,
+            y,
+            radius,
+            0,
+            Math.PI * 2
+        );
+
+        ctx.clip();
+
+        ctx.drawImage(
+            tempCanvas,
+            0,
+            0
+        );
+
+        ctx.restore();
+
+    }
+
+}
+
+
+canvas.addEventListener("pointerdown", event => {
+
+    if (!editMode) return;
+
+    isDrawing = true;
+
+    canvas.setPointerCapture(
+        event.pointerId
+    );
+
+    saveHistory();
+
+    const pos =
+        getCanvasPosition(event);
+
+    applyBrush(
+        pos.x,
+        pos.y
+    );
+
+});
+
+
+canvas.addEventListener("pointermove", event => {
+
+    if (!isDrawing || !editMode) return;
+
+    const pos =
+        getCanvasPosition(event);
+
+    applyBrush(
+        pos.x,
+        pos.y
+    );
+
+});
+
+
+canvas.addEventListener("pointerup", event => {
+
+    isDrawing = false;
+
+    try {
+        canvas.releasePointerCapture(
+            event.pointerId
+        );
+    } catch(e) {}
+
+});
+
+
+canvas.addEventListener("pointercancel", () => {
+
+    isDrawing = false;
+
+});
+
+
+/* =========================================================
+   HISTORY
+========================================================= */
+
+function saveHistory() {
+
+    try {
+
+        const image =
+            canvas.toDataURL("image/png");
+
+        if (historyIndex < history.length - 1) {
+
+            history =
+                history.slice(
+                    0,
+                    historyIndex + 1
+                );
+
+        }
+
+        history.push(image);
+
+        if (history.length > 15) {
+            history.shift();
+        }
+
+        historyIndex =
+            history.length - 1;
+
+    } catch(error) {
+
+        console.error(
+            "History error:",
+            error
+        );
+
+    }
+
+}
+
+
+function restoreHistory(index) {
+
+    if (
+        index < 0 ||
+        index >= history.length
+    ) {
+        return;
+    }
+
+    const image =
+        new Image();
+
+    image.onload = () => {
+
+        ctx.clearRect(
+            0,
+            0,
+            canvas.width,
+            canvas.height
+        );
+
+        ctx.drawImage(
+            image,
+            0,
+            0
+        );
+
+    };
+
+    image.src =
+        history[index];
+
+}
+
+
+undoBtn.addEventListener("click", () => {
+
+    if (historyIndex > 0) {
+
+        historyIndex--;
+
+        restoreHistory(
+            historyIndex
+        );
+
+    }
+
+});
+
+
+redoBtn.addEventListener("click", () => {
+
+    if (
+        historyIndex <
+        history.length - 1
+    ) {
+
+        historyIndex++;
+
+        restoreHistory(
+            historyIndex
+        );
+
+    }
+
+});
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+resetBtn.addEventListener("click", () => {
+
+    if (!personCutData) return;
+
+    currentBackground = "transparent";
+
+    customBackgroundImage = null;
+
+    ctx.putImageData(
+        personCutData,
+        0,
+        0
+    );
+
+    document.querySelectorAll(".bg-btn")
+        .forEach(btn => btn.classList.remove("active"));
+
+    const transparentBtn =
+        document.querySelector(
+            '.bg-btn[data-bg="transparent"]'
+        );
+
+    if (transparentBtn) {
+        transparentBtn.classList.add("active");
+    }
+
+    history = [];
+    historyIndex = -1;
+
+    saveHistory();
+
+});
+
+
+/* =========================================================
+   DOWNLOAD PNG
+========================================================= */
+
+downloadPng.addEventListener("click", () => {
+
+    if (!canvas.width) return;
+
+    const link =
+        document.createElement("a");
+
+    link.download =
+        "antokia-background-removed.png";
+
+    link.href =
+        canvas.toDataURL(
+            "image/png"
+        );
+
+    link.click();
+
+});
+
+
+/* =========================================================
+   DOWNLOAD JPG
+========================================================= */
+
+downloadJpg.addEventListener("click", () => {
+
+    if (!canvas.width) return;
+
+    const jpgCanvas =
+        document.createElement("canvas");
+
+    jpgCanvas.width =
+        canvas.width;
+
+    jpgCanvas.height =
+        canvas.height;
+
+    const jpgCtx =
+        jpgCanvas.getContext("2d");
+
+    jpgCtx.fillStyle = "#ffffff";
+
+    jpgCtx.fillRect(
+        0,
+        0,
+        jpgCanvas.width,
+        jpgCanvas.height
+    );
+
+    jpgCtx.drawImage(
+        canvas,
+        0,
+        0
+    );
+
+    const link =
+        document.createElement("a");
+
+    link.download =
+        "antokia-background-removed.jpg";
+
+    link.href =
+        jpgCanvas.toDataURL(
+            "image/jpeg",
+            0.92
+        );
+
+    link.click();
+
+});
+
+
+/* =========================================================
+   NEW IMAGE
+========================================================= */
+
+newImageBtn.addEventListener("click", () => {
+
+    uploadSection.classList.remove("hidden");
+    editorSection.classList.add("hidden");
+    processingSection.classList.add("hidden");
+
+    fileInput.value = "";
+
+    bgFile.value = "";
+
+    originalImg = null;
+    personCutData = null;
+    originalImageData = null;
+
+    customBackgroundImage = null;
+
+    history = [];
+    historyIndex = -1;
+
+    editMode = null;
+
+    eraseBtn.classList.remove("active");
+    restoreBtn.classList.remove("active");
+
+    ctx.clearRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+});
+
+
+/* =========================================================
+   FILE INPUT
+========================================================= */
+
+browseBtn.addEventListener("click", event => {
+
+    event.stopPropagation();
+
+    fileInput.click();
+
+});
+
+
+fileInput.addEventListener("change", function () {
+
+    const file = this.files[0];
+
+    if (file) {
+        processImage(file);
+    }
+
+});
+
+
+/* =========================================================
+   DRAG & DROP
+========================================================= */
+
+dropZone.addEventListener("click", event => {
+
+    if (event.target === browseBtn) return;
+
+    fileInput.click();
+
+});
+
+
+["dragenter", "dragover"].forEach(eventName => {
+
+    dropZone.addEventListener(
+        eventName,
+        event => {
+
+            event.preventDefault();
+
+            dropZone.classList.add(
+                "dragover"
+            );
+
+        }
+    );
+
+});
+
+
+["dragleave", "drop"].forEach(eventName => {
+
+    dropZone.addEventListener(
+        eventName,
+        event => {
+
+            event.preventDefault();
+
+            dropZone.classList.remove(
+                "dragover"
+            );
+
+        }
+    );
+
+});
+
+
+dropZone.addEventListener("drop", event => {
+
+    const file =
+        event.dataTransfer.files[0];
+
+    if (file) {
+        processImage(file);
+    }
+
+});
+
+
+/* =========================================================
+   FAQ
+========================================================= */
+
+document.querySelectorAll(".faq-question")
+    .forEach(question => {
+
+        question.addEventListener("click", () => {
+
+            const item =
+                question.parentElement;
+
+            item.classList.toggle("open");
+
+        });
+
+    });
+
+
+/* =========================================================
+   DEFAULT BACKGROUND BUTTON
+========================================================= */
+
+const defaultTransparent =
+    document.querySelector(
+        '.bg-btn[data-bg="transparent"]'
+    );
+
+if (defaultTransparent) {
+    defaultTransparent.classList.add("active");
+}
+
+</script>
+
+</body>
+</html> isme
