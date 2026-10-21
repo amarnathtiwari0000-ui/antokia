@@ -1,18 +1,29 @@
 {
-  "cleanUrls": false,
+  "cleanUrls": true,
   "outputDirectory": ".",
   "rewrites": [
     {
+      "source": "/tools/percentage-calculator",
+      "destination": "/percentage.html"
+    },
+    {
+      "source": "/tools/:tool",
+      "destination": "/:tool.html"
+    },
+    {
       "source": "/tools/:tool",
       "destination": "/tools/:tool/index.html"
+    },
+    {
+      "source": "/blog/:slug",
+      "destination": "/blog/:slug/index.html"
+    },
+    {
+      "source": "/blog/:slug",
+      "destination": "/:slug.html"
     }
   ],
   "redirects": [
-    {
-      "source": "/blog",
-      "destination": "/blog/",
-      "statusCode": 301
-    },
     {
       "source": "/about",
       "destination": "/about.html",
