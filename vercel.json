@@ -2,5 +2,14 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "buildCommand": "npm run build",
-  "outputDirectory": "."
+  "outputDirectory": ".",
+  "redirects": [
+    { "source": "/tools/percentage-calculator", "destination": "/percentage", "permanent": true },
+    { "source": "/tools/resize-image", "destination": "/image-resizer", "permanent": true },
+    { "source": "/percentage-calculator(.html)?", "destination": "/percentage", "permanent": true },
+    { "source": "/resize-image(.html)?", "destination": "/image-resizer", "permanent": true },
+    { "source": "/remove-background(.html)?", "destination": "/bg-remover", "permanent": true },
+    { "source": "/tools", "destination": "/", "permanent": true },
+    { "source": "/tools/:slug", "destination": "/:slug", "permanent": true }
+  ]
 }
