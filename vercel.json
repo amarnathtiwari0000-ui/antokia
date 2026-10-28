@@ -3,6 +3,9 @@
   "trailingSlash": false,
   "buildCommand": "npm run build",
   "outputDirectory": ".",
+  "functions": {
+    "api/convert.py": { "maxDuration": 60 }
+  },
   "redirects": [
     { "source": "/tools/percentage-calculator", "destination": "/percentage", "permanent": true },
     { "source": "/tools/resize-image", "destination": "/image-resizer", "permanent": true },

@@ -1154,10 +1154,21 @@ progressBar.style.width = pct + "%";
 progressText.textContent = pct + "%";
 };
 const exactSections = exactMode ? await buildExact(pdf, progressCb) : null;
-const children = exactMode ? [] : await buildChildren(pdf, progressCb);
+let serverBlob = null;
+if(!exactMode && selectedFile.size <= 4*1024*1024){
+status.textContent = "Converting on server for best quality...";
+try{
+const resp = await fetch("/api/convert", {method:"POST", headers:{"Content-Type":"application/pdf"}, body:selectedFile});
+if(resp.ok){
+const b = await resp.blob();
+if(b.size > 1000) serverBlob = b;
+}
+}catch(e){ console.warn("Server conversion unavailable, using browser conversion", e); }
+}
+const children = (exactMode || serverBlob) ? [] : await buildChildren(pdf, progressCb);
 
 
-if(!exactMode && children.length === 0){
+if(!exactMode && !serverBlob && children.length === 0){
 
 children.push(
 new docx.Paragraph({
@@ -1192,7 +1203,7 @@ sections: exactSections || [{properties:{}, children:children}]
 });
 
 
-convertedBlob =
+convertedBlob = serverBlob ||
 await docx.Packer.toBlob(documentObject);
 
 
