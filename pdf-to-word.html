@@ -246,6 +246,13 @@ Remove
 
 
 <!-- CONVERT -->
+<div id="modeBox" class="hidden mt-5">
+<label for="convMode" class="block text-sm font-semibold mb-2">Conversion mode</label>
+<select id="convMode" class="w-full border rounded-xl px-4 py-3 bg-white">
+<option value="editable">Editable Word (text, images and tables)</option>
+<option value="exact">Exact look (each page as a picture, not editable)</option>
+</select>
+</div>
 <button type="button"
 id="convertBtn"
 class="hidden w-full mt-5 bg-red-600 hover:bg-red-700 text-white py-4 rounded-xl font-bold text-lg">
@@ -750,6 +757,7 @@ fileSize.textContent = formatFileSize(file.size);
 fileBox.classList.remove("hidden");
 
 convertBtn.classList.remove("hidden");
+document.getElementById("modeBox").classList.remove("hidden");
 
 status.textContent = "PDF selected. Ready to convert.";
 
@@ -767,6 +775,7 @@ fileInput.value = "";
 fileBox.classList.add("hidden");
 
 convertBtn.classList.add("hidden");
+document.getElementById("modeBox").classList.add("hidden");
 
 progressBox.classList.add("hidden");
 
@@ -889,6 +898,26 @@ if(png) found.push({y: ctm[5] + h, png: png, w: w, h: h});
 return found;
 }
 
+async function buildExact(pdf, onProgress){
+var sections = [];
+for(var p=1;p<=pdf.numPages;p++){
+var page = await pdf.getPage(p);
+var vp = page.getViewport({scale:2});
+var base = page.getViewport({scale:1});
+var c = document.createElement("canvas");
+c.width = Math.floor(vp.width); c.height = Math.floor(vp.height);
+await page.render({canvasContext:c.getContext("2d"), viewport:vp}).promise;
+var blob = await new Promise(function(r){c.toBlob(r,"image/jpeg",0.92);});
+var data = new Uint8Array(await blob.arrayBuffer());
+sections.push({
+properties:{page:{size:{width:Math.round(base.width*20), height:Math.round(base.height*20)}, margin:{top:0,right:0,bottom:0,left:0}}},
+children:[new docx.Paragraph({spacing:{before:0,after:0}, children:[new docx.ImageRun({data:data, transformation:{width:Math.round(base.width*96/72), height:Math.round(base.height*96/72)}})]})]
+});
+if(onProgress) onProgress(p, pdf.numPages);
+}
+return sections;
+}
+
 async function buildChildren(pdf, onProgress){
 var out = [];
 for(var p=1;p<=pdf.numPages;p++){
@@ -925,9 +954,39 @@ r.text = text.trim();
 r.x0 = r.items[0].x;
 r.x1 = prevEnd;
 maxEnd = Math.max(maxEnd, r.x1);
+r.cells = [];
+var cur = null;
+r.items.forEach(function(it, i){
+var prev = r.items[i-1];
+if(!cur || it.x - (prev.x + prev.w) > r.size*1.2){
+cur = {x0:it.x, x1:it.x+it.w, text:it.s};
+r.cells.push(cur);
+}else{
+var g = it.x - (prev.x + prev.w);
+if(g > r.size*0.15 && !/\s$/.test(cur.text) && !/^\s/.test(it.s)) cur.text += " ";
+cur.text += it.s;
+cur.x1 = it.x + it.w;
+}
 });
+r.cells.forEach(function(c){ c.text = c.text.trim(); });
+});
+var ti = 0, tblId = 0;
+while(ti < rows.length){
+if(rows[ti].cells.length >= 2){
+var tj = ti;
+while(tj+1 < rows.length && rows[tj+1].cells.length >= 2 && rows[tj].y - rows[tj+1].y < rows[tj].size*3) tj++;
+if(tj > ti){ for(var tk=ti;tk<=tj;tk++) rows[tk].tbl = tblId; tblId++; }
+ti = tj + 1;
+}else{ ti++; }
+}
 var blocks = [];
 rows.forEach(function(r){
+if(r.tbl !== undefined){
+var lb = blocks[blocks.length-1];
+if(lb && lb.type === "table" && lb.id === r.tbl){ lb.rows.push(r); }
+else{ blocks.push({type:"table", id:r.tbl, rows:[r], top:r.y}); }
+return;
+}
 var last = blocks[blocks.length-1];
 var centered = r.x0 > pageW*0.12 && Math.abs((r.x0 + r.x1)/2 - (view[0]+pageW/2)) < pageW*0.04;
 var heading = r.size > body*1.2;
@@ -941,12 +1000,39 @@ last.x1 = r.x1; last.y = r.y;
 blocks.push({type:"text", text:r.text, size:r.size, y:r.y, x0:r.x0, x1:r.x1, centered:centered, heading:heading, top:r.y, indent:r.x0});
 }
 });
-var minX0 = Math.min.apply(null, blocks.map(function(b){return b.x0;}).concat([pageW]));
+var minX0 = Math.min.apply(null, blocks.filter(function(b){return b.type==="text";}).map(function(b){return b.x0;}).concat([pageW]));
 var imgs = await getPageImages(page);
 imgs.forEach(function(im){ blocks.push({type:"image", top:im.y, im:im}); });
 blocks.sort(function(a,b){return b.top-a.top;});
 var first = true;
 blocks.forEach(function(b){
+if(b.type === "table"){
+var xs = [];
+b.rows.forEach(function(r){ r.cells.forEach(function(c){ xs.push(c.x0); }); });
+xs.sort(function(a,b2){return a-b2;});
+var centers = [];
+xs.forEach(function(x){ if(!centers.length || x - centers[centers.length-1] > 12) centers.push(x); });
+var trs = b.rows.map(function(r){
+var cols = centers.map(function(){return "";});
+r.cells.forEach(function(c){
+var ci = 0, best = 1e9;
+centers.forEach(function(cx, k){ var d = Math.abs(cx - c.x0); if(d < best){ best = d; ci = k; } });
+cols[ci] = cols[ci] ? cols[ci] + " " + c.text : c.text;
+});
+return new docx.TableRow({
+children: cols.map(function(t){
+return new docx.TableCell({
+children:[new docx.Paragraph({children:[new docx.TextRun({text:t, size:Math.max(16,Math.round(r.size*2))})]})]
+});
+})
+});
+});
+if(first && p > 1) out.push(new docx.Paragraph({pageBreakBefore:true, children:[]}));
+out.push(new docx.Table({width:{size:100, type:docx.WidthType.PERCENTAGE}, rows:trs}));
+out.push(new docx.Paragraph({children:[]}));
+first = false;
+return;
+}
 if(b.type === "image"){
 var wpx = b.im.w*96/72, hpx = b.im.h*96/72;
 if(wpx > 600){ hpx = hpx*600/wpx; wpx = 600; }
@@ -1060,15 +1146,18 @@ progressBar.style.width = "80%";
 progressText.textContent = "80%";
 
 
-const children = await buildChildren(pdf, function(p, total){
+const exactMode = document.getElementById("convMode").value === "exact";
+const progressCb = function(p, total){
 status.textContent = "Reading page " + p + " of " + total + "...";
 var pct = 15 + Math.round((p/total)*55);
 progressBar.style.width = pct + "%";
 progressText.textContent = pct + "%";
-});
+};
+const exactSections = exactMode ? await buildExact(pdf, progressCb) : null;
+const children = exactMode ? [] : await buildChildren(pdf, progressCb);
 
 
-if(children.length === 0){
+if(!exactMode && children.length === 0){
 
 children.push(
 new docx.Paragraph({
@@ -1099,13 +1188,7 @@ new docx.TextRun(text)
 
 const documentObject = new docx.Document({
 
-sections:[
-{
-properties:{},
-children:children
-}
-]
-
+sections: exactSections || [{properties:{}, children:children}]
 });
 
 
