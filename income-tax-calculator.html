@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Income Tax Calculator India - Old vs New Regime | Antokia</title>
+<meta name="description" content="Free income tax calculator for India. Compare old and new tax regime, see your tax, cess and surcharge, and find which regime saves you more money.">
+<meta name="keywords" content="income tax calculator, income tax calculator India, old vs new regime, new tax regime calculator, tax calculator salary, 87A rebate, 80C deduction">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.antokia.com/income-tax-calculator">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Income Tax Calculator India - Old vs New Regime | Antokia">
+<meta property="og:description" content="Compare old and new tax regime and see which one saves you more tax.">
+<meta property="og:url" content="https://www.antokia.com/income-tax-calculator">
+<meta property="og:site_name" content="Antokia">
+<meta property="og:image" content="https://www.antokia.com/logo.png">
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/png" href="/logo.png">
+<link rel="stylesheet" href="/styles.css">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Antokia Income Tax Calculator","url":"https://www.antokia.com/income-tax-calculator","description":"Free online income tax calculator comparing the old and new tax regimes in India.","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.antokia.com/"},{"@type":"ListItem","position":2,"name":"All Tools","item":"https://www.antokia.com/tools"},{"@type":"ListItem","position":3,"name":"Income Tax Calculator","item":"https://www.antokia.com/income-tax-calculator"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Which tax regime is better, old or new?","acceptedAnswer":{"@type":"Answer","text":"It depends on your income and deductions. The new regime has lower slab rates but fewer deductions. If your total deductions such as 80C, HRA, home loan interest and 80D are high, the old regime can save more. This calculator compares both."}},
+{"@type":"Question","name":"Is income up to 12 lakh tax free in the new regime?","acceptedAnswer":{"@type":"Answer","text":"For resident individuals, taxable income up to Rs 12,00,000 gets a rebate under section 87A in the new regime, so tax is nil. Salaried taxpayers also get a standard deduction of Rs 75,000, which makes salary up to Rs 12.75 lakh effectively tax free."}},
+{"@type":"Question","name":"Which deductions are allowed in the new regime?","acceptedAnswer":{"@type":"Answer","text":"The new regime allows the standard deduction for salaried taxpayers and employer NPS contribution under 80CCD(2). Most other deductions such as 80C, 80D and HRA are not available."}},
+{"@type":"Question","name":"Is this calculator accurate?","acceptedAnswer":{"@type":"Answer","text":"It is an estimate for resident individuals using the slab rates published on the Income Tax Department portal. Always verify with the official portal or a tax professional before filing."}}
+]}
+</script>
+
+<style>
+.tab-btn{border:1px solid #e5e7eb;background:#fff;padding:.55rem 1.1rem;border-radius:9999px;font-weight:600;cursor:pointer}
+.tab-btn.active{background:#e5322d;color:#fff;border-color:#e5322d}
+.itc-input{width:100%;border:1px solid #d1d5db;border-radius:.75rem;padding:.75rem 1rem;font-size:1rem}
+.itc-input:focus{outline:2px solid #e5322d}
+.lbl{display:block;font-weight:600;font-size:.9rem;margin:1rem 0 .4rem}
+.hint{font-weight:400;color:#6b7280;font-size:.78rem}
+.cmp{width:100%;border-collapse:collapse;margin-top:.5rem}
+.cmp th,.cmp td{padding:.65rem .5rem;border-bottom:1px solid #eee;text-align:right}
+.cmp th:first-child,.cmp td:first-child{text-align:left}
+.cmp thead th{background:#fff5f4}
+.win{background:#ecfdf3;border:1px solid #a7f3d0;color:#065f46;border-radius:.75rem;padding:1rem;font-weight:700;margin-bottom:1rem}
+.faq-q{font-weight:700;margin-top:1rem}
+</style>
+</head>
+<body class="bg-[#f5f5fa] text-gray-800">
+
+<header class="bg-white shadow-sm sticky top-0 z-50">
+  <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+    <a href="/" class="flex items-center gap-2 text-2xl font-extrabold text-[#e5322d]"><img src="/logo.png" alt="Antokia logo" width="36" height="36" class="h-9 w-9 object-contain rounded-lg">Antokia</a>
+    <nav class="flex items-center gap-4 text-sm font-semibold">
+      <a href="/tools" class="hover:text-[#e5322d]">All Tools</a>
+      <a href="/blog" class="hover:text-[#e5322d]">Blog</a>
+      <a href="/about" class="hover:text-[#e5322d]">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="max-w-3xl mx-auto px-4 py-8">
+  <nav class="text-sm text-gray-500 mb-4"><a href="/" class="hover:text-[#e5322d]">Home</a> / <a href="/tools" class="hover:text-[#e5322d]">All Tools</a> / Income Tax Calculator</nav>
+  <h1 class="text-3xl md:text-4xl font-extrabold">Income Tax Calculator India: Old vs New Regime</h1>
+  <p class="text-gray-600 mt-3 leading-7">Enter your income and deductions to compare tax under the old and new regime, and see which one saves you more. For resident individuals, using slab rates published on the Income Tax Department portal.</p>
+
+  <section class="bg-white border rounded-2xl p-5 md:p-7 shadow-sm mt-6">
+    <label class="lbl" for="age" style="margin-top:0">Age group</label>
+    <select id="age" class="itc-input">
+      <option value="0">Below 60 years</option>
+      <option value="1">60 to 79 years (senior citizen)</option>
+      <option value="2">80 years and above (super senior)</option>
+    </select>
+
+    <label class="lbl" for="income">Annual gross income (&#8377;) <span class="hint">salary or total income before deductions</span></label>
+    <input id="income" type="number" min="0" step="any" inputmode="numeric" placeholder="e.g. 1500000" class="itc-input">
+
+    <label class="flex items-center gap-2 mt-4 cursor-pointer"><input type="checkbox" id="salaried" checked class="w-5 h-5"><span class="font-semibold text-sm">I am a salaried employee or pensioner (standard deduction)</span></label>
+
+    <h2 class="text-lg font-bold mt-6">Deductions (mainly for old regime)</h2>
+    <label class="lbl" for="d80c">Section 80C <span class="hint">PPF, EPF, ELSS, life insurance etc. (max &#8377;1,50,000)</span></label>
+    <input id="d80c" type="number" min="0" step="any" inputmode="numeric" value="0" class="itc-input">
+    <label class="lbl" for="d80d">Section 80D health insurance <span class="hint">eligible amount as per your limit</span></label>
+    <input id="d80d" type="number" min="0" step="any" inputmode="numeric" value="0" class="itc-input">
+    <label class="lbl" for="dnps">NPS 80CCD(1B) <span class="hint">max &#8377;50,000</span></label>
+    <input id="dnps" type="number" min="0" step="any" inputmode="numeric" value="0" class="itc-input">
+    <label class="lbl" for="dhome">Home loan interest, self-occupied <span class="hint">max &#8377;2,00,000</span></label>
+    <input id="dhome" type="number" min="0" step="any" inputmode="numeric" value="0" class="itc-input">
+    <label class="lbl" for="dhra">HRA exemption <span class="hint">exempt amount you calculated</span></label>
+    <input id="dhra" type="number" min="0" step="any" inputmode="numeric" value="0" class="itc-input">
+    <label class="lbl" for="dother">Other old-regime deductions <span class="hint">80E, 80G, 80TTA etc.</span></label>
+    <input id="dother" type="number" min="0" step="any" inputmode="numeric" value="0" class="itc-input">
+    <label class="lbl" for="dnps2">Employer NPS 80CCD(2) <span class="hint">allowed in both regimes</span></label>
+    <input id="dnps2" type="number" min="0" step="any" inputmode="numeric" value="0" class="itc-input">
+  </section>
+
+  <section class="bg-white border rounded-2xl p-5 md:p-7 shadow-sm mt-6" id="resultBox">
+    <div id="verdict" class="win">Enter your income to compare both regimes.</div>
+    <div style="overflow-x:auto">
+    <table class="cmp">
+      <thead><tr><th></th><th>Old regime</th><th>New regime</th></tr></thead>
+      <tbody>
+        <tr><td>Gross income</td><td id="o_g">-</td><td id="n_g">-</td></tr>
+        <tr><td>Total deductions</td><td id="o_d">-</td><td id="n_d">-</td></tr>
+        <tr><td>Taxable income</td><td id="o_t">-</td><td id="n_t">-</td></tr>
+        <tr><td>Tax on slabs (after rebate)</td><td id="o_s">-</td><td id="n_s">-</td></tr>
+        <tr><td>Surcharge</td><td id="o_sc">-</td><td id="n_sc">-</td></tr>
+        <tr><td>Health &amp; education cess (4%)</td><td id="o_c">-</td><td id="n_c">-</td></tr>
+        <tr><td><strong>Total tax</strong></td><td id="o_x"><strong>-</strong></td><td id="n_x"><strong>-</strong></td></tr>
+        <tr><td>Monthly tax (approx.)</td><td id="o_m">-</td><td id="n_m">-</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="text-xs text-gray-500 mt-4">This is an estimate for a resident individual. It does not cover capital gains at special rates, income from other sources taxed separately, or other special cases. Rates and rules can change, so verify with the official Income Tax portal or a tax professional before filing.</p>
+  </section>
+
+  <section class="bg-white border rounded-2xl p-5 md:p-7 shadow-sm mt-6">
+    <h2 class="text-2xl font-bold">New Tax Regime Slabs</h2>
+    <div style="overflow-x:auto"><table class="cmp">
+      <thead><tr><th>Income slab</th><th>Rate</th></tr></thead>
+      <tbody>
+        <tr><td>Up to &#8377;4,00,000</td><td>Nil</td></tr>
+        <tr><td>&#8377;4,00,001 to &#8377;8,00,000</td><td>5%</td></tr>
+        <tr><td>&#8377;8,00,001 to &#8377;12,00,000</td><td>10%</td></tr>
+        <tr><td>&#8377;12,00,001 to &#8377;16,00,000</td><td>15%</td></tr>
+        <tr><td>&#8377;16,00,001 to &#8377;20,00,000</td><td>20%</td></tr>
+        <tr><td>&#8377;20,00,001 to &#8377;24,00,000</td><td>25%</td></tr>
+        <tr><td>Above &#8377;24,00,000</td><td>30%</td></tr>
+      </tbody>
+    </table></div>
+    <p class="mt-3 leading-7 text-gray-700">Rebate under section 87A of up to &#8377;60,000 applies if taxable income is up to &#8377;12,00,000. Salaried taxpayers get a standard deduction of &#8377;75,000.</p>
+
+    <h2 class="text-2xl font-bold mt-8">Old Tax Regime Slabs (below 60 years)</h2>
+    <div style="overflow-x:auto"><table class="cmp">
+      <thead><tr><th>Income slab</th><th>Rate</th></tr></thead>
+      <tbody>
+        <tr><td>Up to &#8377;2,50,000</td><td>Nil</td></tr>
+        <tr><td>&#8377;2,50,001 to &#8377;5,00,000</td><td>5%</td></tr>
+        <tr><td>&#8377;5,00,001 to &#8377;10,00,000</td><td>20%</td></tr>
+        <tr><td>Above &#8377;10,00,000</td><td>30%</td></tr>
+      </tbody>
+    </table></div>
+    <p class="mt-3 leading-7 text-gray-700">Rebate of up to &#8377;12,500 applies if taxable income is up to &#8377;5,00,000. The standard deduction is &#8377;50,000. Senior citizens have a higher basic exemption of &#8377;3,00,000 and super seniors &#8377;5,00,000.</p>
+
+    <h2 class="text-2xl font-bold mt-8">Frequently Asked Questions</h2>
+    <p class="faq-q">Which tax regime is better, old or new?</p>
+    <p class="text-gray-700">It depends on your deductions. The new regime has lower rates but fewer deductions. If 80C, HRA, home loan interest and 80D together are large, the old regime may save more. Use the comparison above.</p>
+    <p class="faq-q">Is income up to 12 lakh tax free in the new regime?</p>
+    <p class="text-gray-700">For resident individuals, taxable income up to &#8377;12 lakh gets full rebate under 87A, so tax is nil. With the &#8377;75,000 standard deduction, salary up to &#8377;12.75 lakh is effectively tax free.</p>
+    <p class="faq-q">Which deductions work in the new regime?</p>
+    <p class="text-gray-700">Mainly the standard deduction and employer NPS contribution under 80CCD(2). Most other deductions are not available.</p>
+  </section>
+
+  <section class="mt-6">
+    <h2 class="text-xl font-bold mb-3">Related tools</h2>
+    <div class="flex flex-wrap gap-3 text-sm font-semibold">
+      <a href="/gst-calculator" class="bg-white border rounded-lg px-4 py-2 hover:text-[#e5322d]">GST Calculator</a>
+      <a href="/sip-calculator" class="bg-white border rounded-lg px-4 py-2 hover:text-[#e5322d]">SIP Calculator</a>
+      <a href="/ppf-calculator" class="bg-white border rounded-lg px-4 py-2 hover:text-[#e5322d]">PPF Calculator</a>
+      <a href="/emi-calculator" class="bg-white border rounded-lg px-4 py-2 hover:text-[#e5322d]">EMI Calculator</a>
+      <a href="/tools" class="bg-white border rounded-lg px-4 py-2 hover:text-[#e5322d]">All Tools</a>
+    </div>
+  </section>
+</main>
+
+<footer class="bg-[#020617] text-white mt-8">
+  <div class="max-w-6xl mx-auto px-4 py-10 flex flex-col md:flex-row justify-between gap-6">
+    <div><a href="/" class="text-3xl font-extrabold">Antokia</a><p class="text-gray-400 mt-2">Free online tools for everyday digital tasks. Made in Mumbai, India.</p></div>
+    <nav class="flex flex-wrap gap-x-6 gap-y-3" aria-label="Footer navigation">
+      <a href="/" class="hover:text-red-400">Home</a>
+      <a href="/tools" class="hover:text-red-400">All Tools</a>
+      <a href="/blog" class="hover:text-red-400">Blog</a>
+      <a href="/about" class="hover:text-red-400">About Us</a>
+      <a href="/privacy" class="hover:text-red-400">Privacy</a>
+      <a href="/terms" class="hover:text-red-400">Terms &amp; Conditions</a>
+      <a href="/contact" class="hover:text-red-400">Contact Us</a>
+    </nav>
+  </div>
+  <p class="text-center text-gray-500 text-sm pb-8">&copy; 2026 Antokia.com. All rights reserved.</p>
+</footer>
+
+<script>
+(function(){
+  var $=function(i){return document.getElementById(i)};
+  function num(id){var v=parseFloat($(id).value);return isFinite(v)&&v>0?v:0}
+  function inr(n){return "\u20B9"+Math.round(n).toLocaleString("en-IN")}
+
+  function oldSlab(t,lim){
+    var tax=0;
+    if(lim<500000&&t>lim)tax+=(Math.min(t,500000)-lim)*0.05;
+    if(t>500000)tax+=(Math.min(t,1000000)-500000)*0.2;
+    if(t>1000000)tax+=(t-1000000)*0.3;
+    return tax;
+  }
+  var NEW=[[400000,0],[800000,0.05],[1200000,0.10],[1600000,0.15],[2000000,0.20],[2400000,0.25],[Infinity,0.30]];
+  function newSlab(t){
+    var tax=0,prev=0;
+    for(var i=0;i<NEW.length;i++){
+      if(t>prev)tax+=(Math.min(t,NEW[i][0])-prev)*NEW[i][1];
+      prev=NEW[i][0];
+    }
+    return tax;
+  }
+  function srInfo(t,isNew){
+    if(t>50000000)return {r:isNew?0.25:0.37,T:50000000};
+    if(t>20000000)return {r:0.25,T:20000000};
+    if(t>10000000)return {r:0.15,T:10000000};
+    if(t>5000000)return {r:0.10,T:5000000};
+    return {r:0,T:0};
+  }
+  function withSurcharge(t,slabFn,isNew){
+    var base=slabFn(t),s=srInfo(t,isNew);
+    if(!s.r)return {tax:base,sur:0};
+    var full=base*(1+s.r);
+    var prev=withSurcharge(s.T,slabFn,isNew);
+    var capped=Math.min(full,prev.tax+prev.sur+(t-s.T));
+    var total=capped;
+    return {tax:base,sur:Math.max(0,total-base)};
+  }
+  function calcOld(gross,age,sal){
+    var ded=(sal?50000:0)+Math.min(num("d80c"),150000)+num("d80d")+Math.min(num("dnps"),50000)+Math.min(num("dhome"),200000)+num("dhra")+num("dother")+num("dnps2");
+    var t=Math.max(0,gross-ded),lim=[250000,300000,500000][age];
+    var slab=oldSlab(t,lim),rebate=0;
+    if(t<=500000)rebate=Math.min(slab,12500);
+    var r;
+    if(rebate){r={tax:slab-rebate,sur:0}}
+    else r=withSurcharge(t,function(x){return oldSlab(x,lim)},false);
+    return fin(gross,ded,t,r);
+  }
+  function calcNew(gross,sal){
+    var ded=(sal?75000:0)+num("dnps2");
+    var t=Math.max(0,gross-ded);
+    var slab=newSlab(t),r;
+    if(t<=1200000){r={tax:0,sur:0}}
+    else{
+      var tax=Math.min(slab,t-1200000);
+      if(tax<slab){r={tax:tax,sur:0}}
+      else r=withSurcharge(t,newSlab,true);
+    }
+    return fin(gross,ded,t,r);
+  }
+  function fin(g,d,t,r){
+    var cess=(r.tax+r.sur)*0.04,total=r.tax+r.sur+cess;
+    return {g:g,d:d,t:t,s:r.tax,sc:r.sur,c:cess,x:total};
+  }
+  function set(p,o){
+    $(p+"_g").textContent=inr(o.g);$(p+"_d").textContent=inr(o.d);$(p+"_t").textContent=inr(o.t);
+    $(p+"_s").textContent=inr(o.s);$(p+"_sc").textContent=inr(o.sc);$(p+"_c").textContent=inr(o.c);
+    $(p+"_x").innerHTML="<strong>"+inr(o.x)+"</strong>";$(p+"_m").textContent=inr(o.x/12);
+  }
+  function run(){
+    var g=num("income"),age=parseInt($("age").value,10),sal=$("salaried").checked;
+    if(!g){$("verdict").textContent="Enter your income to compare both regimes.";
+      ["o","n"].forEach(function(p){["g","d","t","s","sc","c","x","m"].forEach(function(k){$(p+"_"+k).textContent="-"})});return}
+    var o=calcOld(g,age,sal),n=calcNew(g,sal);
+    set("o",o);set("n",n);
+    var diff=Math.abs(o.x-n.x);
+    $("verdict").textContent=diff<1?"Both regimes give the same tax.":
+      (n.x<o.x?"New regime saves you "+inr(diff)+" per year.":"Old regime saves you "+inr(diff)+" per year.");
+  }
+  document.querySelectorAll("input,select").forEach(function(e){e.addEventListener("input",run);e.addEventListener("change",run)});
+  run();
+})();
+</script>
+</body>
+</html>
