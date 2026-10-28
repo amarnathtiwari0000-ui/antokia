@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>How to Compress Photo and Signature to 20KB or 50KB for Online Forms | Antokia</title>
+
+<meta name="description" content="Step-by-step guide to reduce photo and signature size to 20KB, 50KB or 100KB for government job, exam and admission forms. Free, works in your browser.">
+
+<meta name="keywords" content="compress photo to 20kb, compress signature to 10kb, reduce image size in kb, photo size for online form, exam form photo size, resize photo and signature">
+
+<meta name="author" content="Antokia">
+<meta name="robots" content="index, follow">
+
+<link rel="canonical" href="https://www.antokia.com/blog/compress-photo-signature-for-online-forms">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Compress Photo and Signature to 20KB or 50KB for Online Forms">
+<meta property="og:description" content="Fix 'file size too large' errors on exam, job and admission forms with this simple step-by-step guide.">
+<meta property="og:url" content="https://www.antokia.com/blog/compress-photo-signature-for-online-forms">
+<meta property="og:site_name" content="Antokia">
+<meta property="og:image" content="https://www.antokia.com/logo.png">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Compress Photo and Signature to 20KB or 50KB for Online Forms">
+<meta name="twitter:description" content="A practical guide to reducing photo and signature size for exam, job and admission forms.">
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Article",
+  "headline":"How to Compress Photo and Signature to 20KB or 50KB for Online Forms",
+  "description":"A practical guide to reduce photo and signature file size for government job, exam and admission forms.",
+  "author":{"@type":"Organization","name":"Antokia"},
+  "publisher":{"@type":"Organization","name":"Antokia"},
+  "mainEntityOfPage":{"@type":"WebPage","@id":"https://www.antokia.com/blog/compress-photo-signature-for-online-forms"},
+  "datePublished":"2026-10-28",
+  "dateModified":"2026-10-28"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"How do I reduce a photo to 20KB?","acceptedAnswer":{"@type":"Answer","text":"First resize the photo to the dimensions the form asks for, then compress it and lower the quality slider step by step until the size is under 20KB."}},
+    {"@type":"Question","name":"What photo and signature size do forms usually ask for?","acceptedAnswer":{"@type":"Answer","text":"It differs for every form. Photos are often limited to roughly 20KB to 100KB and signatures to roughly 10KB to 50KB, but you must always follow the exact size, dimensions and format written in the official notification."}},
+    {"@type":"Question","name":"Why is my compressed image still too large?","acceptedAnswer":{"@type":"Answer","text":"Large pixel dimensions keep the file big even at low quality. Resize the image to smaller dimensions first, then compress it."}},
+    {"@type":"Question","name":"Is it safe to compress my photo online?","acceptedAnswer":{"@type":"Answer","text":"Antokia image tools process the image in your browser, so the file is not uploaded to a server."}},
+    {"@type":"Question","name":"Which format should I use, JPG or PNG?","acceptedAnswer":{"@type":"Answer","text":"JPG is usually smaller for photos and signatures. Use the format your form requires."}}
+  ]
+}
+</script>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f5f5fa;
+    color:#292929;
+    line-height:1.75;
+}
+
+/* HEADER */
+
+header{
+    background:#ffffff;
+    border-bottom:1px solid #e8e8e8;
+    box-shadow:0 2px 12px rgba(0,0,0,.05);
+}
+
+.header-inner{
+    max-width:1150px;
+    margin:auto;
+    padding:18px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+}
+
+.brand{
+    font-size:30px;
+    font-weight:800;
+    color:#e5322d;
+    letter-spacing:-1px;
+    text-decoration:none;
+}
+
+.nav{
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+
+.nav a{
+    color:#444;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:600;
+}
+
+.nav a:hover{
+    color:#e5322d;
+}
+
+.tools-btn{
+    background:#e5322d;
+    color:#fff !important;
+    padding:10px 16px;
+    border-radius:8px;
+}
+
+.tools-btn:hover{
+    background:#c92824;
+}
+
+/* MAIN */
+
+main{
+    max-width:1050px;
+    margin:0 auto;
+    padding:30px 18px 60px;
+}
+
+/* HERO */
+
+.hero{
+    background:linear-gradient(135deg,#ffffff,#fff3f2);
+    border:1px solid #eeeeee;
+    border-radius:18px;
+    padding:38px 32px;
+    margin-bottom:25px;
+    box-shadow:0 5px 25px rgba(0,0,0,.05);
+}
+
+.hero h1{
+    margin:0 0 15px;
+    color:#222;
+    font-size:40px;
+    line-height:1.2;
+}
+
+.hero p{
+    margin:0;
+    color:#555;
+    font-size:18px;
+}
+
+.meta{
+    margin-top:18px;
+    color:#777;
+    font-size:13px;
+}
+
+/* ARTICLE */
+
+.article{
+    background:#ffffff;
+    border:1px solid #e5e5e5;
+    border-radius:16px;
+    padding:34px;
+    box-shadow:0 4px 20px rgba(0,0,0,.04);
+}
+
+.article h2{
+    color:#222;
+    font-size:28px;
+    margin-top:38px;
+    margin-bottom:14px;
+}
+
+.article h3{
+    color:#333;
+    font-size:21px;
+    margin-top:27px;
+    margin-bottom:10px;
+}
+
+.article p{
+    margin:13px 0;
+}
+
+.article ul,
+.article ol{
+    padding-left:25px;
+}
+
+.article li{
+    margin-bottom:9px;
+}
+
+/* HIGHLIGHT */
+
+.highlight{
+    background:#fff5f4;
+    border-left:5px solid #e5322d;
+    border-radius:8px;
+    padding:17px 19px;
+    margin:22px 0;
+}
+
+.tip{
+    background:#f2f7ff;
+    border-left:5px solid #2878d7;
+    border-radius:8px;
+    padding:17px 19px;
+    margin:22px 0;
+}
+
+/* STEP */
+
+.step{
+    background:#fafafa;
+    border:1px solid #e5e5e5;
+    border-left:5px solid #e5322d;
+    border-radius:10px;
+    padding:19px 20px;
+    margin:15px 0;
+}
+
+.step h3{
+    margin:0 0 7px;
+    font-size:20px;
+}
+
+.step p{
+    margin:0;
+}
+
+/* TOOL CTA */
+
+.tool-box{
+    background:linear-gradient(135deg,#fff3f2,#fff9f9);
+    border:1px solid #ffd8d5;
+    border-radius:14px;
+    padding:26px;
+    margin:30px 0;
+    text-align:center;
+}
+
+.tool-box h3{
+    margin-top:0;
+    font-size:23px;
+}
+
+.tool-button{
+    display:inline-block;
+    background:#e5322d;
+    color:#fff;
+    text-decoration:none;
+    padding:12px 22px;
+    border-radius:8px;
+    font-weight:700;
+    margin-top:8px;
+}
+
+.tool-button:hover{
+    background:#c92824;
+}
+
+/* TABLE */
+
+.table-wrap{
+    overflow-x:auto;
+    margin:22px 0;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:560px;
+}
+
+th,
+td{
+    border:1px solid #ddd;
+    padding:12px;
+    text-align:left;
+    vertical-align:top;
+}
+
+th{
+    background:#f6f6f6;
+}
+
+/* FAQ */
+
+.faq{
+    border:1px solid #ddd;
+    border-radius:10px;
+    margin:12px 0;
+    overflow:hidden;
+    background:#fff;
+}
+
+.faq-question{
+    width:100%;
+    border:0;
+    background:#fafafa;
+    padding:16px 18px;
+    text-align:left;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+}
+
+.faq-question:hover{
+    background:#f2f2f2;
+}
+
+.faq-answer{
+    display:none;
+    padding:0 18px 17px;
+    color:#555;
+}
+
+/* RELATED */
+
+.related{
+    margin-top:35px;
+    padding-top:25px;
+    border-top:1px solid #e5e5e5;
+}
+
+.related a{
+    color:#e5322d;
+    text-decoration:none;
+    font-weight:600;
+}
+
+.related a:hover{
+    text-decoration:underline;
+}
+
+/* FOOTER */
+
+footer{
+    background:#242424;
+    color:#aaa;
+    padding:40px 20px 25px;
+}
+
+.footer-inner{
+    max-width:1150px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:1.4fr 1fr 1fr 1fr;
+    gap:30px;
+}
+
+.footer-brand{
+    color:#ffffff;
+    font-size:25px;
+    font-weight:800;
+    margin-bottom:10px;
+}
+
+.footer-col h3{
+    color:#ffffff;
+    font-size:15px;
+    margin:0 0 12px;
+}
+
+.footer-col a{
+    display:block;
+    color:#aaa;
+    text-decoration:none;
+    font-size:13px;
+    margin:7px 0;
+}
+
+.footer-col a:hover{
+    color:#ffffff;
+}
+
+.footer-description{
+    font-size:13px;
+    line-height:1.7;
+    max-width:300px;
+}
+
+.footer-bottom{
+    max-width:1150px;
+    margin:30px auto 0;
+    padding-top:18px;
+    border-top:1px solid #3b3b3b;
+    text-align:center;
+    font-size:12px;
+    color:#888;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+    .header-inner{
+        flex-direction:column;
+        padding:16px;
+    }
+
+    .nav{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .footer-inner{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+@media(max-width:700px){
+
+    main{
+        padding:20px 12px 45px;
+    }
+
+    .hero{
+        padding:27px 20px;
+    }
+
+    .hero h1{
+        font-size:30px;
+    }
+
+    .hero p{
+        font-size:16px;
+    }
+
+    .article{
+        padding:22px 17px;
+    }
+
+    .article h2{
+        font-size:24px;
+    }
+
+    .article h3{
+        font-size:19px;
+    }
+}
+
+@media(max-width:500px){
+
+    .brand{
+        font-size:27px;
+    }
+
+    .nav{
+        gap:10px;
+    }
+
+    .nav a{
+        font-size:13px;
+    }
+
+    .hero h1{
+        font-size:27px;
+    }
+
+    .article{
+        padding:18px 14px;
+    }
+
+    .footer-inner{
+        grid-template-columns:1fr;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<header>
+
+<div class="header-inner">
+
+<a href="/" class="brand"><img src="/logo.png" alt="Antokia logo" width="36" height="36" style="height:36px;width:36px;object-fit:contain;border-radius:8px;display:inline-block;vertical-align:middle;margin-right:8px">Antokia</a>
+
+<nav class="nav">
+
+<a href="/">Home</a>
+<a href="/blog">Blog</a>
+<a href="/about">About</a>
+<a href="/contact">Contact</a>
+<a href="/tools" class="tools-btn">All Tools</a>
+
+</nav>
+
+</div>
+
+</header>
+
+<main>
+
+<section class="hero">
+
+<h1>How to Compress Photo and Signature to 20KB or 50KB for Online Forms</h1>
+
+<p>
+Getting a "file size too large" error on an exam, job or admission form? This guide shows how to reduce your photo and signature to the required KB size without making them blurry.
+</p>
+
+<div class="meta">
+Updated: October 2026 · Antokia Guide
+</div>
+
+</section>
+
+<article class="article">
+
+<p>
+Many online forms, such as government job applications, entrance exams and college admissions, accept photos and signatures only below a strict file size like 20KB, 50KB or 100KB. A photo taken with a phone is often several MB, so it gets rejected.
+</p>
+
+<div class="highlight">
+<strong>Quick answer:</strong>
+Resize the image to the dimensions your form asks for, then compress it and lower the quality slider until the file is under the limit. Both steps can be done free on Antokia, and the image never leaves your browser.
+</div>
+
+<h2>Step-by-Step: Reduce Photo Size in KB</h2>
+
+<div class="step">
+<h3>Step 1: Read the form rules</h3>
+<p>Note the maximum size (for example 50KB), the dimensions (for example 200 x 230 pixels) and the allowed format (JPG or PNG). Rules differ for every form, so always follow the official notification.</p>
+</div>
+
+<div class="step">
+<h3>Step 2: Resize the image</h3>
+<p>Open the <a href="/image-resizer">Image Resizer</a>, upload your photo and enter the required width and height. Smaller dimensions are the biggest help in reducing size.</p>
+</div>
+
+<div class="step">
+<h3>Step 3: Compress the image</h3>
+<p>Open the <a href="/compress-image">Image Compressor</a>, upload the resized photo and reduce the quality slider. The tool shows the original and compressed size, so you can stop once it is under the limit.</p>
+</div>
+
+<div class="step">
+<h3>Step 4: Check and upload</h3>
+<p>Confirm the final size, format and that your face or signature is still clearly visible, then upload it to the form.</p>
+</div>
+
+<div class="tool-box">
+<h3>Reduce your photo size now</h3>
+<p>Free, fast and private. Works on mobile and laptop.</p>
+<a class="tool-button" href="/compress-image">Compress Image</a>
+<a class="tool-button" href="/image-resizer">Resize Image</a>
+</div>
+
+<h2>Typical Sizes Asked in Forms</h2>
+
+<p>These are only common examples. Your form may ask for something different.</p>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>Item</th><th>Common size limit</th><th>Tip</th></tr>
+</thead>
+<tbody>
+<tr><td>Passport-size photo</td><td>20KB to 100KB</td><td>Resize first, then compress</td></tr>
+<tr><td>Signature</td><td>10KB to 50KB</td><td>Sign on white paper with a dark pen</td></tr>
+<tr><td>Thumb impression</td><td>20KB to 50KB</td><td>Scan clearly, then compress</td></tr>
+<tr><td>Documents as image</td><td>50KB to 200KB</td><td>Keep text readable</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>How to Make a Good Signature Image</h2>
+
+<ul>
+<li>Sign with a black or blue pen on plain white paper.</li>
+<li>Take the photo in good light, without shadows.</li>
+<li>Crop closely around the signature so there is little empty space.</li>
+<li>Resize, then compress to the required KB.</li>
+</ul>
+
+<div class="tip">
+<strong>Tip:</strong> If the file is still too big, reduce the dimensions further instead of dropping quality too low. This keeps the image sharper.
+</div>
+
+<h2>Common Mistakes to Avoid</h2>
+
+<ul>
+<li>Compressing without resizing, so large dimensions keep the file big.</li>
+<li>Compressing an already compressed image again and again, which reduces quality.</li>
+<li>Using the wrong format, such as PNG when the form asks for JPG.</li>
+<li>Ignoring the dimension rules and checking only the KB size.</li>
+</ul>
+
+<h2>Frequently Asked Questions</h2>
+
+<div class="faq">
+<button class="faq-question" type="button">How do I reduce a photo to 20KB?</button>
+<div class="faq-answer">Resize the photo to the dimensions the form asks for, then compress it and lower the quality slider step by step until it is under 20KB.</div>
+</div>
+
+<div class="faq">
+<button class="faq-question" type="button">Why is my compressed image still too large?</button>
+<div class="faq-answer">Large pixel dimensions keep the file big even at low quality. Resize the image to smaller dimensions first, then compress.</div>
+</div>
+
+<div class="faq">
+<button class="faq-question" type="button">Is it safe to compress my photo online?</button>
+<div class="faq-answer">Antokia image tools process the image in your browser, so your file is not uploaded to a server.</div>
+</div>
+
+<div class="faq">
+<button class="faq-question" type="button">Which format should I use, JPG or PNG?</button>
+<div class="faq-answer">JPG is usually smaller for photos and signatures. Use whichever format your form requires.</div>
+</div>
+
+<p style="margin-top:24px"><strong>Related:</strong> <a href="/blog/how-to-compress-image">How to compress an image</a> · <a href="/blog/how-to-resize-image">How to resize an image</a> · <a href="/blog/how-to-image-to-pdf">How to convert images to PDF</a> · <a href="/tools">All free tools</a></p>
+
+</article>
+
+</main>
+
+<footer>
+
+<div class="footer-inner">
+
+<div class="footer-col">
+
+<div class="footer-brand">Antokia</div>
+
+<p class="footer-description">
+Free online tools, practical guides and useful resources for everyday digital tasks.
+</p>
+
+</div>
+
+
+<div class="footer-col">
+
+<h3>Explore</h3>
+
+<a href="/">Home</a>
+<a href="/blog">Blog</a>
+<a href="/image-resizer">Image Resizer</a>
+<a href="/compress-image">Image Compressor</a>
+<a href="/bg-remover">BG Remover</a>
+
+</div>
+
+
+<div class="footer-col">
+
+<h3>Popular Tools</h3>
+
+<a href="/image-to-pdf">Image to PDF</a>
+<a href="/pdf-to-word">PDF to Word</a>
+<a href="/merge-pdf">Merge PDF</a>
+<a href="/emi-calculator">EMI Calculator</a>
+<a href="/age-calculator">Age Calculator</a>
+
+</div>
+
+
+<div class="footer-col">
+
+<h3>Company & Legal</h3>
+
+<a href="/about">About Antokia</a>
+<a href="/contact">Contact</a>
+<a href="/privacy">Privacy Policy</a>
+<a href="/terms">Terms & Conditions</a>
+
+</div>
+
+</div>
+
+
+<div class="footer-bottom">
+© 2026 Antokia. All rights reserved.
+</div>
+
+</footer>
+
+
+<script>
+
+document.querySelectorAll(".faq-question").forEach(function(button){
+
+    button.addEventListener("click",function(){
+
+        const answer = this.nextElementSibling;
+        const isOpen = answer.style.display === "block";
+
+        document.querySelectorAll(".faq-answer").forEach(function(item){
+            item.style.display = "none";
+        });
+
+        if(!isOpen){
+            answer.style.display = "block";
+        }
+
+    });
+
+});
+
+</script>
+
+
+</body>
+</html>
