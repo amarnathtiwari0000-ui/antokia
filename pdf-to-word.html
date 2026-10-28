@@ -829,8 +829,155 @@ data:new Uint8Array(arrayBuffer)
 
 let paragraphs = [];
 
+async function imageToPng(img){
+var c = document.createElement("canvas");
+var w, h;
+if(img.bitmap){
+w = img.bitmap.width; h = img.bitmap.height;
+c.width = w; c.height = h;
+c.getContext("2d").drawImage(img.bitmap,0,0);
+}else if(img.data){
+w = img.width; h = img.height;
+c.width = w; c.height = h;
+var out = new ImageData(w,h);
+var d = img.data, o = out.data, n = w*h, i;
+if(d.length === n*4){
+o.set(d);
+}else if(d.length === n*3){
+for(i=0;i<n;i++){o[i*4]=d[i*3];o[i*4+1]=d[i*3+1];o[i*4+2]=d[i*3+2];o[i*4+3]=255;}
+}else if(d.length === n){
+for(i=0;i<n;i++){o[i*4]=o[i*4+1]=o[i*4+2]=d[i];o[i*4+3]=255;}
+}else{
+return null;
+}
+c.getContext("2d").putImageData(out,0,0);
+}else{
+return null;
+}
+var blob = await new Promise(function(r){c.toBlob(r,"image/png");});
+if(!blob) return null;
+return new Uint8Array(await blob.arrayBuffer());
+}
 
-for(let pageNumber = 1; pageNumber <= pdf.numPages; pageNumber++){
+async function getPageImages(page){
+var found = [];
+try{
+var ops = await page.getOperatorList();
+var OPS = pdfjsLib.OPS;
+var ctm = [1,0,0,1,0,0], stack = [];
+function mul(m,n){
+return [m[0]*n[0]+m[2]*n[1], m[1]*n[0]+m[3]*n[1],
+m[0]*n[2]+m[2]*n[3], m[1]*n[2]+m[3]*n[3],
+m[0]*n[4]+m[2]*n[5]+m[4], m[1]*n[4]+m[3]*n[5]+m[5]];
+}
+for(var i=0;i<ops.fnArray.length;i++){
+var fn = ops.fnArray[i], args = ops.argsArray[i];
+if(fn === OPS.save){ stack.push(ctm.slice()); }
+else if(fn === OPS.restore){ if(stack.length) ctm = stack.pop(); }
+else if(fn === OPS.transform){ ctm = mul(ctm, args); }
+else if(fn === OPS.paintImageXObject){
+var w = Math.abs(ctm[0]), h = Math.abs(ctm[3]);
+if(w < 20 || h < 20) continue;
+var img = null;
+try{ img = page.objs.get(args[0]); }catch(e){}
+if(!img) continue;
+var png = await imageToPng(img);
+if(png) found.push({y: ctm[5] + h, png: png, w: w, h: h});
+}
+}
+}catch(e){ console.warn("Image extraction skipped", e); }
+return found;
+}
+
+async function buildChildren(pdf, onProgress){
+var out = [];
+for(var p=1;p<=pdf.numPages;p++){
+var page = await pdf.getPage(p);
+var view = page.view, pageW = view[2]-view[0];
+var content = await page.getTextContent();
+var rows = [];
+content.items.forEach(function(it){
+if(!it.str || !it.str.trim()) return;
+var y = it.transform[5], size = Math.abs(it.transform[3]) || it.height || 11;
+var row = null;
+for(var r=0;r<rows.length;r++){ if(Math.abs(rows[r].y-y) <= 3){ row = rows[r]; break; } }
+if(!row){ row = {y:y, items:[], size:0}; rows.push(row); }
+row.items.push({x:it.transform[4], w:it.width, s:it.str, size:size});
+row.size = Math.max(row.size, size);
+});
+rows.sort(function(a,b){return b.y-a.y;});
+var sizes = rows.map(function(r){return r.size;}).sort(function(a,b){return a-b;});
+var body = sizes.length ? sizes[Math.floor(sizes.length/2)] : 11;
+var maxEnd = 0;
+rows.forEach(function(r){
+r.items.sort(function(a,b){return a.x-b.x;});
+var text = "", prevEnd = null;
+r.items.forEach(function(it){
+if(prevEnd !== null){
+var gap = it.x - prevEnd;
+if(gap > r.size*2.5){ text += "\t"; }
+else if(gap > r.size*0.15 && !/\s$/.test(text) && !/^\s/.test(it.s)){ text += " "; }
+}
+text += it.s;
+prevEnd = it.x + it.w;
+});
+r.text = text.trim();
+r.x0 = r.items[0].x;
+r.x1 = prevEnd;
+maxEnd = Math.max(maxEnd, r.x1);
+});
+var blocks = [];
+rows.forEach(function(r){
+var last = blocks[blocks.length-1];
+var centered = r.x0 > pageW*0.12 && Math.abs((r.x0 + r.x1)/2 - (view[0]+pageW/2)) < pageW*0.04;
+var heading = r.size > body*1.2;
+if(last && last.type === "text" && !centered && !last.centered && !heading && !last.heading
+&& Math.abs(last.size - r.size) < 1 && (last.y - r.y) <= r.size*1.6
+&& last.x1 > maxEnd - pageW*0.08 && r.text.indexOf("\t") < 0 && last.text.indexOf("\t") < 0
+&& Math.abs(last.x0 - r.x0) < r.size*2.5){
+last.text += " " + r.text;
+last.x1 = r.x1; last.y = r.y;
+}else{
+blocks.push({type:"text", text:r.text, size:r.size, y:r.y, x0:r.x0, x1:r.x1, centered:centered, heading:heading, top:r.y, indent:r.x0});
+}
+});
+var minX0 = Math.min.apply(null, blocks.map(function(b){return b.x0;}).concat([pageW]));
+var imgs = await getPageImages(page);
+imgs.forEach(function(im){ blocks.push({type:"image", top:im.y, im:im}); });
+blocks.sort(function(a,b){return b.top-a.top;});
+var first = true;
+blocks.forEach(function(b){
+if(b.type === "image"){
+var wpx = b.im.w*96/72, hpx = b.im.h*96/72;
+if(wpx > 600){ hpx = hpx*600/wpx; wpx = 600; }
+out.push(new docx.Paragraph({
+pageBreakBefore: first && p > 1,
+spacing:{after:120},
+children:[new docx.ImageRun({data:b.im.png, transformation:{width:Math.round(wpx), height:Math.round(hpx)}})]
+}));
+}else{
+var left = Math.max(0, Math.round((b.x0-minX0)*20));
+out.push(new docx.Paragraph({
+pageBreakBefore: first && p > 1,
+alignment: b.centered ? docx.AlignmentType.CENTER : docx.AlignmentType.LEFT,
+indent: (!b.centered && left > 200) ? {left:left} : undefined,
+spacing:{after: 120},
+children: b.text.split("\t").reduce(function(acc,part,i){
+if(i>0) acc.push(new docx.TextRun({children:[new docx.Tab()]}));
+acc.push(new docx.TextRun({text:part, size:Math.max(16,Math.round(b.size*2)), bold:b.heading}));
+return acc;
+},[])
+}));
+}
+first = false;
+});
+if(onProgress) onProgress(p, pdf.numPages);
+}
+return out;
+}
+
+
+for(let pageNumber = 1; pageNumber <= 0; pageNumber++){
 
 status.textContent =
 "Reading page " +
@@ -913,10 +1060,15 @@ progressBar.style.width = "80%";
 progressText.textContent = "80%";
 
 
-const children = [];
+const children = await buildChildren(pdf, function(p, total){
+status.textContent = "Reading page " + p + " of " + total + "...";
+var pct = 15 + Math.round((p/total)*55);
+progressBar.style.width = pct + "%";
+progressText.textContent = pct + "%";
+});
 
 
-if(paragraphs.length === 0){
+if(children.length === 0){
 
 children.push(
 new docx.Paragraph({
