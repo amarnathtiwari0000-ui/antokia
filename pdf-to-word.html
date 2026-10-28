@@ -671,6 +671,7 @@ const downloadBtn = document.getElementById("downloadBtn");
 const doneText = document.getElementById("doneText");
 
 
+const CONVERT_API = "";
 let selectedFile = null;
 let convertedBlob = null;
 
@@ -1155,10 +1156,10 @@ progressText.textContent = pct + "%";
 };
 const exactSections = exactMode ? await buildExact(pdf, progressCb) : null;
 let serverBlob = null;
-if(!exactMode && selectedFile.size <= 4*1024*1024){
+if(!exactMode && CONVERT_API && selectedFile.size <= 4*1024*1024){
 status.textContent = "Converting on server for best quality...";
 try{
-const resp = await fetch("/api/convert", {method:"POST", headers:{"Content-Type":"application/pdf"}, body:selectedFile});
+const resp = await fetch(CONVERT_API, {method:"POST", headers:{"Content-Type":"application/pdf"}, body:selectedFile});
 if(resp.ok){
 const b = await resp.blob();
 if(b.size > 1000) serverBlob = b;
