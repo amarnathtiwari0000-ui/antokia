@@ -1184,6 +1184,48 @@ const children = (exactMode || serverBlob) ? [] : await buildChildren(pdf, progr
 
 if(!exactMode && !serverBlob && children.length === 0){
 
+try{
+status.textContent = "Scanned PDF detected. Loading OCR (first time can take a minute)...";
+if(!window.Tesseract){
+await new Promise(function(res, rej){
+var s = document.createElement("script");
+s.src = "https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js";
+s.onload = res; s.onerror = rej;
+document.head.appendChild(s);
+});
+}
+const worker = await Tesseract.createWorker("eng");
+for(let p = 1; p <= pdf.numPages; p++){
+status.textContent = "Reading text (OCR) on page " + p + " of " + pdf.numPages + "...";
+const pg = await pdf.getPage(p);
+const vp = pg.getViewport({scale:2});
+const cv = document.createElement("canvas");
+cv.width = Math.floor(vp.width); cv.height = Math.floor(vp.height);
+await pg.render({canvasContext:cv.getContext("2d"), viewport:vp}).promise;
+const r = await worker.recognize(cv);
+const lines = (r.data.text || "").split(/\n\s*\n/);
+lines.forEach(function(par, i){
+const t = par.replace(/\s*\n\s*/g, " ").trim();
+if(!t) return;
+children.push(new docx.Paragraph({
+pageBreakBefore: i === 0 && p > 1 && children.length > 0,
+spacing:{after:120},
+children:[new docx.TextRun(t)]
+}));
+});
+const pct = 15 + Math.round((p/pdf.numPages)*55);
+progressBar.style.width = pct + "%";
+progressText.textContent = pct + "%";
+}
+await worker.terminate();
+}catch(ocrErr){
+console.warn("OCR failed", ocrErr);
+}
+
+}
+
+if(!exactMode && !serverBlob && children.length === 0){
+
 children.push(
 new docx.Paragraph({
 children:[
